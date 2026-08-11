@@ -4,4 +4,3 @@ __pycache__/
 .venv/
 .mypy_cache/
 *.best.h5
-hpc_search_results/
