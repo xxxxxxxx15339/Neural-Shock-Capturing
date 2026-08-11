@@ -1,0 +1,217 @@
+{
+  "artifacts": {
+    "history_path": "/home/bazouil/Documents/Stage/Internsh/Shocks-and-WENO/models/nn_teno5_history.csv",
+    "metadata_path": "/home/bazouil/Documents/Stage/Internsh/Shocks-and-WENO/models/nn_teno5_metadata.json",
+    "split_path": "/home/bazouil/Documents/Stage/Internsh/Shocks-and-WENO/models/nn_teno5_split.npz"
+  },
+  "calibrated_thresholds": [
+    0.6599999999999997,
+    0.4999999999999998,
+    0.6899999999999997
+  ],
+  "created_at_utc": "2026-07-24T18:01:17.357109Z",
+  "dataset_sizes": {
+    "test": 11293,
+    "train": 52665,
+    "validation": 11283
+  },
+  "duration": "0:07:54.837279",
+  "keras_test_binary_accuracy": 0.995129738877517,
+  "keras_test_loss": 0.016128037573998458,
+  "model": {
+    "architecture": [
+      5,
+      64,
+      32,
+      16,
+      8,
+      3
+    ],
+    "candidate_count": 3,
+    "input_size": 5,
+    "label_convention": {
+      "0": "smooth_keep",
+      "1": "troubled_discard"
+    },
+    "path": "/home/bazouil/Documents/Stage/Internsh/Shocks-and-WENO/models/nn_teno5.h5",
+    "type": "NN-TENO5 candidate classifier"
+  },
+  "normalization": {
+    "constant_stencil_value": 0.0,
+    "formula": "(X - min(X)) / (max(X) - min(X))",
+    "method": "per_stencil_min_range"
+  },
+  "source_data": {
+    "input_path": "/home/bazouil/Documents/Stage/Internsh/Shocks-and-WENO/data/2ndNewAvgs.csv",
+    "input_sha256": "5fd4c4e4194c34ec1677f88e44155edaca709c5c4737e25cbcbf01ea4d190596",
+    "note": "Original scalar flux targets were validated but not used as classifier labels.",
+    "original_flux_metadata": {
+      "maximum": 1.5000000000000009,
+      "minimum": -0.5000000000000008,
+      "sample_count": 75241,
+      "sha256": "caaea4f8940c83575c8f0437bd68f2af4d6c1b23c2c2c265f0192770cde8b4a1"
+    },
+    "original_flux_path": "/home/bazouil/Documents/Stage/Internsh/Shocks-and-WENO/data/2ndNewFlux.csv",
+    "sample_count": 75241
+  },
+  "teno_teacher": {
+    "cutoff": 1e-05,
+    "epsilon": 1e-40,
+    "order": 5,
+    "power": 6.0,
+    "scale_constant": 1.0
+  },
+  "test_metrics": {
+    "binary_accuracy": 0.9953658608577585,
+    "exact_mask_accuracy": 0.9868945364385018,
+    "f1": [
+      0.9946159368269921,
+      0.9864823348694315,
+      0.9922665080309341
+    ],
+    "false_discard_rate": [
+      0.0010586989765909893,
+      0.0037387836490528413,
+      0.0018248175182481751
+    ],
+    "false_negative": [
+      21,
+      58,
+      23
+    ],
+    "false_positive": [
+      9,
+      30,
+      16
+    ],
+    "false_smooth_rate": [
+      0.007521489971346705,
+      0.017742428877332517,
+      0.009108910891089108
+    ],
+    "macro_f1": 0.9911215932424525,
+    "precision": [
+      0.9967625899280576,
+      0.9907435976550447,
+      0.9936457505957109
+    ],
+    "predicted_all_discard_fraction": 0.0,
+    "recall": [
+      0.9924785100286533,
+      0.9822575711226674,
+      0.9908910891089109
+    ],
+    "thresholds": [
+      0.6599999999999997,
+      0.4999999999999998,
+      0.6899999999999997
+    ],
+    "true_negative": [
+      8492,
+      7994,
+      8752
+    ],
+    "true_positive": [
+      2771,
+      3211,
+      2502
+    ]
+  },
+  "training": {
+    "batch_size": 175,
+    "early_stopping_patience": 20,
+    "learning_rate": 0.0001,
+    "learning_rate_patience": 8,
+    "maximum_epochs": 300,
+    "minimum_learning_rate": 1e-07,
+    "positive_weights": [
+      3.0461740493774414,
+      2.4552552700042725,
+      3.4756522178649902
+    ],
+    "runtime_device": {
+      "gpu_index": 0,
+      "requested": "gpu",
+      "selected": "gpu",
+      "tensorflow_devices": [
+        {
+          "name": "/job:localhost/replica:0/task:0/device:CPU:0",
+          "type": "CPU"
+        },
+        {
+          "name": "/job:localhost/replica:0/task:0/device:XLA_CPU:0",
+          "type": "XLA_CPU"
+        },
+        {
+          "name": "/job:localhost/replica:0/task:0/device:XLA_GPU:0",
+          "type": "XLA_GPU"
+        },
+        {
+          "name": "/job:localhost/replica:0/task:0/device:GPU:0",
+          "type": "GPU"
+        }
+      ]
+    },
+    "sample_weights_enabled": true,
+    "seed": 42,
+    "split_mode": "stratified",
+    "train_fraction": 0.7,
+    "validation_fraction": 0.15
+  },
+  "validation_metrics": {
+    "binary_accuracy": 0.9958935271352182,
+    "exact_mask_accuracy": 0.9882123548701587,
+    "f1": [
+      0.9931654676258993,
+      0.9892572130141191,
+      0.9938234708109186
+    ],
+    "false_discard_rate": [
+      0.0011773016246762421,
+      0.003492142678972312,
+      0.0005705808513066301
+    ],
+    "false_negative": [
+      28,
+      42,
+      26
+    ],
+    "false_positive": [
+      10,
+      28,
+      5
+    ],
+    "false_smooth_rate": [
+      0.010039440659734672,
+      0.012863705972434915,
+      0.010317460317460317
+    ],
+    "macro_f1": 0.9920820504836456,
+    "precision": [
+      0.9963911945146157,
+      0.9913872654567826,
+      0.9979991996798719
+    ],
+    "predicted_all_discard_fraction": 0.0,
+    "recall": [
+      0.9899605593402653,
+      0.9871362940275651,
+      0.9896825396825397
+    ],
+    "thresholds": [
+      0.6599999999999997,
+      0.4999999999999998,
+      0.6899999999999997
+    ],
+    "true_negative": [
+      8484,
+      7990,
+      8758
+    ],
+    "true_positive": [
+      2761,
+      3223,
+      2494
+    ]
+  }
+}

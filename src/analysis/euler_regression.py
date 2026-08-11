@@ -44,69 +44,124 @@ def _pressure_function(pressure, density, initial_pressure):
     return value, derivative
 
 
-def exact_sod_solution(x, time, discontinuity=0.5):
-    """Exact Riemann solution for the canonical Sod initial condition."""
-    rho_l, velocity_l, pressure_l = 1.0, 0.0, 1.0
-    rho_r, velocity_r, pressure_r = 0.125, 0.0, 0.1
-    pressure_star = 0.5*(pressure_l+pressure_r)
-    for _ in range(20):
-        f_l, df_l = _pressure_function(pressure_star, rho_l, pressure_l)
-        f_r, df_r = _pressure_function(pressure_star, rho_r, pressure_r)
-        update = (
-            f_l+f_r+velocity_r-velocity_l
-        )/(df_l+df_r)
-        pressure_star -= update
-        if abs(update) < 1e-13:
-            break
-    f_l, _ = _pressure_function(pressure_star, rho_l, pressure_l)
-    f_r, _ = _pressure_function(pressure_star, rho_r, pressure_r)
-    velocity_star = 0.5*(velocity_l+velocity_r+f_r-f_l)
+def exact_riemann_solution(x, time, rho_l, vel_l, p_l, rho_r, vel_r, p_r,
+                            discontinuity=0.5):
+    """General exact 1D Euler Riemann solver (Toro, Ch. 4).
 
-    sound_l = np.sqrt(GAMMA*pressure_l/rho_l)
-    sound_r = np.sqrt(GAMMA*pressure_r/rho_r)
-    density_star_l = rho_l*(pressure_star/pressure_l)**(1/GAMMA)
-    ratio = pressure_star/pressure_r
-    density_star_r = rho_r*(
-        (ratio+(GAMMA-1)/(GAMMA+1))
-        / ((GAMMA-1)/(GAMMA+1)*ratio+1)
-    )
-    sound_star_l = sound_l*(pressure_star/pressure_l)**(
-        (GAMMA-1)/(2*GAMMA)
-    )
-    rarefaction_head = velocity_l-sound_l
-    rarefaction_tail = velocity_star-sound_star_l
-    shock_speed = velocity_r+sound_r*np.sqrt(
-        (GAMMA+1)/(2*GAMMA)*ratio+(GAMMA-1)/(2*GAMMA)
-    )
+    Unlike a Sod-specific solver, this handles all four wave-pattern
+    combinations (shock or rarefaction independently on each side), so it
+    is valid for arbitrary left/right states -- used to generate exact
+    (not scheme-imitated) training targets for a wide variety of
+    shock/rarefaction/contact configurations.
+    """
+    sound_l = np.sqrt(GAMMA*p_l/rho_l)
+    sound_r = np.sqrt(GAMMA*p_r/rho_r)
+
+    # Newton iteration for star-region pressure; _pressure_function already
+    # branches shock-vs-rarefaction per side based on p_star vs. that
+    # side's own initial pressure, so this handles all 4 patterns.
+    p_star = max(1e-6, 0.5*(p_l+p_r))
+    for _ in range(50):
+        f_l, df_l = _pressure_function(p_star, rho_l, p_l)
+        f_r, df_r = _pressure_function(p_star, rho_r, p_r)
+        update = (f_l+f_r+vel_r-vel_l)/(df_l+df_r)
+        new_p = p_star-update
+        if new_p <= 0:
+            new_p = 0.5*p_star
+        if abs(new_p-p_star) < 1e-13*max(1.0, p_star):
+            p_star = new_p
+            break
+        p_star = new_p
+    f_l, _ = _pressure_function(p_star, rho_l, p_l)
+    f_r, _ = _pressure_function(p_star, rho_r, p_r)
+    vel_star = 0.5*(vel_l+vel_r+f_r-f_l)
+
     similarity = (x-discontinuity)/time
     density = np.empty_like(x)
     velocity = np.empty_like(x)
     pressure = np.empty_like(x)
-    for i, xi in enumerate(similarity):
-        if xi <= rarefaction_head:
-            density[i], velocity[i], pressure[i] = rho_l, velocity_l, pressure_l
-        elif xi <= rarefaction_tail:
-            local_velocity = 2/(GAMMA+1)*(sound_l+xi)
-            local_sound = 2/(GAMMA+1)*(
-                sound_l-0.5*(GAMMA-1)*xi
-            )
-            density[i] = rho_l*(local_sound/sound_l)**(2/(GAMMA-1))
-            velocity[i] = local_velocity
-            pressure[i] = pressure_l*(local_sound/sound_l)**(
-                2*GAMMA/(GAMMA-1)
-            )
-        elif xi <= velocity_star:
-            density[i], velocity[i], pressure[i] = (
-                density_star_l, velocity_star, pressure_star
-            )
-        elif xi <= shock_speed:
-            density[i], velocity[i], pressure[i] = (
-                density_star_r, velocity_star, pressure_star
-            )
-        else:
-            density[i], velocity[i], pressure[i] = rho_r, velocity_r, pressure_r
+
+    left_side = similarity <= vel_star
+
+    if p_star > p_l:
+        # left shock
+        shock_speed = vel_l-sound_l*np.sqrt(
+            (GAMMA+1)/(2*GAMMA)*p_star/p_l+(GAMMA-1)/(2*GAMMA)
+        )
+        density_star_l = rho_l*(
+            (p_star/p_l+(GAMMA-1)/(GAMMA+1))
+            / ((GAMMA-1)/(GAMMA+1)*p_star/p_l+1)
+        )
+        mask = left_side & (similarity < shock_speed)
+        density[mask], velocity[mask], pressure[mask] = rho_l, vel_l, p_l
+        mask = left_side & (similarity >= shock_speed)
+        density[mask], velocity[mask], pressure[mask] = (
+            density_star_l, vel_star, p_star
+        )
+    else:
+        # left rarefaction
+        sound_star_l = sound_l*(p_star/p_l)**((GAMMA-1)/(2*GAMMA))
+        head = vel_l-sound_l
+        tail = vel_star-sound_star_l
+        density_star_l = rho_l*(p_star/p_l)**(1/GAMMA)
+        mask = left_side & (similarity < head)
+        density[mask], velocity[mask], pressure[mask] = rho_l, vel_l, p_l
+        mask = left_side & (similarity >= head) & (similarity < tail)
+        xi = similarity[mask]
+        local_sound = 2/(GAMMA+1)*(sound_l+(GAMMA-1)/2*(vel_l-xi))
+        velocity[mask] = 2/(GAMMA+1)*(sound_l+(GAMMA-1)/2*vel_l+xi)
+        density[mask] = rho_l*(local_sound/sound_l)**(2/(GAMMA-1))
+        pressure[mask] = p_l*(local_sound/sound_l)**(2*GAMMA/(GAMMA-1))
+        mask = left_side & (similarity >= tail)
+        density[mask], velocity[mask], pressure[mask] = (
+            density_star_l, vel_star, p_star
+        )
+
+    right_side = ~left_side
+
+    if p_star > p_r:
+        # right shock
+        shock_speed = vel_r+sound_r*np.sqrt(
+            (GAMMA+1)/(2*GAMMA)*p_star/p_r+(GAMMA-1)/(2*GAMMA)
+        )
+        density_star_r = rho_r*(
+            (p_star/p_r+(GAMMA-1)/(GAMMA+1))
+            / ((GAMMA-1)/(GAMMA+1)*p_star/p_r+1)
+        )
+        mask = right_side & (similarity <= shock_speed)
+        density[mask], velocity[mask], pressure[mask] = (
+            density_star_r, vel_star, p_star
+        )
+        mask = right_side & (similarity > shock_speed)
+        density[mask], velocity[mask], pressure[mask] = rho_r, vel_r, p_r
+    else:
+        # right rarefaction
+        sound_star_r = sound_r*(p_star/p_r)**((GAMMA-1)/(2*GAMMA))
+        head = vel_r+sound_r
+        tail = vel_star+sound_star_r
+        density_star_r = rho_r*(p_star/p_r)**(1/GAMMA)
+        mask = right_side & (similarity <= tail)
+        density[mask], velocity[mask], pressure[mask] = (
+            density_star_r, vel_star, p_star
+        )
+        mask = right_side & (similarity > tail) & (similarity <= head)
+        xi = similarity[mask]
+        local_sound = 2/(GAMMA+1)*(sound_r-(GAMMA-1)/2*(vel_r-xi))
+        velocity[mask] = 2/(GAMMA+1)*(-sound_r+(GAMMA-1)/2*vel_r+xi)
+        density[mask] = rho_r*(local_sound/sound_r)**(2/(GAMMA-1))
+        pressure[mask] = p_r*(local_sound/sound_r)**(2*GAMMA/(GAMMA-1))
+        mask = right_side & (similarity > head)
+        density[mask], velocity[mask], pressure[mask] = rho_r, vel_r, p_r
+
     energy = pressure/(GAMMA-1)+0.5*density*velocity**2
     return np.column_stack((density, density*velocity, energy))
+
+
+def exact_sod_solution(x, time, discontinuity=0.5):
+    """Exact Riemann solution for the canonical Sod initial condition."""
+    return exact_riemann_solution(
+        x, time, 1.0, 0.0, 1.0, 0.125, 0.0, 0.1, discontinuity=discontinuity,
+    )
 
 
 def _feature_locations(x, density):

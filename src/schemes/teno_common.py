@@ -2,12 +2,46 @@ import numpy as np
 
 
 def normalize_teno_stencils(stencils):
-    """Normalize each stencil along its final axis without modifying it."""
-    scale = np.maximum(
-        np.max(np.abs(stencils), axis=-1, keepdims=True),
-        1.0,
+    """Map each nonconstant stencil to [0, 1] along its final axis."""
+    stencils = np.asarray(
+        stencils,
+        dtype=float,
     )
-    return stencils/scale
+
+    if stencils.ndim < 1:
+        raise ValueError(
+            'TENO normalization requires a final stencil axis.'
+        )
+
+    if not np.isfinite(stencils).all():
+        raise FloatingPointError(
+            'TENO normalization received NaN or infinity.'
+        )
+
+    minimum = np.min(
+        stencils,
+        axis=-1,
+        keepdims=True,
+    )
+    value_range = (
+        np.max(
+            stencils,
+            axis=-1,
+            keepdims=True,
+        )
+        - minimum
+    )
+    normalized = np.zeros_like(
+        stencils,
+        dtype=float,
+    )
+    np.divide(
+        stencils - minimum,
+        value_range,
+        out=normalized,
+        where=value_range > 0.0,
+    )
+    return normalized
 
 
 def combine_teno_candidates(candidates, keep_mask, linear_weights, fallback):

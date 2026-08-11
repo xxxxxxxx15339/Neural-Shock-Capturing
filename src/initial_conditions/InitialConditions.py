@@ -115,13 +115,14 @@ def stand():#initial conditions for the sod problem (for Euler equations)
         return u
     return fxn
 
-def shuOsher():#initial conditions for the sod problem (for Euler equations)
+def shuOsher():#initial conditions for the Shu-Osher problem (Stevens & Colonius, Eq. 26-28)
     def fxn(x):
         g = 1.4
         rho0l = 3.857143#initial density
-        # Standard Shu--Osher coordinates are [-5, 5].  The solver uses
-        # [0, 10], so translate x by five while retaining the benchmark phase.
-        rho0r = 1 + 0.2*np.sin(5*(x-5))
+        # Stevens & Colonius state the problem directly on x in [0, 10] with
+        # the shock at x=1 and rho0r = 1 + eps*sin(5*x) (their Eq. 26); no
+        # additional phase shift should be applied.
+        rho0r = 1 + 0.2*np.sin(5*x)
         p0l = 10.3333#initial pressure
         p0r = 1
         u0l = 2.629369#initial velocity

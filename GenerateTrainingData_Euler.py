@@ -43,10 +43,11 @@ from src.schemes import WENO7euler
 
 
 CATEGORY_PROPORTIONS = {
-    'smooth': 0.40,
-    'shock': 0.30,
+    'smooth': 0.35,
+    'shock': 0.25,
     'shock_oscillation': 0.20,
     'constant': 0.10,
+    'boundary': 0.10,
 }
 
 
@@ -665,23 +666,112 @@ def weno_z5_reconstruction(values):
     return target
 
 
+def weno7_reconstruction(values):
+    """Return classical WENO7 interface values from seven-point stencils.
+
+    Used as a higher-fidelity reconstruction target for the
+    ``shock_oscillation`` category: instead of imitating WENO5's own
+    five-point answer, the network is trained toward what a seventh-order
+    scheme -- looking at a wider local neighborhood -- would reconstruct at
+    the same interface. This gives the network room to systematically
+    differ from (and improve on) WENO5 in the region where it needs to,
+    rather than capping its target at WENO5's own quality everywhere.
+
+    Same min/max normalize-then-rescale convention as
+    ``weno_z5_reconstruction``, so targets stay on a comparable scale.
+    """
+
+    values = np.asarray(
+        values,
+        dtype=float,
+    )
+
+    if values.shape[-1] != 7:
+        raise ValueError(
+            'WENO7 requires seven-point stencils.'
+        )
+
+    minimum = np.min(values, axis=-1, keepdims=True)
+    maximum = np.max(values, axis=-1, keepdims=True)
+    value_range = maximum - minimum
+    nonconstant = value_range[..., 0] > 1.0e-14
+
+    normalized = np.zeros_like(values, dtype=float)
+    np.divide(
+        values - minimum,
+        value_range,
+        out=normalized,
+        where=value_range > 1.0e-14,
+    )
+
+    v0, v1, v2, v3, v4, v5, v6 = (normalized[..., i] for i in range(7))
+
+    f1 = -1 / 4 * v0 + 13 / 12 * v1 - 23 / 12 * v2 + 25 / 12 * v3
+    f2 = 1 / 12 * v1 - 5 / 12 * v2 + 13 / 12 * v3 + 1 / 4 * v4
+    f3 = -1 / 12 * v2 + 7 / 12 * v3 + 7 / 12 * v4 - 1 / 12 * v5
+    f4 = 1 / 4 * v3 + 13 / 12 * v4 - 5 / 12 * v5 + 1 / 12 * v6
+
+    B1 = ((2107 / 240) * v3 ** 2 - (1567 / 40) * v3 * v2 + (3521 / 120) * v3 * v1 - (309 / 40) * v3 * v0
+          + (11003 / 240) * v2 ** 2 - (8623 / 120) * v2 * v1 + (2321 / 120) * v2 * v0
+          + (7043 / 240) * v1 ** 2 - (647 / 40) * v1 * v0 + (547 / 240) * v0 ** 2)
+
+    B2 = ((3443 / 240) * v3 ** 2 - (1261 / 120) * v3 * v4 - (2983 / 120) * v3 * v2 + (267 / 40) * v3 * v1
+          + (547 / 240) * v4 ** 2 + (961 / 120) * v4 * v2 - (247 / 120) * v4 * v1
+          + (2843 / 240) * v2 ** 2 - (821 / 120) * v2 * v1 + (89 / 80) * v1 ** 2)
+
+    B3 = ((3443 / 240) * v3 ** 2 - (2983 / 120) * v3 * v4 + (267 / 40) * v3 * v5 - (1261 / 120) * v3 * v2
+          + (2843 / 240) * v4 ** 2 - (821 / 120) * v4 * v5 + (961 / 120) * v4 * v2
+          + (89 / 80) * v5 ** 2 - (247 / 120) * v5 * v2 + (547 / 240) * v2 ** 2)
+
+    B4 = ((2107 / 240) * v3 ** 2 - (1567 / 40) * v3 * v4 + (3521 / 120) * v3 * v5 - (309 / 40) * v3 * v6
+          + (11003 / 240) * v4 ** 2 - (8623 / 120) * v4 * v5 + (2321 / 120) * v4 * v6
+          + (7043 / 240) * v5 ** 2 - (647 / 40) * v5 * v6 + (547 / 240) * v6 ** 2)
+
+    ep = 1.0e-6
+    g1, g2, g3, g4 = 1 / 35, 12 / 35, 18 / 35, 4 / 35
+
+    wt1 = g1 / (ep + B1) ** 2
+    wt2 = g2 / (ep + B2) ** 2
+    wt3 = g3 / (ep + B3) ** 2
+    wt4 = g4 / (ep + B4) ** 2
+    wts = wt1 + wt2 + wt3 + wt4
+
+    normalized_target = (
+        f1 * wt1 / wts
+        + f2 * wt2 / wts
+        + f3 * wt3 / wts
+        + f4 * wt4 / wts
+    )
+
+    target = normalized_target * value_range[..., 0] + minimum[..., 0]
+
+    target = np.where(
+        nonconstant,
+        target,
+        values[..., 3],
+    )
+
+    return target
+
+
 # ---------------------------------------------------------------------------
 # Characteristic split-stencil extraction
 # ---------------------------------------------------------------------------
 
-def gather_five_point_stencils(
+def gather_stencils(
     values,
     offset,
+    radius,
     reverse=False,
 ):
-    """Match FiniteVolumeMethodEuler.partU for a five-point stencil."""
+    """Match FiniteVolumeMethodEuler.partU for an arbitrary stencil width."""
 
     cell_count = len(values)
 
     indices = np.clip(
         np.arange(cell_count)[:, None]
         + offset
-        + np.arange(-2, 3)[None, :],
+        + np.arange(-radius, radius + 1)[None, :],
         0,
         cell_count - 1,
     )
@@ -700,12 +790,28 @@ def gather_five_point_stencils(
     return gathered
 
 
-def split_characteristic_stencils(state):
-    """Return matching five-point inputs and WENO-Z5 targets.
+def gather_five_point_stencils(
+    values,
+    offset,
+    reverse=False,
+):
+    """Match FiniteVolumeMethodEuler.partU for a five-point stencil."""
+
+    return gather_stencils(values, offset, radius=2, reverse=reverse)
+
+
+def split_characteristic_stencils(state, use_reference_target=False):
+    """Return matching five-point inputs and reconstruction targets.
 
     Positive and negative Lax--Friedrichs split characteristic fluxes are
     treated as independent scalar samples, exactly as they are reconstructed
-    by the Euler solver.
+    by the Euler solver. The five-point input stencil is always used (it
+    must match what NNEuler5 sees at inference time); by default the
+    target is WENO5-Z5's own reconstruction from that same five-point
+    stencil. When ``use_reference_target`` is set, the target instead comes
+    from ``weno7_reconstruction`` on a wider seven-point stencil around the
+    same interface -- a higher-fidelity answer the network can learn to
+    approach without being capped at WENO5's own quality.
     """
 
     state = np.asarray(
@@ -803,8 +909,11 @@ def split_characteristic_stencils(state):
         - alpha * negative_characteristic_state
     )
 
-    # Exclude interfaces where the five-point positive or negative stencil
-    # was clipped by the transmissive boundary.
+    # Interfaces where the five-point positive or negative stencil was
+    # clipped by the transmissive boundary (repeated edge cells rather than
+    # true neighbors) are tagged rather than discarded, so the resulting
+    # ghost-cell-clipped stencils can be trained on explicitly instead of
+    # being entirely absent from the dataset.
     #
     # Positive stencil: i-2 ... i+2
     # Negative stencil before reversal: i-1 ... i+3
@@ -819,22 +928,69 @@ def split_characteristic_stencils(state):
         & (interface_indices <= cell_count - 4)
     )
 
-    positive_split_flux = positive_split_flux[
-        interior
-    ]
+    field_count = positive_split_flux.shape[1]
 
-    negative_split_flux = negative_split_flux[
-        interior
-    ]
+    is_boundary_per_branch = np.broadcast_to(
+        (~interior)[:, None],
+        (cell_count, field_count),
+    ).reshape(-1)
 
     inputs = np.concatenate((
         positive_split_flux,
         negative_split_flux,
     ), axis=0)
 
-    targets = weno_z5_reconstruction(
-        inputs
-    )
+    if use_reference_target:
+        positive_state_stencil_wide = gather_stencils(
+            state, offset=0, radius=3, reverse=False,
+        )
+        positive_flux_stencil_wide = gather_stencils(
+            physical_flux, offset=0, radius=3, reverse=False,
+        )
+        negative_state_stencil_wide = gather_stencils(
+            state, offset=1, radius=3, reverse=True,
+        )
+        negative_flux_stencil_wide = gather_stencils(
+            physical_flux, offset=1, radius=3, reverse=True,
+        )
+
+        positive_characteristic_state_wide = project_to_characteristic(
+            positive_state_stencil_wide, left_basis,
+        )
+        positive_characteristic_flux_wide = project_to_characteristic(
+            positive_flux_stencil_wide, left_basis,
+        )
+        negative_characteristic_state_wide = project_to_characteristic(
+            negative_state_stencil_wide, left_basis,
+        )
+        negative_characteristic_flux_wide = project_to_characteristic(
+            negative_flux_stencil_wide, left_basis,
+        )
+
+        positive_split_flux_wide = 0.5 * (
+            positive_characteristic_flux_wide
+            + alpha * positive_characteristic_state_wide
+        )
+        negative_split_flux_wide = 0.5 * (
+            negative_characteristic_flux_wide
+            - alpha * negative_characteristic_state_wide
+        )
+
+        wide_inputs = np.concatenate((
+            positive_split_flux_wide,
+            negative_split_flux_wide,
+        ), axis=0)
+
+        targets = weno7_reconstruction(wide_inputs)
+    else:
+        targets = weno_z5_reconstruction(
+            inputs
+        )
+
+    is_boundary = np.concatenate((
+        is_boundary_per_branch,
+        is_boundary_per_branch,
+    ))
 
     # Each characteristic component becomes an independent scalar sample.
     inputs = inputs.reshape(
@@ -854,6 +1010,7 @@ def split_characteristic_stencils(state):
     return (
         inputs[finite],
         targets[finite],
+        is_boundary[finite],
     )
 
 
@@ -883,36 +1040,24 @@ def concatenate_category(category_items):
 
 
 def requested_category_counts(sample_count):
-    """Return integer category quotas that sum exactly to sample_count."""
+    """Return integer category quotas that sum exactly to sample_count.
 
-    smooth_count = int(
-        sample_count
-        * CATEGORY_PROPORTIONS['smooth']
-    )
+    All categories but the last take floor(sample_count * proportion); the
+    last category absorbs the rounding remainder so the quotas sum exactly.
+    """
 
-    shock_count = int(
-        sample_count
-        * CATEGORY_PROPORTIONS['shock']
-    )
+    categories = list(CATEGORY_PROPORTIONS)
+    counts = {}
+    allocated = 0
 
-    oscillation_count = int(
-        sample_count
-        * CATEGORY_PROPORTIONS['shock_oscillation']
-    )
+    for category in categories[:-1]:
+        count = int(sample_count * CATEGORY_PROPORTIONS[category])
+        counts[category] = count
+        allocated += count
 
-    constant_count = (
-        sample_count
-        - smooth_count
-        - shock_count
-        - oscillation_count
-    )
+    counts[categories[-1]] = sample_count - allocated
 
-    return {
-        'smooth': smooth_count,
-        'shock': shock_count,
-        'shock_oscillation': oscillation_count,
-        'constant': constant_count,
-    }
+    return counts
 
 
 def sample_balanced_dataset(
@@ -1124,8 +1269,9 @@ def main():
         args,
         rng,
     ):
-        inputs, targets = split_characteristic_stencils(
-            state
+        inputs, targets, is_boundary = split_characteristic_stencils(
+            state,
+            use_reference_target=(category == 'shock_oscillation'),
         )
 
         groups = np.full(
@@ -1135,9 +1281,15 @@ def main():
         )
 
         collected[category].append((
-            inputs,
-            targets,
-            groups,
+            inputs[~is_boundary],
+            targets[~is_boundary],
+            groups[~is_boundary],
+        ))
+
+        collected['boundary'].append((
+            inputs[is_boundary],
+            targets[is_boundary],
+            groups[is_boundary],
         ))
 
         trajectory_ids.add(
@@ -1209,7 +1361,7 @@ def main():
     ):
         ensure_parent_directory(path)
 
-    # Preserve compatibility with Script_TrainOnEulerPrblms.py:
+    # Preserve compatibility with Train_WENO5NN_Euler.py:
     # five rows and one column per sample.
     np.savetxt(
         args.output_inputs,

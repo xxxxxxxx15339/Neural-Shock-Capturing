@@ -39,6 +39,24 @@ CASES = (
 
 
 class TENOTests(unittest.TestCase):
+    def test_normalization_is_affine_invariant(self):
+        values = np.array([
+            [-2.0, -1.0, 0.0, 2.0, 3.0],
+            [4.0, 4.0, 4.0, 4.0, 4.0],
+        ])
+        expected = np.array([
+            [0.0, 0.2, 0.4, 0.8, 1.0],
+            [0.0, 0.0, 0.0, 0.0, 0.0],
+        ])
+        np.testing.assert_allclose(
+            normalize_teno_stencils(values),
+            expected,
+        )
+        np.testing.assert_allclose(
+            normalize_teno_stencils(7.0 + 3.0 * values),
+            expected,
+        )
+
     def test_deterministic_constant_reconstruction(self):
         for width, _, _, deterministic, _, _, _, _ in CASES:
             with self.subTest(order=width):

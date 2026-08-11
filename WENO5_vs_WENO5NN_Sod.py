@@ -2,6 +2,7 @@
 """Compare classical WENO5 Euler with its neural-network reconstruction."""
 
 import argparse
+import os
 
 from keras.models import load_model
 import matplotlib.pyplot as plt
@@ -25,6 +26,13 @@ def parse_args():
     parser.add_argument('--final-time', type=float, default=0.2)
     parser.add_argument('--cfl', type=float, default=0.35)
     parser.add_argument('--no-show', action='store_true')
+    parser.add_argument(
+        '--save-dir', default='plots/sod',
+        help=(
+            'Directory to save each figure as a PNG. Pass an empty string '
+            "('') to disable saving."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -103,7 +111,7 @@ def main():
     figure.suptitle('Sod problem at t={:.4g}'.format(args.final_time))
     figure.tight_layout()
 
-    # Equivalent diagnostics to Script_Basic.py, applied to Euler density.
+    # Equivalent diagnostics to WENO5_vs_WENO5NN_StepAdvection.py, applied to Euler density.
     dx = x[1] - x[0]
     plt.figure()
     plt.plot(times_weno, discontinuity_width(density_history_weno, dx),
@@ -169,10 +177,25 @@ def main():
     print('WENO5 Euler final state shape = {}'.format(solution_weno.shape))
     print('WENO5 Euler-NN final state shape = {}'.format(solution_nn.shape))
 
+    if args.save_dir:
+        os.makedirs(args.save_dir, exist_ok=True)
+        figure_names = (
+            'density_velocity_pressure',
+            'discontinuity_width',
+            'density_contour',
+            'l2_error',
+            'total_variation',
+            'density_final',
+        )
+        for num, name in zip(plt.get_fignums(), figure_names):
+            path = os.path.join(args.save_dir, name + '.png')
+            plt.figure(num).savefig(path, dpi=130)
+            print('saved {}'.format(path))
+
     if not args.no_show:
         plt.show()
     else:
-        plt.close(figure)
+        plt.close('all')
 
 
 if __name__ == '__main__':

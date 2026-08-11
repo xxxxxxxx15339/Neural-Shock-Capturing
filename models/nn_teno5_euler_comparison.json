@@ -1,0 +1,231 @@
+{
+  "calibrated_thresholds": [
+    0.6599999999999997,
+    0.4999999999999998,
+    0.6899999999999997
+  ],
+  "cells": 120,
+  "cfl": 0.35,
+  "fidelity_factor": 1.02,
+  "metadata_path": "/home/bazouil/Documents/Stage/Internsh/Shocks-and-WENO/models/nn_teno5_metadata.json",
+  "model_path": "/home/bazouil/Documents/Stage/Internsh/Shocks-and-WENO/models/nn_teno5.h5",
+  "problems": {
+    "constant_stationary": {
+      "cells": 120,
+      "final_time": 0.2,
+      "max_teacher_difference": 0.0,
+      "nn_teno5": {
+        "conservation_error": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "finite": true,
+        "l1_error": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "linf_error": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "minimum_density": 1.0,
+        "minimum_pressure": 1.0,
+        "positive_density": true,
+        "positive_pressure": true,
+        "runtime_seconds": 4.772912652995728
+      },
+      "teno5": {
+        "conservation_error": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "finite": true,
+        "l1_error": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "linf_error": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "minimum_density": 1.0,
+        "minimum_pressure": 1.0,
+        "positive_density": true,
+        "positive_pressure": true,
+        "runtime_seconds": 0.441740659000061
+      }
+    },
+    "shu_osher": {
+      "cells": 120,
+      "final_time": 1.8,
+      "max_teacher_difference": 0.3520671114724614,
+      "nn_teno5": {
+        "conservation_error": [
+          1.0418261808808893e-09,
+          7.215419373096665e-10,
+          8.06272737463587e-09
+        ],
+        "contact_location": 6.833333333333333,
+        "contact_location_error": 0.08333333333333393,
+        "density_l1": 0.07068712547893842,
+        "density_overshoot": 0.0,
+        "energy_l1": 0.3575718243947615,
+        "finite": true,
+        "minimum_density": 0.8042717634163027,
+        "minimum_pressure": 0.9978173133488726,
+        "momentum_l1": 0.1737669830380958,
+        "positive_density": true,
+        "positive_pressure": true,
+        "pressure_overshoot": 0.021652414864501424,
+        "runtime_seconds": 14.606837286002701,
+        "shock_location": 7.416666666666667,
+        "shock_location_error": 0.0
+      },
+      "teacher_fidelity": {
+        "factor": 1.02,
+        "limit": 0.0721534034483576,
+        "metric": "density_l1",
+        "passed": true
+      },
+      "teno5": {
+        "conservation_error": [
+          4.305107381696871e-10,
+          2.985132141475333e-10,
+          3.3319338399451226e-09
+        ],
+        "contact_location": 6.833333333333333,
+        "contact_location_error": 0.08333333333333393,
+        "density_l1": 0.07073863083172315,
+        "density_overshoot": 0.0,
+        "energy_l1": 0.36161597813604046,
+        "finite": true,
+        "minimum_density": 0.8042717634213478,
+        "minimum_pressure": 1.0,
+        "momentum_l1": 0.17438472704698382,
+        "positive_density": true,
+        "positive_pressure": true,
+        "pressure_overshoot": 0.014520247288571042,
+        "runtime_seconds": 1.1764743859966984,
+        "shock_location": 7.416666666666667,
+        "shock_location_error": 0.0
+      }
+    },
+    "sod": {
+      "cells": 120,
+      "final_time": 0.2,
+      "max_teacher_difference": 0.007145937513733158,
+      "nn_teno5": {
+        "conservation_error": [
+          3.1086244689504383e-15,
+          8.049116928532385e-16,
+          6.439293542825908e-15
+        ],
+        "contact_location": 0.675,
+        "contact_location_error": 0.008333333333333304,
+        "density_l1": 0.005532622244770515,
+        "density_overshoot": 0.0,
+        "energy_l1": 0.013410554113802447,
+        "finite": true,
+        "minimum_density": 0.125,
+        "minimum_pressure": 0.09999999999999998,
+        "momentum_l1": 0.005957161322614773,
+        "positive_density": true,
+        "positive_pressure": true,
+        "pressure_overshoot": 2.7755575615628914e-17,
+        "runtime_seconds": 7.3485650310030906,
+        "shock_location": 0.85,
+        "shock_location_error": 0.008333333333333304
+      },
+      "teacher_fidelity": {
+        "factor": 1.02,
+        "limit": 0.005708167690626036,
+        "metric": "density_l1",
+        "passed": true
+      },
+      "teno5": {
+        "conservation_error": [
+          2.4424906541753444e-15,
+          7.494005416219807e-16,
+          6.217248937900877e-15
+        ],
+        "contact_location": 0.675,
+        "contact_location_error": 0.008333333333333304,
+        "density_l1": 0.005596242833947094,
+        "density_overshoot": 0.0,
+        "energy_l1": 0.01356911212798398,
+        "finite": true,
+        "minimum_density": 0.125,
+        "minimum_pressure": 0.09999999999999998,
+        "momentum_l1": 0.006013741187917798,
+        "positive_density": true,
+        "positive_pressure": true,
+        "pressure_overshoot": 2.7755575615628914e-17,
+        "runtime_seconds": 0.5981526569958078,
+        "shock_location": 0.85,
+        "shock_location_error": 0.008333333333333304
+      }
+    },
+    "uniform_moving": {
+      "cells": 120,
+      "final_time": 0.2,
+      "max_teacher_difference": 0.0,
+      "nn_teno5": {
+        "conservation_error": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "finite": true,
+        "l1_error": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "linf_error": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "minimum_density": 1.0,
+        "minimum_pressure": 1.0,
+        "positive_density": true,
+        "positive_pressure": true,
+        "runtime_seconds": 5.719809205998899
+      },
+      "teno5": {
+        "conservation_error": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "finite": true,
+        "l1_error": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "linf_error": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "minimum_density": 1.0,
+        "minimum_pressure": 1.0,
+        "positive_density": true,
+        "positive_pressure": true,
+        "runtime_seconds": 0.4722540660004597
+      }
+    }
+  },
+  "reference": {
+    "shu_osher": "WENO7 at 320 cells",
+    "sod": "exact Riemann solution"
+  },
+  "reference_cells": 320
+}

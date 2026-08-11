@@ -2,6 +2,7 @@
 """Run the basic WENO-NN advection experiment."""
 
 import argparse
+import os
 
 from keras.models import load_model
 import numpy as np
@@ -25,18 +26,28 @@ from src.viz.VisualizationFunctions import (
 def parse_args():
     parser = argparse.ArgumentParser(description='Run the WENO5-NN comparison.')
     parser.add_argument('--model-path', default=MODEL_PATH)
+    parser.add_argument('--no-show', action='store_true')
+    parser.add_argument(
+        '--save-dir', default='plots/step_advection',
+        help=(
+            'Directory to save each figure as a PNG. Pass an empty string '
+            "('') to disable saving."
+        ),
+    )
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
-    K = 4
-    CFL = 1
-    P = 2
-    nx = 25*K
-    nt = int(25*P*K/CFL)+1
+    # Match Stevens & Colonius Sec. 4.1 / Fig. 3: L=2, c=1, 100 cells,
+    # CFL=2/3, run for 50 periods (T=100).
+    CFL = 2/3
+    P = 50
+    nx = 100
     L = 2
     T = 2*P
+    dx = L/nx
+    nt = int(np.ceil(T/(CFL*dx)))+1
     x = np.linspace(0,L,nx,endpoint=False)
     t = np.linspace(0,T,nt)
     dx = x[1]-x[0]
@@ -71,9 +82,41 @@ def main():
     totalVariation(t,uv_WENO5,'WENO5')
     totalVariation(t,uv,'Neural Network')
 
-    plt.plot(x,uv_WENO5[:,-1])
+    plt.figure()
+    # T is an exact multiple of the advection period (T = 2*P, wave speed 1,
+    # domain length L=2), so the exact solution at t=T equals the initial
+    # condition exactly.
+    plt.plot(x,IC(x),'k:',linewidth=2,label='Exact')
+    plt.plot(x,uv_WENO5[:,-1],label='WENO5')
+    plt.plot(x,uv[:,-1],'--',label='Neural Network')
+    plt.xlabel('x')
+    plt.ylabel('u')
+    plt.title('Final state at t={:g}'.format(T))
+    plt.legend()
 
-    plt.show()
+    if args.save_dir:
+        os.makedirs(args.save_dir, exist_ok=True)
+        figure_names = (
+            'discontinuity_width_vs_time',
+            'disc_track_weno5_x-1',
+            'disc_track_nn_x-1',
+            'disc_track_weno5_x-2',
+            'disc_track_nn_x-2',
+            'l2_error_nn',
+            'l2_error_weno5',
+            'total_variation_weno5',
+            'total_variation_nn',
+            'final_snapshot',
+        )
+        for num, name in zip(plt.get_fignums(), figure_names):
+            path = os.path.join(args.save_dir, name + '.png')
+            plt.figure(num).savefig(path, dpi=130)
+            print('saved {}'.format(path))
+
+    if not args.no_show:
+        plt.show()
+    else:
+        plt.close('all')
 
     print("Simulation finished! Here is the final array:")
     print(uv)

@@ -33,7 +33,14 @@ from .teno5 import (
     TENO5euler,
     NNMethod as NN_TENO5,
     NNEuler as NN_TENO5_Euler,
+    teno5_candidate_values,
+    teno5_smoothness_indicators,
+    teno5_selection_values,
+    teno5_keep_mask,
+    teno5_troubled_labels,
+    teno5_reconstruct,
 )
+
 from .teno7 import (
     TENO7,
     TENO7euler,
@@ -50,4 +57,10 @@ __all__ = [
     'NN_TENO3', 'NN_TENO3_Euler',
     'NN_TENO5', 'NN_TENO5_Euler',
     'NN_TENO7', 'NN_TENO7_Euler',
+    'teno5_candidate_values',
+    'teno5_smoothness_indicators',
+    'teno5_selection_values',
+    'teno5_keep_mask',
+    'teno5_troubled_labels',
+    'teno5_reconstruct',
 ]

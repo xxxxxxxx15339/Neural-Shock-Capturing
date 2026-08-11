@@ -10,7 +10,7 @@ import numpy as np
 import tensorflow as tf
 from keras.models import load_model
 
-from Script_TrainNetworksFixLeak import make_problem
+from Train_WENO5NN_Scalar import make_problem
 from src.config import MAX_CFL, MODEL_PATH, USE_SCALING, WENO_ORDER
 from src.core.Equations import adv
 from src.core.FluxSplittingMethods import LaxFriedrichs

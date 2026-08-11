@@ -104,7 +104,12 @@ def WENO51stOrder(regC):
 
 
 def _weno7_coefficients(u):
-    eps = 1e-6
+    # WENO7's smoothness-indicator coefficients are 8-40x larger than
+    # WENO5's, so eps=1e-6 (fine for WENO5) is too small in float32: for
+    # near-degenerate stencils, K.square(eps+beta) underflows and the
+    # alpha/total ratio becomes 0/0 = NaN. Verified 1e-4 keeps this finite
+    # for stencils that reproducibly NaN'd at 1e-6.
+    eps = 1e-4
     b1 = (2107.0/240.0)*u[:,3]**2 - (1567.0/40.0)*u[:,3]*u[:,2] + (3521.0/120.0)*u[:,3]*u[:,1] - (309.0/40.0)*u[:,3]*u[:,0] \
          + (11003.0/240.0)*u[:,2]**2 - (8623.0/120.0)*u[:,2]*u[:,1] + (2321.0/120.0)*u[:,2]*u[:,0] \
          + (7043.0/240.0)*u[:,1]**2 - (647.0/40.0)*u[:,1]*u[:,0] + (547.0/240.0)*u[:,0]**2
@@ -132,8 +137,8 @@ def _weno7_coefficients(u):
     return K.dot(weights, candidates)
 
 
-def WENO71stOrder(regC):
-    return _correction_model(7, 4, _weno7_coefficients, regC)
+def WENO71stOrder(regC, hidden_size=4):
+    return _correction_model(7, hidden_size, _weno7_coefficients, regC)
 
 def Const51stOrder(regC): # 5th Order upwind Coeff
     pntsuse = 5

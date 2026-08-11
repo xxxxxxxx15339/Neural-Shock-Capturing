@@ -1,0 +1,406 @@
+{
+  "calibrated_thresholds": [
+    0.6599999999999997,
+    0.4999999999999998,
+    0.6899999999999997
+  ],
+  "cells": 200,
+  "cfl": 0.4,
+  "fidelity_factor": 1.02,
+  "metadata_path": "/home/bazouil/Documents/Stage/Internsh/Shocks-and-WENO/models/nn_teno5_metadata.json",
+  "model_path": "/home/bazouil/Documents/Stage/Internsh/Shocks-and-WENO/models/nn_teno5.h5",
+  "problems": {
+    "burgers_smooth_to_shock": {
+      "cells": 200,
+      "final_time": 0.6,
+      "nn_teno5": {
+        "conservation_error": 7.494005416219807e-15,
+        "l1_error": 0.0001328274646771066,
+        "l2_error": 0.0008411549357484284,
+        "linf_error": 0.008110692941914022,
+        "overshoot": 0.0,
+        "runtime_seconds": 9.041929362996598,
+        "total_variation": 0.9999999077275854,
+        "undershoot": 0.0
+      },
+      "teacher_fidelity": {
+        "factor": 1.02,
+        "limit": 0.00013548401397064873,
+        "metric": "l1_error",
+        "passed": true
+      },
+      "teno5": {
+        "conservation_error": 7.494005416219807e-15,
+        "l1_error": 0.0001328274646771066,
+        "l2_error": 0.0008411549357484284,
+        "linf_error": 0.008110692941914022,
+        "overshoot": 0.0,
+        "runtime_seconds": 0.5196195269963937,
+        "total_variation": 0.9999999077275854,
+        "undershoot": 0.0
+      },
+      "teno5_vs_nn_teno5": {
+        "differing_cells": 0,
+        "exactly_equal": true,
+        "l1_difference": 0.0,
+        "l2_difference": 0.0,
+        "linf_difference": 0.0
+      },
+      "threshold_wiring_test": {
+        "all_discard": {
+          "expected_behavior": "first_order_fallback",
+          "metrics": {
+            "conservation_error": 7.494005416219807e-15,
+            "l1_error": 0.012183708479097347,
+            "l2_error": 0.02261983588984078,
+            "linf_error": 0.08358259557262204,
+            "overshoot": 0.0,
+            "runtime_seconds": 9.749390337005025,
+            "total_variation": 0.941190589616006,
+            "undershoot": 0.0
+          },
+          "thresholds": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "all_discard_vs_all_keep": {
+          "differing_cells": 200,
+          "exactly_equal": false,
+          "l1_difference": 0.012120271698431882,
+          "l2_difference": 0.022483921369268134,
+          "linf_difference": 0.08657634481231302
+        },
+        "all_keep": {
+          "expected_behavior": "linear_fifth_order",
+          "metrics": {
+            "conservation_error": 7.494005416219807e-15,
+            "l1_error": 0.0001328274646771066,
+            "l2_error": 0.0008411549357484284,
+            "linf_error": 0.008110692941914022,
+            "overshoot": 0.0,
+            "runtime_seconds": 9.411279782994825,
+            "total_variation": 0.9999999077275854,
+            "undershoot": 0.0
+          },
+          "thresholds": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "calibrated_vs_all_discard": {
+          "differing_cells": 200,
+          "exactly_equal": false,
+          "l1_difference": 0.012120271698431882,
+          "l2_difference": 0.022483921369268134,
+          "linf_difference": 0.08657634481231302
+        },
+        "calibrated_vs_all_keep": {
+          "differing_cells": 0,
+          "exactly_equal": true,
+          "l1_difference": 0.0,
+          "l2_difference": 0.0,
+          "linf_difference": 0.0
+        },
+        "passed": true
+      },
+      "time_steps": 300
+    },
+    "multifrequency_advection": {
+      "cells": 200,
+      "final_time": 1.0,
+      "nn_teno5": {
+        "conservation_error": 7.105427357601002e-17,
+        "l1_error": 2.433665550683495e-05,
+        "l2_error": 2.7601536488624158e-05,
+        "linf_error": 4.834476658321929e-05,
+        "overshoot": 0.0,
+        "runtime_seconds": 15.11473623799975,
+        "total_variation": 4.768981988311705,
+        "undershoot": 0.0
+      },
+      "teacher_fidelity": {
+        "factor": 1.02,
+        "limit": 2.482338861697165e-05,
+        "metric": "l1_error",
+        "passed": true
+      },
+      "teno5": {
+        "conservation_error": 7.105427357601002e-17,
+        "l1_error": 2.433665550683495e-05,
+        "l2_error": 2.7601536488624158e-05,
+        "linf_error": 4.834476658321929e-05,
+        "overshoot": 0.0,
+        "runtime_seconds": 0.8588852519969805,
+        "total_variation": 4.768981988311705,
+        "undershoot": 0.0
+      },
+      "teno5_vs_nn_teno5": {
+        "differing_cells": 0,
+        "exactly_equal": true,
+        "l1_difference": 0.0,
+        "l2_difference": 0.0,
+        "linf_difference": 0.0
+      },
+      "threshold_wiring_test": {
+        "all_discard": {
+          "expected_behavior": "first_order_fallback",
+          "metrics": {
+            "conservation_error": 0.0,
+            "l1_error": 0.12075308707271334,
+            "l2_error": 0.139412457641981,
+            "linf_error": 0.28715580050033407,
+            "overshoot": 0.0,
+            "runtime_seconds": 14.820664316997863,
+            "total_variation": 3.2341575724434293,
+            "undershoot": 0.0
+          },
+          "thresholds": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "all_discard_vs_all_keep": {
+          "differing_cells": 200,
+          "exactly_equal": false,
+          "l1_difference": 0.12073687179407352,
+          "l2_difference": 0.13939415611192008,
+          "linf_difference": 0.28710788307813884
+        },
+        "all_keep": {
+          "expected_behavior": "linear_fifth_order",
+          "metrics": {
+            "conservation_error": 7.105427357601002e-17,
+            "l1_error": 2.433665550683495e-05,
+            "l2_error": 2.7601536488624158e-05,
+            "linf_error": 4.834476658321929e-05,
+            "overshoot": 0.0,
+            "runtime_seconds": 14.99044832099753,
+            "total_variation": 4.768981988311705,
+            "undershoot": 0.0
+          },
+          "thresholds": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "calibrated_vs_all_discard": {
+          "differing_cells": 200,
+          "exactly_equal": false,
+          "l1_difference": 0.12073687179407352,
+          "l2_difference": 0.13939415611192008,
+          "linf_difference": 0.28710788307813884
+        },
+        "calibrated_vs_all_keep": {
+          "differing_cells": 0,
+          "exactly_equal": true,
+          "l1_difference": 0.0,
+          "l2_difference": 0.0,
+          "linf_difference": 0.0
+        },
+        "passed": true
+      },
+      "time_steps": 500
+    },
+    "smooth_sine_advection": {
+      "cells": 200,
+      "final_time": 1.0,
+      "nn_teno5": {
+        "conservation_error": 0.0,
+        "l1_error": 3.327801949417548e-07,
+        "l2_error": 3.6961687740195075e-07,
+        "linf_error": 5.22691537718778e-07,
+        "overshoot": 0.0,
+        "runtime_seconds": 15.335461663999013,
+        "total_variation": 3.999997909233851,
+        "undershoot": 0.0
+      },
+      "teacher_fidelity": {
+        "factor": 1.02,
+        "limit": 3.394357988405899e-07,
+        "metric": "l1_error",
+        "passed": true
+      },
+      "teno5": {
+        "conservation_error": 0.0,
+        "l1_error": 3.327801949417548e-07,
+        "l2_error": 3.6961687740195075e-07,
+        "linf_error": 5.22691537718778e-07,
+        "overshoot": 0.0,
+        "runtime_seconds": 0.8700755239988212,
+        "total_variation": 3.999997909233851,
+        "undershoot": 0.0
+      },
+      "teno5_vs_nn_teno5": {
+        "differing_cells": 0,
+        "exactly_equal": true,
+        "l1_difference": 0.0,
+        "l2_difference": 0.0,
+        "linf_difference": 0.0
+      },
+      "threshold_wiring_test": {
+        "all_discard": {
+          "expected_behavior": "first_order_fallback",
+          "metrics": {
+            "conservation_error": 3.552713678800501e-17,
+            "l1_error": 0.05983113262055018,
+            "l2_error": 0.06645404302462599,
+            "linf_error": 0.09397554381492723,
+            "overshoot": 0.0,
+            "runtime_seconds": 15.373217116997694,
+            "total_variation": 3.624097824740291,
+            "undershoot": 0.0
+          },
+          "thresholds": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "all_discard_vs_all_keep": {
+          "differing_cells": 200,
+          "exactly_equal": false,
+          "l1_difference": 0.059830799943945155,
+          "l2_difference": 0.06645367348073303,
+          "linf_difference": 0.09397502112339051
+        },
+        "all_keep": {
+          "expected_behavior": "linear_fifth_order",
+          "metrics": {
+            "conservation_error": 0.0,
+            "l1_error": 3.327801949417548e-07,
+            "l2_error": 3.6961687740195075e-07,
+            "linf_error": 5.22691537718778e-07,
+            "overshoot": 0.0,
+            "runtime_seconds": 15.490942643999006,
+            "total_variation": 3.999997909233851,
+            "undershoot": 0.0
+          },
+          "thresholds": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "calibrated_vs_all_discard": {
+          "differing_cells": 200,
+          "exactly_equal": false,
+          "l1_difference": 0.059830799943945155,
+          "l2_difference": 0.06645367348073303,
+          "linf_difference": 0.09397502112339051
+        },
+        "calibrated_vs_all_keep": {
+          "differing_cells": 0,
+          "exactly_equal": true,
+          "l1_difference": 0.0,
+          "l2_difference": 0.0,
+          "linf_difference": 0.0
+        },
+        "passed": true
+      },
+      "time_steps": 500
+    },
+    "step_advection": {
+      "cells": 200,
+      "final_time": 1.0,
+      "nn_teno5": {
+        "conservation_error": 1.1657341758564144e-14,
+        "l1_error": 0.013401821720794316,
+        "l2_error": 0.06220011188698883,
+        "linf_error": 0.39074163597030415,
+        "overshoot": 0.0,
+        "runtime_seconds": 15.161746742996911,
+        "total_variation": 1.9999999999999687,
+        "undershoot": 3.55521172797955e-27
+      },
+      "teacher_fidelity": {
+        "factor": 1.02,
+        "limit": 0.013583590927136974,
+        "metric": "l1_error",
+        "passed": true
+      },
+      "teno5": {
+        "conservation_error": 1.1934897514720433e-14,
+        "l1_error": 0.013317246006997033,
+        "l2_error": 0.062143494085918335,
+        "linf_error": 0.39241215396156115,
+        "overshoot": 0.0,
+        "runtime_seconds": 0.8613679260015488,
+        "total_variation": 1.9999999999999711,
+        "undershoot": 5.642456283618845e-20
+      },
+      "teno5_vs_nn_teno5": {
+        "differing_cells": 200,
+        "exactly_equal": false,
+        "l1_difference": 0.00014045793002450348,
+        "l2_difference": 0.00048010168641480957,
+        "linf_difference": 0.002564130963095157
+      },
+      "threshold_wiring_test": {
+        "all_discard": {
+          "expected_behavior": "first_order_fallback",
+          "metrics": {
+            "conservation_error": 1.3211653993039363e-14,
+            "l1_error": 0.11279241024078672,
+            "l2_error": 0.18173715920790803,
+            "linf_error": 0.49059810133910586,
+            "overshoot": 0.0,
+            "runtime_seconds": 15.38462404400343,
+            "total_variation": 1.9984024916665075,
+            "undershoot": 0.0
+          },
+          "thresholds": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "all_discard_vs_all_keep": {
+          "differing_cells": 200,
+          "exactly_equal": false,
+          "l1_difference": 0.10369578407857827,
+          "l2_difference": 0.16662656576335422,
+          "linf_difference": 0.46746891842858407
+        },
+        "all_keep": {
+          "expected_behavior": "linear_fifth_order",
+          "metrics": {
+            "conservation_error": 1.3711254354120683e-14,
+            "l1_error": 0.016335823385649432,
+            "l2_error": 0.061755131192591003,
+            "linf_error": 0.39833047418539524,
+            "overshoot": 0.07574369460540198,
+            "runtime_seconds": 15.549714007000148,
+            "total_variation": 2.716949543427529,
+            "undershoot": 0.07543150890020811
+          },
+          "thresholds": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "calibrated_vs_all_discard": {
+          "differing_cells": 200,
+          "exactly_equal": false,
+          "l1_difference": 0.0993905885199924,
+          "l2_difference": 0.1559508698051083,
+          "linf_difference": 0.39096005722838884
+        },
+        "calibrated_vs_all_keep": {
+          "differing_cells": 200,
+          "exactly_equal": false,
+          "l1_difference": 0.006314620835387074,
+          "l2_difference": 0.016854916509935727,
+          "linf_difference": 0.08056719790008493
+        },
+        "passed": true
+      },
+      "time_steps": 500
+    }
+  }
+}

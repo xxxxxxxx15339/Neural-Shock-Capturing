@@ -4,6 +4,8 @@ Structured implementation of WENO and WENO-NN shock-capturing methods, based on 
 
 The repository currently ships the original five-point training data and focuses on the WENO5-NN advection experiment. Classical ENO3, WENO3, WENO5, and WENO7 reconstruction modules are also present, but the included dataset is specifically a five-point dataset.
 
+`WENO5_vs_WENO5NN_StepAdvection.py`, `WENO5_vs_WENO5NN_Burgers.py`, and `WENO5_vs_WENO5NN_ShuOsher.py` reproduce the paper's three WENO5/WENO5-NN test cases (linear advection Sec. 4.1, Burgers' equation Sec. 4.2, and the Shu–Osher problem Sec. 4.3 respectively) at the paper's own configurations. See "Running the comparison" below for the exact parameters and known deviations (mainly reduced reference-grid resolution, for tractable runtime).
+
 ## Environment
 
 The original model and training behavior rely on the legacy standalone Keras stack:
@@ -49,7 +51,7 @@ Run:
 
 ```bash
 conda activate weno-nn
-python Script_TrainNetworksFixLeak.py --seed 42
+python Train_WENO5NN_Scalar.py --seed 42
 ```
 
 The dataset is divided into contiguous training, validation, and untouched test sets. Each attempt creates and trains a freshly initialized model. Early stopping monitors validation loss.
@@ -70,7 +72,7 @@ This is the one canonical trained-model filename used by training, evaluation, a
 Training options can be inspected with:
 
 ```bash
-python Script_TrainNetworksFixLeak.py --help
+python Train_WENO5NN_Scalar.py --help
 ```
 
 ## Running the comparison
@@ -78,18 +80,34 @@ python Script_TrainNetworksFixLeak.py --help
 After training:
 
 ```bash
-python Script_Basic.py
+python WENO5_vs_WENO5NN_StepAdvection.py
 ```
 
-This compares the scaled or unscaled WENO-NN model—according to `USE_SCALING`—against classical WENO5.
+This compares the scaled or unscaled WENO-NN model—according to `USE_SCALING`—against classical WENO5. It matches the paper's Sec. 4.1 / Fig. 3 advection configuration: a unit step on a periodic domain of length `L=2`, 100 cells, `CFL=2/3`, run for 50 periods (`T=100`). At `T=100` this is roughly 7500 timesteps; because `NNMethod` calls Keras `model.predict()` once per Runge-Kutta stage rather than batching across time, the run takes a few minutes.
 
 To run the original supplied model instead:
 
 ```bash
-python Script_Basic.py --model-path SeemsGood3.h5
+python WENO5_vs_WENO5NN_StepAdvection.py --model-path SeemsGood3.h5
 ```
 
 The scalar solver currently supports periodic boundary conditions. CFL validation rejects configurations exceeding the configured limit.
+
+### Burgers' equation
+
+```bash
+python WENO5_vs_WENO5NN_Burgers.py --model-path SeemsGood3.h5
+```
+
+Matches the paper's Sec. 4.2 / Fig. 10 configuration: a Gaussian initial condition `exp(-k(x-L/2)^2)` with `k=20` on a periodic domain of length `L=2`, run to `T=4`, comparing WENO5-JS and WENO-NN L2 error against a fine WENO5-JS reference at several coarser grid spacings. The paper's reference resolution is `dx=3.125e-4` (6400 cells); because the scalar `Simulation` class steps on a fixed uniform time grid rather than adaptive CFL stepping, a 6400-cell run takes on the order of 10+ minutes, so the default reference here is reduced to 1600 cells for tractable runtime. Pass `--reference-cells 6400` for the paper's exact reference. Consistent with the paper (which reports the two schemes performing similarly for true shocks), WENO-NN and WENO5-JS come out close to each other here rather than one clearly beating the other.
+
+### Shu–Osher (Euler)
+
+```bash
+python WENO5_vs_WENO5NN_ShuOsher.py --model-path SeemsGood3.h5
+```
+
+Matches the paper's Sec. 4.3 / Figs. 11-12 configuration: 300 cells, `T=2`, compared against a fine WENO5-JS reference (the paper uses 12,800 cells; the default here is 3200 for tractable runtime — pass a larger `--reference-cells` for closer fidelity). Reproducing this configuration with `SeemsGood3.h5` recovers the paper's claimed result: roughly a 15% reduction in density L1 error and visibly less-diffused oscillations in the post-shock turbulent region, versus classical WENO5-JS. Earlier default settings (120 cells, `T=1.8`, WENO7 reference) evaluated the model in a resolution regime the paper never demonstrates and did not show this improvement — the paper itself notes the benefit is resolution-sensitive, present around 250-300 cells and degrading toward excess anti-diffusion by 800 cells. The `shuOsher()` initial condition (`src/initial_conditions/InitialConditions.py`) was also corrected to match the paper's Eq. 26 exactly (`rho0r = 1 + eps*sin(5*x)`); it previously included an extra `(x-5)` phase shift not present in the paper.
 
 The Euler solver uses transmissive boundaries by default. It constructs the full WENO3, WENO5, or WENO7 stencil at every interface by constant-extrapolating the first and last conservative states into ghost cells. This replaces the former WENO5-specific one-sided closure. Periodic Euler boundaries are also available by passing `boundary='periodic'` to `FiniteVolumeMethodEuler`.
 
@@ -97,33 +115,13 @@ Characteristic Euler reconstruction uses one Roe-averaged eigenbasis at each int
 
 Euler benchmarks use adaptive time steps computed from the current maximum `|velocity| + sound_speed`, never just the initial state. Every accepted step therefore satisfies the requested CFL, with the final step shortened to land exactly on the requested final time. Density and pressure are validated after every SSPRK stage. Flux splitting uses a local interface spectral radius, the maximum of the adjacent cell wave speeds.
 
-## Numerical verification
-
-Run the smooth periodic-advection spatial convergence study with:
-
-```bash
-python Script_Convergence.py
-```
-
-The study initializes true cell averages using Gauss–Legendre quadrature and compares the flux divergence with the exact evolution of those averages. It evaluates the semi-discrete derivative, isolating spatial accuracy from the third-order SSPRK time integrator. The current final-grid rates are approximately `3.97`, `5.05`, and `7.12` for nominally third-, fifth-, and seventh-order WENO. The WENO3 number is an asymptotic measurement for this profile, fixed epsilon, and grid sequence; it is not a claim that WENO3 is generally fourth order.
-
-Run the physically timed Euler regressions and print all measured quantities as JSON with:
-
-```bash
-python Script_EulerRegression.py
-```
-
-Sod is run to `t=0.2` and compared with the exact Riemann solution. Shu–Osher is run on the standard translated `[-5,5]` problem to `t=1.8`. By default it uses a 320-cell WENO7 result only as an internal regression baseline, not as independent validation. Supply independently validated or published data with `--shu-reference reference.csv`, using columns `x,density,momentum,energy`, for scientific validation. Each scheme reports L1 density, momentum, and energy errors; minimum density and pressure; density and pressure overshoots; shock and contact locations and location errors; and component-wise conservation-balance errors.
-
-The WENO-NN correction is passed through a bounded hyperbolic tangent before the consistency projection. This limits learned departures while retaining the exact coefficient-sum condition. Final pointwise polynomial coefficients are intentionally not forced nonnegative: classical high-order reconstruction itself requires some negative coefficients. A future TENO-NN classifier should instead put nonnegative normalized probabilities on stencil-admissibility decisions.
-
 ## Canonical evaluation
 
 Evaluate the canonical trained model without plots:
 
 ```bash
 conda activate weno-nn
-python Script_Evaluate.py --model-path trained_weno5.h5
+python Evaluate_WENO5NN_StepAdvection.py --model-path trained_weno5.h5
 ```
 
 The command prints a JSON result containing the numerical parameters, total variation, shock width, solution range, and acceptance status.
@@ -157,6 +155,10 @@ Both files are headerless, comma-separated, decimal floating-point matrices:
 
 The input values currently range from `0` to `1`; target values range approximately from `-0.5` to `1.5`. Input and target files must contain the same number of samples. With `USE_SCALING=True`, each input column and its target are transformed using that stencil’s local minimum and range before splitting.
 
+## WENO3-NN and WENO7-NN status
+
+`NNMethod3`/`NNEuler3` (order 3) and `NNMethod7`/`NNEuler7` (order 7) reconstruction wrappers exist in `src/schemes/`, and `WENO31stOrder`/`WENO71stOrder` model builders exist in `src/networks/WenoNetworks.py`, but **no trained model or matching stencil dataset ships with this repo for either order**. The original paper only ever trained a single WENO5 network (its 5-point, 75,241-sample generic-waveform dataset is `data/2ndNewAvgs.csv`/`data/2ndNewFlux.csv`); there is no order-3 or order-7 equivalent. A faithful WENO3-NN or WENO7-NN reproduction would require generating an analogous stencil dataset (same generic-waveform methodology, windowed to 3 or 7 cells instead of 5) and training a new model from scratch — this has not been done. `WENO5_vs_WENO5NN_StepAdvection.py`, `WENO5_vs_WENO5NN_Burgers.py`, and `WENO5_vs_WENO5NN_ShuOsher.py` are WENO5/WENO5-NN only.
+
 ## TENO and NN-TENO status
 
 The repository includes deterministic TENO3, TENO5, and TENO7 scalar and
@@ -164,18 +166,42 @@ Euler reconstructions.  It also includes NENO-style classifier architectures
 and scalar/Euler NN-TENO wrappers for all three orders.  If every candidate is
 rejected, the wrappers use the center/upwind value as a first-order fallback.
 
-NN-TENO input stencils are normalized independently as
+Each nonconstant NN-TENO input stencil is normalized independently as
 
 ```text
-X / max(max(abs(X)), 1)
+(X - min(X)) / (max(X) - min(X))
 ```
+
+Constant stencils map to zero. This preserves the deterministic selector's
+translation and positive-scale invariance while keeping classifier inputs in
+the training range.
 
 Each sigmoid output classifies one candidate stencil: `0` means smooth/keep
 and `1` means troubled/discard.  The network predicts candidate selection,
 not the final flux, candidate polynomial, or reconstruction weights.
 
-NN-TENO training datasets, trained classifier models, classifier training
-scripts, and extensive trained-model PDE benchmarks are not implemented yet.
+Train the NN-TENO5 classifier on the first CUDA GPU with:
+
+```bash
+conda activate weno-nn
+nvidia-smi
+python Train_NNTENO5.py --device gpu --gpu-index 0
+```
+
+The `gpu` mode fails immediately if TensorFlow cannot access the requested
+GPU, rather than silently training on the CPU. TensorFlow uses incremental
+GPU-memory allocation, which is suitable for a display-attached GPU. Use
+`--device cpu` for an intentional CPU run or `--device auto` to allow
+fallback.
+
+The training script generates three deterministic TENO5 troubled/keep labels
+from every original five-point stencil, creates disjoint stratified
+train/validation/test splits, checkpoints the best validation model, calibrates
+one decision threshold per candidate, and writes model, history, split, and
+metadata artifacts under `models/`.
+
+Dedicated NN-TENO3/7 training datasets and extensive trained-model PDE
+benchmarks are not implemented yet.
 
 ## Tests
 

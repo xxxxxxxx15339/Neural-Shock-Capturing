@@ -35,7 +35,8 @@ from src.data.preprocessing import scale_training_data
 from src.initial_conditions.InitialConditions import shuOsher, sod
 from src.networks.WenoNetworks import WENO51stOrder
 from src.schemes import NNEuler5, WENO5euler, WENO7euler
-from Script_Euler_Sod import run_history
+from WENO5_vs_WENO5NN_Sod import run_history
+from GenerateTrainingData_Euler import weno_z5_reconstruction
 
 
 # ---------------------------------------------------------------------------
@@ -110,7 +111,7 @@ def parse_args():
     parser.add_argument(
         '--batch-size',
         type=int,
-        default=80,
+        default=256,
     )
     parser.add_argument(
         '--patience',
@@ -165,6 +166,24 @@ def parse_args():
         default=0.02,
     )
 
+    # Hard-example reweighting: training samples whose target diverges from
+    # what classical WENO5 would itself reconstruct (on the same stencil) by
+    # more than --divergence-threshold are upweighted by
+    # --divergence-boost. This concentrates gradient on the rare stencils
+    # where beating WENO5 is actually possible, instead of that signal being
+    # averaged away by the overwhelming majority of samples where any
+    # reasonable scheme agrees with WENO5 almost exactly.
+    parser.add_argument(
+        '--divergence-threshold',
+        type=float,
+        default=0.01,
+    )
+    parser.add_argument(
+        '--divergence-boost',
+        type=float,
+        default=50.0,
+    )
+
     return parser.parse_args()
 
 
@@ -207,6 +226,12 @@ def validate_args(args):
         raise ValueError(
             '--required-shu-improvement must belong to [0, 1).'
         )
+
+    if args.divergence_threshold < 0.0:
+        raise ValueError('--divergence-threshold cannot be negative.')
+
+    if args.divergence_boost < 1.0:
+        raise ValueError('--divergence-boost must be at least 1.0.')
 
 
 # ---------------------------------------------------------------------------
@@ -1327,6 +1352,36 @@ def main():
         flush=True,
     )
 
+    # Reward beating WENO5 on the rare stencils where a better answer
+    # actually exists: weight each training sample by how far its own
+    # target diverges from what classical WENO5 would reconstruct from the
+    # identical stencil. Samples whose target equals WENO5's own answer
+    # (the overwhelming majority) get weight 1; samples that were
+    # deliberately retargeted away from WENO5 (e.g. via
+    # --use-reference-target in the data generator) and diverge by more
+    # than --divergence-threshold get amplified by --divergence-boost, so
+    # they aren't averaged away by the rest of the dataset.
+    train_weno5_reference = weno_z5_reconstruction(x_train)
+    train_divergence = np.abs(y_train[:, 0] - train_weno5_reference)
+    train_sample_weight = np.where(
+        train_divergence > args.divergence_threshold,
+        args.divergence_boost,
+        1.0,
+    )
+    boosted_count = int(np.sum(train_sample_weight > 1.0))
+
+    print(
+        'Divergence reweighting: {} / {} training samples ({:.3f}%) '
+        'diverge from WENO5 by more than {} and are upweighted x{}.'.format(
+            boosted_count,
+            len(train_sample_weight),
+            100.0 * boosted_count / len(train_sample_weight),
+            args.divergence_threshold,
+            args.divergence_boost,
+        ),
+        flush=True,
+    )
+
     print(
         'Shu--Osher evaluation region: [{}, {}]'.format(
             args.shu_region_start,
@@ -1391,6 +1446,7 @@ def main():
         training_history = model.fit(
             x_train,
             y_train,
+            sample_weight=train_sample_weight,
             epochs=args.epochs,
             batch_size=args.batch_size,
             validation_data=(
@@ -1464,6 +1520,18 @@ def main():
                 'metrics': metrics,
                 'validation_loss': best_validation_loss,
             }
+
+            # Always checkpoint the best-so-far candidate, even if it does
+            # not clear every acceptance condition, so it can still be
+            # inspected/run against the comparison scripts.
+            best_checkpoint_path = args.model_path + '.best.h5'
+            model.save(best_checkpoint_path)
+            print(
+                '  (checkpointed best-so-far candidate to {})'.format(
+                    os.path.abspath(best_checkpoint_path)
+                ),
+                flush=True,
+            )
 
         if metrics['accepted']:
             # The test set is consulted only once, after the candidate has
