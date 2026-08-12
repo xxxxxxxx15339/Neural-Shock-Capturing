@@ -285,12 +285,22 @@ Best Shu regional Linf    : 0.56761   (need <= 0.56172 -- gap: 0.00589)
 
 Notably, the *best* Sod TV found (0.87832) is actually *better* than the checkpoint's own value (0.8786) — confirming the anchor doesn't simply freeze the model back to its origin, it constrains drift in magnitude while still allowing some seeds to move in a genuinely improving direction. A follow-up 50-attempt batch at the identical configuration was interrupted after 8 attempts (best partial result: TV=0.87879); no full pass was found before stopping.
 
-**Status**: not yet accepted, but this is the closest and most reliable configuration found across the entire session — a consistent 100% pass rate on the primary metric, with both remaining gaps narrow (0.1% and 0.6% short respectively) rather than the wide, inconsistent misses seen everywhere else. Resuming the seed search at `--anchor-weight 20.0` (same warm start, fresh seeds) is the direct next step if pursued further.
+**Attempt 3 continued — full 50-seed batch at the same configuration.** Resumed the seed search as planned: 50 fresh seeds (1000-1049), identical configuration (`anchor_weight=20.0`, `patience=15`, same warm start). Result: still no full pass. Best candidate (seed 1008) again passed `shu_regional_l1`, and came closer than ever on `shu_regional_linf`, but `sod_total_variation` regressed relative to the earlier `anchored` batch's best:
+
+```
+Best Shu regional Linf this batch : 0.56297   (need <= 0.56172 -- gap: 0.00126, narrowest yet)
+Sod TV on that same candidate     : 0.88269   (need <= 0.87726 -- gap: 0.00543, wider than anchored.h5's 0.00106)
+```
+
+The two remaining gaps are not moving together — the seed that gets closest on one tends to be further from the other, consistent with them being genuinely different (and possibly slightly conflicting) constraints rather than a single underlying weakness that more seeds alone will fix. Across all anchor-weight=20.0 attempts so far (30 + 8 + 50 = 88 total), none has passed both `sod_total_variation` and `shu_regional_linf` simultaneously.
+
+**Status**: not yet accepted. `anchor_weight=20.0` remains the most reliable configuration found (consistently passes the core `shu_regional_l1` metric), but 88 seeds in, plain seed search at this exact setting shows no sign of closing both remaining gaps at once. A different lever (e.g. sweeping `anchor_weight` again now that the checkpoint has moved, or a criterion-specific mechanism for `sod_total_variation` similar to what closed `shu_regional_l1`) is more likely to help than further identical-configuration seed search.
 
 New CLI arguments added to `Train_WENO7NN_Euler.py`: `--warm-start-path`, `--protect-riemann-boost`, `--anchor-weight`. All default to off/1.0/0.0, so existing from-scratch training behavior is unchanged.
 
 Artifacts (all gitignored, local only, all still best-*rejected*-candidate checkpoints):
 - `trained_euler_weno7nn_finetuned.h5.best.h5` — plain fine-tuning, worse than checkpoint.
 - `trained_euler_weno7nn_protected.h5.best.h5` — riemann-protected fine-tuning, no improvement over plain.
-- `trained_euler_weno7nn_anchored.h5.best.h5` — anchor_weight=20 fine-tuning, closest result overall (30/30 pass shu_regional_l1).
+- `trained_euler_weno7nn_anchored.h5.best.h5` — anchor_weight=20 fine-tuning, closest result on Sod TV (30/30 pass shu_regional_l1).
 - `trained_euler_weno7nn_anchored2.h5.best.h5` — follow-up batch, stopped early by request after 8/50 attempts.
+- `trained_euler_weno7nn_anchored3.h5.best.h5` — full 50-seed resumed batch, closest result on shu_regional_linf.
