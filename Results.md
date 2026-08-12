@@ -2,6 +2,28 @@
 
 Running log of numerical results and plots, per test. Starts with the WENO5 vs. WENO5-NN baseline (model: `SeemsGood3.h5`); later phases (new dataset, new trained model) get appended below as their own dated sections rather than replacing this one, so progress stays comparable.
 
+```
+ PHASE 1              PHASE 2                PHASE 3                 PHASE 4                PHASE 4b
+ Baseline             Exact-target data      7-point stencil         HPC seed search        Fine-tune the
+ ────────             ──────────────         ───────────────         ──────────────         near-passer
+ Run existing         Replace "imitate       5-pt stencil is         Widen search to         ────────────
+ WENO5-NN vs          WENO5" targets         info-insufficient       many parallel           Random fine-tune:
+ WENO5 on all 4       with TRUE physics:     for shock/entropy       CPU workers.            drifts Sod worse.
+ benchmarks.          exact Riemann solver   region (proven via      One candidate:          Anchor weights to
+                       + fine-grid Shu-       near-dup stencils,      26/28 criteria,         checkpoint (L2-SP):
+ Wins: step adv.       Osher reference.       diff. targets).         +2.4% on core           30/30 pass core
+ Ties: Sod, Burgers    Found + fixed data     Switch to 7-pt          metric (shu_regi-       metric. 2 narrow
+ Loses: Shu-Osher      outlier bug.           (WENO7-structured).     onal_l1) -- best        gaps remain (Sod
+ (basis for the        Diagnosis: still       Found + fixed 2         result of the           TV, Shu Linf) --
+ whole effort below)   fails -- 5-pt input    real bugs (outlier      whole project so        closest ever, not
+                        can't see enough       data, WENO7 eps         far.                    yet accepted.
+                        context.                singularity).
+   |                     |                       |                        |                      |
+   v                     v                       v                        v                      v
+ Results.md            Results.md              Results.md              Results.md             Results.md
+ "Phase 1"             "Phase 2"               "Phase 3"               "Phase 4"              "Phase 4b"
+```
+
 ---
 
 ## Phase 1 — WENO5 vs. WENO5-NN baseline
@@ -168,3 +190,107 @@ Every one of 5 seeds failed `shu_regional_l1` in the *wrong* direction (worse, n
 **Interpretation**: fixing the input-representation problem (Phase 2's diagnosis) and both architecture bugs was necessary but not sufficient. This is the first WENO7-NN training run in the project's history to actually complete without crashing, so there's likely real untuned headroom left (the reduced learning rate of 1e-4, needed for stability, may be under-converging within the same epoch budget; hidden layer size and patience were carried over unchanged from the 5-point script rather than tuned for the wider architecture). Not yet known whether this is a tuning gap or a more fundamental mismatch between the WENO7 classical formula's own behavior and what a correction network can fix. Next step, if pursued: hyperparameter sweep (learning rate schedule, patience, hidden size) on the now-stable 7-point pipeline before concluding the wider stencil doesn't help.
 
 Artifacts: `data/eulerAvgsExact7.csv`/`eulerFluxExact7.csv`/`eulerGroupsExact7.csv` (100k samples, 7-point). Fixes landed in `src/networks/WenoNetworks.py` (eps) and `GenerateTrainingData_EulerExact.py` (radius parameter, sampling ranges) apply regardless of this phase's outcome. No accepted model produced.
+
+---
+
+## Phase 4 — hyperparameter search finds a near-passing candidate (`trained_euler_weno7nn.h5.best.h5`)
+
+**Goal**: push Phase 3's stable-but-underperforming 7-point pipeline to an accepted model.
+
+**Search conducted**: `--hidden-size` exposed as a CLI parameter (the correction MLP's hidden layers were hardcoded to width 4, matching WENO7's 4 sub-stencils — likely a capacity bottleneck, not a principled choice). Confirmed `eps` fix from Phase 3 also makes the original `lr=0.001` safe again (no more NaN). Manual search across ~140 training attempts total, several regularization values:
+
+| Regularization | Hidden size | Result |
+|---|---|---|
+| 0.10 (original) | 32 | Best region — one seed passed `shu_regional_l1`, `sod_total_variation` fails most seeds |
+| 0.16 | 32 | No seed beat WENO5's regional L1 at all |
+| 0.25 | 32 | Sod TV well controlled, but regional L1 never beats WENO5 (over-regularized) |
+
+Clear tradeoff: larger hidden size gives the network enough capacity to improve the Shu-Osher region, but the same capacity makes it more aggressive on Sod, overshooting total variation there. Regularization trades between the two rather than solving both.
+
+**Result**: continuing the search at the best config (`hidden-size=32`, `regularization=0.10`, `learning-rate=0.001`, `patience=15`) — including a batch run by the user on external hardware — produced `trained_euler_weno7nn.h5.best.h5`, the best candidate found across the entire session. Directly evaluated against the full acceptance harness (not retrained):
+
+```
+Accepted: False
+Failed conditions: sod_total_variation, shu_regional_linf
+```
+
+**26 of 28 acceptance criteria pass**, including the core requirement:
+
+```
+shu_regional_l1   NN = 2.984718e-01   WENO5 = 3.058312e-01   (2.4% better -- required 2%)
+```
+
+This is the first and only candidate across the whole session (local search + external run) to actually clear the primary "beat WENO5 by 2% in the Shu-Osher oscillatory region" bar. Full metrics:
+
+```
+Sod   density/momentum/energy L1: 6.812e-03 / 7.362e-03 / 1.483e-02   (all PASS)
+Shu   density/momentum/energy L1: 7.812e-02 / 1.842e-01 / 4.160e-01   (all PASS)
+Shu   regional Linf   NN = 5.705e-01   WENO5 = 5.617e-01             (FAIL -- worse worst-case point)
+Sod   final TV        NN = 8.786e-01  WENO5 = 8.763e-01  ref = 8.750e-01   (FAIL -- NN too far from ref)
+Sod   shock width      NN = 10        WENO5 = 9
+Shu   shock width      NN = 7         WENO5 = 7
+```
+
+**Plots** (`WENO5_vs_WENO7NN_Sod.py`, `WENO5_vs_WENO7NN_ShuOsher.py`, both new — 7-point counterparts of the Phase 1 comparison scripts):
+
+- [`plots/sod_weno7nn/density_velocity_pressure.png`](plots/sod_weno7nn/density_velocity_pressure.png) / [`density_final.png`](plots/sod_weno7nn/density_final.png) — WENO7-NN vs. WENO5 vs. exact. *Interpretation: visually near-identical to WENO5, both close to exact — the failure is in a metric (TV), not a visible profile difference.*
+- [`plots/sod_weno7nn/total_variation.png`](plots/sod_weno7nn/total_variation.png) — TV over time. *Interpretation: this is the actual failure, visualized — WENO5's TV stays smooth (~0.875-0.876) the whole run; WENO7-NN's spikes up to ~0.881 around t=0.13-0.15 before partially relaxing to ~0.8785-0.879. A transient instability, not a steady-state one.*
+- [`plots/sod_weno7nn/discontinuity_width.png`](plots/sod_weno7nn/discontinuity_width.png) — shock width over time. *Interpretation: NN's shock is consistently ~5-10% wider than WENO5's throughout — matches the final shock-width count (10 vs. 9 cells).*
+- [`plots/sod_weno7nn/density_contour.png`](plots/sod_weno7nn/density_contour.png) — space-time density, side by side. *Interpretation: same rarefaction/shock structure; no qualitative difference visible at this scale.*
+- [`plots/sod_weno7nn/l2_error.png`](plots/sod_weno7nn/l2_error.png) — direct WENO7-NN vs. WENO5 L2 distance over time. *Interpretation: grows to ≈4e-3 by t=0.2 — about 4x larger than the Phase 1 5-point model's divergence from WENO5 on the same problem, consistent with this being a more different, more aggressively-corrected network.*
+- [`plots/shu_osher_weno7nn/density_velocity_pressure.png`](plots/shu_osher_weno7nn/density_velocity_pressure.png) / [`density_final.png`](plots/shu_osher_weno7nn/density_final.png) — WENO7-NN vs. WENO5 vs. reference. *Interpretation: WENO7-NN tracks WENO5 closely everywhere, including the oscillatory region — the 2.4% regional improvement is real but subtle at this visual scale, not a dramatic visible difference.*
+- [`plots/shu_osher_weno7nn/total_variation.png`](plots/shu_osher_weno7nn/total_variation.png) — full-domain TV over time. *Interpretation: counterintuitive but consistent finding — WENO7-NN's TV is higher than WENO5's across the **entire domain** and the whole run, even though its error is lower specifically in the narrow diagnostic region [5.5, 7.3]. TV (internal smoothness) and regional accuracy (distance to the true solution) are different things and don't have to move together — the model traded some global smoothness for better local accuracy in the region that matters most for acceptance.*
+- [`plots/shu_osher_weno7nn/discontinuity_width.png`](plots/shu_osher_weno7nn/discontinuity_width.png) — discontinuity width over time. *Interpretation: opposite of the TV finding — NN's width is consistently narrower (sharper) than WENO5's throughout. Sharper transitions concentrated in fewer cells can still sum to higher total variation than a gentler, wider one — these two metrics capture different failure modes.*
+- [`plots/shu_osher_weno7nn/density_contour.png`](plots/shu_osher_weno7nn/density_contour.png) — space-time density, side by side. *Interpretation: same overall wave structure; the oscillatory band looks slightly higher-contrast for WENO7-NN, consistent with the sharper-width finding.*
+
+**Conclusion**: extremely close to a full pass — one seed away, in principle. The two remaining failures are both narrow misses (TV overshoot is transient, not permanent; Linf failure is a single worst-case point, not a broad-region problem) rather than the wide, systematic failures seen throughout Phase 3. Continuing the seed search at this exact configuration (`hidden-size=32`, `regularization=0.10`, `learning-rate=0.001`, `patience=15`) is the most direct path to a fully-accepted model.
+
+Artifacts: `trained_euler_weno7nn.h5.best.h5` (gitignored, local only — this is a best-*rejected*-candidate checkpoint, not an accepted model). `WENO5_vs_WENO7NN_Sod.py`, `WENO5_vs_WENO7NN_ShuOsher.py` (new comparison scripts).
+
+---
+
+## Phase 4b — fine-tuning the near-passing checkpoint (still not accepted, but a real technique validated)
+
+**Goal**: instead of continuing pure random-seed search, fine-tune `trained_euler_weno7nn.h5.best.h5` (the near-passing checkpoint) directly to close the remaining two gaps (`sod_total_variation`, `shu_regional_linf`).
+
+**Attempt 1 — plain fine-tuning from checkpoint.** Added `--warm-start-path` to `Train_WENO7NN_Euler.py` (loads an existing model's weights instead of a fresh random init; each attempt still gets its own `attempt_seed` for minibatch shuffling, so multiple attempts explore different trajectories from the same start). Verified the load mechanism first: evaluating the freshly-loaded, not-yet-retrained model reproduced the checkpoint's exact known metrics (`shu_regional_l1 = 2.984718e-01`, bit-for-bit), confirming `load_weights` worked correctly.
+
+Result of 20 fine-tuning attempts (`lr=0.0001`, same reweighting as before): **worse**, not better — `sod_total_variation` failed in **100%** of attempts (up from ~50% in fresh-random-init runs), with TV values uniformly higher (0.884–0.897) than the checkpoint's own 0.8786. Continued training, even gently, systematically drifted Sod behavior away from the checkpoint's lucky starting point.
+
+**Attempt 2 — protect riemann-category samples.** Hypothesis: the divergence-reweighting loss (50x boost on Shu-Osher-like divergent samples) was drowning out the riemann-category samples (single clean shock/rarefaction/contact — the closest analogue to Sod's local behavior, 48.8% of the dataset). Modified `split_dataset`'s helper functions to also return per-row training group IDs, then added `--protect-riemann-boost` (minimum sample weight for riemann-category rows, independent of the divergence boost). Result: **no improvement** — 20 attempts at `--protect-riemann-boost 20.0`, still 100% `sod_total_variation` failures, same TV range as unprotected fine-tuning (0.883–0.906).
+
+**Diagnosis**: `sod_total_variation` is an emergent property of running the network through a full multi-step Euler simulation — it is never part of the differentiable per-stencil MSE training loss. No reweighting of *static training samples* (divergence-based or category-based) can give the optimizer a gradient signal toward it, because that signal doesn't exist in the loss at all. The checkpoint's original pass on this criterion was luck from its specific training trajectory, not something either version of the loss was ever steering toward — so continued gradient descent, in any direction shaped by that loss, drifts away from it.
+
+**Attempt 3 — L2-to-origin anchor (the fix that actually worked).** Rather than reweighting data, directly penalize the weights for moving away from the checkpoint's own values (elastic-weight-consolidation / L2-SP style): `model.add_loss(anchor_weight * sum((w - w_origin)**2))` added after `load_weights`, before `compile`. New `--anchor-weight` argument (0.0 = disabled).
+
+Calibration sweep (8 epochs each) showed Sod TV improving **monotonically** as anchor strength increased:
+
+| anchor_weight | Sod final TV | Shu regional L1 |
+|---|---|---|
+| 0.0 | 0.9112 | 0.3110 |
+| 0.01 | 0.9017 | 0.3052 |
+| 0.1 | 0.8916 | 0.3034 |
+| 1.0 | 0.8850 | 0.3039 |
+| 5.0 | 0.8803 | 0.3016 |
+| 10.0 (20 epochs) | 0.8825 | 0.2999 |
+| 20.0 (20 epochs) | 0.8812 | **0.2995 (PASS)** |
+| 50.0 (20 epochs) | 0.8798 | 0.2992 |
+
+At `anchor_weight=20.0`, ran a real batch of 30 attempts (`patience=15`, same warm start). Result: **all 30/30 attempts passed `shu_regional_l1`** (up from ~30% in fresh-random-init search, and up from 0% in the two prior fine-tuning attempts) — the anchor reliably locks in the Shu-Osher improvement. Every attempt still failed on exactly the same two remaining criteria, but by a much narrower margin than ever before:
+
+```
+Best Sod TV this batch    : 0.87832   (need <= 0.87726 -- gap: 0.00106)
+Best Shu regional Linf    : 0.56761   (need <= 0.56172 -- gap: 0.00589)
+```
+
+Notably, the *best* Sod TV found (0.87832) is actually *better* than the checkpoint's own value (0.8786) — confirming the anchor doesn't simply freeze the model back to its origin, it constrains drift in magnitude while still allowing some seeds to move in a genuinely improving direction. A follow-up 50-attempt batch at the identical configuration was interrupted after 8 attempts (best partial result: TV=0.87879); no full pass was found before stopping.
+
+**Status**: not yet accepted, but this is the closest and most reliable configuration found across the entire session — a consistent 100% pass rate on the primary metric, with both remaining gaps narrow (0.1% and 0.6% short respectively) rather than the wide, inconsistent misses seen everywhere else. Resuming the seed search at `--anchor-weight 20.0` (same warm start, fresh seeds) is the direct next step if pursued further.
+
+New CLI arguments added to `Train_WENO7NN_Euler.py`: `--warm-start-path`, `--protect-riemann-boost`, `--anchor-weight`. All default to off/1.0/0.0, so existing from-scratch training behavior is unchanged.
+
+Artifacts (all gitignored, local only, all still best-*rejected*-candidate checkpoints):
+- `trained_euler_weno7nn_finetuned.h5.best.h5` — plain fine-tuning, worse than checkpoint.
+- `trained_euler_weno7nn_protected.h5.best.h5` — riemann-protected fine-tuning, no improvement over plain.
+- `trained_euler_weno7nn_anchored.h5.best.h5` — anchor_weight=20 fine-tuning, closest result overall (30/30 pass shu_regional_l1).
+- `trained_euler_weno7nn_anchored2.h5.best.h5` — follow-up batch, stopped early by request after 8/50 attempts.

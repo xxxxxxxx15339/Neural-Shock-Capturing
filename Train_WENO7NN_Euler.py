@@ -112,6 +112,41 @@ def parse_args():
         ),
     )
     parser.add_argument(
+        '--warm-start-path',
+        default=None,
+        help=(
+            'Optional path to an existing model (.h5) to load weights '
+            'from before training, instead of a fresh random init. '
+            'Architecture (hidden-size, regularization) must match the '
+            'donor exactly. Each attempt still gets its own attempt_seed '
+            'for minibatch shuffling, so multiple attempts search '
+            'different fine-tuning trajectories from the same start.'
+        ),
+    )
+    parser.add_argument(
+        '--protect-riemann-boost',
+        type=float,
+        default=1.0,
+        help=(
+            'Minimum sample weight for riemann-category training rows '
+            '(single clean shock/rarefaction/contact, the closest analogue '
+            'to Sod). Set above 1.0 (e.g. 20.0) to keep them from being '
+            'neglected relative to the divergence-boosted Shu-Osher-like '
+            'tail during (fine-tuning) training. Requires a group file.'
+        ),
+    )
+    parser.add_argument(
+        '--anchor-weight',
+        type=float,
+        default=0.0,
+        help=(
+            'L2-to-origin penalty coefficient for --warm-start-path '
+            'fine-tuning: penalizes weights for moving away from the '
+            'donor checkpoint values, constraining drift directly instead '
+            'of via sample reweighting. 0.0 disables it (default).'
+        ),
+    )
+    parser.add_argument(
         '--learning-rate',
         type=float,
         default=0.001,
@@ -373,6 +408,7 @@ def row_level_split(inputs, targets, seed):
         inputs[test_indices],
         targets[test_indices],
         'shuffled row-level split',
+        None,
     )
 
 
@@ -417,6 +453,7 @@ def stratified_row_split(inputs, targets, groups, seed):
         inputs[test_indices],
         targets[test_indices],
         'stratified row-level split',
+        groups[train_indices],
     )
 
 
@@ -443,13 +480,13 @@ def trajectory_group_split(inputs, targets, groups, seed):
             seed,
         )
 
-    train_groups = unique_groups[:train_end]
-    validation_groups = unique_groups[train_end:validation_end]
-    test_groups = unique_groups[validation_end:]
+    train_group_ids = unique_groups[:train_end]
+    validation_group_ids = unique_groups[train_end:validation_end]
+    test_group_ids = unique_groups[validation_end:]
 
-    train_mask = np.isin(groups, train_groups)
-    validation_mask = np.isin(groups, validation_groups)
-    test_mask = np.isin(groups, test_groups)
+    train_mask = np.isin(groups, train_group_ids)
+    validation_mask = np.isin(groups, validation_group_ids)
+    test_mask = np.isin(groups, test_group_ids)
 
     if (
         not np.any(train_mask)
@@ -471,6 +508,7 @@ def trajectory_group_split(inputs, targets, groups, seed):
         inputs[test_mask],
         targets[test_mask],
         'trajectory-level group split',
+        groups[train_mask],
     )
 
 
@@ -1358,6 +1396,7 @@ def main():
         x_test,
         y_test,
         split_description,
+        train_groups,
     ) = split_dataset(
         inputs,
         targets,
@@ -1423,6 +1462,42 @@ def main():
         flush=True,
     )
 
+    # The 'riemann' category (random two-state jumps, exact Riemann
+    # targets) is the closest analogue in the training set to Sod's local
+    # stencil behavior -- a single clean shock/rarefaction/contact, not an
+    # oscillatory wave train. Fine-tuning under the divergence reweighting
+    # alone was found to systematically drift Sod's total variation worse
+    # (every one of 20 fine-tuning attempts failed sod_total_variation,
+    # versus ~50% before), because the loss is otherwise dominated by the
+    # Shu-Osher-like divergent tail. Protecting riemann-category samples
+    # with their own minimum weight keeps them from being neglected
+    # relative to that tail during further training.
+    if args.protect_riemann_boost > 1.0 and train_groups is not None:
+        riemann_mask = np.char.startswith(
+            train_groups.astype(str), 'riemann_',
+        )
+        train_sample_weight = np.where(
+            riemann_mask,
+            np.maximum(train_sample_weight, args.protect_riemann_boost),
+            train_sample_weight,
+        )
+        print(
+            'Riemann protection: {} / {} training samples ({:.3f}%) are '
+            'riemann-category and given a minimum weight of x{}.'.format(
+                int(riemann_mask.sum()),
+                len(train_sample_weight),
+                100.0 * riemann_mask.sum() / len(train_sample_weight),
+                args.protect_riemann_boost,
+            ),
+            flush=True,
+        )
+    elif args.protect_riemann_boost > 1.0:
+        print(
+            'Riemann protection requested but no group file was loaded; '
+            'skipping.',
+            flush=True,
+        )
+
     print(
         'Shu--Osher evaluation region: [{}, {}]'.format(
             args.shu_region_start,
@@ -1468,6 +1543,38 @@ def main():
             args.regularization,
             hidden_size=args.hidden_size,
         )
+
+        if args.warm_start_path:
+            # Fine-tune from an existing checkpoint's weights instead of a
+            # fresh random init. The architecture must match exactly
+            # (same hidden_size/regularization); load_weights ignores the
+            # donor file's optimizer state, so this attempt still gets a
+            # fresh Adam state and its own attempt_seed-driven minibatch
+            # shuffling -- real search diversity around a known-good point
+            # rather than restarting from scratch each time.
+            model.load_weights(args.warm_start_path)
+
+            if args.anchor_weight > 0.0:
+                # sod_total_variation is an emergent property of running
+                # the model through a many-step simulation -- it is never
+                # part of the differentiable per-stencil training loss, so
+                # no amount of reweighting *training samples* can protect
+                # it (confirmed empirically: plain fine-tuning and
+                # riemann-protected fine-tuning both drifted Sod TV worse
+                # in 100% of attempts). This penalizes the weights
+                # themselves for moving away from the known-good warm-start
+                # values (L2-SP / elastic-weight-consolidation style),
+                # directly constraining the drift instead of hoping the
+                # data does it indirectly.
+                origin_weights = [
+                    K.constant(value) for value in model.get_weights()
+                ]
+                anchor_terms = [
+                    K.sum(K.square(weight_tensor - origin_value))
+                    for weight_tensor, origin_value
+                    in zip(model.weights, origin_weights)
+                ]
+                model.add_loss(args.anchor_weight * K.sum(K.stack(anchor_terms)))
 
         model.compile(
             # clipnorm guards against NaN: WENO71stOrder's smoothness-
