@@ -294,7 +294,24 @@ Sod TV on that same candidate     : 0.88269   (need <= 0.87726 -- gap: 0.00543, 
 
 The two remaining gaps are not moving together — the seed that gets closest on one tends to be further from the other, consistent with them being genuinely different (and possibly slightly conflicting) constraints rather than a single underlying weakness that more seeds alone will fix. Across all anchor-weight=20.0 attempts so far (30 + 8 + 50 = 88 total), none has passed both `sod_total_variation` and `shu_regional_linf` simultaneously.
 
-**Status**: not yet accepted. `anchor_weight=20.0` remains the most reliable configuration found (consistently passes the core `shu_regional_l1` metric), but 88 seeds in, plain seed search at this exact setting shows no sign of closing both remaining gaps at once. A different lever (e.g. sweeping `anchor_weight` again now that the checkpoint has moved, or a criterion-specific mechanism for `sod_total_variation` similar to what closed `shu_regional_l1`) is more likely to help than further identical-configuration seed search.
+**Attempt 4 — anchor_weight re-sweep (controlled, single fixed seed).** To find out whether a different anchor strength could close both remaining gaps at once, re-ran the calibration sweep from the original checkpoint at a wider range of `anchor_weight` (5, 10, 15, 20, 25, 30, 40, 50, 75, 100), fixed seed, 15 epochs each — isolating the effect of anchor strength from seed variance:
+
+| anchor_weight | Sod TV (need ≤0.87726) | Shu regional L1 (need ≥2% better) | Shu regional Linf (need ≤0.56172) |
+|---|---|---|---|
+| 5 | 0.8845 FAIL | worse than WENO5 | 0.5717 FAIL |
+| 10 | 0.8832 FAIL | 0.06% better | 0.5673 FAIL |
+| 15 | 0.8826 FAIL | 0.28% better | 0.5671 FAIL |
+| 20 | 0.8832 FAIL | 0.29% better | 0.5673 FAIL |
+| 25 | 0.8807 FAIL | 0.45% better | 0.5674 FAIL |
+| 30 | 0.8809 FAIL | 0.69% better | 0.5675 FAIL |
+| 40 | 0.8815 FAIL | 1.14% better | 0.5677 FAIL |
+| 50 | 0.8809 FAIL | 1.80% better | 0.5680 FAIL |
+| 75 | 0.8799 FAIL | 2.09% better **PASS** | 0.5687 FAIL |
+| 100 | 0.8793 FAIL | 2.09% better **PASS** | 0.5691 FAIL |
+
+**Structural finding**: `shu_regional_l1` and `sod_total_variation` both improve monotonically as `anchor_weight` increases (pulled toward the origin checkpoint's good values on those two axes), but `shu_regional_linf` gets *monotonically worse* over the same range (best at low anchor_weight ≈15-20, degrading steadily to 0.5691 by anchor_weight=100). There is no single anchor_weight where all three requirements are simultaneously satisfied — `shu_regional_linf` is structurally in tension with the other two along this axis, not just a matter of unlucky seeds. This explains, rather than just confirms, why 88 seeds at `anchor_weight=20.0` never produced a simultaneous pass: no seed at that (or any) anchor strength can satisfy all three at once, because the anchor mechanism itself pulls two of them toward passing while pulling the third away.
+
+**Status**: not yet accepted, and this is where the anchor-weight approach's ceiling was found. `anchor_weight=20.0` remains the most reliable configuration for the primary `shu_regional_l1` metric, but no anchor strength closes all three remaining/marginal criteria together. Closing `shu_regional_linf` (a single worst-case point error) would need a different mechanism entirely — e.g. a loss term that specifically targets the worst-case region — not more seed search or anchor tuning along this same axis.
 
 New CLI arguments added to `Train_WENO7NN_Euler.py`: `--warm-start-path`, `--protect-riemann-boost`, `--anchor-weight`. All default to off/1.0/0.0, so existing from-scratch training behavior is unchanged.
 
