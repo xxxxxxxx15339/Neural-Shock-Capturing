@@ -1,0 +1,36 @@
+{
+  "family_sample_counts": {
+    "double_sine": 14963,
+    "kink": 7438,
+    "polynomial": 14968,
+    "sine": 22657,
+    "step": 14974
+  },
+  "family_weights": {
+    "double_sine": 0.20000000000000004,
+    "kink": 0.10000000000000002,
+    "polynomial": 0.20000000000000004,
+    "sine": 0.30000000000000004,
+    "step": 0.20000000000000004
+  },
+  "oracle_error": {
+    "max": 0.8837817427098015,
+    "mean": 0.0050468758988093726
+  },
+  "oracle_vs_teno5": {
+    "exact_mask_agreement": 0.76772,
+    "per_candidate_agreement": [
+      0.8986,
+      0.90272,
+      0.8786533333333333
+    ]
+  },
+  "per_family_disagreement": {
+    "double_sine": 0.4019915792287643,
+    "kink": 0.18902930895401993,
+    "polynomial": 0.014163548904329248,
+    "sine": 0.24283885774815728,
+    "step": 0.28622946440496866
+  },
+  "samples": 75000
+}
