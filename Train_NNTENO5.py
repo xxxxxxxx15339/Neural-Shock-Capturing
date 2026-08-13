@@ -22,6 +22,7 @@ os.environ.setdefault('TF_CPP_MIN_LOG_LEVEL', '2')
 import numpy as np
 import tensorflow as tf
 from keras import backend as K
+from keras import optimizers
 from keras.callbacks import (
     CSVLogger,
     EarlyStopping,
@@ -78,6 +79,29 @@ def parse_args():
             'GenerateTrainingData_TENOExact.py. When given, these labels '
             'are used instead of generating deterministic TENO5 labels '
             'from --input-data.'
+        ),
+    )
+
+    parser.add_argument(
+        '--warm-start-path',
+        default=None,
+        help=(
+            'Optional path to an existing model (.h5) to load weights '
+            'from before training, instead of a fresh random init. '
+            'Architecture must match exactly; load_weights ignores the '
+            "donor file's optimizer state."
+        ),
+    )
+    parser.add_argument(
+        '--anchor-weight',
+        type=float,
+        default=0.0,
+        help=(
+            'L2-to-origin penalty coefficient for --warm-start-path '
+            'fine-tuning: penalizes weights for moving away from the '
+            'donor checkpoint values, so training toward a different '
+            'label source (e.g. --labels-data) cannot drift arbitrarily '
+            'far from a known-safe starting point. 0.0 disables it.'
         ),
     )
 
@@ -1396,6 +1420,37 @@ def main():
         learning_rate=args.learning_rate
     )
 
+    if args.warm_start_path:
+        # Fine-tune from an existing checkpoint's weights instead of a
+        # fresh random init.
+        model.load_weights(args.warm_start_path)
+
+        if args.anchor_weight > 0.0:
+            # L2-SP / elastic-weight-consolidation style: penalize the
+            # weights themselves for moving away from the warm-start
+            # values, so training against a different label source
+            # (e.g. oracle-relabeled data) can still improve on it
+            # without drifting arbitrarily far from a starting point
+            # already known to produce a stable, working scheme.
+            origin_weights = [
+                K.constant(value) for value in model.get_weights()
+            ]
+            anchor_terms = [
+                K.sum(K.square(weight_tensor - origin_value))
+                for weight_tensor, origin_value
+                in zip(model.weights, origin_weights)
+            ]
+            model.add_loss(
+                args.anchor_weight * K.sum(K.stack(anchor_terms))
+            )
+            # add_loss requires recompiling to rebuild the train function
+            # with the new loss term included.
+            model.compile(
+                optimizer=optimizers.Adam(lr=args.learning_rate),
+                loss='binary_crossentropy',
+                metrics=['binary_accuracy'],
+            )
+
     model.summary()
 
     callbacks = [
@@ -1607,6 +1662,12 @@ def main():
 
         'training': {
             'runtime_device': runtime_device,
+            'warm_start_path': (
+                os.path.abspath(args.warm_start_path)
+                if args.warm_start_path
+                else None
+            ),
+            'anchor_weight': args.anchor_weight,
             'learning_rate': args.learning_rate,
             'minimum_learning_rate': args.min_learning_rate,
             'batch_size': args.batch_size,
