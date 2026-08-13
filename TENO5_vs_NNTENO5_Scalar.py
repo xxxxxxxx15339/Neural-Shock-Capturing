@@ -427,6 +427,15 @@ def compare_problem(
                 <= fidelity_limit
             ),
         },
+        'beats_teacher': {
+            'metric': 'l1_error',
+            'teno5_error': deterministic_metrics['l1_error'],
+            'nn_teno5_error': neural_metrics['l1_error'],
+            'passed': bool(
+                neural_metrics['l1_error']
+                <= deterministic_metrics['l1_error']
+            ),
+        },
     }
 
     plot_data = {
@@ -683,6 +692,26 @@ def main():
                 wiring['passed'],
             )
         )
+        beats = result['beats_teacher']
+        print(
+            '  vs. real solution: TENO5={:.8e}, NN-TENO5={:.8e}, '
+            'NN beats TENO5={}'.format(
+                beats['teno5_error'],
+                beats['nn_teno5_error'],
+                beats['passed'],
+            )
+        )
+
+    beats_results = [
+        result['beats_teacher']['passed']
+        for result in results['problems'].values()
+    ]
+    print(
+        '\nBeats-real-solution tally: {}/{} benchmarks'.format(
+            sum(beats_results),
+            len(beats_results),
+        )
+    )
 
     figures.append(plot_overview(
         problem_plot_data,

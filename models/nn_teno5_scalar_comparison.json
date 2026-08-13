@@ -11,6 +11,12 @@
   "model_path": "/home/bazouil/Documents/Stage/Internsh/Shocks-and-WENO/models/nn_teno5.h5",
   "problems": {
     "burgers_smooth_to_shock": {
+      "beats_teacher": {
+        "metric": "l1_error",
+        "nn_teno5_error": 0.0001328274646771066,
+        "passed": true,
+        "teno5_error": 0.0001328274646771066
+      },
       "cells": 200,
       "final_time": 0.6,
       "nn_teno5": {
@@ -19,7 +25,7 @@
         "l2_error": 0.0008411549357484284,
         "linf_error": 0.008110692941914022,
         "overshoot": 0.0,
-        "runtime_seconds": 7.929118253996421,
+        "runtime_seconds": 8.399984972995298,
         "total_variation": 0.9999999077275854,
         "undershoot": 0.0
       },
@@ -35,7 +41,7 @@
         "l2_error": 0.0008411549357484284,
         "linf_error": 0.008110692941914022,
         "overshoot": 0.0,
-        "runtime_seconds": 1.5531361980029033,
+        "runtime_seconds": 1.576189842999156,
         "total_variation": 0.9999999077275854,
         "undershoot": 0.0
       },
@@ -55,7 +61,7 @@
             "l2_error": 0.02261983588984078,
             "linf_error": 0.08358259557262204,
             "overshoot": 0.0,
-            "runtime_seconds": 7.919300872999884,
+            "runtime_seconds": 8.100838395999745,
             "total_variation": 0.941190589616006,
             "undershoot": 0.0
           },
@@ -80,7 +86,7 @@
             "l2_error": 0.0008411549357484284,
             "linf_error": 0.008110692941914022,
             "overshoot": 0.0,
-            "runtime_seconds": 7.812789117000648,
+            "runtime_seconds": 8.077907261998917,
             "total_variation": 0.9999999077275854,
             "undershoot": 0.0
           },
@@ -109,6 +115,12 @@
       "time_steps": 300
     },
     "multifrequency_advection": {
+      "beats_teacher": {
+        "metric": "l1_error",
+        "nn_teno5_error": 2.433665550683495e-05,
+        "passed": true,
+        "teno5_error": 2.433665550683495e-05
+      },
       "cells": 200,
       "final_time": 1.0,
       "nn_teno5": {
@@ -117,7 +129,7 @@
         "l2_error": 2.7601536488624158e-05,
         "linf_error": 4.834476658321929e-05,
         "overshoot": 0.0,
-        "runtime_seconds": 12.964543688001868,
+        "runtime_seconds": 13.21124498899735,
         "total_variation": 4.768981988311705,
         "undershoot": 0.0
       },
@@ -133,7 +145,7 @@
         "l2_error": 2.7601536488624158e-05,
         "linf_error": 4.834476658321929e-05,
         "overshoot": 0.0,
-        "runtime_seconds": 2.656781610996404,
+        "runtime_seconds": 2.6223617709983955,
         "total_variation": 4.768981988311705,
         "undershoot": 0.0
       },
@@ -153,7 +165,7 @@
             "l2_error": 0.139412457641981,
             "linf_error": 0.28715580050033407,
             "overshoot": 0.0,
-            "runtime_seconds": 12.69095334699523,
+            "runtime_seconds": 13.583735494998109,
             "total_variation": 3.2341575724434293,
             "undershoot": 0.0
           },
@@ -178,7 +190,7 @@
             "l2_error": 2.7601536488624158e-05,
             "linf_error": 4.834476658321929e-05,
             "overshoot": 0.0,
-            "runtime_seconds": 12.96834470199974,
+            "runtime_seconds": 13.96958231699682,
             "total_variation": 4.768981988311705,
             "undershoot": 0.0
           },
@@ -207,6 +219,12 @@
       "time_steps": 500
     },
     "smooth_sine_advection": {
+      "beats_teacher": {
+        "metric": "l1_error",
+        "nn_teno5_error": 3.327801949417548e-07,
+        "passed": true,
+        "teno5_error": 3.327801949417548e-07
+      },
       "cells": 200,
       "final_time": 1.0,
       "nn_teno5": {
@@ -215,7 +233,7 @@
         "l2_error": 3.6961687740195075e-07,
         "linf_error": 5.22691537718778e-07,
         "overshoot": 0.0,
-        "runtime_seconds": 13.212149839004269,
+        "runtime_seconds": 12.981320651000715,
         "total_variation": 3.999997909233851,
         "undershoot": 0.0
       },
@@ -231,7 +249,7 @@
         "l2_error": 3.6961687740195075e-07,
         "linf_error": 5.22691537718778e-07,
         "overshoot": 0.0,
-        "runtime_seconds": 2.5808359770016978,
+        "runtime_seconds": 2.531640345005144,
         "total_variation": 3.999997909233851,
         "undershoot": 0.0
       },
@@ -251,7 +269,7 @@
             "l2_error": 0.06645404302462599,
             "linf_error": 0.09397554381492723,
             "overshoot": 0.0,
-            "runtime_seconds": 12.8082962519984,
+            "runtime_seconds": 13.069423535998794,
             "total_variation": 3.624097824740291,
             "undershoot": 0.0
           },
@@ -276,7 +294,7 @@
             "l2_error": 3.6961687740195075e-07,
             "linf_error": 5.22691537718778e-07,
             "overshoot": 0.0,
-            "runtime_seconds": 13.283204164996278,
+            "runtime_seconds": 13.129100746999029,
             "total_variation": 3.999997909233851,
             "undershoot": 0.0
           },
@@ -305,6 +323,12 @@
       "time_steps": 500
     },
     "step_advection": {
+      "beats_teacher": {
+        "metric": "l1_error",
+        "nn_teno5_error": 0.013397546871967321,
+        "passed": false,
+        "teno5_error": 0.013317246006997033
+      },
       "cells": 200,
       "final_time": 1.0,
       "nn_teno5": {
@@ -313,7 +337,7 @@
         "l2_error": 0.06218120312423085,
         "linf_error": 0.3914142529433089,
         "overshoot": 0.0,
-        "runtime_seconds": 13.212815650003904,
+        "runtime_seconds": 12.977786493000167,
         "total_variation": 1.9999999999999676,
         "undershoot": 3.5285228684484575e-27
       },
@@ -329,7 +353,7 @@
         "l2_error": 0.062143494085918335,
         "linf_error": 0.39241215396156115,
         "overshoot": 0.0,
-        "runtime_seconds": 2.683074750995729,
+        "runtime_seconds": 2.5252507369950763,
         "total_variation": 1.9999999999999711,
         "undershoot": 5.642456283618845e-20
       },
@@ -349,7 +373,7 @@
             "l2_error": 0.18173715920790803,
             "linf_error": 0.49059810133910586,
             "overshoot": 0.0,
-            "runtime_seconds": 12.928202424998744,
+            "runtime_seconds": 13.209892674000002,
             "total_variation": 1.9984024916665075,
             "undershoot": 0.0
           },
@@ -374,7 +398,7 @@
             "l2_error": 0.06175454629659911,
             "linf_error": 0.39840664636774525,
             "overshoot": 0.07574439493690943,
-            "runtime_seconds": 12.98934362699947,
+            "runtime_seconds": 13.268169012997532,
             "total_variation": 2.7161039732422236,
             "undershoot": 0.07509732545939501
           },

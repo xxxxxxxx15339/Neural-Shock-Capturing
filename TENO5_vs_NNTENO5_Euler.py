@@ -282,6 +282,15 @@ def run_reference_case(
         fidelity_factor
         * deterministic_metrics['density_l1']
     )
+    beats_teacher = {
+        'metric': 'density_l1',
+        'teno5_error': deterministic_metrics['density_l1'],
+        'nn_teno5_error': neural_metrics['density_l1'],
+        'passed': bool(
+            neural_metrics['density_l1']
+            <= deterministic_metrics['density_l1']
+        ),
+    }
     plot_data = {
         'x': x,
         'teno5': deterministic,
@@ -305,6 +314,7 @@ def run_reference_case(
                 <= fidelity_limit
             ),
         },
+        'beats_teacher': beats_teacher,
     }, plot_data
 
 
@@ -483,6 +493,29 @@ def main():
                     result['teacher_fidelity']['passed']
                 )
             )
+        if 'beats_teacher' in result:
+            beats = result['beats_teacher']
+            print(
+                '  vs. real solution: TENO5={:.6e}, NN-TENO5={:.6e}, '
+                'NN beats TENO5={}'.format(
+                    beats['teno5_error'],
+                    beats['nn_teno5_error'],
+                    beats['passed'],
+                )
+            )
+
+    beats_results = [
+        result['beats_teacher']['passed']
+        for result in results['problems'].values()
+        if 'beats_teacher' in result
+    ]
+    if beats_results:
+        print(
+            '\nBeats-real-solution tally: {}/{} benchmarks'.format(
+                sum(beats_results),
+                len(beats_results),
+            )
+        )
 
     print(
         '\nComparison written to {}'.format(

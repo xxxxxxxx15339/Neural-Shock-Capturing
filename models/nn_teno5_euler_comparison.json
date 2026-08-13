@@ -35,7 +35,7 @@
         "minimum_pressure": 1.0,
         "positive_density": true,
         "positive_pressure": true,
-        "runtime_seconds": 4.113030738997622
+        "runtime_seconds": 3.981093102003797
       },
       "teno5": {
         "conservation_error": [
@@ -58,10 +58,16 @@
         "minimum_pressure": 1.0,
         "positive_density": true,
         "positive_pressure": true,
-        "runtime_seconds": 1.0442707789989072
+        "runtime_seconds": 0.9267037030003848
       }
     },
     "shu_osher": {
+      "beats_teacher": {
+        "metric": "density_l1",
+        "nn_teno5_error": 0.07307967474442598,
+        "passed": true,
+        "teno5_error": 0.07344873495287206
+      },
       "cells": 120,
       "final_time": 1.8,
       "max_teacher_difference": 0.3508852491640493,
@@ -83,7 +89,7 @@
         "positive_density": true,
         "positive_pressure": true,
         "pressure_overshoot": 0.013300733873121473,
-        "runtime_seconds": 13.575255157003994,
+        "runtime_seconds": 13.0865570820024,
         "shock_location": 7.416666666666667,
         "shock_location_error": 0.0
       },
@@ -111,12 +117,18 @@
         "positive_density": true,
         "positive_pressure": true,
         "pressure_overshoot": 0.0004570956769782697,
-        "runtime_seconds": 3.554721704000258,
+        "runtime_seconds": 3.4983606720052194,
         "shock_location": 7.416666666666667,
         "shock_location_error": 0.0
       }
     },
     "sod": {
+      "beats_teacher": {
+        "metric": "density_l1",
+        "nn_teno5_error": 0.005532622244770515,
+        "passed": true,
+        "teno5_error": 0.005596242833947094
+      },
       "cells": 120,
       "final_time": 0.2,
       "max_teacher_difference": 0.007145937513733158,
@@ -138,7 +150,7 @@
         "positive_density": true,
         "positive_pressure": true,
         "pressure_overshoot": 2.7755575615628914e-17,
-        "runtime_seconds": 6.783822134995717,
+        "runtime_seconds": 6.742703859003086,
         "shock_location": 0.85,
         "shock_location_error": 0.008333333333333304
       },
@@ -166,7 +178,7 @@
         "positive_density": true,
         "positive_pressure": true,
         "pressure_overshoot": 2.7755575615628914e-17,
-        "runtime_seconds": 1.724822217001929,
+        "runtime_seconds": 1.7390393769965158,
         "shock_location": 0.85,
         "shock_location_error": 0.008333333333333304
       }
@@ -196,7 +208,7 @@
         "minimum_pressure": 1.0,
         "positive_density": true,
         "positive_pressure": true,
-        "runtime_seconds": 5.300515426999482
+        "runtime_seconds": 5.4579579179990105
       },
       "teno5": {
         "conservation_error": [
@@ -219,7 +231,7 @@
         "minimum_pressure": 1.0,
         "positive_density": true,
         "positive_pressure": true,
-        "runtime_seconds": 1.440275990004011
+        "runtime_seconds": 1.4010393339995062
       }
     }
   },
