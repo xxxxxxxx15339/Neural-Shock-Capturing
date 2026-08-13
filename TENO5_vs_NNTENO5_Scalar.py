@@ -54,6 +54,15 @@ def parse_args():
         type=float,
         default=1.02,
     )
+    parser.add_argument(
+        '--save-dir',
+        default='models/nn_teno5_scalar_comparison_plots',
+        help=(
+            'Directory to save each figure as a PNG. Pass an empty string '
+            "('') to disable saving."
+        ),
+    )
+    parser.add_argument('--no-show', action='store_true')
     return parser.parse_args()
 
 
@@ -700,12 +709,27 @@ def main():
             os.path.abspath(args.output_path)
         )
     )
-    print(
-        'Displaying {} interactive plot windows. '
-        'Close the windows to exit.'.format(len(figures)),
-        flush=True,
-    )
-    plt.show()
+
+    if args.save_dir:
+        os.makedirs(args.save_dir, exist_ok=True)
+        figure_names = [
+            problem['name']
+            for problem, _ in problem_plot_data
+        ] + ['teno5_nn_teno5_overview']
+        for name, figure in zip(figure_names, figures):
+            path = os.path.join(args.save_dir, name + '.png')
+            figure.savefig(path, dpi=130)
+            print('saved {}'.format(path))
+
+    if not args.no_show:
+        print(
+            'Displaying {} interactive plot windows. '
+            'Close the windows to exit.'.format(len(figures)),
+            flush=True,
+        )
+        plt.show()
+    else:
+        plt.close('all')
 
 
 if __name__ == '__main__':

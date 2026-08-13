@@ -8,6 +8,7 @@ import time
 
 os.environ.setdefault('TF_CPP_MIN_LOG_LEVEL', '2')
 
+import matplotlib.pyplot as plt
 import numpy as np
 from keras.models import load_model
 
@@ -63,6 +64,15 @@ def parse_args():
         type=float,
         default=1.02,
     )
+    parser.add_argument(
+        '--save-dir',
+        default='models/nn_teno5_euler_comparison_plots',
+        help=(
+            'Directory to save each figure as a PNG. Pass an empty string '
+            "('') to disable saving."
+        ),
+    )
+    parser.add_argument('--no-show', action='store_true')
     return parser.parse_args()
 
 
@@ -272,6 +282,12 @@ def run_reference_case(
         fidelity_factor
         * deterministic_metrics['density_l1']
     )
+    plot_data = {
+        'x': x,
+        'teno5': deterministic,
+        'nn_teno5': neural,
+        'reference': target,
+    }
     return name, {
         'cells': cells,
         'final_time': final_time,
@@ -289,7 +305,38 @@ def run_reference_case(
                 <= fidelity_limit
             ),
         },
-    }
+    }, plot_data
+
+
+def plot_reference_case(name, plot_data):
+    x = plot_data['x']
+    reference_density, reference_velocity, reference_pressure = (
+        primitive_variables(plot_data['reference'])
+    )
+    teno5_density, teno5_velocity, teno5_pressure = primitive_variables(
+        plot_data['teno5']
+    )
+    nn_density, nn_velocity, nn_pressure = primitive_variables(
+        plot_data['nn_teno5']
+    )
+
+    figure, axes = plt.subplots(3, 1, sharex=True, figsize=(8, 9))
+    panels = (
+        (axes[0], 'Density', reference_density, teno5_density, nn_density),
+        (axes[1], 'Velocity', reference_velocity, teno5_velocity,
+         nn_velocity),
+        (axes[2], 'Pressure', reference_pressure, teno5_pressure,
+         nn_pressure),
+    )
+    for axis, ylabel, reference_values, teno5_values, nn_values in panels:
+        axis.plot(x, reference_values, 'k:', linewidth=2, label='Reference')
+        axis.plot(x, teno5_values, label='TENO5')
+        axis.plot(x, nn_values, '--', label='NN-TENO5')
+        axis.set_ylabel(ylabel)
+    axes[0].legend()
+    axes[-1].set_xlabel('x')
+    figure.suptitle(name)
+    return figure
 
 
 def main():
@@ -353,12 +400,14 @@ def main():
         )
         results['problems'][case_name] = result
 
+    figures = []
+
     print('Running Sod...', flush=True)
     sod_x = (
         np.arange(args.cells, dtype=float)
         / args.cells
     )
-    case_name, result = run_reference_case(
+    case_name, result, plot_data = run_reference_case(
         'sod',
         sod(),
         None,
@@ -372,6 +421,7 @@ def main():
         args.fidelity_factor,
     )
     results['problems'][case_name] = result
+    figures.append(plot_reference_case(case_name, plot_data))
 
     print('Building Shu-Osher reference...', flush=True)
     shu_reference_x, shu_reference, _ = run_euler_benchmark(
@@ -383,7 +433,7 @@ def main():
         cfl=args.cfl,
     )
     print('Running Shu-Osher...', flush=True)
-    case_name, result = run_reference_case(
+    case_name, result, plot_data = run_reference_case(
         'shu_osher',
         shuOsher(),
         shu_reference_x,
@@ -397,6 +447,7 @@ def main():
         args.fidelity_factor,
     )
     results['problems'][case_name] = result
+    figures.append(plot_reference_case(case_name, plot_data))
 
     parent = os.path.dirname(args.output_path)
     if parent:
@@ -438,6 +489,18 @@ def main():
             os.path.abspath(args.output_path)
         )
     )
+
+    if args.save_dir:
+        os.makedirs(args.save_dir, exist_ok=True)
+        for name, figure in zip(('sod', 'shu_osher'), figures):
+            path = os.path.join(args.save_dir, name + '.png')
+            figure.savefig(path, dpi=130)
+            print('saved {}'.format(path))
+
+    if not args.no_show:
+        plt.show()
+    else:
+        plt.close('all')
 
 
 if __name__ == '__main__':
