@@ -70,6 +70,18 @@ def parse_args():
     )
 
     parser.add_argument(
+        '--labels-data',
+        default=None,
+        help=(
+            'Precomputed three-candidate label CSV (shape samples x 3), '
+            'e.g. an oracle-relabeled dataset from '
+            'GenerateTrainingData_TENOExact.py. When given, these labels '
+            'are used instead of generating deterministic TENO5 labels '
+            'from --input-data.'
+        ),
+    )
+
+    parser.add_argument(
         '--model-path',
         default='models/nn_teno5.h5',
     )
@@ -576,6 +588,45 @@ def validate_original_flux_file(path, sample_count):
 # Label generation
 # ---------------------------------------------------------------------------
 
+def _validate_label_array(labels, sample_count, source):
+    labels = np.asarray(
+        labels,
+        dtype=np.float32,
+    )
+
+    expected_shape = (
+        sample_count,
+        CANDIDATE_COUNT,
+    )
+
+    if labels.shape != expected_shape:
+        raise ValueError(
+            '{} label shape {} does not match expected shape {}.'
+            .format(
+                source,
+                labels.shape,
+                expected_shape,
+            )
+        )
+
+    if np.any(
+        (labels != 0.0)
+        & (labels != 1.0)
+    ):
+        raise ValueError(
+            '{} labels must contain only zero and one.'.format(source)
+        )
+
+    if not np.any(labels == 1.0):
+        raise ValueError(
+            'The {} produced no troubled-candidate labels. '
+            'Inspect the deterministic TENO cutoff and input data.'
+            .format(source)
+        )
+
+    return labels
+
+
 def generate_labels(stencils, args):
     """Generate three deterministic TENO5 troubled labels per stencil."""
 
@@ -587,40 +638,31 @@ def generate_labels(stencils, args):
         cutoff=args.teno_cutoff,
     )
 
-    labels = np.asarray(
+    return _validate_label_array(
         labels,
-        dtype=np.float32,
-    )
-
-    expected_shape = (
         len(stencils),
-        CANDIDATE_COUNT,
+        'Generated TENO5',
     )
 
-    if labels.shape != expected_shape:
-        raise ValueError(
-            'Generated label shape {} does not match expected shape {}.'
-            .format(
-                labels.shape,
-                expected_shape,
-            )
+
+def load_labels(path, sample_count):
+    """Load precomputed three-candidate labels from a CSV file."""
+
+    if not os.path.isfile(path):
+        raise IOError(
+            'Labels file does not exist: {}'.format(path)
         )
 
-    if np.any(
-        (labels != 0.0)
-        & (labels != 1.0)
-    ):
-        raise ValueError(
-            'Generated TENO labels must contain only zero and one.'
-        )
+    labels = np.loadtxt(
+        path,
+        delimiter=',',
+    )
 
-    if not np.any(labels == 1.0):
-        raise ValueError(
-            'The dataset produced no troubled-candidate labels. '
-            'Inspect the deterministic TENO cutoff and input data.'
-        )
-
-    return labels
+    return _validate_label_array(
+        labels,
+        sample_count,
+        'Precomputed ({})'.format(path),
+    )
 
 
 def label_mask_codes(labels):
@@ -1224,15 +1266,24 @@ def main():
         flush=True,
     )
 
-    print(
-        'Generating deterministic TENO5 classifier labels...',
-        flush=True,
-    )
-
-    labels = generate_labels(
-        raw_stencils,
-        args,
-    )
+    if args.labels_data:
+        print(
+            'Loading precomputed labels: {}'.format(args.labels_data),
+            flush=True,
+        )
+        labels = load_labels(
+            args.labels_data,
+            len(raw_stencils),
+        )
+    else:
+        print(
+            'Generating deterministic TENO5 classifier labels...',
+            flush=True,
+        )
+        labels = generate_labels(
+            raw_stencils,
+            args,
+        )
 
     print_label_statistics(
         labels,
@@ -1532,6 +1583,11 @@ def main():
             'note': (
                 'Original scalar flux targets were validated but not used '
                 'as classifier labels.'
+            ),
+            'labels_source': (
+                os.path.abspath(args.labels_data)
+                if args.labels_data
+                else 'generated_from_deterministic_teno5'
             ),
         },
 
