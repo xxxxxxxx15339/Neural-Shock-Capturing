@@ -1,0 +1,61 @@
+If the goal is to represent u, why do we study the flux f(u) ? 
+
+  1. Definitions: 
+    u is the quatity we want to know, but the PDE tells us that u changes because a flux f(u) moves it from one cell to another  
+
+  2. Start from the actual PDE 
+    A conservative law has the form 
+        ∂u/∂t + ∂f(u)/∂x = 0 
+
+    There are two objects here: 
+      + u: the physical quantity we care about; 
+      + f(u): how that quantity is transported throught space 
+
+  3. Why can't we just evolve u directly? 
+    Because the PDE does not tell us something like: 
+      u^n+1 = u^n + some arbitrary number 
+    It tells us:  
+      ut = -f(u)x 
+    In words: 
+      The time change of u is determined by spatial changes in the flux 
+
+
+    So u is how much exists locally and f(u) tells us how much is moving through a boundary 
+
+  4. Numerical Flux 
+    Instead of using only one state, we define
+      f^ j+1/2 = F(u^L, u^R)
+    where F is called a numerical flux function.
+    It receives both reconstructed states: u^L, u^R 
+    the hat basically means numerical approximation to the interface flux 
+
+
+  5. Connect back to WENO: 
+    Step 1 - We have cell averages 
+    Step 2 - WENO reconstructs interface states 
+    Step 3 - The numerical flux uses those states 
+    Step 4 - Fluxes update the quantity we actually care about 
+    Step 5 - After a time step: u(ˉn)j --> u(ˉn+1)j Then repeat
+
+  6. Explanation of the Fluxes update the quantity we actually care about: 
+    Suppose at time t, the cell contains 10 kg of material.
+
+    During the next second:
+      3 kg enter from the left;
+      1 kg leaves from the right.
+
+    Then after one second:
+      10+3−1=12 kg.
+
+    Obviously the amount inside the cell has changed.
+    That is literally what the finite-volume method is doing.
+
+
+  Key Takeaway: 
+    - observe/represent the state at t → calculate fluxes → predict how the state changes → obtain the state at t+Δt
+    - RK3 is the time-stepping method in that chain. WENO/TENO tell us what is happening in space; RK3 tells us how to use that information to move the numerical solution forward in time.
+    - WENO/TENO = spatial discretization/reconstruction
+    - RK3 = time integration
+    - My description: 
+
+    WENO/TENO look at the current spatial state and reconstruct the boundaries. The numerical flux tells us how quantities are currently moving between cells. RK3 repeatedly reevaluates this movement at intermediate states and combines those evaluations to estimate the state at the next time.

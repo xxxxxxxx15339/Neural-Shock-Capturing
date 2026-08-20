@@ -1,0 +1,113 @@
+Why do we use Cell Averages instead of Point values? :
+  1. In reality, the physical quatity exists everywhere, imagine density in a tube st some time t:           ρ=ρ(x,t) 
+  Physically, density has a value at every position x: 
+
+     density
+      ^
+      |               .
+      |            .
+      |         .
+      |      .
+      |   .
+      +------------------------> x
+  For example: 
+        ρ(0.1,t)=1.2,       ρ(0.1001,t)=1.2004,
+  There are infinitly many positions. 
+
+
+  2. An Experiment might indeed give you point measurements! 
+   Suppose we have sensors: 
+
+              sensor       sensor       sensor
+                ↓            ↓            ↓
+      ----------●------------●------------●--------- x
+                x1           x2           x3
+  Then we might record: 
+    ρ(x1,t)=1.1,    ρ(x2,t)=1.5,    ρ(x3,t)=1.8.
+
+  Those are approximately pointwise measurements 
+  ==> So Experimental data can absolutely come as values at a particular positions. 
+
+
+  3. Finite volume deliberately changes the representation
+    Finite volume divides the domain into regions:  
+
+                 cell j
+            <--------------->
+     -------|---------------|-------
+          x_{j-1/2}       x_{j+1/2} 
+
+    And then constructs the Cell average 
+
+
+  4. Why would we intentionally use an average? 
+    Because conservative laws are fundamentally about amounts inside volumes 
+    Take density as an exmaple: 
+      Density means approximately : ρ=volume/mass 
+      For a cell of size Δx, the mass contained in that cell is: 
+                        mj = ∫(Ij) ρ(x,t)dx
+      Therefore: 
+                        ρ^j = mj/Δx 
+      This is the Key
+
+      This matches the conservation law naturally:
+        change of mass inside cell = mass entering − mass leaving. 
+
+  5. Very important: There are two different CFD families here 
+
+    +Finite Difference: 
+      A finite-difference method may store approximately:
+                    uj(t)≈u(xj,t).
+      So: 
+               ●          ●          ●
+              u_j-1      u_j        u_j+1
+
+    +Finite Volume: 
+      A finite-volume method stores:
+                    u^j = 1/Δx ∫(Ij) u(x,t)dx 
+      So: 
+             average       average       average
+           __________    __________    __________
+          |          |  |          |  |          |
+          |  ubar_j-1|  |  ubar_j  |  | ubar_j+1 |
+          |__________|  |__________|  |__________| 
+
+
+
+  That is why finite volume is extremely natural for:
+        fluid dynamics;
+        shocks;
+        conservation laws.
+
+  6. We usually reconstruct two point values at each interface: 
+    At
+          xj+1/2 
+    We reconstruct a value coming from the left: 
+          u^L j+1/2
+    and another coming from the right: 
+          u^R j+1/2
+    So: 
+              x_{j+1/2}
+                 │
+        cell j   │   cell j+1
+                 │
+             uᴸ  │  uᴿ
+                 │
+    Why two? 
+      Because if the solution is smooth, 
+        u^L j+1/2 ≈ u^R j+1/2
+      But if there is a shock, 
+        u^L j+1/2 != u^R j+1/2
+
+    We want to preserve that difference because the physical solution is discontinuous.
+    Then these two reconstructed point values are passed to the numerical flux/Riemann solver:
+        (u^L, u^R) --> f^ j+1/2
+    And then the flux is then used to update the cell averages. 
+
+
+
+  Key Takeaways: 
+    
+  sensor measurements --> estimate cell averages --> finite-volume solver  
+  WENO/ENO/TENO = algorithms that process the Cell averages 
+
