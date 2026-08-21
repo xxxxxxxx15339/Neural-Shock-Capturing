@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Phase 5: proj.pdf's Unrolled Physics Loss (Equations 5-8).
+"""Phase 5: the Unrolled Physics Loss proposal's loss function (Equations 5-8).
 
     L_total = lambda1*L_MSE + lambda2*L_TV + lambda3*L_BVD + lambda4*L_Reg
 
@@ -8,7 +8,7 @@ state after K SSPRK3 steps -- see `numerics_jax.rollout`), so all four are
 differentiable w.r.t. whatever produced that state (network weights, via
 `teno5_soft_reconstruct_jax` and `project_keep_weight`).
 
-Two of proj.pdf's four terms have a direct formula (Eq. 6, 8); the other
+Two of the Unrolled Physics Loss proposal's four terms have a direct formula (Eq. 6, 8); the other
 two need a documented reading, same policy as feature_vector.py's caveats:
 
 - L_TV (Eq. 7) has a formula but an implicit assumption worth stating: the
@@ -16,10 +16,10 @@ two need a documented reading, same policy as feature_vector.py's caveats:
   relative to the state the rollout started from. That makes it a soft TVD
   constraint (discourage new oscillations), not a hard one (never
   guarantees TV cannot rise) -- say so if this gets reported as a result,
-  since "TV <= const" (proj.pdf's own Table 1 objective for the advection
+  since "TV <= const" (the Unrolled Physics Loss proposal's own Table 1 objective for the advection
   case) is a stronger claim than this loss term can make on its own.
 
-- L_BVD (Eq. 5) was named but never given a formula in proj.pdf itself.
+- L_BVD (Eq. 5) was named but never given a formula in the Unrolled Physics Loss proposal itself.
   Resolved directly by the professor, who pointed to the source: Sun,
   Inaba & Xiao (2016), "Boundary Variation Diminishing (BVD)
   reconstruction." Its boundary variation is BV(Phi)_{i+1/2} =
@@ -35,7 +35,7 @@ two need a documented reading, same policy as feature_vector.py's caveats:
   stencil forwards and reversed in place, which is a *different* (and
   wrong) quantity -- it compares a stencil to its own mirror image, not to
   its neighbor's own reconstruction. Corrected once the real definition
-  was available; see PROJ_IMPLEMENTATION_GUIDE.md Phase 5's status note.
+  was available; see UNROLLED_PHYSICS_LOSS_GUIDE.md Phase 5's status note.
 
 L_Reg (Eq. 8, `||c_NN - c_base||^2`) is implemented as a generic pytree L2
 distance via `jax.tree_util`, not hardcoded to the toy network's specific
@@ -74,12 +74,12 @@ def l_tv(final_state, initial_state, axis=0, normalize=False):
     `normalize=False` matches Eq. 7 literally (a raw sum, growing with grid
     size). `normalize=True` divides by the number of interior differences
     instead (mean absolute jump-of-jumps), which is what Phase 6's first
-    training run (see PROJ_IMPLEMENTATION_GUIDE.md Phase 6 status note)
+    training run (see UNROLLED_PHYSICS_LOSS_GUIDE.md Phase 6 status note)
     found was actually necessary: at CELLS=64, raw TV sits around 0.6-0.9
     while L_MSE sits around 0.01-0.02 -- a ~40-50x scale mismatch that, even
     after applying lambda_tv=0.1, still let L_TV dominate the gradient over
     L_MSE by roughly 4x, training the network to minimize total variation
-    over getting the answer right. This is a real gap in proj.pdf's own
+    over getting the answer right. This is a real gap in the Unrolled Physics Loss proposal's own
     Equation 7: it specifies TV's formula but says nothing about the scale
     mismatch between an unnormalized sum and the other (already
     small-and-bounded) loss terms, which any implementation will hit the
@@ -173,7 +173,7 @@ def unrolled_physics_loss(
     `l_bvd`'s docstring -- precomputed by the caller (scalar vs. Euler
     stencil-gathering differs), not recomputed here.
 
-    `positivity_penalty`/`lambda_positivity`: not one of proj.pdf's own
+    `positivity_penalty`/`lambda_positivity`: not one of the Unrolled Physics Loss proposal's own
     four terms -- added per the professor's clarification that an
     *isolated* positivity violation should be repaired (see
     `euler_jax.euler_positivity_repair`), while several *simultaneous*

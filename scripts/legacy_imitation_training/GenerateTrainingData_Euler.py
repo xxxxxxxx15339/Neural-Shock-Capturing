@@ -24,6 +24,11 @@ validation and testing can be separated by trajectory instead of by
 correlated individual stencil rows.
 """
 
+import os
+import sys as _sys
+
+_sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 import argparse
 import os
 

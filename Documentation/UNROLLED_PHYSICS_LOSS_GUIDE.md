@@ -1,6 +1,7 @@
-# Implementation Guide — proj.pdf ("Unrolled Physics Loss" WENO/TENO-NN)
+# Implementation Guide — the Unrolled Physics Loss proposal (WENO/TENO-NN)
 
-This is a step-by-step build plan for the professor's plan in `proj.pdf`. It follows the
+This is a step-by-step build plan for the Unrolled Physics Loss proposal, put forward by
+Radouan Boukharfane and implemented/tested here by Yasser Baouzil. It follows the
 same four ingredients the PDF lays out (input vector, dataset, unrolled physics loss,
 architecture/validation) but **reorders them by real dependency**, not by the PDF's
 numbering. The PDF's Étape 3 (differentiable rollout) is actually the load-bearing
@@ -17,13 +18,14 @@ highest-value work — do not skip the spike in Phase 0.
 
 ## Phase 0 — Feasibility spike (1–2 days, do this first)
 
-> **Status: done.** `DiffSpike_TENO5_Advection.py` (repo root) runs 6 checks: JAX-vs-NumPy
-> regression on a single reconstruction call and on a full 39-step rollout (both match to
-> float64 precision), a finite/nonzero gradient through a 117-substep rollout on a smooth
-> profile, the same check on a discontinuous profile (found and fixed a real NaN-gradient
-> bug along the way — see Phase 1 write-up), one gradient step reducing the loss, and a
-> 50-step training loop converging. All 6 pass. Run with
-> `conda run -n teno-jax python DiffSpike_TENO5_Advection.py`.
+> **Status: done.** `DiffSpike_TENO5_Advection.py` (`scripts/unrolled_physics_loss/`) runs 6
+> checks: JAX-vs-NumPy regression on a single reconstruction call and on a full 39-step
+> rollout (both match to float64 precision), a finite/nonzero gradient through a
+> 117-substep rollout on a smooth profile, the same check on a discontinuous profile
+> (found and fixed a real NaN-gradient bug along the way — see Phase 1 write-up), one
+> gradient step reducing the loss, and a 50-step training loop converging. All 6 pass.
+> Run with
+> `conda run -n teno-jax python scripts/unrolled_physics_loss/DiffSpike_TENO5_Advection.py`.
 
 **Goal:** answer "can I even backpropagate through a TENO5 reconstruction + RK3 step?"
 before committing to a rewrite. This is the single biggest unknown in the whole plan.
@@ -55,7 +57,7 @@ Phase 1–4 work.
 > tensor-op-with-autograd idioms; TensorFlow/Keras is a non-starter because this repo
 > pins **standalone Keras 2.2.4** (`src/networks/TenoNetworks.py` uses `keras.optimizers`,
 > not `tf.keras`), which has no autodiff-through-a-custom-solver story at all. A compact
-> 3-layer/32-neuron MLP (proj.pdf Étape 4) is about 15 lines of `jax` code — you don't
+> 3-layer/32-neuron MLP (the Unrolled Physics Loss proposal Étape 4) is about 15 lines of `jax` code — you don't
 > need Flax/Haiku for something this small.
 
 ---
@@ -81,7 +83,7 @@ a correctness oracle.
   `getEulerFlux` (`src/core/eulerEquations.py:16,55,79`) — needed for the Euler test
   cases in the validation matrix (Sod/Lax/Sedov).
 - **New module**: `src/core/TimeSteppingMethods_jax.py` porting `SSPRK3`
-  (`src/core/TimeSteppingMethods.py:29`) — this is the RK3-TVD integrator proj.pdf's
+  (`src/core/TimeSteppingMethods.py:29`) — this is the RK3-TVD integrator the Unrolled Physics Loss proposal's
   Équation 4 calls for; it already exists in this repo, it just needs a JAX-traceable
   step loop (replace the Python `for` over timesteps with `jax.lax.scan` so `jax.grad`
   can differentiate through the whole rollout without unrolling in Python).
@@ -142,7 +144,7 @@ when `value_range == 0` the numerator is also exactly 0, so the substituted 1.0 
 already gives the right forward value with no separate select needed, and there's no
 untaken branch left to poison the gradient. This is the standard "double where" pattern for
 avoiding NaN gradients in JAX, and it's the reason Phase 0's spike script tests a
-discontinuous profile at all, not just the smooth one proj.pdf's own example (Sod) would
+discontinuous profile at all, not just the smooth one the Unrolled Physics Loss proposal's own example (Sod) would
 have exercised only near the shock — a smooth-only test would have shipped this bug
 silently, since it does not corrupt anything on smooth data.
 
@@ -207,7 +209,7 @@ guide's own Phase 0 instruction to find out what's *needed* before building furt
 > where the input allows it — see below). Validated on the real 75,000-row oracle dataset
 > (`data/teno5ExactStencils.csv`): no NaNs, `u_normalized` matches the existing
 > normalization exactly, all 11 tests in `tests/test_feature_vector.py` pass. Two things in
-> proj.pdf's own Équation 3 turned out to be underspecified enough that guessing silently
+> the Unrolled Physics Loss proposal's own Équation 3 turned out to be underspecified enough that guessing silently
 > would have been worse than flagging them — both are spelled out in the module's
 > docstring, summarized here:
 >
@@ -229,7 +231,7 @@ guide's own Phase 0 instruction to find out what's *needed* before building furt
 >    `GenerateTrainingData_TENOExact.py` already compute cell averages from a closed-form
 >    profile parameterized by cell center, so one more stencil offset is enough.
 
-Build proj.pdf's 9-value `X_j` (Équation 3) as a preprocessing function, not inside the
+Build the Unrolled Physics Loss proposal's 9-value `X_j` (Équation 3) as a preprocessing function, not inside the
 network. This is additive on top of what `GenerateTrainingData_TENOExact.py` already
 does.
 
@@ -244,7 +246,7 @@ does.
 
 Write this as `src/data/feature_vector.py` with a scalar-PDE version (7 features: no
 `M_j`, no `ΔP/P`) and a Euler version (all 9). Keep the classifier output unchanged
-(3 troubled-probabilities, sigmoid, BCE) — proj.pdf doesn't propose changing what the
+(3 troubled-probabilities, sigmoid, BCE) — the Unrolled Physics Loss proposal doesn't propose changing what the
 network predicts, only what it sees.
 
 > **Resolved: one shared network, not two, with an explicit `is_euler` flag.** Scalar and
@@ -292,15 +294,15 @@ design, not by oversight).
 > failure, that **the fix has to be architectural** (see point 3 below, and Phase 5's
 > unrolled-loss framing) — no amount of relabeling the current 5-point-stencil
 > representation will resolve information that genuinely isn't in the stencil.
-> **This is worth raising with the professor directly: proj.pdf's plan, as written, does
+> **This is worth raising with the professor directly: the Unrolled Physics Loss proposal's plan, as written, does
 > not have an answer for this, and "60% real-PDE data" is a substantial fraction of the
 > proposed training set to build on a representation with a measured >1/3 conflict
 > rate.**
 
 **The 40% synthetic slice is mostly done.** `GenerateTrainingData_TENOExact.py` already
 generates sine, double-sine, polynomial, step, kink families with closed-form cell
-averages and oracle labels — this *is* proj.pdf's "profils analytiques" bucket. Re-weight
-the family mix to match proj.pdf's description (steep discontinuities, sine waves,
+averages and oracle labels — this *is* the Unrolled Physics Loss proposal's "profils analytiques" bucket. Re-weight
+the family mix to match the Unrolled Physics Loss proposal's description (steep discontinuities, sine waves,
 smoothed pulses, Fourier–Chebyshev combinations) if you want a closer match; the
 generation machinery doesn't need to change.
 
@@ -309,7 +311,7 @@ read this before building it.** This project already tried "train on real high-r
 PDE solutions projected to a coarse grid" once, for WENO7-NN (`Results.md` Phase 2,
 referenced in the earlier oracle-dataset work): stencils that look nearly identical at
 the local level required genuinely different correct answers depending on **upstream
-wave history the network never sees** (non-identifiability). proj.pdf's 60% PDE bucket
+wave history the network never sees** (non-identifiability). the Unrolled Physics Loss proposal's 60% PDE bucket
 (advection, Shu-Osher, Sod/Lax/Woodward-Colella at N≥4096 projected to N∈[100,400]) is
 structurally the same setup.
 
@@ -349,7 +351,7 @@ Mitigations to build in, not optional polish:
 
 **Exit criterion:** a combined dataset (feature vectors from Phase 2, oracle labels) with
 the 40/60 split, plus a written conflict-rate number from the audit in step 2 — even if
-that number is bad, it's the answer proj.pdf's plan needs before scaling up data
+that number is bad, it's the answer the Unrolled Physics Loss proposal's plan needs before scaling up data
 generation further. **Met** — the number is bad (see status note above), and now it's a
 number, not a hunch.
 
@@ -367,7 +369,7 @@ number, not a hunch.
 > each call site (which is what the Phase 0 toy network did). `tests/test_projection_jax.py`
 > passes the exit criterion below, plus an explicit all-troubled-falls-back-to-center check.
 
-proj.pdf calls for a "hard constraint layer guaranteeing reconstruction consistency" but
+the Unrolled Physics Loss proposal calls for a "hard constraint layer guaranteeing reconstruction consistency" but
 doesn't specify what constraint. Concretely, for NN-TENO5 the only thing that needs
 guaranteeing is: **the candidate weights the network effectively selects must stay a
 valid convex combination consistent with the TENO fallback structure** (i.e. never all
@@ -397,12 +399,12 @@ to `1e-12`.
 > breakdown dict, for the logging Phase 6 needs during a λ sweep). `L_Reg` is a generic
 > `jax.tree_util`-based pytree L2 distance, not hardcoded to one network shape, so it
 > keeps working if Phase 6 swaps in a different architecture. `L_BVD` has no formula
-> anywhere in proj.pdf — of everything built across Phase 0-5, this is the single most
+> anywhere in the Unrolled Physics Loss proposal — of everything built across Phase 0-5, this is the single most
 > underspecified point in the whole document, more so than `c̃_WENO/TENO` in Phase 2. The
 > reading implemented (network's own interface jump penalized only when it *exceeds* the
 > deterministic TENO5 scheme's jump at that interface) is grounded in Phase 2's own BVD
 > jump construction, not invented from nothing, but it is a guess and should be confirmed
-> before any result built on it gets reported as validating proj.pdf's design.
+> before any result built on it gets reported as validating the Unrolled Physics Loss proposal's design.
 > `tests/test_losses_jax.py` (4/4 passing) verifies all four terms are finite on a real
 > Phase 1 rollout, `L_Reg` is exactly zero at the anchor and positive away from it, and
 > `jax.grad(L_total)` returns finite, nonzero gradients.
@@ -415,7 +417,7 @@ output:
   means it only penalizes *increases* in total variation, i.e. it's a soft TVD
   constraint, not a hard one — say so explicitly if reporting this later, since it will
   not by itself guarantee no new oscillations.
-- `L_BVD`: proj.pdf doesn't give this term's formula (only names it) — the natural
+- `L_BVD`: the Unrolled Physics Loss proposal doesn't give this term's formula (only names it) — the natural
   definition consistent with the rest of the doc is the interface-jump term `J_{j+1/2}`
   from Phase 2, penalized when it exceeds the deterministic TENO5 scheme's own jump at
   the same interface. Confirm this reading before implementing since it's the one
@@ -440,7 +442,7 @@ deterministic baseline was what fixed it.
 > **Status: scalar path — real positive result (2/3 beats_teacher). Euler path — trains,
 > but a genuine numerical instability blocks it, root-caused but not solved.** This is the
 > single most important section in this whole document — it's the first real test of
-> whether proj.pdf's core idea (train via a K-step unrolled physics loss) actually beats
+> whether the Unrolled Physics Loss proposal's core idea (train via a K-step unrolled physics loss) actually beats
 > TENO5, not just whether it's implementable. Full account below; `Train_NNTENO5_UnrolledJAX.py`
 > and `Train_NNTENO5euler_UnrolledJAX.py` are the scripts, both runnable via
 > `conda run -n teno-jax python -u <script>`.
@@ -453,7 +455,7 @@ deterministic baseline was what fixed it.
 > | 2 | normalized `L_TV`/`L_Reg` (mean, not sum) | loses (0.147 vs 0.118) | loses (0.182 vs 0.125) | loses badly (0.044 vs 0.0048) | 0/3 |
 > | 3 | + imitation-pretrain first, anchor to that (not to random init) | **beats** (0.115 vs 0.118) | **beats** (0.116 vs 0.125) | near-tie (0.0049 vs 0.0048, ~3.5% worse) | **2/3** |
 >
-> Run 1→2 diagnoses a real, generalizable bug: proj.pdf's Eq. 7 (`L_TV`, a raw sum) and
+> Run 1→2 diagnoses a real, generalizable bug: the Unrolled Physics Loss proposal's Eq. 7 (`L_TV`, a raw sum) and
 > Eq. 8 (`L_Reg`, a raw sum) both grow with grid size / parameter count, while Eq. 6
 > (`L_MSE`, a mean) doesn't — at `CELLS=64` this let `L_TV` dominate the gradient by
 > roughly 4x even after its 0.1 weight, training the network to minimize total variation
@@ -474,10 +476,10 @@ deterministic baseline was what fixed it.
 > trained rollout horizon (never seen during training), with the third (smooth sine) a
 > near-tie rather than a 10x loss.
 >
-> **This is a real, if narrow, positive result for proj.pdf's central claim**, on the
+> **This is a real, if narrow, positive result for the Unrolled Physics Loss proposal's central claim**, on the
 > scalar advection case specifically: an unrolled-physics-loss-trained network that beats
 > the deterministic scheme against the real (exact) solution, on held-out problems,
-> including beyond the training horizon. It required a fix proj.pdf's own plan doesn't
+> including beyond the training horizon. It required a fix the proposal itself doesn't
 > mention (imitation-pretrain first) and a loss-scaling fix its literal equations don't
 > account for (normalize `L_TV`/`L_Reg`) — both are now documented, reusable findings, not
 > guesses.
@@ -528,7 +530,7 @@ deterministic baseline was what fixed it.
 > created (a "circuit breaker"), which is a real, nontrivial mechanism to build correctly,
 > not a one-line patch. **Recommendation for the professor**: training NN-TENO5-style
 > networks for systems of conservation laws via an unrolled physics loss has a real,
-> substantive stability risk beyond what proj.pdf's plan anticipates — positivity
+> substantive stability risk beyond what the Unrolled Physics Loss proposal's plan anticipates — positivity
 > preservation (which Table 1 already asks for, as an *evaluation* criterion) turns out to
 > also be a *training-time* prerequisite, not just an outcome to check afterward. Options
 > worth discussing: a curriculum (train on mild Riemann problems first, only gradually
@@ -576,7 +578,7 @@ optimizer state, not a meaningful result — see status note).
 
 > **Status: run, and the result adds a real, important nuance to Phase 6's positive
 > finding.** `ValidationMatrix_ProjPDF.py` runs the run3_pretrained network from Phase 6
-> against canonical versions of proj.pdf's own test problems (a fixed-width step profile
+> against canonical versions of the Unrolled Physics Loss proposal's own test problems (a fixed-width step profile
 > over `final_time=1.0`, and Burgers 1D pre-shock) rather than the same held-out-but
 > similar random profiles Phase 6's evaluation used. Result: **it loses to deterministic
 > TENO5 on both** — Advection L2 0.140 vs. TENO5's 0.099; Burgers (explicitly
@@ -593,7 +595,7 @@ optimizer state, not a meaningful result — see status note).
 > time-horizon to what it trained on, and generalizes some way past that (3x K, Phase 6),
 > but this pass found no evidence it generalizes to canonical benchmark-scale problems
 > without being trained closer to that scale/scope. A production Phase 6 would need to
-> train on a K and problem-shape distribution that actually spans proj.pdf's Table 1 cases,
+> train on a K and problem-shape distribution that actually spans the Unrolled Physics Loss proposal's Table 1 cases,
 > not treat Table 1 as a pure hold-out set for a narrower training distribution.
 >
 > Shu-Osher and Sod (Euler) rows are **not evaluated for NN-TENO5euler** — reported
@@ -602,10 +604,10 @@ optimizer state, not a meaningful result — see status note).
 > TENO5euler's own behavior on these is already established elsewhere (Results.md;
 > Phase 1's regression tests, matching real NumPy to `5.5e-11`).
 
-Map proj.pdf's benchmark table directly onto existing scripts, extending each with the
+Map the Unrolled Physics Loss proposal's benchmark table directly onto existing scripts, extending each with the
 metric the PDF asks for:
 
-| proj.pdf test case | Metric | Existing script to extend |
+| the Unrolled Physics Loss proposal test case | Metric | Existing script to extend |
 |---|---|---|
 | Advection Linéaire | L1/L2 error, shock width, TV ≤ const | `WENO5_vs_WENO5NN_StepAdvection.py`, `Evaluate_WENO5NN_StepAdvection.py` |
 | Burgers 1D | error spectrum vs Δx, shock-speed conservation | `WENO5_vs_WENO5NN_Burgers.py` (already has multi-resolution sweep data — see Results.md Phase 1) |
@@ -614,12 +616,12 @@ metric the PDF asks for:
 
 Every one of these must also pass the **existing** `beats_teacher` real-solution
 acceptance criterion (Results.md Phase 6: NN error vs. exact solution ≤ deterministic
-scheme's error vs. exact solution) — proj.pdf's table checks internal consistency
+scheme's error vs. exact solution) — the Unrolled Physics Loss proposal's table checks internal consistency
 (positivity, TV, spectral peaks) but not "did this get closer to the truth than TENO5
 already does," which per your own framing earlier in this project is the actual bar that
-matters. Don't drop that check just because proj.pdf's table doesn't ask for it.
+matters. Don't drop that check just because the Unrolled Physics Loss proposal's table doesn't ask for it.
 
-**Exit criterion:** a results table with one row per test case, both proj.pdf's own
+**Exit criterion:** a results table with one row per test case, both the Unrolled Physics Loss proposal's own
 metric and the `beats_teacher` win/tie/loss column, written to `Results.md` as a new
 Phase entry — matching the format already used for Phases 5–9. **Met** — see Results.md
 Phase 10, and the status note above for the two rows that couldn't be filled in.

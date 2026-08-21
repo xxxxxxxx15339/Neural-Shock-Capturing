@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Phase 4 projection layer: network troubled-probability -> keep_weight.
 
-PROJ_IMPLEMENTATION_GUIDE.md's Phase 4 asks for a layer "guaranteeing
+UNROLLED_PHYSICS_LOSS_GUIDE.md's Phase 4 asks for a layer "guaranteeing
 reconstruction consistency." The guarantee that actually matters for
 NN-TENO5 -- never combining candidates in a way that produces an undefined
 or unstable result -- was already built as part of Phase 1, not deferred to
@@ -9,7 +9,7 @@ here: `combine_teno_candidates_jax` (teno5_jax.py) falls back to the
 stencil's center value whenever every candidate's `keep_weight` is zero
 (or, for a soft/continuous `keep_weight`, whenever their sum is), for any
 `keep_weight` in [0, 1], hard or soft alike. That is the whole "projection"
-proj.pdf's Etape 4 is describing, applied uniformly rather than bolted on
+the Unrolled Physics Loss proposal's Etape 4 is describing, applied uniformly rather than bolted on
 separately -- see `teno5_soft_reconstruct_jax`'s docstring.
 
 What this module adds is not new math, it's a single, explicit,

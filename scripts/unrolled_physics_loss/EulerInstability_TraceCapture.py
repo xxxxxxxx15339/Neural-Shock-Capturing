@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Capture the Euler training-instability trace referenced in
-PROJ_IMPLEMENTATION_GUIDE.md's Phase 6 status note and Results.md Phase 10,
+UNROLLED_PHYSICS_LOSS_GUIDE.md's Phase 6 status note and Results.md Phase 10,
 for plotting (plots/04_euler_instability.png). Reruns the same steep (~p=9)
 held-out-batch example that first exposed the instability, at several
 Lax-Friedrichs alpha safety margins, and records max density per SSPRK3
@@ -17,8 +17,14 @@ change what this script measures and invalidate the plot it documents.
 
 Run inside `teno-jax`:
 
-    conda run -n teno-jax python -u EulerInstability_TraceCapture.py
+    conda run -n teno-jax python -u scripts/unrolled_physics_loss/EulerInstability_TraceCapture.py
 """
+
+import os
+import sys as _sys
+
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+_sys.path.insert(0, _REPO_ROOT)
 
 import csv
 
@@ -84,7 +90,7 @@ def get_euler_flux_with_margin(reconstruct, boundary='transmissive', alpha_margi
     return full_flux
 
 
-with open('models/nn_teno5_unrolled_jax_params_run3_pretrained.pkl', 'rb') as f:
+with open(os.path.join(_REPO_ROOT, 'models', 'nn_teno5_unrolled_jax_params_run3_pretrained.pkl'), 'rb') as f:
     loaded = pickle.load(f)
 params = [(jnp.asarray(w), jnp.asarray(b)) for w, b in loaded]
 
@@ -111,7 +117,7 @@ for margin in [1.0, 1.5, 2.0, 3.0, 5.0]:
         if not finite:
             break
 
-with open('models/euler_instability_trace.csv', 'w', newline='') as f:
+with open(os.path.join(_REPO_ROOT, 'models', 'euler_instability_trace.csv'), 'w', newline='') as f:
     writer = csv.DictWriter(f, fieldnames=['alpha_margin', 'step', 'max_density', 'finite'])
     writer.writeheader()
     writer.writerows(rows)

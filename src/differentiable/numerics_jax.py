@@ -102,7 +102,7 @@ def ssprk3_step(u, flux_fn, dt, dx, state_guard=None):
     parameter applied the guard only between full `ssprk3_step` calls, and
     Euler training still went to NaN at step 0 with it in place, because
     the NaN was coming from an unguarded u1/u2 inside a single step -- see
-    PROJ_IMPLEMENTATION_GUIDE.md's Phase 6/7 status note for the full
+    UNROLLED_PHYSICS_LOSS_GUIDE.md's Phase 6/7 status note for the full
     diagnosis trail.
     """
     def guard(v):
@@ -165,7 +165,7 @@ def rollout(u0, flux_fn, dt, dx, steps, state_guard=None):
     irrecoverably (`eulerSimulation._validate_state`, SimulationClasses.py:65,
     raises on exactly this in the NumPy path -- `jax.lax.scan` can't raise
     mid-trace, so this is the differentiable equivalent
-    PROJ_IMPLEMENTATION_GUIDE.md's Phase 1 anticipated). Pass
+    UNROLLED_PHYSICS_LOSS_GUIDE.md's Phase 1 anticipated). Pass
     `euler_jax.euler_positivity_guard` for Euler training.
     """
 

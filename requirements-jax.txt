@@ -1,4 +1,4 @@
-# Isolated environment for src/differentiable/ (proj.pdf Phase 0/1 spike).
+# Isolated environment for src/differentiable/ (Unrolled Physics Loss proposal, Phase 0/1 spike).
 # Deliberately NOT merged into requirements.txt: that file pins Keras 2.2.4 /
 # TensorFlow 1.15 / NumPy 1.18.5, which cannot coexist with a modern JAX
 # install in one environment. See src/differentiable/__init__.py.

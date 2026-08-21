@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Phase 0 feasibility spike (PROJ_IMPLEMENTATION_GUIDE.md, Phase 0/1).
+"""Phase 0 feasibility spike (UNROLLED_PHYSICS_LOSS_GUIDE.md, Phase 0/1).
 
 Two questions, in order:
 
@@ -17,8 +17,13 @@ Run inside the `teno-jax` conda environment (jax + numpy + matplotlib only,
 kept separate from the repo's pinned legacy Keras 2.2.4 / numpy 1.18.5
 `weno-nn` environment used for training the real NN-TENO5 model):
 
-    conda run -n teno-jax python DiffSpike_TENO5_Advection.py
+    conda run -n teno-jax python scripts/unrolled_physics_loss/DiffSpike_TENO5_Advection.py
 """
+
+import os
+import sys as _sys
+
+_sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 import jax
 
@@ -194,7 +199,7 @@ print('PASS' if part2_pass else 'FAIL')
 # discontinuity, TENO5's three third-order candidates nearly agree, so the
 # keep_weight the toy network assigns barely changes the output, and the
 # gradients in Part 2 above are correspondingly tiny (~1e-9). That is exactly
-# where proj.pdf's plan does NOT need help: WENO/TENO already agree with
+# where the Unrolled Physics Loss proposal's plan does NOT need help: WENO/TENO already agree with
 # each other and with the exact solution on smooth data. The regime that
 # actually matters -- and that an NN-TENO5-style network exists to handle --
 # is near a discontinuity, where candidate choice changes the answer a lot.

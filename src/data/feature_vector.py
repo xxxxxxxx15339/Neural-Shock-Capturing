@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""proj.pdf Etape 1 feature vector (Equations 1-3), built on the existing
+"""the Unrolled Physics Loss proposal Etape 1 feature vector (Equations 1-3), built on the existing
 TENO5 building blocks in src/schemes/teno5.py and src/schemes/teno_common.py.
 
 X_j = [u_s, c~_WENO/TENO, eta_0, eta_1, eta_2, J_{j-1/2}, J_{j+1/2}, M_j, |dP|/P]
@@ -12,11 +12,11 @@ JAX-free means it can be imported from any of this repo's four environments
 (base, weno-nn, zero-to-hero, teno-jax) with no install friction, matching
 the same reasoning as src/differentiable/__init__.py's package split.
 
-One thing in proj.pdf's own spec was underspecified and has since been
+One thing in the Unrolled Physics Loss proposal's own spec was underspecified and has since been
 resolved by the professor directly; one remains an approximation, now with
 a precise (rather than vague) description of what it approximates:
 
-1. "c~_WENO/TENO" (Equation 3) never got a formula in proj.pdf, only a
+1. "c~_WENO/TENO" (Equation 3) never got a formula in the Unrolled Physics Loss proposal, only a
    name. Confirmed directly by the professor: it is c_k/d_k, the scheme's
    own optimal linear reconstruction weights -- exactly what
    `scheme_linear_weights` already returns here (`LINEAR_WEIGHTS`,
@@ -74,7 +74,7 @@ def _interface_jump(five_point_stencil, **teno_kwargs):
     stencil as given yields the state approaching this face from the left;
     reconstructing on the reversed stencil yields the state a mirrored
     scheme would assign approaching from the right. Their difference is
-    exactly the BVD "reconstruction jump" proj.pdf's J_{j+1/2} names.
+    exactly the BVD "reconstruction jump" the Unrolled Physics Loss proposal's J_{j+1/2} names.
     """
     left_state = teno5_reconstruct(five_point_stencil, **teno_kwargs)
     right_state = teno5_reconstruct(five_point_stencil[..., ::-1], **teno_kwargs)
@@ -82,7 +82,7 @@ def _interface_jump(five_point_stencil, **teno_kwargs):
 
 
 def scalar_feature_vector(window, epsilon=DEFAULT_EPSILON):
-    """proj.pdf Equation 3's X_j, scalar-PDE terms only (no Mach/pressure).
+    """Equation 3's X_j from the Unrolled Physics Loss proposal, scalar-PDE terms only (no Mach/pressure).
 
     Parameters
     ----------

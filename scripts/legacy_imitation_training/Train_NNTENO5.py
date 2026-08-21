@@ -10,6 +10,11 @@ labels are generated using deterministic TENO5 selection:
     1 = troubled candidate, discard it
 """
 
+import os
+import sys as _sys
+
+_sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 import argparse
 import datetime
 import hashlib

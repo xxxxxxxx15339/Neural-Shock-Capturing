@@ -21,6 +21,11 @@ history (see Results.md Phase 6 for why history-dependent problems like
 Riemann/shock-oscillation targets do not admit this kind of local oracle).
 """
 
+import os
+import sys as _sys
+
+_sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 import argparse
 import itertools
 import json

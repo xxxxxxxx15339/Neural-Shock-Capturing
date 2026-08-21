@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 """Compare classical WENO5 Euler with its neural-network reconstruction."""
 
+import os
+import sys as _sys
+
+_sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 import argparse
 import os
 
@@ -14,7 +19,7 @@ from src.core.SimulationClasses import eulerSimulation
 from src.core.TimeSteppingMethods import SSPRK3
 from src.core.eulerEquations import getEulerFlux, spds
 from src.initial_conditions.InitialConditions import sod
-from src.schemes import NNEuler7, WENO5euler
+from src.schemes import NNEuler5, WENO5euler
 
 
 def parse_args():
@@ -27,7 +32,7 @@ def parse_args():
     parser.add_argument('--cfl', type=float, default=0.35)
     parser.add_argument('--no-show', action='store_true')
     parser.add_argument(
-        '--save-dir', default='plots/sod_weno7nn',
+        '--save-dir', default='plots/sod',
         help=(
             'Directory to save each figure as a PNG. Pass an empty string '
             "('') to disable saving."
@@ -76,7 +81,7 @@ def main():
         args.final_time, args.cfl,
     )
     _, times_nn, history_nn = run_history(
-        lambda: NNEuler7(model), initial_condition, args.cells, 1.0,
+        lambda: NNEuler5(model), initial_condition, args.cells, 1.0,
         args.final_time, args.cfl,
     )
 
@@ -102,7 +107,7 @@ def main():
     figure, axes = plt.subplots(3, 1, sharex=True, figsize=(8, 9))
     for axis, (name, classical, neural, exact) in zip(axes, variables):
         axis.plot(x, classical, label='WENO5 Euler')
-        axis.plot(x, neural, '--', label='WENO7-NN')
+        axis.plot(x, neural, '--', label='WENO5 Euler-NN')
         axis.plot(x, exact, 'k:', linewidth=2, label='Sod exact')
         axis.set_ylabel(name)
         axis.grid(True, alpha=0.25)
@@ -117,7 +122,7 @@ def main():
     plt.plot(times_weno, discontinuity_width(density_history_weno, dx),
              label='WENO5 Euler')
     plt.plot(times_nn, discontinuity_width(density_history_nn, dx),
-             label='WENO7-NN')
+             label='WENO5 Euler-NN')
     plt.xlabel('t')
     plt.ylabel('Discontinuity Width')
     plt.legend()
@@ -125,7 +130,7 @@ def main():
     figure, axes = plt.subplots(1, 2, sharey=True, figsize=(11, 4))
     for axis, times, density, title in (
         (axes[0], times_weno, density_history_weno, 'WENO5 Euler'),
-        (axes[1], times_nn, density_history_nn, 'WENO7-NN'),
+        (axes[1], times_nn, density_history_nn, 'WENO5 Euler-NN'),
     ):
         image = axis.contourf(x, times, density, levels=40)
         axis.set_xlabel('x')
@@ -142,7 +147,7 @@ def main():
     plt.figure()
     error = np.sqrt(np.mean((density_history_weno-density_nn_common)**2,
                             axis=1))
-    plt.plot(times_weno, error, '.', label='WENO7-NN vs WENO5')
+    plt.plot(times_weno, error, '.', label='Euler-NN vs Euler')
     plt.xlabel('Time')
     plt.ylabel('L2 Error')
     plt.legend()
@@ -151,14 +156,14 @@ def main():
     plt.plot(times_weno, total_variation_history(density_history_weno),
              '.', label='WENO5 Euler')
     plt.plot(times_nn, total_variation_history(density_history_nn),
-             '.', label='WENO7-NN')
+             '.', label='WENO5 Euler-NN')
     plt.xlabel('Time')
     plt.ylabel('Total Variation')
     plt.legend()
 
     plt.figure()
     plt.plot(x, density_weno, label='WENO5 Euler')
-    plt.plot(x, density_nn, '--', label='WENO7-NN')
+    plt.plot(x, density_nn, '--', label='WENO5 Euler-NN')
     plt.plot(x, density_exact, 'k:', linewidth=2, label='Sod exact')
     plt.xlabel('x')
     plt.ylabel('Density')
@@ -175,7 +180,7 @@ def main():
         np.max(np.abs(solution_nn - solution_exact))
     ))
     print('WENO5 Euler final state shape = {}'.format(solution_weno.shape))
-    print('WENO7-NN final state shape = {}'.format(solution_nn.shape))
+    print('WENO5 Euler-NN final state shape = {}'.format(solution_nn.shape))
 
     if args.save_dir:
         os.makedirs(args.save_dir, exist_ok=True)

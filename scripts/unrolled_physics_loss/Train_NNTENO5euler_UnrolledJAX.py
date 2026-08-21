@@ -24,8 +24,14 @@ prediction.
 Run inside `teno-jax` (needs run3_pretrained's weights to exist -- run
 Train_NNTENO5_UnrolledJAX.py first):
 
-    conda run -n teno-jax python -u Train_NNTENO5euler_UnrolledJAX.py
+    conda run -n teno-jax python -u scripts/unrolled_physics_loss/Train_NNTENO5euler_UnrolledJAX.py
 """
+
+import os
+import sys as _sys
+
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+_sys.path.insert(0, _REPO_ROOT)
 
 import pickle
 import time
@@ -197,7 +203,7 @@ def evaluate_case(params, name, u0, exact, steps):
 
 
 def main():
-    with open('models/nn_teno5_unrolled_jax_params_run3_pretrained.pkl', 'rb') as f:
+    with open(os.path.join(_REPO_ROOT, 'models', 'nn_teno5_unrolled_jax_params_run3_pretrained.pkl'), 'rb') as f:
         loaded = pickle.load(f)
     params = [(jnp.asarray(w), jnp.asarray(b)) for w, b in loaded]
     anchor_params = params
@@ -236,7 +242,7 @@ def main():
             ))
     print('Training took {:.1f}s total'.format(time.perf_counter() - started))
 
-    with open('models/nn_teno5euler_unrolled_jax_params.pkl', 'wb') as f:
+    with open(os.path.join(_REPO_ROOT, 'models', 'nn_teno5euler_unrolled_jax_params.pkl'), 'wb') as f:
         pickle.dump([(np.asarray(w), np.asarray(b)) for w, b in params], f)
 
     print('\n' + '=' * 70)

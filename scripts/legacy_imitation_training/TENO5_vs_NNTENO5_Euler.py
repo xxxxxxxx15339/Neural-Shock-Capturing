@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 """Compare deterministic TENO5 and NN-TENO5 on Euler benchmarks."""
 
+import os
+import sys as _sys
+
+_sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 import argparse
 import json
 import os

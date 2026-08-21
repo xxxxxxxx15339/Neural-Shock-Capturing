@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""JAX ports used for the proj.pdf "unrolled physics loss" spike (Phase 0/1).
+"""JAX ports used for the the Unrolled Physics Loss proposal "unrolled physics loss" spike (Phase 0/1).
 
 This package is kept separate from `src/schemes/` and `src/networks/` on
 purpose. `src/networks/__init__.py` eagerly does `from keras import backend`,

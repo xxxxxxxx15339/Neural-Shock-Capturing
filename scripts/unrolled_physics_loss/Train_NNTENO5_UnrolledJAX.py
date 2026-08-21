@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-"""Phase 6: a real training run of proj.pdf's Unrolled Physics Loss.
+"""Phase 6: a real training run of the Unrolled Physics Loss proposal.
 
-This is the central empirical question the whole PROJ_IMPLEMENTATION_GUIDE.md
+This is the central empirical question the whole UNROLLED_PHYSICS_LOSS_GUIDE.md
 exists to answer: trained genuinely end-to-end through K unrolled SSPRK3
 steps (not imitating TENO5's labels, not oracle-relabeled per-stencil
-targets -- trajectory-level feedback, exactly as proj.pdf Equation 4-5
-propose), does the resulting network actually beat deterministic TENO5
+targets -- trajectory-level feedback, exactly as the Unrolled Physics Loss
+proposal's Equation 4-5 propose), does the resulting network actually beat deterministic TENO5
 against the real solution? Report_Results.md-style honesty applies: this
 script reports whatever the held-out comparison actually shows, win or
 lose.
@@ -20,11 +20,11 @@ Scope, stated plainly (what a production Phase 6 would extend):
   Train_NNTENO5.py's `--anchor-weight` uses it (Results.md Phase 9) -- a
   meaningful simplification, noted so results aren't over-read.
 - Physics: scalar linear advection only (TENO5's scalar path,
-  `src/differentiable/numerics_jax.py`), not the full proj.pdf problem list
+  `src/differentiable/numerics_jax.py`), not the full the Unrolled Physics Loss proposal problem list
   (Burgers/Shu-Osher/Sod/Woodward-Colella). Chosen because it is cheap, has
   a trivial closed-form exact solution at every step (pure translation, no
   shock formation), and still genuinely exercises TENO5's candidate
-  selection at the jump in every training example -- the mechanism proj.pdf
+  selection at the jump in every training example -- the mechanism the Unrolled Physics Loss proposal
   is actually trying to improve. Extending to Burgers/Euler is Phase 6's
   natural continuation once this narrower question has an answer, reusing
   `src/differentiable/euler_jax.py` from Phase 1.
@@ -34,8 +34,14 @@ Scope, stated plainly (what a production Phase 6 would extend):
 
 Run inside `teno-jax`:
 
-    conda run -n teno-jax python -u Train_NNTENO5_UnrolledJAX.py
+    conda run -n teno-jax python -u scripts/unrolled_physics_loss/Train_NNTENO5_UnrolledJAX.py
 """
+
+import os
+import sys as _sys
+
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+_sys.path.insert(0, _REPO_ROOT)
 
 import time
 
@@ -211,7 +217,7 @@ def pretrain_by_imitation(key, hidden_sizes, n_steps=500, batch_size=256, lr=1.0
     NN-TENO5 (anchor-weight fine-tuning from a pretrained baseline, not
     training from scratch against the harder objective). Two runs of
     training this JAX network from scratch against the unrolled loss alone
-    (PROJ_IMPLEMENTATION_GUIDE.md Phase 6 status note, runs 1-2) both lost
+    (UNROLLED_PHYSICS_LOSS_GUIDE.md Phase 6 status note, runs 1-2) both lost
     to TENO5 on every held-out case, including badly on smooth data where
     even reproducing TENO5's own behavior should be easy -- evidence the
     cold-start optimization itself, not just the loss weighting, was the
@@ -299,7 +305,7 @@ def main():
     run_tag = 'run3_pretrained'
 
     import csv
-    history_path = 'models/nn_teno5_unrolled_jax_history_{}.csv'.format(run_tag)
+    history_path = os.path.join(_REPO_ROOT, 'models', 'nn_teno5_unrolled_jax_history_{}.csv'.format(run_tag))
     with open(history_path, 'w', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=['l_total', 'l_mse', 'l_tv', 'l_bvd', 'l_reg'])
         writer.writeheader()
@@ -307,7 +313,7 @@ def main():
     print('Training history written to {}'.format(history_path))
 
     import pickle
-    params_path = 'models/nn_teno5_unrolled_jax_params_{}.pkl'.format(run_tag)
+    params_path = os.path.join(_REPO_ROOT, 'models', 'nn_teno5_unrolled_jax_params_{}.pkl'.format(run_tag))
     with open(params_path, 'wb') as f:
         pickle.dump([(np.asarray(w), np.asarray(b)) for w, b in params], f)
     print('Trained parameters written to {}'.format(params_path))

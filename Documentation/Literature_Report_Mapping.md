@@ -85,7 +85,7 @@ the pre-existing NN-TENO5 baseline:
 
 `[Bar-Sinai et al., 2019]` also belongs here for one specific, quotable
 claim relevant to *why* the project moved to oracle/exact-solution
-training in its own Phase 2 (well before proj.pdf): *"a low value of...
+training in its own Phase 2 (well before the Unrolled Physics Loss proposal): *"a low value of...
 training loss is a necessary but not sufficient condition for accurate and
 stable numerical integration over time."* That's the general form of the
 non-identifiability problem this project's own Phase 2 (WENO7-NN) and
@@ -93,23 +93,23 @@ Phase 7-9 (NN-TENO5 oracle) independently rediscovered.
 
 ---
 
-## Chapter 4 — The Professor's Proposal (proj.pdf)
+## Chapter 4 — The Professor's Proposal (the Unrolled Physics Loss proposal)
 
 `[Um et al. (Solver-in-the-Loop), 2020]` and `[Kochkov et al., 2021]` are
-the chapter's core citations — they establish that proj.pdf's central idea
+the chapter's core citations — they establish that the Unrolled Physics Loss proposal's central idea
 (train by running the network through the actual solver and judging the
 outcome, not by imitating a fixed target) is a real, working, published
 methodology in the broader differentiable-physics literature, with
 Kochkov et al. as the strongest existing proof that it can work at real
 scale (2D turbulent Navier-Stokes, 40-80x speedup at equivalent accuracy).
-This is the right place to note explicitly: proj.pdf is asking this
+This is the right place to note explicitly: the Unrolled Physics Loss proposal is asking this
 project to apply an established *general* idea to a *specific*, previously
 untried case (TENO candidate selection) — that framing matters for how
 ambitious the plan actually is.
 
 `[Ross, Gordon & Bagnell (DAgger), 2011]` belongs here as the theoretical
 grounding underneath Solver-in-the-Loop's empirical finding — the
-imitation-vs-rollout distinction proj.pdf is proposing is a specific
+imitation-vs-rollout distinction the Unrolled Physics Loss proposal is proposing is a specific
 instance of a decade-plus-old, formally analyzed problem in sequential
 prediction generally, not a numerics-specific insight. Citing it shows the
 plan's core mechanism has a rigorous foundation outside CFD.

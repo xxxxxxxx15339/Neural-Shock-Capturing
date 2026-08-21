@@ -33,6 +33,11 @@ Train_WENO5NN_Euler.py can consume either interchangeably:
     data/eulerGroupsExact.csv  shape (sample_count, 1)
 """
 
+import os
+import sys as _sys
+
+_sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 import argparse
 import os
 

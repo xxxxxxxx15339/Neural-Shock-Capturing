@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 """Train and evaluate a WENO3-NN, WENO5-NN, or WENO7-NN model."""
 
+import os
+import sys as _sys
+
+_sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 import argparse
 import datetime
 import os

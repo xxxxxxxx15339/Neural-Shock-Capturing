@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Phase 3 go/no-go audit for proj.pdf's 60% real-PDE-projected training data.
+"""Phase 3 go/no-go audit for the Unrolled Physics Loss proposal's 60% real-PDE-projected training data.
 
-PROJ_IMPLEMENTATION_GUIDE.md's Phase 3 flags a known risk before building
+UNROLLED_PHYSICS_LOSS_GUIDE.md's Phase 3 flags a known risk before building
 this data bucket at scale: this project already tried "train on real
 high-resolution PDE solutions projected to a coarse grid" once, for
 WENO7-NN (Results.md Phase 2), and lost to non-identifiability -- stencils
@@ -25,8 +25,15 @@ an inference from the earlier failure.
 Run (pure NumPy + matplotlib, no Keras/JAX needed -- see feature_vector.py's
 docstring for why this repo keeps data-generation code framework-free):
 
-    conda run -n base python PDEDataset_NonIdentifiability_Audit.py
+    conda run -n base python scripts/unrolled_physics_loss/PDEDataset_NonIdentifiability_Audit.py
 """
+
+import os
+import sys as _sys
+
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+_sys.path.insert(0, _REPO_ROOT)
+_sys.path.insert(0, os.path.join(_REPO_ROOT, 'scripts', 'legacy_imitation_training'))
 
 import argparse
 from collections import defaultdict
@@ -194,7 +201,7 @@ def main():
     oracle_bits, _ = teno5_oracle_labels(inputs, targets)
 
     print('\n' + '#' * 70)
-    print('# VALUE-REGRESSION conflict rate (the risk proj.pdf\'s plan as')
+    print('# VALUE-REGRESSION conflict rate (the risk the Unrolled Physics Loss proposal\'s plan as')
     print('# written would hit -- direct continuous target per stencil)')
     print('#' * 70)
 

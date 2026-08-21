@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Generates the proj.pdf-implementation results plots (for showing alongside
+"""Generates the the Unrolled Physics Loss proposal-implementation results plots (for showing alongside
 the annotated PDF sent to the professor). Reads real data written by earlier
 scripts (training histories, the Euler instability trace) plus a few numbers
 transcribed exactly from Results.md Phase 10 / the ValidationMatrix_ProjPDF.py
@@ -157,7 +157,7 @@ savefig(fig, '02_scalar_beats_teacher.png')
 
 
 # ============================================================================
-# Plot 3: validation matrix -- canonical proj.pdf problems, same network
+# Plot 3: validation matrix -- canonical the Unrolled Physics Loss proposal problems, same network
 # ============================================================================
 
 cases_v = ['Advection\n(step, final_time=1.0)', 'Burgers 1D\n(out-of-distribution)']

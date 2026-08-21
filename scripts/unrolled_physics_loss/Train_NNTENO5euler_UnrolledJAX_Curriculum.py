@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Literature-motivated fix for the Euler training instability
-(Train_NNTENO5euler_UnrolledJAX.py, and PROJ_IMPLEMENTATION_GUIDE.md's
+(Train_NNTENO5euler_UnrolledJAX.py, and UNROLLED_PHYSICS_LOSS_GUIDE.md's
 Phase 6/7 status note): curriculum learning on rollout length K.
 
 Um et al. ("Solver-in-the-Loop", NeurIPS 2020) report the exact failure
@@ -22,8 +22,14 @@ the one variable the literature review flagged.
 
 Run inside `teno-jax` (needs run3_pretrained's weights to exist):
 
-    conda run -n teno-jax python -u Train_NNTENO5euler_UnrolledJAX_Curriculum.py
+    conda run -n teno-jax python -u scripts/unrolled_physics_loss/Train_NNTENO5euler_UnrolledJAX_Curriculum.py
 """
+
+import os
+import sys as _sys
+
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+_sys.path.insert(0, _REPO_ROOT)
 
 import functools
 import pickle
@@ -48,7 +54,7 @@ CURRICULUM = [
 
 
 def main():
-    with open('models/nn_teno5_unrolled_jax_params_run3_pretrained.pkl', 'rb') as f:
+    with open(os.path.join(_REPO_ROOT, 'models', 'nn_teno5_unrolled_jax_params_run3_pretrained.pkl'), 'rb') as f:
         loaded = pickle.load(f)
     params = [(jnp.asarray(w), jnp.asarray(b)) for w, b in loaded]
     anchor_params = params
@@ -99,7 +105,7 @@ def main():
 
     print('\nTotal training time: {:.1f}s ({} steps)'.format(time.perf_counter() - started, global_step))
 
-    with open('models/nn_teno5euler_unrolled_jax_params_curriculum.pkl', 'wb') as f:
+    with open(os.path.join(_REPO_ROOT, 'models', 'nn_teno5euler_unrolled_jax_params_curriculum.pkl'), 'wb') as f:
         pickle.dump([(np.asarray(w), np.asarray(b)) for w, b in params], f)
 
     print('\n' + '=' * 70)

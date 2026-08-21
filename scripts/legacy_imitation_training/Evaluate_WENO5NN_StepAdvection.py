@@ -1,5 +1,10 @@
 """Evaluate one WENO5-NN model on the canonical step-advection benchmark."""
 
+import os
+import sys as _sys
+
+_sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 import argparse
 import json
 import os

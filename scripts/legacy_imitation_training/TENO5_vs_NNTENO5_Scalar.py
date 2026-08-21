@@ -5,6 +5,11 @@ The script writes numerical metrics to JSON and displays interactive
 solution/error plots for each benchmark plus one combined overview figure.
 """
 
+import os
+import sys as _sys
+
+_sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 import argparse
 import json
 import os

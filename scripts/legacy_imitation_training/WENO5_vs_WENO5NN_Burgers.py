@@ -13,6 +13,11 @@ WENO5-NN are then compared against that reference at several coarser grid
 spacings.
 """
 
+import os
+import sys as _sys
+
+_sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 import argparse
 import os
 

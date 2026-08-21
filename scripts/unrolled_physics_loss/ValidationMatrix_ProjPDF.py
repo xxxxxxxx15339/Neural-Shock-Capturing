@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-"""Phase 7: proj.pdf's Table 1 validation matrix, using Phase 6's trained network.
+"""Phase 7: the Unrolled Physics Loss proposal's Table 1 validation matrix, using Phase 6's trained network.
 
-Maps proj.pdf's benchmark table onto the JAX infrastructure built in Phases
-0-6, computing both proj.pdf's own requested metric AND this project's own
+Maps the Unrolled Physics Loss proposal's benchmark table onto the JAX infrastructure built in Phases
+0-6, computing both the Unrolled Physics Loss proposal's own requested metric AND this project's own
 `beats_teacher` real-solution criterion (Results.md Phase 6) for every row
--- per PROJ_IMPLEMENTATION_GUIDE.md Phase 7's own instruction not to drop
-that check just because proj.pdf's table doesn't ask for it.
+-- per UNROLLED_PHYSICS_LOSS_GUIDE.md Phase 7's own instruction not to drop
+that check just because the Unrolled Physics Loss proposal's table doesn't ask for it.
 
 Coverage, stated plainly:
 - Advection Lineaire, Burgers 1D: use `run3_pretrained`'s trained network
@@ -13,7 +13,7 @@ Coverage, stated plainly:
   was trained only on linear advection dynamics, never on Burgers' 0.5*u^2
   flux.
 - Shu-Osher 1D, Sod (Euler): NN-TENO5euler is NOT evaluated here.
-  PROJ_IMPLEMENTATION_GUIDE.md's Phase 6 status note documents why in full:
+  UNROLLED_PHYSICS_LOSS_GUIDE.md's Phase 6 status note documents why in full:
   Euler training hit a genuine, root-caused-but-unsolved numerical
   instability (Roe-eigenbasis conditioning issue), not a missing result --
   reporting a number from that NaN-corrupted checkpoint would misrepresent
@@ -29,8 +29,14 @@ throughout this whole differentiable-JAX side of the project.
 
 Run inside `teno-jax`:
 
-    conda run -n teno-jax python -u ValidationMatrix_ProjPDF.py
+    conda run -n teno-jax python -u scripts/unrolled_physics_loss/ValidationMatrix_ProjPDF.py
 """
+
+import os
+import sys as _sys
+
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+_sys.path.insert(0, _REPO_ROOT)
 
 import pickle
 
@@ -87,7 +93,7 @@ def burgers_characteristic_reference(x, final_time):
     return burgers_initial_profile(foot)
 
 
-with open('models/nn_teno5_unrolled_jax_params_run3_pretrained.pkl', 'rb') as f:
+with open(os.path.join(_REPO_ROOT, 'models', 'nn_teno5_unrolled_jax_params_run3_pretrained.pkl'), 'rb') as f:
     _loaded = pickle.load(f)
 NETWORK_PARAMS = [(jnp.asarray(w), jnp.asarray(b)) for w, b in _loaded]
 
@@ -171,7 +177,7 @@ results.append(('Burgers', 'L2 error', nn_l2_b, teno_l2_b, beats_b))
 print('\n' + '=' * 78)
 print('Rows 3-4: Shu-Osher 1D, Sod (Euler) -- NOT evaluated for NN-TENO5euler')
 print('=' * 78)
-print('See PROJ_IMPLEMENTATION_GUIDE.md Phase 6 status note: Euler unrolled-loss')
+print('See UNROLLED_PHYSICS_LOSS_GUIDE.md Phase 6 status note: Euler unrolled-loss')
 print('training hit a genuine, root-caused numerical instability (Roe-eigenbasis')
 print('conditioning under an evolving network reconstruction), not solved in this')
 print('pass. Reporting a number from that run would misrepresent a NaN-corrupted')

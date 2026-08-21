@@ -1,4 +1,4 @@
-"""Tests for src/data/feature_vector.py (proj.pdf Phase 2 feature vector).
+"""Tests for src/data/feature_vector.py (the Unrolled Physics Loss proposal Phase 2 feature vector).
 
 Pure NumPy -- no Keras, no JAX -- so this runs in any of the repo's
 environments, e.g.:

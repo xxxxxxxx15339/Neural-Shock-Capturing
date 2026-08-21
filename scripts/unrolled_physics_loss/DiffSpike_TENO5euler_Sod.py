@@ -11,8 +11,13 @@ below already exercises the regime that matters.
 
 Run inside the `teno-jax` conda environment:
 
-    conda run -n teno-jax python DiffSpike_TENO5euler_Sod.py
+    conda run -n teno-jax python scripts/unrolled_physics_loss/DiffSpike_TENO5euler_Sod.py
 """
+
+import os
+import sys as _sys
+
+_sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 import jax
 
@@ -133,7 +138,7 @@ print('K = {} substeps ({} SSPRK3 steps x 3 substeps each)'.format(step_count * 
 # minutes and counting before being killed; jax.jit brought a single
 # value-and-grad call down to about the time printed below. This is the
 # concrete case the "unrolled loop now, lax.scan/jit later" note in
-# PROJ_IMPLEMENTATION_GUIDE.md's Phase 1 writeup was anticipating -- "later"
+# UNROLLED_PHYSICS_LOSS_GUIDE.md's Phase 1 writeup was anticipating -- "later"
 # turned out to mean "as soon as the flux function has real linear algebra
 # in it," which is Euler, not scalar advection.
 value_and_grad_fn = jax.jit(jax.value_and_grad(loss_fn))
