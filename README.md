@@ -1,4 +1,4 @@
-# Shocks-and-WENO
+# Neural-Shock-Capturing
 
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Python 3.7 | 3.11](https://img.shields.io/badge/python-3.7%20%7C%203.11-blue.svg)
