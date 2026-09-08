@@ -59,7 +59,7 @@ from src.differentiable.numerics_jax import (
     lax_friedrichs_flux,
     rollout,
 )
-from src.differentiable.projection_jax import project_keep_weight
+from src.differentiable.projection_jax import mixed_reconstruct, project_keep_weight
 from src.differentiable.teno5_jax import teno5_reconstruct_jax, teno5_soft_reconstruct_jax
 from src.differentiable.teno5_jax_toy import init_toy_params, toy_keep_weight
 
@@ -98,9 +98,22 @@ def _network_reconstruct(params, stencils, mode='soft'):
     return teno5_soft_reconstruct_jax(stencils, keep_weight)
 
 
+def _mixed_network_reconstruct(params, stencils, mode='soft'):
+    """Results.md Phase 16/17: train THROUGH the convex mix, mirroring the
+    Euler-side change in Train_NNTENO5euler_UnrolledJAX.py -- see its
+    matching docstring.
+    """
+    troubled = 1.0 - toy_keep_weight(params, stencils)
+
+    def network_reconstruct(s):
+        return teno5_soft_reconstruct_jax(s, project_keep_weight(troubled, mode=mode))
+
+    return mixed_reconstruct(troubled, stencils, network_reconstruct, teno5_reconstruct_jax, mode=mode)
+
+
 def _flux_fn(params, u, mode='soft'):
     return lax_friedrichs_flux(
-        u, physical_flux, WAVE_SPEED, lambda s: _network_reconstruct(params, s, mode=mode)
+        u, physical_flux, WAVE_SPEED, lambda s: _mixed_network_reconstruct(params, s, mode=mode)
     )
 
 

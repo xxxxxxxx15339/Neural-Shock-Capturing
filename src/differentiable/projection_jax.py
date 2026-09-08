@@ -61,3 +61,66 @@ def project_keep_weight(troubled_probability, mode='soft', threshold=0.5):
     if mode == 'hard':
         return jnp.where(troubled_probability < threshold, 1.0, 0.0)
     raise ValueError("mode must be 'soft' or 'hard'; received {!r}.".format(mode))
+
+
+def mixed_reconstruct(troubled_probability, stencils, network_reconstruct_fn, teno5_reconstruct_fn, mode='soft', lam=None):
+    """Convex-mix the network's own reconstruction with TENO5's deterministic
+    one, weighted by the network's own worst (max) per-candidate troubled
+    probability -- so the mix provably reduces to TENO5's exact reconstruction
+    wherever the network sees nothing troubled, instead of trusting an
+    imitation-pretrained network to have learned that on its own.
+
+    Found via literature research (Results.md Phase 16) after every prior
+    Euler/scalar attempt (K-curriculum, smooth-data mixing, gradient
+    clipping) either partially or entirely failed to close the specific gap
+    this project kept measuring: the network losing to TENO5 more in SMOOTH
+    regions than at discontinuities. Kossaczky & Ehrhardt-style differentiable
+    TVD limiter (arXiv:2503.09625) diagnose the identical failure mode for
+    flux limiters and fix it with the identical trick: parameterize the
+    learned limiter as `(1-lambda)*classical + lambda*learned`, `lambda` a
+    sigmoid network output -- both endpoints already have the properties
+    (2nd-order accuracy, TVD) that matter, so *any* convex combination
+    inherits them, rather than hoping an unconstrained network learns to
+    reproduce them.
+
+    This uses the network's EXISTING troubled-probability output as
+    `lambda` (`lambda = max_candidate(troubled_probability)`) instead of
+    adding a new network head for it: `troubled_probability` is already
+    exactly "how confident is this candidate genuinely troubled" -- the
+    right quantity to gate on -- and reusing it means zero new parameters,
+    so this can be dropped into every EXISTING checkpoint (`run3_pretrained`,
+    the Euler curriculum checkpoints) with no retraining needed to test it,
+    unlike an architecture change that adds a fresh, randomly-initialized
+    head. `troubled_probability`'s shape already matches the reconstruction
+    output's shape along every axis except the trailing candidate axis
+    (`teno5_soft_reconstruct_jax`/`teno5_reconstruct_jax` both reduce over
+    that axis) -- for the scalar case, (n, 3) -> lambda (n,); for Euler's
+    characteristic-stencil case, (n, 3, 3) -> lambda (n, 3) -- so `jnp.max`
+    over the last axis always lines up with the reconstruction shape
+    directly, no reshaping needed for either physics.
+
+    `mode` is forwarded to `project_keep_weight` for `network_reconstruct_fn`
+    the same as any other caller -- 'soft' for training (differentiable
+    everywhere), 'hard' for inference.
+
+    Parameters
+    ----------
+    troubled_probability : array (..., candidates)
+        Raw network output, e.g. `1 - teno5_jax_toy.toy_keep_weight(...)`.
+    stencils : array (..., candidates, stencil_size)
+        Same stencils both `network_reconstruct_fn`/`teno5_reconstruct_fn`
+        will be called on.
+    network_reconstruct_fn : stencils -> array (...)
+        E.g. `lambda s: teno5_soft_reconstruct_jax(s, project_keep_weight(troubled_probability, mode=mode))`.
+    teno5_reconstruct_fn : stencils -> array (...)
+        The deterministic scheme's own reconstruction, e.g. `teno5_reconstruct_jax`.
+    lam : array (...), optional
+        Precomputed mixing coefficient, same shape as the reconstruction
+        output. If not given, defaults to `max_candidate(troubled_probability)`
+        (Phase 16's original, zero-new-parameter choice). Pass
+        `teno5_jax_toy.toy_lambda(lambda_params, troubled_probability)` for
+        Phase 18's dedicated, separately-trained head instead.
+    """
+    if lam is None:
+        lam = jnp.max(troubled_probability, axis=-1)
+    return (1.0 - lam) * teno5_reconstruct_fn(stencils) + lam * network_reconstruct_fn(stencils)

@@ -243,15 +243,56 @@ def positivity_penalty_jax(u):
     itself safe to call on a state that is already violating -- exactly
     the state it exists to detect -- without its own division blowing up
     the gradient the same way the unguarded rollout did.
+
+    Also guards non-finite rows (not just negative/zero density), needed
+    once `numerics_jax.rollout_with_positivity_penalty` started calling
+    this on PRE-`state_guard` substages: those can already contain literal
+    NaN/Inf (the state having blown up past floating-point range before
+    `euler_positivity_repair` gets a chance to run), not just a negative
+    density this function's original division guard alone handles. Without
+    this, one non-finite substage in one rollout out of a whole training
+    batch poisoned `l_positivity`, and through it the batch-mean total
+    loss, to NaN outright -- the same "guard the input, not just the
+    untaken branch" lesson as `teno5_jax_toy.py`'s `toy_keep_weight`
+    docstring: `jax.grad` computes both `jnp.where` branches' gradients
+    unconditionally, so a NaN produced downstream of the untaken branch
+    still poisons the backward pass even though its forward value is
+    discarded. Substituting a whole finite, clearly-violating row
+    (density -1, pressure +1 after the formula below) for any non-finite
+    row, before any arithmetic reads it, keeps every downstream value AND
+    gradient finite while still counting that row as a real violation.
+
+    Also caps each cell's contribution at `POSITIVITY_VIOLATION_CAP`: a
+    genuinely astronomic (but finite) pre-repair excursion -- Results.md's
+    own traced failure reached a max state value of 5.7e144 before finally
+    going non-finite -- produces a violation depth of the same astronomic
+    order, and an uncapped per-cell sum at that scale overflows the
+    batch-mean total loss to `inf` on its own even though this function's
+    own output was itself still finite. The cap turns "how severely did
+    this blow up" into a saturating (bounded, still gradient-informative
+    below the cap) rather than unbounded signal -- same scale-mismatch
+    reasoning as `losses_jax.l_tv`/`l_reg`'s `normalize` options, applied
+    here as a hard cap instead of a division since there's no natural
+    per-example denominator to normalize a positivity violation by.
     """
-    density = u[:, 0]
+    finite_row = jnp.all(jnp.isfinite(u), axis=-1)
+    safe_u = jnp.where(finite_row[:, None], u, jnp.array([-1.0, 0.0, 1.0], dtype=u.dtype))
+    density = safe_u[:, 0]
     safe_density = jnp.where(density > 0.0, density, 1.0)
-    velocity = u[:, 1] / safe_density
-    pressure = (GAMMA - 1) * (u[:, 2] - 0.5 * density * velocity ** 2)
-    return jnp.sum(jnp.maximum(-density, 0.0)) + jnp.sum(jnp.maximum(-pressure, 0.0))
+    velocity = safe_u[:, 1] / safe_density
+    pressure = (GAMMA - 1) * (safe_u[:, 2] - 0.5 * density * velocity ** 2)
+    density_violation = jnp.minimum(jnp.maximum(-density, 0.0), POSITIVITY_VIOLATION_CAP)
+    pressure_violation = jnp.minimum(jnp.maximum(-pressure, 0.0), POSITIVITY_VIOLATION_CAP)
+    return jnp.sum(density_violation) + jnp.sum(pressure_violation)
 
 
-def euler_positivity_repair(u, eps=5.0e-2, max_velocity=50.0):
+POSITIVITY_VIOLATION_CAP = 1.0e3
+# Shared with `euler_positivity_repair`'s `max_scale`: the same "far beyond
+# the problem's O(1)-O(10) scale, but not astronomic" bound, used two
+# places for two different reasons -- see each function's docstring.
+
+
+def euler_positivity_repair(u, eps=5.0e-2, max_velocity=50.0, max_scale=POSITIVITY_VIOLATION_CAP):
     """Repair non-positive density/pressure the way the professor
     describes doing it in practice: an ISOLATED violating cell (both
     immediate neighbors still valid) is repaired by averaging its
@@ -289,28 +330,49 @@ def euler_positivity_repair(u, eps=5.0e-2, max_velocity=50.0):
     instrument than what was actually asked for, and the one this project
     measured (Results.md Phase 10/11) to only delay, not prevent, a
     training-time blowup on its own.
-    """
-    density = u[:, 0]
-    safe_density = jnp.where(density > 0.0, density, 1.0)
-    velocity = u[:, 1] / safe_density
-    pressure = (GAMMA - 1) * (u[:, 2] - 0.5 * density * velocity ** 2)
-    violates = (density <= 0.0) | (pressure <= 0.0)
 
-    neighbor_average = 0.5 * (jnp.roll(u, 1, axis=0) + jnp.roll(u, -1, axis=0))
+    Two more failure modes now feed `violates`, found while wiring
+    `positivity_penalty_jax` into a real pre-repair training signal
+    (`numerics_jax.rollout_with_positivity_penalty`) and discovering this
+    function did not actually catch either one, contrary to its own "keep
+    jax.lax.scan tracing finite" claim: (1) a row that's already NaN/Inf --
+    `NaN <= 0.0` is `False`, so a fully non-finite row was never flagged as
+    violating, and the last-resort floor below (`jnp.maximum(NaN, eps)` is
+    still `NaN`) does not fix it either; (2) a row that's technically
+    positive but has blown up to an astronomic magnitude (Results.md's own
+    traced failure reached a max state value of 5.7e144 before finally
+    going non-finite) -- `density <= 0.0` is `False` for a huge positive
+    density, so this was never repaired either, right up until it
+    overflowed. Both now count as violations via `~finite_row` and
+    `max_scale`, reusing the same neighbor-average/last-resort mechanism
+    already built for negativity rather than adding a new repair path.
+    """
+    finite_row = jnp.all(jnp.isfinite(u), axis=-1)
+    safe_u = jnp.where(finite_row[:, None], u, jnp.array([-1.0, 0.0, 1.0], dtype=u.dtype))
+
+    density = safe_u[:, 0]
+    safe_density = jnp.where(density > 0.0, density, 1.0)
+    velocity = safe_u[:, 1] / safe_density
+    pressure = (GAMMA - 1) * (safe_u[:, 2] - 0.5 * density * velocity ** 2)
+    out_of_scale = (jnp.abs(density) > max_scale) | (jnp.abs(pressure) > max_scale)
+    violates = (~finite_row) | (density <= 0.0) | (pressure <= 0.0) | out_of_scale
+
+    neighbor_average = 0.5 * (jnp.roll(safe_u, 1, axis=0) + jnp.roll(safe_u, -1, axis=0))
     left_violates = jnp.roll(violates, 1)
     right_violates = jnp.roll(violates, -1)
     isolated = violates & (~left_violates) & (~right_violates)
 
-    repaired = jnp.where(isolated[:, None], neighbor_average, u)
+    repaired = jnp.where(isolated[:, None], neighbor_average, safe_u)
 
-    # Last-resort floor for anything still invalid (a genuine cluster, or
+    # Last-resort floor/cap for anything still invalid (a genuine cluster, or
     # an isolated repair whose neighbor-average was itself invalid) -- see
     # docstring: this is a numerical-finiteness safety net, not claimed to
-    # be a correct repair.
-    safe_density_r = jnp.maximum(repaired[:, 0], eps)
+    # be a correct repair. Now clips density/pressure from ABOVE too (not
+    # just floors them from below), for failure mode (2) above.
+    safe_density_r = jnp.clip(repaired[:, 0], eps, max_scale)
     velocity_r = jnp.clip(repaired[:, 1] / safe_density_r, -max_velocity, max_velocity)
-    pressure_r = jnp.maximum(
-        (GAMMA - 1) * (repaired[:, 2] - 0.5 * safe_density_r * velocity_r ** 2), eps
+    pressure_r = jnp.clip(
+        (GAMMA - 1) * (repaired[:, 2] - 0.5 * safe_density_r * velocity_r ** 2), eps, max_scale
     )
     momentum_r = safe_density_r * velocity_r
     energy_r = pressure_r / (GAMMA - 1) + 0.5 * safe_density_r * velocity_r ** 2

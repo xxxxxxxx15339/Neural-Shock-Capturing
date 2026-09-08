@@ -1,0 +1,124 @@
+{
+  "params_path": "models/nn_teno5euler_unrolled_jax_params_curriculum_phase18_learnedlambda.pkl",
+  "network_available": true,
+  "network_status": null,
+  "cells": 120,
+  "reference_cells": 320,
+  "cfl": 0.4,
+  "problems": {
+    "sod": {
+      "cells": 120,
+      "final_time": 0.2,
+      "steps": 93,
+      "reference": "exact Riemann solution",
+      "teno5euler": {
+        "density_l1": 0.0054848730779341005,
+        "momentum_l1": 0.005950426359506267,
+        "energy_l1": 0.013339668574830271,
+        "minimum_density": 0.125,
+        "minimum_pressure": 0.1,
+        "density_overshoot": 0.0,
+        "pressure_overshoot": 0.0,
+        "shock_location": 0.85,
+        "contact_location": 0.675,
+        "shock_location_error": 0.008333333333333304,
+        "contact_location_error": 0.008333333333333304,
+        "conservation_error": [
+          1.3322676295501878e-15,
+          3.608224830031759e-16,
+          3.1086244689504383e-15
+        ],
+        "finite": true,
+        "positive_density": true,
+        "positive_pressure": true,
+        "runtime_seconds": 0.9561566720003611
+      },
+      "nn_teno5euler": {
+        "density_l1": 0.005507869340329103,
+        "momentum_l1": 0.005949739079715507,
+        "energy_l1": 0.013403671960073494,
+        "minimum_density": 0.125,
+        "minimum_pressure": 0.1,
+        "density_overshoot": 0.0,
+        "pressure_overshoot": 0.0,
+        "shock_location": 0.85,
+        "contact_location": 0.675,
+        "shock_location_error": 0.008333333333333304,
+        "contact_location_error": 0.008333333333333304,
+        "conservation_error": [
+          1.3322676295501878e-15,
+          4.163336342344337e-16,
+          3.1086244689504383e-15
+        ],
+        "finite": true,
+        "positive_density": true,
+        "positive_pressure": true,
+        "runtime_seconds": 1.1503214900003513,
+        "positivity_guard_used": false
+      },
+      "beats_teacher": {
+        "metric": "mean(density_l1, momentum_l1, energy_l1) vs exact Riemann solution",
+        "teno5euler": 0.008258322670756879,
+        "nn_teno5euler": 0.008287093460039368,
+        "nn_wins": false
+      }
+    },
+    "shu_osher": {
+      "cells": 120,
+      "final_time": 1.8,
+      "steps": 321,
+      "reference": "TENO5euler(JAX) at 320 cells",
+      "teno5euler": {
+        "density_l1": 0.07522186938283222,
+        "momentum_l1": 0.18374705097948282,
+        "energy_l1": 0.3805987173921027,
+        "minimum_density": 0.8012574910997334,
+        "minimum_pressure": 1.0,
+        "density_overshoot": 0.0,
+        "pressure_overshoot": 0.0,
+        "shock_location": 7.416666666666667,
+        "contact_location": 6.833333333333333,
+        "shock_location_error": 0.0,
+        "contact_location_error": 0.08333333333333393,
+        "conservation_error": [
+          3.793125813444931e-10,
+          2.632134510349715e-10,
+          2.936587861768203e-09
+        ],
+        "finite": true,
+        "positive_density": true,
+        "positive_pressure": true,
+        "runtime_seconds": 0.8568717789967195
+      },
+      "nn_teno5euler": {
+        "density_l1": 0.07430708011125214,
+        "momentum_l1": 0.18213416267151233,
+        "energy_l1": 0.3713505635785798,
+        "minimum_density": 0.8006483219340226,
+        "minimum_pressure": 1.0,
+        "density_overshoot": 0.0,
+        "pressure_overshoot": 0.0,
+        "shock_location": 7.416666666666667,
+        "contact_location": 6.833333333333333,
+        "shock_location_error": 0.0,
+        "contact_location_error": 0.08333333333333393,
+        "conservation_error": [
+          4.4063241944058973e-10,
+          3.056470632145647e-10,
+          3.410889348742785e-09
+        ],
+        "finite": true,
+        "positive_density": true,
+        "positive_pressure": true,
+        "runtime_seconds": 1.4439688220008975,
+        "positivity_guard_used": false
+      },
+      "beats_teacher": {
+        "metric": "mean(density_l1, momentum_l1, energy_l1) vs TENO5euler(JAX) at 320 cells",
+        "teno5euler": 0.21318921258480591,
+        "nn_teno5euler": 0.20926393545378144,
+        "nn_wins": true
+      }
+    }
+  }
+}

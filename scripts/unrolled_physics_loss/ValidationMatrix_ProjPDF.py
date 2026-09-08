@@ -55,7 +55,7 @@ from src.schemes import TENO5
 
 from src.differentiable.losses_jax import total_variation
 from src.differentiable.numerics_jax import lax_friedrichs_flux, rollout
-from src.differentiable.projection_jax import project_keep_weight
+from src.differentiable.projection_jax import mixed_reconstruct, project_keep_weight
 from src.differentiable.teno5_jax import teno5_reconstruct_jax, teno5_soft_reconstruct_jax
 from src.differentiable.teno5_jax_toy import toy_keep_weight
 
@@ -99,9 +99,15 @@ NETWORK_PARAMS = [(jnp.asarray(w), jnp.asarray(b)) for w, b in _loaded]
 
 
 def _network_reconstruct(stencils):
+    """Convex-mixed with TENO5's own reconstruction (Results.md Phase 16) --
+    see `projection_jax.mixed_reconstruct`'s docstring.
+    """
     troubled = 1.0 - toy_keep_weight(NETWORK_PARAMS, stencils)
-    keep_weight = project_keep_weight(troubled, mode='hard')
-    return teno5_soft_reconstruct_jax(stencils, keep_weight)
+
+    def network_reconstruct(s):
+        return teno5_soft_reconstruct_jax(s, project_keep_weight(troubled, mode='hard'))
+
+    return mixed_reconstruct(troubled, stencils, network_reconstruct, teno5_reconstruct_jax, mode='hard')
 
 
 def run_scalar(physical_flux, wave_speed, u0_np, reconstruct, final_time, cfl=0.5):

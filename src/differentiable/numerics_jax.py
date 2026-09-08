@@ -174,3 +174,60 @@ def rollout(u0, flux_fn, dt, dx, steps, state_guard=None):
 
     u_final, _ = jax.lax.scan(body, u0, xs=None, length=steps)
     return u_final
+
+
+def ssprk3_step_with_penalty(u, flux_fn, dt, dx, state_guard, penalty_fn):
+    """Like `ssprk3_step`, but also returns `penalty_fn` summed over each of
+    the three internal substages, evaluated BEFORE `state_guard` repairs them.
+
+    Exists to fix a real bug found by inspection (Results.md Phase 12's
+    "honest limitation"): `euler_jax.positivity_penalty_jax`, wired into
+    `losses_jax.unrolled_physics_loss` as `lambda_positivity`, was being
+    computed on a rollout's *final*, already-`state_guard`-repaired state --
+    by construction always 0, since every violation was already cleaned up
+    before the penalty ever looked. This function evaluates `penalty_fn` on
+    each pre-repair substage instead (the same substages `ssprk3_step`
+    already guards individually, for the same "u1/u2 feed into flux_fn again
+    before the step finishes" reason -- see its docstring), so a violation
+    the repair fixes is no longer invisible to the loss.
+
+    `state_guard` and `penalty_fn` are both required (not optional like
+    `ssprk3_step`'s `state_guard`) -- this function only exists to serve
+    that combination; call `ssprk3_step` directly when a plain rollout
+    (no penalty tracking) is what's needed.
+    """
+    def guarded(v):
+        return state_guard(v), penalty_fn(v)
+
+    u0 = u
+    v1 = u0 - flux_fn(u0) * dt / dx
+    u1, p1 = guarded(v1)
+    v2 = 0.75 * u0 + 0.25 * u1 - 0.25 * flux_fn(u1) * dt / dx
+    u2, p2 = guarded(v2)
+    v3 = (1.0 / 3.0) * u0 + (2.0 / 3.0) * u2 - (2.0 / 3.0) * flux_fn(u2) * dt / dx
+    u3, p3 = guarded(v3)
+    return u3, p1 + p2 + p3
+
+
+def rollout_with_positivity_penalty(u0, flux_fn, dt, dx, steps, state_guard, penalty_fn):
+    """`rollout`'s `jax.lax.scan` structure, but also accumulates
+    `penalty_fn` (pre-repair, see `ssprk3_step_with_penalty`) across every
+    substage of every step, and returns `(u_final, total_penalty)` instead
+    of just `u_final`. See `ssprk3_step_with_penalty`'s docstring for why
+    this is a separate function rather than an option on `rollout` itself:
+    `rollout`'s single-return-value signature is relied on unchanged by
+    every other caller (`DiffSpike_*`, `ValidationMatrix_ProjPDF.py`,
+    the scalar training script, evaluation code in this same module) --
+    this one is additive, for `Train_NNTENO5euler_UnrolledJAX.py`'s
+    training loss only.
+    """
+
+    def body(carry, _):
+        u, total_penalty = carry
+        u_next, step_penalty = ssprk3_step_with_penalty(u, flux_fn, dt, dx, state_guard, penalty_fn)
+        return (u_next, total_penalty + step_penalty), None
+
+    (u_final, total_penalty), _ = jax.lax.scan(
+        body, (u0, jnp.asarray(0.0, dtype=u0.dtype)), xs=None, length=steps
+    )
+    return u_final, total_penalty

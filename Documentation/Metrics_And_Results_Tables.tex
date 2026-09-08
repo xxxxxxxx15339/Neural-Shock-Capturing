@@ -1,0 +1,1776 @@
+\documentclass[11pt]{article}
+
+% ============================================================
+% ENCODING AND LANGUAGE
+% ============================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+% ============================================================
+% PAGE GEOMETRY
+% ============================================================
+\usepackage[margin=1in]{geometry}
+
+% ============================================================
+% MATHEMATICS
+% ============================================================
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% ============================================================
+% TABLES
+% ============================================================
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{adjustbox}
+\usepackage{caption}
+\usepackage{etoolbox}
+\usepackage[table]{xcolor}
+
+% Automatically center every table
+\AtBeginEnvironment{table}{\centering}
+
+% Center table captions
+\captionsetup[table]{
+    justification=centering,
+    singlelinecheck=false
+}
+
+% More vertical spacing between rows
+\renewcommand{\arraystretch}{1.25}
+
+% Useful tabularx column type
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+% ------------------------------------------------------------
+% RESULT COLORS
+% ------------------------------------------------------------
+
+\definecolor{winbg}{RGB}{218,242,221}
+\definecolor{wintext}{RGB}{20,105,48}
+
+\definecolor{tiebg}{RGB}{255,243,199}
+\definecolor{tietext}{RGB}{130,92,0}
+
+\definecolor{losebg}{RGB}{248,220,220}
+\definecolor{losetext}{RGB}{155,35,35}
+
+% Result labels
+\newcommand{\WIN}{%
+    \cellcolor{winbg}\textcolor{wintext}{\textbf{WIN}}%
+}
+
+\newcommand{\TIE}{%
+    \cellcolor{tiebg}\textcolor{tietext}{\textbf{TIE}}%
+}
+
+\newcommand{\LOSE}{%
+    \cellcolor{losebg}\textcolor{losetext}{\textbf{LOSE}}%
+}
+
+% Light horizontal separator between data rows
+\newcommand{\rowrule}{\specialrule{0.30pt}{0pt}{0pt}}
+
+% ============================================================
+% NUMBERS
+% ============================================================
+\usepackage{siunitx}
+
+\sisetup{
+    round-mode=places,
+    round-precision=3,
+    scientific-notation=true
+}
+
+% ============================================================
+% FIGURES AND LINKS
+% ============================================================
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+% ============================================================
+% DOCUMENT INFORMATION
+% ============================================================
+\title{
+Définitions des métriques et résultats des benchmarks\\
+\large
+Schémas WENO/TENO augmentés par réseaux de neurones :
+résumé numérique complet
+}
+
+\author{}
+\date{\today}
+
+% ============================================================
+% DOCUMENT
+% ============================================================
+
+\begin{document}
+
+\maketitle
+
+\noindent
+Tous les chiffres ont été régénérés en relançant directement les scripts
+de comparaison du projet, sauf mention contraire
+(Section~\ref{sec:strand2b}, où les modèles entraînés n'ont pas été
+conservés et où les chiffres historiques sont cités depuis le journal de
+résultats du projet).
+Dans les tableaux comparatifs, les étiquettes
+\textbf{WIN}, \textbf{TIE} et \textbf{LOSE}
+sont toujours définies du point de vue du modèle neuronal :
+WIN signifie que le modèle neuronal est meilleur que le schéma classique,
+TIE qu'il est équivalent selon le critère considéré,
+et LOSE qu'il est moins performant.
+
+% ============================================================
+% SECTION 1
+% ============================================================
+
+\section{Définitions des métriques}
+\label{sec:metrics}
+
+Soit $u_i$ la solution calculée par un schéma à la cellule $i$
+(sur $N$ cellules), et $u_i^{\text{ref}}$ la solution réelle à la même
+cellule.
+
+Soit
+
+\[
+d_i = u_i-u_i^{\text{ref}}.
+\]
+
+Les normes utilisées sont :
+
+\begin{align}
+L_1
+&=
+\frac{1}{N}
+\sum_{i=1}^{N}
+|d_i|,
+\\
+L_2
+&=
+\sqrt{
+\frac{1}{N}
+\sum_{i=1}^{N}
+d_i^2
+},
+\\
+L_\infty
+&=
+\max_i |d_i|.
+\end{align}
+
+Pour les benchmarks du système d'Euler, elles sont calculées
+indépendamment pour chaque variable conservée :
+
+\begin{itemize}
+    \item densité $\rho$ ;
+    \item quantité de mouvement $\rho u$ ;
+    \item énergie $E$.
+\end{itemize}
+
+Un résumé scalaire est ensuite calculé comme leur moyenne :
+
+\[
+\bar L_1
+=
+\frac{1}{3}
+\left(
+L_1^\rho
++
+L_1^{\rho u}
++
+L_1^E
+\right).
+\]
+
+
+% ------------------------------------------------------------
+\subsection{Variation totale}
+
+\begin{equation}
+\mathrm{TV}(u)
+=
+\sum_{i=1}^{N-1}
+|u_{i+1}-u_i|.
+\end{equation}
+
+Comparée à la variation totale propre de la solution de référence,
+
+\[
+\mathrm{TV}(u) >
+\mathrm{TV}(u^{\text{ref}})
+\]
+
+indique une oscillation parasite de type Gibbs introduite par le schéma,
+absente de la vraie solution.
+
+
+% ------------------------------------------------------------
+\subsection{Erreur de conservation}
+
+\begin{equation}
+E_{\text{cons}}
+=
+\left|
+\Delta x
+\sum_{i=1}^{N}
+\left(
+u_i-u_i^{(0)}
+\right)
+\right|.
+\end{equation}
+
+où $u_i^{(0)}$ est la condition initiale.
+
+Pour un schéma écrit sous forme de différence de flux sur un domaine
+périodique ou fermé, cette quantité doit rester proche de la précision
+machine quelle que soit la précision du schéma.
+
+Une valeur non nulle significative indique donc principalement un
+problème d'implémentation et non un simple déficit de précision numérique.
+
+
+% ------------------------------------------------------------
+\subsection{Dépassement / sous-dépassement
+(overshoot / undershoot)}
+
+\begin{equation}
+\text{overshoot}
+=
+\max
+\left(
+0,
+\max_i u_i-\max_i u_i^{\text{ref}},
+\min_i u_i^{\text{ref}}-\min_i u_i
+\right).
+\end{equation}
+
+Cette métrique mesure de combien la solution calculée dépasse le vrai
+maximum ou passe sous le vrai minimum près d'une discontinuité.
+
+Un schéma ayant un dépassement nul ne génère donc aucune oscillation
+de Gibbs aux extrema, indépendamment de ses erreurs
+$L_1$, $L_2$ ou $L_\infty$ ailleurs dans le domaine.
+
+
+% ------------------------------------------------------------
+\subsection{Positivité (Euler uniquement)}
+
+\begin{equation}
+\text{positif}
+\iff
+\min_i \rho_i > 0
+\quad\wedge\quad
+\min_i p_i > 0.
+\end{equation}
+
+Il s'agit d'un critère booléen et non d'une métrique de classement.
+
+Un schéma produisant une densité ou une pression non positive a échoué
+physiquement, indépendamment de la valeur de ses normes d'erreur.
+
+
+% ------------------------------------------------------------
+\subsection{Erreur de localisation du choc / contact}
+
+Les localisations des structures sont trouvées à partir du gradient
+de densité.
+
+Le choc est identifié comme la position du plus fort
+
+\[
+\left|
+\frac{\mathrm{d}\rho}{\mathrm{d}x}
+\right|.
+\]
+
+Le contact est identifié comme le gradient le plus important en dehors
+d'une petite fenêtre d'exclusion autour du choc.
+
+L'erreur de localisation du choc est :
+
+\begin{equation}
+E_{\text{shock}}
+=
+\left|
+x_{\text{shock}}^{\text{scheme}}
+-
+x_{\text{shock}}^{\text{ref}}
+\right|.
+\end{equation}
+
+
+% ------------------------------------------------------------
+\subsection{Critères réussite/échec utilisés pour déclarer un vainqueur}
+
+\begin{align}
+\texttt{beats\_teacher}
+&\iff
+L^{\text{NN}}
+\le
+L^{\text{classical}},
+\\
+\texttt{teacher\_fidelity}
+&\iff
+L^{\text{NN}}
+\le
+\phi
+L^{\text{classical}},
+\qquad
+\phi = 1{,}02.
+\end{align}
+
+Le premier critère compare directement la précision du réseau
+à celle du schéma classique.
+
+Le second est un critère plus souple correspondant à l'idée de
+« pas significativement pire ».
+
+Le pourcentage d'amélioration ou de dégradation est calculé par :
+
+\begin{equation}
+X\%
+=
+\left(
+\frac{L^{\text{NN}}}
+     {L^{\text{classical}}}
+-1
+\right)
+\times 100.
+\end{equation}
+
+Une valeur négative indique donc une erreur plus faible pour le modèle
+neuronal, tandis qu'une valeur positive indique une erreur plus élevée.
+
+Le critère \texttt{teacher\_fidelity} est uniquement utilisé dans
+certains tests d'acceptation historiques de la section NN-TENO vs.\ TENO.
+
+Il ne constitue pas une preuve de supériorité.
+
+
+% ============================================================
+% SECTION 2
+% ============================================================
+
+\section{NN-WENO vs.\ WENO}
+\label{sec:strand1}
+
+Reproduction de l'article d'origine.
+
+Modèle :
+
+\texttt{models/SeemsGood3.h5}.
+
+Le réseau prédit directement la valeur reconstruite à l'interface,
+selon l'approche de Stevens \& Colonius.
+
+Les évaluations ont été réalisées via :
+
+\begin{itemize}
+    \item \texttt{Evaluate\_WENO5NN\_StepAdvection.py},
+    \item \texttt{WENO5\_vs\_WENO5NN\_Burgers.py},
+    \item \texttt{WENO5\_vs\_WENO5NN\_ShuOsher.py},
+    \item \texttt{WENO5\_vs\_WENO5NN\_Sod.py}.
+\end{itemize}
+
+
+% ------------------------------------------------------------
+\subsection{Advection d'un créneau (step advection)}
+
+\begin{table}[htbp]
+
+\begin{adjustbox}{max width=\textwidth,center}
+
+\begin{tabular}{lrrc}
+
+\toprule
+
+\textbf{Métrique}
+&
+\textbf{WENO5}
+&
+\textbf{WENO5-NN}
+&
+\textbf{Résultat RN}
+\\
+
+\midrule
+
+Variation totale max.\ (exact $=2{,}0$)
+&
+--
+&
+\num{2.00496}
+&
+\WIN
+\\
+
+\rowrule
+
+Largeur du choc (cellules)
+&
+--
+&
+22 (sur 100)
+&
+\WIN
+\\
+
+\rowrule
+
+Étendue de la solution
+&
+--
+&
+$[-0{,}00119,\ 1{,}00119]$
+&
+\WIN
+\\
+
+\bottomrule
+
+\end{tabular}
+
+\end{adjustbox}
+
+\caption{
+Advection d'un créneau, évaluation directe WENO5-NN
+($n_x=100$, $n_t=451$).
+\texttt{Evaluate\_WENO5NN\_StepAdvection.py}
+ne rapporte que le côté RN directement.
+Les chiffres comparatifs WENO5-vs.-RN
+$L_1$/$L_2$/$L_\infty$/largeur-de-choc
+($-28,7\%$/$-17,1\%$/$-5,2\%$/$-21,4\%$)
+proviennent du journal de résultats déjà vérifié du projet
+(\texttt{Report\_Results.md}, Partie 1.1).
+}
+
+\end{table}
+
+
+% ------------------------------------------------------------
+\subsection{Convergence sur l'équation de Burgers}
+
+\begin{table}[htbp]
+
+\begin{adjustbox}{max width=\textwidth,center}
+
+\begin{tabular}{rrrrc}
+
+\toprule
+
+\textbf{Cellules}
+&
+\textbf{$\Delta x$}
+&
+\textbf{$E$ (WENO5-JS)}
+&
+\textbf{$E$ (WENO5-NN)}
+&
+\textbf{Résultat RN}
+\\
+
+\midrule
+
+50
+&
+\num{4.0e-2}
+&
+\num{2.709410e-02}
+&
+\num{2.559760e-02}
+&
+\WIN
+\\
+
+\rowrule
+
+100
+&
+\num{2.0e-2}
+&
+\num{1.681767e-02}
+&
+\num{1.606723e-02}
+&
+\WIN
+\\
+
+\rowrule
+
+200
+&
+\num{1.0e-2}
+&
+\num{1.184928e-02}
+&
+\num{1.216283e-02}
+&
+\LOSE
+\\
+
+\rowrule
+
+400
+&
+\num{5.0e-3}
+&
+\num{7.412588e-03}
+&
+\num{7.162685e-03}
+&
+\WIN
+\\
+
+\bottomrule
+
+\end{tabular}
+
+\end{adjustbox}
+
+\caption{
+Équation de Burgers avec une solution de référence à 1600 cellules.
+$E$ représente l'erreur par rapport à la référence.
+Le RN gagne sur trois des quatre résolutions testées ;
+l'avantage n'est cependant pas monotone avec la résolution du maillage.
+}
+
+\end{table}
+
+
+% ------------------------------------------------------------
+\subsection{Tube à choc de Sod et Shu--Osher}
+\label{sec:strand1-euler}
+
+\begin{table}[htbp]
+
+\begin{adjustbox}{max width=\textwidth,center}
+
+\begin{tabular}{lrrrc}
+
+\toprule
+
+\textbf{Benchmark}
+&
+\textbf{WENO5}
+&
+\textbf{WENO5-NN}
+&
+\textbf{$\Delta$}
+&
+\textbf{Résultat RN}
+\\
+
+\midrule
+
+Sod
+&
+\num{4.414673e-01}
+&
+\num{4.426384e-01}
+&
+$+0,265\%$
+&
+\LOSE
+\\
+
+\rowrule
+
+Shu-Osher
+&
+\num{1.227778e+01}
+&
+\num{1.234543e+01}
+&
+$+0,551\%$
+&
+\LOSE
+\\
+
+\bottomrule
+
+\end{tabular}
+
+\end{adjustbox}
+
+\caption{
+$L_\infty$ par rapport à la solution réelle.
+Pour Sod : solution exacte, 120 cellules.
+Pour Shu-Osher : référence WENO5 à 3200 cellules,
+300 cellules pour l'évaluation et $t=2{,}0$.
+Les deux cas sont des quasi-égalités numériques,
+mais restent légèrement défavorables au RN selon le critère strict.
+}
+
+\end{table}
+
+
+% ============================================================
+% SECTION 3
+% ============================================================
+
+\section{NN-TENO vs.\ TENO}
+\label{sec:strand2}
+
+Modèle NN-TENO5 entraîné par imitation.
+
+Modèle :
+
+\texttt{models/nn\_teno5.h5}
+
+avec les seuils calibrés
+
+\[
+[0{,}66,\ 0{,}50,\ 0{,}69].
+\]
+
+Les évaluations ont été effectuées via :
+
+\begin{itemize}
+    \item \texttt{TENO5\_vs\_NNTENO5\_Scalar.py},
+    \item \texttt{TENO5\_vs\_NNTENO5\_Euler.py}.
+\end{itemize}
+
+Pour les problèmes scalaires :
+
+\[
+N=200,
+\qquad
+\mathrm{CFL}=0{,}4.
+\]
+
+Pour les benchmarks Euler :
+
+\[
+N=120.
+\]
+
+
+% ------------------------------------------------------------
+\subsection{Benchmarks scalaires}
+
+\begin{table}[htbp]
+
+\begin{adjustbox}{max width=\textwidth,center}
+
+\begin{tabular}{lrrrc}
+
+\toprule
+
+\textbf{Benchmark}
+&
+\textbf{TENO5 $L_1$}
+&
+\textbf{NN-TENO5 $L_1$}
+&
+\textbf{$\Delta$}
+&
+\textbf{Résultat RN}
+\\
+
+\midrule
+
+smooth\_sine\_advection
+&
+\num{3.327802e-07}
+&
+\num{3.327802e-07}
+&
+$0\%$
+&
+\TIE
+\\
+
+\rowrule
+
+multifrequency\_advection
+&
+\num{2.433666e-05}
+&
+\num{2.433666e-05}
+&
+$0\%$
+&
+\TIE
+\\
+
+\rowrule
+
+burgers\_smooth\_to\_shock
+&
+\num{1.328275e-04}
+&
+\num{1.328275e-04}
+&
+$0\%$
+&
+\TIE
+\\
+
+\rowrule
+
+step\_advection
+&
+\num{1.331725e-02}
+&
+\num{1.340182e-02}
+&
+$+0,64\%$
+&
+\LOSE
+\\
+
+\bottomrule
+
+\end{tabular}
+
+\end{adjustbox}
+
+\caption{
+Benchmarks scalaires évalués avec le critère
+\texttt{beats\_teacher}.
+Trois des quatre cas sont des égalités exactes.
+Le réseau reproduit donc la décision de TENO5 plutôt qu'une amélioration
+indépendante.
+}
+
+\end{table}
+
+
+% ------------------------------------------------------------
+\subsection{Benchmarks Euler}
+
+\begin{table}[htbp]
+
+\begin{adjustbox}{max width=\textwidth,center}
+
+\begin{tabular}{lrrrc}
+
+\toprule
+
+\textbf{Benchmark}
+&
+\textbf{TENO5 $\bar L_1$}
+&
+\textbf{NN-TENO5 $\bar L_1$}
+&
+\textbf{$\Delta$}
+&
+\textbf{Résultat RN}
+\\
+
+\midrule
+
+Sod
+&
+\num{5.596243e-03}
+&
+\num{5.532622e-03}
+&
+$-1,14\%$
+&
+\WIN
+\\
+
+\rowrule
+
+Shu-Osher
+&
+\num{7.344873e-02}
+&
+\num{7.307967e-02}
+&
+$-0,50\%$
+&
+\WIN
+\\
+
+\bottomrule
+
+\end{tabular}
+
+\end{adjustbox}
+
+\caption{
+Benchmarks Euler.
+Les deux cas correspondent à des victoires réelles mais étroites du réseau.
+Les marges restent faibles et ne constituent donc pas un avantage
+systématique important.
+}
+
+\end{table}
+
+
+% ------------------------------------------------------------
+% DETAILED EULER TABLE
+% ------------------------------------------------------------
+
+\begin{table}[htbp]
+
+\footnotesize
+
+\begin{adjustbox}{max width=\textwidth,center}
+
+\begin{tabular}{lrrrr}
+
+\toprule
+
+&
+\multicolumn{2}{c}{\textbf{Sod}}
+&
+\multicolumn{2}{c}{\textbf{Shu-Osher}}
+\\
+
+\cmidrule(lr){2-3}
+\cmidrule(lr){4-5}
+
+\textbf{Métrique}
+&
+\textbf{TENO5}
+&
+\textbf{NN-TENO5}
+&
+\textbf{TENO5}
+&
+\textbf{NN-TENO5}
+\\
+
+\midrule
+
+Densité $L_1$
+&
+\num{5.596243e-03}
+&
+\num{5.532622e-03}
+&
+\num{7.344873e-02}
+&
+\num{7.307967e-02}
+\\
+
+\rowrule
+
+Quantité de mvt.\ $L_1$
+&
+\num{6.013741e-03}
+&
+\num{5.957161e-03}
+&
+\num{1.818382e-01}
+&
+\num{1.810088e-01}
+\\
+
+\rowrule
+
+Énergie $L_1$
+&
+\num{1.356911e-02}
+&
+\num{1.341055e-02}
+&
+\num{3.667872e-01}
+&
+\num{3.622581e-01}
+\\
+
+\rowrule
+
+Densité min.
+&
+\num{0.125}
+&
+\num{0.125}
+&
+\num{0.801257}
+&
+\num{0.801257}
+\\
+
+\rowrule
+
+Pression min.
+&
+\num{0.1}
+&
+\num{0.1}
+&
+\num{1.0}
+&
+\num{0.998684}
+\\
+
+\rowrule
+
+Positivité $\rho,p$
+&
+\multicolumn{2}{c}{\checkmark\ les deux}
+&
+\multicolumn{2}{c}{\checkmark\ les deux}
+\\
+
+\rowrule
+
+Erreur loc.\ choc
+&
+\num{0.00833}
+&
+\num{0.00833}
+&
+0
+&
+0
+\\
+
+\rowrule
+
+Erreur loc.\ contact
+&
+\num{0.00833}
+&
+\num{0.00833}
+&
+\num{0.0833}
+&
+\num{0.0833}
+\\
+
+\rowrule
+
+Dépassement pression
+&
+\num{2.78e-17}
+&
+\num{2.78e-17}
+&
+\num{4.57e-04}
+&
+\num{1.33e-02}
+\\
+
+\bottomrule
+
+\end{tabular}
+
+\end{adjustbox}
+
+\caption{
+Décomposition complète par composante pour les benchmarks Euler.
+Sur Shu-Osher, le dépassement de pression de NN-TENO5 est environ
+29 fois plus important que celui de TENO5
+(\num{1.33e-2} contre \num{4.57e-4}),
+malgré la victoire du réseau sur la métrique $L_1$.
+}
+
+\end{table}
+
+
+% ------------------------------------------------------------
+\subsection{Tentative de rendre l'avantage réel, et non accidentel}
+\label{sec:strand2b}
+
+\emph{
+Résultats historiques cités depuis \texttt{Results.md}, Phases 7--9.
+Les modèles entraînés pour cette expérience n'ont pas été conservés et
+n'ont donc pas pu être relancés pendant cette session.
+}
+
+Le modèle a été réentraîné sur des étiquettes oracle, avec un balayage du
+régularisateur d'ancrage :
+
+\[
+\lambda_{\text{anchor}}
+\in
+\{1,5,20,100,500\}.
+\]
+
+L'évaluation est réalisée sur la même suite de six benchmarks utilisant
+\texttt{beats\_teacher}.
+
+
+\begin{table}[htbp]
+
+\footnotesize
+
+\begin{adjustbox}{max width=\textwidth,center}
+
+\begin{tabular}{lccccccc}
+
+\toprule
+
+\textbf{$\lambda_{\text{anchor}}$}
+&
+\textbf{Sod}
+&
+\textbf{Shu-Osher}
+&
+\textbf{smooth}
+&
+\textbf{multifreq}
+&
+\textbf{Burgers}
+&
+\textbf{step}
+&
+\textbf{Total}
+\\
+
+\midrule
+
+0 (non mélangé)
+&
+crash
+&
+n/a
+&
+\TIE
+&
+\TIE
+&
+\LOSE
+&
+explosion
+&
+catastrophique
+\\
+
+\rowrule
+
+1
+&
+\LOSE
+&
+\LOSE
+&
+\TIE
+&
+\TIE
+&
+\WIN
+&
+\LOSE
+&
+3/6
+\\
+
+\rowrule
+
+5
+&
+\LOSE
+&
+\LOSE
+&
+\TIE
+&
+\TIE
+&
+\WIN
+&
+\LOSE
+&
+3/6
+\\
+
+\rowrule
+
+20
+&
+\LOSE
+&
+\LOSE
+&
+\TIE
+&
+\TIE
+&
+\TIE
+&
+\LOSE
+&
+2/6
+\\
+
+\rowrule
+
+100
+&
+\WIN
+&
+\LOSE
+&
+\TIE
+&
+\TIE
+&
+\TIE
+&
+\LOSE
+&
+4/6
+\\
+
+\rowrule
+
+500
+&
+\WIN
+&
+\LOSE
+&
+\TIE
+&
+\TIE
+&
+\TIE
+&
+\LOSE
+&
+4/6
+\\
+
+\midrule
+
+\emph{référence sans oracle}
+&
+\WIN
+&
+\WIN
+&
+\TIE
+&
+\TIE
+&
+\TIE
+&
+\LOSE
+&
+\textbf{5/6}
+\\
+
+\bottomrule
+
+\end{tabular}
+
+\end{adjustbox}
+
+\caption{
+Aucune force d'ancrage ne rattrape ou ne dépasse la référence entraînée
+par imitation pure, qui atteint 5/6.
+Le réentraînement vers une cible locale théoriquement meilleure ne produit
+donc pas automatiquement une meilleure trajectoire numérique.
+}
+
+\end{table}
+
+
+% ============================================================
+% SECTION 4
+% ============================================================
+
+\section{NN-TENO vs.\ TENO (Nouvelle approche recommandée par le professeur)}
+\label{sec:strand-new}
+
+Cette section couvre l'approche JAX par Unrolled Physics Loss, sur le cas
+scalaire puis sur le système d'Euler.
+
+% ------------------------------------------------------------
+\subsection{Cas scalaire}
+\label{sec:strand3}
+
+Les résultats ont été générés via :
+
+\texttt{ValidationMatrix\_ProjPDF.py}
+
+avec :
+
+\[
+N=64.
+\]
+
+Le modèle utilisé est :
+
+\texttt{run6\_learnedlambda}
+
+un modèle \texttt{run3\_pretrained} réentraîné avec une tête de mélange
+dédiée (mécanisme repris de la sous-section~\ref{sec:strand4}, Système
+d'Euler, ci-dessous) et des exemples d'entraînement sur le flux non
+linéaire de Burgers, absents de l'entraînement d'origine.
+
+
+\begin{table}[htbp]
+
+\begin{adjustbox}{max width=\textwidth,center}
+
+\begin{tabular}{lrrrc}
+
+\toprule
+
+\textbf{Benchmark}
+&
+\textbf{TENO5}
+&
+\textbf{NN-TENO5 (JAX)}
+&
+\textbf{Rapport}
+&
+\textbf{Résultat RN}
+\\
+
+\midrule
+
+Advection ($L_1$)
+&
+\num{3.481861e-02}
+&
+\num{3.381306e-02}
+&
+$0{,}9711\times$
+&
+\WIN
+\\
+
+\rowrule
+
+Advection ($L_2$)
+&
+\num{9.895985e-02}
+&
+\num{9.552129e-02}
+&
+$0{,}9653\times$
+&
+\WIN
+\\
+
+\rowrule
+
+Advection (TV, exact $=2$)
+&
+\num{2.0000}
+&
+\num{2.0000}
+&
+--
+&
+\TIE
+\\
+
+\rowrule
+
+Burgers ($L_1$, avant-choc, hors distribution)
+&
+\num{2.069709e-04}
+&
+\num{1.787337e-04}
+&
+$0{,}8636\times$
+&
+\WIN
+\\
+
+\rowrule
+
+Burgers ($L_2$, avant-choc, hors distribution)
+&
+\num{8.166970e-04}
+&
+\num{6.649269e-04}
+&
+$0{,}8142\times$
+&
+\WIN
+\\
+
+\bottomrule
+
+\end{tabular}
+
+\end{adjustbox}
+
+\caption{
+Évaluation à l'échelle canonique des benchmarks
+($\text{final\_time}=1{,}0$ pour l'advection,
+soit environ $8{,}5\times$ l'horizon utilisé pendant l'apprentissage à
+$K=15$).
+\textbf{NN-TENO5 (JAX) gagne sur les deux benchmarks}, y compris Burgers,
+explicitement hors distribution (flux non linéaire jamais vu à
+l'entraînement du tronc d'origine).
+La tête de mélange dédiée démarre déjà gagnante avant tout entraînement
+(mélange uniforme d'environ 4,7\% de la reconstruction du réseau à chaque
+cellule) ; l'entraînement affiné améliore ensuite les deux résultats
+davantage, sans jamais régresser.
+}
+
+\end{table}
+
+
+% ------------------------------------------------------------
+\subsection{Système d'Euler}
+\label{sec:strand4}
+
+Les résultats ont été générés via :
+
+\texttt{TENO5euler\_vs\_NNTENO5euler\_JAX.py}.
+
+Les paramètres sont :
+
+\[
+N=120,
+\]
+
+avec une référence à 320 cellules pour Shu-Osher.
+
+Le meilleur modèle disponible utilise un tronc entraîné avec :
+
+\begin{itemize}
+    \item mélange de données lisses ;
+    \item écrêtage du gradient ;
+    \item tête de mélange dédiée entraînée séparément.
+\end{itemize}
+
+Le modèle correspondant est :
+
+\texttt{..\_phase18\_learnedlambda.pkl}.
+
+
+% ------------------------------------------------------------
+
+\begin{table}[htbp]
+
+\begin{adjustbox}{max width=\textwidth,center}
+
+\begin{tabular}{lrrrc}
+
+\toprule
+
+\textbf{Benchmark}
+&
+\textbf{TENO5euler $\bar L_1$}
+&
+\textbf{NN-TENO5euler $\bar L_1$}
+&
+\textbf{Rapport}
+&
+\textbf{Résultat RN}
+\\
+
+\midrule
+
+Sod
+&
+\num{8.258323e-03}
+&
+\num{8.287093e-03}
+&
+$1{,}0035\times$
+&
+\LOSE
+\\
+
+\rowrule
+
+Shu-Osher
+&
+\num{2.131892e-01}
+&
+\num{2.092639e-01}
+&
+$0{,}9816\times$
+&
+\WIN
+\\
+
+\bottomrule
+
+\end{tabular}
+
+\end{adjustbox}
+
+\caption{
+Pour Sod, TENO5euler possède une erreur environ 0,35\% plus faible.
+Pour Shu-Osher,
+\textbf{NN-TENO5euler gagne de 1,84\%}.
+Il s'agit de la première victoire nette contre un schéma classique
+sur un benchmark canonique obtenue dans ce projet.
+}
+
+\end{table}
+
+
+% ------------------------------------------------------------
+
+\begin{table}[htbp]
+
+\footnotesize
+
+\begin{adjustbox}{max width=\textwidth,center}
+
+\begin{tabular}{lrrrr}
+
+\toprule
+
+&
+\multicolumn{2}{c}{\textbf{Sod}}
+&
+\multicolumn{2}{c}{\textbf{Shu-Osher}}
+\\
+
+\cmidrule(lr){2-3}
+\cmidrule(lr){4-5}
+
+\textbf{Métrique}
+&
+\textbf{TENO5euler}
+&
+\textbf{NN-TENO5euler}
+&
+\textbf{TENO5euler}
+&
+\textbf{NN-TENO5euler}
+\\
+
+\midrule
+
+Densité $L_1$
+&
+\num{5.484873e-03}
+&
+\num{5.507869e-03}
+&
+\num{7.522187e-02}
+&
+\num{7.430708e-02}
+\\
+
+\rowrule
+
+Quantité de mvt.\ $L_1$
+&
+\num{5.950426e-03}
+&
+\num{5.949739e-03}
+&
+\num{1.837471e-01}
+&
+\num{1.821342e-01}
+\\
+
+\rowrule
+
+Énergie $L_1$
+&
+\num{1.333967e-02}
+&
+\num{1.340367e-02}
+&
+\num{3.805987e-01}
+&
+\num{3.713506e-01}
+\\
+
+\rowrule
+
+Densité min.
+&
+\num{0.125}
+&
+\num{0.125}
+&
+\num{0.801257}
+&
+\num{0.800648}
+\\
+
+\rowrule
+
+Pression min.
+&
+\num{0.1}
+&
+\num{0.1}
+&
+\num{1.0}
+&
+\num{1.0}
+\\
+
+\rowrule
+
+Positivité $\rho,p$
+&
+\multicolumn{2}{c}{\checkmark\ les deux}
+&
+\multicolumn{2}{c}{\checkmark\ les deux}
+\\
+
+\rowrule
+
+Erreur loc.\ choc
+&
+\num{0.00833}
+&
+\num{0.00833}
+&
+0
+&
+0
+\\
+
+\rowrule
+
+Erreur loc.\ contact
+&
+\num{0.00833}
+&
+\num{0.00833}
+&
+\num{0.0833}
+&
+\num{0.0833}
+\\
+
+\rowrule
+
+Erreur conservation (densité)
+&
+\num{1.33e-15}
+&
+\num{1.33e-15}
+&
+\num{3.79e-10}
+&
+\num{4.41e-10}
+\\
+
+\bottomrule
+
+\end{tabular}
+
+\end{adjustbox}
+
+\caption{
+Décomposition complète par composante.
+NN-TENO5euler gagne sur deux des trois composantes de Shu-Osher
+(quantité de mouvement et énergie).
+La victoire agrégée sur $\bar L_1$ pour Shu-Osher provient donc
+principalement de ces composantes plutôt que d'une amélioration uniforme
+de toutes les variables conservées.
+}
+
+\end{table}
+
+
+% ------------------------------------------------------------
+\subsection{Progression : comment la victoire a été obtenue}
+
+\begin{table}[htbp]
+
+\begin{adjustbox}{max width=\textwidth,center}
+
+\begin{tabular}{lrr}
+
+\toprule
+
+\textbf{Étape}
+&
+\textbf{Rapport Sod}
+&
+\textbf{Rapport Shu-Osher}
+\\
+
+\midrule
+
+Avant (aucun modèle fini)
+&
+--
+&
+--
+\\
+
+\rowrule
+
+Correctif de stabilité
+(terme de perte mort + bug de réparation)
+&
+$1{,}29\times$
+&
+$1{,}24\times$
+\\
+
+\rowrule
+
++ données d'entraînement lisses
++ écrêtage du gradient
+&
+$1{,}16\times$
+&
+$1{,}23\times$
+\\
+
+\rowrule
+
++ reconstruction à mélange convexe
+(littérature)
+&
+$1{,}145\times$
+&
+$1{,}065\times$
+\\
+
+\rowrule
+
++ tête de mélange dédiée,
+entraînée séparément
+&
+$\mathbf{1{,}003\times}$
+&
+$\mathbf{0{,}982\times}$
+\\
+
+\bottomrule
+
+\end{tabular}
+
+\end{adjustbox}
+
+\caption{
+Progression obtenue grâce à plusieurs correctifs diagnostiqués
+et vérifiés indépendamment.
+Un rapport inférieur à $1$ signifie que le modèle neuronal possède
+une erreur plus faible que TENO5euler.
+}
+
+\end{table}
+
+Deux tentatives supplémentaires pour dépasser ce résultat sur Sod ont été
+testées : un taux d'apprentissage 50 fois plus élevé pour la tête de mélange
+(rapport Sod $1{,}0045\times$), puis une tête enrichie recevant directement
+le stencil brut plutôt que les seules probabilités de trouble (rapport Sod
+$1{,}0026\times$). Aucune ne dépasse une quasi-égalité. Un balayage direct
+du coefficient de mélange (constante, sans apprentissage) confirme qu'il
+s'agit d'une limite structurelle du tronc lui-même sur Sod, et non d'un
+problème de calibration de la tête : l'erreur sur Sod augmente de façon
+monotone avec tout coefficient de mélange testé (de $1{,}0000\times$ à
+$\lambda{=}0$ jusqu'à $1{,}0472\times$ à $\lambda{=}0{,}3$), alors que
+Shu-Osher s'améliore de façon monotone jusqu'à $\lambda \approx 0{,}2$.
+Le modèle issu de la tête de mélange dédiée simple, présenté ci-dessus,
+reste donc le meilleur disponible.
+
+
+% ============================================================
+% SUMMARY
+% ============================================================
+
+\section{Résumé}
+
+\begin{table}[htbp]
+
+\small
+
+\begin{tabularx}{\textwidth}{
+    @{}
+    >{\raggedright\arraybackslash}p{0.25\textwidth}
+    >{\raggedright\arraybackslash}p{0.25\textwidth}
+    >{\centering\arraybackslash}p{0.11\textwidth}
+    >{\raggedright\arraybackslash}X
+    @{}
+}
+
+\toprule
+
+\textbf{Volet}
+&
+\textbf{Verdict}
+&
+\textbf{Résultat}
+&
+\textbf{Observation principale}
+\\
+
+\midrule
+
+1. WENO5-NN vs.\ WENO5
+&
+Dépend fortement du problème
+&
+\TIE
+&
+Victoire sur step advection et sur 3/4 résolutions de Burgers,
+mais légère perte sur Sod et Shu-Osher.
+\\
+
+\rowrule
+
+2. NN-TENO5 (imitation) vs.\ TENO5
+&
+Reproduit principalement le maître
+&
+\TIE
+&
+Trois égalités exactes sur les benchmarks scalaires,
+deux petits gains sur Euler et une petite perte sur step advection.
+\\
+
+\rowrule
+
+3. NN-TENO5 (JAX) vs.\ TENO5, scalaire
+&
+Victoire sur les deux benchmarks canoniques
+&
+\WIN
+&
+Gain de 3,5\% sur l'advection et de 18,6\% sur Burgers (hors distribution),
+grâce à une tête de mélange dédiée et un entraînement incluant le flux de
+Burgers.
+\\
+
+\rowrule
+
+4. NN-TENO5euler (JAX) vs.\ TENO5euler
+&
+Première amélioration nette sur un benchmark canonique
+&
+\WIN
+&
+Victoire de $1,84\%$ sur Shu-Osher ;
+Sod reste une quasi-égalité légèrement défavorable au RN.
+\\
+
+\bottomrule
+
+\end{tabularx}
+
+\caption{
+Résumé global des quatre volets.
+WIN signifie que le modèle neuronal démontre une amélioration,
+TIE indique une performance globalement comparable,
+et LOSE une performance inférieure au schéma classique.
+}
+
+\end{table}
+
+
+Chaque variante RN, dans chaque volet, tourne aussi nettement plus lentement
+par cellule que son équivalent classique :
+
+\[
+\sim 5\text{--}18\times
+\]
+
+pour les modèles basés sur Keras.
+
+Les victoires en précision rapportées ici ne se traduisent donc actuellement
+pas par un avantage pratique en temps de calcul.
+
+
+% ============================================================
+% END
+% ============================================================
+
+\end{document}
