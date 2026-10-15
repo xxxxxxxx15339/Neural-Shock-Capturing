@@ -1,0 +1,5 @@
+[
+  "validation/p0-2026-10-14/reference-canonical/canonical-shu-osher/reference_convergence.json",
+  "validation/p0-2026-10-14/reference-heldout-160/heldout-shu-osher-160/reference_convergence.json",
+  "validation/p0-2026-10-14/reference-heldout-240/heldout-shu-osher-240/reference_convergence.json"
+]

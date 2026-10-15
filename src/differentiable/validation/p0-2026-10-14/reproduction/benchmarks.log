@@ -1,0 +1,60 @@
+Evaluating canonical-advection
+  teno5          error=0.0989598541 valid=True
+  neural-only    error=475.29392 valid=True
+  fixed-blend    error=0.0974064292 valid=True
+  learned-blend  error=0.0955212916 valid=True
+Evaluating canonical-burgers
+  teno5          error=0.000816696989 valid=True
+  neural-only    error=0.00351331532 valid=True
+  fixed-blend    error=0.000712430673 valid=True
+  learned-blend  error=0.00066492691 valid=True
+Evaluating canonical-sod
+  teno5          error=0.00825832267 valid=True
+  neural-only    error=0.0102771852 valid=True
+  fixed-blend    error=0.00828539063 valid=True
+  learned-blend  error=0.00828709346 valid=True
+Evaluating canonical-shu-osher
+  teno5          error=0.213189213 valid=True
+  neural-only    error=0.256105842 valid=True
+  fixed-blend    error=0.209236937 valid=True
+  learned-blend  error=0.209263935 valid=True
+Evaluating heldout-advection-square-96
+  teno5          error=0.0704607706 valid=True
+  neural-only    error=5.41666834 valid=True
+  fixed-blend    error=0.0685729091 valid=True
+  learned-blend  error=0.0678452442 valid=True
+Evaluating heldout-advection-fourier-192
+  teno5          error=8.76549974e-06 valid=True
+  neural-only    error=0.33092444 valid=True
+  fixed-blend    error=1.16730951e-06 valid=True
+  learned-blend  error=5.50098595e-06 valid=True
+Evaluating heldout-burgers-fourier-96
+  teno5          error=9.10790048e-06 valid=True
+  neural-only    error=2.39344652e-05 valid=True
+  fixed-blend    error=8.40501585e-06 valid=True
+  learned-blend  error=8.13199131e-06 valid=True
+Evaluating heldout-burgers-fourier-192
+  teno5          error=6.79616333e-06 valid=True
+  neural-only    error=1.58006483e-05 valid=True
+  fixed-blend    error=5.96330262e-06 valid=True
+  learned-blend  error=5.59493268e-06 valid=True
+Evaluating heldout-sod-96
+  teno5          error=0.00748351125 valid=True
+  neural-only    error=0.00707695543 valid=True
+  fixed-blend    error=0.00737255684 valid=True
+  learned-blend  error=0.00737369808 valid=True
+Evaluating heldout-sod-192
+  teno5          error=0.00372694178 valid=True
+  neural-only    error=0.00481272242 valid=True
+  fixed-blend    error=0.00369368901 valid=True
+  learned-blend  error=0.00369187944 valid=True
+Evaluating heldout-shu-osher-160
+  teno5          error=0.142058412 valid=True
+  neural-only    error=0.203990115 valid=True
+  fixed-blend    error=0.137661006 valid=True
+  learned-blend  error=0.137627261 valid=True
+Evaluating heldout-shu-osher-240
+  teno5          error=0.155609717 valid=True
+  neural-only    error=0.283100643 valid=True
+  fixed-blend    error=0.143772862 valid=True
+  learned-blend  error=0.144212857 valid=True

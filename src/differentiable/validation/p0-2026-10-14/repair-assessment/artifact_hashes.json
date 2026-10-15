@@ -1,0 +1,14 @@
+{
+  "canonical-shu-osher-corrected.npz": "7e74556badfe2babb5dfae89982da59dce598372542a2067a8f7acc2d581890a",
+  "canonical-shu-osher-historical.npz": "81857a0636814786482577f47eb98038b80d784a42872eae8dab0f320b490e53",
+  "canonical-shu-osher-unguarded.npz": "60a0e5e511ccf782051df83aafd558fc2cfb948c7c9a43e6b192f070deb181f4",
+  "canonical-sod-corrected.npz": "868c5f8a7cdc05050be0ca731a3183a76095f3708d2f3dcdd9259e2b8d6a4419",
+  "canonical-sod-historical.npz": "2dd9f3cef224b78f1670c9146d9fa30bc517d98f981d534491c76c6ad1915db5",
+  "canonical-sod-unguarded.npz": "515dbcf9418552de1a331e3390f2d215db78fc840ed7acd153e0194a03b44817",
+  "configuration.json": "6031f6075639bbfcfb6351a25dc46b7b80b8061d991cc61f2666fe62387198b9",
+  "low-positive-entropy-wave-corrected.npz": "ed2884b7a31e37e9cc0508f645a41422bc7a5e4d87794e84b27594aab442da4b",
+  "low-positive-entropy-wave-historical.npz": "2f594be24f255d2c1d2146e01c358d0a76526d1ca8ed08f43e6ca0bcd5cd06a4",
+  "low-positive-entropy-wave-unguarded.npz": "ed2884b7a31e37e9cc0508f645a41422bc7a5e4d87794e84b27594aab442da4b",
+  "provenance.json": "2ecc6aea14850f470895f476a18f98ff3327b7aa326b81fe111fd555c90b40c8",
+  "repair_assessment.json": "f1b89d70beb88e34b21171fa3725f6d9c5727bb2c0b2173b6530bbf76ba4900e"
+}

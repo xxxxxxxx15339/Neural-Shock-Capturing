@@ -1,0 +1,28 @@
+{
+  "id": "heldout-burgers-fourier-96",
+  "problem": "burgers",
+  "cells": 96,
+  "length": 1.0,
+  "final_time": 0.2,
+  "cfl": 0.5,
+  "boundary": "periodic",
+  "sampling": "point-i-dx",
+  "initial": {
+    "type": "fourier",
+    "offset": 0.5,
+    "modes": [
+      [
+        0.18,
+        1,
+        0.4
+      ],
+      [
+        0.04,
+        2,
+        -0.2
+      ]
+    ]
+  },
+  "alpha": 1.0,
+  "wave_speed": 1.0
+}

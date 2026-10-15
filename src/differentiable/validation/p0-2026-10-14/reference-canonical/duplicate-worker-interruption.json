@@ -1,0 +1,8 @@
+{
+  "reason": "Canonical study completed. Standalone fresh workers cover both remaining held-out studies. Preserve all existing output; avoid duplicate compute.",
+  "canonical_result": "/tmp/p0-release-gv0z2q/reference-development/canonical-shu-osher/reference_convergence.json",
+  "interrupted_pids": [
+    238645
+  ],
+  "timestamp": 1792053419.967931
+}

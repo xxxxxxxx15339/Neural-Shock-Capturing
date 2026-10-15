@@ -1,0 +1,113 @@
+[
+  {
+    "case": "canonical-shu-osher",
+    "spatial_cauchy": [
+      {
+        "cells": 640,
+        "target_l1": 0.04972082624083126,
+        "previous_grid_l1": 0.05221049016584002
+      },
+      {
+        "cells": 1280,
+        "target_l1": 0.012625694812858674,
+        "previous_grid_l1": 0.019665296865660896
+      },
+      {
+        "cells": 2560,
+        "target_l1": 0.005407203370860732,
+        "previous_grid_l1": 0.009822368448863729
+      },
+      {
+        "cells": 5120,
+        "target_l1": 0.002398251127446643,
+        "previous_grid_l1": 0.0055112378786620455
+      }
+    ],
+    "temporal_cauchy_dt_to_half": 0.0011034972957559492,
+    "temporal_cauchy_half_to_quarter": 0.0004946234501473877,
+    "temporal_observed_target_order": 1.1576805493571085,
+    "learned_finding": {
+      "final_margin": 0.004066660033894831,
+      "ratio": 0.9847979263075198,
+      "recent_ranking_consistent": true,
+      "empirical_margin_uncertainty_bound": 0.006836813190722489,
+      "uncertainty_fraction_limit": 0.25,
+      "status": "reference-unresolved",
+      "caveat": "Empirical Cauchy criterion, not a rigorous error bound or an independent-scheme reference"
+    }
+  },
+  {
+    "case": "heldout-shu-osher-160",
+    "spatial_cauchy": [
+      {
+        "cells": 640,
+        "target_l1": 0.026680133440366557,
+        "previous_grid_l1": 0.02331305799957826
+      },
+      {
+        "cells": 1280,
+        "target_l1": 0.031133575903617816,
+        "previous_grid_l1": 0.014724159116654133
+      },
+      {
+        "cells": 2560,
+        "target_l1": 0.02164962898925961,
+        "previous_grid_l1": 0.006604011761471209
+      },
+      {
+        "cells": 5120,
+        "target_l1": 0.005308023728648848,
+        "previous_grid_l1": 0.00420409143043665
+      }
+    ],
+    "temporal_cauchy_dt_to_half": 0.0009208138717128799,
+    "temporal_cauchy_half_to_quarter": 0.00040499271331615773,
+    "temporal_observed_target_order": 1.1850136162233855,
+    "learned_finding": {
+      "final_margin": 0.004486811778753735,
+      "ratio": 0.9684142242107822,
+      "recent_ranking_consistent": true,
+      "empirical_margin_uncertainty_bound": 0.012144897039216788,
+      "uncertainty_fraction_limit": 0.25,
+      "status": "reference-unresolved",
+      "caveat": "Empirical Cauchy criterion, not a rigorous error bound or an independent-scheme reference"
+    }
+  },
+  {
+    "case": "heldout-shu-osher-240",
+    "spatial_cauchy": [
+      {
+        "cells": 640,
+        "target_l1": 0.07660552350513072,
+        "previous_grid_l1": 0.07771829473799964
+      },
+      {
+        "cells": 1280,
+        "target_l1": 0.01771233797086676,
+        "previous_grid_l1": 0.01607560162560249
+      },
+      {
+        "cells": 2560,
+        "target_l1": 0.013983552665807466,
+        "previous_grid_l1": 0.008564055066510588
+      },
+      {
+        "cells": 5120,
+        "target_l1": 0.004456863043975353,
+        "previous_grid_l1": 0.004515975881411059
+      }
+    ],
+    "temporal_cauchy_dt_to_half": 0.0009044276703591731,
+    "temporal_cauchy_half_to_quarter": 0.0005252207952428697,
+    "temporal_observed_target_order": 0.7840810925840936,
+    "learned_finding": {
+      "final_margin": 0.011436266624835767,
+      "ratio": 0.9265049243595191,
+      "recent_ranking_consistent": true,
+      "empirical_margin_uncertainty_bound": 0.0103332132305976,
+      "uncertainty_fraction_limit": 0.25,
+      "status": "reference-unresolved",
+      "caveat": "Empirical Cauchy criterion, not a rigorous error bound or an independent-scheme reference"
+    }
+  }
+]

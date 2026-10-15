@@ -1,0 +1,38 @@
+test_contiguous_train_validation_test_split (test_core.DataPipelineTests.test_contiguous_train_validation_test_split) ... ok
+test_scaling_round_trip_and_constants (test_core.DataPipelineTests.test_scaling_round_trip_and_constants) ... ok
+test_shu_osher_at_t_1_point_8_against_refined_weno7 (test_core.EulerPhysicalRegressionTests.test_shu_osher_at_t_1_point_8_against_refined_weno7) ... ok
+test_sod_at_t_point_2_against_exact_riemann_solution (test_core.EulerPhysicalRegressionTests.test_sod_at_t_point_2_against_exact_riemann_solution) ... ok
+test_adaptive_cfl_reaches_exact_final_time (test_core.EulerValidationTests.test_adaptive_cfl_reaches_exact_final_time) ... ok
+test_constant_state_all_weno_orders (test_core.EulerValidationTests.test_constant_state_all_weno_orders) ... ok
+test_invalid_intermediate_runge_kutta_stage_is_rejected (test_core.EulerValidationTests.test_invalid_intermediate_runge_kutta_stage_is_rejected) ... ok
+test_nonpositive_density_is_rejected (test_core.EulerValidationTests.test_nonpositive_density_is_rejected) ... ok
+test_roe_left_and_right_bases_are_inverses (test_core.EulerValidationTests.test_roe_left_and_right_bases_are_inverses) ... ok
+test_shu_osher_all_weno_orders (test_core.EulerValidationTests.test_shu_osher_all_weno_orders) ... ok
+test_sod_all_weno_orders (test_core.EulerValidationTests.test_sod_all_weno_orders) ... ok
+test_uniform_moving_state_all_weno_orders (test_core.EulerValidationTests.test_uniform_moving_state_all_weno_orders) ... ok
+test_smooth_periodic_advection_orders (test_core.SpatialConvergenceTests.test_smooth_periodic_advection_orders) ... ok
+test_cfl_violation_is_rejected (test_core.WENO5Tests.test_cfl_violation_is_rejected) ... ok
+test_constant_reconstruction (test_core.WENO5Tests.test_constant_reconstruction) ... ok
+test_short_periodic_advection_is_finite (test_core.WENO5Tests.test_short_periodic_advection_is_finite) ... ok
+test_unsupported_scalar_boundary_is_rejected (test_core.WENO5Tests.test_unsupported_scalar_boundary_is_rejected) ... ok
+test_common_combination_and_fallback (test_teno.TENOTests.test_common_combination_and_fallback) ... ok
+test_deterministic_constant_reconstruction (test_teno.TENOTests.test_deterministic_constant_reconstruction) ... ok
+test_euler_uses_one_flat_batch_and_independent_masks (test_teno.TENOTests.test_euler_uses_one_flat_batch_and_independent_masks) ... ok
+test_neural_masks_threshold_fallback_and_immutability (test_teno.TENOTests.test_neural_masks_threshold_fallback_and_immutability) ... ok
+test_normalization_is_affine_invariant (test_teno.TENOTests.test_normalization_is_affine_invariant) ... ok
+test_adds_mach_and_pressure_terms (test_feature_vector.EulerFeatureVectorTests.test_adds_mach_and_pressure_terms) ... ok
+test_five_wide_window_has_no_j_left (test_feature_vector.ScalarFeatureVectorRealDatasetTests.test_five_wide_window_has_no_j_left) ... ok
+test_flatten_width_for_five_wide_window (test_feature_vector.ScalarFeatureVectorRealDatasetTests.test_flatten_width_for_five_wide_window) ... ok
+test_no_nans_across_full_dataset (test_feature_vector.ScalarFeatureVectorRealDatasetTests.test_no_nans_across_full_dataset) ... ok
+test_scheme_linear_weights_is_the_constant_broadcast (test_feature_vector.ScalarFeatureVectorRealDatasetTests.test_scheme_linear_weights_is_the_constant_broadcast) ... ok
+test_shape_and_sample_count (test_feature_vector.ScalarFeatureVectorRealDatasetTests.test_shape_and_sample_count) ... ok
+test_u_normalized_matches_existing_normalization (test_feature_vector.ScalarFeatureVectorRealDatasetTests.test_u_normalized_matches_existing_normalization) ... ok
+test_both_jumps_present_and_finite (test_feature_vector.SixWideWindowTests.test_both_jumps_present_and_finite) ... ok
+test_flatten_width_for_six_wide_window (test_feature_vector.SixWideWindowTests.test_flatten_width_for_six_wide_window) ... ok
+test_j_right_matches_five_wide_call_on_trailing_slice (test_feature_vector.SixWideWindowTests.test_j_right_matches_five_wide_call_on_trailing_slice) ... ok
+test_rejects_wrong_width (test_feature_vector.SixWideWindowTests.test_rejects_wrong_width) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 8.822s
+
+OK

@@ -1,0 +1,76 @@
+{
+  "case": "heldout-sod-96",
+  "method": "teno5",
+  "time_grid": {
+    "dx": 0.010416666666666666,
+    "dt": 0.0026666666666666666,
+    "steps": 45,
+    "initial_speed_bound": 1.5381807436059003,
+    "temporal_refinement": 1,
+    "wall_seconds_including_compilation": 5.004291310999179
+  },
+  "metric_definition": "mean component L1",
+  "primary_error": 0.007483511253624074,
+  "l1": 0.007483511253624074,
+  "l2": 0.02140357516884889,
+  "linf": 0.2033453371029575,
+  "component_l1": [
+    0.005735971876137821,
+    0.004766101290098166,
+    0.011948460594636239
+  ],
+  "component_l2": [
+    0.014374274847453572,
+    0.014168335648652532,
+    0.03109626308067708
+  ],
+  "component_linf": [
+    0.0898170089183063,
+    0.08317296947220787,
+    0.2033453371029575
+  ],
+  "finite": true,
+  "raw_stages_admissible": true,
+  "invalid_stage_rows": 0,
+  "nonfinite_stage_rows": 0,
+  "repaired_stage_rows": 0,
+  "isolated_repair_events": 0,
+  "fallback_repair_events": 0,
+  "repair_policy": "none",
+  "maximum_absolute_stage_state": 2.5000000000000004,
+  "max_courant": 0.567738955308999,
+  "initial_integral": [
+    0.49869791666666663,
+    0.0,
+    1.2109375
+  ],
+  "final_integral": [
+    0.49869791666666596,
+    0.1079999999999999,
+    1.210937499999999
+  ],
+  "integrated_boundary_exchange": [
+    0.0,
+    0.10799999999999998,
+    -1.7838186798037975e-19
+  ],
+  "integrated_repair_exchange": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "conservation_residual": [
+    -6.661338147750939e-16,
+    -8.326672684688674e-17,
+    -1.110044642757176e-15
+  ],
+  "physical_balance_error": [
+    -6.661338147750939e-16,
+    -8.326672684688674e-17,
+    -1.110044642757176e-15
+  ],
+  "minimum_density": 0.12448453493466992,
+  "minimum_pressure": 0.09987076255977019,
+  "valid_for_accuracy_claim": true,
+  "total_variation": 0.87519893666247
+}

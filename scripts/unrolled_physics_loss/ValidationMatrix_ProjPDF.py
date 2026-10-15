@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
-"""Phase 7: the Unrolled Physics Loss proposal's Table 1 validation matrix, using Phase 6's trained network.
+"""Import-safe historical scalar evaluator. No model loads or evaluations occur at import.
+
+For final four-problem reproduction use Evaluate_Benchmarks.py.
+
+Phase 7: the Unrolled Physics Loss proposal's Table 1 validation matrix, using Phase 6's trained network.
 
 Maps the Unrolled Physics Loss proposal's benchmark table onto the JAX infrastructure built in Phases
 0-6, computing both the Unrolled Physics Loss proposal's own requested metric AND this project's own
@@ -38,7 +42,6 @@ import sys as _sys
 _REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 _sys.path.insert(0, _REPO_ROOT)
 
-import pickle
 
 import jax
 
@@ -93,21 +96,19 @@ def burgers_characteristic_reference(x, final_time):
     return burgers_initial_profile(foot)
 
 
-with open(os.path.join(_REPO_ROOT, 'models', 'nn_teno5_unrolled_jax_params_run3_pretrained.pkl'), 'rb') as f:
-    _loaded = pickle.load(f)
-NETWORK_PARAMS = [(jnp.asarray(w), jnp.asarray(b)) for w, b in _loaded]
+from src.differentiable.model_io import load_checkpoint
+from src.differentiable.reconstruction import make_reconstruction
+
+_NETWORK_RECONSTRUCT = None
 
 
 def _network_reconstruct(stencils):
-    """Convex-mixed with TENO5's own reconstruction (Results.md Phase 16) --
-    see `projection_jax.mixed_reconstruct`'s docstring.
-    """
-    troubled = 1.0 - toy_keep_weight(NETWORK_PARAMS, stencils)
-
-    def network_reconstruct(s):
-        return teno5_soft_reconstruct_jax(s, project_keep_weight(troubled, mode='hard'))
-
-    return mixed_reconstruct(troubled, stencils, network_reconstruct, teno5_reconstruct_jax, mode='hard')
+    """Lazily load the historical run3/max-troubled blend, without side effects at import."""
+    global _NETWORK_RECONSTRUCT
+    if _NETWORK_RECONSTRUCT is None:
+        checkpoint = load_checkpoint('models/nn_teno5_unrolled_jax_params_run3_pretrained.pkl')
+        _NETWORK_RECONSTRUCT = make_reconstruction(checkpoint, 'max-blend')
+    return _NETWORK_RECONSTRUCT(stencils)
 
 
 def run_scalar(physical_flux, wave_speed, u0_np, reconstruct, final_time, cfl=0.5):
@@ -123,82 +124,86 @@ def l1_l2(state, exact):
     return float(np.mean(np.abs(diff))), float(np.sqrt(np.mean(diff ** 2)))
 
 
-results = []
-
-print('=' * 78)
-print('Row 1: Advection Lineaire -- L1/L2 error, TV; beats_teacher')
-print('=' * 78)
-
-
 def step_profile(x):
     return ((np.mod(x, 1.0) >= 0.25) & (np.mod(x, 1.0) < 0.75)).astype(float)
-
-
-final_time = 1.0
-u0 = step_profile(X)
-exact = step_profile(X - final_time)  # wave_speed = 1, periodic
-
-nn_final = np.asarray(run_scalar(lambda u: u, 1.0, u0, _network_reconstruct, final_time))
-teno_final = np.asarray(run_scalar(lambda u: u, 1.0, u0, teno5_reconstruct_jax, final_time))
-
-nn_l1, nn_l2 = l1_l2(nn_final, exact)
-teno_l1, teno_l2 = l1_l2(teno_final, exact)
-nn_tv = float(total_variation(jnp.asarray(nn_final)))
-teno_tv = float(total_variation(jnp.asarray(teno_final)))
-beats = nn_l2 <= teno_l2
-
-print('NN-TENO5(JAX): L1={:.4e} L2={:.4e} TV={:.4f}'.format(nn_l1, nn_l2, nn_tv))
-print('TENO5        : L1={:.4e} L2={:.4e} TV={:.4f}'.format(teno_l1, teno_l2, teno_tv))
-print('beats_teacher (L2):', 'WIN' if beats else 'loss')
-results.append(('Advection', 'L2 error', nn_l2, teno_l2, beats))
-
-
-print('\n' + '=' * 78)
-print('Row 2: Burgers 1D -- error vs exact (pre-shock), shock-speed proxy; beats_teacher')
-print('=' * 78)
-
-burgers_time = 0.5  # < shock_time = 2/pi ~ 0.6366
-u0_burgers = burgers_initial_profile(X)
-exact_burgers = burgers_characteristic_reference(X, burgers_time)
 
 
 def burgers_flux(u):
     return 0.5 * u ** 2
 
 
-nn_final_b = np.asarray(run_scalar(burgers_flux, 1.0, u0_burgers, _network_reconstruct, burgers_time))
-teno_final_b = np.asarray(run_scalar(burgers_flux, 1.0, u0_burgers, teno5_reconstruct_jax, burgers_time))
+def main():
+    results = []
 
-nn_l1_b, nn_l2_b = l1_l2(nn_final_b, exact_burgers)
-teno_l1_b, teno_l2_b = l1_l2(teno_final_b, exact_burgers)
-beats_b = nn_l2_b <= teno_l2_b
-
-print('(out-of-distribution: network trained only on linear advection dynamics)')
-print('NN-TENO5(JAX): L1={:.4e} L2={:.4e}'.format(nn_l1_b, nn_l2_b))
-print('TENO5        : L1={:.4e} L2={:.4e}'.format(teno_l1_b, teno_l2_b))
-print('beats_teacher (L2):', 'WIN' if beats_b else 'loss')
-results.append(('Burgers', 'L2 error', nn_l2_b, teno_l2_b, beats_b))
+    print('=' * 78)
+    print('Row 1: Advection Lineaire -- L1/L2 error, TV; beats_teacher')
+    print('=' * 78)
 
 
-print('\n' + '=' * 78)
-print('Rows 3-4: Shu-Osher 1D, Sod (Euler) -- NOT evaluated for NN-TENO5euler')
-print('=' * 78)
-print('See UNROLLED_PHYSICS_LOSS_GUIDE.md Phase 6 status note: Euler unrolled-loss')
-print('training hit a genuine, root-caused numerical instability (Roe-eigenbasis')
-print('conditioning under an evolving network reconstruction), not solved in this')
-print('pass. Reporting a number from that run would misrepresent a NaN-corrupted')
-print('checkpoint as a real result. Deterministic TENO5euler baseline behavior')
-print('(positivity, accuracy vs exact) is already established in Results.md and')
-print('Phase 1\'s regression tests (5.5e-11 match to the real NumPy solver).')
-results.append(('Shu-Osher', 'spectral peak amplitude', None, None, None))
-results.append(('Sod', 'positivity of P, rho', None, None, None))
 
 
-print('\n' + '=' * 78)
-print('Summary')
-print('=' * 78)
-for name, metric, nn_val, teno_val, beats in results:
-    if beats is None:
-        print('{:12s}: NOT EVALUATED for NN-TENO5 (see above)'.format(name))
-    else:
-        print('{:12s}: {} -- {}'.format(name, metric, 'BEATS TENO5' if beats else 'loses to TENO5'))
+    final_time = 1.0
+    u0 = step_profile(X)
+    exact = step_profile(X - final_time)  # wave_speed = 1, periodic
+
+    nn_final = np.asarray(run_scalar(lambda u: u, 1.0, u0, _network_reconstruct, final_time))
+    teno_final = np.asarray(run_scalar(lambda u: u, 1.0, u0, teno5_reconstruct_jax, final_time))
+
+    nn_l1, nn_l2 = l1_l2(nn_final, exact)
+    teno_l1, teno_l2 = l1_l2(teno_final, exact)
+    nn_tv = float(total_variation(jnp.asarray(nn_final)))
+    teno_tv = float(total_variation(jnp.asarray(teno_final)))
+    beats = nn_l2 <= teno_l2
+
+    print('NN-TENO5(JAX): L1={:.4e} L2={:.4e} TV={:.4f}'.format(nn_l1, nn_l2, nn_tv))
+    print('TENO5        : L1={:.4e} L2={:.4e} TV={:.4f}'.format(teno_l1, teno_l2, teno_tv))
+    print('beats_teacher (L2):', 'WIN' if beats else 'loss')
+    results.append(('Advection', 'L2 error', nn_l2, teno_l2, beats))
+
+
+    print('\n' + '=' * 78)
+    print('Row 2: Burgers 1D -- error vs exact (pre-shock), shock-speed proxy; beats_teacher')
+    print('=' * 78)
+
+    burgers_time = 0.5  # < shock_time = 2/pi ~ 0.6366
+    u0_burgers = burgers_initial_profile(X)
+    exact_burgers = burgers_characteristic_reference(X, burgers_time)
+
+
+
+
+    nn_final_b = np.asarray(run_scalar(burgers_flux, 1.0, u0_burgers, _network_reconstruct, burgers_time))
+    teno_final_b = np.asarray(run_scalar(burgers_flux, 1.0, u0_burgers, teno5_reconstruct_jax, burgers_time))
+
+    nn_l1_b, nn_l2_b = l1_l2(nn_final_b, exact_burgers)
+    teno_l1_b, teno_l2_b = l1_l2(teno_final_b, exact_burgers)
+    beats_b = nn_l2_b <= teno_l2_b
+
+    print('(out-of-distribution: network trained only on linear advection dynamics)')
+    print('NN-TENO5(JAX): L1={:.4e} L2={:.4e}'.format(nn_l1_b, nn_l2_b))
+    print('TENO5        : L1={:.4e} L2={:.4e}'.format(teno_l1_b, teno_l2_b))
+    print('beats_teacher (L2):', 'WIN' if beats_b else 'loss')
+    results.append(('Burgers', 'L2 error', nn_l2_b, teno_l2_b, beats_b))
+
+
+    print('\n' + '=' * 78)
+    print('Rows 3-4: Shu-Osher 1D, Sod (Euler) -- NOT evaluated for NN-TENO5euler')
+    print('=' * 78)
+    print('This historical scalar matrix does not evaluate Euler. Use Evaluate_Benchmarks.py')
+    print('for the frozen Phase 18 Euler model and reference-convergence diagnostics.')
+    results.append(('Shu-Osher', 'spectral peak amplitude', None, None, None))
+    results.append(('Sod', 'positivity of P, rho', None, None, None))
+
+
+    print('\n' + '=' * 78)
+    print('Summary')
+    print('=' * 78)
+    for name, metric, nn_val, teno_val, beats in results:
+        if beats is None:
+            print('{:12s}: NOT EVALUATED for NN-TENO5 (see above)'.format(name))
+        else:
+            print('{:12s}: {} -- {}'.format(name, metric, 'BEATS TENO5' if beats else 'loses to TENO5'))
+
+
+if __name__ == '__main__':
+    main()

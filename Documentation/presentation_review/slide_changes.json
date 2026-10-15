@@ -1,0 +1,54 @@
+[
+  {
+    "slide": 1,
+    "change": "Removed Scientific Internship Soutenance; rebuilt the cover with a left-aligned title, author block, original shock photograph and conservation law."
+  },
+  {
+    "slide": 2,
+    "change": "Removed inherited shadows; enlarged the photograph; introduced the PDE and scalar fluxes; aligned three numerical requirements."
+  },
+  {
+    "slide": 3,
+    "change": "Replaced the dense pipeline screenshot with legible equations for finite volumes, Lax\u2013Friedrichs fluxes, all SSPRK3 stages and the CFL step."
+  },
+  {
+    "slide": 4,
+    "change": "Rebuilt the five-point stencil and substencils as editable components; added aligned ENO/WENO/TENO formulas and optimal weights."
+  },
+  {
+    "slide": 5,
+    "change": "Corrected wrapped layer counts with a horizontal 5\u201364\u201332\u201316\u20138\u20133 diagram; added normalization and soft/hard weight formulas."
+  },
+  {
+    "slide": 6,
+    "change": "Replaced overlapping workflow boxes with two balanced learning panels; added BCE, unrolled evolution, MSE and the full weighted physics loss."
+  },
+  {
+    "slide": 7,
+    "change": "Added the learned convex mixture and Euler pressure constraint; redrew the real instability trace; distinguished training guards from mathematical guarantees."
+  },
+  {
+    "slide": 8,
+    "change": "Preserved and relabeled the original WENO-NN evidence; added separate final NN-TENO5 gains, actual Phase 19 error values and the L2 metric."
+  },
+  {
+    "slide": 9,
+    "change": "Aligned the two Euler figures; added the exact Phase 18 benchmark percentages and evaluation conditions; preserved the slightly unfavorable Sod result."
+  },
+  {
+    "slide": 10,
+    "change": "Reorganized the conclusion into a clear takeaway and three balanced columns; removed overflowing text and qualified the benchmark-dependent gains."
+  },
+  {
+    "slide": 11,
+    "change": "Expanded the mathematical backup into four aligned loss definitions with the actual TV/parameter normalization and correct neighboring-cell BVD definition."
+  },
+  {
+    "slide": 12,
+    "change": "Replaced the duplicated pipeline screenshot with an editable workflow; added Roe characteristic projection and gradient-based training; clarified the distinct scalar and Euler flux paths."
+  },
+  {
+    "slide": 13,
+    "change": "Added one mathematical backup slide with all candidate polynomials, the TENO scale-separation sensor and the exact parameters used in the repository."
+  }
+]

@@ -1,0 +1,635 @@
+{
+  "benchmark_comparisons": [
+    {
+      "case": "canonical-advection",
+      "problem": "advection",
+      "cells": 64,
+      "metric": "root mean square error",
+      "teno5": 0.0989598540663411,
+      "neural_only": 475.293919623664,
+      "fixed_blend": 0.09740642919361694,
+      "learned_blend": 0.09552129155505769,
+      "ratio": 0.9652529549106019,
+      "change_percent": -3.4747045089398076,
+      "status": "lower-error",
+      "maximum_courant": 0.5,
+      "repaired_stage_rows": 0
+    },
+    {
+      "case": "canonical-burgers",
+      "problem": "burgers",
+      "cells": 64,
+      "metric": "root mean square error",
+      "teno5": 0.0008166969886357376,
+      "neural_only": 0.0035133153157181117,
+      "fixed_blend": 0.0007124306730570677,
+      "learned_blend": 0.0006649269097158028,
+      "ratio": 0.814165986857058,
+      "change_percent": -18.5834013142942,
+      "status": "lower-error",
+      "maximum_courant": 0.3750868371495445,
+      "repaired_stage_rows": 0
+    },
+    {
+      "case": "canonical-sod",
+      "problem": "sod",
+      "cells": 120,
+      "metric": "mean component L1",
+      "teno5": 0.008258322670756879,
+      "neural_only": 0.010277185156668783,
+      "fixed_blend": 0.008285390628823785,
+      "learned_blend": 0.00828709346003937,
+      "ratio": 1.0034838538562278,
+      "change_percent": 0.34838538562278476,
+      "status": "higher-error",
+      "maximum_courant": 0.5735465506626969,
+      "repaired_stage_rows": 0
+    },
+    {
+      "case": "canonical-shu-osher",
+      "problem": "shu_osher",
+      "cells": 120,
+      "metric": "mean component L1",
+      "teno5": 0.21318921258480591,
+      "neural_only": 0.25610584241531853,
+      "fixed_blend": 0.2092369370676388,
+      "learned_blend": 0.20926393545378147,
+      "ratio": 0.981587824808617,
+      "change_percent": -1.8412175191383051,
+      "status": "reference-unresolved",
+      "maximum_courant": 0.31723575644661495,
+      "repaired_stage_rows": 0
+    },
+    {
+      "case": "heldout-advection-square-96",
+      "problem": "advection",
+      "cells": 96,
+      "metric": "root mean square error",
+      "teno5": 0.07046077063562127,
+      "neural_only": 5.416668340944906,
+      "fixed_blend": 0.06857290911365452,
+      "learned_blend": 0.06784524421100287,
+      "ratio": 0.9628796789898274,
+      "change_percent": -3.7120321010172597,
+      "status": "lower-error",
+      "maximum_courant": 0.49333333333333335,
+      "repaired_stage_rows": 0
+    },
+    {
+      "case": "heldout-advection-fourier-192",
+      "problem": "advection",
+      "cells": 192,
+      "metric": "root mean square error",
+      "teno5": 8.765499738145625e-06,
+      "neural_only": 0.3309244395228399,
+      "fixed_blend": 1.167309506208178e-06,
+      "learned_blend": 5.500985947564656e-06,
+      "ratio": 0.6275724273455299,
+      "change_percent": -37.24275726544701,
+      "status": "lower-error",
+      "maximum_courant": 0.4992,
+      "repaired_stage_rows": 0
+    },
+    {
+      "case": "heldout-burgers-fourier-96",
+      "problem": "burgers",
+      "cells": 96,
+      "metric": "root mean square error",
+      "teno5": 9.107900482452773e-06,
+      "neural_only": 2.3934465201515115e-05,
+      "fixed_blend": 8.405015851307797e-06,
+      "learned_blend": 8.131991314512681e-06,
+      "ratio": 0.8928502600769219,
+      "change_percent": -10.714973992307808,
+      "status": "lower-error",
+      "maximum_courant": 0.3528154038398336,
+      "repaired_stage_rows": 0
+    },
+    {
+      "case": "heldout-burgers-fourier-192",
+      "problem": "burgers",
+      "cells": 192,
+      "metric": "root mean square error",
+      "teno5": 6.7961633335967924e-06,
+      "neural_only": 1.580064825607564e-05,
+      "fixed_blend": 5.96330261638905e-06,
+      "learned_blend": 5.594932675168462e-06,
+      "ratio": 0.8232487067386898,
+      "change_percent": -17.67512932613102,
+      "status": "lower-error",
+      "maximum_courant": 0.35736421051204065,
+      "repaired_stage_rows": 0
+    },
+    {
+      "case": "heldout-sod-96",
+      "problem": "sod",
+      "cells": 96,
+      "metric": "mean component L1",
+      "teno5": 0.007483511253624074,
+      "neural_only": 0.007076955430152255,
+      "fixed_blend": 0.007372556835601812,
+      "learned_blend": 0.007373698081982599,
+      "ratio": 0.9853259829617688,
+      "change_percent": -1.4674017038231235,
+      "status": "lower-error",
+      "maximum_courant": 0.568140666011683,
+      "repaired_stage_rows": 0
+    },
+    {
+      "case": "heldout-sod-192",
+      "problem": "sod",
+      "cells": 192,
+      "metric": "mean component L1",
+      "teno5": 0.003726941783841533,
+      "neural_only": 0.004812722418644901,
+      "fixed_blend": 0.003693689009989763,
+      "learned_blend": 0.0036918794439425636,
+      "ratio": 0.9905921954426589,
+      "change_percent": -0.9407804557341137,
+      "status": "lower-error",
+      "maximum_courant": 0.5753841379238611,
+      "repaired_stage_rows": 0
+    },
+    {
+      "case": "heldout-shu-osher-160",
+      "problem": "shu_osher",
+      "cells": 160,
+      "metric": "mean component L1",
+      "teno5": 0.14205841206287442,
+      "neural_only": 0.203990115350686,
+      "fixed_blend": 0.13766100640173998,
+      "learned_blend": 0.13762726068311693,
+      "ratio": 0.9688075396915159,
+      "change_percent": -3.1192460308484105,
+      "status": "reference-unresolved",
+      "maximum_courant": 0.3184998972498751,
+      "repaired_stage_rows": 0
+    },
+    {
+      "case": "heldout-shu-osher-240",
+      "problem": "shu_osher",
+      "cells": 240,
+      "metric": "mean component L1",
+      "teno5": 0.15560971719289973,
+      "neural_only": 0.28310064340696167,
+      "fixed_blend": 0.14377286178949464,
+      "learned_blend": 0.14421285651560128,
+      "ratio": 0.9267599679320124,
+      "change_percent": -7.324003206798757,
+      "status": "reference-unresolved",
+      "maximum_courant": 0.32528193815465456,
+      "repaired_stage_rows": 0
+    }
+  ],
+  "reference_findings": [
+    {
+      "case": "canonical-shu-osher",
+      "spatial_target_uncertainty": 0.002398251127446643,
+      "temporal_target_uncertainty": 0.0010201554679146012,
+      "findings": {
+        "neural-only": {
+          "final_margin": -0.03952074765860414,
+          "ratio": 1.1477372864415722,
+          "recent_ranking_consistent": true,
+          "empirical_margin_uncertainty_bound": 0.006836813190722489,
+          "uncertainty_fraction_limit": 0.25,
+          "status": "reliable-higher-error",
+          "caveat": "Empirical Cauchy criterion, not a rigorous error bound or an independent-scheme reference"
+        },
+        "fixed-blend": {
+          "final_margin": 0.004097300046161101,
+          "ratio": 0.9846833871720799,
+          "recent_ranking_consistent": true,
+          "empirical_margin_uncertainty_bound": 0.006836813190722489,
+          "uncertainty_fraction_limit": 0.25,
+          "status": "reference-unresolved",
+          "caveat": "Empirical Cauchy criterion, not a rigorous error bound or an independent-scheme reference"
+        },
+        "learned-blend": {
+          "final_margin": 0.004066660033894831,
+          "ratio": 0.9847979263075198,
+          "recent_ranking_consistent": true,
+          "empirical_margin_uncertainty_bound": 0.006836813190722489,
+          "uncertainty_fraction_limit": 0.25,
+          "status": "reference-unresolved",
+          "caveat": "Empirical Cauchy criterion, not a rigorous error bound or an independent-scheme reference"
+        }
+      },
+      "finest_temporal_errors": {
+        "teno5": {
+          "primary_error": 0.26750692807826804,
+          "l1": 0.26750692807826804,
+          "l2": 0.7283489822569105,
+          "linf": 8.301854354599712,
+          "component_l1": [
+            0.09429870368224558,
+            0.2320829471485757,
+            0.4761391334039828
+          ],
+          "component_l2": [
+            0.19748684827080154,
+            0.5326271445534876,
+            1.1264031203387603
+          ],
+          "component_linf": [
+            0.6311713305267856,
+            1.740318571716486,
+            8.301854354599712
+          ]
+        },
+        "neural-only": {
+          "primary_error": 0.3070276757368722,
+          "l1": 0.3070276757368722,
+          "l2": 0.7262248233916418,
+          "linf": 7.8000500302869575,
+          "component_l1": [
+            0.10994386649386585,
+            0.2261403358194808,
+            0.5849988248972698
+          ],
+          "component_l2": [
+            0.19545182652412993,
+            0.5083415941620206,
+            1.1338407690164705
+          ],
+          "component_linf": [
+            0.6036410206752003,
+            1.6679096171374894,
+            7.8000500302869575
+          ]
+        },
+        "fixed-blend": {
+          "primary_error": 0.26340962803210693,
+          "l1": 0.26340962803210693,
+          "l2": 0.7226430802919565,
+          "linf": 8.366700543719677,
+          "component_l1": [
+            0.09325561320080097,
+            0.2304537165471889,
+            0.4665195543483309
+          ],
+          "component_l2": [
+            0.19614240709451597,
+            0.5297378980080907,
+            1.1169355308318738
+          ],
+          "component_linf": [
+            0.6182873621208618,
+            1.7591047709805876,
+            8.366700543719677
+          ]
+        },
+        "learned-blend": {
+          "primary_error": 0.2634402680443732,
+          "l1": 0.2634402680443732,
+          "l2": 0.7226218581639925,
+          "linf": 8.368123214639162,
+          "component_l1": [
+            0.09327528244312383,
+            0.23049595822067814,
+            0.46654956346931764
+          ],
+          "component_l2": [
+            0.1961420518078349,
+            0.529722905085403,
+            1.116901512681238
+          ],
+          "component_linf": [
+            0.6181913949349882,
+            1.7595388972074462,
+            8.368123214639162
+          ]
+        }
+      }
+    },
+    {
+      "case": "heldout-shu-osher-160",
+      "spatial_target_uncertainty": 0.005308023728648848,
+      "temporal_target_uncertainty": 0.0007644247909595453,
+      "findings": {
+        "neural-only": {
+          "final_margin": -0.061815376434345176,
+          "ratio": 1.4351612496042019,
+          "recent_ranking_consistent": true,
+          "empirical_margin_uncertainty_bound": 0.012144897039216788,
+          "uncertainty_fraction_limit": 0.25,
+          "status": "reliable-higher-error",
+          "caveat": "Empirical Cauchy criterion, not a rigorous error bound or an independent-scheme reference"
+        },
+        "fixed-blend": {
+          "final_margin": 0.004453066060130656,
+          "ratio": 0.9686517836973026,
+          "recent_ranking_consistent": true,
+          "empirical_margin_uncertainty_bound": 0.012144897039216788,
+          "uncertainty_fraction_limit": 0.25,
+          "status": "reference-unresolved",
+          "caveat": "Empirical Cauchy criterion, not a rigorous error bound or an independent-scheme reference"
+        },
+        "learned-blend": {
+          "final_margin": 0.004486811778753735,
+          "ratio": 0.9684142242107822,
+          "recent_ranking_consistent": true,
+          "empirical_margin_uncertainty_bound": 0.012144897039216788,
+          "uncertainty_fraction_limit": 0.25,
+          "status": "reference-unresolved",
+          "caveat": "Empirical Cauchy criterion, not a rigorous error bound or an independent-scheme reference"
+        }
+      },
+      "finest_temporal_errors": {
+        "teno5": {
+          "primary_error": 0.14205165669178715,
+          "l1": 0.14205165669178715,
+          "l2": 1.2272450539534263,
+          "linf": 25.17049877584455,
+          "component_l1": [
+            0.036559768496745006,
+            0.10807688174037473,
+            0.2815183198382416
+          ],
+          "component_l2": [
+            0.1599766193729057,
+            0.5887613712463299,
+            2.0362118741284276
+          ],
+          "component_linf": [
+            1.8195094996474745,
+            7.004696225812026,
+            25.17049877584455
+          ]
+        },
+        "neural-only": {
+          "primary_error": 0.20386703312613233,
+          "l1": 0.20386703312613233,
+          "l2": 1.3944738554490357,
+          "linf": 28.495535598224293,
+          "component_l1": [
+            0.06263662985958941,
+            0.14832750119233223,
+            0.40063696832647516
+          ],
+          "component_l2": [
+            0.20339053817918615,
+            0.6971827040513664,
+            2.303527852391522
+          ],
+          "component_linf": [
+            2.1675220060480433,
+            8.049598567917386,
+            28.495535598224293
+          ]
+        },
+        "fixed-blend": {
+          "primary_error": 0.1375985906316565,
+          "l1": 0.1375985906316565,
+          "l2": 1.2298396590072558,
+          "linf": 25.29088325726586,
+          "component_l1": [
+            0.03474692473052386,
+            0.10362443914555183,
+            0.2744244080188936
+          ],
+          "component_l2": [
+            0.15857579125550034,
+            0.587107832984829,
+            2.041488396116128
+          ],
+          "component_linf": [
+            1.8294429983975595,
+            7.037821470992694,
+            25.29088325726586
+          ]
+        },
+        "learned-blend": {
+          "primary_error": 0.13756484491303342,
+          "l1": 0.13756484491303342,
+          "l2": 1.2299304565569966,
+          "linf": 25.293330207472046,
+          "component_l1": [
+            0.03473147901222486,
+            0.10358500806377377,
+            0.2743780476631015
+          ],
+          "component_l2": [
+            0.1585780986254851,
+            0.5871306034274463,
+            2.0416457638519847
+          ],
+          "component_linf": [
+            1.8297073346156458,
+            7.038611461461822,
+            25.293330207472046
+          ]
+        }
+      }
+    },
+    {
+      "case": "heldout-shu-osher-240",
+      "spatial_target_uncertainty": 0.004456863043975353,
+      "temporal_target_uncertainty": 0.0007097435713234475,
+      "findings": {
+        "neural-only": {
+          "final_margin": -0.12747445845633731,
+          "ratio": 1.8192135837522398,
+          "recent_ranking_consistent": true,
+          "empirical_margin_uncertainty_bound": 0.0103332132305976,
+          "uncertainty_fraction_limit": 0.25,
+          "status": "reliable-higher-error",
+          "caveat": "Empirical Cauchy criterion, not a rigorous error bound or an independent-scheme reference"
+        },
+        "fixed-blend": {
+          "final_margin": 0.011875241422705407,
+          "ratio": 0.9236838563456247,
+          "recent_ranking_consistent": true,
+          "empirical_margin_uncertainty_bound": 0.0103332132305976,
+          "uncertainty_fraction_limit": 0.25,
+          "status": "reference-unresolved",
+          "caveat": "Empirical Cauchy criterion, not a rigorous error bound or an independent-scheme reference"
+        },
+        "learned-blend": {
+          "final_margin": 0.011436266624835767,
+          "ratio": 0.9265049243595191,
+          "recent_ranking_consistent": true,
+          "empirical_margin_uncertainty_bound": 0.0103332132305976,
+          "uncertainty_fraction_limit": 0.25,
+          "status": "reference-unresolved",
+          "caveat": "Empirical Cauchy criterion, not a rigorous error bound or an independent-scheme reference"
+        }
+      },
+      "finest_temporal_errors": {
+        "teno5": {
+          "primary_error": 0.15560588958067162,
+          "l1": 0.15560588958067162,
+          "l2": 0.5310777169136529,
+          "linf": 7.019664266577458,
+          "component_l1": [
+            0.05652717295886364,
+            0.13760275685330617,
+            0.27268773892984494
+          ],
+          "component_l2": [
+            0.1480376128021216,
+            0.39639531099065306,
+            0.8167534798377823
+          ],
+          "component_linf": [
+            0.6906285088676789,
+            1.851454238596303,
+            7.019664266577458
+          ]
+        },
+        "neural-only": {
+          "primary_error": 0.28308034803700893,
+          "l1": 0.28308034803700893,
+          "l2": 0.7340854992463391,
+          "linf": 8.124351344916334,
+          "component_l1": [
+            0.11269483547538514,
+            0.20594024138689723,
+            0.5306059672487443
+          ],
+          "component_l2": [
+            0.22751466698034242,
+            0.551659292780064,
+            1.1227438094282522
+          ],
+          "component_linf": [
+            0.9543014139837149,
+            2.2417313740157727,
+            8.124351344916334
+          ]
+        },
+        "fixed-blend": {
+          "primary_error": 0.1437306481579662,
+          "l1": 0.1437306481579662,
+          "l2": 0.5037456410583918,
+          "linf": 6.944805662079691,
+          "component_l1": [
+            0.0519532645411748,
+            0.12660527940894775,
+            0.252633400523776
+          ],
+          "component_l2": [
+            0.1361822349679213,
+            0.3663031950371907,
+            0.7800995967443375
+          ],
+          "component_linf": [
+            0.6511587875815343,
+            1.739100573883685,
+            6.944805662079691
+          ]
+        },
+        "learned-blend": {
+          "primary_error": 0.14416962295583585,
+          "l1": 0.14416962295583585,
+          "l2": 0.5068889818956217,
+          "linf": 6.948215082567678,
+          "component_l1": [
+            0.05202148767618365,
+            0.1266823971554754,
+            0.2538049840358484
+          ],
+          "component_l2": [
+            0.13656796937336924,
+            0.36707325718666817,
+            0.7857580629564958
+          ],
+          "component_linf": [
+            0.6504748564241516,
+            1.7908314484413828,
+            6.948215082567678
+          ]
+        }
+      }
+    }
+  ],
+  "numpy_crosscheck": [
+    {
+      "cells": 1280,
+      "errors": {
+        "teno5": 0.2644584472848642,
+        "neural-only": 0.30448697286050597,
+        "fixed-blend": 0.26033265956980667,
+        "learned-blend": 0.26036431460643383
+      },
+      "ratio": 0.9845188054287398,
+      "target_cauchy_l1": null,
+      "reference_metadata": {
+        "scheme": "NumPy WENO7",
+        "case": {
+          "id": "canonical-shu-osher",
+          "problem": "shu_osher",
+          "cells": 1280,
+          "length": 10.0,
+          "final_time": 1.8,
+          "cfl": 0.4,
+          "boundary": "transmissive",
+          "sampling": "point-i-dx",
+          "initial": {
+            "amplitude": 0.2,
+            "frequency": 5.0,
+            "phase": 0.0,
+            "discontinuity": 1.0
+          },
+          "wave_speed_safety": 1.3,
+          "reference_cells": 2560
+        },
+        "cfl": 0.35,
+        "timestep_policy": "adaptive CFL, final step shortened to exact T",
+        "steps": 3162,
+        "minimum_dt": 3.416660253763304e-05,
+        "maximum_dt": 0.00059885345727479,
+        "minimum_density": 0.7999937493227499,
+        "minimum_pressure": 0.9999894334023738,
+        "validated_stage_states": 18973,
+        "repair_count": 0,
+        "wall_seconds": 186.2919640709988
+      },
+      "status": "Independent scheme sensitivity check; no convergence certification inferred from two grids"
+    },
+    {
+      "cells": 2560,
+      "errors": {
+        "teno5": 0.2671822724521381,
+        "neural-only": 0.3068490873568258,
+        "fixed-blend": 0.2630805653384189,
+        "learned-blend": 0.2631112053506851
+      },
+      "ratio": 0.9847629595178989,
+      "target_cauchy_l1": 0.003505473152757157,
+      "reference_metadata": {
+        "scheme": "NumPy WENO7",
+        "case": {
+          "id": "canonical-shu-osher",
+          "problem": "shu_osher",
+          "cells": 2560,
+          "length": 10.0,
+          "final_time": 1.8,
+          "cfl": 0.4,
+          "boundary": "transmissive",
+          "sampling": "point-i-dx",
+          "initial": {
+            "amplitude": 0.2,
+            "frequency": 5.0,
+            "phase": 0.0,
+            "discontinuity": 1.0
+          },
+          "wave_speed_safety": 1.3,
+          "reference_cells": 5120
+        },
+        "cfl": 0.35,
+        "timestep_policy": "adaptive CFL, final step shortened to exact T",
+        "steps": 6332,
+        "minimum_dt": 0.00019064010045588553,
+        "maximum_dt": 0.000299426728637395,
+        "minimum_density": 0.7999937704155273,
+        "minimum_pressure": 0.9999896711315077,
+        "validated_stage_states": 37993,
+        "repair_count": 0,
+        "wall_seconds": 825.6787670040012
+      },
+      "status": "Independent scheme sensitivity check; no convergence certification inferred from two grids"
+    }
+  ],
+  "interpretation": "Canonical scalar cases selected the checkpoint. New held-out configurations were frozen before evaluation. Lower error on this finite suite is not a universal guarantee."
+}

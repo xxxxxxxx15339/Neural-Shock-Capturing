@@ -163,13 +163,17 @@ def euler_boundary_variation_jax(u, reconstruct, boundary='transmissive'):
     return jnp.abs(forward - mirrored)
 
 
-def get_euler_flux_jax(reconstruct, boundary='transmissive'):
+def get_euler_flux_jax(reconstruct, boundary='transmissive', return_boundary_flux=False):
     """Port of eulerEquations.py:79 getEulerFlux.
 
     `reconstruct` plays the role of `FVM.evalF`/`FVM.L`: it maps a
     (n, 3, 5) characteristic-stencil array to (n, 3) reconstructed
     interface values. Pass `teno5_reconstruct_jax` for the deterministic
     scheme, or a network-driven closure once Phase 4/5 wire one in.
+
+    With return_boundary_flux=True also expose (left, right) numerical
+    boundary fluxes for conservation accounting. The default arithmetic
+    and return value are unchanged.
     """
 
     def full_flux(u):
@@ -213,6 +217,9 @@ def get_euler_flux_jax(reconstruct, boundary='transmissive'):
             left_edge = flux_cons[0:1, :] - flux_jax(u[0:1, :])
             interior = flux_cons[1:, :] - flux_cons[:-1, :]
             net_flux = jnp.concatenate([left_edge, interior], axis=0)
+        if return_boundary_flux:
+            left = flux_cons[-1] if boundary == 'periodic' else flux_jax(u[0:1, :])[0]
+            return net_flux, (left, flux_cons[-1])
         return net_flux
 
     return full_flux
@@ -292,7 +299,8 @@ POSITIVITY_VIOLATION_CAP = 1.0e3
 # places for two different reasons -- see each function's docstring.
 
 
-def euler_positivity_repair(u, eps=5.0e-2, max_velocity=50.0, max_scale=POSITIVITY_VIOLATION_CAP):
+def euler_positivity_repair(u, eps=5.0e-2, max_velocity=50.0, max_scale=POSITIVITY_VIOLATION_CAP,
+                            return_diagnostics=False):
     """Repair non-positive density/pressure the way the professor
     describes doing it in practice: an ISOLATED violating cell (both
     immediate neighbors still valid) is repaired by averaging its
@@ -309,6 +317,14 @@ def euler_positivity_repair(u, eps=5.0e-2, max_velocity=50.0, max_scale=POSITIVI
     physically meaningful, which is exactly why `positivity_penalty_jax`
     needs to be watching separately rather than trusting this function
     alone to signal correctness.
+
+    P0 correction: apply the last-resort path only to rows still invalid
+    after neighbor averaging. Admissible rows (including positive values
+    below eps) are returned unchanged. Neighbor averaging and the existing
+    fallback are NOT globally conservative; evaluation must report their
+    conservative-state changes. Neighbor selection remains periodic, as in
+    the historical training implementation; this is not a boundary-aware
+    positivity-preserving numerical scheme.
 
     `eps` defaults to `5e-2`, not a generic near-zero value like `1e-8`,
     and the last-resort path also caps velocity -- both for the same
@@ -364,6 +380,16 @@ def euler_positivity_repair(u, eps=5.0e-2, max_velocity=50.0, max_scale=POSITIVI
 
     repaired = jnp.where(isolated[:, None], neighbor_average, safe_u)
 
+    rho_r = repaired[:, 0]
+    rho_denominator = jnp.where(rho_r > 0.0, rho_r, 1.0)
+    p_r = (GAMMA - 1) * (
+        repaired[:, 2] - 0.5 * repaired[:, 1] ** 2 / rho_denominator
+    )
+    needs_fallback = (
+        (rho_r <= 0.0) | (p_r <= 0.0) | (~jnp.all(jnp.isfinite(repaired), axis=-1))
+        | (jnp.abs(rho_r) > max_scale) | (jnp.abs(p_r) > max_scale)
+    )
+
     # Last-resort floor/cap for anything still invalid (a genuine cluster, or
     # an isolated repair whose neighbor-average was itself invalid) -- see
     # docstring: this is a numerical-finiteness safety net, not claimed to
@@ -376,4 +402,10 @@ def euler_positivity_repair(u, eps=5.0e-2, max_velocity=50.0, max_scale=POSITIVI
     )
     momentum_r = safe_density_r * velocity_r
     energy_r = pressure_r / (GAMMA - 1) + 0.5 * safe_density_r * velocity_r ** 2
-    return jnp.stack([safe_density_r, momentum_r, energy_r], axis=-1)
+    fallback = jnp.stack([safe_density_r, momentum_r, energy_r], axis=-1)
+    result = jnp.where(needs_fallback[:, None], fallback, repaired)
+    if return_diagnostics:
+        return result, dict(violation_mask=violates, isolated_mask=isolated,
+                            fallback_mask=needs_fallback,
+                            changed_mask=jnp.any(result != u, axis=-1))
+    return result

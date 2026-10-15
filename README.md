@@ -63,9 +63,50 @@ results are reported here just as visibly as the positive one.
 | Strand | Result |
 |---|---|
 | WENO5-NN vs. WENO5 (paper reproduction) | Reproduces the paper's claims: clearest win on step advection (45% lower error); Sod and Shu–Osher near parity; Burgers genuinely mixed (3/4 grid resolutions favor the network). |
-| NN-TENO5 (imitation-trained) vs. TENO5 | By construction cannot exceed its own teacher's quality — confirmed directly: wins on roughly a quarter to a third of benchmarks, ties on about half, loses the rest. |
-| NN-TENO5 (Unrolled Physics Loss) — scalar advection | **Genuine win** on held-out tests (narrowly, and only within roughly the training distribution's shape/time-horizon). Loses to TENO5 on canonical, non-held-out-similar benchmarks (full-scale step profile, out-of-distribution Burgers) — the win is real but narrow, not a general-purpose improvement. |
-| NN-TENO5 (Unrolled Physics Loss) — Euler (systems) | Hit a real, diagnosed numerical-stability obstacle (Roe-eigenbasis conditioning under an evolving network reconstruction) — improved by two independent fixes but **not fully resolved**. |
+| NN-TENO5 (imitation-trained) vs. TENO5 | Near teacher parity with problem-dependent differences; no systematic improvement established. |
+| Final scalar NN-TENO5, Phase 19 | Canonical validation L2 errors are 3.47% lower for advection and 18.58% lower for Burgers. These cases selected the checkpoint. Eight prospective held-out configurations and matched ablations are reported in [P0 validation](Documentation/P0_Validation.md). Smooth tests show about third-order spatial convergence for the neural masks/blends, versus fifth order for TENO5. |
+| Final Euler NN-TENO5, Phase 18 | Finite unguarded canonical rollouts; Sod error is 0.348% higher. Shu–Osher has lower measured error under tested references, but reference uncertainty prevents a certified benchmark-win claim. Earlier failed checkpoints remain preserved. |
+
+The final selected models are `models/nn_teno5_unrolled_jax_params_run6_learnedlambda.pkl`
+(scalar) and `models/nn_teno5euler_unrolled_jax_params_curriculum_phase18_learnedlambda.pkl`
+(Euler). Both store NumPy `float64` arrays as `{'backbone': [...], 'lambda_head': (W, b)}`.
+The shared loader also supports earlier backbone lists and the Phase 21 rich gate.
+Exact identities, results, failures, and limitations are in [P0 validation](Documentation/P0_Validation.md).
+
+To reproduce the frozen evaluations, use Python 3.11 in a fresh JAX environment:
+
+```bash
+python3.11 -m venv /tmp/teno-jax-reproduce
+/tmp/teno-jax-reproduce/bin/python -m pip install -r requirements-jax.txt
+JAX_PLATFORMS=cpu /tmp/teno-jax-reproduce/bin/python scripts/unrolled_physics_loss/Evaluate_Benchmarks.py benchmark --suite all --output /tmp/teno-benchmarks-new
+JAX_PLATFORMS=cpu /tmp/teno-jax-reproduce/bin/python scripts/unrolled_physics_loss/Evaluate_Benchmarks.py reference --suite all --output /tmp/teno-references-new
+JAX_PLATFORMS=cpu /tmp/teno-jax-reproduce/bin/python scripts/unrolled_physics_loss/Evaluate_Benchmarks.py smooth --output /tmp/teno-smooth-new
+```
+
+Each output directory must be new. The [frozen manifest](src/differentiable/benchmarks.json)
+contains the canonical and prospective held-out cases, model hashes, and fixed blend.
+The four methods share grids, timesteps, and references. Neural ablations use the same saved backbone and hard keep-mask policy. Exports include
+JSON/CSV metrics, NPZ profiles and diagnostic histories, PNG/PDF plots, source and
+model hashes, software versions, and configuration metadata. Shu–Osher results remain
+qualified by the separate spatial/temporal reference study. Fine reference studies
+can take substantial CPU time.
+
+For full environment separation, use the validated locks in `requirements/locks/`:
+`numerical-python311.txt`, `jax-python311.txt`, and `legacy-python37.txt`. The legacy
+lock requires Python 3.7; it must stay separate from JAX. A driver checks isolation
+and runs the numerical, JAX, and legacy tests in their respective interpreters:
+
+```bash
+python -m src.differentiable.reproduce --numerical-python /path/to/numerical/bin/python --jax-python /path/to/jax/bin/python --legacy-python /path/to/legacy/bin/python --output /tmp/teno-reproduction-new --reference-study
+```
+
+Use `--tests-only` for regression checks. Results and review artifacts for this pass
+are under [the P0 validation directory](src/differentiable/validation/p0-2026-10-14/).
+The numerical-only artifact checker independently recomputes exported metrics:
+
+```bash
+/path/to/numerical/bin/python -m src.differentiable.verify_artifacts /tmp/teno-benchmarks-new --output /tmp/teno-verification-new.json
+```
 
 Full numbered experiment history: [`Documentation/Results.md`](Documentation/Results.md).
 Earlier consolidated write-up of strand 1: [`Documentation/Report_Results.md`](Documentation/Report_Results.md).
@@ -488,7 +529,7 @@ cd scripts/unrolled_physics_loss    # or reference the full relative path from t
 python DiffSpike_TENO5_Advection.py                       # Phase 0/1 feasibility spike (scalar)
 python DiffSpike_TENO5euler_Sod.py                        # Phase 0/1 feasibility spike (Euler)
 python Train_NNTENO5_UnrolledJAX.py                       # Phase 6 scalar training (the positive result)
-python Train_NNTENO5euler_UnrolledJAX.py                  # Phase 6 Euler training (the unresolved instability)
+python Train_NNTENO5euler_UnrolledJAX.py                  # Historical Phase 6 failed Euler experiment
 python Train_NNTENO5euler_UnrolledJAX_Curriculum.py       # Phase 11/12: curriculum-on-K attempt at fixing it
 python ValidationMatrix_ProjPDF.py                        # Phase 7: canonical-benchmark validation matrix
 python PDEDataset_NonIdentifiability_Audit.py             # Phase 3: measures the 60%-real-PDE-data risk directly
@@ -515,7 +556,9 @@ not just this table.
 Run the regression suite with:
 
 ```bash
-python -m unittest discover -s tests -v
+python -m unittest discover -s tests -p test_core.py -v
+python -m unittest discover -s tests -p test_teno.py -v
+python -m unittest discover -s tests -p test_feature_vector.py -v
 ```
 
 The tests cover constant-state reconstruction, finite periodic advection,
@@ -537,7 +580,7 @@ The JAX differentiable-implementation tests (`tests/test_teno5_jax_*.py`,
 
 ```bash
 conda activate teno-jax
-python -m pytest tests/test_teno5_jax_regression.py tests/test_teno5_jax_euler_regression.py tests/test_projection_jax.py tests/test_losses_jax.py -q
+python -m pytest -p no:cacheprovider tests/test_teno5_jax_regression.py tests/test_teno5_jax_euler_regression.py tests/test_projection_jax.py tests/test_losses_jax.py src/differentiable/tests -q
 ```
 
 They regression-test every JAX port against the original NumPy/Keras-free

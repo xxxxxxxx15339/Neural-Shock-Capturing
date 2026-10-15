@@ -1,0 +1,454 @@
+{
+  "manifest": {
+    "schema_version": 1,
+    "declaration": "Frozen before the first P0 held-out evaluation; no training or checkpoint selection permitted.",
+    "models": {
+      "scalar": {
+        "path": "models/nn_teno5_unrolled_jax_params_run6_learnedlambda.pkl",
+        "sha256": "3d942ba76d1eb5ede3119bca360392bdbe4ce6a13ab56ab8f124323d4095674b"
+      },
+      "euler": {
+        "path": "models/nn_teno5euler_unrolled_jax_params_curriculum_phase18_learnedlambda.pkl",
+        "sha256": "11db25a8c5417e18e1277a563de07c0977471ef6d52430e7aedaa1e37d044c2d"
+      }
+    },
+    "methods": [
+      "teno5",
+      "neural-only",
+      "fixed-blend",
+      "learned-blend"
+    ],
+    "fixed_lambda": 0.04742587317756678,
+    "suites": {
+      "canonical": [
+        {
+          "id": "canonical-advection",
+          "problem": "advection",
+          "cells": 64,
+          "length": 1.0,
+          "final_time": 1.0,
+          "cfl": 0.5,
+          "boundary": "periodic",
+          "sampling": "point-i-dx",
+          "initial": {
+            "type": "square",
+            "left": 0.25,
+            "right": 0.75,
+            "amplitude": 1.0,
+            "offset": 0.0
+          },
+          "alpha": 1.0,
+          "wave_speed": 1.0
+        },
+        {
+          "id": "canonical-burgers",
+          "problem": "burgers",
+          "cells": 64,
+          "length": 1.0,
+          "final_time": 0.5,
+          "cfl": 0.5,
+          "boundary": "periodic",
+          "sampling": "point-i-dx",
+          "initial": {
+            "type": "fourier",
+            "offset": 0.5,
+            "modes": [
+              [
+                0.25,
+                1,
+                0.0
+              ]
+            ]
+          },
+          "alpha": 1.0,
+          "wave_speed": 1.0
+        },
+        {
+          "id": "canonical-sod",
+          "problem": "sod",
+          "cells": 120,
+          "length": 1.0,
+          "final_time": 0.2,
+          "cfl": 0.4,
+          "boundary": "transmissive",
+          "sampling": "point-i-dx",
+          "initial": {
+            "discontinuity": 0.5
+          },
+          "wave_speed_safety": 1.3
+        },
+        {
+          "id": "canonical-shu-osher",
+          "problem": "shu_osher",
+          "cells": 120,
+          "length": 10.0,
+          "final_time": 1.8,
+          "cfl": 0.4,
+          "boundary": "transmissive",
+          "sampling": "point-i-dx",
+          "initial": {
+            "amplitude": 0.2,
+            "frequency": 5.0,
+            "phase": 0.0,
+            "discontinuity": 1.0
+          },
+          "wave_speed_safety": 1.3,
+          "reference_cells": 320
+        }
+      ],
+      "heldout": [
+        {
+          "id": "heldout-advection-square-96",
+          "problem": "advection",
+          "cells": 96,
+          "length": 1.0,
+          "final_time": 0.37,
+          "cfl": 0.5,
+          "boundary": "periodic",
+          "sampling": "point-i-dx",
+          "initial": {
+            "type": "square",
+            "left": 0.17,
+            "right": 0.4,
+            "amplitude": 0.8,
+            "offset": 0.1
+          },
+          "alpha": 1.0,
+          "wave_speed": 1.0
+        },
+        {
+          "id": "heldout-advection-fourier-192",
+          "problem": "advection",
+          "cells": 192,
+          "length": 1.0,
+          "final_time": 1.3,
+          "cfl": 0.5,
+          "boundary": "periodic",
+          "sampling": "point-i-dx",
+          "initial": {
+            "type": "fourier",
+            "offset": 0.3,
+            "modes": [
+              [
+                0.3,
+                1,
+                0.2
+              ],
+              [
+                0.1,
+                3,
+                1.5707963267948966
+              ]
+            ]
+          },
+          "alpha": 1.0,
+          "wave_speed": 1.0
+        },
+        {
+          "id": "heldout-burgers-fourier-96",
+          "problem": "burgers",
+          "cells": 96,
+          "length": 1.0,
+          "final_time": 0.2,
+          "cfl": 0.5,
+          "boundary": "periodic",
+          "sampling": "point-i-dx",
+          "initial": {
+            "type": "fourier",
+            "offset": 0.5,
+            "modes": [
+              [
+                0.18,
+                1,
+                0.4
+              ],
+              [
+                0.04,
+                2,
+                -0.2
+              ]
+            ]
+          },
+          "alpha": 1.0,
+          "wave_speed": 1.0
+        },
+        {
+          "id": "heldout-burgers-fourier-192",
+          "problem": "burgers",
+          "cells": 192,
+          "length": 1.0,
+          "final_time": 0.4,
+          "cfl": 0.5,
+          "boundary": "periodic",
+          "sampling": "point-i-dx",
+          "initial": {
+            "type": "fourier",
+            "offset": 0.5,
+            "modes": [
+              [
+                0.18,
+                1,
+                0.4
+              ],
+              [
+                0.04,
+                2,
+                -0.2
+              ]
+            ]
+          },
+          "alpha": 1.0,
+          "wave_speed": 1.0
+        },
+        {
+          "id": "heldout-sod-96",
+          "problem": "sod",
+          "cells": 96,
+          "length": 1.0,
+          "final_time": 0.12,
+          "cfl": 0.4,
+          "boundary": "transmissive",
+          "sampling": "point-i-dx",
+          "initial": {
+            "discontinuity": 0.42
+          },
+          "wave_speed_safety": 1.3
+        },
+        {
+          "id": "heldout-sod-192",
+          "problem": "sod",
+          "cells": 192,
+          "length": 1.0,
+          "final_time": 0.17,
+          "cfl": 0.4,
+          "boundary": "transmissive",
+          "sampling": "point-i-dx",
+          "initial": {
+            "discontinuity": 0.58
+          },
+          "wave_speed_safety": 1.3
+        },
+        {
+          "id": "heldout-shu-osher-160",
+          "problem": "shu_osher",
+          "cells": 160,
+          "length": 10.0,
+          "final_time": 1.2,
+          "cfl": 0.4,
+          "boundary": "transmissive",
+          "sampling": "point-i-dx",
+          "initial": {
+            "amplitude": 0.15,
+            "frequency": 4.0,
+            "phase": 0.3,
+            "discontinuity": 1.0
+          },
+          "wave_speed_safety": 1.3,
+          "reference_cells": 5120
+        },
+        {
+          "id": "heldout-shu-osher-240",
+          "problem": "shu_osher",
+          "cells": 240,
+          "length": 10.0,
+          "final_time": 1.5,
+          "cfl": 0.4,
+          "boundary": "transmissive",
+          "sampling": "point-i-dx",
+          "initial": {
+            "amplitude": 0.25,
+            "frequency": 6.0,
+            "phase": -0.2,
+            "discontinuity": 1.0
+          },
+          "wave_speed_safety": 1.3,
+          "reference_cells": 5120
+        }
+      ]
+    },
+    "reference_study": {
+      "resolutions": [
+        320,
+        640,
+        1280,
+        2560,
+        5120
+      ],
+      "temporal_refinements": [
+        1,
+        2,
+        4
+      ],
+      "reference_uncertainty_fraction": 0.25,
+      "regional_window": [
+        2.0,
+        8.0
+      ]
+    },
+    "provenance_notes": [
+      "Canonical scalar cases selected the Phase 19 checkpoint and are validation, not held-out tests.",
+      "Complete historical training sample logs are unavailable; new configurations are frozen prospectively."
+    ]
+  },
+  "manifest_sha256": "15c26fc26c1c8580ac6e1b909c5284a8fd1a81a51735b91c08ce87eef0cf58a8",
+  "action": "reference",
+  "suite": "heldout",
+  "selected_cases": [
+    "heldout-shu-osher-240"
+  ],
+  "repair_policy": "none",
+  "gamma": 1.4,
+  "integrator": "SSPRK3",
+  "checkpoint_metadata": {
+    "scalar": {
+      "path": "/home/bazouil/Documents/Shocks-and-WENO/models/nn_teno5_unrolled_jax_params_run6_learnedlambda.pkl",
+      "sha256": "3d942ba76d1eb5ede3119bca360392bdbe4ce6a13ab56ab8f124323d4095674b",
+      "schema": "linear",
+      "backbone": [
+        {
+          "weight_shape": [
+            5,
+            64
+          ],
+          "bias_shape": [
+            64
+          ],
+          "weight_dtype": "float64",
+          "bias_dtype": "float64"
+        },
+        {
+          "weight_shape": [
+            64,
+            32
+          ],
+          "bias_shape": [
+            32
+          ],
+          "weight_dtype": "float64",
+          "bias_dtype": "float64"
+        },
+        {
+          "weight_shape": [
+            32,
+            16
+          ],
+          "bias_shape": [
+            16
+          ],
+          "weight_dtype": "float64",
+          "bias_dtype": "float64"
+        },
+        {
+          "weight_shape": [
+            16,
+            8
+          ],
+          "bias_shape": [
+            8
+          ],
+          "weight_dtype": "float64",
+          "bias_dtype": "float64"
+        },
+        {
+          "weight_shape": [
+            8,
+            3
+          ],
+          "bias_shape": [
+            3
+          ],
+          "weight_dtype": "float64",
+          "bias_dtype": "float64"
+        }
+      ],
+      "head": [
+        {
+          "weight_shape": [
+            3,
+            1
+          ],
+          "bias_shape": [
+            1
+          ],
+          "weight_dtype": "float64",
+          "bias_dtype": "float64"
+        }
+      ]
+    },
+    "euler": {
+      "path": "/home/bazouil/Documents/Shocks-and-WENO/models/nn_teno5euler_unrolled_jax_params_curriculum_phase18_learnedlambda.pkl",
+      "sha256": "11db25a8c5417e18e1277a563de07c0977471ef6d52430e7aedaa1e37d044c2d",
+      "schema": "linear",
+      "backbone": [
+        {
+          "weight_shape": [
+            5,
+            64
+          ],
+          "bias_shape": [
+            64
+          ],
+          "weight_dtype": "float64",
+          "bias_dtype": "float64"
+        },
+        {
+          "weight_shape": [
+            64,
+            32
+          ],
+          "bias_shape": [
+            32
+          ],
+          "weight_dtype": "float64",
+          "bias_dtype": "float64"
+        },
+        {
+          "weight_shape": [
+            32,
+            16
+          ],
+          "bias_shape": [
+            16
+          ],
+          "weight_dtype": "float64",
+          "bias_dtype": "float64"
+        },
+        {
+          "weight_shape": [
+            16,
+            8
+          ],
+          "bias_shape": [
+            8
+          ],
+          "weight_dtype": "float64",
+          "bias_dtype": "float64"
+        },
+        {
+          "weight_shape": [
+            8,
+            3
+          ],
+          "bias_shape": [
+            3
+          ],
+          "weight_dtype": "float64",
+          "bias_dtype": "float64"
+        }
+      ],
+      "head": [
+        {
+          "weight_shape": [
+            3,
+            1
+          ],
+          "bias_shape": [
+            1
+          ],
+          "weight_dtype": "float64",
+          "bias_dtype": "float64"
+        }
+      ]
+    }
+  }
+}

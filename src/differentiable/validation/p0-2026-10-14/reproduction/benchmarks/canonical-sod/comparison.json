@@ -1,0 +1,26 @@
+[
+  {
+    "method": "neural-only",
+    "teno5_error": 0.008258322670756879,
+    "method_error": 0.010277185156668783,
+    "ratio": 1.2444639869862186,
+    "status": "higher-error",
+    "trustworthy_reference": true
+  },
+  {
+    "method": "fixed-blend",
+    "teno5_error": 0.008258322670756879,
+    "method_error": 0.008285390628823785,
+    "ratio": 1.0032776580845835,
+    "status": "higher-error",
+    "trustworthy_reference": true
+  },
+  {
+    "method": "learned-blend",
+    "teno5_error": 0.008258322670756879,
+    "method_error": 0.00828709346003937,
+    "ratio": 1.0034838538562278,
+    "status": "higher-error",
+    "trustworthy_reference": true
+  }
+]

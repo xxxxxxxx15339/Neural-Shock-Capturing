@@ -1,0 +1,7 @@
+{
+  "kind": "analytic",
+  "definition": "exact pre-shock characteristic solution",
+  "sampling": "point-i-dx",
+  "trustworthy_for_defined_samples": true,
+  "sample_array_sha256": "a7f8eef54a5cd36916d306f4c8a438a8c71abdb6675de307c246f9c819783942"
+}

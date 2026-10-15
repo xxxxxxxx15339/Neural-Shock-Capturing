@@ -1,0 +1,81 @@
+{
+  "baseline_revision": "4e514b19d12247f839dba5af396154cdc37d96ec",
+  "baseline_source_sha256": "d2abadb8f98e874c2d7ddd9e92bdecf1bd9a9d5bf464e3690777d3fecadd2477",
+  "model": {
+    "path": "/home/bazouil/Documents/Shocks-and-WENO/models/nn_teno5euler_unrolled_jax_params_curriculum_phase18_learnedlambda.pkl",
+    "sha256": "11db25a8c5417e18e1277a563de07c0977471ef6d52430e7aedaa1e37d044c2d",
+    "schema": "linear",
+    "backbone": [
+      {
+        "weight_shape": [
+          5,
+          64
+        ],
+        "bias_shape": [
+          64
+        ],
+        "weight_dtype": "float64",
+        "bias_dtype": "float64"
+      },
+      {
+        "weight_shape": [
+          64,
+          32
+        ],
+        "bias_shape": [
+          32
+        ],
+        "weight_dtype": "float64",
+        "bias_dtype": "float64"
+      },
+      {
+        "weight_shape": [
+          32,
+          16
+        ],
+        "bias_shape": [
+          16
+        ],
+        "weight_dtype": "float64",
+        "bias_dtype": "float64"
+      },
+      {
+        "weight_shape": [
+          16,
+          8
+        ],
+        "bias_shape": [
+          8
+        ],
+        "weight_dtype": "float64",
+        "bias_dtype": "float64"
+      },
+      {
+        "weight_shape": [
+          8,
+          3
+        ],
+        "bias_shape": [
+          3
+        ],
+        "weight_dtype": "float64",
+        "bias_dtype": "float64"
+      }
+    ],
+    "head": [
+      {
+        "weight_shape": [
+          3,
+          1
+        ],
+        "bias_shape": [
+          1
+        ],
+        "weight_dtype": "float64",
+        "bias_dtype": "float64"
+      }
+    ]
+  },
+  "historical_counter_note": "fallback_repair_events counts all historical row rewrites, including roundoff",
+  "conservation_limitation": "Neighbor averaging and residual fallback are not globally conservative. No conservative redistribution is added."
+}

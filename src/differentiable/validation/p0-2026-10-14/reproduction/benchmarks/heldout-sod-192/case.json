@@ -1,0 +1,14 @@
+{
+  "id": "heldout-sod-192",
+  "problem": "sod",
+  "cells": 192,
+  "length": 1.0,
+  "final_time": 0.17,
+  "cfl": 0.4,
+  "boundary": "transmissive",
+  "sampling": "point-i-dx",
+  "initial": {
+    "discontinuity": 0.58
+  },
+  "wave_speed_safety": 1.3
+}

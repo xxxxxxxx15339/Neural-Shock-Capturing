@@ -44,12 +44,12 @@ Script: `WENO5_vs_WENO5NN_StepAdvection.py` — L=2, 100 cells, CFL=2/3, 50 peri
 
 **Plots:**
 
-- [`plots/step_advection/final_snapshot.png`](plots/step_advection/final_snapshot.png) — WENO5 vs. NN vs. exact solution at t=100. *Interpretation: the NN tracks the true step sharply; WENO5 is visibly smeared and hasn't fully settled to 0/1 in the flat regions after 50 periods.*
-- [`plots/step_advection/discontinuity_width_vs_time.png`](plots/step_advection/discontinuity_width_vs_time.png) — discontinuity width over the full run. *Interpretation: WENO5's shock keeps widening every period (cumulative numerical diffusion); the NN's stays bounded — the clearest single evidence of the NN's claimed advantage.*
-- [`plots/step_advection/l2_error_weno5.png`](plots/step_advection/l2_error_weno5.png) / [`l2_error_nn.png`](plots/step_advection/l2_error_nn.png) — L2 error vs. exact over time. *Interpretation: WENO5's error roughly doubles over the run; the NN's oscillates but never trends upward — no long-time error accumulation.*
-- [`plots/step_advection/total_variation_weno5.png`](plots/step_advection/total_variation_weno5.png) / [`total_variation_nn.png`](plots/step_advection/total_variation_nn.png) — total variation over time. *Interpretation: NN's TV is pinned essentially exactly at the analytically correct value (2.000) the entire run; WENO5 drifts up ~2%. Sharpest quantitative confirmation of the qualitative pattern.*
-- [`plots/step_advection/disc_track_weno5_x-1.png`](plots/step_advection/disc_track_weno5_x-1.png) / [`disc_track_nn_x-1.png`](plots/step_advection/disc_track_nn_x-1.png) — pointwise |error| near the x=-1 discontinuity, x-ct vs. t. *Interpretation: WENO5's error band visibly funnels wider with time; the NN's stays a constant-width column — same conclusion, spatially resolved.*
-- [`plots/step_advection/disc_track_weno5_x-2.png`](plots/step_advection/disc_track_weno5_x-2.png) / [`disc_track_nn_x-2.png`](plots/step_advection/disc_track_nn_x-2.png) — same, near x=-2. *Interpretation: identical pattern at the second discontinuity — not a location-specific artifact.*
+- [`plots/step_advection/final_snapshot.png`](../plots/step_advection/final_snapshot.png) — WENO5 vs. NN vs. exact solution at t=100. *Interpretation: the NN tracks the true step sharply; WENO5 is visibly smeared and hasn't fully settled to 0/1 in the flat regions after 50 periods.*
+- [`plots/step_advection/discontinuity_width_vs_time.png`](../plots/step_advection/discontinuity_width_vs_time.png) — discontinuity width over the full run. *Interpretation: WENO5's shock keeps widening every period (cumulative numerical diffusion); the NN's stays bounded — the clearest single evidence of the NN's claimed advantage.*
+- [`plots/step_advection/l2_error_weno5.png`](../plots/step_advection/l2_error_weno5.png) / [`l2_error_nn.png`](../plots/step_advection/l2_error_nn.png) — L2 error vs. exact over time. *Interpretation: WENO5's error roughly doubles over the run; the NN's oscillates but never trends upward — no long-time error accumulation.*
+- [`plots/step_advection/total_variation_weno5.png`](../plots/step_advection/total_variation_weno5.png) / [`total_variation_nn.png`](../plots/step_advection/total_variation_nn.png) — total variation over time. *Interpretation: NN's TV is pinned essentially exactly at the analytically correct value (2.000) the entire run; WENO5 drifts up ~2%. Sharpest quantitative confirmation of the qualitative pattern.*
+- [`plots/step_advection/disc_track_weno5_x-1.png`](../plots/step_advection/disc_track_weno5_x-1.png) / [`disc_track_nn_x-1.png`](../plots/step_advection/disc_track_nn_x-1.png) — pointwise |error| near the x=-1 discontinuity, x-ct vs. t. *Interpretation: WENO5's error band visibly funnels wider with time; the NN's stays a constant-width column — same conclusion, spatially resolved.*
+- [`plots/step_advection/disc_track_weno5_x-2.png`](../plots/step_advection/disc_track_weno5_x-2.png) / [`disc_track_nn_x-2.png`](../plots/step_advection/disc_track_nn_x-2.png) — same, near x=-2. *Interpretation: identical pattern at the second discontinuity — not a location-specific artifact.*
 
 **Conclusion: clear NN win.** Avoids the cumulative numerical diffusion WENO5 builds up over long-time integration; holds a stable, near-exact shock shape indefinitely instead of progressively smearing.
 
@@ -69,12 +69,12 @@ max_abs_error(NN    vs. exact)    = 4.4264e-01   (+0.27%, NN marginally worse)
 
 **Plots:**
 
-- [`plots/sod/density_velocity_pressure.png`](plots/sod/density_velocity_pressure.png) — density/velocity/pressure vs. x, both schemes vs. exact. *Interpretation: visually indistinguishable; both resolve the rarefaction, contact, and shock correctly.*
-- [`plots/sod/density_final.png`](plots/sod/density_final.png) — density only, same comparison. *Interpretation: same conclusion, isolated to the variable most sensitive to scheme differences.*
-- [`plots/sod/density_contour.png`](plots/sod/density_contour.png) — space-time density, WENO5 vs. NN side by side. *Interpretation: rarefaction fan and shock trajectory match almost exactly between the two.*
-- [`plots/sod/discontinuity_width.png`](plots/sod/discontinuity_width.png) — shock width over time. *Interpretation: NN's width is slightly narrower than WENO5's throughout — small, consistent edge to the NN.*
-- [`plots/sod/total_variation.png`](plots/sod/total_variation.png) — total variation over time. *Interpretation: NN's TV stays measurably lower and flatter (≈0.8756 vs. WENO5's ≈0.8763 by t=0.2) — the same "less oscillatory over time" pattern seen on step advection, just smaller in magnitude.*
-- [`plots/sod/l2_error.png`](plots/sod/l2_error.png) — direct WENO5 vs. NN L2 distance (not vs. exact) over time. *Interpretation: grows smoothly to ≈9.5e-4 by t=0.2 — small, steadily growing divergence between the two schemes' own trajectories, consistent with the final max_abs_difference.*
+- [`plots/sod/density_velocity_pressure.png`](../plots/sod/density_velocity_pressure.png) — density/velocity/pressure vs. x, both schemes vs. exact. *Interpretation: visually indistinguishable; both resolve the rarefaction, contact, and shock correctly.*
+- [`plots/sod/density_final.png`](../plots/sod/density_final.png) — density only, same comparison. *Interpretation: same conclusion, isolated to the variable most sensitive to scheme differences.*
+- [`plots/sod/density_contour.png`](../plots/sod/density_contour.png) — space-time density, WENO5 vs. NN side by side. *Interpretation: rarefaction fan and shock trajectory match almost exactly between the two.*
+- [`plots/sod/discontinuity_width.png`](../plots/sod/discontinuity_width.png) — shock width over time. *Interpretation: NN's width is slightly narrower than WENO5's throughout — small, consistent edge to the NN.*
+- [`plots/sod/total_variation.png`](../plots/sod/total_variation.png) — total variation over time. *Interpretation: NN's TV stays measurably lower and flatter (≈0.8756 vs. WENO5's ≈0.8763 by t=0.2) — the same "less oscillatory over time" pattern seen on step advection, just smaller in magnitude.*
+- [`plots/sod/l2_error.png`](../plots/sod/l2_error.png) — direct WENO5 vs. NN L2 distance (not vs. exact) over time. *Interpretation: grows smoothly to ≈9.5e-4 by t=0.2 — small, steadily growing divergence between the two schemes' own trajectories, consistent with the final max_abs_difference.*
 
 **Conclusion: near-tie, with a small consistent edge to the NN** on shock width and total variation — not the pure wash a first glance at the overlapping profile plots suggests.
 
@@ -95,8 +95,8 @@ Script: `WENO5_vs_WENO5NN_Burgers.py` — Gaussian IC (k=20), L=2, T=4, referenc
 
 **Plots:**
 
-- [`plots/burgers/solution_profile.png`](plots/burgers/solution_profile.png) — WENO5-JS vs. NN vs. 1600-cell reference at t=4, 50 cells. *Interpretation: the two schemes overlap almost perfectly with each other, both slightly smearing the shock relative to the fine reference — no visible qualitative difference.*
-- [`plots/burgers/error_vs_grid_spacing.png`](plots/burgers/error_vs_grid_spacing.png) — L2 error vs. Δx, log-log, both schemes. *Interpretation: no consistent winner — NN better at 3 of 4 resolutions, worse at one, no monotonic trend. Matches the paper's own observation that the two schemes perform similarly on true shocks.*
+- [`plots/burgers/solution_profile.png`](../plots/burgers/solution_profile.png) — WENO5-JS vs. NN vs. 1600-cell reference at t=4, 50 cells. *Interpretation: the two schemes overlap almost perfectly with each other, both slightly smearing the shock relative to the fine reference — no visible qualitative difference.*
+- [`plots/burgers/error_vs_grid_spacing.png`](../plots/burgers/error_vs_grid_spacing.png) — L2 error vs. Δx, log-log, both schemes. *Interpretation: no consistent winner — NN better at 3 of 4 resolutions, worse at one, no monotonic trend. Matches the paper's own observation that the two schemes perform similarly on true shocks.*
 
 **Conclusion: essentially a tie.**
 
@@ -116,11 +116,11 @@ max_abs_error(NN    vs. reference)    = 12.345   (+0.55%, NN worse)
 
 **Plots:**
 
-- [`plots/shu_osher/density_velocity_pressure.png`](plots/shu_osher/density_velocity_pressure.png) — density/velocity/pressure vs. x, both schemes vs. reference. *Interpretation: both track the reference closely, with expected under-resolution vs. the 3200-cell reference in the post-shock turbulent region (x≈6–8); no visible qualitative difference between WENO5 and NN.*
-- [`plots/shu_osher/density_final.png`](plots/shu_osher/density_final.png) — density only, same comparison. *Interpretation: same conclusion.*
-- [`plots/shu_osher/density_contour.png`](plots/shu_osher/density_contour.png) — space-time density, WENO5 vs. NN side by side. *Interpretation: shock trajectory and oscillation pattern look essentially identical between the two.*
-- [`plots/shu_osher/discontinuity_width.png`](plots/shu_osher/discontinuity_width.png) — shock width over time. *Interpretation: noisy but essentially overlapping — no meaningful difference here, unlike Sod.*
-- [`plots/shu_osher/total_variation.png`](plots/shu_osher/total_variation.png) — total variation over time. *Interpretation: the one clear divergence — NN's TV is consistently **higher** than WENO5's and the gap **widens** over the run (≈16.5 vs. ≈14.2 by t=2). Opposite of the pattern seen everywhere else — here the NN is more oscillatory, not less.*
+- [`plots/shu_osher/density_velocity_pressure.png`](../plots/shu_osher/density_velocity_pressure.png) — density/velocity/pressure vs. x, both schemes vs. reference. *Interpretation: both track the reference closely, with expected under-resolution vs. the 3200-cell reference in the post-shock turbulent region (x≈6–8); no visible qualitative difference between WENO5 and NN.*
+- [`plots/shu_osher/density_final.png`](../plots/shu_osher/density_final.png) — density only, same comparison. *Interpretation: same conclusion.*
+- [`plots/shu_osher/density_contour.png`](../plots/shu_osher/density_contour.png) — space-time density, WENO5 vs. NN side by side. *Interpretation: shock trajectory and oscillation pattern look essentially identical between the two.*
+- [`plots/shu_osher/discontinuity_width.png`](../plots/shu_osher/discontinuity_width.png) — shock width over time. *Interpretation: noisy but essentially overlapping — no meaningful difference here, unlike Sod.*
+- [`plots/shu_osher/total_variation.png`](../plots/shu_osher/total_variation.png) — total variation over time. *Interpretation: the one clear divergence — NN's TV is consistently **higher** than WENO5's and the gap **widens** over the run (≈16.5 vs. ≈14.2 by t=2). Opposite of the pattern seen everywhere else — here the NN is more oscillatory, not less.*
 
 **Conclusion: NN slightly worse**, driven specifically by growing total variation in the post-shock oscillatory region — the one problem where the NN's usual stability advantage reverses.
 
@@ -233,15 +233,15 @@ Shu   shock width      NN = 7         WENO5 = 7
 
 **Plots** (`WENO5_vs_WENO7NN_Sod.py`, `WENO5_vs_WENO7NN_ShuOsher.py`, both new — 7-point counterparts of the Phase 1 comparison scripts):
 
-- [`plots/sod_weno7nn/density_velocity_pressure.png`](plots/sod_weno7nn/density_velocity_pressure.png) / [`density_final.png`](plots/sod_weno7nn/density_final.png) — WENO7-NN vs. WENO5 vs. exact. *Interpretation: visually near-identical to WENO5, both close to exact — the failure is in a metric (TV), not a visible profile difference.*
-- [`plots/sod_weno7nn/total_variation.png`](plots/sod_weno7nn/total_variation.png) — TV over time. *Interpretation: this is the actual failure, visualized — WENO5's TV stays smooth (~0.875-0.876) the whole run; WENO7-NN's spikes up to ~0.881 around t=0.13-0.15 before partially relaxing to ~0.8785-0.879. A transient instability, not a steady-state one.*
-- [`plots/sod_weno7nn/discontinuity_width.png`](plots/sod_weno7nn/discontinuity_width.png) — shock width over time. *Interpretation: NN's shock is consistently ~5-10% wider than WENO5's throughout — matches the final shock-width count (10 vs. 9 cells).*
-- [`plots/sod_weno7nn/density_contour.png`](plots/sod_weno7nn/density_contour.png) — space-time density, side by side. *Interpretation: same rarefaction/shock structure; no qualitative difference visible at this scale.*
-- [`plots/sod_weno7nn/l2_error.png`](plots/sod_weno7nn/l2_error.png) — direct WENO7-NN vs. WENO5 L2 distance over time. *Interpretation: grows to ≈4e-3 by t=0.2 — about 4x larger than the Phase 1 5-point model's divergence from WENO5 on the same problem, consistent with this being a more different, more aggressively-corrected network.*
-- [`plots/shu_osher_weno7nn/density_velocity_pressure.png`](plots/shu_osher_weno7nn/density_velocity_pressure.png) / [`density_final.png`](plots/shu_osher_weno7nn/density_final.png) — WENO7-NN vs. WENO5 vs. reference. *Interpretation: WENO7-NN tracks WENO5 closely everywhere, including the oscillatory region — the 2.4% regional improvement is real but subtle at this visual scale, not a dramatic visible difference.*
-- [`plots/shu_osher_weno7nn/total_variation.png`](plots/shu_osher_weno7nn/total_variation.png) — full-domain TV over time. *Interpretation: counterintuitive but consistent finding — WENO7-NN's TV is higher than WENO5's across the **entire domain** and the whole run, even though its error is lower specifically in the narrow diagnostic region [5.5, 7.3]. TV (internal smoothness) and regional accuracy (distance to the true solution) are different things and don't have to move together — the model traded some global smoothness for better local accuracy in the region that matters most for acceptance.*
-- [`plots/shu_osher_weno7nn/discontinuity_width.png`](plots/shu_osher_weno7nn/discontinuity_width.png) — discontinuity width over time. *Interpretation: opposite of the TV finding — NN's width is consistently narrower (sharper) than WENO5's throughout. Sharper transitions concentrated in fewer cells can still sum to higher total variation than a gentler, wider one — these two metrics capture different failure modes.*
-- [`plots/shu_osher_weno7nn/density_contour.png`](plots/shu_osher_weno7nn/density_contour.png) — space-time density, side by side. *Interpretation: same overall wave structure; the oscillatory band looks slightly higher-contrast for WENO7-NN, consistent with the sharper-width finding.*
+- [`plots/sod_weno7nn/density_velocity_pressure.png`](../plots/sod_weno7nn/density_velocity_pressure.png) / [`density_final.png`](../plots/sod_weno7nn/density_final.png) — WENO7-NN vs. WENO5 vs. exact. *Interpretation: visually near-identical to WENO5, both close to exact — the failure is in a metric (TV), not a visible profile difference.*
+- [`plots/sod_weno7nn/total_variation.png`](../plots/sod_weno7nn/total_variation.png) — TV over time. *Interpretation: this is the actual failure, visualized — WENO5's TV stays smooth (~0.875-0.876) the whole run; WENO7-NN's spikes up to ~0.881 around t=0.13-0.15 before partially relaxing to ~0.8785-0.879. A transient instability, not a steady-state one.*
+- [`plots/sod_weno7nn/discontinuity_width.png`](../plots/sod_weno7nn/discontinuity_width.png) — shock width over time. *Interpretation: NN's shock is consistently ~5-10% wider than WENO5's throughout — matches the final shock-width count (10 vs. 9 cells).*
+- [`plots/sod_weno7nn/density_contour.png`](../plots/sod_weno7nn/density_contour.png) — space-time density, side by side. *Interpretation: same rarefaction/shock structure; no qualitative difference visible at this scale.*
+- [`plots/sod_weno7nn/l2_error.png`](../plots/sod_weno7nn/l2_error.png) — direct WENO7-NN vs. WENO5 L2 distance over time. *Interpretation: grows to ≈4e-3 by t=0.2 — about 4x larger than the Phase 1 5-point model's divergence from WENO5 on the same problem, consistent with this being a more different, more aggressively-corrected network.*
+- [`plots/shu_osher_weno7nn/density_velocity_pressure.png`](../plots/shu_osher_weno7nn/density_velocity_pressure.png) / [`density_final.png`](../plots/shu_osher_weno7nn/density_final.png) — WENO7-NN vs. WENO5 vs. reference. *Interpretation: WENO7-NN tracks WENO5 closely everywhere, including the oscillatory region — the 2.4% regional improvement is real but subtle at this visual scale, not a dramatic visible difference.*
+- [`plots/shu_osher_weno7nn/total_variation.png`](../plots/shu_osher_weno7nn/total_variation.png) — full-domain TV over time. *Interpretation: counterintuitive but consistent finding — WENO7-NN's TV is higher than WENO5's across the **entire domain** and the whole run, even though its error is lower specifically in the narrow diagnostic region [5.5, 7.3]. TV (internal smoothness) and regional accuracy (distance to the true solution) are different things and don't have to move together — the model traded some global smoothness for better local accuracy in the region that matters most for acceptance.*
+- [`plots/shu_osher_weno7nn/discontinuity_width.png`](../plots/shu_osher_weno7nn/discontinuity_width.png) — discontinuity width over time. *Interpretation: opposite of the TV finding — NN's width is consistently narrower (sharper) than WENO5's throughout. Sharper transitions concentrated in fewer cells can still sum to higher total variation than a gentler, wider one — these two metrics capture different failure modes.*
+- [`plots/shu_osher_weno7nn/density_contour.png`](../plots/shu_osher_weno7nn/density_contour.png) — space-time density, side by side. *Interpretation: same overall wave structure; the oscillatory band looks slightly higher-contrast for WENO7-NN, consistent with the sharper-width finding.*
 
 **Conclusion**: extremely close to a full pass — one seed away, in principle. The two remaining failures are both narrow misses (TV overshoot is transient, not permanent; Linf failure is a single worst-case point, not a broad-region problem) rather than the wide, systematic failures seen throughout Phase 3. Continuing the seed search at this exact configuration (`hidden-size=32`, `regularization=0.10`, `learning-rate=0.001`, `patience=15`) is the most direct path to a fully-accepted model.
 
@@ -716,3 +716,25 @@ Independently re-verified against the saved checkpoint (not just the training lo
 **A small, genuine improvement on Sod, and a small regression on Shu-Osher -- still not a win on Sod, and still, overall, roughly a wash rather than a breakthrough.** This is the third variant of the mixing-head idea tried across Phases 18/20/21 (original linear gate; higher learning rate on the same gate; richer input on a bigger gate), and all three land in the same narrow neighborhood (Sod between 1.0026x and 1.0045x, Shu-Osher between 0.9804x and 0.9893x) regardless of how much information or training the gate gets. That convergence is itself the finding: it is not gate capacity or gate training that is capping Sod, corroborating Phase 20's fixed-lambda sweep directly (mixing in ANY amount of this backbone's own Sod reconstruction, from ANY gate sophisticated enough to decide how much, never beats TENO5 outright on Sod).
 
 **Status**: confirms, from a second independent angle, that the mixing-gate family of fixes has a real ceiling here, and it sits in the backbone's own reconstruction quality, not in how the mixing coefficient is computed. Not adopting Phase 21's checkpoint as the new default -- it is a lateral move from Phase 18 (marginally better Sod, marginally worse Shu-Osher), not a strict improvement. Recommended framing going forward: further gate engineering on this backbone is very unlikely to yield more; the concrete next step, if this is pursued further, is retraining the backbone itself with more/harder Sod-like Riemann examples (or a genuinely larger backbone -- the current one is a 5-layer toy MLP, explicitly built in this project only to test feasibility), not another mixing-head variant.
+
+
+---
+
+## P0 release validation — 2026-10-14
+
+The historical Phase 18–21 records above are preserved. The frozen defaults remain
+Phase 19/run6 for scalar problems and Phase 18 for Euler; Phase 20 and Phase 21
+remain optional experimental alternatives. Current loaders support all three JAX
+parameter formats with exact shape and finiteness checks. The unified evaluation
+CLI and clean-environment locks are documented in README.
+
+See [P0_Validation.md](P0_Validation.md) for independently reproduced metrics,
+matched ablations, prospective held-out configurations, repair regression evidence,
+spatial/temporal and independent-scheme reference checks, and unresolved issues.
+Canonical scalar cases were used for checkpoint selection and are validation cases.
+The previously reported Shu–Osher advantage must remain conditional on reference
+quality; a lower measured error is not a certified win when reference uncertainty
+is comparable to the margin. Smooth studies measure about third-order spatial
+convergence for the tested neural reconstructions/blends. The finite gate variants
+and constant-coefficient sweep in Phases 20–21 do not establish an impossibility
+result for every spatially varying gate.

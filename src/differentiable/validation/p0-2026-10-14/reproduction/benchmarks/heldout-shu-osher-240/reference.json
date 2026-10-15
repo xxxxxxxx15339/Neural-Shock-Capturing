@@ -1,0 +1,79 @@
+{
+  "kind": "numerical",
+  "scheme": "TENO5 JAX",
+  "case": {
+    "id": "heldout-shu-osher-240",
+    "problem": "shu_osher",
+    "cells": 5120,
+    "length": 10.0,
+    "final_time": 1.5,
+    "cfl": 0.4,
+    "boundary": "transmissive",
+    "sampling": "point-i-dx",
+    "initial": {
+      "amplitude": 0.25,
+      "frequency": 6.0,
+      "phase": -0.2,
+      "discontinuity": 1.0
+    },
+    "wave_speed_safety": 1.3,
+    "reference_cells": 10240
+  },
+  "time_grid": {
+    "dx": 0.001953125,
+    "dt": 0.00013161358252171624,
+    "steps": 11397,
+    "initial_speed_bound": 5.935821955802613,
+    "temporal_refinement": 1,
+    "wall_seconds_including_compilation": 450.2515622179999
+  },
+  "diagnostics": {
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "maximum_absolute_stage_state": 44.02029674889353,
+    "max_courant": 0.3340325532651764,
+    "initial_integral": [
+      12.935368087389227,
+      10.141852232766999,
+      61.6665859317094
+    ],
+    "final_integral": [
+      28.148146436534258,
+      64.14181002788476,
+      256.89678429022814
+    ],
+    "integrated_boundary_exchange": [
+      15.212778349148698,
+      53.99995779512821,
+      195.23019835852978
+    ],
+    "integrated_repair_exchange": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conservation_residual": [
+      -3.666400516522117e-12,
+      -1.0452083643031074e-11,
+      -1.1027623258996755e-11
+    ],
+    "physical_balance_error": [
+      -3.666400516522117e-12,
+      -1.0452083643031074e-11,
+      -1.1027623258996755e-11
+    ],
+    "minimum_density": 0.7471691979610013,
+    "minimum_pressure": 0.9999999999999996,
+    "valid_for_accuracy_claim": true
+  },
+  "interpolation": "componentwise np.interp at historical point samples",
+  "convergence_status": "uncertified; consult the separate reference study",
+  "trustworthy_for_win_claim": false,
+  "sample_array_sha256": "deb0d6b8ffaf2b0b5136f2335f758a76bb916d39d9344cd7e5d29e79abd7363e"
+}

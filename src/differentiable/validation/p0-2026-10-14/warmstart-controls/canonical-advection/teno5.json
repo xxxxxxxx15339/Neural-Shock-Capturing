@@ -1,0 +1,55 @@
+{
+  "case": "canonical-advection",
+  "method": "teno5",
+  "time_grid": {
+    "dx": 0.015625,
+    "dt": 0.0078125,
+    "steps": 128,
+    "initial_speed_bound": 1.0,
+    "temporal_refinement": 1,
+    "wall_seconds_including_compilation": 2.1606815089999145
+  },
+  "primary_error": 0.0989598540663411,
+  "l1": 0.03481860679831087,
+  "l2": 0.0989598540663411,
+  "linf": 0.3733224170986198,
+  "component_l1": [
+    0.03481860679831087
+  ],
+  "component_l2": [
+    0.0989598540663411
+  ],
+  "component_linf": [
+    0.3733224170986198
+  ],
+  "finite": true,
+  "raw_stages_admissible": true,
+  "invalid_stage_rows": 0,
+  "nonfinite_stage_rows": 0,
+  "repaired_stage_rows": 0,
+  "isolated_repair_events": 0,
+  "fallback_repair_events": 0,
+  "repair_policy": "none",
+  "minimum_state": -0.026667290953936454,
+  "maximum_absolute_stage_state": 1.0266672909539363,
+  "max_courant": 0.5,
+  "initial_integral": [
+    0.5
+  ],
+  "final_integral": [
+    0.4999999999999968
+  ],
+  "integrated_boundary_exchange": [
+    0.0
+  ],
+  "integrated_repair_exchange": [
+    0.0
+  ],
+  "conservation_residual": [
+    -3.219646771412954e-15
+  ],
+  "physical_balance_error": [
+    -3.219646771412954e-15
+  ],
+  "valid_for_accuracy_claim": true
+}

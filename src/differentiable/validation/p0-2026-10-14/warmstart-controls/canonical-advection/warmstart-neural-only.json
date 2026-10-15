@@ -1,0 +1,55 @@
+{
+  "case": "canonical-advection",
+  "method": "warmstart-neural-only",
+  "time_grid": {
+    "dx": 0.015625,
+    "dt": 0.0078125,
+    "steps": 128,
+    "initial_speed_bound": 1.0,
+    "temporal_refinement": 1,
+    "wall_seconds_including_compilation": 1.5513502690009773
+  },
+  "primary_error": 0.1401791824519685,
+  "l1": 0.06608423323465226,
+  "l2": 0.1401791824519685,
+  "linf": 0.6094804583280754,
+  "component_l1": [
+    0.06608423323465226
+  ],
+  "component_l2": [
+    0.1401791824519685
+  ],
+  "component_linf": [
+    0.6094804583280754
+  ],
+  "finite": true,
+  "raw_stages_admissible": true,
+  "invalid_stage_rows": 0,
+  "nonfinite_stage_rows": 0,
+  "repaired_stage_rows": 0,
+  "isolated_repair_events": 0,
+  "fallback_repair_events": 0,
+  "repair_policy": "none",
+  "minimum_state": -0.052283323350757194,
+  "maximum_absolute_stage_state": 1.0472328554946206,
+  "max_courant": 0.5,
+  "initial_integral": [
+    0.5
+  ],
+  "final_integral": [
+    0.4999999999999967
+  ],
+  "integrated_boundary_exchange": [
+    0.0
+  ],
+  "integrated_repair_exchange": [
+    0.0
+  ],
+  "conservation_residual": [
+    -3.2751579226442118e-15
+  ],
+  "physical_balance_error": [
+    -3.2751579226442118e-15
+  ],
+  "valid_for_accuracy_claim": true
+}

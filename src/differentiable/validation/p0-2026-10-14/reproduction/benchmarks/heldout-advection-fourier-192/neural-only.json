@@ -1,0 +1,60 @@
+{
+  "case": "heldout-advection-fourier-192",
+  "method": "neural-only",
+  "time_grid": {
+    "dx": 0.005208333333333333,
+    "dt": 0.0026,
+    "steps": 500,
+    "initial_speed_bound": 1.0,
+    "temporal_refinement": 1,
+    "wall_seconds_including_compilation": 1.6816575440007
+  },
+  "metric_definition": "root mean square error",
+  "primary_error": 0.3309244395228399,
+  "l1": 0.23508776634910444,
+  "l2": 0.3309244395228399,
+  "linf": 0.8368394985369632,
+  "component_l1": [
+    0.23508776634910444
+  ],
+  "component_l2": [
+    0.3309244395228399
+  ],
+  "component_linf": [
+    0.8368394985369632
+  ],
+  "finite": true,
+  "raw_stages_admissible": true,
+  "invalid_stage_rows": 0,
+  "nonfinite_stage_rows": 0,
+  "repaired_stage_rows": 0,
+  "isolated_repair_events": 0,
+  "fallback_repair_events": 0,
+  "repair_policy": "none",
+  "minimum_state": -0.9046705467706699,
+  "maximum_absolute_stage_state": 1.530525017464469,
+  "max_courant": 0.4992,
+  "initial_integral": [
+    0.29999999999999993
+  ],
+  "final_integral": [
+    0.2999999999999911
+  ],
+  "integrated_boundary_exchange": [
+    0.0
+  ],
+  "integrated_repair_exchange": [
+    0.0
+  ],
+  "conservation_residual": [
+    -8.826273045769994e-15
+  ],
+  "physical_balance_error": [
+    -8.826273045769994e-15
+  ],
+  "valid_for_accuracy_claim": true,
+  "total_variation": 61.37968037676617,
+  "final_minimum": -0.6394248188986241,
+  "final_maximum": 1.27303922365526,
+  "initial_range_violation": 0.6306339400231662
+}

@@ -1,0 +1,23 @@
+{
+  "id": "canonical-burgers",
+  "problem": "burgers",
+  "cells": 64,
+  "length": 1.0,
+  "final_time": 0.5,
+  "cfl": 0.5,
+  "boundary": "periodic",
+  "sampling": "point-i-dx",
+  "initial": {
+    "type": "fourier",
+    "offset": 0.5,
+    "modes": [
+      [
+        0.25,
+        1,
+        0.0
+      ]
+    ]
+  },
+  "alpha": 1.0,
+  "wave_speed": 1.0
+}

@@ -1,0 +1,55 @@
+{
+  "unit_regression_tests": {
+    "numerical": 33,
+    "jax": 64,
+    "legacy": 2,
+    "total": 99,
+    "original_tests_preserved": 49
+  },
+  "environments": "Three fresh isolated pip-installed venvs; pip check passed in all three",
+  "checkpoint_hashes_preserved": 23,
+  "protected_baseline_paths_preserved": 112,
+  "historical_results": "Only broken relative image links repaired; historical text/numbers preserved; new note appended",
+  "official_ablation_runs": 48,
+  "prospective_heldout_cases": 8,
+  "reference_cases": 3,
+  "reference_resolutions": [
+    320,
+    640,
+    1280,
+    2560,
+    5120
+  ],
+  "temporal_refinements": [
+    1,
+    2,
+    4
+  ],
+  "reference_certification": "All three learned-blend margins remain reference-unresolved under the predeclared criterion",
+  "known_failed_checks": [
+    {
+      "check": "repair regression before correction",
+      "expected": true,
+      "failed_tests": 2
+    },
+    {
+      "check": "strict cross-snapshot fine reference comparison",
+      "expected": false,
+      "coarse_state_arrays_identical": 48,
+      "maximum_reference_sample_changes": [
+        0.0017197873348067105,
+        0.0007455156615918668
+      ]
+    }
+  ],
+  "intentionally_interrupted_duplicate_worker": {
+    "exit_code": 130,
+    "canonical_completed": true,
+    "standalone_heldout_studies_completed": true
+  },
+  "presentation_evaluator_after_loader_change": "All four canonical checks passed without writing historical outputs",
+  "final_metadata_smoke_checks": "Reference actual-CFL field and protected reproduction output directory passed",
+  "commits_created": false,
+  "pushed": false,
+  "published": false
+}

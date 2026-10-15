@@ -18,22 +18,12 @@ The Euler counterpart of two existing scripts:
   at `--reference-cells` here, in place of that script's WENO7euler, because this
   project's JAX port only has TENO5euler (see `src/differentiable/euler_jax.py`).
 
-NN-TENO5euler(JAX) status -- read before trusting a "NOT EVALUATED" row here as
-a bug: per UNROLLED_PHYSICS_LOSS_GUIDE.md's Phase 6/7 status note, Euler
-unrolled-physics-loss training hit a genuine, root-caused Roe-eigenbasis
-conditioning instability that was never resolved. Both checkpoints this
-script can load (`models/nn_teno5euler_unrolled_jax_params.pkl` and
-`..._curriculum.pkl`) were verified (at the time this script was written) to
-already contain non-finite weights -- the network itself is NaN-corrupted,
-not just a rollout starting from it. This script checks that explicitly at
-load time and reports NOT EVALUATED rather than passing a meaningless number
-through as a real comparison (the same honesty rule `ValidationMatrix_ProjPDF.py`
-follows for Euler). It still runs the TENO5euler-vs-exact/reference half of
-the comparison regardless, and the loading/finiteness/positivity-guard
-machinery here is written to work unmodified against a future, actually
--converged checkpoint (`--params-path`) -- this is not a one-off failure
-report, it is the harness Phase 6/7's "next step" (a proper constrained
-projection, see the guide) would be evaluated with.
+Historical entry point: its benchmark definitions and default model are
+preserved. Strict loading now accepts backbone, linear-gate, and rich-gate
+checkpoints and rejects missing, malformed, or non-finite requested models.
+Use Evaluate_Benchmarks.py for the frozen final models, matched ablations,
+substage diagnostics, non-overwriting outputs, and reference convergence.
+The 320-cell reference here is historical and is not certified converged.
 
 Run inside the `teno-jax` conda environment:
 
@@ -57,7 +47,6 @@ jax.config.update('jax_enable_x64', True)
 import jax.numpy as jnp
 import matplotlib.pyplot as plt
 import numpy as np
-import pickle
 
 from src.analysis.euler_regression import (
     exact_sod_solution,
@@ -72,7 +61,8 @@ from src.differentiable.euler_jax import euler_positivity_repair, get_euler_flux
 from src.differentiable.numerics_jax import rollout
 from src.differentiable.projection_jax import mixed_reconstruct, project_keep_weight
 from src.differentiable.teno5_jax import teno5_reconstruct_jax, teno5_soft_reconstruct_jax
-from src.differentiable.teno5_jax_toy import toy_keep_weight, toy_lambda
+from src.differentiable.model_io import load_checkpoint
+from src.differentiable.teno5_jax_toy import toy_keep_weight, toy_lambda, toy_lambda_v2
 
 
 def parse_args():
@@ -107,40 +97,23 @@ def parse_args():
 
 
 def load_network_params(params_path):
-    """Loads either checkpoint format in this project: a flat `[(w, b), ...]`
-    backbone-only list (every checkpoint before Phase 18), or Phase 18's
-    `{'backbone': [...], 'lambda_head': (w, b)}` dict (the dedicated,
-    separately-trained mixing-coefficient head -- see
-    `Train_NNTENO5euler_UnrolledJAX_LearnedLambda.py`). Returns
-    `(backbone_params, lambda_head_or_None, error_or_None)`.
+    """Strict adapter for all historical JAX schemas; invalid requests fail.
+
+    Empty --params-path deliberately selects a baseline-only comparison.
+    The legacy default remains unchanged; use Evaluate_Benchmarks.py for
+    the frozen final scalar/Euler selections and complete provenance.
     """
     if not params_path:
         return None, None, 'no --params-path given'
-    full_path = params_path if os.path.isabs(params_path) else os.path.join(_REPO_ROOT, params_path)
-    if not os.path.exists(full_path):
-        return None, None, 'checkpoint not found at {}'.format(full_path)
-    with open(full_path, 'rb') as f:
-        loaded = pickle.load(f)
-
-    if isinstance(loaded, dict):
-        backbone = [(jnp.asarray(w), jnp.asarray(b)) for w, b in loaded['backbone']]
-        lambda_head = (jnp.asarray(loaded['lambda_head'][0]), jnp.asarray(loaded['lambda_head'][1]))
+    checkpoint = load_checkpoint(params_path)
+    backbone = [(jnp.asarray(w), jnp.asarray(b)) for w, b in checkpoint.backbone]
+    if checkpoint.schema == 'linear':
+        head = tuple(jnp.asarray(v) for v in checkpoint.head)
+    elif checkpoint.schema == 'rich':
+        head = [(jnp.asarray(w), jnp.asarray(b)) for w, b in checkpoint.head]
     else:
-        backbone = [(jnp.asarray(w), jnp.asarray(b)) for w, b in loaded]
-        lambda_head = None
-
-    all_finite = all(
-        bool(np.isfinite(np.asarray(w)).all()) and bool(np.isfinite(np.asarray(b)).all())
-        for w, b in backbone
-    ) and (lambda_head is None or (
-        bool(np.isfinite(np.asarray(lambda_head[0])).all()) and bool(np.isfinite(np.asarray(lambda_head[1])).all())
-    ))
-    if not all_finite:
-        return None, None, (
-            'checkpoint at {} contains non-finite weights -- see this script\'s module '
-            'docstring and UNROLLED_PHYSICS_LOSS_GUIDE.md\'s Phase 6/7 status note'
-        ).format(full_path)
-    return backbone, lambda_head, None
+        head = None
+    return backbone, head, None
 
 
 def make_network_reconstruct(params, lambda_head=None):
@@ -163,7 +136,12 @@ def make_network_reconstruct(params, lambda_head=None):
         def network_reconstruct(s):
             return teno5_soft_reconstruct_jax(s, project_keep_weight(troubled, mode='hard'))
 
-        lam = toy_lambda(lambda_head, troubled) if lambda_head is not None else None
+        if lambda_head is None:
+            lam = None
+        elif isinstance(lambda_head[0], (tuple, list)):
+            lam = toy_lambda_v2(lambda_head, troubled, stencils)
+        else:
+            lam = toy_lambda(lambda_head, troubled)
         return mixed_reconstruct(troubled, stencils, network_reconstruct, teno5_reconstruct_jax, mode='hard', lam=lam)
 
     return reconstruct
