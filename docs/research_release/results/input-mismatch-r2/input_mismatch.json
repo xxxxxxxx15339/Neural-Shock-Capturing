@@ -1,0 +1,1133 @@
+{
+  "seed": 20261020,
+  "split": "train",
+  "sampling": "four independent trajectories per family per grid; four stored times for solver fluxes; warm-up initial only",
+  "limitations": "Snapshot inputs are exact-reference states, not evolving neural numerical states; marginal distances alone do not establish causal training benefit.",
+  "groups": [
+    {
+      "cells": 64,
+      "family": "constant",
+      "source": "warmup-state",
+      "count": 768,
+      "gate_fraction": 0.75,
+      "constant_fraction": 1.0,
+      "raw_quantiles": [
+        0.5092833636614736,
+        0.5092833636614736,
+        0.7183744655913071,
+        0.8661687959059369,
+        0.8661687959059369
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_bce": 0.6697575923442469,
+      "hard_teacher_disagreement": 0.4166666666666667,
+      "troubled_teacher_disagreement": 0.3333333333333333
+    },
+    {
+      "cells": 64,
+      "family": "constant",
+      "source": "positive-flux",
+      "count": 3072,
+      "gate_fraction": 0.6705729166666666,
+      "constant_fraction": 1.0,
+      "raw_quantiles": [
+        0.13079961092969514,
+        0.13079961092969536,
+        0.48925551215413887,
+        1.2142948402718012,
+        1.2142948402718015
+      ],
+      "normalized_wasserstein_per_position": [
+        0.017719334136198958,
+        0.017017317197545494,
+        0.014706068411698506,
+        0.015239359212270211,
+        0.017558748759920632
+      ],
+      "teacher_bce": 0.6764142553625031,
+      "hard_teacher_disagreement": 0.44921875,
+      "troubled_teacher_disagreement": 0.33932038834951456
+    },
+    {
+      "cells": 64,
+      "family": "constant",
+      "source": "negative-flux",
+      "count": 3072,
+      "gate_fraction": 0.5068359375,
+      "constant_fraction": 1.0,
+      "raw_quantiles": [
+        -0.8712470174715261,
+        -0.871247017471526,
+        -0.3020187421717754,
+        2.797827319165552e-17,
+        2.797827319165552e-17
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0214915079705545,
+        0.02054618021174124,
+        0.019778741441275515,
+        0.01905416647497412,
+        0.019840842863064208
+      ],
+      "teacher_bce": 0.6818929833505022,
+      "hard_teacher_disagreement": 0.5048828125,
+      "troubled_teacher_disagreement": 0.3440376792977949
+    },
+    {
+      "cells": 64,
+      "family": "contact",
+      "source": "warmup-state",
+      "count": 768,
+      "gate_fraction": 0.7604166666666666,
+      "constant_fraction": 0.9739583333333334,
+      "raw_quantiles": [
+        -0.9340011915761444,
+        0.0985396342271569,
+        0.43517594530514636,
+        0.7624524926827253,
+        1.8885178939437375
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_bce": 0.67924318529377,
+      "hard_teacher_disagreement": 0.42578125,
+      "troubled_teacher_disagreement": 0.3464611872146119
+    },
+    {
+      "cells": 64,
+      "family": "contact",
+      "source": "positive-flux",
+      "count": 3072,
+      "gate_fraction": 0.4440104166666667,
+      "constant_fraction": 0.9739583333333334,
+      "raw_quantiles": [
+        -0.4754554049163718,
+        -6.7431206041701695e-19,
+        0.2507257657549292,
+        0.8624005027009587,
+        1.9220696273720717
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0048505316840278204,
+        0.014211212173793689,
+        0.017233874649909393,
+        0.021294088253580024,
+        0.02329013914007672
+      ],
+      "teacher_bce": 0.6922630614122398,
+      "hard_teacher_disagreement": 0.5349392361111112,
+      "troubled_teacher_disagreement": 0.3616813294232649
+    },
+    {
+      "cells": 64,
+      "family": "contact",
+      "source": "negative-flux",
+      "count": 3072,
+      "gate_fraction": 0.6412760416666666,
+      "constant_fraction": 0.9739583333333334,
+      "raw_quantiles": [
+        -2.2710721788680925,
+        -0.8756296893358557,
+        -0.2000897004928733,
+        5.0693225276350994e-17,
+        0.8724617254698793
+      ],
+      "normalized_wasserstein_per_position": [
+        0.01705879272063445,
+        0.012772979102025357,
+        0.008806460347850733,
+        0.012076469682965472,
+        0.014698565018234248
+      ],
+      "teacher_bce": 0.6862978388230077,
+      "hard_teacher_disagreement": 0.4704861111111111,
+      "troubled_teacher_disagreement": 0.3553299492385787
+    },
+    {
+      "cells": 64,
+      "family": "random_riemann",
+      "source": "warmup-state",
+      "count": 768,
+      "gate_fraction": 0.7942708333333334,
+      "constant_fraction": 0.921875,
+      "raw_quantiles": [
+        -0.8869000817493266,
+        0.17015562424266803,
+        0.583032179851949,
+        0.9326261142990426,
+        1.7897628346885504
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_bce": 0.6787144919526761,
+      "hard_teacher_disagreement": 0.4136284722222222,
+      "troubled_teacher_disagreement": 0.34316939890710385
+    },
+    {
+      "cells": 64,
+      "family": "random_riemann",
+      "source": "positive-flux",
+      "count": 3072,
+      "gate_fraction": 0.6949869791666666,
+      "constant_fraction": 0.8499348958333334,
+      "raw_quantiles": [
+        -0.9629088979961424,
+        -5.048169657224216e-05,
+        0.3257135660301707,
+        1.2271127798089474,
+        2.331944746832289
+      ],
+      "normalized_wasserstein_per_position": [
+        0.05707707616375938,
+        0.06920851781616062,
+        0.07788449564666182,
+        0.07357780804198072,
+        0.05066409399040929
+      ],
+      "teacher_bce": 0.6986734807189373,
+      "hard_teacher_disagreement": 0.4645182291666667,
+      "troubled_teacher_disagreement": 0.36830601092896176
+    },
+    {
+      "cells": 64,
+      "family": "random_riemann",
+      "source": "negative-flux",
+      "count": 3072,
+      "gate_fraction": 0.62890625,
+      "constant_fraction": 0.8499348958333334,
+      "raw_quantiles": [
+        -3.028211475083294,
+        -1.4860453050797175,
+        -0.46814124778845717,
+        1.241046546066563e-16,
+        1.2429946389807325
+      ],
+      "normalized_wasserstein_per_position": [
+        0.05049851094731106,
+        0.03544515284588918,
+        0.020394123199601145,
+        0.017650261987661425,
+        0.03351389903575916
+      ],
+      "teacher_bce": 0.6928372094815392,
+      "hard_teacher_disagreement": 0.4845920138888889,
+      "troubled_teacher_disagreement": 0.3687025534851622
+    },
+    {
+      "cells": 64,
+      "family": "sod_like",
+      "source": "warmup-state",
+      "count": 768,
+      "gate_fraction": 0.6666666666666666,
+      "constant_fraction": 0.921875,
+      "raw_quantiles": [
+        -0.048262791005584144,
+        0.034999527911419165,
+        0.2763760965601809,
+        0.5605186854860563,
+        0.7264731283365427
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_bce": 0.6861117898384695,
+      "hard_teacher_disagreement": 0.4596354166666667,
+      "troubled_teacher_disagreement": 0.3561197916666667
+    },
+    {
+      "cells": 64,
+      "family": "sod_like",
+      "source": "positive-flux",
+      "count": 3072,
+      "gate_fraction": 0.5992838541666666,
+      "constant_fraction": 0.794921875,
+      "raw_quantiles": [
+        -0.2576615855633507,
+        -2.0686923481902764e-17,
+        0.09686933263317929,
+        0.698004433396708,
+        0.8440247896987975
+      ],
+      "normalized_wasserstein_per_position": [
+        0.066619543823044,
+        0.10365913487013684,
+        0.1256608732977456,
+        0.12078705147168817,
+        0.07228298554338947
+      ],
+      "teacher_bce": 0.716053952370436,
+      "hard_teacher_disagreement": 0.5133463541666666,
+      "troubled_teacher_disagreement": 0.38475466232120226
+    },
+    {
+      "cells": 64,
+      "family": "sod_like",
+      "source": "negative-flux",
+      "count": 3072,
+      "gate_fraction": 0.5270182291666666,
+      "constant_fraction": 0.7952473958333334,
+      "raw_quantiles": [
+        -0.9310093781131743,
+        -0.6011938064973016,
+        -0.062014134920312616,
+        0.00156445974315389,
+        0.10048949869883837
+      ],
+      "normalized_wasserstein_per_position": [
+        0.09159733547282822,
+        0.04634012316322366,
+        0.027024300918302283,
+        0.023524245777334744,
+        0.0634122335636958
+      ],
+      "teacher_bce": 0.7080141842331397,
+      "hard_teacher_disagreement": 0.5421006944444444,
+      "troubled_teacher_disagreement": 0.3969528515544575
+    },
+    {
+      "cells": 64,
+      "family": "two_rarefactions",
+      "source": "warmup-state",
+      "count": 768,
+      "gate_fraction": 0.6432291666666666,
+      "constant_fraction": 0.921875,
+      "raw_quantiles": [
+        -1.2886948492199766,
+        0.26115603845933616,
+        0.4501213463382256,
+        0.7256517351579851,
+        1.9454515612051695
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_bce": 0.6834110999708309,
+      "hard_teacher_disagreement": 0.4644097222222222,
+      "troubled_teacher_disagreement": 0.3522267206477733
+    },
+    {
+      "cells": 64,
+      "family": "two_rarefactions",
+      "source": "positive-flux",
+      "count": 3072,
+      "gate_fraction": 0.6764322916666666,
+      "constant_fraction": 0.7854817708333334,
+      "raw_quantiles": [
+        -0.9449836288735054,
+        -8.058621531845253e-17,
+        0.2658164641674291,
+        1.0265253546072692,
+        1.8783800809085807
+      ],
+      "normalized_wasserstein_per_position": [
+        0.06941635234403334,
+        0.10670299002236366,
+        0.12392092663736305,
+        0.12365076374374204,
+        0.07641799921506423
+      ],
+      "teacher_bce": 0.7107109605635755,
+      "hard_teacher_disagreement": 0.4819878472222222,
+      "troubled_teacher_disagreement": 0.369906961822265
+    },
+    {
+      "cells": 64,
+      "family": "two_rarefactions",
+      "source": "negative-flux",
+      "count": 3072,
+      "gate_fraction": 0.6015625,
+      "constant_fraction": 0.7854817708333334,
+      "raw_quantiles": [
+        -1.9813308328381043,
+        -0.8793601885202469,
+        -0.2635491752341283,
+        5.806134369417363e-17,
+        1.2076377389941964
+      ],
+      "normalized_wasserstein_per_position": [
+        0.08894835695154193,
+        0.04595377062481956,
+        0.024993304438802186,
+        0.02336957121795999,
+        0.07194901343947294
+      ],
+      "teacher_bce": 0.7016301756087628,
+      "hard_teacher_disagreement": 0.5071614583333334,
+      "troubled_teacher_disagreement": 0.3787878787878788
+    },
+    {
+      "cells": 128,
+      "family": "constant",
+      "source": "warmup-state",
+      "count": 1536,
+      "gate_fraction": 0.748046875,
+      "constant_fraction": 1.0,
+      "raw_quantiles": [
+        0.12201877193705317,
+        0.12201877193705317,
+        0.21752024942446474,
+        0.7385122692990783,
+        0.7385122692990785
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_bce": 0.6705428989105167,
+      "hard_teacher_disagreement": 0.4181857638888889,
+      "troubled_teacher_disagreement": 0.3342036553524804
+    },
+    {
+      "cells": 128,
+      "family": "constant",
+      "source": "positive-flux",
+      "count": 6144,
+      "gate_fraction": 0.7464192708333334,
+      "constant_fraction": 1.0,
+      "raw_quantiles": [
+        -1.0322697881125842e-16,
+        -5.003896368163782e-17,
+        0.13994974294491908,
+        0.4670149754132768,
+        0.46701497541327697
+      ],
+      "normalized_wasserstein_per_position": [
+        0.012286945053681783,
+        0.01182372995066675,
+        0.01166655997798636,
+        0.012808676103714242,
+        0.012291204968195137
+      ],
+      "teacher_bce": 0.673731978864563,
+      "hard_teacher_disagreement": 0.4226888020833333,
+      "troubled_teacher_disagreement": 0.33820322721325774
+    },
+    {
+      "cells": 128,
+      "family": "constant",
+      "source": "negative-flux",
+      "count": 6144,
+      "gate_fraction": 0.5076497395833334,
+      "constant_fraction": 1.0,
+      "raw_quantiles": [
+        -0.6265029884675,
+        -0.6265029884674904,
+        -0.22274965905008032,
+        1.2575678844846137e-17,
+        1.2575678844846137e-17
+      ],
+      "normalized_wasserstein_per_position": [
+        0.01182803199404755,
+        0.012005973109958065,
+        0.011515753996031834,
+        0.0109530611106298,
+        0.011501736111111105
+      ],
+      "teacher_bce": 0.6800380959418422,
+      "hard_teacher_disagreement": 0.5022243923611112,
+      "troubled_teacher_disagreement": 0.3403868761355135
+    },
+    {
+      "cells": 128,
+      "family": "contact",
+      "source": "warmup-state",
+      "count": 1536,
+      "gate_fraction": 0.6393229166666666,
+      "constant_fraction": 0.9869791666666666,
+      "raw_quantiles": [
+        -0.4583458080775069,
+        0.08887000754124615,
+        0.20225353384872202,
+        0.7352218350838551,
+        1.473821599598147
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_bce": 0.6759313408082389,
+      "hard_teacher_disagreement": 0.45703125,
+      "troubled_teacher_disagreement": 0.33706720977596744
+    },
+    {
+      "cells": 128,
+      "family": "contact",
+      "source": "positive-flux",
+      "count": 6144,
+      "gate_fraction": 0.3902994791666667,
+      "constant_fraction": 0.9869791666666666,
+      "raw_quantiles": [
+        -0.19217168989344052,
+        -8.325278591399573e-17,
+        0.130535016852283,
+        0.5174730345313717,
+        0.822441343700928
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0143794866633241,
+        0.013030061303984188,
+        0.012344445535589622,
+        0.011261106660154613,
+        0.007639207952199616
+      ],
+      "teacher_bce": 0.6866268156906435,
+      "hard_teacher_disagreement": 0.5455729166666666,
+      "troubled_teacher_disagreement": 0.3525159855435085
+    },
+    {
+      "cells": 128,
+      "family": "contact",
+      "source": "negative-flux",
+      "count": 6144,
+      "gate_fraction": 0.86376953125,
+      "constant_fraction": 0.9869791666666666,
+      "raw_quantiles": [
+        -1.1354778040528857,
+        -0.6934145037951194,
+        -0.18342481886461864,
+        -0.020175752508324513,
+        0.38531256821562293
+      ],
+      "normalized_wasserstein_per_position": [
+        0.013423213252314827,
+        0.012103665071271669,
+        0.013714345031006181,
+        0.011954020255045716,
+        0.010067260213744598
+      ],
+      "teacher_bce": 0.673659895718918,
+      "hard_teacher_disagreement": 0.3869900173611111,
+      "troubled_teacher_disagreement": 0.34087054833239117
+    },
+    {
+      "cells": 128,
+      "family": "random_riemann",
+      "source": "warmup-state",
+      "count": 1536,
+      "gate_fraction": 0.6315104166666666,
+      "constant_fraction": 0.9609375,
+      "raw_quantiles": [
+        -2.993875400966147,
+        0.06347612133421153,
+        0.3127949644780873,
+        0.964667639989388,
+        2.56966476206893
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_bce": 0.6789073638625949,
+      "hard_teacher_disagreement": 0.4637586805555556,
+      "troubled_teacher_disagreement": 0.3422680412371134
+    },
+    {
+      "cells": 128,
+      "family": "random_riemann",
+      "source": "positive-flux",
+      "count": 6144,
+      "gate_fraction": 0.5206705729166666,
+      "constant_fraction": 0.9052734375,
+      "raw_quantiles": [
+        -0.5039788322802756,
+        -1.8612079188010552e-16,
+        0.19409663408163375,
+        1.1425914935839803,
+        2.0457299920775642
+      ],
+      "normalized_wasserstein_per_position": [
+        0.03369423360252152,
+        0.04944160882836772,
+        0.058350107499767635,
+        0.058568704759989335,
+        0.03724270383215025
+      ],
+      "teacher_bce": 0.6949147897205487,
+      "hard_teacher_disagreement": 0.5142144097222222,
+      "troubled_teacher_disagreement": 0.3601125351672398
+    },
+    {
+      "cells": 128,
+      "family": "random_riemann",
+      "source": "negative-flux",
+      "count": 6144,
+      "gate_fraction": 0.63427734375,
+      "constant_fraction": 0.9052734375,
+      "raw_quantiles": [
+        -3.942229283792308,
+        -1.373083815675513,
+        -0.23497985326997994,
+        3.0513928468675497e-17,
+        2.7545475434122983
+      ],
+      "normalized_wasserstein_per_position": [
+        0.03790154761610194,
+        0.024276311065519515,
+        0.017054348720841207,
+        0.016662152393227703,
+        0.03182934011570429
+      ],
+      "teacher_bce": 0.6862764766317798,
+      "hard_teacher_disagreement": 0.4761284722222222,
+      "troubled_teacher_disagreement": 0.3547173039089898
+    },
+    {
+      "cells": 128,
+      "family": "sod_like",
+      "source": "warmup-state",
+      "count": 1536,
+      "gate_fraction": 0.57421875,
+      "constant_fraction": 0.9609375,
+      "raw_quantiles": [
+        -3.14930161951755,
+        0.06146057215806144,
+        0.11569741281579313,
+        0.4196660907330224,
+        2.0213474534182
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_bce": 0.6815203586121282,
+      "hard_teacher_disagreement": 0.4848090277777778,
+      "troubled_teacher_disagreement": 0.3488284202569917
+    },
+    {
+      "cells": 128,
+      "family": "sod_like",
+      "source": "positive-flux",
+      "count": 6144,
+      "gate_fraction": 0.5052083333333334,
+      "constant_fraction": 0.8595377604166666,
+      "raw_quantiles": [
+        -1.3505573833370281,
+        -3.773687098323677e-17,
+        0.09018763207475199,
+        0.6060768686076197,
+        2.0858108684699173
+      ],
+      "normalized_wasserstein_per_position": [
+        0.05295127918153585,
+        0.08103963633710076,
+        0.09242736521448364,
+        0.08660435075290618,
+        0.04747873966489717
+      ],
+      "teacher_bce": 0.7054877100256997,
+      "hard_teacher_disagreement": 0.5331488715277778,
+      "troubled_teacher_disagreement": 0.36146907216494845
+    },
+    {
+      "cells": 128,
+      "family": "sod_like",
+      "source": "negative-flux",
+      "count": 6144,
+      "gate_fraction": 0.4775390625,
+      "constant_fraction": 0.8595377604166666,
+      "raw_quantiles": [
+        -1.1310620578394077,
+        -0.6204923830753607,
+        -0.07077690096463082,
+        3.4704006154680096e-17,
+        0.7816793934767764
+      ],
+      "normalized_wasserstein_per_position": [
+        0.09010944469064533,
+        0.043831755737360645,
+        0.01923786717492563,
+        0.01458084896896646,
+        0.038617793271562034
+      ],
+      "teacher_bce": 0.7007533105471868,
+      "hard_teacher_disagreement": 0.5453016493055556,
+      "troubled_teacher_disagreement": 0.36877982276755283
+    },
+    {
+      "cells": 128,
+      "family": "two_rarefactions",
+      "source": "warmup-state",
+      "count": 1536,
+      "gate_fraction": 0.607421875,
+      "constant_fraction": 0.9609375,
+      "raw_quantiles": [
+        -0.6381635429498258,
+        0.24279862546060446,
+        0.3877074595953171,
+        0.6117188189683261,
+        1.711191744972211
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_bce": 0.6801596977881038,
+      "hard_teacher_disagreement": 0.4730902777777778,
+      "troubled_teacher_disagreement": 0.3447659878528046
+    },
+    {
+      "cells": 128,
+      "family": "two_rarefactions",
+      "source": "positive-flux",
+      "count": 6144,
+      "gate_fraction": 0.4537760416666667,
+      "constant_fraction": 0.8575846354166666,
+      "raw_quantiles": [
+        -0.9702728758503469,
+        -3.456572731455749e-17,
+        0.24662028941305628,
+        0.8562751465737436,
+        2.2649306183939157
+      ],
+      "normalized_wasserstein_per_position": [
+        0.04778423131515064,
+        0.07886195241076004,
+        0.09417996499516568,
+        0.09335959346784665,
+        0.05881376831399179
+      ],
+      "teacher_bce": 0.7061316006258992,
+      "hard_teacher_disagreement": 0.5481770833333334,
+      "troubled_teacher_disagreement": 0.36597321855571496
+    },
+    {
+      "cells": 128,
+      "family": "two_rarefactions",
+      "source": "negative-flux",
+      "count": 6144,
+      "gate_fraction": 0.7464192708333334,
+      "constant_fraction": 0.8575846354166666,
+      "raw_quantiles": [
+        -1.4865863854378112,
+        -0.898604907442747,
+        -0.25216081014418,
+        4.7062356020963e-17,
+        0.34880024951081573
+      ],
+      "normalized_wasserstein_per_position": [
+        0.06459412441393406,
+        0.0391707095918665,
+        0.026373201922802257,
+        0.027962880245172277,
+        0.06439649543857856
+      ],
+      "teacher_bce": 0.6909336923714056,
+      "hard_teacher_disagreement": 0.4523111979166667,
+      "troubled_teacher_disagreement": 0.3581189126326501
+    },
+    {
+      "cells": 256,
+      "family": "constant",
+      "source": "warmup-state",
+      "count": 3072,
+      "gate_fraction": 0.8333333333333334,
+      "constant_fraction": 1.0,
+      "raw_quantiles": [
+        0.2189161419259294,
+        0.2189161419259294,
+        0.7188611995201486,
+        0.8695484257506558,
+        0.8695484257506558
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_bce": 0.6675541156381278,
+      "hard_teacher_disagreement": 0.3888888888888889,
+      "troubled_teacher_disagreement": 0.3333333333333333
+    },
+    {
+      "cells": 256,
+      "family": "constant",
+      "source": "positive-flux",
+      "count": 12288,
+      "gate_fraction": 0.4208170572916667,
+      "constant_fraction": 1.0,
+      "raw_quantiles": [
+        9.095041094976225e-17,
+        1.4425777505472797e-16,
+        0.27840674153351436,
+        1.040192092233694,
+        1.040192092233694
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0028483072916666297,
+        0.0028483072916666297,
+        0.0028483072916666297,
+        0.0028483072916666297,
+        0.0028483072916666297
+      ],
+      "teacher_bce": 0.6792966481931157,
+      "hard_teacher_disagreement": 0.5275607638888888,
+      "troubled_teacher_disagreement": 0.3357828917681944
+    },
+    {
+      "cells": 256,
+      "family": "constant",
+      "source": "negative-flux",
+      "count": 12288,
+      "gate_fraction": 0.584716796875,
+      "constant_fraction": 1.0,
+      "raw_quantiles": [
+        -0.8350274406178914,
+        -0.8350274406178914,
+        -0.2704232216749015,
+        3.7254369366516156e-17,
+        3.7254369366516156e-17
+      ],
+      "normalized_wasserstein_per_position": [
+        0.00455729166666663,
+        0.00455729166666663,
+        0.004638671875,
+        0.004638671875,
+        0.00455729166666663
+      ],
+      "teacher_bce": 0.675212844811795,
+      "hard_teacher_disagreement": 0.4729275173611111,
+      "troubled_teacher_disagreement": 0.3347715147297611
+    },
+    {
+      "cells": 256,
+      "family": "contact",
+      "source": "warmup-state",
+      "count": 3072,
+      "gate_fraction": 0.828125,
+      "constant_fraction": 0.9934895833333334,
+      "raw_quantiles": [
+        -0.5086622072521655,
+        0.09848298344267427,
+        0.3452585273255201,
+        0.7251935523928364,
+        1.4060586875795473
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_bce": 0.6696284263524382,
+      "hard_teacher_disagreement": 0.3933376736111111,
+      "troubled_teacher_disagreement": 0.33582285115303984
+    },
+    {
+      "cells": 256,
+      "family": "contact",
+      "source": "positive-flux",
+      "count": 12288,
+      "gate_fraction": 0.6455078125,
+      "constant_fraction": 0.9934895833333334,
+      "raw_quantiles": [
+        -0.5281267535962892,
+        -5.004636799195038e-18,
+        0.279654480450429,
+        1.1072858295736931,
+        1.803087926685082
+      ],
+      "normalized_wasserstein_per_position": [
+        0.004435221354166704,
+        0.004391055435381141,
+        0.004265554388608256,
+        0.004189300335554733,
+        0.0036570231119791713
+      ],
+      "teacher_bce": 0.6757989755581121,
+      "hard_teacher_disagreement": 0.4553493923611111,
+      "troubled_teacher_disagreement": 0.3383341738107245
+    },
+    {
+      "cells": 256,
+      "family": "contact",
+      "source": "negative-flux",
+      "count": 12288,
+      "gate_fraction": 0.3761393229166667,
+      "constant_fraction": 0.9934895833333334,
+      "raw_quantiles": [
+        -1.0544722297169111,
+        -0.8421640206548048,
+        -0.22954030233893358,
+        7.978197040016365e-17,
+        0.29593045782972616
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0034984742271950845,
+        0.004501801814296509,
+        0.0058597951941087596,
+        0.006886842269984813,
+        0.007053348711313868
+      ],
+      "teacher_bce": 0.683363399843403,
+      "hard_teacher_disagreement": 0.5455457899305556,
+      "troubled_teacher_disagreement": 0.34256454637242173
+    },
+    {
+      "cells": 256,
+      "family": "random_riemann",
+      "source": "warmup-state",
+      "count": 3072,
+      "gate_fraction": 0.7845052083333334,
+      "constant_fraction": 0.98046875,
+      "raw_quantiles": [
+        -3.790994353199043,
+        0.12827869793497004,
+        0.4149112957801238,
+        0.9308435398207099,
+        4.371011827295726
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_bce": 0.6716141850048473,
+      "hard_teacher_disagreement": 0.4090711805555556,
+      "troubled_teacher_disagreement": 0.33831258644536655
+    },
+    {
+      "cells": 256,
+      "family": "random_riemann",
+      "source": "positive-flux",
+      "count": 12288,
+      "gate_fraction": 0.6556803385416666,
+      "constant_fraction": 0.90869140625,
+      "raw_quantiles": [
+        -4.448824278440377,
+        -6.026273636247279e-17,
+        0.271054499833879,
+        1.4309514119684172,
+        5.342140760599341
+      ],
+      "normalized_wasserstein_per_position": [
+        0.021016884229676625,
+        0.049153419777627404,
+        0.06393860468089682,
+        0.06749484689415386,
+        0.049507673308083186
+      ],
+      "teacher_bce": 0.689903524233256,
+      "hard_teacher_disagreement": 0.4713270399305556,
+      "troubled_teacher_disagreement": 0.34421414091266395
+    },
+    {
+      "cells": 256,
+      "family": "random_riemann",
+      "source": "negative-flux",
+      "count": 12288,
+      "gate_fraction": 0.5878092447916666,
+      "constant_fraction": 0.90869140625,
+      "raw_quantiles": [
+        -2.1862172261308053,
+        -1.2895781111737465,
+        -0.3493717023644918,
+        4.213926171849879e-17,
+        0.9365446729647726
+      ],
+      "normalized_wasserstein_per_position": [
+        0.040800175161913546,
+        0.02884895495274048,
+        0.021720156623664902,
+        0.025363328445618952,
+        0.050493852311943616
+      ],
+      "teacher_bce": 0.6878963597933442,
+      "hard_teacher_disagreement": 0.4944390190972222,
+      "troubled_teacher_disagreement": 0.3511467995754303
+    },
+    {
+      "cells": 256,
+      "family": "sod_like",
+      "source": "warmup-state",
+      "count": 3072,
+      "gate_fraction": 0.7783203125,
+      "constant_fraction": 0.98046875,
+      "raw_quantiles": [
+        -0.6875860960640708,
+        0.03206494203151099,
+        0.11662147741373133,
+        0.5711141333236834,
+        1.3044078075052141
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_bce": 0.6729304893917948,
+      "hard_teacher_disagreement": 0.4118923611111111,
+      "troubled_teacher_disagreement": 0.3376550954970026
+    },
+    {
+      "cells": 256,
+      "family": "sod_like",
+      "source": "positive-flux",
+      "count": 12288,
+      "gate_fraction": 0.494384765625,
+      "constant_fraction": 0.895751953125,
+      "raw_quantiles": [
+        -0.3954785123530297,
+        -9.581869144732474e-17,
+        0.09430442746415588,
+        0.637825979743199,
+        1.0406042661352133
+      ],
+      "normalized_wasserstein_per_position": [
+        0.04161261592310327,
+        0.06414006316907594,
+        0.07388090601857053,
+        0.06729590489059248,
+        0.03624762548682489
+      ],
+      "teacher_bce": 0.6992043227196696,
+      "hard_teacher_disagreement": 0.5318196614583334,
+      "troubled_teacher_disagreement": 0.35138545953360767
+    },
+    {
+      "cells": 256,
+      "family": "sod_like",
+      "source": "negative-flux",
+      "count": 12288,
+      "gate_fraction": 0.5143229166666666,
+      "constant_fraction": 0.8958333333333334,
+      "raw_quantiles": [
+        -0.7093792587016622,
+        -0.6598939649027807,
+        -0.06772840584477612,
+        3.783400948385076e-17,
+        0.2399227905543507
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0780926736841817,
+        0.037237262272619816,
+        0.014937523277422588,
+        0.009653590379059346,
+        0.029194311058043987
+      ],
+      "teacher_bce": 0.6944651659889054,
+      "hard_teacher_disagreement": 0.5257432725694444,
+      "troubled_teacher_disagreement": 0.3509493670886076
+    },
+    {
+      "cells": 256,
+      "family": "two_rarefactions",
+      "source": "warmup-state",
+      "count": 3072,
+      "gate_fraction": 0.5810546875,
+      "constant_fraction": 0.98046875,
+      "raw_quantiles": [
+        -0.43954613219560557,
+        0.23557645935150398,
+        0.34154486708515336,
+        0.6073123318928756,
+        1.3833334496579617
+      ],
+      "normalized_wasserstein_per_position": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_bce": 0.677239646342621,
+      "hard_teacher_disagreement": 0.4768880208333333,
+      "troubled_teacher_disagreement": 0.3400560224089636
+    },
+    {
+      "cells": 256,
+      "family": "two_rarefactions",
+      "source": "positive-flux",
+      "count": 12288,
+      "gate_fraction": 0.5946451822916666,
+      "constant_fraction": 0.89697265625,
+      "raw_quantiles": [
+        -0.3099675868237824,
+        -1.007102318100726e-16,
+        0.24448135983038766,
+        0.882452695856353,
+        1.7598366028999093
+      ],
+      "normalized_wasserstein_per_position": [
+        0.03657743445043944,
+        0.05760173639281715,
+        0.06901402926411697,
+        0.06786654802079578,
+        0.040470725905368994
+      ],
+      "teacher_bce": 0.6925722041419982,
+      "hard_teacher_disagreement": 0.494384765625,
+      "troubled_teacher_disagreement": 0.34852424615665345
+    },
+    {
+      "cells": 256,
+      "family": "two_rarefactions",
+      "source": "negative-flux",
+      "count": 12288,
+      "gate_fraction": 0.4088541666666667,
+      "constant_fraction": 0.89697265625,
+      "raw_quantiles": [
+        -1.6729989485247212,
+        -0.995469020068662,
+        -0.26081224661923674,
+        9.660617845455106e-17,
+        0.7136996127173749
+      ],
+      "normalized_wasserstein_per_position": [
+        0.05944048619431801,
+        0.03464155693761947,
+        0.021119708055369987,
+        0.02093273389719884,
+        0.04611030044143288
+      ],
+      "teacher_bce": 0.6952886311560176,
+      "hard_teacher_disagreement": 0.5576985677083334,
+      "troubled_teacher_disagreement": 0.3586119957537155
+    }
+  ]
+}

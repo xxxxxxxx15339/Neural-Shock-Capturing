@@ -218,6 +218,17 @@ def get_euler_flux_jax(reconstruct, boundary='transmissive', return_boundary_flu
     """
 
     def full_flux(u):
+        if boundary == 'reflective':
+            # Three ghost cells supply complete five-point stencils at both
+            # physical wall interfaces. Mirror normal momentum, retain rho/E.
+            sign = jnp.array([1., -1., 1.], dtype=u.dtype)
+            padded = jnp.concatenate((jnp.flip(u[:3],axis=0)*sign,u,
+                                      jnp.flip(u[-3:],axis=0)*sign),axis=0)
+            pos, neg, basis = euler_split_flux_stencils(padded, 'transmissive', True)
+            faces = project_to_conservative_jax(reconstruct(pos)+reconstruct(neg),basis)
+            n = u.shape[0]
+            net = faces[3:n+3]-faces[2:n+2]
+            return (net, (faces[2],faces[n+2])) if return_boundary_flux else net
         f_pos, f_neg, right_basis = euler_split_flux_stencils(u, boundary, return_basis=True)
 
         f_half_pos = reconstruct(f_pos)
@@ -237,6 +248,30 @@ def get_euler_flux_jax(reconstruct, boundary='transmissive', return_boundary_flu
         return net_flux
 
     return full_flux
+
+
+def get_euler_state_flux_jax(reconstruct, boundary='periodic', return_boundary_flux=False):
+    """Experimental finite-volume state reconstruction + Rusanov flux.
+
+    The historical split-flux solver treats F(cell-average U) as a cell-average
+    flux. These differ at O(dx^2) for general nonlinear smooth Euler data.
+    Reconstructing characteristic states at faces before evaluating F supplies a
+    distinct finite-volume variant. No positivity guarantee or default change.
+    """
+    if boundary != 'periodic':
+        raise ValueError('Experimental state-flux variant currently supports periodic boundaries only')
+
+    def flux(u):
+        left, right = roe_eigenbasis_jax(u, boundary)
+        plus = project_to_characteristic_jax(euler_stencils_jax(u,boundary=boundary),left)
+        minus = project_to_characteristic_jax(jnp.flip(euler_stencils_jax(u,offset=1,boundary=boundary),axis=2),left)
+        ul = project_to_conservative_jax(reconstruct(plus),right)
+        ur = project_to_conservative_jax(reconstruct(minus),right)
+        bound = jnp.maximum(jnp.max(jnp.abs(spds_jax(ul)),axis=1),jnp.max(jnp.abs(spds_jax(ur)),axis=1))
+        faces = .5*(flux_jax(ul)+flux_jax(ur)-bound[:,None]*(ur-ul))
+        net = faces-jnp.roll(faces,1,axis=0)
+        return (net,(faces[-1],faces[-1])) if return_boundary_flux else net
+    return flux
 
 
 def positivity_penalty_jax(u):

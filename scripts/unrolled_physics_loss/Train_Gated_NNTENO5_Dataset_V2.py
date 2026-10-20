@@ -51,6 +51,7 @@ from src.differentiable.numerics_jax import (
 )
 from src.differentiable.euler_jax import (
     GAMMA, get_euler_flux_jax, euler_characteristic_state_stencils,
+    euler_split_flux_stencils,
     euler_positivity_repair, positivity_penalty_jax,
 )
 
@@ -234,7 +235,7 @@ def training_step_fn(physics, n, family, strength, lr, tv_weight, pos_weight):
     return optimizer, step
 
 
-def training_pool(data, physics, rng, per_family, max_pool):
+def training_pool(data, physics, rng, per_family, max_pool, inputs='state'):
     """Teacher-label warm-up uses only *training* examples' real PDE stencils."""
     sampled = []
     for n, group in data.items():
@@ -252,10 +253,16 @@ def training_pool(data, physics, rng, per_family, max_pool):
             x = jnp.asarray(np.stack(selected[lo:lo+chunk]))
             if physics == 'scalar':
                 stencils = jax.vmap(periodic_stencils)(x)
-            else:
+            elif inputs == 'state':
                 stencils = jax.vmap(
                     lambda u: euler_characteristic_state_stencils(
                         u, boundary='transmissive'))(x)
+            elif inputs == 'split-flux':
+                positive, negative = jax.vmap(
+                    lambda u: euler_split_flux_stencils(u, boundary='transmissive'))(x)
+                stencils = jnp.stack((positive, negative), axis=1)
+            else:
+                raise ValueError('Unknown pretraining input variant')
             all_stencils.append(np.asarray(stencils).reshape(-1,5))
     pool = np.concatenate(all_stencils)
     if len(pool) > max_pool:
@@ -410,7 +417,8 @@ def train(args, root):
     baselines=baseline_validation(validation,physics,strength)
     print(f'TENO5 validation baseline { {str(k):v for k,v in baselines.items()} }',flush=True)
     params=init_toy_params(jax.random.PRNGKey(args.seed),hidden_sizes=ARCHITECTURE[1:-1])
-    pool,labels,troubled_count=training_pool(train_data,physics,rng,args.pretrain_cases,args.pretrain_pool)
+    pool,labels,troubled_count=training_pool(train_data,physics,rng,args.pretrain_cases,args.pretrain_pool,
+                                           args.pretraining_inputs)
     print(f'Warm-up pool: {len(pool)} stencils; {troubled_count} troubled in source pool',flush=True)
     params=warmup_train(params,pool,labels,rng,args.pretrain_steps,args.learning_rate,args.pretrain_batch)
 
@@ -543,6 +551,8 @@ def main():
     ap.add_argument('--tv-weight',type=float,default=.05)
     ap.add_argument('--positivity-weight',type=float,default=.1)
     ap.add_argument('--pretrain-steps',type=int,default=150)
+    ap.add_argument('--pretraining-inputs',choices=['state','split-flux'],default='state',
+                    help='Euler ablation: historical characteristic states or exact solver split-flux stencils')
     ap.add_argument('--pretrain-cases',type=int,default=12)
     ap.add_argument('--pretrain-pool',type=int,default=15000)
     ap.add_argument('--pretrain-batch',type=int,default=256)

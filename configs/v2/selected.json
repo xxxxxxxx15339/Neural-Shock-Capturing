@@ -1,0 +1,24 @@
+{
+  "scalar": {
+    "mode": "soft",
+    "strength": 0.25,
+    "macro_relative_l1": 0.976975560843553,
+    "ci95": [
+      0.9741757473991247,
+      0.9788153663702502
+    ],
+    "selection_rule": "minimum full-validation macro family-by-resolution L1 ratio among zero-failure policies",
+    "source": "results/full-validation/summary.json"
+  },
+  "euler": {
+    "mode": "soft",
+    "strength": 0.25,
+    "macro_relative_l1": 0.9479383302719695,
+    "ci95": [
+      0.9436084206199228,
+      0.9523339652925247
+    ],
+    "selection_rule": "minimum full-validation macro family-by-resolution L1 ratio among zero-failure policies",
+    "source": "results/full-validation/summary.json"
+  }
+}

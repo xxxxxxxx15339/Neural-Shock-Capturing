@@ -22,3 +22,69 @@ retain host input validation. No numerical baseline was changed.
 
 Scientific conclusion: evaluator parity and zero-strength identity are supported;
 V2 performance and high-order claims await the studies below.
+
+## B — Scientific diagnostics
+
+Completed full validation: **11,064 method–trajectory rollouts** (922 trajectories,
+six strengths, two policies). Smoke succeeded before the full run. Results are in
+`results/full-validation/`; all-norm distributions, extrema and per-case ratios
+are in `results/derived-validation/`. Failures are retained, never masked into
+an accepted policy. Constants/near-zero baseline ratios are excluded as declared.
+
+Minimum zero-failure macro L1 policy is **soft λ=.25** for both checkpoints:
+scalar .97697556 (95% bootstrap .97417575–.97881537), Euler .94793833
+(.94360842–.95233397). Weighted ratios are .94317 and .93436. These are
+validation-selected findings; no test data or final benchmark selected them.
+The original scalar .75 correction is worse on the full corpus. Hard policies
+behave differently; strong Euler corrections fail. Checkpoint weights are unchanged.
+
+Solver-input extraction and normalized distribution diagnostics are complete on
+training snapshots. The first diagnostic hit a NumPy boolean-negation exception;
+the fixed diagnostic is `results/input-mismatch-r2`, with the failed execution
+retained separately. Input mismatch is observed; causal retraining benefit is not.
+The original warm-up and explicit split-flux warm-up ablation are both available.
+
+Additional stage/repair diagnosis shows nonconservative mass/energy changes on
+a failed strong-correction case, with the actual RK-weighted changes accounted
+for. At selected .25 that case needs no repairs. Gate/correction observations on
+time-dependent selected trajectories accompany the prospective benchmark profiles.
+
+## C — Numerical validation (execution in progress)
+
+Full spatial ladder: N=40,80,160,320,640; temporal controls use matched final time
+.05 and dt/dt/2 with dt proportional to dx^(5/3). Fine neural Euler rollouts are
+expensive on CPU. A completed temporal report is required before marking this
+study complete; operational progress logs are not complete scientific artifacts.
+
+A separate completed general nonlinear Euler instantaneous test exposes second-
+order consistency in the historical split-flux finite-volume treatment. The
+optional state-flux variant measures order approximately five on that diagnostic,
+with a dedicated regression; it is not a validated shock solver replacement.
+The original baseline is preserved. Current CPU regression: **115 passed,
+34 subtests passed**. Legacy Python 3.7 network smoke: **2 passed**. Local protected
+file check: **498 unchanged**. `pip check`: no broken requirements.
+
+## D — Targeted improvement
+
+Validation-based strength calibration is the supported improvement; no new model
+training is claimed. The Euler input ablation and finite-volume state-flux variant
+are explicit experimental options, with their remaining validation listed.
+Optimizer/RNG resumption, horizon curricula and multi-seed retraining are future
+work because a controlled retraining benefit has not been established here.
+
+## E — Independent benchmarking (execution in progress)
+
+`configs/v2/independent.json` was declared after freezing the validation-selected
+policy and before any final case was evaluated. Eleven IVPs at two grids include
+four independently seeded random Riemann problems, long-time advection, post-shock
+and interacting Burgers, Sod/contact, Shu–Osher and reflecting-wall blast waves.
+Numerical references have spatial ladders and dt/2 controls. Reference failures
+or unresolved margins remain failures/unresolved. Isolated performance timing
+follows completion of other numerical workers.
+
+## F — Public research presentation (assembly in progress)
+
+The concise README links to this evidence, the original README is archived, and
+LinkedIn/CV/contribution/storyboard drafts are written. Reproducible figure and
+seven-page PDF generation read numerical artifacts; no fake curves substitute
+for missing studies. Final portfolio and acceptance checks follow numerical runs.

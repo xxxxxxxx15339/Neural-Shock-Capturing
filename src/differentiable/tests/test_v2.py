@@ -77,3 +77,20 @@ def test_unified_prediction_matches_v2_training_evaluator(physics, family):
     system='euler' if physics=='euler' else 'burgers' if family.startswith('burgers') else 'advection'
     actual,_=make_predictor(model,64,system,'soft',1)(*args,jnp.array(strength))
     np.testing.assert_allclose(actual,expected,rtol=0,atol=2e-13)
+
+
+def test_reflective_wall_mass_and_energy_exchange():
+    u=jnp.asarray(np.tile([1.,0.,2.5],(24,1)))
+    net,(left,right)=get_euler_flux_jax(make_reconstruction(None,'teno5'),'reflective',True)(u)
+    np.testing.assert_allclose(net,0,atol=2e-14)
+    np.testing.assert_allclose(np.asarray(left)[[0,2]],0,atol=2e-14)
+    np.testing.assert_allclose(np.asarray(right)[[0,2]],0,atol=2e-14)
+
+
+def test_experimental_finite_volume_state_flux_nonlinear_spatial_order():
+    from src.differentiable.v2_nonlinear import nonlinear_spatial
+    from src.differentiable.euler_jax import get_euler_state_flux_jax
+    rec=make_reconstruction(None,'teno5')
+    coarse=nonlinear_spatial(40,rec,get_euler_state_flux_jax)['l1']
+    fine=nonlinear_spatial(80,rec,get_euler_state_flux_jax)['l1']
+    assert np.log2(coarse/fine)>4.7

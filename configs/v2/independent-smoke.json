@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "role": "independent-final-benchmark; never tune on these results",
+  "declared_seed": 2026102019,
+  "selection": "frozen configs/v2/selected.json before evaluation",
+  "cases": [
+    {
+      "id": "independent-advection-square",
+      "kind": "advection",
+      "system": "advection",
+      "boundary": "periodic",
+      "time": 1.5,
+      "grids": [
+        96
+      ]
+    }
+  ]
+}

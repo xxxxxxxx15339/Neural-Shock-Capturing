@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "role": "independent-final-benchmark; never tune on these results",
+  "declared_seed": 2026102019,
+  "selection": "frozen configs/v2/selected.json before evaluation",
+  "cases": [
+    {
+      "id": "independent-advection-square",
+      "kind": "advection",
+      "system": "advection",
+      "boundary": "periodic",
+      "time": 1.5,
+      "grids": [
+        96,
+        192
+      ]
+    },
+    {
+      "id": "independent-burgers-shock",
+      "kind": "burgers-shock",
+      "system": "burgers",
+      "boundary": "periodic",
+      "time": 1.2,
+      "grids": [
+        96,
+        192
+      ],
+      "reference_grids": [
+        768,
+        1536,
+        3072
+      ]
+    },
+    {
+      "id": "independent-burgers-interaction",
+      "kind": "burgers-interaction",
+      "system": "burgers",
+      "boundary": "periodic",
+      "time": 0.8,
+      "grids": [
+        96,
+        192
+      ],
+      "reference_grids": [
+        768,
+        1536,
+        3072
+      ]
+    },
+    {
+      "id": "independent-sod",
+      "kind": "riemann",
+      "system": "euler",
+      "boundary": "transmissive",
+      "time": 0.17,
+      "grids": [
+        96,
+        192
+      ],
+      "left": [
+        1.0,
+        0.0,
+        1.0
+      ],
+      "right": [
+        0.125,
+        0.0,
+        0.1
+      ],
+      "jump": 0.47
+    },
+    {
+      "id": "independent-contact",
+      "kind": "riemann",
+      "system": "euler",
+      "boundary": "transmissive",
+      "time": 0.4,
+      "grids": [
+        96,
+        192
+      ],
+      "left": [
+        0.55,
+        0.35,
+        1.1
+      ],
+      "right": [
+        1.7,
+        0.35,
+        1.1
+      ],
+      "jump": 0.43
+    },
+    {
+      "id": "independent-riemann-0",
+      "kind": "riemann",
+      "system": "euler",
+      "boundary": "transmissive",
+      "time": 0.13100093175862332,
+      "grids": [
+        96,
+        192
+      ],
+      "left": [
+        2.205449419231102,
+        -0.3603125924099423,
+        1.4160527766962085
+      ],
+      "right": [
+        0.6555334279899474,
+        0.14543545801956892,
+        2.347683530400626
+      ],
+      "jump": 0.41651342433356464
+    },
+    {
+      "id": "independent-riemann-1",
+      "kind": "riemann",
+      "system": "euler",
+      "boundary": "transmissive",
+      "time": 0.23764009055173113,
+      "grids": [
+        96,
+        192
+      ],
+      "left": [
+        2.294654720494123,
+        0.4043737445176362,
+        0.7280564281305711
+      ],
+      "right": [
+        2.1990804498608925,
+        0.30025014498012725,
+        2.186532995036685
+      ],
+      "jump": 0.46897026371704603
+    },
+    {
+      "id": "independent-riemann-2",
+      "kind": "riemann",
+      "system": "euler",
+      "boundary": "transmissive",
+      "time": 0.19447535288797063,
+      "grids": [
+        96,
+        192
+      ],
+      "left": [
+        1.484534342247456,
+        -0.5751895868443048,
+        0.5896471149415108
+      ],
+      "right": [
+        0.8736955347222979,
+        -0.395722988793041,
+        2.1374876187643004
+      ],
+      "jump": 0.5748324939614644
+    },
+    {
+      "id": "independent-riemann-3",
+      "kind": "riemann",
+      "system": "euler",
+      "boundary": "transmissive",
+      "time": 0.12145507742583043,
+      "grids": [
+        96,
+        192
+      ],
+      "left": [
+        0.5650519537939049,
+        -0.29291607262388136,
+        1.9707984953261535
+      ],
+      "right": [
+        0.7438230113462883,
+        -0.5726399664286903,
+        1.8162466969047444
+      ],
+      "jump": 0.4144021074164249
+    },
+    {
+      "id": "independent-shu-osher",
+      "kind": "shu-osher",
+      "system": "euler",
+      "boundary": "transmissive",
+      "length": 10.0,
+      "time": 1.8,
+      "grids": [
+        128,
+        256
+      ],
+      "reference_grids": [
+        512,
+        1024,
+        2048
+      ],
+      "cfl": 0.25
+    },
+    {
+      "id": "independent-woodward-colella",
+      "kind": "blast",
+      "system": "euler",
+      "boundary": "reflective",
+      "time": 0.038,
+      "grids": [
+        128,
+        256
+      ],
+      "reference_grids": [
+        512,
+        1024,
+        2048
+      ],
+      "cfl": 0.15,
+      "speed_safety": 2.0
+    }
+  ]
+}
