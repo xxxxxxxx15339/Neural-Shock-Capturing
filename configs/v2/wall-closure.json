@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "role": "Explicit wall correctness correction; original fine reference unfinished; resource-limited ladder declared before evaluating any blast neural solver; fixed selected models/strength",
+  "cases": [
+    {
+      "id": "wall-closed-woodward-colella",
+      "kind": "blast",
+      "system": "euler",
+      "boundary": "reflective-wall",
+      "time": 0.038,
+      "grids": [
+        128,
+        256
+      ],
+      "reference_grids": [
+        256,
+        512,
+        1024
+      ],
+      "cfl": 0.15,
+      "speed_safety": 2.0,
+      "stability_only": true,
+      "reference_limit": "Selected \u03bb=.25 fails the completed t=.001 closed-wall smoke. Preserve full-time coarse stability results without an expensive accuracy reference; the original 2048 temporal reference is incomplete, not passed."
+    }
+  ]
+}

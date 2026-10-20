@@ -18,6 +18,19 @@ Run commands from the repository root. All numerical output directories must be
 new. Checkpoints and frozen P0 directories cannot be evaluation output targets.
 No command below retrains, pushes, merges, or publishes anything.
 
+The unified entry point is `python -m src.differentiable.research ACTION`.
+Actions `sweep`, `benchmark`, `convergence`, `inputs`, `repair`, `performance`
+and `verify` dispatch to the modules below. `p0` retains the historical CLI.
+Use `ACTION --help` for each action's options.
+
+The benchmark CLI also accepts repeated `--method` names, `--strength` and
+`--checkpoint-source v2|p0` for explicit matched ablations. TENO5 is always
+included. For example, `benchmark --manifest configs/v2/independent-smoke.json
+--method gated-soft --method neural-soft --strength .25 --output NEW` uses V2
+parameters. Historical saved heads require `--checkpoint-source p0`; applying
+a P0 head behind a new gate is an inference ablation, **not** a separately
+V2-trained learned-strength result. Missing heads fail rather than being invented.
+
 ## Regression and smoke
 
 ```bash
@@ -39,14 +52,25 @@ tests require their separate Python 3.7 TensorFlow/Keras environment.
 python -m src.differentiable.v2_evaluate sweep --config configs/v2/full.json --output /tmp/v2-validation-new
 python -m src.differentiable.v2_reports --source /tmp/v2-validation-new --output /tmp/v2-statistics-new
 python -m src.differentiable.v2_studies convergence --output /tmp/v2-convergence-new
+python -m src.differentiable.research spatial --output /tmp/v2-selected-spatial-new
+python -m src.differentiable.research convergence --temporal-max-cells 160 --selected-strength --output /tmp/v2-temporal-cpu-new
 python -m src.differentiable.v2_studies inputs --output /tmp/v2-inputs-new
 python -m src.differentiable.v2_studies repair --output /tmp/v2-repair-new
 python -m src.differentiable.v2_benchmark --manifest configs/v2/independent.json --output /tmp/v2-independent-new
+python -m src.differentiable.research benchmark --manifest configs/v2/wall-closure-smoke.json --output /tmp/v2-wall-smoke-new
+python -m src.differentiable.research benchmark --manifest configs/v2/wall-closure.json --output /tmp/v2-wall-closed-new
 ```
 
 The convergence study includes semidiscrete errors at 40/80/160/320/640 cells,
 smooth critical points, matched final time 0.05, and dt/dt/2 controls with
 dt proportional to dx^(5/3). Fine neural Euler rollouts are expensive on CPU.
+The completed resource-limited time controls use `--temporal-max-cells 160
+--selected-strength`; the original fine temporal protocol through 640 and the
+2048-cell blast temporal reference were stopped and remain explicitly incomplete.
+The closed-wall blast smoke exposes neural inadmissibility before t=.001, so
+the full-time closed-wall manifest is stability-only and produces no accuracy
+reference. Its reference-grid list records the abandoned prospective ladder;
+`stability_only` and `reference_limit` are the operative fields.
 The general nonlinear smooth Euler diagnostic can be reproduced independently:
 
 ```bash

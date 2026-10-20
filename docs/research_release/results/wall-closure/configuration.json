@@ -1,0 +1,69 @@
+{
+  "config": {
+    "schema_version": 1,
+    "split": "validation",
+    "data_root": "data/nnteno_v2/data",
+    "physics": [
+      "scalar",
+      "euler"
+    ],
+    "resolutions": [
+      64,
+      128,
+      256
+    ],
+    "strengths": [
+      0,
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "modes": [
+      "soft",
+      "hard"
+    ],
+    "batch_size": 16,
+    "take_per_family": 0,
+    "seed": 20261020,
+    "bootstrap_samples": 2000,
+    "ratio_error_floor": 1e-10,
+    "models": {
+      "scalar": {
+        "path": "models/v2/scalar_gated_dataset_v2_seed2026.pkl",
+        "sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913"
+      },
+      "euler": {
+        "path": "models/v2/euler_gated_dataset_v2_seed2026.pkl",
+        "sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5"
+      }
+    }
+  },
+  "manifest": {
+    "schema_version": 1,
+    "role": "Explicit wall correctness correction; original fine reference unfinished; resource-limited ladder declared before evaluating any blast neural solver; fixed selected models/strength",
+    "cases": [
+      {
+        "id": "wall-closed-woodward-colella",
+        "kind": "blast",
+        "system": "euler",
+        "boundary": "reflective-wall",
+        "time": 0.038,
+        "grids": [
+          128,
+          256
+        ],
+        "reference_grids": [
+          256,
+          512,
+          1024
+        ],
+        "cfl": 0.15,
+        "speed_safety": 2.0,
+        "stability_only": true,
+        "reference_limit": "Selected \u03bb=.25 fails the completed t=.001 closed-wall smoke. Preserve full-time coarse stability results without an expensive accuracy reference; the original 2048 temporal reference is incomplete, not passed."
+      }
+    ]
+  }
+}

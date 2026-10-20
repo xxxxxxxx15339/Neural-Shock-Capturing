@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "checks": [
+    "reuses completed spatial and temporal references across target grids",
+    "cell-average restriction is consistent",
+    "different physical configurations cannot reuse a cache"
+  ]
+}

@@ -94,3 +94,26 @@ def test_experimental_finite_volume_state_flux_nonlinear_spatial_order():
     coarse=nonlinear_spatial(40,rec,get_euler_state_flux_jax)['l1']
     fine=nonlinear_spatial(80,rec,get_euler_state_flux_jax)['l1']
     assert np.log2(coarse/fine)>4.7
+
+
+def test_soft_neural_closed_wall_has_zero_mass_energy_flux():
+    model=load_checkpoint('models/v2/euler_gated_dataset_v2_seed2026.pkl')
+    rng=np.random.default_rng(1);rho=1.+.2*rng.random(24);v=.5*rng.normal(size=24);p=1.+.2*rng.random(24)
+    initial=np.column_stack((rho,rho*v,p/.4+.5*rho*v*v))
+    rec=make_reconstruction(model,'gated-soft',.25)
+    net,(left,right)=get_euler_flux_jax(rec,'reflective-wall',True)(jnp.asarray(initial))
+    np.testing.assert_array_equal(np.asarray(left)[[0,2]],0.)
+    np.testing.assert_array_equal(np.asarray(right)[[0,2]],0.)
+    np.testing.assert_allclose(np.asarray(net).sum(axis=0),np.asarray(right-left),atol=1e-14)
+    final,diag,_=diagnostic_rollout(initial,rec,.0001,1/24,3,'euler','reflective-wall')
+    np.testing.assert_allclose(np.sum(final,axis=0)[[0,2]],np.sum(initial,axis=0)[[0,2]],atol=3e-14)
+
+
+def test_experimental_state_flux_preserves_periodic_conservation_and_constants():
+    from src.differentiable.euler_jax import get_euler_state_flux_jax
+    from src.differentiable.v2_nonlinear import nonlinear_state
+    rec=make_reconstruction(None,'teno5')
+    flux=get_euler_state_flux_jax(rec,'periodic')
+    initial=jnp.asarray(nonlinear_state((np.arange(40)+.5)/40))
+    np.testing.assert_allclose(np.sum(np.asarray(flux(initial)),axis=0),0,atol=2e-14)
+    np.testing.assert_allclose(flux(jnp.tile(jnp.array([1.,.4,2.58]),(40,1))),0,atol=2e-14)

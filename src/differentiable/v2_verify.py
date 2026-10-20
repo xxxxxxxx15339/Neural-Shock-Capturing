@@ -32,8 +32,12 @@ def verify(root,protected_only=False,tracked_only=False):
                 path=manifest.parent/name
                 if not path.is_file() or digest(path)!=expected:failures.append('artifact:'+str(path))
                 hashes+=1
-        for path in Path(root).glob('independent/*/v2-selected-soft.json'):
+        candidates=[]
+        for study in ['independent','wall-closure','wall-smoke','benchmark-smoke','cli-zero']:
+            candidates.extend((Path(root)/study).glob('*/*.json'))
+        for path in candidates:
             row=json.loads(path.read_text());ref_path=path.parent/'reference.npz'
+            if 'method' not in row or 'l1' not in row:continue
             if not ref_path.exists():continue
             ref=np.load(ref_path)['state'];pred=np.load(path.with_suffix('.npz'))['state']
             d=pred-ref;metrics=dict(l1=np.mean(np.abs(d)),l2=np.sqrt(np.mean(d*d)),linf=np.max(np.abs(d)))

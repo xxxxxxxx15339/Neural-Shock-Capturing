@@ -1,0 +1,104 @@
+{
+  "case": "independent-riemann-0",
+  "kind": "riemann",
+  "physics": "euler",
+  "cells": 192,
+  "method": "v2-hard",
+  "policy": "gated-hard",
+  "strength": 0.25,
+  "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+  "time": 0.13100093175862332,
+  "sampling": "finite-volume cell averages",
+  "diagnostics": {
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "maximum_absolute_stage_state": 5.9667344857657065,
+    "max_courant": 0.1863735527245662,
+    "initial_integral": [
+      1.3010942449311527,
+      -0.27535456250329726,
+      4.9627908549932185
+    ],
+    "final_integral": [
+      1.1845048564117242,
+      -0.3617068944323253,
+      4.565413362684723
+    ],
+    "integrated_boundary_exchange": [
+      -0.1165893885194166,
+      -0.08635233192903148,
+      -0.39737749230846153
+    ],
+    "integrated_repair_exchange": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conservation_residual": [
+      -1.186550857568136e-14,
+      3.4555691641457997e-15,
+      -3.430589146091734e-14
+    ],
+    "physical_balance_error": [
+      -1.186550857568136e-14,
+      3.4555691641457997e-15,
+      -3.430589146091734e-14
+    ],
+    "minimum_density": 0.45331330905574446,
+    "minimum_pressure": 1.4149656738098806,
+    "valid_for_accuracy_claim": true
+  },
+  "total_variation": [
+    2.3325371253756186,
+    1.4790721290553415,
+    2.582333338227164
+  ],
+  "minimum": [
+    0.4996392542315887,
+    -1.0764667060012707,
+    3.6832933582879495
+  ],
+  "maximum": [
+    2.4128903860825512,
+    0.0953378048385253,
+    5.87614157727625
+  ],
+  "reference_status": "analytic cell averages",
+  "primary_error": 0.006913265098151043,
+  "l1": 0.006913265098151043,
+  "l2": 0.03214681064060604,
+  "linf": 0.5240600875636472,
+  "component_l1": [
+    0.008101429379183204,
+    0.0049350279123816,
+    0.00770333800288833
+  ],
+  "component_l2": [
+    0.0469624220846719,
+    0.02183088322610238,
+    0.020449835026189047
+  ],
+  "component_linf": [
+    0.5240600875636472,
+    0.23380112833117084,
+    0.12603898035924566
+  ],
+  "overshoot": [
+    0.0006388884900285774,
+    4.916685392153397e-10,
+    2.6537607666909935e-09
+  ],
+  "undershoot": [
+    6.923628403027182e-05,
+    0.00029569321207678634,
+    1.9539925233402755e-14
+  ],
+  "relative_l1": 0.97571963974547,
+  "ranking_resolved": true
+}

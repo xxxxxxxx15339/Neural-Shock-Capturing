@@ -56,24 +56,28 @@ def add_orders(rows):
             b['order_'+key]=float(np.log(a[key]/b[key])/np.log(b['cells']/a['cells'])) if a[key]>0 and b[key]>0 else None
 
 
-def convergence(config,output):
+def convergence(config,output,spatial_only=False,temporal_max_cells=640,selected_strength=False):
     result=dict(spatial=[],rollout=[],settings=dict(resolutions=[40,80,160,320,640],profiles=['regular','critical-sin4'],
                 final_time=.05,quadrature=16,time_step='.15*dx^(5/3)/speed_bound; dt/2 control',
                 scalar='linear advection',euler='advected entropy wave: constant velocity/pressure',
                 metric='cell-average derivative error for spatial; cell-average state error for rollout'))
+    result['settings'].update(temporal_max_cells=temporal_max_cells,spatial_only=spatial_only,
+                              selected_strength=selected_strength,
+                              rollout_resolutions=[] if spatial_only else [n for n in [40,80,160,320,640] if n<=temporal_max_cells])
     for physics,system in [('scalar','advection'),('euler','euler')]:
         model=load_checkpoint(**dict(path=config['models'][physics]['path'],expected_sha256=config['models'][physics]['sha256']))
-        strength=.75 if physics=='scalar' else .25
+        strength=.25 if spatial_only or selected_strength or physics=='euler' else .75
         for method in ['teno5','gated-soft','gated-hard','neural-soft']:
             rec=make_reconstruction(model,method,strength)
             for profile in ['regular','critical-sin4']:
                 rows=[spatial(n,system,rec,profile) for n in [40,80,160,320,640]]
                 add_orders(rows)
                 result['spatial'].append(dict(physics=physics,method=method,strength=strength,profile=profile,rows=rows))
+                write_json(output/f'spatial-{physics}-{method}-{profile}.json',result['spatial'][-1])
                 print(f'spatial {physics}/{method}/{profile}: last p={rows[-1]["order_l1"]:.5g}',flush=True)
-                if method=='neural-soft':continue
+                if method=='neural-soft' or spatial_only:continue
                 time_rows=[]
-                for n in [40,80,160,320,640]:
+                for n in result['settings']['rollout_resolutions']:
                     speed=2.5 if physics=='euler' else 1.
                     steps=math.ceil(.05*speed/(.15*(1/n)**(5/3)))
                     # Temporal controls at every grid separate time and space errors.
@@ -86,6 +90,7 @@ def convergence(config,output):
                     temporal=errors(finals[0],finals[1])
                     time_rows.append(dict(cells=n,steps=steps*2,dt=.05/(steps*2),**metric,
                                           temporal_cauchy_l1=temporal['l1'],diagnostics=diags[1]))
+                    write_json(output/f'rollout-{physics}-{method}-{profile}-{n}.json',time_rows[-1])
                 add_orders(time_rows)
                 result['rollout'].append(dict(physics=physics,method=method,strength=strength,profile=profile,rows=time_rows))
                 print(f'rollout {physics}/{method}/{profile}: last p={time_rows[-1]["order_l1"]:.5g}',flush=True)
@@ -162,12 +167,16 @@ def repair_study(config,output):
 
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('action',choices=['convergence','inputs','repair'])
+    p.add_argument('action',choices=['convergence','spatial','inputs','repair'])
     p.add_argument('--config',type=Path,default=REPO_ROOT/'configs/v2/full.json')
     p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--temporal-max-cells',type=int,choices=[40,80,160,320,640],default=640)
+    p.add_argument('--selected-strength',action='store_true',help='Use selected λ=.25 for both models rather than original training strengths')
     args=p.parse_args(argv);config=load_config(args.config);out=create_output(args.output)
     write_json(out/'configuration.json',config);write_json(out/'provenance.json',provenance(args.config))
-    {'convergence':convergence,'inputs':input_mismatch,'repair':repair_study}[args.action](config,out)
+    if args.action in ('spatial','convergence'):
+        convergence(config,out,spatial_only=args.action=='spatial',temporal_max_cells=args.temporal_max_cells,selected_strength=args.selected_strength)
+    else:{'inputs':input_mismatch,'repair':repair_study}[args.action](config,out)
     finish_manifest(out)
 
 

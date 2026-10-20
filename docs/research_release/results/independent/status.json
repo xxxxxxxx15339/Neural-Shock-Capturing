@@ -1,0 +1,7 @@
+{
+  "completed": false,
+  "exit_code": 130,
+  "completed_configurations": 20,
+  "original_configurations": 22,
+  "reason": "CPU cost of finest blast temporal reference; completed non-blast measurements retained; see separate wall-closure run"
+}

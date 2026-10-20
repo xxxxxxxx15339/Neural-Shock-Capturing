@@ -1,0 +1,112 @@
+{
+  "smoke": true,
+  "repetitions": 9,
+  "warmup": 1,
+  "precision": "float64",
+  "backend": "cpu",
+  "timing": "block_until_ready; compilation excluded from warmed execution; uninstrumented production rollout",
+  "results": [
+    {
+      "case": "timing-advection",
+      "physics": "scalar",
+      "cells": 64,
+      "method": "teno5",
+      "strength": 0.0,
+      "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+      "steps": 160,
+      "final_time": 0.5,
+      "lowering_seconds": 0.1356860930000039,
+      "compilation_seconds": 0.2638469840003381,
+      "first_execution_seconds": 0.0033085719996961416,
+      "warmed_seconds": [
+        0.0025909809992299415,
+        0.00260599800003547,
+        0.002704270999856817,
+        0.0033810710001489497,
+        0.002797025000290887,
+        0.00272515399956319,
+        0.002534126999307773,
+        0.0031239010004355805,
+        0.002332205000129761
+      ],
+      "warmed_median_seconds": 0.002704270999856817,
+      "seconds_per_step": 1.6901693749105105e-05,
+      "seconds_per_cell_step": 2.6408896482976727e-07,
+      "seconds_per_interface_stage": 8.802965494325576e-08,
+      "executable_temporary_bytes": 9808,
+      "executable_output_bytes": 512,
+      "process_lifetime_peak_rss_kib": 340148,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.06242721730518339,
+      "l1": 0.02089407353574424,
+      "l2": 0.06242721730518339,
+      "linf": 0.268309452817177,
+      "component_l1": [
+        0.02089407353574424
+      ],
+      "component_l2": [
+        0.06242721730518339
+      ],
+      "component_linf": [
+        0.268309452817177
+      ]
+    },
+    {
+      "case": "timing-advection",
+      "physics": "scalar",
+      "cells": 64,
+      "method": "gated-soft",
+      "strength": 0.25,
+      "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+      "steps": 160,
+      "final_time": 0.5,
+      "lowering_seconds": 0.24595010299981368,
+      "compilation_seconds": 0.527783202000137,
+      "first_execution_seconds": 0.04406497800027864,
+      "warmed_seconds": [
+        0.021097818999805895,
+        0.021819810000124562,
+        0.022070904000429437,
+        0.023326303999965603,
+        0.018381465999482316,
+        0.01749506000032852,
+        0.017677216000265616,
+        0.017881792999105528,
+        0.021168922000470047
+      ],
+      "warmed_median_seconds": 0.021097818999805895,
+      "seconds_per_step": 0.00013186136874878684,
+      "seconds_per_cell_step": 2.0603338866997944e-06,
+      "seconds_per_interface_stage": 6.867779622332648e-07,
+      "executable_temporary_bytes": 89680,
+      "executable_output_bytes": 512,
+      "process_lifetime_peak_rss_kib": 372200,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.05897816722276175,
+      "l1": 0.01965789468972798,
+      "l2": 0.05897816722276175,
+      "linf": 0.2533002004677525,
+      "component_l1": [
+        0.01965789468972798
+      ],
+      "component_l2": [
+        0.05897816722276175
+      ],
+      "component_linf": [
+        0.2533002004677525
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "physics": "scalar",
+      "classical_cells": 64,
+      "same_grid_l1_ratio": 0.940835910053562,
+      "same_grid_runtime_ratio": 7.801665957636258,
+      "same_grid_inference_overhead_seconds": 0.018393547999949078,
+      "equal_budget_best": null,
+      "cells_reaching_classical_accuracy": 64,
+      "limitation": "Discrete tested grids and one timed IVP per physics; no extrapolation or speedup guarantee"
+    }
+  ]
+}

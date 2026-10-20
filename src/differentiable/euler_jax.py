@@ -218,7 +218,7 @@ def get_euler_flux_jax(reconstruct, boundary='transmissive', return_boundary_flu
     """
 
     def full_flux(u):
-        if boundary == 'reflective':
+        if boundary in ('reflective', 'reflective-wall'):
             # Three ghost cells supply complete five-point stencils at both
             # physical wall interfaces. Mirror normal momentum, retain rho/E.
             sign = jnp.array([1., -1., 1.], dtype=u.dtype)
@@ -227,6 +227,12 @@ def get_euler_flux_jax(reconstruct, boundary='transmissive', return_boundary_flu
             pos, neg, basis = euler_split_flux_stencils(padded, 'transmissive', True)
             faces = project_to_conservative_jax(reconstruct(pos)+reconstruct(neg),basis)
             n = u.shape[0]
+            if boundary == 'reflective-wall':
+                # A learned selector need not respect mirror/sign symmetry.
+                # Impermeable adiabatic walls require zero mass/energy flux;
+                # retain the reconstructed normal momentum flux (wall pressure).
+                faces = faces.at[2, 0].set(0.).at[2, 2].set(0.)
+                faces = faces.at[n+2, 0].set(0.).at[n+2, 2].set(0.)
             net = faces[3:n+3]-faces[2:n+2]
             return (net, (faces[2],faces[n+2])) if return_boundary_flux else net
         f_pos, f_neg, right_basis = euler_split_flux_stencils(u, boundary, return_basis=True)

@@ -1,0 +1,5 @@
+{
+  "passed": true,
+  "maximum_state_difference": 0.0,
+  "definition": "Full unified-CLI trajectory at lambda=0 equals classical TENO5 bit for bit"
+}

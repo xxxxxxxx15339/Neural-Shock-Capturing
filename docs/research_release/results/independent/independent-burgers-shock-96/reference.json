@@ -1,0 +1,159 @@
+{
+  "kind": "numerical cell-average projection",
+  "scheme": "historical TENO5 split-flux/state LF + SSPRK3",
+  "status": "Cauchy changes measured; no rigorous bound",
+  "grids": [
+    768,
+    1536,
+    3072
+  ],
+  "spatial_l1_changes": [
+    9.097065137571997e-06,
+    1.0093193278873601e-07
+  ],
+  "temporal_l1_change": 1.650098830722572e-10,
+  "uncertainty_proxy": 2.0219388534361654e-07,
+  "records": [
+    {
+      "cells": 768,
+      "refinement": 1,
+      "diagnostics": {
+        "finite": true,
+        "raw_stages_admissible": true,
+        "invalid_stage_rows": 0,
+        "nonfinite_stage_rows": 0,
+        "repaired_stage_rows": 0,
+        "isolated_repair_events": 0,
+        "fallback_repair_events": 0,
+        "repair_policy": "none",
+        "minimum_state": 0.22999741744623547,
+        "maximum_absolute_stage_state": 0.6700027348135359,
+        "max_courant": 0.1666597895827678,
+        "initial_integral": [
+          0.44999999999999996
+        ],
+        "final_integral": [
+          0.44999999999990103
+        ],
+        "integrated_boundary_exchange": [
+          0.0
+        ],
+        "integrated_repair_exchange": [
+          0.0
+        ],
+        "conservation_residual": [
+          -9.892087149410145e-14
+        ],
+        "physical_balance_error": [
+          -9.892087149410145e-14
+        ],
+        "valid_for_accuracy_claim": true
+      }
+    },
+    {
+      "cells": 1536,
+      "refinement": 1,
+      "diagnostics": {
+        "finite": true,
+        "raw_stages_admissible": true,
+        "invalid_stage_rows": 0,
+        "nonfinite_stage_rows": 0,
+        "repaired_stage_rows": 0,
+        "isolated_repair_events": 0,
+        "fallback_repair_events": 0,
+        "repair_policy": "none",
+        "minimum_state": 0.22999980616234875,
+        "maximum_absolute_stage_state": 0.6700006981763179,
+        "max_courant": 0.1666592829795667,
+        "initial_integral": [
+          0.45
+        ],
+        "final_integral": [
+          0.449999999999802
+        ],
+        "integrated_boundary_exchange": [
+          0.0
+        ],
+        "integrated_repair_exchange": [
+          0.0
+        ],
+        "conservation_residual": [
+          -1.9800827644189667e-13
+        ],
+        "physical_balance_error": [
+          -1.9800827644189667e-13
+        ],
+        "valid_for_accuracy_claim": true
+      }
+    },
+    {
+      "cells": 3072,
+      "refinement": 1,
+      "diagnostics": {
+        "finite": true,
+        "raw_stages_admissible": true,
+        "invalid_stage_rows": 0,
+        "nonfinite_stage_rows": 0,
+        "repaired_stage_rows": 0,
+        "isolated_repair_events": 0,
+        "fallback_repair_events": 0,
+        "repair_policy": "none",
+        "minimum_state": 0.22999988342469288,
+        "maximum_absolute_stage_state": 0.6700001641221454,
+        "max_courant": 0.16665915013629398,
+        "initial_integral": [
+          0.45
+        ],
+        "final_integral": [
+          0.44999999999960383
+        ],
+        "integrated_boundary_exchange": [
+          0.0
+        ],
+        "integrated_repair_exchange": [
+          0.0
+        ],
+        "conservation_residual": [
+          -3.961830863374871e-13
+        ],
+        "physical_balance_error": [
+          -3.961830863374871e-13
+        ],
+        "valid_for_accuracy_claim": true
+      }
+    }
+  ],
+  "temporal_fine_diagnostics": {
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "minimum_state": 0.22999997272939654,
+    "maximum_absolute_stage_state": 0.6700001612297417,
+    "max_courant": 0.08332957470841161,
+    "initial_integral": [
+      0.45
+    ],
+    "final_integral": [
+      0.4499999999992079
+    ],
+    "integrated_boundary_exchange": [
+      0.0
+    ],
+    "integrated_repair_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -7.920886169188179e-13
+    ],
+    "physical_balance_error": [
+      -7.920886169188179e-13
+    ],
+    "valid_for_accuracy_claim": true
+  },
+  "trustworthy_for_win_claim": false
+}

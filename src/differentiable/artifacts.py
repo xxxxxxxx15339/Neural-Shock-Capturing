@@ -83,6 +83,7 @@ def provenance(manifest_path):
         devices=[str(d) for d in jax.devices()], x64_enabled=bool(jax.config.x64_enabled),
         inference_dtype='float64', timing_policy='End-to-end wall time includes JAX compilation; not a performance comparison',
         numerical_defaults=dict(gamma=GAMMA, integrator='SSPRK3',
+             scope='Historical P0 defaults; operative V2 policies and timing are in run configuration and method records',
              teno5=dict(epsilon=DEFAULT_EPSILON, scale_constant=DEFAULT_SCALE_CONSTANT,
                         power=DEFAULT_POWER, cutoff=DEFAULT_CUTOFF, linear_weights=[.1,.6,.3]),
              neural=dict(stencil_size=5, normalization='per-stencil min-max; constant stencils map to zero',

@@ -1,0 +1,51 @@
+{
+  "cells": 160,
+  "steps": 3144,
+  "dt": 1.5903307888040712e-05,
+  "primary_error": 1.5129063874271187e-08,
+  "l1": 1.0219738650132926e-08,
+  "l2": 1.5129063874271187e-08,
+  "linf": 4.104916628833166e-08,
+  "component_l1": [
+    1.0219738650132926e-08
+  ],
+  "component_l2": [
+    1.5129063874271187e-08
+  ],
+  "component_linf": [
+    4.104916628833166e-08
+  ],
+  "temporal_cauchy_l1": 2.8742251634295e-13,
+  "diagnostics": {
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "minimum_state": 0.3679030788968268,
+    "maximum_absolute_stage_state": 2.7181071857032437,
+    "max_courant": 0.0025445292620865138,
+    "initial_integral": [
+      1.2660658777520084
+    ],
+    "final_integral": [
+      1.2660658777517728
+    ],
+    "integrated_boundary_exchange": [
+      0.0
+    ],
+    "integrated_repair_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -2.355893258254582e-13
+    ],
+    "physical_balance_error": [
+      -2.355893258254582e-13
+    ],
+    "valid_for_accuracy_claim": true
+  }
+}

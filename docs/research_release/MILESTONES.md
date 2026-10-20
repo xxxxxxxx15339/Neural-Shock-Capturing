@@ -88,3 +88,56 @@ The concise README links to this evidence, the original README is archived, and
 LinkedIn/CV/contribution/storyboard drafts are written. Reproducible figure and
 seven-page PDF generation read numerical artifacts; no fake curves substitute
 for missing studies. Final portfolio and acceptance checks follow numerical runs.
+
+## Final milestone assessment
+
+**A complete.** `fc00b77` freezes baseline identities and integrates the shared
+policies. **B complete.** `61b0f70` records full-validation strength/input studies.
+The weights and 498 protected research files remain unchanged.
+
+**C core measurements complete; original fine temporal protocol incomplete.**
+Selected-policy spatial tests cover 40/80/160/320/640 cells. Completed dt/dt/2
+rollouts cover 40/80/160 at physical time .05. All these raw stages are admissible;
+at 160 cells, temporal Cauchy changes are under .5% of the observed state L1
+error. The original extended neural Euler temporal worker was stopped for CPU
+cost (exit 130); its status/progress is retained, not called a pass. General
+nonlinear historical Euler remains approximately second order. Critical-point
+orders differ from five. Conservation and nonconservative repair budgets are
+explicitly measured.
+
+**D complete as inference calibration; training ablations unperformed.** Soft
+λ=.25 is frozen from validation only. No new checkpoint, training-seed robustness
+or causal warm-up benefit is claimed. The optional state-flux consistency variant
+and exact split-flux warm-up are independent experimental options.
+
+**E completed with explicit stress/reference failures.** Twenty original final
+configurations have matched six-policy accuracy/stability profiles. Original
+blast fine temporal reference work was stopped for CPU cost (exit 130), before
+coarse neural accuracy evaluation. A random-state wall audit exposed nonzero
+soft-neural mass/energy flux with mirror-only ghosts. The explicit closed-wall
+correction has a regression. Its t=.001 smoke fails for V2; full-time blast
+128/256-cell runs therefore assess stability only. TENO5 is admissible at both
+grids; selected V2 is not. No full-time blast accuracy reference or win is claimed.
+
+Isolated timing completed on AMD Ryzen 5 4600H CPU, float64: 32 compiled kernels,
+one first/warm-up execution and nine synchronized warmed repeats each. At 512
+cells the selected hybrid costs 10.88× TENO5 on advection (higher error) and
+2.63× on Sod (about 4.63% lower L1). The measured discrete equal-budget ladder
+does not establish a cheaper neural route to the same accuracy.
+
+**F complete as reviewable portfolio materials.** README, measured report,
+acceptance matrix and reproduction commands accompany 14 PNG/PDF/SVG figures,
+a seven-page PDF carousel, LinkedIn drafts, CV bullets, attribution and video
+storyboard. Public posting, pushing and merging are not performed.
+
+Final regression: **117 CPU tests + 34 subtests passed**, plus **2 legacy smoke
+tests passed**. A unified-CLI zero-strength rollout is bit-identical to TENO5;
+reference-cache checks verify conservative restriction/reuse and reject mismatched
+physical configurations. Artifact verification recomputes **134 exported profile
+metrics**, checks **469 artifact hashes**, and confirms all **498 protected files**.
+Remote CI, a fresh V2 install and GPU execution remain untested.
+
+Publication assessment: suitable for a qualified public research-software
+portfolio; not a validated universally superior/fifth-order/stable/faster neural
+method. The unfinished original protocols and scientific failures remain listed
+in the acceptance matrix and measured report.
