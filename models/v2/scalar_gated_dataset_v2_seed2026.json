@@ -1,0 +1,443 @@
+{
+  "architecture": [
+    5,
+    64,
+    32,
+    16,
+    8,
+    3
+  ],
+  "best_score": {
+    "failures": [],
+    "family_ratios": {
+      "burgers_smooth": 1.0000000000340787,
+      "burgers_top_hat": 1.0558788323288886,
+      "constant": 1.0,
+      "fourier": 1.0,
+      "gaussian": 0.9996031917314195,
+      "square": 1.1588244184536842
+    },
+    "relative_score": 1.0357177404246785,
+    "valid": true
+  },
+  "best_step": 280,
+  "checkpoint_schema": "backbone",
+  "data_root": "/home/bazouil/Documents/Shocks-and-WENO/data/nnteno_v2/data",
+  "dataset_quality_sha256": "29ea116ceaca3c4360ebf48a3839387423dfe8c641a4cf908821b954588b3063",
+  "history": [
+    {
+      "family": "square",
+      "grid": 128,
+      "positivity_penalty": 0.0,
+      "state_loss": 0.001724647902535631,
+      "step": 0,
+      "train_loss": 0.0018725151775538834,
+      "tv_penalty": 0.0029573455003650503,
+      "validation": {
+        "failures": [],
+        "family_ratios": {
+          "burgers_smooth": 1.0000000000340787,
+          "burgers_top_hat": 1.1964596021633624,
+          "constant": 1.0,
+          "fourier": 1.0,
+          "gaussian": 0.9997218663444851,
+          "square": 1.2589700415210128
+        },
+        "relative_score": 1.0758585850104896,
+        "valid": true
+      }
+    },
+    {
+      "family": "square",
+      "grid": 64,
+      "positivity_penalty": 0.0,
+      "state_loss": 0.004471433055650151,
+      "step": 20,
+      "train_loss": 0.004802851565632435,
+      "tv_penalty": 0.006628370199645695,
+      "validation": {
+        "failures": [],
+        "family_ratios": {
+          "burgers_smooth": 1.0000000000340787,
+          "burgers_top_hat": 1.1964646769579117,
+          "constant": 1.0,
+          "fourier": 1.0,
+          "gaussian": 0.9997146617437398,
+          "square": 1.255236041046316
+        },
+        "relative_score": 1.0752358966303408,
+        "valid": true
+      }
+    },
+    {
+      "family": "burgers_smooth",
+      "grid": 256,
+      "positivity_penalty": 0.0,
+      "state_loss": 7.968918608773518e-16,
+      "step": 40,
+      "train_loss": 3.970121110637431e-09,
+      "tv_penalty": 7.94024062749114e-08,
+      "validation": {
+        "failures": [],
+        "family_ratios": {
+          "burgers_smooth": 1.0000000000340787,
+          "burgers_top_hat": 1.196143751555678,
+          "constant": 1.0,
+          "fourier": 1.0,
+          "gaussian": 0.9997063013354559,
+          "square": 1.2533238985257744
+        },
+        "relative_score": 1.074862325241831,
+        "valid": true
+      }
+    },
+    {
+      "family": "fourier",
+      "grid": 64,
+      "positivity_penalty": 0.0,
+      "state_loss": 1.4107003300712587e-07,
+      "step": 60,
+      "train_loss": 2.7341159771320593e-06,
+      "tv_penalty": 5.186091888249866e-05,
+      "validation": {
+        "failures": [],
+        "family_ratios": {
+          "burgers_smooth": 1.0000000000340787,
+          "burgers_top_hat": 1.1913367983284038,
+          "constant": 1.0,
+          "fourier": 1.0,
+          "gaussian": 0.999699755246262,
+          "square": 1.251673647190838
+        },
+        "relative_score": 1.073785033466597,
+        "valid": true
+      }
+    },
+    {
+      "family": "burgers_top_hat",
+      "grid": 256,
+      "positivity_penalty": 0.0,
+      "state_loss": 0.00021623815412739466,
+      "step": 80,
+      "train_loss": 0.00027180823435307596,
+      "tv_penalty": 0.0011114016045136261,
+      "validation": {
+        "failures": [],
+        "family_ratios": {
+          "burgers_smooth": 1.0000000000340787,
+          "burgers_top_hat": 1.190256235258752,
+          "constant": 1.0,
+          "fourier": 1.0,
+          "gaussian": 0.9996985429702517,
+          "square": 1.2470636461919167
+        },
+        "relative_score": 1.0728364040758334,
+        "valid": true
+      }
+    },
+    {
+      "family": "gaussian",
+      "grid": 256,
+      "positivity_penalty": 0.0,
+      "state_loss": 3.8440358378840715e-14,
+      "step": 100,
+      "train_loss": 2.984615738138835e-08,
+      "tv_penalty": 5.969223788205994e-07,
+      "validation": {
+        "failures": [],
+        "family_ratios": {
+          "burgers_smooth": 1.0000000000340787,
+          "burgers_top_hat": 1.1890393744114736,
+          "constant": 1.0,
+          "fourier": 1.0,
+          "gaussian": 0.9996974817070141,
+          "square": 1.2433991650548597
+        },
+        "relative_score": 1.0720226702012376,
+        "valid": true
+      }
+    },
+    {
+      "family": "square",
+      "grid": 256,
+      "positivity_penalty": 0.0,
+      "state_loss": 0.0011319871278511777,
+      "step": 120,
+      "train_loss": 0.0012144788056458453,
+      "tv_penalty": 0.0016498335558933536,
+      "validation": {
+        "failures": [],
+        "family_ratios": {
+          "burgers_smooth": 1.0000000000340787,
+          "burgers_top_hat": 1.1878729834369,
+          "constant": 1.0,
+          "fourier": 1.0,
+          "gaussian": 0.9996881414483155,
+          "square": 1.2409777716061177
+        },
+        "relative_score": 1.0714231494209019,
+        "valid": true
+      }
+    },
+    {
+      "family": "square",
+      "grid": 256,
+      "positivity_penalty": 0.0,
+      "state_loss": 0.0013485532049879003,
+      "step": 140,
+      "train_loss": 0.0014175530916228918,
+      "tv_penalty": 0.0013799977326998294,
+      "validation": {
+        "failures": [],
+        "family_ratios": {
+          "burgers_smooth": 1.0000000000340787,
+          "burgers_top_hat": 1.1845580986387463,
+          "constant": 1.0,
+          "fourier": 1.0,
+          "gaussian": 0.999681782441565,
+          "square": 1.236201536668445
+        },
+        "relative_score": 1.0700735696304724,
+        "valid": true
+      }
+    },
+    {
+      "family": "burgers_top_hat",
+      "grid": 64,
+      "positivity_penalty": 0.0,
+      "state_loss": 0.0010472207387501845,
+      "step": 160,
+      "train_loss": 0.001312877491677915,
+      "tv_penalty": 0.00531313505855461,
+      "validation": {
+        "failures": [],
+        "family_ratios": {
+          "burgers_smooth": 1.0000000000340787,
+          "burgers_top_hat": 1.1699518259504085,
+          "constant": 1.0,
+          "fourier": 1.0,
+          "gaussian": 0.9996797416360598,
+          "square": 1.2252436641469517
+        },
+        "relative_score": 1.0658125386279163,
+        "valid": true
+      }
+    },
+    {
+      "family": "burgers_smooth",
+      "grid": 128,
+      "positivity_penalty": 0.0,
+      "state_loss": 3.148802950224857e-14,
+      "step": 180,
+      "train_loss": 1.6892937480042593e-08,
+      "tv_penalty": 3.3785811984026175e-07,
+      "validation": {
+        "failures": [],
+        "family_ratios": {
+          "burgers_smooth": 1.0000000000340787,
+          "burgers_top_hat": 1.1473190348703808,
+          "constant": 1.0,
+          "fourier": 1.0,
+          "gaussian": 0.9996636181712074,
+          "square": 1.2137511852298795
+        },
+        "relative_score": 1.0601223063842578,
+        "valid": true
+      }
+    },
+    {
+      "family": "burgers_smooth",
+      "grid": 64,
+      "positivity_penalty": 0.0,
+      "state_loss": 2.4480241692251553e-10,
+      "step": 200,
+      "train_loss": 7.439222076341375e-08,
+      "tv_penalty": 1.4829483669298246e-06,
+      "validation": {
+        "failures": [],
+        "family_ratios": {
+          "burgers_smooth": 1.0000000000340787,
+          "burgers_top_hat": 1.135583765559219,
+          "constant": 1.0,
+          "fourier": 1.0,
+          "gaussian": 0.9996426762577474,
+          "square": 1.2017645037738545
+        },
+        "relative_score": 1.0561651576041498,
+        "valid": true
+      }
+    },
+    {
+      "family": "burgers_smooth",
+      "grid": 256,
+      "positivity_penalty": 0.0,
+      "state_loss": 7.556399971131508e-17,
+      "step": 220,
+      "train_loss": 5.825744912390594e-09,
+      "tv_penalty": 1.1651489673653189e-07,
+      "validation": {
+        "failures": [],
+        "family_ratios": {
+          "burgers_smooth": 1.0000000000340787,
+          "burgers_top_hat": 1.101740962793106,
+          "constant": 1.0,
+          "fourier": 1.0,
+          "gaussian": 0.9996287120052355,
+          "square": 1.185937656509789
+        },
+        "relative_score": 1.0478845552237015,
+        "valid": true
+      }
+    },
+    {
+      "family": "gaussian",
+      "grid": 128,
+      "positivity_penalty": 0.0,
+      "state_loss": 5.833748174289724e-11,
+      "step": 240,
+      "train_loss": 3.612191399146546e-07,
+      "tv_penalty": 7.223216048658234e-06,
+      "validation": {
+        "failures": [],
+        "family_ratios": {
+          "burgers_smooth": 1.0000000000340787,
+          "burgers_top_hat": 1.0753581857958354,
+          "constant": 1.0,
+          "fourier": 1.0,
+          "gaussian": 0.9996189097404055,
+          "square": 1.1706684940812453
+        },
+        "relative_score": 1.0409409316085942,
+        "valid": true
+      }
+    },
+    {
+      "family": "square",
+      "grid": 256,
+      "positivity_penalty": 0.0,
+      "state_loss": 0.001294132247609266,
+      "step": 260,
+      "train_loss": 0.0013555811976161982,
+      "tv_penalty": 0.0012289790001386459,
+      "validation": {
+        "failures": [],
+        "family_ratios": {
+          "burgers_smooth": 1.0000000000340787,
+          "burgers_top_hat": 1.0599001557534393,
+          "constant": 1.0,
+          "fourier": 1.0,
+          "gaussian": 0.9996102745475198,
+          "square": 1.163521067928943
+        },
+        "relative_score": 1.0371719163773299,
+        "valid": true
+      }
+    },
+    {
+      "family": "gaussian",
+      "grid": 64,
+      "positivity_penalty": 0.0,
+      "state_loss": 1.2771785991939839e-06,
+      "step": 280,
+      "train_loss": 2.8878265494699493e-06,
+      "tv_penalty": 3.2212959005519307e-05,
+      "validation": {
+        "failures": [],
+        "family_ratios": {
+          "burgers_smooth": 1.0000000000340787,
+          "burgers_top_hat": 1.0558788323288886,
+          "constant": 1.0,
+          "fourier": 1.0,
+          "gaussian": 0.9996031917314195,
+          "square": 1.1588244184536842
+        },
+        "relative_score": 1.0357177404246785,
+        "valid": true
+      }
+    }
+  ],
+  "limitations": [
+    "No independent real experimental measurement labels",
+    "Euler training positivity repairs may be nonconservative",
+    "No universal fifth-order/stability guarantee"
+  ],
+  "physical_measurements": false,
+  "physics": "scalar",
+  "reference": "analytic cell averages",
+  "seed": 2026,
+  "selection": "ungarded validation vs matched deterministic TENO5",
+  "strength": 0.75,
+  "time_elapsed_s": 154.76612163499885,
+  "train_resolutions": [
+    64,
+    128,
+    256
+  ],
+  "train_trajectories": 2867,
+  "training_config": {
+    "batch_size": 8,
+    "check_every": 20,
+    "checkpoint": null,
+    "data_root": "/home/bazouil/Documents/Shocks-and-WENO/data/nnteno_v2",
+    "eval_batch_size": 16,
+    "improvement_tol": 1e-05,
+    "learning_rate": 0.0002,
+    "mode": "train",
+    "output_dir": "models/v2",
+    "patience": 8,
+    "physics": "scalar",
+    "positivity_weight": 0.1,
+    "pretrain_batch": 256,
+    "pretrain_cases": 12,
+    "pretrain_pool": 15000,
+    "pretrain_steps": 150,
+    "run_name": null,
+    "seed": 2026,
+    "skip_hash_check": false,
+    "strength": 0.75,
+    "test_per_family": 0,
+    "tv_weight": 0.05,
+    "updates": 300,
+    "validation_per_family": 2
+  },
+  "training_steps": 15,
+  "validation_case_ids": [
+    "scalar-validation-000471-2908128940376252252",
+    "scalar-validation-000180-7068945940511127909",
+    "scalar-validation-000294-4974924649472223196",
+    "scalar-validation-000231-7261719864668806438",
+    "scalar-validation-000108-6174418423207163562",
+    "scalar-validation-000228-8597186438104080995",
+    "scalar-validation-000582-4857385631395652600",
+    "scalar-validation-000291-2855109343181232406",
+    "scalar-validation-000345-5339781736287091638",
+    "scalar-validation-000609-5473387102209039191",
+    "scalar-validation-000192-1287123598554501041",
+    "scalar-validation-000585-6218233872433922021",
+    "scalar-validation-000025-4643272789278181452",
+    "scalar-validation-000529-7314351396391098066",
+    "scalar-validation-000205-5636262125361564522",
+    "scalar-validation-000301-5468146636732199583",
+    "scalar-validation-000511-2099413567061192129",
+    "scalar-validation-000433-3928854838322963380",
+    "scalar-validation-000322-184716675624701201",
+    "scalar-validation-000316-4401391558756154755",
+    "scalar-validation-000379-424854635918207662",
+    "scalar-validation-000439-2913593480054523188",
+    "scalar-validation-000157-1638901583229658782",
+    "scalar-validation-000106-966100441166896600",
+    "scalar-validation-000242-3424042746648288478",
+    "scalar-validation-000251-2521659634996313553",
+    "scalar-validation-000236-1411113507822686908",
+    "scalar-validation-000179-6224948964365412367",
+    "scalar-validation-000290-3433664943890431444",
+    "scalar-validation-000014-7034358408044606805",
+    "scalar-validation-000335-1160150717014179420",
+    "scalar-validation-000479-6570858609166940943",
+    "scalar-validation-000158-4582779036131651213",
+    "scalar-validation-000566-4619731212475823862",
+    "scalar-validation-000386-8755510196235433443",
+    "scalar-validation-000575-4256888338257476809"
+  ],
+  "validation_trajectories": 615
+}
