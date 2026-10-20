@@ -33,7 +33,8 @@ def _observe(state, system, dt_dx, wave_speed):
 
 def diagnostic_rollout(initial, reconstruct, dt, dx, steps, system,
                        boundary='periodic', wave_speed=1.0, alpha=1.0,
-                       repair_policy='none', repair_function=None):
+                       repair_policy='none', repair_function=None,
+                       return_device=False, record_states=False):
     """Return final state and per-step raw-stage/repair/balance observations.
 
     There is no automatic guarded retry. historical-repair is an explicitly
@@ -45,7 +46,7 @@ def diagnostic_rollout(initial, reconstruct, dt, dx, steps, system,
         raise ValueError('Euler repairs cannot be applied to scalar states')
     if repair_function is not None and repair_policy != 'historical-repair':
         raise ValueError('A supplied diagnostic repair requires an explicit repair policy')
-    if steps < 1 or dt <= 0 or dx <= 0:
+    if steps < 1 or (not return_device and (dt <= 0 or dx <= 0)):
         raise ValueError('Positive dt, dx and step count are required')
     initial = jnp.asarray(initial, dtype=jnp.float64)
     components = 3 if system == 'euler' else 1
@@ -57,7 +58,8 @@ def diagnostic_rollout(initial, reconstruct, dt, dx, steps, system,
         physical = (lambda u: 0.5 * u ** 2) if system == 'burgers' else (lambda u: wave_speed * u)
 
         def flux(u):
-            net = lax_friedrichs_flux(u, physical, alpha, reconstruct)
+            bound = jnp.maximum(jnp.max(jnp.abs(u)), .01) if isinstance(alpha, str) and alpha == 'dynamic' else alpha
+            net = lax_friedrichs_flux(u, physical, bound, reconstruct)
             zero = jnp.zeros((1,), dtype=u.dtype)
             return net, (zero, zero)
 
@@ -98,9 +100,13 @@ def diagnostic_rollout(initial, reconstruct, dt, dx, steps, system,
             + (2.0 / 3.0) * (left2 - right2))
         row['repair_exchange'] = dx * (r1 / 6.0 + (2.0 / 3.0) * r2 + r3)
         row['integral'] = dx * jnp.atleast_1d(jnp.sum(u3, axis=0))
+        if record_states:
+            row['state'] = u3
         return u3, row
 
     final, history = jax.lax.scan(body, initial, xs=None, length=steps)
+    if return_device:
+        return final, history
     final, history = np.asarray(final), jax.tree.map(np.asarray, history)
     first = {k: float(v) for k, v in _observe(initial, system, dt / dx, wave_speed).items()}
     initial_integral = dx * np.atleast_1d(np.sum(np.asarray(initial), axis=0))

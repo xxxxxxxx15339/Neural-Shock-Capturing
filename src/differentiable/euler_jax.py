@@ -163,6 +163,47 @@ def euler_boundary_variation_jax(u, reconstruct, boundary='transmissive'):
     return jnp.abs(forward - mirrored)
 
 
+def euler_split_flux_stencils(u, boundary='transmissive', return_basis=False):
+    """Exact positive/negative characteristic LF inputs used by the solver.
+
+    Each array has shape (interfaces, 3 fields, 5 stencil values). The negative
+    direction includes the solver's mirror and offset. No reconstruction occurs.
+    return_basis is used internally to avoid recomputing the Roe eigenbasis.
+    """
+    fu = flux_jax(u)
+    c = jnp.max(jnp.abs(spds_jax(u)), axis=1)
+    if boundary == 'periodic':
+        right_speed = jnp.roll(c, -1)
+    else:
+        right_speed = jnp.concatenate([c[1:], c[-1:]])
+    alpha = jnp.maximum(c, right_speed)
+
+    left_basis, right_basis = roe_eigenbasis_jax(u, boundary=boundary)
+
+    u_part = euler_stencils_jax(u, offset=0, boundary=boundary)
+    fu_part = euler_stencils_jax(fu, offset=0, boundary=boundary)
+    u_part_neg = jnp.flip(
+        euler_stencils_jax(u, offset=1, boundary=boundary), axis=2
+    )
+    fu_part_neg = jnp.flip(
+        euler_stencils_jax(fu, offset=1, boundary=boundary), axis=2
+    )
+
+    wp = project_to_characteristic_jax(u_part, left_basis)
+    fwp = project_to_characteristic_jax(fu_part, left_basis)
+    wm = project_to_characteristic_jax(u_part_neg, left_basis)
+    fwm = project_to_characteristic_jax(fu_part_neg, left_basis)
+
+    # alpha varies only over the leading (interface) axis -- see the
+    # module docstring for why this replaces the original per-field loop.
+    f_pos = 0.5 * (fwp + alpha[:, None, None] * wp)
+    f_neg = 0.5 * (fwm - alpha[:, None, None] * wm)
+
+    if return_basis:
+        return f_pos, f_neg, right_basis
+    return f_pos, f_neg
+
+
 def get_euler_flux_jax(reconstruct, boundary='transmissive', return_boundary_flux=False):
     """Port of eulerEquations.py:79 getEulerFlux.
 
@@ -177,34 +218,7 @@ def get_euler_flux_jax(reconstruct, boundary='transmissive', return_boundary_flu
     """
 
     def full_flux(u):
-        fu = flux_jax(u)
-        c = jnp.max(jnp.abs(spds_jax(u)), axis=1)
-        if boundary == 'periodic':
-            right_speed = jnp.roll(c, -1)
-        else:
-            right_speed = jnp.concatenate([c[1:], c[-1:]])
-        alpha = jnp.maximum(c, right_speed)
-
-        left_basis, right_basis = roe_eigenbasis_jax(u, boundary=boundary)
-
-        u_part = euler_stencils_jax(u, offset=0, boundary=boundary)
-        fu_part = euler_stencils_jax(fu, offset=0, boundary=boundary)
-        u_part_neg = jnp.flip(
-            euler_stencils_jax(u, offset=1, boundary=boundary), axis=2
-        )
-        fu_part_neg = jnp.flip(
-            euler_stencils_jax(fu, offset=1, boundary=boundary), axis=2
-        )
-
-        wp = project_to_characteristic_jax(u_part, left_basis)
-        fwp = project_to_characteristic_jax(fu_part, left_basis)
-        wm = project_to_characteristic_jax(u_part_neg, left_basis)
-        fwm = project_to_characteristic_jax(fu_part_neg, left_basis)
-
-        # alpha varies only over the leading (interface) axis -- see the
-        # module docstring for why this replaces the original per-field loop.
-        f_pos = 0.5 * (fwp + alpha[:, None, None] * wp)
-        f_neg = 0.5 * (fwm - alpha[:, None, None] * wm)
+        f_pos, f_neg, right_basis = euler_split_flux_stencils(u, boundary, return_basis=True)
 
         f_half_pos = reconstruct(f_pos)
         f_half_neg = reconstruct(f_neg)

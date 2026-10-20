@@ -43,6 +43,9 @@ def create_output(path):
     # Protect model identities even if a mistaken output path is supplied.
     if path == REPO_ROOT / 'models' or REPO_ROOT / 'models' in path.parents:
         raise ValueError('Benchmark outputs cannot be written below models/')
+    frozen = REPO_ROOT / 'src' / 'differentiable' / 'validation'
+    if path == frozen or frozen in path.parents:
+        raise ValueError('Frozen P0 validation directories are read-only artifacts')
     path.mkdir(parents=True, exist_ok=False)
     return path
 
