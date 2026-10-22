@@ -408,17 +408,12 @@ def teno5_selection_values(
         invalid='raise',
         over='raise',
     ):
-        ratio = (
-            tau5[..., None]
-            / (beta + epsilon)
-        )
+        ratio = tau5[..., None] / (beta + epsilon)
 
-        log_gamma = (
-            power
-            * np.log(
-                scale_constant + ratio
-            )
-        )
+        if scale_constant == 1.0: 
+            log_gamma = power * np.log1p(ratio)
+        else:
+            log_gamma = power * np.log(scale_constant + ratio)
 
     # Softmax-style normalization in the logarithmic domain.
     log_gamma = (

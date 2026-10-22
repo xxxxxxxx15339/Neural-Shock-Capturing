@@ -1,0 +1,61 @@
+{
+  "config": {
+    "schema_version": 1,
+    "split": "validation",
+    "data_root": "data/nnteno_v2/data",
+    "physics": [
+      "scalar",
+      "euler"
+    ],
+    "resolutions": [
+      64,
+      128,
+      256
+    ],
+    "strengths": [
+      0,
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "modes": [
+      "soft",
+      "hard"
+    ],
+    "batch_size": 16,
+    "take_per_family": 0,
+    "seed": 20261020,
+    "bootstrap_samples": 2000,
+    "ratio_error_floor": 1e-10,
+    "models": {
+      "scalar": {
+        "path": "models/v2/scalar_gated_dataset_v2_seed2026.pkl",
+        "sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913"
+      },
+      "euler": {
+        "path": "models/v2/euler_gated_dataset_v2_seed2026.pkl",
+        "sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5"
+      }
+    }
+  },
+  "manifest": {
+    "schema_version": 1,
+    "role": "independent-final-benchmark; never tune on these results",
+    "declared_seed": 2026102019,
+    "selection": "frozen configs/v2/selected.json before evaluation",
+    "cases": [
+      {
+        "id": "independent-advection-square",
+        "kind": "advection",
+        "system": "advection",
+        "boundary": "periodic",
+        "time": 1.5,
+        "grids": [
+          96
+        ]
+      }
+    ]
+  }
+}

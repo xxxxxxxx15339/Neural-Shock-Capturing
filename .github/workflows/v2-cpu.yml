@@ -1,0 +1,17 @@
+name: V2 CPU numerical contracts
+on: [push, pull_request]
+jobs:
+  numerical:
+    runs-on: ubuntu-latest
+    env:
+      JAX_PLATFORMS: cpu
+      MPLCONFIGDIR: /tmp/matplotlib
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: python -m pip install -r requirements-v2.txt
+      - run: python -m pytest tests/test_core.py tests/test_teno.py tests/test_feature_vector.py tests/test_teno5_jax_regression.py tests/test_teno5_jax_euler_regression.py tests/test_projection_jax.py tests/test_losses_jax.py src/differentiable/tests -q
+      - run: python -m src.differentiable.v2_verify --protected-only --tracked-only

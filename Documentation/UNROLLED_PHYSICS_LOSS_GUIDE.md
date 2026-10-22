@@ -568,9 +568,12 @@ deterministic baseline was what fixed it.
 
 **Exit criterion:** a trained checkpoint plus a training-curve CSV in the same format as
 `models/nn_teno5_oracle_history.csv`, with per-term loss columns. **Met for scalar**
-(`models/nn_teno5_unrolled_jax_{history,params}_run3_pretrained.*`); **not met for Euler**
-(training runs and produces a checkpoint, but that checkpoint reflects a NaN-corrupted
-optimizer state, not a meaningful result — see status note).
+(`models/nn_teno5_unrolled_jax_{history,params}_run3_pretrained.*`); **now also met for
+Euler** (`models/nn_teno5euler_unrolled_jax_params_curriculum.pkl`, Results.md Phase 13 —
+fixing `lambda_positivity`'s dead wiring surfaced and fixed a second bug in
+`euler_positivity_repair` itself; training now completes all four curriculum stages with a
+fully finite checkpoint, the first time this has happened. See Phase 13 for the same
+narrow-generalization caveat Phase 7 below already documents for the scalar case).
 
 ---
 
@@ -598,11 +601,16 @@ optimizer state, not a meaningful result — see status note).
 > train on a K and problem-shape distribution that actually spans the Unrolled Physics Loss proposal's Table 1 cases,
 > not treat Table 1 as a pure hold-out set for a narrower training distribution.
 >
-> Shu-Osher and Sod (Euler) rows are **not evaluated for NN-TENO5euler** — reported
-> honestly as not evaluated, not as a loss — since Phase 6's Euler training did not
-> converge to a meaningful checkpoint (see that section's status note). Deterministic
-> TENO5euler's own behavior on these is already established elsewhere (Results.md;
-> Phase 1's regression tests, matching real NumPy to `5.5e-11`).
+> Shu-Osher and Sod (Euler) rows were **not evaluated for NN-TENO5euler** at the time this
+> note was written — Phase 6's Euler training did not yet converge to a meaningful
+> checkpoint. **Update (Results.md Phase 13): now evaluated, via a new script,
+> `TENO5euler_vs_NNTENO5euler_JAX.py`.** The Euler training instability is fixed (a real,
+> finite checkpoint now exists), but NN-TENO5euler(JAX) loses to deterministic TENO5euler
+> on both canonical problems at full benchmark scale — and the loss is concentrated in the
+> smooth regions specifically (1.3-1.5x TENO5euler's error there), not the shocks, which
+> the network actually tracks well. Deterministic TENO5euler's own behavior on these is
+> already established elsewhere (Results.md; Phase 1's regression tests, matching real
+> NumPy to `5.5e-11`).
 
 Map the Unrolled Physics Loss proposal's benchmark table directly onto existing scripts, extending each with the
 metric the PDF asks for:

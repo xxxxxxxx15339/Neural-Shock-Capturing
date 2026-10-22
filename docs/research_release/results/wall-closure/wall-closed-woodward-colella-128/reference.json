@@ -1,0 +1,6 @@
+{
+  "kind": "stability-only; no accuracy reference",
+  "status": "not computed after failed short-time neural smoke",
+  "trustworthy_for_win_claim": false,
+  "reason": "Selected \u03bb=.25 fails the completed t=.001 closed-wall smoke. Preserve full-time coarse stability results without an expensive accuracy reference; the original 2048 temporal reference is incomplete, not passed."
+}

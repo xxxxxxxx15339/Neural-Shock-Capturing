@@ -1,0 +1,23 @@
+{
+  "canonical-shu-osher/fixed-blend-coarse.json": "456be0e8fdf0535746e3793f1685075176ca2be9777f42d824848f5c6ce6f431",
+  "canonical-shu-osher/fixed-blend-coarse.npz": "6c9fb009b2e570a2cd9146ab56b51a09123f13747dc074614ae81152b137235d",
+  "canonical-shu-osher/learned-blend-coarse.json": "c99da9500f78026b142bf73fda4ceca323a2495812d94f05a99804b82d22a294",
+  "canonical-shu-osher/learned-blend-coarse.npz": "f5fd91f867900113bbe4428e701e974e218ff2ab892fe64376e2ae67cc24f498",
+  "canonical-shu-osher/neural-only-coarse.json": "09a922a9e729de838f26d40aa1ddf1d060eb9419f980d5d5bb26f97bbeb6a780",
+  "canonical-shu-osher/neural-only-coarse.npz": "4aaa6e13c34d64cf515a15664818cdec19fb53375780c9882fcde3d1a3291201",
+  "canonical-shu-osher/reference-1280-dt1.npz": "837535c855d7ecde20ddb47f5726f7a0176adf9c60a7628f3fadb9cb24dd5037",
+  "canonical-shu-osher/reference-2560-dt1.npz": "c1c2bc122a83b1dda87ba0acdfb53cd5b67dca201575320941a1203a7fb129bc",
+  "canonical-shu-osher/reference-320-dt1.npz": "2a12400e679c6cb70a8783d2ee322d7fd6788b9b20ea10587442ba973d440cc5",
+  "canonical-shu-osher/reference-5120-dt1.npz": "e96e815e5c3f715f3f67b932068daa0488c5e8d6abe6e2fcc6213bb3f5027df3",
+  "canonical-shu-osher/reference-5120-dt2.npz": "e47004de5fa9de922ad1e3dcd71ba7cc45d6f5901125c40aa71656410fe82682",
+  "canonical-shu-osher/reference-5120-dt4.npz": "dc3a5aed867576935436d5d73af491064481c8c60e3b08243647337f4c59a764",
+  "canonical-shu-osher/reference-640-dt1.npz": "22ac8ed07831b06e3f27de0d4f412c484e197564561fe4eb0d4d587aab53b5c2",
+  "canonical-shu-osher/reference_convergence.json": "566948e2585abbc00b2f070bf489dfd2b1ffcd24ba225a94661040e2d5231f96",
+  "canonical-shu-osher/reference_convergence.pdf": "eed908206909dbd0fee182c29fb9f3233590e726945f41d520e0fd5334424bc1",
+  "canonical-shu-osher/reference_convergence.png": "7397d2e91b1c1f5e1cb818d7d9ab7045d7f1c7d984124ef0f21f02d73bf8e580",
+  "canonical-shu-osher/teno5-coarse.json": "eff51e63d7bf2ee7f397326a391ec32b6d6793ddd3df013894a30e2ceb93e76b",
+  "canonical-shu-osher/teno5-coarse.npz": "59b3f62a97f2781c792c70126c85f33ffb3525909c5206625b261bff69336fa9",
+  "configuration.json": "07b05279a5183fd52af281a5b5fc802c0d29b6d55ebbb794eb9b2838e98ce044",
+  "duplicate-worker-interruption.json": "f7914c4898ede59048e60010fa5546987469f6157984800cbe37bbcdff682b6a",
+  "provenance.json": "4a6558d1c84bd97a916a930ac7a13b6491c9dd9e32b62236cce91cfe5e006cc7"
+}

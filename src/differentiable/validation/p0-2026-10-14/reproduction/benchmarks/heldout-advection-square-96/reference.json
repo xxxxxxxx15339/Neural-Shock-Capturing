@@ -1,0 +1,7 @@
+{
+  "kind": "analytic",
+  "definition": "exact translated periodic profile",
+  "sampling": "point-i-dx",
+  "trustworthy_for_defined_samples": true,
+  "sample_array_sha256": "988a5ee899f884ff6b29cb3685e63fb4b76b592e3d2262fdfba3405f2c9fa304"
+}

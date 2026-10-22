@@ -1,0 +1,19 @@
+{
+  "id": "heldout-advection-square-96",
+  "problem": "advection",
+  "cells": 96,
+  "length": 1.0,
+  "final_time": 0.37,
+  "cfl": 0.5,
+  "boundary": "periodic",
+  "sampling": "point-i-dx",
+  "initial": {
+    "type": "square",
+    "left": 0.17,
+    "right": 0.4,
+    "amplitude": 0.8,
+    "offset": 0.1
+  },
+  "alpha": 1.0,
+  "wave_speed": 1.0
+}

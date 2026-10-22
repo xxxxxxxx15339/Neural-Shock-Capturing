@@ -1,0 +1,1866 @@
+{
+  "smoke": false,
+  "repetitions": 9,
+  "warmup": 1,
+  "precision": "float64",
+  "backend": "cpu",
+  "timing": "block_until_ready; compilation excluded from warmed execution; uninstrumented production rollout",
+  "results": [
+    {
+      "case": "timing-advection",
+      "physics": "scalar",
+      "cells": 64,
+      "method": "teno5",
+      "strength": 0.0,
+      "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+      "steps": 160,
+      "final_time": 0.5,
+      "lowering_seconds": 0.10570517399992241,
+      "compilation_seconds": 0.1981999680001536,
+      "first_execution_seconds": 0.002954147999844281,
+      "warmed_seconds": [
+        0.0022483850007120054,
+        0.002222404000349343,
+        0.0022584430007555056,
+        0.0023509849997935817,
+        0.002244544000859605,
+        0.0022122059999674093,
+        0.0022110190002422314,
+        0.0021669480001946795,
+        0.002208295000855287
+      ],
+      "warmed_median_seconds": 0.002222404000349343,
+      "seconds_per_step": 1.3890025002183393e-05,
+      "seconds_per_cell_step": 2.170316406591155e-07,
+      "seconds_per_interface_stage": 7.234388021970517e-08,
+      "executable_temporary_bytes": 9808,
+      "executable_output_bytes": 512,
+      "process_lifetime_peak_rss_kib": 339752,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.06242721730518339,
+      "l1": 0.02089407353574424,
+      "l2": 0.06242721730518339,
+      "linf": 0.268309452817177,
+      "component_l1": [
+        0.02089407353574424
+      ],
+      "component_l2": [
+        0.06242721730518339
+      ],
+      "component_linf": [
+        0.268309452817177
+      ]
+    },
+    {
+      "case": "timing-advection",
+      "physics": "scalar",
+      "cells": 64,
+      "method": "gated-soft",
+      "strength": 0.25,
+      "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+      "steps": 160,
+      "final_time": 0.5,
+      "lowering_seconds": 0.1851436629995078,
+      "compilation_seconds": 0.4192675039994356,
+      "first_execution_seconds": 0.03244862599967746,
+      "warmed_seconds": [
+        0.020910984999318316,
+        0.01710412499960512,
+        0.016912965000301483,
+        0.01688684300006571,
+        0.01688314100010757,
+        0.01703372300016781,
+        0.017043989999365294,
+        0.016998451999825193,
+        0.016965906000223185
+      ],
+      "warmed_median_seconds": 0.016998451999825193,
+      "seconds_per_step": 0.00010624032499890745,
+      "seconds_per_cell_step": 1.660005078107929e-06,
+      "seconds_per_interface_stage": 5.533350260359763e-07,
+      "executable_temporary_bytes": 89680,
+      "executable_output_bytes": 512,
+      "process_lifetime_peak_rss_kib": 369204,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.05897816722276175,
+      "l1": 0.01965789468972798,
+      "l2": 0.05897816722276175,
+      "linf": 0.2533002004677525,
+      "component_l1": [
+        0.01965789468972798
+      ],
+      "component_l2": [
+        0.05897816722276175
+      ],
+      "component_linf": [
+        0.2533002004677525
+      ]
+    },
+    {
+      "case": "timing-advection",
+      "physics": "scalar",
+      "cells": 64,
+      "method": "gated-hard",
+      "strength": 0.25,
+      "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+      "steps": 160,
+      "final_time": 0.5,
+      "lowering_seconds": 0.15786362399921927,
+      "compilation_seconds": 0.3830782929999259,
+      "first_execution_seconds": 0.03161588799957826,
+      "warmed_seconds": [
+        0.01695305399971403,
+        0.016899346000172955,
+        0.016988395000225864,
+        0.017983937000281003,
+        0.017223836000084702,
+        0.017376372000398987,
+        0.017289207999965583,
+        0.016949980999925174,
+        0.017042313999809267
+      ],
+      "warmed_median_seconds": 0.017042313999809267,
+      "seconds_per_step": 0.00010651446249880792,
+      "seconds_per_cell_step": 1.6642884765438737e-06,
+      "seconds_per_interface_stage": 5.547628255146246e-07,
+      "executable_temporary_bytes": 89680,
+      "executable_output_bytes": 512,
+      "process_lifetime_peak_rss_kib": 377012,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.05763630125708412,
+      "l1": 0.02077139840303675,
+      "l2": 0.05763630125708412,
+      "linf": 0.2575826870859414,
+      "component_l1": [
+        0.02077139840303675
+      ],
+      "component_l2": [
+        0.05763630125708412
+      ],
+      "component_linf": [
+        0.2575826870859414
+      ]
+    },
+    {
+      "case": "timing-advection",
+      "physics": "scalar",
+      "cells": 64,
+      "method": "neural-soft",
+      "strength": 1.0,
+      "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+      "steps": 160,
+      "final_time": 0.5,
+      "lowering_seconds": 0.07701339899995219,
+      "compilation_seconds": 0.23400433300048462,
+      "first_execution_seconds": 0.029807304000314616,
+      "warmed_seconds": [
+        0.014799864999986312,
+        0.01483925599950453,
+        0.015109898000446265,
+        0.014984878999712237,
+        0.015296238999326306,
+        0.0151680769995437,
+        0.015129454999623704,
+        0.014923067999916384,
+        0.01523254200037627
+      ],
+      "warmed_median_seconds": 0.015109898000446265,
+      "seconds_per_step": 9.443686250278915e-05,
+      "seconds_per_cell_step": 1.4755759766060804e-06,
+      "seconds_per_interface_stage": 4.918586588686934e-07,
+      "executable_temporary_bytes": 86608,
+      "executable_output_bytes": 512,
+      "process_lifetime_peak_rss_kib": 379572,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.07463409521890402,
+      "l1": 0.03679451985828347,
+      "l2": 0.07463409521890402,
+      "linf": 0.2722947038542137,
+      "component_l1": [
+        0.03679451985828347
+      ],
+      "component_l2": [
+        0.07463409521890402
+      ],
+      "component_linf": [
+        0.2722947038542137
+      ]
+    },
+    {
+      "case": "timing-advection",
+      "physics": "scalar",
+      "cells": 128,
+      "method": "teno5",
+      "strength": 0.0,
+      "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+      "steps": 319,
+      "final_time": 0.5,
+      "lowering_seconds": 0.14564913400045043,
+      "compilation_seconds": 0.20611191499938286,
+      "first_execution_seconds": 0.00805610799943679,
+      "warmed_seconds": [
+        0.007639772999937122,
+        0.0076025469998057815,
+        0.007735457999842765,
+        0.007719883000390837,
+        0.0076904090001335135,
+        0.0076987209995422745,
+        0.007673088999581523,
+        0.007679375000407163,
+        0.007654649999494723
+      ],
+      "warmed_median_seconds": 0.007679375000407163,
+      "seconds_per_step": 2.407327586334534e-05,
+      "seconds_per_cell_step": 1.8807246768238546e-07,
+      "seconds_per_interface_stage": 6.269082256079515e-08,
+      "executable_temporary_bytes": 19536,
+      "executable_output_bytes": 1024,
+      "process_lifetime_peak_rss_kib": 381160,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.06617464287668837,
+      "l1": 0.016532016319378985,
+      "l2": 0.06617464287668837,
+      "linf": 0.39035049260910915,
+      "component_l1": [
+        0.016532016319378985
+      ],
+      "component_l2": [
+        0.06617464287668837
+      ],
+      "component_linf": [
+        0.39035049260910915
+      ]
+    },
+    {
+      "case": "timing-advection",
+      "physics": "scalar",
+      "cells": 128,
+      "method": "gated-soft",
+      "strength": 0.25,
+      "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+      "steps": 319,
+      "final_time": 0.5,
+      "lowering_seconds": 0.16675379299977067,
+      "compilation_seconds": 0.37617081200005487,
+      "first_execution_seconds": 0.07464390499990259,
+      "warmed_seconds": [
+        0.06107076300031622,
+        0.060949446000449825,
+        0.06049644399990939,
+        0.05962284799988993,
+        0.05995634800001426,
+        0.05920630400032678,
+        0.059199809999881836,
+        0.05923843199980183,
+        0.060300183999970614
+      ],
+      "warmed_median_seconds": 0.05995634800001426,
+      "seconds_per_step": 0.0001879509341693237,
+      "seconds_per_cell_step": 1.4683666731978414e-06,
+      "seconds_per_interface_stage": 4.894555577326138e-07,
+      "executable_temporary_bytes": 179280,
+      "executable_output_bytes": 1024,
+      "process_lifetime_peak_rss_kib": 383848,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.06276707980911755,
+      "l1": 0.01588733069783347,
+      "l2": 0.06276707980911755,
+      "linf": 0.3647928119656171,
+      "component_l1": [
+        0.01588733069783347
+      ],
+      "component_l2": [
+        0.06276707980911755
+      ],
+      "component_linf": [
+        0.3647928119656171
+      ]
+    },
+    {
+      "case": "timing-advection",
+      "physics": "scalar",
+      "cells": 128,
+      "method": "gated-hard",
+      "strength": 0.25,
+      "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+      "steps": 319,
+      "final_time": 0.5,
+      "lowering_seconds": 0.1592092130003948,
+      "compilation_seconds": 0.39903299500019784,
+      "first_execution_seconds": 0.07614895000006072,
+      "warmed_seconds": [
+        0.05938824500026385,
+        0.05930757599981007,
+        0.06047444199975871,
+        0.06031052100024681,
+        0.059929457000180264,
+        0.05988699199951952,
+        0.060155608000059146,
+        0.05977468500077521,
+        0.05914037099955749
+      ],
+      "warmed_median_seconds": 0.05988699199951952,
+      "seconds_per_step": 0.00018773351723987312,
+      "seconds_per_cell_step": 1.4666681034365088e-06,
+      "seconds_per_interface_stage": 4.888893678121696e-07,
+      "executable_temporary_bytes": 179280,
+      "executable_output_bytes": 1024,
+      "process_lifetime_peak_rss_kib": 387432,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.062222217848463574,
+      "l1": 0.01709989457486388,
+      "l2": 0.062222217848463574,
+      "linf": 0.3625139265464952,
+      "component_l1": [
+        0.01709989457486388
+      ],
+      "component_l2": [
+        0.062222217848463574
+      ],
+      "component_linf": [
+        0.3625139265464952
+      ]
+    },
+    {
+      "case": "timing-advection",
+      "physics": "scalar",
+      "cells": 128,
+      "method": "neural-soft",
+      "strength": 1.0,
+      "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+      "steps": 319,
+      "final_time": 0.5,
+      "lowering_seconds": 0.07644312800039188,
+      "compilation_seconds": 0.22973768599968025,
+      "first_execution_seconds": 0.06580192399997031,
+      "warmed_seconds": [
+        0.050452673999643594,
+        0.05060674800006382,
+        0.05117513000004692,
+        0.050196979000247666,
+        0.050574062000123376,
+        0.05013698399943678,
+        0.05066590499973245,
+        0.050256555000487424,
+        0.050470204000703234
+      ],
+      "warmed_median_seconds": 0.050470204000703234,
+      "seconds_per_step": 0.00015821380564483772,
+      "seconds_per_cell_step": 1.2360453566002947e-06,
+      "seconds_per_interface_stage": 4.120151188667649e-07,
+      "executable_temporary_bytes": 173136,
+      "executable_output_bytes": 1024,
+      "process_lifetime_peak_rss_kib": 390504,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.07850374968773442,
+      "l1": 0.02708277708724882,
+      "l2": 0.07850374968773442,
+      "linf": 0.5172529512928646,
+      "component_l1": [
+        0.02708277708724882
+      ],
+      "component_l2": [
+        0.07850374968773442
+      ],
+      "component_linf": [
+        0.5172529512928646
+      ]
+    },
+    {
+      "case": "timing-advection",
+      "physics": "scalar",
+      "cells": 256,
+      "method": "teno5",
+      "strength": 0.0,
+      "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+      "steps": 638,
+      "final_time": 0.5,
+      "lowering_seconds": 0.09216854999976931,
+      "compilation_seconds": 0.2144643530000394,
+      "first_execution_seconds": 0.029616351000186114,
+      "warmed_seconds": [
+        0.0293212639999183,
+        0.02878284500002337,
+        0.02888048600016191,
+        0.029047550000541378,
+        0.02880344899949705,
+        0.02878654699998151,
+        0.02892979500029469,
+        0.02934026200000517,
+        0.02915678499994101
+      ],
+      "warmed_median_seconds": 0.02892979500029469,
+      "seconds_per_step": 4.5344506270054374e-05,
+      "seconds_per_cell_step": 1.771269776173999e-07,
+      "seconds_per_interface_stage": 5.9042325872466635e-08,
+      "executable_temporary_bytes": 38992,
+      "executable_output_bytes": 2048,
+      "process_lifetime_peak_rss_kib": 391272,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.044174978482341046,
+      "l1": 0.008132340867869976,
+      "l2": 0.044174978482341046,
+      "linf": 0.37634557347753184,
+      "component_l1": [
+        0.008132340867869976
+      ],
+      "component_l2": [
+        0.044174978482341046
+      ],
+      "component_linf": [
+        0.37634557347753184
+      ]
+    },
+    {
+      "case": "timing-advection",
+      "physics": "scalar",
+      "cells": 256,
+      "method": "gated-soft",
+      "strength": 0.25,
+      "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+      "steps": 638,
+      "final_time": 0.5,
+      "lowering_seconds": 0.1744504099997357,
+      "compilation_seconds": 0.37575962699975207,
+      "first_execution_seconds": 0.24113081399991643,
+      "warmed_seconds": [
+        0.22368844199991145,
+        0.22208840900020732,
+        0.22317439499965985,
+        0.22687488300016412,
+        0.22757834200001525,
+        0.22763226100050815,
+        0.22514137999951345,
+        0.22787105099996552,
+        0.22598654800003715
+      ],
+      "warmed_median_seconds": 0.22598654800003715,
+      "seconds_per_step": 0.00035421089028218986,
+      "seconds_per_cell_step": 1.3836362901648041e-06,
+      "seconds_per_interface_stage": 4.6121209672160136e-07,
+      "executable_temporary_bytes": 358480,
+      "executable_output_bytes": 2048,
+      "process_lifetime_peak_rss_kib": 392424,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.04128008723523511,
+      "l1": 0.008192795846140515,
+      "l2": 0.04128008723523511,
+      "linf": 0.326911543791064,
+      "component_l1": [
+        0.008192795846140515
+      ],
+      "component_l2": [
+        0.04128008723523511
+      ],
+      "component_linf": [
+        0.326911543791064
+      ]
+    },
+    {
+      "case": "timing-advection",
+      "physics": "scalar",
+      "cells": 256,
+      "method": "gated-hard",
+      "strength": 0.25,
+      "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+      "steps": 638,
+      "final_time": 0.5,
+      "lowering_seconds": 0.21014092600034928,
+      "compilation_seconds": 0.400421584000469,
+      "first_execution_seconds": 0.2424210140006835,
+      "warmed_seconds": [
+        0.22405818099923636,
+        0.21955568399971526,
+        0.21963914599928103,
+        0.2233392839998487,
+        0.22269714800040674,
+        0.2205283840003176,
+        0.22152755800016166,
+        0.2656302430004871,
+        0.29678928200064547
+      ],
+      "warmed_median_seconds": 0.22269714800040674,
+      "seconds_per_step": 0.00034905509090972845,
+      "seconds_per_cell_step": 1.3634964488661267e-06,
+      "seconds_per_interface_stage": 4.544988162887089e-07,
+      "executable_temporary_bytes": 358480,
+      "executable_output_bytes": 2048,
+      "process_lifetime_peak_rss_kib": 392808,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.04465786606348671,
+      "l1": 0.009779646936241481,
+      "l2": 0.04465786606348671,
+      "linf": 0.36361191858690045,
+      "component_l1": [
+        0.009779646936241481
+      ],
+      "component_l2": [
+        0.04465786606348671
+      ],
+      "component_linf": [
+        0.36361191858690045
+      ]
+    },
+    {
+      "case": "timing-advection",
+      "physics": "scalar",
+      "cells": 256,
+      "method": "neural-soft",
+      "strength": 1.0,
+      "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+      "steps": 638,
+      "final_time": 0.5,
+      "lowering_seconds": 0.10141910300080781,
+      "compilation_seconds": 0.3074092530005146,
+      "first_execution_seconds": 0.2738798099999258,
+      "warmed_seconds": [
+        0.2465800819991273,
+        0.251741127999594,
+        0.24723025000002963,
+        0.24784779900073772,
+        0.24493534700013697,
+        0.2506872630001453,
+        0.2498974090003685,
+        0.2484981740008152,
+        0.2527319129994794
+      ],
+      "warmed_median_seconds": 0.2484981740008152,
+      "seconds_per_step": 0.0003894955705341931,
+      "seconds_per_cell_step": 1.5214670723991917e-06,
+      "seconds_per_interface_stage": 5.071556907997306e-07,
+      "executable_temporary_bytes": 346192,
+      "executable_output_bytes": 2048,
+      "process_lifetime_peak_rss_kib": 393320,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.062481576407825486,
+      "l1": 0.018274137084812847,
+      "l2": 0.062481576407825486,
+      "linf": 0.522232042824093,
+      "component_l1": [
+        0.018274137084812847
+      ],
+      "component_l2": [
+        0.062481576407825486
+      ],
+      "component_linf": [
+        0.522232042824093
+      ]
+    },
+    {
+      "case": "timing-advection",
+      "physics": "scalar",
+      "cells": 512,
+      "method": "teno5",
+      "strength": 0.0,
+      "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+      "steps": 1275,
+      "final_time": 0.5,
+      "lowering_seconds": 0.12091436399987288,
+      "compilation_seconds": 0.2707917649995579,
+      "first_execution_seconds": 0.14901211599953967,
+      "warmed_seconds": [
+        0.14752697400035686,
+        0.13633652499993332,
+        0.11257839600057196,
+        0.1111816769998768,
+        0.11105149000013625,
+        0.1112181349999446,
+        0.11069857300026342,
+        0.11148877599953266,
+        0.11175627400007215
+      ],
+      "warmed_median_seconds": 0.11148877599953266,
+      "seconds_per_step": 8.744217725453542e-05,
+      "seconds_per_cell_step": 1.707855024502645e-07,
+      "seconds_per_interface_stage": 5.6928500816754834e-08,
+      "executable_temporary_bytes": 77904,
+      "executable_output_bytes": 4096,
+      "process_lifetime_peak_rss_kib": 393320,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.03500574891116344,
+      "l1": 0.004625690018525806,
+      "l2": 0.03500574891116344,
+      "linf": 0.41136355828801807,
+      "component_l1": [
+        0.004625690018525806
+      ],
+      "component_l2": [
+        0.03500574891116344
+      ],
+      "component_linf": [
+        0.41136355828801807
+      ]
+    },
+    {
+      "case": "timing-advection",
+      "physics": "scalar",
+      "cells": 512,
+      "method": "gated-soft",
+      "strength": 0.25,
+      "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+      "steps": 1275,
+      "final_time": 0.5,
+      "lowering_seconds": 0.17148094100048183,
+      "compilation_seconds": 0.3836422599997604,
+      "first_execution_seconds": 0.950533293999797,
+      "warmed_seconds": [
+        0.9427309150005385,
+        0.9343066560004445,
+        1.235178840000117,
+        1.2072165660001701,
+        1.1989661380002872,
+        1.218963829999666,
+        1.227274424000825,
+        1.2322285740001462,
+        1.213350076000097
+      ],
+      "warmed_median_seconds": 1.213350076000097,
+      "seconds_per_step": 0.0009516471184314487,
+      "seconds_per_cell_step": 1.8586857781864232e-06,
+      "seconds_per_interface_stage": 6.195619260621411e-07,
+      "executable_temporary_bytes": 716880,
+      "executable_output_bytes": 4096,
+      "process_lifetime_peak_rss_kib": 395752,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.033427590243970025,
+      "l1": 0.004991210259264756,
+      "l2": 0.033427590243970025,
+      "linf": 0.4343508657229973,
+      "component_l1": [
+        0.004991210259264756
+      ],
+      "component_l2": [
+        0.033427590243970025
+      ],
+      "component_linf": [
+        0.4343508657229973
+      ]
+    },
+    {
+      "case": "timing-advection",
+      "physics": "scalar",
+      "cells": 512,
+      "method": "gated-hard",
+      "strength": 0.25,
+      "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+      "steps": 1275,
+      "final_time": 0.5,
+      "lowering_seconds": 0.22541929300041375,
+      "compilation_seconds": 0.5113402460001453,
+      "first_execution_seconds": 1.2445567100003245,
+      "warmed_seconds": [
+        1.204087172999607,
+        1.2047260069994081,
+        1.2089595190000182,
+        1.2101792369994655,
+        1.2021143849997316,
+        1.2052873989996442,
+        1.199335366000014,
+        1.2156077039999218,
+        1.1934974380001222
+      ],
+      "warmed_median_seconds": 1.2047260069994081,
+      "seconds_per_step": 0.0009448831427446338,
+      "seconds_per_cell_step": 1.845474888173113e-06,
+      "seconds_per_interface_stage": 6.151582960577043e-07,
+      "executable_temporary_bytes": 716880,
+      "executable_output_bytes": 4096,
+      "process_lifetime_peak_rss_kib": 397416,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.04019319354125693,
+      "l1": 0.006615729263629626,
+      "l2": 0.04019319354125693,
+      "linf": 0.5053227618923579,
+      "component_l1": [
+        0.006615729263629626
+      ],
+      "component_l2": [
+        0.04019319354125693
+      ],
+      "component_linf": [
+        0.5053227618923579
+      ]
+    },
+    {
+      "case": "timing-advection",
+      "physics": "scalar",
+      "cells": 512,
+      "method": "neural-soft",
+      "strength": 1.0,
+      "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+      "steps": 1275,
+      "final_time": 0.5,
+      "lowering_seconds": 0.16065921200060984,
+      "compilation_seconds": 0.29058040700056154,
+      "first_execution_seconds": 1.033872576000249,
+      "warmed_seconds": [
+        1.0151797309999893,
+        1.0074979729997722,
+        1.0173477689995707,
+        1.0361576440000135,
+        1.009019881000313,
+        1.0212286920004772,
+        1.0218590109998331,
+        1.0017081959995267,
+        1.0328259299994897
+      ],
+      "warmed_median_seconds": 1.0173477689995707,
+      "seconds_per_step": 0.0007979198188231928,
+      "seconds_per_cell_step": 1.5584371461390483e-06,
+      "seconds_per_interface_stage": 5.194790487130161e-07,
+      "executable_temporary_bytes": 692304,
+      "executable_output_bytes": 4096,
+      "process_lifetime_peak_rss_kib": 399464,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.059421010464789516,
+      "l1": 0.015139819572654147,
+      "l2": 0.059421010464789516,
+      "linf": 0.50663395552264,
+      "component_l1": [
+        0.015139819572654147
+      ],
+      "component_l2": [
+        0.059421010464789516
+      ],
+      "component_linf": [
+        0.50663395552264
+      ]
+    },
+    {
+      "case": "timing-sod",
+      "physics": "euler",
+      "cells": 64,
+      "method": "teno5",
+      "strength": 0.0,
+      "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+      "steps": 78,
+      "final_time": 0.17,
+      "lowering_seconds": 0.2523023939993436,
+      "compilation_seconds": 0.707159880999825,
+      "first_execution_seconds": 0.019668326000100933,
+      "warmed_seconds": [
+        0.019867517999955453,
+        0.02001397900039592,
+        0.02017091600009735,
+        0.01877943499948742,
+        0.018637375000253087,
+        0.01928607500030921,
+        0.020408381999914127,
+        0.019223216999307624,
+        0.020565877000080945
+      ],
+      "warmed_median_seconds": 0.019867517999955453,
+      "seconds_per_step": 0.0002547117692301981,
+      "seconds_per_cell_step": 3.9798713942218455e-06,
+      "seconds_per_interface_stage": 1.3062142011805032e-06,
+      "executable_temporary_bytes": 57696,
+      "executable_output_bytes": 1536,
+      "process_lifetime_peak_rss_kib": 422372,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.00897385038497805,
+      "l1": 0.00897385038497805,
+      "l2": 0.02043615171418246,
+      "linf": 0.12383924122543633,
+      "component_l1": [
+        0.006732063314464667,
+        0.005614639156461639,
+        0.014574848684007841
+      ],
+      "component_l2": [
+        0.013291937954094302,
+        0.012699118106326592,
+        0.03024839955107251
+      ],
+      "component_linf": [
+        0.06428730291514773,
+        0.059330159754965306,
+        0.12383924122543633
+      ]
+    },
+    {
+      "case": "timing-sod",
+      "physics": "euler",
+      "cells": 64,
+      "method": "gated-soft",
+      "strength": 0.25,
+      "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+      "steps": 78,
+      "final_time": 0.17,
+      "lowering_seconds": 0.31275695800013636,
+      "compilation_seconds": 0.8159147289998145,
+      "first_execution_seconds": 0.0530860680000842,
+      "warmed_seconds": [
+        0.03583249199982674,
+        0.036858694000329706,
+        0.03566521799984912,
+        0.036320204999356065,
+        0.03751004900004773,
+        0.03588564200072142,
+        0.037442021999595454,
+        0.03546001999984583,
+        0.03798009300044214
+      ],
+      "warmed_median_seconds": 0.036320204999356065,
+      "seconds_per_step": 0.0004656436538378983,
+      "seconds_per_cell_step": 7.275682091217161e-06,
+      "seconds_per_interface_stage": 2.3879161735276835e-06,
+      "executable_temporary_bytes": 356448,
+      "executable_output_bytes": 1536,
+      "process_lifetime_peak_rss_kib": 442084,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.008429340376745647,
+      "l1": 0.008429340376745647,
+      "l2": 0.019511118853952857,
+      "linf": 0.11965856679488063,
+      "component_l1": [
+        0.006378615082348026,
+        0.0052459159876548965,
+        0.013663490060234014
+      ],
+      "component_l2": [
+        0.012765116971632485,
+        0.012119333378174259,
+        0.028848307124828592
+      ],
+      "component_linf": [
+        0.06165659498755022,
+        0.05686854182485618,
+        0.11965856679488063
+      ]
+    },
+    {
+      "case": "timing-sod",
+      "physics": "euler",
+      "cells": 64,
+      "method": "gated-hard",
+      "strength": 0.25,
+      "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+      "steps": 78,
+      "final_time": 0.17,
+      "lowering_seconds": 0.2338603639991561,
+      "compilation_seconds": 0.8525031139997736,
+      "first_execution_seconds": 0.054451286999210424,
+      "warmed_seconds": [
+        0.036431465000532626,
+        0.03747380099957809,
+        0.0366188530006184,
+        0.035754687000007834,
+        0.03772684199975629,
+        0.035688893999576976,
+        0.03479546300059155,
+        0.036364554000101634,
+        0.035421325999777764
+      ],
+      "warmed_median_seconds": 0.036364554000101634,
+      "seconds_per_step": 0.0004662122307705338,
+      "seconds_per_cell_step": 7.28456610578959e-06,
+      "seconds_per_interface_stage": 2.390831952669404e-06,
+      "executable_temporary_bytes": 356448,
+      "executable_output_bytes": 1536,
+      "process_lifetime_peak_rss_kib": 450532,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.009564930727078744,
+      "l1": 0.009564930727078744,
+      "l2": 0.019988118726111347,
+      "linf": 0.11677324524224586,
+      "component_l1": [
+        0.007127256732707272,
+        0.005977400278058186,
+        0.015590135170470774
+      ],
+      "component_l2": [
+        0.012925090072813445,
+        0.01242860440191542,
+        0.029614971042662138
+      ],
+      "component_linf": [
+        0.0626429341401955,
+        0.058077007203386155,
+        0.11677324524224586
+      ]
+    },
+    {
+      "case": "timing-sod",
+      "physics": "euler",
+      "cells": 64,
+      "method": "neural-soft",
+      "strength": 1.0,
+      "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+      "steps": 78,
+      "final_time": 0.17,
+      "lowering_seconds": 0.21134013699975185,
+      "compilation_seconds": 0.5940210200005822,
+      "first_execution_seconds": 0.04766052899958595,
+      "warmed_seconds": [
+        0.03060279300007096,
+        0.030665371999930358,
+        0.03127335399949516,
+        0.03072082699964085,
+        0.029507934999855934,
+        0.030766503999984707,
+        0.029665431000466924,
+        0.029307834999599436,
+        0.02921221999986301
+      ],
+      "warmed_median_seconds": 0.03060279300007096,
+      "seconds_per_step": 0.00039234350000090973,
+      "seconds_per_cell_step": 6.1303671875142145e-06,
+      "seconds_per_interface_stage": 2.0120179487226142e-06,
+      "executable_temporary_bytes": 335776,
+      "executable_output_bytes": 1536,
+      "process_lifetime_peak_rss_kib": 451300,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.011305093551780306,
+      "l1": 0.011305093551780306,
+      "l2": 0.02140393399638731,
+      "linf": 0.13362438309881552,
+      "component_l1": [
+        0.007437139432842711,
+        0.007103347950487019,
+        0.019374793272011186
+      ],
+      "component_l2": [
+        0.01203733056622703,
+        0.0131978474536104,
+        0.03248545315977167
+      ],
+      "component_linf": [
+        0.049707457387137444,
+        0.051885499724045575,
+        0.13362438309881552
+      ]
+    },
+    {
+      "case": "timing-sod",
+      "physics": "euler",
+      "cells": 128,
+      "method": "teno5",
+      "strength": 0.0,
+      "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+      "steps": 155,
+      "final_time": 0.17,
+      "lowering_seconds": 0.19805601099960768,
+      "compilation_seconds": 0.5864862829994308,
+      "first_execution_seconds": 0.05558637199919758,
+      "warmed_seconds": [
+        0.05468979899978876,
+        0.05532571799994912,
+        0.054983348999485315,
+        0.0523158380001405,
+        0.05482739000035508,
+        0.055236109999896144,
+        0.05522325899983116,
+        0.05322114199952921,
+        0.054015396000067994
+      ],
+      "warmed_median_seconds": 0.05482739000035508,
+      "seconds_per_step": 0.0003537250967764844,
+      "seconds_per_cell_step": 2.7634773185662843e-06,
+      "seconds_per_interface_stage": 9.140183379237323e-07,
+      "executable_temporary_bytes": 114784,
+      "executable_output_bytes": 3072,
+      "process_lifetime_peak_rss_kib": 453604,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.004167800554836873,
+      "l1": 0.004167800554836873,
+      "l2": 0.011118686201350814,
+      "linf": 0.08752716240918312,
+      "component_l1": [
+        0.003165760537256361,
+        0.002577476301878992,
+        0.006760164825375262
+      ],
+      "component_l2": [
+        0.00775807112395214,
+        0.007397607973960604,
+        0.015998852372330383
+      ],
+      "component_linf": [
+        0.05778796449314377,
+        0.0535509820511208,
+        0.08752716240918312
+      ]
+    },
+    {
+      "case": "timing-sod",
+      "physics": "euler",
+      "cells": 128,
+      "method": "gated-soft",
+      "strength": 0.25,
+      "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+      "steps": 155,
+      "final_time": 0.17,
+      "lowering_seconds": 0.24320323600022675,
+      "compilation_seconds": 0.8258392789994105,
+      "first_execution_seconds": 0.1571860240001115,
+      "warmed_seconds": [
+        0.13887928700023622,
+        0.13768637100019987,
+        0.1400286230000347,
+        0.14181778900001518,
+        0.13978654699985782,
+        0.13778435899985197,
+        0.13978675499947713,
+        0.13790909700037446,
+        0.13934464900012244
+      ],
+      "warmed_median_seconds": 0.13934464900012244,
+      "seconds_per_step": 0.0008989977354846609,
+      "seconds_per_cell_step": 7.0234198084739135e-06,
+      "seconds_per_interface_stage": 2.3229915645598476e-06,
+      "executable_temporary_bytes": 712288,
+      "executable_output_bytes": 3072,
+      "process_lifetime_peak_rss_kib": 456932,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.003851545550803883,
+      "l1": 0.003851545550803883,
+      "l2": 0.010336380996202117,
+      "linf": 0.08090239114165998,
+      "component_l1": [
+        0.0029709501802023123,
+        0.0023379912767888845,
+        0.006245695195420451
+      ],
+      "component_l2": [
+        0.007433886275916112,
+        0.0068819495627815246,
+        0.014761382772220968
+      ],
+      "component_linf": [
+        0.05660312477416218,
+        0.052351524631790214,
+        0.08090239114165998
+      ]
+    },
+    {
+      "case": "timing-sod",
+      "physics": "euler",
+      "cells": 128,
+      "method": "gated-hard",
+      "strength": 0.25,
+      "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+      "steps": 155,
+      "final_time": 0.17,
+      "lowering_seconds": 0.3054721709995647,
+      "compilation_seconds": 0.8433034729996507,
+      "first_execution_seconds": 0.15896415099996375,
+      "warmed_seconds": [
+        0.13887195000006614,
+        0.14001059899965185,
+        0.13818692900076712,
+        0.13824378099980095,
+        0.13834728799974982,
+        0.13839652799924806,
+        0.13910291899992444,
+        0.14184655899953214,
+        0.13779720600086875
+      ],
+      "warmed_median_seconds": 0.13839652799924806,
+      "seconds_per_step": 0.0008928808258016004,
+      "seconds_per_cell_step": 6.975631451575003e-06,
+      "seconds_per_interface_stage": 2.307185596386564e-06,
+      "executable_temporary_bytes": 712288,
+      "executable_output_bytes": 3072,
+      "process_lifetime_peak_rss_kib": 459236,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.0045927443451049,
+      "l1": 0.0045927443451049,
+      "l2": 0.010815253264023088,
+      "linf": 0.07312059225534817,
+      "component_l1": [
+        0.003537752411449725,
+        0.0028458984640178744,
+        0.007394582159847099
+      ],
+      "component_l2": [
+        0.007655865773616331,
+        0.007169730456862869,
+        0.015520689222041306
+      ],
+      "component_linf": [
+        0.055776514876657635,
+        0.05171268480172647,
+        0.07312059225534817
+      ]
+    },
+    {
+      "case": "timing-sod",
+      "physics": "euler",
+      "cells": 128,
+      "method": "neural-soft",
+      "strength": 1.0,
+      "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+      "steps": 155,
+      "final_time": 0.17,
+      "lowering_seconds": 0.15025648200025898,
+      "compilation_seconds": 0.59212332900006,
+      "first_execution_seconds": 0.1337706900003468,
+      "warmed_seconds": [
+        0.12112430300021515,
+        0.11662676900050428,
+        0.1147251550000874,
+        0.11508338000021467,
+        0.11455781199947523,
+        0.11604672299927188,
+        0.11617418700006965,
+        0.11921298099969135,
+        0.11321508099990751
+      ],
+      "warmed_median_seconds": 0.11604672299927188,
+      "seconds_per_step": 0.0007486885354791734,
+      "seconds_per_cell_step": 5.8491291834310425e-06,
+      "seconds_per_interface_stage": 1.934595698912593e-06,
+      "executable_temporary_bytes": 670880,
+      "executable_output_bytes": 3072,
+      "process_lifetime_peak_rss_kib": 459236,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.005364911336819385,
+      "l1": 0.005364911336819385,
+      "l2": 0.01316532288658416,
+      "linf": 0.1351631310541166,
+      "component_l1": [
+        0.0035525127754931,
+        0.0035401788792231628,
+        0.009002042355741893
+      ],
+      "component_l2": [
+        0.007164261112693542,
+        0.008606167455251203,
+        0.019864149228330224
+      ],
+      "component_linf": [
+        0.04970209747690468,
+        0.05273236334720213,
+        0.1351631310541166
+      ]
+    },
+    {
+      "case": "timing-sod",
+      "physics": "euler",
+      "cells": 256,
+      "method": "teno5",
+      "strength": 0.0,
+      "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+      "steps": 309,
+      "final_time": 0.17,
+      "lowering_seconds": 0.19605219599998236,
+      "compilation_seconds": 0.6136780929991801,
+      "first_execution_seconds": 0.21333586899982038,
+      "warmed_seconds": [
+        0.2067001639998125,
+        0.21323173299970222,
+        0.21405336599946168,
+        0.21130686000014975,
+        0.20906350599943835,
+        0.20931061000010232,
+        0.2079912070003047,
+        0.20874844399986614,
+        0.21006288599983236
+      ],
+      "warmed_median_seconds": 0.20931061000010232,
+      "seconds_per_step": 0.0006773806148870625,
+      "seconds_per_cell_step": 2.646018026902588e-06,
+      "seconds_per_interface_stage": 8.785740789715466e-07,
+      "executable_temporary_bytes": 228960,
+      "executable_output_bytes": 6144,
+      "process_lifetime_peak_rss_kib": 459360,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.002004398853467994,
+      "l1": 0.002004398853467994,
+      "l2": 0.0062982030421864735,
+      "linf": 0.0510168654168246,
+      "component_l1": [
+        0.001640058570959496,
+        0.001315894668750491,
+        0.0030572433206939947
+      ],
+      "component_l2": [
+        0.0052184965972958824,
+        0.00494110911920185,
+        0.008206998149017245
+      ],
+      "component_linf": [
+        0.04679178029508263,
+        0.0435029497394262,
+        0.0510168654168246
+      ]
+    },
+    {
+      "case": "timing-sod",
+      "physics": "euler",
+      "cells": 256,
+      "method": "gated-soft",
+      "strength": 0.25,
+      "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+      "steps": 309,
+      "final_time": 0.17,
+      "lowering_seconds": 0.23924395099948015,
+      "compilation_seconds": 0.8303751919993374,
+      "first_execution_seconds": 0.6135655480002242,
+      "warmed_seconds": [
+        0.6048391579997769,
+        0.5988241449995257,
+        0.6034056950002196,
+        0.5935725780000212,
+        0.5997833549999996,
+        0.6189815569996426,
+        0.7679619159998765,
+        0.7702904020006827,
+        0.7691590790000191
+      ],
+      "warmed_median_seconds": 0.6048391579997769,
+      "seconds_per_step": 0.00195740827831643,
+      "seconds_per_cell_step": 7.646126087173555e-06,
+      "seconds_per_interface_stage": 2.5387915412664464e-06,
+      "executable_temporary_bytes": 1423968,
+      "executable_output_bytes": 6144,
+      "process_lifetime_peak_rss_kib": 459872,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.0018581824461690241,
+      "l1": 0.0018581824461690241,
+      "l2": 0.0056383417249329885,
+      "linf": 0.04505491033625547,
+      "component_l1": [
+        0.001554503020253895,
+        0.0012342306502783728,
+        0.0027858136679748046
+      ],
+      "component_l2": [
+        0.004929234030262228,
+        0.004581679239392438,
+        0.0070769738902716085
+      ],
+      "component_linf": [
+        0.04505491033625547,
+        0.041798836522503824,
+        0.0446420970344259
+      ]
+    },
+    {
+      "case": "timing-sod",
+      "physics": "euler",
+      "cells": 256,
+      "method": "gated-hard",
+      "strength": 0.25,
+      "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+      "steps": 309,
+      "final_time": 0.17,
+      "lowering_seconds": 0.37787377899985586,
+      "compilation_seconds": 1.0529682140004297,
+      "first_execution_seconds": 0.6976844890004941,
+      "warmed_seconds": [
+        0.6008035779996135,
+        0.5949745560001247,
+        0.597010821999902,
+        0.604214132999914,
+        0.6035587260003012,
+        0.5918149850003829,
+        0.689570733000437,
+        0.7729288540003836,
+        0.7663086479997219
+      ],
+      "warmed_median_seconds": 0.6035587260003012,
+      "seconds_per_step": 0.001953264485437868,
+      "seconds_per_cell_step": 7.629939396241672e-06,
+      "seconds_per_interface_stage": 2.5334169720335513e-06,
+      "executable_temporary_bytes": 1423968,
+      "executable_output_bytes": 6144,
+      "process_lifetime_peak_rss_kib": 462304,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.0022519006441385717,
+      "l1": 0.0022519006441385717,
+      "l2": 0.006060311960364718,
+      "linf": 0.05120054983769362,
+      "component_l1": [
+        0.0018455950919373893,
+        0.001548531637338729,
+        0.003361575203139595
+      ],
+      "component_l2": [
+        0.005137364887506883,
+        0.004892599724285411,
+        0.007736413453361492
+      ],
+      "component_linf": [
+        0.04507950033187741,
+        0.041879448767001726,
+        0.05120054983769362
+      ]
+    },
+    {
+      "case": "timing-sod",
+      "physics": "euler",
+      "cells": 256,
+      "method": "neural-soft",
+      "strength": 1.0,
+      "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+      "steps": 309,
+      "final_time": 0.17,
+      "lowering_seconds": 0.18533839199972135,
+      "compilation_seconds": 0.7213123530000303,
+      "first_execution_seconds": 0.665484058000402,
+      "warmed_seconds": [
+        0.6507596349993037,
+        0.6379698580003605,
+        0.6500314419999995,
+        0.6490366660000291,
+        0.6571802700000262,
+        0.6554449499999464,
+        0.6588062749997334,
+        0.6546351099996173,
+        0.6556033390006633
+      ],
+      "warmed_median_seconds": 0.6546351099996173,
+      "seconds_per_step": 0.002118560226535978,
+      "seconds_per_cell_step": 8.275625884906165e-06,
+      "seconds_per_interface_stage": 2.7478083353255233e-06,
+      "executable_temporary_bytes": 1341088,
+      "executable_output_bytes": 6144,
+      "process_lifetime_peak_rss_kib": 462432,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.003019050708589748,
+      "l1": 0.003019050708589748,
+      "l2": 0.009332771944765653,
+      "linf": 0.1017547128539924,
+      "component_l1": [
+        0.002035696313566134,
+        0.002111565124344216,
+        0.004909890687858896
+      ],
+      "component_l2": [
+        0.005321411571097596,
+        0.006531535376736598,
+        0.013795779102045724
+      ],
+      "component_linf": [
+        0.04327331055302225,
+        0.04013783521115816,
+        0.1017547128539924
+      ]
+    },
+    {
+      "case": "timing-sod",
+      "physics": "euler",
+      "cells": 512,
+      "method": "teno5",
+      "strength": 0.0,
+      "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+      "steps": 618,
+      "final_time": 0.17,
+      "lowering_seconds": 0.25800522299959994,
+      "compilation_seconds": 0.7473599810000451,
+      "first_execution_seconds": 1.160783987999821,
+      "warmed_seconds": [
+        1.1452483989996836,
+        1.1335948880005162,
+        1.126101710000512,
+        1.1204833249994408,
+        0.9607044439999299,
+        0.8408499949991892,
+        0.8501263799998924,
+        0.8449213999992935,
+        0.8445607229996313
+      ],
+      "warmed_median_seconds": 0.9607044439999299,
+      "seconds_per_step": 0.0015545379352749674,
+      "seconds_per_cell_step": 3.0362069048339208e-06,
+      "seconds_per_interface_stage": 1.010096124285229e-06,
+      "executable_temporary_bytes": 641632,
+      "executable_output_bytes": 12288,
+      "process_lifetime_peak_rss_kib": 463560,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.0012043025559345226,
+      "l1": 0.0012043025559345226,
+      "l2": 0.005468372377866646,
+      "linf": 0.10593000609484549,
+      "component_l1": [
+        0.0009239164298615714,
+        0.0007685528339743854,
+        0.001920438403967611
+      ],
+      "component_l2": [
+        0.00402754829311172,
+        0.004169357652719108,
+        0.00749030045454855
+      ],
+      "component_linf": [
+        0.0635216900751247,
+        0.05893386343798812,
+        0.10593000609484549
+      ]
+    },
+    {
+      "case": "timing-sod",
+      "physics": "euler",
+      "cells": 512,
+      "method": "gated-soft",
+      "strength": 0.25,
+      "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+      "steps": 618,
+      "final_time": 0.17,
+      "lowering_seconds": 0.24491048699928797,
+      "compilation_seconds": 0.8112481030002527,
+      "first_execution_seconds": 2.4742810719999397,
+      "warmed_seconds": [
+        2.532533455999328,
+        2.548440864999975,
+        2.5280127329997413,
+        2.528724566999699,
+        2.5357425199999852,
+        2.523438717999852,
+        2.5031016659995657,
+        2.425589986999512,
+        2.4407046179994722
+      ],
+      "warmed_median_seconds": 2.5280127329997413,
+      "seconds_per_step": 0.004090635490290843,
+      "seconds_per_cell_step": 7.989522441974303e-06,
+      "seconds_per_interface_stage": 2.6579827747178966e-06,
+      "executable_temporary_bytes": 2957920,
+      "executable_output_bytes": 12288,
+      "process_lifetime_peak_rss_kib": 470932,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.001148529393893743,
+      "l1": 0.001148529393893743,
+      "l2": 0.005191790360898306,
+      "linf": 0.10239840619123686,
+      "component_l1": [
+        0.0008946781750674014,
+        0.0007401696794058378,
+        0.0018107403272079907
+      ],
+      "component_l2": [
+        0.003961451353824738,
+        0.004046481562662848,
+        0.00698548148582898
+      ],
+      "component_linf": [
+        0.0646596873891791,
+        0.059967566223588176,
+        0.10239840619123686
+      ]
+    },
+    {
+      "case": "timing-sod",
+      "physics": "euler",
+      "cells": 512,
+      "method": "gated-hard",
+      "strength": 0.25,
+      "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+      "steps": 618,
+      "final_time": 0.17,
+      "lowering_seconds": 0.28561539400016045,
+      "compilation_seconds": 0.8393122679999578,
+      "first_execution_seconds": 2.4977693500004534,
+      "warmed_seconds": [
+        2.441364753000016,
+        2.453576711000096,
+        2.4488681229995564,
+        2.4517049350006346,
+        2.5012723429999824,
+        2.465062740999201,
+        2.4887343050004347,
+        2.4473256060000494,
+        2.449796793999667
+      ],
+      "warmed_median_seconds": 2.4517049350006346,
+      "seconds_per_step": 0.003967160088997791,
+      "seconds_per_cell_step": 7.74835954882381e-06,
+      "seconds_per_interface_stage": 2.577751844702918e-06,
+      "executable_temporary_bytes": 2957920,
+      "executable_output_bytes": 12288,
+      "process_lifetime_peak_rss_kib": 471828,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.001400710115987587,
+      "l1": 0.001400710115987587,
+      "l2": 0.005845908441869225,
+      "linf": 0.10194233728774038,
+      "component_l1": [
+        0.0011460114856454593,
+        0.0009814805480028795,
+        0.002074638314314422
+      ],
+      "component_l2": [
+        0.004825136132971491,
+        0.0048527018539351995,
+        0.0074627932134865155
+      ],
+      "component_linf": [
+        0.07531634031278134,
+        0.06990486770568144,
+        0.10194233728774038
+      ]
+    },
+    {
+      "case": "timing-sod",
+      "physics": "euler",
+      "cells": 512,
+      "method": "neural-soft",
+      "strength": 1.0,
+      "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+      "steps": 618,
+      "final_time": 0.17,
+      "lowering_seconds": 0.13629306799975893,
+      "compilation_seconds": 0.6068184929999916,
+      "first_execution_seconds": 2.126350681999611,
+      "warmed_seconds": [
+        2.087064738000663,
+        2.162183038999501,
+        2.7129652639996493,
+        2.4579183730002114,
+        2.122567954999795,
+        2.4829546780001692,
+        2.682049910000387,
+        2.20758859200032,
+        2.169835843999863
+      ],
+      "warmed_median_seconds": 2.20758859200032,
+      "seconds_per_step": 0.0035721498252432368,
+      "seconds_per_cell_step": 6.976855127428197e-06,
+      "seconds_per_interface_stage": 2.3210850066557743e-06,
+      "executable_temporary_bytes": 2755232,
+      "executable_output_bytes": 12288,
+      "process_lifetime_peak_rss_kib": 473876,
+      "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+      "primary_error": 0.001594795347385647,
+      "l1": 0.001594795347385647,
+      "l2": 0.006577083057792543,
+      "linf": 0.1526303793701611,
+      "component_l1": [
+        0.001127564076939927,
+        0.0010695227994786053,
+        0.0025872991657384095
+      ],
+      "component_l2": [
+        0.00393849484854008,
+        0.004696772766467132,
+        0.009602221022008455
+      ],
+      "component_linf": [
+        0.05807130902084212,
+        0.059612819462520034,
+        0.1526303793701611
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "physics": "euler",
+      "classical_cells": 64,
+      "same_grid_l1_ratio": 0.9393225889809913,
+      "same_grid_runtime_ratio": 1.8281198989948066,
+      "same_grid_inference_overhead_seconds": 0.016452686999400612,
+      "equal_budget_best": null,
+      "cells_reaching_classical_accuracy": 64,
+      "limitation": "Discrete tested grids and one timed IVP per physics; no extrapolation or speedup guarantee"
+    },
+    {
+      "physics": "euler",
+      "classical_cells": 128,
+      "same_grid_l1_ratio": 0.9241194486463693,
+      "same_grid_runtime_ratio": 2.5415152718234446,
+      "same_grid_inference_overhead_seconds": 0.08451725899976736,
+      "equal_budget_best": {
+        "case": "timing-sod",
+        "physics": "euler",
+        "cells": 64,
+        "method": "gated-soft",
+        "strength": 0.25,
+        "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+        "steps": 78,
+        "final_time": 0.17,
+        "lowering_seconds": 0.31275695800013636,
+        "compilation_seconds": 0.8159147289998145,
+        "first_execution_seconds": 0.0530860680000842,
+        "warmed_seconds": [
+          0.03583249199982674,
+          0.036858694000329706,
+          0.03566521799984912,
+          0.036320204999356065,
+          0.03751004900004773,
+          0.03588564200072142,
+          0.037442021999595454,
+          0.03546001999984583,
+          0.03798009300044214
+        ],
+        "warmed_median_seconds": 0.036320204999356065,
+        "seconds_per_step": 0.0004656436538378983,
+        "seconds_per_cell_step": 7.275682091217161e-06,
+        "seconds_per_interface_stage": 2.3879161735276835e-06,
+        "executable_temporary_bytes": 356448,
+        "executable_output_bytes": 1536,
+        "process_lifetime_peak_rss_kib": 442084,
+        "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+        "primary_error": 0.008429340376745647,
+        "l1": 0.008429340376745647,
+        "l2": 0.019511118853952857,
+        "linf": 0.11965856679488063,
+        "component_l1": [
+          0.006378615082348026,
+          0.0052459159876548965,
+          0.013663490060234014
+        ],
+        "component_l2": [
+          0.012765116971632485,
+          0.012119333378174259,
+          0.028848307124828592
+        ],
+        "component_linf": [
+          0.06165659498755022,
+          0.05686854182485618,
+          0.11965856679488063
+        ]
+      },
+      "cells_reaching_classical_accuracy": 128,
+      "limitation": "Discrete tested grids and one timed IVP per physics; no extrapolation or speedup guarantee"
+    },
+    {
+      "physics": "euler",
+      "classical_cells": 256,
+      "same_grid_l1_ratio": 0.9270522396049133,
+      "same_grid_runtime_ratio": 2.889672711763065,
+      "same_grid_inference_overhead_seconds": 0.39552854799967463,
+      "equal_budget_best": {
+        "case": "timing-sod",
+        "physics": "euler",
+        "cells": 128,
+        "method": "gated-soft",
+        "strength": 0.25,
+        "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+        "steps": 155,
+        "final_time": 0.17,
+        "lowering_seconds": 0.24320323600022675,
+        "compilation_seconds": 0.8258392789994105,
+        "first_execution_seconds": 0.1571860240001115,
+        "warmed_seconds": [
+          0.13887928700023622,
+          0.13768637100019987,
+          0.1400286230000347,
+          0.14181778900001518,
+          0.13978654699985782,
+          0.13778435899985197,
+          0.13978675499947713,
+          0.13790909700037446,
+          0.13934464900012244
+        ],
+        "warmed_median_seconds": 0.13934464900012244,
+        "seconds_per_step": 0.0008989977354846609,
+        "seconds_per_cell_step": 7.0234198084739135e-06,
+        "seconds_per_interface_stage": 2.3229915645598476e-06,
+        "executable_temporary_bytes": 712288,
+        "executable_output_bytes": 3072,
+        "process_lifetime_peak_rss_kib": 456932,
+        "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+        "primary_error": 0.003851545550803883,
+        "l1": 0.003851545550803883,
+        "l2": 0.010336380996202117,
+        "linf": 0.08090239114165998,
+        "component_l1": [
+          0.0029709501802023123,
+          0.0023379912767888845,
+          0.006245695195420451
+        ],
+        "component_l2": [
+          0.007433886275916112,
+          0.0068819495627815246,
+          0.014761382772220968
+        ],
+        "component_linf": [
+          0.05660312477416218,
+          0.052351524631790214,
+          0.08090239114165998
+        ]
+      },
+      "cells_reaching_classical_accuracy": 256,
+      "limitation": "Discrete tested grids and one timed IVP per physics; no extrapolation or speedup guarantee"
+    },
+    {
+      "physics": "euler",
+      "classical_cells": 512,
+      "same_grid_l1_ratio": 0.9536884134589415,
+      "same_grid_runtime_ratio": 2.6314156750168274,
+      "same_grid_inference_overhead_seconds": 1.5673082889998113,
+      "equal_budget_best": {
+        "case": "timing-sod",
+        "physics": "euler",
+        "cells": 256,
+        "method": "gated-soft",
+        "strength": 0.25,
+        "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+        "steps": 309,
+        "final_time": 0.17,
+        "lowering_seconds": 0.23924395099948015,
+        "compilation_seconds": 0.8303751919993374,
+        "first_execution_seconds": 0.6135655480002242,
+        "warmed_seconds": [
+          0.6048391579997769,
+          0.5988241449995257,
+          0.6034056950002196,
+          0.5935725780000212,
+          0.5997833549999996,
+          0.6189815569996426,
+          0.7679619159998765,
+          0.7702904020006827,
+          0.7691590790000191
+        ],
+        "warmed_median_seconds": 0.6048391579997769,
+        "seconds_per_step": 0.00195740827831643,
+        "seconds_per_cell_step": 7.646126087173555e-06,
+        "seconds_per_interface_stage": 2.5387915412664464e-06,
+        "executable_temporary_bytes": 1423968,
+        "executable_output_bytes": 6144,
+        "process_lifetime_peak_rss_kib": 459872,
+        "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+        "primary_error": 0.0018581824461690241,
+        "l1": 0.0018581824461690241,
+        "l2": 0.0056383417249329885,
+        "linf": 0.04505491033625547,
+        "component_l1": [
+          0.001554503020253895,
+          0.0012342306502783728,
+          0.0027858136679748046
+        ],
+        "component_l2": [
+          0.004929234030262228,
+          0.004581679239392438,
+          0.0070769738902716085
+        ],
+        "component_linf": [
+          0.04505491033625547,
+          0.041798836522503824,
+          0.0446420970344259
+        ]
+      },
+      "cells_reaching_classical_accuracy": 512,
+      "limitation": "Discrete tested grids and one timed IVP per physics; no extrapolation or speedup guarantee"
+    },
+    {
+      "physics": "scalar",
+      "classical_cells": 64,
+      "same_grid_l1_ratio": 0.940835910053562,
+      "same_grid_runtime_ratio": 7.648677736880055,
+      "same_grid_inference_overhead_seconds": 0.01477604799947585,
+      "equal_budget_best": null,
+      "cells_reaching_classical_accuracy": 64,
+      "limitation": "Discrete tested grids and one timed IVP per physics; no extrapolation or speedup guarantee"
+    },
+    {
+      "physics": "scalar",
+      "classical_cells": 128,
+      "same_grid_l1_ratio": 0.9610038116893335,
+      "same_grid_runtime_ratio": 7.807451517452313,
+      "same_grid_inference_overhead_seconds": 0.052276972999607096,
+      "equal_budget_best": null,
+      "cells_reaching_classical_accuracy": 128,
+      "limitation": "Discrete tested grids and one timed IVP per physics; no extrapolation or speedup guarantee"
+    },
+    {
+      "physics": "scalar",
+      "classical_cells": 256,
+      "same_grid_l1_ratio": 1.0074338962486669,
+      "same_grid_runtime_ratio": 7.811550271881815,
+      "same_grid_inference_overhead_seconds": 0.19705675299974246,
+      "equal_budget_best": {
+        "case": "timing-advection",
+        "physics": "scalar",
+        "cells": 64,
+        "method": "gated-soft",
+        "strength": 0.25,
+        "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+        "steps": 160,
+        "final_time": 0.5,
+        "lowering_seconds": 0.1851436629995078,
+        "compilation_seconds": 0.4192675039994356,
+        "first_execution_seconds": 0.03244862599967746,
+        "warmed_seconds": [
+          0.020910984999318316,
+          0.01710412499960512,
+          0.016912965000301483,
+          0.01688684300006571,
+          0.01688314100010757,
+          0.01703372300016781,
+          0.017043989999365294,
+          0.016998451999825193,
+          0.016965906000223185
+        ],
+        "warmed_median_seconds": 0.016998451999825193,
+        "seconds_per_step": 0.00010624032499890745,
+        "seconds_per_cell_step": 1.660005078107929e-06,
+        "seconds_per_interface_stage": 5.533350260359763e-07,
+        "executable_temporary_bytes": 89680,
+        "executable_output_bytes": 512,
+        "process_lifetime_peak_rss_kib": 369204,
+        "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+        "primary_error": 0.05897816722276175,
+        "l1": 0.01965789468972798,
+        "l2": 0.05897816722276175,
+        "linf": 0.2533002004677525,
+        "component_l1": [
+          0.01965789468972798
+        ],
+        "component_l2": [
+          0.05897816722276175
+        ],
+        "component_linf": [
+          0.2533002004677525
+        ]
+      },
+      "cells_reaching_classical_accuracy": 512,
+      "limitation": "Discrete tested grids and one timed IVP per physics; no extrapolation or speedup guarantee"
+    },
+    {
+      "physics": "scalar",
+      "classical_cells": 512,
+      "same_grid_l1_ratio": 1.0790196142143222,
+      "same_grid_runtime_ratio": 10.883159000733698,
+      "same_grid_inference_overhead_seconds": 1.1018613000005644,
+      "equal_budget_best": {
+        "case": "timing-advection",
+        "physics": "scalar",
+        "cells": 128,
+        "method": "gated-soft",
+        "strength": 0.25,
+        "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+        "steps": 319,
+        "final_time": 0.5,
+        "lowering_seconds": 0.16675379299977067,
+        "compilation_seconds": 0.37617081200005487,
+        "first_execution_seconds": 0.07464390499990259,
+        "warmed_seconds": [
+          0.06107076300031622,
+          0.060949446000449825,
+          0.06049644399990939,
+          0.05962284799988993,
+          0.05995634800001426,
+          0.05920630400032678,
+          0.059199809999881836,
+          0.05923843199980183,
+          0.060300183999970614
+        ],
+        "warmed_median_seconds": 0.05995634800001426,
+        "seconds_per_step": 0.0001879509341693237,
+        "seconds_per_cell_step": 1.4683666731978414e-06,
+        "seconds_per_interface_stage": 4.894555577326138e-07,
+        "executable_temporary_bytes": 179280,
+        "executable_output_bytes": 1024,
+        "process_lifetime_peak_rss_kib": 383848,
+        "memory_limitation": "RSS is process lifetime high-water mark; executable temporary estimate is not measured device peak",
+        "primary_error": 0.06276707980911755,
+        "l1": 0.01588733069783347,
+        "l2": 0.06276707980911755,
+        "linf": 0.3647928119656171,
+        "component_l1": [
+          0.01588733069783347
+        ],
+        "component_l2": [
+          0.06276707980911755
+        ],
+        "component_linf": [
+          0.3647928119656171
+        ]
+      },
+      "cells_reaching_classical_accuracy": null,
+      "limitation": "Discrete tested grids and one timed IVP per physics; no extrapolation or speedup guarantee"
+    }
+  ]
+}

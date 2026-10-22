@@ -1,0 +1,9 @@
+{
+  "configuration.json": "02f2213cb7de9b595bd6fbab98c31d52b62065a1cf556878ae0b3a7fd8543e1c",
+  "environment.json": "370b9a749511a13b450a9cac4926ce30001afe887988b4cf1cbb4b387f24fb06",
+  "summary.json": "1320a1941d7bc35f5b166e18107ab1c7c49cb995a7b8a63eeabbe9becfec394c",
+  "weno7-1280.json": "6df5e7feeb82bfe2e111e134fba894fe2dbf4a4244c04d2b1b37f65ad8bb9d91",
+  "weno7-1280.npz": "c9a31cf6708b9654adaacd8ff48825e847badefeffe5d40c9508f411c9a7b312",
+  "weno7-2560.json": "c7da6f270d38dc0372969672d10a5d93cbcbd77ac2e899f0b360332f51fe9fe2",
+  "weno7-2560.npz": "bd44f34fb9e306374f19630145af9aa048cec826b981a8fe1d85642173cfbea2"
+}

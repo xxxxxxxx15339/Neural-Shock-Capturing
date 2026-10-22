@@ -1,0 +1,162 @@
+independent-advection-square N=96
+  teno5: L1=0.02438107040655388 valid=True
+  v2-selected-soft: L1=0.02431974428872807 valid=True
+  v2-trained-soft: L1=0.025994409928884077 valid=True
+  v2-hard: L1=0.028441571301029877 valid=True
+  v2-neural-only: L1=0.055505933668330176 valid=True
+  p0-historical-learned: L1=0.022731560603764675 valid=True
+independent-advection-square N=192
+  teno5: L1=0.012177527888471472 valid=True
+  v2-selected-soft: L1=0.013718572723909717 valid=True
+  v2-trained-soft: L1=0.013274625836800863 valid=True
+  v2-hard: L1=0.01858605967736315 valid=True
+  v2-neural-only: L1=0.04137337248307898 valid=True
+  p0-historical-learned: L1=0.011025932632808558 valid=True
+independent-burgers-shock N=96
+  reference N=768 admissible
+  reference N=1536 admissible
+  reference N=3072 admissible
+  teno5: L1=0.0012558379317052285 valid=True
+  v2-selected-soft: L1=0.0010510744626488465 valid=True
+  v2-trained-soft: L1=0.0012739686655370258 valid=True
+  v2-hard: L1=0.0013627936382528067 valid=True
+  v2-neural-only: L1=0.0017012152058021365 valid=True
+  p0-historical-learned: L1=0.0012371082245016217 valid=True
+independent-burgers-shock N=192
+  reference N=768 admissible
+  reference N=1536 admissible
+  reference N=3072 admissible
+  teno5: L1=0.00041079802586426037 valid=True
+  v2-selected-soft: L1=0.00034136204947953966 valid=True
+  v2-trained-soft: L1=0.00034207081100532354 valid=True
+  v2-hard: L1=0.0004783254006493938 valid=True
+  v2-neural-only: L1=0.0007044573681369966 valid=True
+  p0-historical-learned: L1=0.00042937020377333235 valid=True
+independent-burgers-interaction N=96
+  reference N=768 admissible
+  reference N=1536 admissible
+  reference N=3072 admissible
+  teno5: L1=0.003586446375837757 valid=True
+  v2-selected-soft: L1=0.0035074728185834764 valid=True
+  v2-trained-soft: L1=0.00468295816186731 valid=True
+  v2-hard: L1=0.0038945390717784766 valid=True
+  v2-neural-only: L1=0.0041057796152519505 valid=True
+  p0-historical-learned: L1=0.003416806390098202 valid=True
+independent-burgers-interaction N=192
+  reference N=768 admissible
+  reference N=1536 admissible
+  reference N=3072 admissible
+  teno5: L1=0.0022649692326799104 valid=True
+  v2-selected-soft: L1=0.0021215576593330574 valid=True
+  v2-trained-soft: L1=0.0026236922009913715 valid=True
+  v2-hard: L1=0.002400832824650877 valid=True
+  v2-neural-only: L1=0.0025884377866247812 valid=True
+  p0-historical-learned: L1=0.002212523839240875 valid=True
+independent-sod N=96
+  teno5: L1=0.005507957103765611 valid=True
+  v2-selected-soft: L1=0.005191173466181394 valid=True
+  v2-trained-soft: L1=0.005191173466181394 valid=True
+  v2-hard: L1=0.006067120701190887 valid=True
+  v2-neural-only: L1=0.007474859109299172 valid=True
+  p0-historical-learned: L1=0.005414120326074104 valid=True
+independent-sod N=192
+  teno5: L1=0.002651360802799551 valid=True
+  v2-selected-soft: L1=0.0025380153091719496 valid=True
+  v2-trained-soft: L1=0.0025380153091719496 valid=True
+  v2-hard: L1=0.003012194744044835 valid=True
+  v2-neural-only: L1=0.0037455370457680054 valid=True
+  p0-historical-learned: L1=0.0026092194440938132 valid=True
+independent-contact N=96
+  teno5: L1=0.004450550914003391 valid=True
+  v2-selected-soft: L1=0.004447310695144914 valid=True
+  v2-trained-soft: L1=0.004447310695144914 valid=True
+  v2-hard: L1=0.005635083345776248 valid=True
+  v2-neural-only: L1=0.005903560375760611 valid=True
+  p0-historical-learned: L1=0.004311714221135167 valid=True
+independent-contact N=192
+  teno5: L1=0.0022149671223096416 valid=True
+  v2-selected-soft: L1=0.0023672257990848457 valid=True
+  v2-trained-soft: L1=0.0023672257990848457 valid=True
+  v2-hard: L1=0.003365024652364161 valid=True
+  v2-neural-only: L1=0.003067700620206378 valid=True
+  p0-historical-learned: L1=0.0020976850160966567 valid=True
+independent-riemann-0 N=96
+  teno5: L1=0.012191104622908214 valid=True
+  v2-selected-soft: L1=0.011069201433350209 valid=True
+  v2-trained-soft: L1=0.011069201433350209 valid=True
+  v2-hard: L1=0.011985726804219367 valid=True
+  v2-neural-only: L1=0.016271440803452313 valid=True
+  p0-historical-learned: L1=0.011962978852269563 valid=True
+independent-riemann-0 N=192
+  teno5: L1=0.007085298703175088 valid=True
+  v2-selected-soft: L1=0.006691547129818813 valid=True
+  v2-trained-soft: L1=0.006691547129818813 valid=True
+  v2-hard: L1=0.006913265098151043 valid=True
+  v2-neural-only: L1=0.009189542798250488 valid=True
+  p0-historical-learned: L1=0.0069257570396356665 valid=True
+independent-riemann-1 N=96
+  teno5: L1=0.015027259664903116 valid=True
+  v2-selected-soft: L1=0.01352301783501711 valid=True
+  v2-trained-soft: L1=0.01352301783501711 valid=True
+  v2-hard: L1=0.0163871257549074 valid=True
+  v2-neural-only: L1=0.02439528168503861 valid=True
+  p0-historical-learned: L1=0.01472090624064112 valid=True
+independent-riemann-1 N=192
+  teno5: L1=0.008620183742229316 valid=True
+  v2-selected-soft: L1=0.008032402627485535 valid=True
+  v2-trained-soft: L1=0.008032402627485535 valid=True
+  v2-hard: L1=0.010001705606383365 valid=True
+  v2-neural-only: L1=0.013568285517533423 valid=True
+  p0-historical-learned: L1=0.008424002991331149 valid=True
+independent-riemann-2 N=96
+  teno5: L1=0.026618131484310935 valid=True
+  v2-selected-soft: L1=0.025835635403825705 valid=True
+  v2-trained-soft: L1=0.025835635403825705 valid=True
+  v2-hard: L1=0.030277217650279693 valid=True
+  v2-neural-only: L1=0.04289279592395246 valid=True
+  p0-historical-learned: L1=0.026202742896831256 valid=True
+independent-riemann-2 N=192
+  teno5: L1=0.015910145212599078 valid=True
+  v2-selected-soft: L1=0.015331488546334454 valid=True
+  v2-trained-soft: L1=0.015331488546334454 valid=True
+  v2-hard: L1=0.01853784097382283 valid=True
+  v2-neural-only: L1=0.024470384257535165 valid=True
+  p0-historical-learned: L1=0.015507770797921986 valid=True
+independent-riemann-3 N=96
+  teno5: L1=0.0037525780239077273 valid=True
+  v2-selected-soft: L1=0.0035578350720660034 valid=True
+  v2-trained-soft: L1=0.0035578350720660034 valid=True
+  v2-hard: L1=0.004322911507891692 valid=True
+  v2-neural-only: L1=0.005414623122297073 valid=True
+  p0-historical-learned: L1=0.003701050247024223 valid=True
+independent-riemann-3 N=192
+  teno5: L1=0.0018524068260499214 valid=True
+  v2-selected-soft: L1=0.001800720795966999 valid=True
+  v2-trained-soft: L1=0.001800720795966999 valid=True
+  v2-hard: L1=0.0023571162427085263 valid=True
+  v2-neural-only: L1=0.003071528086049581 valid=True
+  p0-historical-learned: L1=0.0018170508205108528 valid=True
+independent-shu-osher N=128
+  reference N=512 admissible
+  reference N=1024 admissible
+  reference N=2048 admissible
+  teno5: L1=0.18339983049693578 valid=True
+  v2-selected-soft: L1=0.18123988219140216 valid=True
+  v2-trained-soft: L1=0.18123988219140216 valid=True
+  v2-hard: L1=0.20510876002429201 valid=True
+  v2-neural-only: L1=0.27331526662910266 valid=True
+  p0-historical-learned: L1=0.18050481892581763 valid=True
+independent-shu-osher N=256
+  reference N=512 admissible
+  reference N=1024 admissible
+  reference N=2048 admissible
+  teno5: L1=0.0782673320836989 valid=True
+  v2-selected-soft: L1=0.07546445835900312 valid=True
+  v2-trained-soft: L1=0.07546445835900312 valid=True
+  v2-hard: L1=0.09859584214774164 valid=True
+  v2-neural-only: L1=0.10631192971228716 valid=True
+  p0-historical-learned: L1=0.0645415446985053 valid=True
+independent-woodward-colella N=128
+  reference N=512 admissible
+  reference N=1024 admissible
+  reference N=2048 admissible

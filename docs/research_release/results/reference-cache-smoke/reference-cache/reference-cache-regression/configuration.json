@@ -1,0 +1,12 @@
+{
+  "id": "reference-cache-regression",
+  "kind": "burgers-shock",
+  "system": "burgers",
+  "boundary": "periodic",
+  "time": 0.001,
+  "reference_grids": [
+    32,
+    64,
+    128
+  ]
+}

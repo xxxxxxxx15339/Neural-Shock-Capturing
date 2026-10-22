@@ -1,0 +1,56 @@
+{
+  "advection": {
+    "metric": "Scalar L2",
+    "cells": 64,
+    "cfl": 0.5,
+    "final_time": 1.0,
+    "steps": 128,
+    "reference": "exact solution",
+    "checkpoint": "models/nn_teno5_unrolled_jax_params_run6_learnedlambda.pkl",
+    "teno": 0.0989598540663411,
+    "nn": 0.09552129155505769,
+    "ratio": 0.9652529549106019,
+    "change_percent": -3.4747045089398076
+  },
+  "burgers": {
+    "metric": "Scalar L2",
+    "cells": 64,
+    "cfl": 0.5,
+    "final_time": 0.5,
+    "steps": 64,
+    "reference": "exact solution",
+    "checkpoint": "models/nn_teno5_unrolled_jax_params_run6_learnedlambda.pkl",
+    "teno": 0.0008166969886357376,
+    "nn": 0.0006649269097158028,
+    "ratio": 0.814165986857058,
+    "change_percent": -18.5834013142942
+  },
+  "sod": {
+    "metric": "Mean Euler L1",
+    "cells": 120,
+    "cfl": 0.4,
+    "final_time": 0.2,
+    "steps": 93,
+    "reference": "exact Riemann solution",
+    "checkpoint": "models/nn_teno5euler_unrolled_jax_params_curriculum_phase18_learnedlambda.pkl",
+    "positivity_guard_used": false,
+    "teno": 0.008258322670756879,
+    "nn": 0.008287093460039368,
+    "ratio": 1.0034838538562276,
+    "change_percent": 0.34838538562276256
+  },
+  "shu_osher": {
+    "metric": "Mean Euler L1",
+    "cells": 120,
+    "cfl": 0.4,
+    "final_time": 1.8,
+    "steps": 321,
+    "reference": "TENO5 at 320 cells (higher-resolution numerical reference)",
+    "checkpoint": "models/nn_teno5euler_unrolled_jax_params_curriculum_phase18_learnedlambda.pkl",
+    "positivity_guard_used": false,
+    "teno": 0.21318921258480591,
+    "nn": 0.20926393545378144,
+    "ratio": 0.9815878248086168,
+    "change_percent": -1.8412175191383162
+  }
+}

@@ -1,0 +1,1356 @@
+[
+  {
+    "path": "models/nn_teno5_unrolled_jax_params_run2_normalized.pkl",
+    "sha256": "0b03cad85504636c86ab7d35e412772926f5c899632a75126b3078c7d4d2f027",
+    "bytes": 25700,
+    "format": "list",
+    "structure": [
+      [
+        {
+          "shape": [
+            5,
+            64
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            64
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            64,
+            32
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            32
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            32,
+            16
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            16
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            16,
+            8
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            8
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            8,
+            3
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ]
+    ]
+  },
+  {
+    "path": "models/nn_teno5_unrolled_jax_params_run3_pretrained.pkl",
+    "sha256": "2f801dd8d959232139ead6eeedcc159ae01ff314c228aa12c4e9bd67d19587d9",
+    "bytes": 25700,
+    "format": "list",
+    "structure": [
+      [
+        {
+          "shape": [
+            5,
+            64
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            64
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            64,
+            32
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            32
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            32,
+            16
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            16
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            16,
+            8
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            8
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            8,
+            3
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ]
+    ]
+  },
+  {
+    "path": "models/nn_teno5_unrolled_jax_params_run4_widehorizon.pkl",
+    "sha256": "8dc1f3805760d47300c98d396aa8d7d674f231a6d8d343a84f10876b20dec47d",
+    "bytes": 25700,
+    "format": "list",
+    "structure": [
+      [
+        {
+          "shape": [
+            5,
+            64
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            64
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            64,
+            32
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            32
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            32,
+            16
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            16
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            16,
+            8
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            8
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            8,
+            3
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ]
+    ]
+  },
+  {
+    "path": "models/nn_teno5_unrolled_jax_params_run5_mixtrained.pkl",
+    "sha256": "8dc1f3805760d47300c98d396aa8d7d674f231a6d8d343a84f10876b20dec47d",
+    "bytes": 25700,
+    "format": "list",
+    "structure": [
+      [
+        {
+          "shape": [
+            5,
+            64
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            64
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            64,
+            32
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            32
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            32,
+            16
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            16
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            16,
+            8
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            8
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            8,
+            3
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ]
+    ]
+  },
+  {
+    "path": "models/nn_teno5_unrolled_jax_params_run6_learnedlambda.pkl",
+    "sha256": "3d942ba76d1eb5ede3119bca360392bdbe4ce6a13ab56ab8f124323d4095674b",
+    "bytes": 25825,
+    "format": "dict",
+    "structure": {
+      "backbone": [
+        [
+          {
+            "shape": [
+              5,
+              64
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              64
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ],
+        [
+          {
+            "shape": [
+              64,
+              32
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              32
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ],
+        [
+          {
+            "shape": [
+              32,
+              16
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              16
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ],
+        [
+          {
+            "shape": [
+              16,
+              8
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              8
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ],
+        [
+          {
+            "shape": [
+              8,
+              3
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              3
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ]
+      ],
+      "lambda_head": [
+        {
+          "shape": [
+            3,
+            1
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            1
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ]
+    }
+  },
+  {
+    "path": "models/nn_teno5euler_unrolled_jax_params.pkl",
+    "sha256": "f10890ce4a9db2cc281c659465472c793d8578528bf92c3fa9932c8cf482ca50",
+    "bytes": 25700,
+    "format": "list",
+    "structure": [
+      [
+        {
+          "shape": [
+            5,
+            64
+          ],
+          "dtype": "float64",
+          "finite": false
+        },
+        {
+          "shape": [
+            64
+          ],
+          "dtype": "float64",
+          "finite": false
+        }
+      ],
+      [
+        {
+          "shape": [
+            64,
+            32
+          ],
+          "dtype": "float64",
+          "finite": false
+        },
+        {
+          "shape": [
+            32
+          ],
+          "dtype": "float64",
+          "finite": false
+        }
+      ],
+      [
+        {
+          "shape": [
+            32,
+            16
+          ],
+          "dtype": "float64",
+          "finite": false
+        },
+        {
+          "shape": [
+            16
+          ],
+          "dtype": "float64",
+          "finite": false
+        }
+      ],
+      [
+        {
+          "shape": [
+            16,
+            8
+          ],
+          "dtype": "float64",
+          "finite": false
+        },
+        {
+          "shape": [
+            8
+          ],
+          "dtype": "float64",
+          "finite": false
+        }
+      ],
+      [
+        {
+          "shape": [
+            8,
+            3
+          ],
+          "dtype": "float64",
+          "finite": false
+        },
+        {
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "finite": false
+        }
+      ]
+    ]
+  },
+  {
+    "path": "models/nn_teno5euler_unrolled_jax_params_curriculum.pkl",
+    "sha256": "6847699cfa1407084b2f03532cd7367fc0c7b620b5f6df0cc641adb44742eccb",
+    "bytes": 25700,
+    "format": "list",
+    "structure": [
+      [
+        {
+          "shape": [
+            5,
+            64
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            64
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            64,
+            32
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            32
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            32,
+            16
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            16
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            16,
+            8
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            8
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            8,
+            3
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ]
+    ]
+  },
+  {
+    "path": "models/nn_teno5euler_unrolled_jax_params_curriculum_phase13_verified.pkl",
+    "sha256": "fb2cd0961a2bac95866430b8c218221862091f4d7bac4b9294bb18621c24a6e6",
+    "bytes": 25700,
+    "format": "list",
+    "structure": [
+      [
+        {
+          "shape": [
+            5,
+            64
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            64
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            64,
+            32
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            32
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            32,
+            16
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            16
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            16,
+            8
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            8
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            8,
+            3
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ]
+    ]
+  },
+  {
+    "path": "models/nn_teno5euler_unrolled_jax_params_curriculum_phase15_smoothmix.pkl",
+    "sha256": "6847699cfa1407084b2f03532cd7367fc0c7b620b5f6df0cc641adb44742eccb",
+    "bytes": 25700,
+    "format": "list",
+    "structure": [
+      [
+        {
+          "shape": [
+            5,
+            64
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            64
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            64,
+            32
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            32
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            32,
+            16
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            16
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            16,
+            8
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            8
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            8,
+            3
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ]
+    ]
+  },
+  {
+    "path": "models/nn_teno5euler_unrolled_jax_params_curriculum_phase17_mixtrained.pkl",
+    "sha256": "ed45d68be860ed72f5d457f757c3e9d8b9f8e01a5df85dbe9861172a7a501022",
+    "bytes": 25700,
+    "format": "list",
+    "structure": [
+      [
+        {
+          "shape": [
+            5,
+            64
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            64
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            64,
+            32
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            32
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            32,
+            16
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            16
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            16,
+            8
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            8
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ],
+      [
+        {
+          "shape": [
+            8,
+            3
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ]
+    ]
+  },
+  {
+    "path": "models/nn_teno5euler_unrolled_jax_params_curriculum_phase18_learnedlambda.pkl",
+    "sha256": "11db25a8c5417e18e1277a563de07c0977471ef6d52430e7aedaa1e37d044c2d",
+    "bytes": 25825,
+    "format": "dict",
+    "structure": {
+      "backbone": [
+        [
+          {
+            "shape": [
+              5,
+              64
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              64
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ],
+        [
+          {
+            "shape": [
+              64,
+              32
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              32
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ],
+        [
+          {
+            "shape": [
+              32,
+              16
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              16
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ],
+        [
+          {
+            "shape": [
+              16,
+              8
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              8
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ],
+        [
+          {
+            "shape": [
+              8,
+              3
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              3
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ]
+      ],
+      "lambda_head": [
+        {
+          "shape": [
+            3,
+            1
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            1
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ]
+    }
+  },
+  {
+    "path": "models/nn_teno5euler_unrolled_jax_params_curriculum_phase20_learnedlambda_v2.pkl",
+    "sha256": "b09195efa72e9cb0bbe62ec77f1f3c93533af7f97df129e85bc731eb9eb8ccf1",
+    "bytes": 25825,
+    "format": "dict",
+    "structure": {
+      "backbone": [
+        [
+          {
+            "shape": [
+              5,
+              64
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              64
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ],
+        [
+          {
+            "shape": [
+              64,
+              32
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              32
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ],
+        [
+          {
+            "shape": [
+              32,
+              16
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              16
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ],
+        [
+          {
+            "shape": [
+              16,
+              8
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              8
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ],
+        [
+          {
+            "shape": [
+              8,
+              3
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              3
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ]
+      ],
+      "lambda_head": [
+        {
+          "shape": [
+            3,
+            1
+          ],
+          "dtype": "float64",
+          "finite": true
+        },
+        {
+          "shape": [
+            1
+          ],
+          "dtype": "float64",
+          "finite": true
+        }
+      ]
+    }
+  },
+  {
+    "path": "models/nn_teno5euler_unrolled_jax_params_curriculum_phase21_richgate.pkl",
+    "sha256": "2c4685062b3287fc40e37fef385ea22ab64cc631db35a319eac47f13ab6c69a3",
+    "bytes": 26515,
+    "format": "dict",
+    "structure": {
+      "backbone": [
+        [
+          {
+            "shape": [
+              5,
+              64
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              64
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ],
+        [
+          {
+            "shape": [
+              64,
+              32
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              32
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ],
+        [
+          {
+            "shape": [
+              32,
+              16
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              16
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ],
+        [
+          {
+            "shape": [
+              16,
+              8
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              8
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ],
+        [
+          {
+            "shape": [
+              8,
+              3
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              3
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ]
+      ],
+      "lambda_head_v2": [
+        [
+          {
+            "shape": [
+              8,
+              8
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              8
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ],
+        [
+          {
+            "shape": [
+              8,
+              1
+            ],
+            "dtype": "float64",
+            "finite": true
+          },
+          {
+            "shape": [
+              1
+            ],
+            "dtype": "float64",
+            "finite": true
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "path": "models/SeemsGood3.h5",
+    "sha256": "1eff1ede893f18936cc1f0ed6ab37615b5b814e1105947939bbecb4b5029e27e",
+    "bytes": 74264
+  },
+  {
+    "path": "models/nn_teno5.h5",
+    "sha256": "33054a97615e80b4490ad2a3230d1a5b393dff63b71323088e4d313f7ab34e67",
+    "bytes": 77520
+  },
+  {
+    "path": "models/nn_teno5_oracle.h5",
+    "sha256": "824094c849a30a17ce3d73b4439b0fd20f06c2046adfcbaf7ab1ecb66d669ed1",
+    "bytes": 77520
+  },
+  {
+    "path": "models/trained_euler_weno5_exact.h5.best.h5",
+    "sha256": "3d79319aa565cd02c20d6e4fb8ae9adfc02ec7e6b9c79a179f64458f5b751973",
+    "bytes": 46352
+  },
+  {
+    "path": "models/trained_euler_weno7nn.h5.best.h5",
+    "sha256": "0d2c0ed5cf2d1cf6e78f8ccd2e3eb54ca94497494bf4be3f3676d821b63ee02c",
+    "bytes": 77352
+  },
+  {
+    "path": "models/trained_euler_weno7nn_anchored.h5.best.h5",
+    "sha256": "ba74865e46a1d23e04832b636c399f3a4523eb882f5a30c1219435e9f300d55e",
+    "bytes": 77352
+  },
+  {
+    "path": "models/trained_euler_weno7nn_anchored2.h5.best.h5",
+    "sha256": "63f1e58f3f95f391d7e7b7bb4fb9f40f3924d67ada58a705e62c5ef289644606",
+    "bytes": 77352
+  },
+  {
+    "path": "models/trained_euler_weno7nn_anchored3.h5.best.h5",
+    "sha256": "7e6dc43ef62664c464c6b8c2f5743ef7d4facfe5b60c3f66d354505a854f88ba",
+    "bytes": 77352
+  },
+  {
+    "path": "models/trained_euler_weno7nn_finetuned.h5.best.h5",
+    "sha256": "12d480f284f9d4194d4e0c2dbb6225862520c4a65799471ccd7111ccc0ae38f2",
+    "bytes": 77352
+  },
+  {
+    "path": "models/trained_euler_weno7nn_protected.h5.best.h5",
+    "sha256": "3f5c65b6f1e3a105bb7ba51b0e874d2cbe9ac5e52f358991a0cdde0fe60a9c9c",
+    "bytes": 77352
+  }
+]

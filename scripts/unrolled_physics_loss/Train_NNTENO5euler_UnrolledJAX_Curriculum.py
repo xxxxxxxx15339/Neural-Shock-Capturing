@@ -61,7 +61,12 @@ def main():
     print('Loaded pretrained scalar-run weights as Euler warm start/anchor.')
     print('Curriculum: K = {}'.format([k for k, _ in CURRICULUM]))
 
-    optimizer = optax.adam(1.0e-3)
+    # See Train_NNTENO5euler_UnrolledJAX.py's matching comment (Results.md
+    # Phase 14): clips gradient global norm before Adam, to stop one
+    # pathological step (occasional huge-but-finite loss/gradient, not
+    # caught by the per-cell positivity-penalty cap alone) from wrecking an
+    # otherwise-good run in a single destructive update.
+    optimizer = optax.chain(optax.clip_by_global_norm(1.0), optax.adam(1.0e-3))
     opt_state = optimizer.init(params)
 
     rng = np.random.default_rng(2)

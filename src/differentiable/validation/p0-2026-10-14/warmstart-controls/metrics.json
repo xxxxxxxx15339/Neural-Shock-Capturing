@@ -1,0 +1,1550 @@
+[
+  {
+    "case": "canonical-advection",
+    "method": "teno5",
+    "time_grid": {
+      "dx": 0.015625,
+      "dt": 0.0078125,
+      "steps": 128,
+      "initial_speed_bound": 1.0,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 2.1606815089999145
+    },
+    "primary_error": 0.0989598540663411,
+    "l1": 0.03481860679831087,
+    "l2": 0.0989598540663411,
+    "linf": 0.3733224170986198,
+    "component_l1": [
+      0.03481860679831087
+    ],
+    "component_l2": [
+      0.0989598540663411
+    ],
+    "component_linf": [
+      0.3733224170986198
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "minimum_state": -0.026667290953936454,
+    "maximum_absolute_stage_state": 1.0266672909539363,
+    "max_courant": 0.5,
+    "initial_integral": [
+      0.5
+    ],
+    "final_integral": [
+      0.4999999999999968
+    ],
+    "integrated_boundary_exchange": [
+      0.0
+    ],
+    "integrated_repair_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -3.219646771412954e-15
+    ],
+    "physical_balance_error": [
+      -3.219646771412954e-15
+    ],
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-advection",
+    "method": "warmstart-neural-only",
+    "time_grid": {
+      "dx": 0.015625,
+      "dt": 0.0078125,
+      "steps": 128,
+      "initial_speed_bound": 1.0,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 1.5513502690009773
+    },
+    "primary_error": 0.1401791824519685,
+    "l1": 0.06608423323465226,
+    "l2": 0.1401791824519685,
+    "linf": 0.6094804583280754,
+    "component_l1": [
+      0.06608423323465226
+    ],
+    "component_l2": [
+      0.1401791824519685
+    ],
+    "component_linf": [
+      0.6094804583280754
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "minimum_state": -0.052283323350757194,
+    "maximum_absolute_stage_state": 1.0472328554946206,
+    "max_courant": 0.5,
+    "initial_integral": [
+      0.5
+    ],
+    "final_integral": [
+      0.4999999999999967
+    ],
+    "integrated_boundary_exchange": [
+      0.0
+    ],
+    "integrated_repair_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -3.2751579226442118e-15
+    ],
+    "physical_balance_error": [
+      -3.2751579226442118e-15
+    ],
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-advection",
+    "method": "warmstart-fixed-blend",
+    "time_grid": {
+      "dx": 0.015625,
+      "dt": 0.0078125,
+      "steps": 128,
+      "initial_speed_bound": 1.0,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 2.3991705139997066
+    },
+    "primary_error": 0.09773680008186605,
+    "l1": 0.03409093859511319,
+    "l2": 0.09773680008186605,
+    "linf": 0.3728791497335798,
+    "component_l1": [
+      0.03409093859511319
+    ],
+    "component_l2": [
+      0.09773680008186605
+    ],
+    "component_linf": [
+      0.3728791497335798
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "minimum_state": -0.028048931542003927,
+    "maximum_absolute_stage_state": 1.0256302852142885,
+    "max_courant": 0.5,
+    "initial_integral": [
+      0.5
+    ],
+    "final_integral": [
+      0.4999999999999969
+    ],
+    "integrated_boundary_exchange": [
+      0.0
+    ],
+    "integrated_repair_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -3.1086244689504383e-15
+    ],
+    "physical_balance_error": [
+      -3.1086244689504383e-15
+    ],
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-advection",
+    "method": "warmstart-max-blend",
+    "time_grid": {
+      "dx": 0.015625,
+      "dt": 0.0078125,
+      "steps": 128,
+      "initial_speed_bound": 1.0,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 2.2516253079993476
+    },
+    "primary_error": 0.13772155603513206,
+    "l1": 0.06386093920322733,
+    "l2": 0.13772155603513206,
+    "linf": 0.6225187698406447,
+    "component_l1": [
+      0.06386093920322733
+    ],
+    "component_l2": [
+      0.13772155603513206
+    ],
+    "component_linf": [
+      0.6225187698406447
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "minimum_state": -0.050340682531630765,
+    "maximum_absolute_stage_state": 1.0463251564982463,
+    "max_courant": 0.5,
+    "initial_integral": [
+      0.5
+    ],
+    "final_integral": [
+      0.49999999999999695
+    ],
+    "integrated_boundary_exchange": [
+      0.0
+    ],
+    "integrated_repair_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -3.0531133177191805e-15
+    ],
+    "physical_balance_error": [
+      -3.0531133177191805e-15
+    ],
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-advection",
+    "method": "final-fixed-blend",
+    "time_grid": {
+      "dx": 0.015625,
+      "dt": 0.0078125,
+      "steps": 128,
+      "initial_speed_bound": 1.0,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 2.091813375000129
+    },
+    "primary_error": 0.09740642919361694,
+    "l1": 0.033982793857577284,
+    "l2": 0.09740642919361694,
+    "linf": 0.3690817341841133,
+    "component_l1": [
+      0.033982793857577284
+    ],
+    "component_l2": [
+      0.09740642919361694
+    ],
+    "component_linf": [
+      0.3690817341841133
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "minimum_state": -0.0328888996933558,
+    "maximum_absolute_stage_state": 1.032888899693356,
+    "max_courant": 0.5,
+    "initial_integral": [
+      0.5
+    ],
+    "final_integral": [
+      0.4999999999999965
+    ],
+    "integrated_boundary_exchange": [
+      0.0
+    ],
+    "integrated_repair_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -3.497202527569243e-15
+    ],
+    "physical_balance_error": [
+      -3.497202527569243e-15
+    ],
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-advection",
+    "method": "final-learned-blend",
+    "time_grid": {
+      "dx": 0.015625,
+      "dt": 0.0078125,
+      "steps": 128,
+      "initial_speed_bound": 1.0,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 2.5667159210006503
+    },
+    "primary_error": 0.09552129155505769,
+    "l1": 0.03381306351427787,
+    "l2": 0.09552129155505769,
+    "linf": 0.36217474593758364,
+    "component_l1": [
+      0.03381306351427787
+    ],
+    "component_l2": [
+      0.09552129155505769
+    ],
+    "component_linf": [
+      0.36217474593758364
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "minimum_state": -0.03660269983907247,
+    "maximum_absolute_stage_state": 1.0366072637815062,
+    "max_courant": 0.5,
+    "initial_integral": [
+      0.5
+    ],
+    "final_integral": [
+      0.4999999999999967
+    ],
+    "integrated_boundary_exchange": [
+      0.0
+    ],
+    "integrated_repair_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -3.2751579226442118e-15
+    ],
+    "physical_balance_error": [
+      -3.2751579226442118e-15
+    ],
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-burgers",
+    "method": "teno5",
+    "time_grid": {
+      "dx": 0.015625,
+      "dt": 0.0078125,
+      "steps": 64,
+      "initial_speed_bound": 1.0,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 1.5997364849990845
+    },
+    "primary_error": 0.0008166969886357376,
+    "l1": 0.00020697085222537957,
+    "l2": 0.0008166969886357376,
+    "linf": 0.004647177007930103,
+    "component_l1": [
+      0.00020697085222537957
+    ],
+    "component_l2": [
+      0.0008166969886357376
+    ],
+    "component_linf": [
+      0.004647177007930103
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "minimum_state": 0.24998088411607913,
+    "maximum_absolute_stage_state": 0.7501764619327529,
+    "max_courant": 0.37508823096637645,
+    "initial_integral": [
+      0.5
+    ],
+    "final_integral": [
+      0.4999999999999983
+    ],
+    "integrated_boundary_exchange": [
+      0.0
+    ],
+    "integrated_repair_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -1.7208456881689926e-15
+    ],
+    "physical_balance_error": [
+      -1.7208456881689926e-15
+    ],
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-burgers",
+    "method": "warmstart-neural-only",
+    "time_grid": {
+      "dx": 0.015625,
+      "dt": 0.0078125,
+      "steps": 64,
+      "initial_speed_bound": 1.0,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 1.6955413129999215
+    },
+    "primary_error": 0.0029530879294900913,
+    "l1": 0.0010170070808571676,
+    "l2": 0.0029530879294900913,
+    "linf": 0.013733119150917295,
+    "component_l1": [
+      0.0010170070808571676
+    ],
+    "component_l2": [
+      0.0029530879294900913
+    ],
+    "component_linf": [
+      0.013733119150917295
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "minimum_state": 0.24996403900329484,
+    "maximum_absolute_stage_state": 0.7501587424938165,
+    "max_courant": 0.37507937124690827,
+    "initial_integral": [
+      0.5
+    ],
+    "final_integral": [
+      0.49999999999999833
+    ],
+    "integrated_boundary_exchange": [
+      0.0
+    ],
+    "integrated_repair_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -1.6653345369377348e-15
+    ],
+    "physical_balance_error": [
+      -1.6653345369377348e-15
+    ],
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-burgers",
+    "method": "warmstart-fixed-blend",
+    "time_grid": {
+      "dx": 0.015625,
+      "dt": 0.0078125,
+      "steps": 64,
+      "initial_speed_bound": 1.0,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 2.42496778199893
+    },
+    "primary_error": 0.0006961046625442465,
+    "l1": 0.0001807495839713175,
+    "l2": 0.0006961046625442465,
+    "linf": 0.004088204255516259,
+    "component_l1": [
+      0.0001807495839713175
+    ],
+    "component_l2": [
+      0.0006961046625442465
+    ],
+    "component_linf": [
+      0.004088204255516259
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "minimum_state": 0.24998027078244595,
+    "maximum_absolute_stage_state": 0.7501692107183414,
+    "max_courant": 0.3750846053591707,
+    "initial_integral": [
+      0.5
+    ],
+    "final_integral": [
+      0.4999999999999983
+    ],
+    "integrated_boundary_exchange": [
+      0.0
+    ],
+    "integrated_repair_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -1.7208456881689926e-15
+    ],
+    "physical_balance_error": [
+      -1.7208456881689926e-15
+    ],
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-burgers",
+    "method": "warmstart-max-blend",
+    "time_grid": {
+      "dx": 0.015625,
+      "dt": 0.0078125,
+      "steps": 64,
+      "initial_speed_bound": 1.0,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 3.1968861789991934
+    },
+    "primary_error": 0.0026531215853852342,
+    "l1": 0.000896086370853832,
+    "l2": 0.0026531215853852342,
+    "linf": 0.012101516441793747,
+    "component_l1": [
+      0.000896086370853832
+    ],
+    "component_l2": [
+      0.0026531215853852342
+    ],
+    "component_linf": [
+      0.012101516441793747
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "minimum_state": 0.2499647061888628,
+    "maximum_absolute_stage_state": 0.7501592498253921,
+    "max_courant": 0.37507962491269603,
+    "initial_integral": [
+      0.5
+    ],
+    "final_integral": [
+      0.49999999999999833
+    ],
+    "integrated_boundary_exchange": [
+      0.0
+    ],
+    "integrated_repair_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -1.6653345369377348e-15
+    ],
+    "physical_balance_error": [
+      -1.6653345369377348e-15
+    ],
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-burgers",
+    "method": "final-fixed-blend",
+    "time_grid": {
+      "dx": 0.015625,
+      "dt": 0.0078125,
+      "steps": 64,
+      "initial_speed_bound": 1.0,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 2.6876512929993623
+    },
+    "primary_error": 0.0007124306730570677,
+    "l1": 0.0001880488223247297,
+    "l2": 0.0007124306730570677,
+    "linf": 0.004094502481041706,
+    "component_l1": [
+      0.0001880488223247297
+    ],
+    "component_l2": [
+      0.0007124306730570677
+    ],
+    "component_linf": [
+      0.004094502481041706
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "minimum_state": 0.24998009231822918,
+    "maximum_absolute_stage_state": 0.7501737587501762,
+    "max_courant": 0.3750868793750881,
+    "initial_integral": [
+      0.5
+    ],
+    "final_integral": [
+      0.4999999999999982
+    ],
+    "integrated_boundary_exchange": [
+      0.0
+    ],
+    "integrated_repair_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -1.7763568394002505e-15
+    ],
+    "physical_balance_error": [
+      -1.7763568394002505e-15
+    ],
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-burgers",
+    "method": "final-learned-blend",
+    "time_grid": {
+      "dx": 0.015625,
+      "dt": 0.0078125,
+      "steps": 64,
+      "initial_speed_bound": 1.0,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 3.010696643999836
+    },
+    "primary_error": 0.0006649269097158028,
+    "l1": 0.00017873372727690573,
+    "l2": 0.0006649269097158028,
+    "linf": 0.003829843738784866,
+    "component_l1": [
+      0.00017873372727690573
+    ],
+    "component_l2": [
+      0.0006649269097158028
+    ],
+    "component_linf": [
+      0.003829843738784866
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "minimum_state": 0.2499796347701666,
+    "maximum_absolute_stage_state": 0.750173674299089,
+    "max_courant": 0.3750868371495445,
+    "initial_integral": [
+      0.5
+    ],
+    "final_integral": [
+      0.4999999999999983
+    ],
+    "integrated_boundary_exchange": [
+      0.0
+    ],
+    "integrated_repair_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -1.7208456881689926e-15
+    ],
+    "physical_balance_error": [
+      -1.7208456881689926e-15
+    ],
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-sod",
+    "method": "teno5",
+    "time_grid": {
+      "dx": 0.008333333333333333,
+      "dt": 0.002150537634408602,
+      "steps": 93,
+      "initial_speed_bound": 1.5381807436059003,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 7.255593041998509
+    },
+    "primary_error": 0.008258322670756879,
+    "l1": 0.008258322670756879,
+    "l2": 0.031973982404950974,
+    "linf": 0.4589369516347228,
+    "component_l1": [
+      0.0054848730779341005,
+      0.005950426359506267,
+      0.013339668574830271
+    ],
+    "component_l2": [
+      0.016264680687640184,
+      0.0214510948176526,
+      0.04839749317629504
+    ],
+    "component_linf": [
+      0.1082588321622932,
+      0.18221647867618812,
+      0.4589369516347228
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "maximum_absolute_stage_state": 2.5000000000000004,
+    "max_courant": 0.5732546538603359,
+    "initial_integral": [
+      0.5625,
+      0.0,
+      1.3750000000000002
+    ],
+    "final_integral": [
+      0.5624999999999987,
+      0.17999999999999966,
+      1.3749999999999971
+    ],
+    "integrated_boundary_exchange": [
+      -1.7409411228441072e-20,
+      0.17999999999999977,
+      -3.46049464740268e-19
+    ],
+    "integrated_repair_exchange": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conservation_residual": [
+      -1.3322502201389595e-15,
+      -1.1102230246251565e-16,
+      -3.108278419485698e-15
+    ],
+    "physical_balance_error": [
+      -1.3322502201389595e-15,
+      -1.1102230246251565e-16,
+      -3.108278419485698e-15
+    ],
+    "minimum_density": 0.12424366652285165,
+    "minimum_pressure": 0.09956691506267291,
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-sod",
+    "method": "warmstart-neural-only",
+    "time_grid": {
+      "dx": 0.008333333333333333,
+      "dt": 0.002150537634408602,
+      "steps": 93,
+      "initial_speed_bound": 1.5381807436059003,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 4.911971466999603
+    },
+    "primary_error": 0.009588573005969731,
+    "l1": 0.009588573005969731,
+    "l2": 0.03264439294284126,
+    "linf": 0.47150651195595666,
+    "component_l1": [
+      0.006728781258253377,
+      0.0068104028285265435,
+      0.015226534931129278
+    ],
+    "component_l2": [
+      0.016809365283101885,
+      0.02185435730870054,
+      0.049363969423282486
+    ],
+    "component_linf": [
+      0.10660193271977453,
+      0.1873640995017396,
+      0.47150651195595666
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "maximum_absolute_stage_state": 2.5000000000000004,
+    "max_courant": 0.5664605896012452,
+    "initial_integral": [
+      0.5625,
+      0.0,
+      1.3750000000000002
+    ],
+    "final_integral": [
+      0.5624999999999983,
+      0.17999999999999866,
+      1.3749999999999971
+    ],
+    "integrated_boundary_exchange": [
+      -1.2283382581784858e-16,
+      0.17999999999999894,
+      -8.654773599328841e-17
+    ],
+    "integrated_repair_exchange": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conservation_residual": [
+      -1.5425007111198863e-15,
+      -2.7755575615628914e-16,
+      -3.02207673295715e-15
+    ],
+    "physical_balance_error": [
+      -1.5425007111198863e-15,
+      -2.7755575615628914e-16,
+      -3.02207673295715e-15
+    ],
+    "minimum_density": 0.12499999999999999,
+    "minimum_pressure": 0.1,
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-sod",
+    "method": "warmstart-fixed-blend",
+    "time_grid": {
+      "dx": 0.008333333333333333,
+      "dt": 0.002150537634408602,
+      "steps": 93,
+      "initial_speed_bound": 1.5381807436059003,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 5.51233139299984
+    },
+    "primary_error": 0.008313964340344634,
+    "l1": 0.008313964340344634,
+    "l2": 0.03202898868797217,
+    "linf": 0.4597622344987673,
+    "component_l1": [
+      0.005530776484885234,
+      0.005971594724250398,
+      0.01343952181189827
+    ],
+    "component_l2": [
+      0.016329680722981507,
+      0.021492502580320417,
+      0.0484662997292258
+    ],
+    "component_linf": [
+      0.10915224608392315,
+      0.18252709872281375,
+      0.4597622344987673
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "maximum_absolute_stage_state": 2.5000000000000004,
+    "max_courant": 0.5727165863752932,
+    "initial_integral": [
+      0.5625,
+      0.0,
+      1.3750000000000002
+    ],
+    "final_integral": [
+      0.5624999999999988,
+      0.17999999999999963,
+      1.3749999999999978
+    ],
+    "integrated_boundary_exchange": [
+      -3.233176370996199e-20,
+      0.17999999999999977,
+      -3.8783205168852664e-19
+    ],
+    "integrated_repair_exchange": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conservation_residual": [
+      -1.2212129953239623e-15,
+      -1.3877787807814457e-16,
+      -2.442102822123656e-15
+    ],
+    "physical_balance_error": [
+      -1.2212129953239623e-15,
+      -1.3877787807814457e-16,
+      -2.442102822123656e-15
+    ],
+    "minimum_density": 0.12493575329870794,
+    "minimum_pressure": 0.1,
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-sod",
+    "method": "warmstart-max-blend",
+    "time_grid": {
+      "dx": 0.008333333333333333,
+      "dt": 0.002150537634408602,
+      "steps": 93,
+      "initial_speed_bound": 1.5381807436059003,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 6.3271598650007945
+    },
+    "primary_error": 0.009460367964992897,
+    "l1": 0.009460367964992897,
+    "l2": 0.03262447647955503,
+    "linf": 0.4706211961631278,
+    "component_l1": [
+      0.006598560793470293,
+      0.006700268326896241,
+      0.015082274774612159
+    ],
+    "component_l2": [
+      0.01667329530500955,
+      0.021773426961403886,
+      0.049406360913585565
+    ],
+    "component_linf": [
+      0.10520400573113964,
+      0.1869605668548454,
+      0.4706211961631278
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "maximum_absolute_stage_state": 2.5000000000000004,
+    "max_courant": 0.5661926192749214,
+    "initial_integral": [
+      0.5625,
+      0.0,
+      1.3750000000000002
+    ],
+    "final_integral": [
+      0.5624999999999986,
+      0.1799999999999995,
+      1.3749999999999964
+    ],
+    "integrated_boundary_exchange": [
+      -1.0096022436638729e-16,
+      0.17999999999999966,
+      -2.733267831838129e-16
+    ],
+    "integrated_repair_exchange": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conservation_residual": [
+      -1.3423297076463163e-15,
+      -1.6653345369377348e-16,
+      -3.5014315005417194e-15
+    ],
+    "physical_balance_error": [
+      -1.3423297076463163e-15,
+      -1.6653345369377348e-16,
+      -3.5014315005417194e-15
+    ],
+    "minimum_density": 0.125,
+    "minimum_pressure": 0.1,
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-sod",
+    "method": "final-fixed-blend",
+    "time_grid": {
+      "dx": 0.008333333333333333,
+      "dt": 0.002150537634408602,
+      "steps": 93,
+      "initial_speed_bound": 1.5381807436059003,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 5.417240566999681
+    },
+    "primary_error": 0.008285390628823785,
+    "l1": 0.008285390628823785,
+    "l2": 0.03206588753149384,
+    "linf": 0.4610136033590765,
+    "component_l1": [
+      0.005508576048356336,
+      0.005953885711557573,
+      0.013393710126557445
+    ],
+    "component_l2": [
+      0.016351589973982974,
+      0.021529427083254844,
+      0.04851569544319436
+    ],
+    "component_linf": [
+      0.11002910122896425,
+      0.18304512709895449,
+      0.4610136033590765
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "maximum_absolute_stage_state": 2.5000000000000004,
+    "max_courant": 0.5734065468400534,
+    "initial_integral": [
+      0.5625,
+      0.0,
+      1.3750000000000002
+    ],
+    "final_integral": [
+      0.5624999999999987,
+      0.17999999999999958,
+      1.3749999999999978
+    ],
+    "integrated_boundary_exchange": [
+      -5.968940992608368e-20,
+      0.17999999999999977,
+      -4.644334610936674e-19
+    ],
+    "integrated_repair_exchange": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conservation_residual": [
+      -1.3322079401402618e-15,
+      -1.942890293094024e-16,
+      -2.4420262207142507e-15
+    ],
+    "physical_balance_error": [
+      -1.3322079401402618e-15,
+      -1.942890293094024e-16,
+      -2.4420262207142507e-15
+    ],
+    "minimum_density": 0.12487486876743255,
+    "minimum_pressure": 0.1,
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-sod",
+    "method": "final-learned-blend",
+    "time_grid": {
+      "dx": 0.008333333333333333,
+      "dt": 0.002150537634408602,
+      "steps": 93,
+      "initial_speed_bound": 1.5381807436059003,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 5.862502914000288
+    },
+    "primary_error": 0.00828709346003937,
+    "l1": 0.00828709346003937,
+    "l2": 0.0320573393072331,
+    "linf": 0.4610828333064092,
+    "component_l1": [
+      0.005507869340329103,
+      0.005949739079715507,
+      0.013403671960073494
+    ],
+    "component_l2": [
+      0.016319340408245217,
+      0.0215095253372646,
+      0.048518434216105986
+    ],
+    "component_linf": [
+      0.10956234249266644,
+      0.1830726332942264,
+      0.4610828333064092
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "maximum_absolute_stage_state": 2.5000000000000004,
+    "max_courant": 0.5735465506626969,
+    "initial_integral": [
+      0.5625,
+      0.0,
+      1.3750000000000002
+    ],
+    "final_integral": [
+      0.5624999999999987,
+      0.1799999999999996,
+      1.3749999999999971
+    ],
+    "integrated_boundary_exchange": [
+      3.481882245688215e-20,
+      0.17999999999999977,
+      1.4585603620249928e-18
+    ],
+    "integrated_repair_exchange": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conservation_residual": [
+      -1.3323024483726448e-15,
+      -1.6653345369377348e-16,
+      -3.1100830293124632e-15
+    ],
+    "physical_balance_error": [
+      -1.3323024483726448e-15,
+      -1.6653345369377348e-16,
+      -3.1100830293124632e-15
+    ],
+    "minimum_density": 0.12487181076766983,
+    "minimum_pressure": 0.1,
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-shu-osher",
+    "method": "teno5",
+    "time_grid": {
+      "dx": 0.08333333333333333,
+      "dt": 0.005607476635514019,
+      "steps": 321,
+      "initial_speed_bound": 5.935821955802613,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 4.031355351000457
+    },
+    "primary_error": 0.21318921258480591,
+    "l1": 0.21318921258480591,
+    "l2": 0.5963518217602318,
+    "linf": 7.56922093727308,
+    "component_l1": [
+      0.07522186938283222,
+      0.18374705097948282,
+      0.3805987173921027
+    ],
+    "component_l2": [
+      0.15768758199834235,
+      0.42898465796505286,
+      0.926290060221076
+    ],
+    "component_linf": [
+      0.5661029459451221,
+      1.6765149189389987,
+      7.56922093727308
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "maximum_absolute_stage_state": 41.224628559068435,
+    "max_courant": 0.31717873573550465,
+    "initial_integral": [
+      12.824481686400873,
+      10.141852232767002,
+      61.66658593170917
+    ],
+    "final_integral": [
+      31.07981570500216,
+      74.9418015866568,
+      295.9428239590426
+    ],
+    "integrated_boundary_exchange": [
+      18.255334018601506,
+      64.7999493538906,
+      234.27623802733655
+    ],
+    "integrated_repair_exchange": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conservation_residual": [
+      -2.1671553440683056e-13,
+      -8.100187187665142e-13,
+      -3.126388037344441e-12
+    ],
+    "physical_balance_error": [
+      -2.1671553440683056e-13,
+      -8.100187187665142e-13,
+      -3.126388037344441e-12
+    ],
+    "minimum_density": 0.8001310231254917,
+    "minimum_pressure": 1.0,
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-shu-osher",
+    "method": "warmstart-neural-only",
+    "time_grid": {
+      "dx": 0.08333333333333333,
+      "dt": 0.005607476635514019,
+      "steps": 321,
+      "initial_speed_bound": 5.935821955802613,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 4.456107359999805
+    },
+    "primary_error": 0.2632464811292452,
+    "l1": 0.2632464811292452,
+    "l2": 0.5931299389512491,
+    "linf": 5.648889298317155,
+    "component_l1": [
+      0.09228015519619472,
+      0.18179433241065354,
+      0.5156649557808872
+    ],
+    "component_l2": [
+      0.16130245291003809,
+      0.40749399412890047,
+      0.929160662574034
+    ],
+    "component_linf": [
+      0.5772332432841005,
+      1.5402237964386263,
+      5.648889298317155
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "maximum_absolute_stage_state": 41.32739768582473,
+    "max_courant": 0.31648590608063387,
+    "initial_integral": [
+      12.824481686400873,
+      10.141852232767002,
+      61.66658593170917
+    ],
+    "final_integral": [
+      31.079815323839128,
+      74.94180132261344,
+      295.94282100841474
+    ],
+    "integrated_boundary_exchange": [
+      18.255333637438554,
+      64.79994908984693,
+      234.2762350767077
+    ],
+    "integrated_repair_exchange": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conservation_residual": [
+      -2.984279490192421e-13,
+      -4.973799150320701e-13,
+      -2.1316282072803006e-12
+    ],
+    "physical_balance_error": [
+      -2.984279490192421e-13,
+      -4.973799150320701e-13,
+      -2.1316282072803006e-12
+    ],
+    "minimum_density": 0.7976343041548131,
+    "minimum_pressure": 1.0,
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-shu-osher",
+    "method": "warmstart-fixed-blend",
+    "time_grid": {
+      "dx": 0.08333333333333333,
+      "dt": 0.005607476635514019,
+      "steps": 321,
+      "initial_speed_bound": 5.935821955802613,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 6.1331519020004635
+    },
+    "primary_error": 0.20907605433704587,
+    "l1": 0.20907605433704587,
+    "l2": 0.5910308120753137,
+    "linf": 7.597673997465609,
+    "component_l1": [
+      0.07406336287787788,
+      0.1815021928292205,
+      0.3716626073040393
+    ],
+    "component_l2": [
+      0.15592302096850635,
+      0.4249706765594037,
+      0.9181722050159825
+    ],
+    "component_linf": [
+      0.5582487864657022,
+      1.681788038170314,
+      7.597673997465609
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "maximum_absolute_stage_state": 41.22588335810885,
+    "max_courant": 0.31707205522338844,
+    "initial_integral": [
+      12.824481686400873,
+      10.141852232767002,
+      61.66658593170917
+    ],
+    "final_integral": [
+      31.079815704745556,
+      74.94180158647906,
+      295.94282395705704
+    ],
+    "integrated_boundary_exchange": [
+      18.255334018345103,
+      64.7999493537128,
+      234.27623802534922
+    ],
+    "integrated_repair_exchange": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conservation_residual": [
+      -4.192202140984591e-13,
+      -7.531752999057062e-13,
+      -1.3358203432289883e-12
+    ],
+    "physical_balance_error": [
+      -4.192202140984591e-13,
+      -7.531752999057062e-13,
+      -1.3358203432289883e-12
+    ],
+    "minimum_density": 0.8001471782392133,
+    "minimum_pressure": 1.0,
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-shu-osher",
+    "method": "warmstart-max-blend",
+    "time_grid": {
+      "dx": 0.08333333333333333,
+      "dt": 0.005607476635514019,
+      "steps": 321,
+      "initial_speed_bound": 5.935821955802613,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 5.202914407000208
+    },
+    "primary_error": 0.2270043922137195,
+    "l1": 0.2270043922137195,
+    "l2": 0.5567393654601945,
+    "linf": 5.76100441391435,
+    "component_l1": [
+      0.08092666340470277,
+      0.17516844542976853,
+      0.4249180678066872
+    ],
+    "component_l2": [
+      0.15418162955249373,
+      0.4061598477516819,
+      0.8608939344320694
+    ],
+    "component_linf": [
+      0.5693899361334576,
+      1.509279352313456,
+      5.76100441391435
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "maximum_absolute_stage_state": 41.061107643370015,
+    "max_courant": 0.31651031329335544,
+    "initial_integral": [
+      12.824481686400873,
+      10.141852232767002,
+      61.66658593170917
+    ],
+    "final_integral": [
+      31.079815649544305,
+      74.94180154823793,
+      295.94282352974096
+    ],
+    "integrated_boundary_exchange": [
+      18.255333963143734,
+      64.79994931547147,
+      234.27623759803367
+    ],
+    "integrated_repair_exchange": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conservation_residual": [
+      -3.019806626980426e-13,
+      -5.400124791776761e-13,
+      -1.8758328224066645e-12
+    ],
+    "physical_balance_error": [
+      -3.019806626980426e-13,
+      -5.400124791776761e-13,
+      -1.8758328224066645e-12
+    ],
+    "minimum_density": 0.8003058844114609,
+    "minimum_pressure": 1.0,
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-shu-osher",
+    "method": "final-fixed-blend",
+    "time_grid": {
+      "dx": 0.08333333333333333,
+      "dt": 0.005607476635514019,
+      "steps": 321,
+      "initial_speed_bound": 5.935821955802613,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 5.1539764930003
+    },
+    "primary_error": 0.2092369370676388,
+    "l1": 0.2092369370676388,
+    "l2": 0.5918425880330959,
+    "linf": 7.634067126393045,
+    "component_l1": [
+      0.07428957710326836,
+      0.182109954083358,
+      0.37131128001629016
+    ],
+    "component_l2": [
+      0.1563006822322644,
+      0.426214456548385,
+      0.9190997121052927
+    ],
+    "component_linf": [
+      0.5532189775391982,
+      1.6953011182031004,
+      7.634067126393045
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "maximum_absolute_stage_state": 41.248905368898605,
+    "max_courant": 0.31723371084945956,
+    "initial_integral": [
+      12.824481686400873,
+      10.141852232767002,
+      61.66658593170917
+    ],
+    "final_integral": [
+      31.07981570495761,
+      74.94180158662584,
+      295.94282395869755
+    ],
+    "integrated_boundary_exchange": [
+      18.255334018557047,
+      64.79994935385969,
+      234.27623802699023
+    ],
+    "integrated_repair_exchange": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conservation_residual": [
+      -3.090860900556436e-13,
+      -8.526512829121202e-13,
+      -1.8474111129762605e-12
+    ],
+    "physical_balance_error": [
+      -3.090860900556436e-13,
+      -8.526512829121202e-13,
+      -1.8474111129762605e-12
+    ],
+    "minimum_density": 0.8001471201425547,
+    "minimum_pressure": 1.0,
+    "valid_for_accuracy_claim": true
+  },
+  {
+    "case": "canonical-shu-osher",
+    "method": "final-learned-blend",
+    "time_grid": {
+      "dx": 0.08333333333333333,
+      "dt": 0.005607476635514019,
+      "steps": 321,
+      "initial_speed_bound": 5.935821955802613,
+      "temporal_refinement": 1,
+      "wall_seconds_including_compilation": 5.5520808170003875
+    },
+    "primary_error": 0.20926393545378147,
+    "l1": 0.20926393545378147,
+    "l2": 0.591834891455035,
+    "linf": 7.63548979731253,
+    "component_l1": [
+      0.07430708011125214,
+      0.18213416267151233,
+      0.3713505635785798
+    ],
+    "component_l2": [
+      0.15630574723913243,
+      0.42621659959352487,
+      0.9190829885498527
+    ],
+    "component_linf": [
+      0.5531230103533247,
+      1.695735244429959,
+      7.63548979731253
+    ],
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "maximum_absolute_stage_state": 41.24791609383683,
+    "max_courant": 0.31723575644661495,
+    "initial_integral": [
+      12.824481686400873,
+      10.141852232767002,
+      61.66658593170917
+    ],
+    "final_integral": [
+      31.07981570494084,
+      74.94180158661436,
+      295.9428239585683
+    ],
+    "integrated_boundary_exchange": [
+      18.2553340185403,
+      64.79994935384786,
+      234.27623802686117
+    ],
+    "integrated_repair_exchange": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conservation_residual": [
+      -3.304023721284466e-13,
+      -5.115907697472721e-13,
+      -2.0463630789890885e-12
+    ],
+    "physical_balance_error": [
+      -3.304023721284466e-13,
+      -5.115907697472721e-13,
+      -2.0463630789890885e-12
+    ],
+    "minimum_density": 0.8001473212659878,
+    "minimum_pressure": 1.0,
+    "valid_for_accuracy_claim": true
+  }
+]

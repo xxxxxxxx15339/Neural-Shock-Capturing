@@ -1,0 +1,59 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+______________ test_admissible_low_density_pressure_is_unchanged _______________
+
+    def test_admissible_low_density_pressure_is_unchanged():
+        state = jnp.tile(jnp.array([0.01, 0.0, 0.01 / 0.4]), (5, 1))
+        repaired = np.asarray(euler_positivity_repair(state))
+>       np.testing.assert_array_equal(repaired, np.asarray(state))
+E       AssertionError: 
+E       Arrays are not equal
+E       
+E       Mismatched elements: 10 / 15 (66.7%)
+E       First 5 mismatches are at indices:
+E        [0, 0]: 0.05 (ACTUAL), 0.01 (DESIRED)
+E        [0, 2]: 0.12500000000000003 (ACTUAL), 0.024999999999999998 (DESIRED)
+E        [1, 0]: 0.05 (ACTUAL), 0.01 (DESIRED)
+E        [1, 2]: 0.12500000000000003 (ACTUAL), 0.024999999999999998 (DESIRED)
+E        [2, 0]: 0.05 (ACTUAL), 0.01 (DESIRED)
+E       Max absolute difference among violations: 0.1
+E       Max relative difference among violations: 4.
+E        ACTUAL: array([[0.05 , 0.   , 0.125],
+E              [0.05 , 0.   , 0.125],
+E              [0.05 , 0.   , 0.125],...
+E        DESIRED: array([[0.01 , 0.   , 0.025],
+E              [0.01 , 0.   , 0.025],
+E              [0.01 , 0.   , 0.025],...
+
+src/differentiable/tests/test_repair.py:13: AssertionError
+_______________ test_admissible_neighbor_average_is_not_floored ________________
+
+    def test_admissible_neighbor_average_is_not_floored():
+        state = jnp.tile(jnp.array([0.01, 0.0, 0.01 / 0.4]), (5, 1))
+        state = state.at[2].set(jnp.array([-1.0, 0.0, -1.0]))
+        expected = np.tile([0.01, 0.0, 0.01 / 0.4], (5, 1))
+>       np.testing.assert_array_equal(np.asarray(euler_positivity_repair(state)), expected)
+E       AssertionError: 
+E       Arrays are not equal
+E       
+E       Mismatched elements: 10 / 15 (66.7%)
+E       First 5 mismatches are at indices:
+E        [0, 0]: 0.05 (ACTUAL), 0.01 (DESIRED)
+E        [0, 2]: 0.12500000000000003 (ACTUAL), 0.024999999999999998 (DESIRED)
+E        [1, 0]: 0.05 (ACTUAL), 0.01 (DESIRED)
+E        [1, 2]: 0.12500000000000003 (ACTUAL), 0.024999999999999998 (DESIRED)
+E        [2, 0]: 0.05 (ACTUAL), 0.01 (DESIRED)
+E       Max absolute difference among violations: 0.1
+E       Max relative difference among violations: 4.
+E        ACTUAL: array([[0.05 , 0.   , 0.125],
+E              [0.05 , 0.   , 0.125],
+E              [0.05 , 0.   , 0.125],...
+E        DESIRED: array([[0.01 , 0.   , 0.025],
+E              [0.01 , 0.   , 0.025],
+E              [0.01 , 0.   , 0.025],...
+
+src/differentiable/tests/test_repair.py:20: AssertionError
+=========================== short test summary info ============================
+FAILED src/differentiable/tests/test_repair.py::test_admissible_low_density_pressure_is_unchanged
+FAILED src/differentiable/tests/test_repair.py::test_admissible_neighbor_average_is_not_floored
+2 failed in 1.47s

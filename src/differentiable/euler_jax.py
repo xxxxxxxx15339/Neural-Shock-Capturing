@@ -163,44 +163,79 @@ def euler_boundary_variation_jax(u, reconstruct, boundary='transmissive'):
     return jnp.abs(forward - mirrored)
 
 
-def get_euler_flux_jax(reconstruct, boundary='transmissive'):
+def euler_split_flux_stencils(u, boundary='transmissive', return_basis=False):
+    """Exact positive/negative characteristic LF inputs used by the solver.
+
+    Each array has shape (interfaces, 3 fields, 5 stencil values). The negative
+    direction includes the solver's mirror and offset. No reconstruction occurs.
+    return_basis is used internally to avoid recomputing the Roe eigenbasis.
+    """
+    fu = flux_jax(u)
+    c = jnp.max(jnp.abs(spds_jax(u)), axis=1)
+    if boundary == 'periodic':
+        right_speed = jnp.roll(c, -1)
+    else:
+        right_speed = jnp.concatenate([c[1:], c[-1:]])
+    alpha = jnp.maximum(c, right_speed)
+
+    left_basis, right_basis = roe_eigenbasis_jax(u, boundary=boundary)
+
+    u_part = euler_stencils_jax(u, offset=0, boundary=boundary)
+    fu_part = euler_stencils_jax(fu, offset=0, boundary=boundary)
+    u_part_neg = jnp.flip(
+        euler_stencils_jax(u, offset=1, boundary=boundary), axis=2
+    )
+    fu_part_neg = jnp.flip(
+        euler_stencils_jax(fu, offset=1, boundary=boundary), axis=2
+    )
+
+    wp = project_to_characteristic_jax(u_part, left_basis)
+    fwp = project_to_characteristic_jax(fu_part, left_basis)
+    wm = project_to_characteristic_jax(u_part_neg, left_basis)
+    fwm = project_to_characteristic_jax(fu_part_neg, left_basis)
+
+    # alpha varies only over the leading (interface) axis -- see the
+    # module docstring for why this replaces the original per-field loop.
+    f_pos = 0.5 * (fwp + alpha[:, None, None] * wp)
+    f_neg = 0.5 * (fwm - alpha[:, None, None] * wm)
+
+    if return_basis:
+        return f_pos, f_neg, right_basis
+    return f_pos, f_neg
+
+
+def get_euler_flux_jax(reconstruct, boundary='transmissive', return_boundary_flux=False):
     """Port of eulerEquations.py:79 getEulerFlux.
 
     `reconstruct` plays the role of `FVM.evalF`/`FVM.L`: it maps a
     (n, 3, 5) characteristic-stencil array to (n, 3) reconstructed
     interface values. Pass `teno5_reconstruct_jax` for the deterministic
     scheme, or a network-driven closure once Phase 4/5 wire one in.
+
+    With return_boundary_flux=True also expose (left, right) numerical
+    boundary fluxes for conservation accounting. The default arithmetic
+    and return value are unchanged.
     """
 
     def full_flux(u):
-        fu = flux_jax(u)
-        c = jnp.max(jnp.abs(spds_jax(u)), axis=1)
-        if boundary == 'periodic':
-            right_speed = jnp.roll(c, -1)
-        else:
-            right_speed = jnp.concatenate([c[1:], c[-1:]])
-        alpha = jnp.maximum(c, right_speed)
-
-        left_basis, right_basis = roe_eigenbasis_jax(u, boundary=boundary)
-
-        u_part = euler_stencils_jax(u, offset=0, boundary=boundary)
-        fu_part = euler_stencils_jax(fu, offset=0, boundary=boundary)
-        u_part_neg = jnp.flip(
-            euler_stencils_jax(u, offset=1, boundary=boundary), axis=2
-        )
-        fu_part_neg = jnp.flip(
-            euler_stencils_jax(fu, offset=1, boundary=boundary), axis=2
-        )
-
-        wp = project_to_characteristic_jax(u_part, left_basis)
-        fwp = project_to_characteristic_jax(fu_part, left_basis)
-        wm = project_to_characteristic_jax(u_part_neg, left_basis)
-        fwm = project_to_characteristic_jax(fu_part_neg, left_basis)
-
-        # alpha varies only over the leading (interface) axis -- see the
-        # module docstring for why this replaces the original per-field loop.
-        f_pos = 0.5 * (fwp + alpha[:, None, None] * wp)
-        f_neg = 0.5 * (fwm - alpha[:, None, None] * wm)
+        if boundary in ('reflective', 'reflective-wall'):
+            # Three ghost cells supply complete five-point stencils at both
+            # physical wall interfaces. Mirror normal momentum, retain rho/E.
+            sign = jnp.array([1., -1., 1.], dtype=u.dtype)
+            padded = jnp.concatenate((jnp.flip(u[:3],axis=0)*sign,u,
+                                      jnp.flip(u[-3:],axis=0)*sign),axis=0)
+            pos, neg, basis = euler_split_flux_stencils(padded, 'transmissive', True)
+            faces = project_to_conservative_jax(reconstruct(pos)+reconstruct(neg),basis)
+            n = u.shape[0]
+            if boundary == 'reflective-wall':
+                # A learned selector need not respect mirror/sign symmetry.
+                # Impermeable adiabatic walls require zero mass/energy flux;
+                # retain the reconstructed normal momentum flux (wall pressure).
+                faces = faces.at[2, 0].set(0.).at[2, 2].set(0.)
+                faces = faces.at[n+2, 0].set(0.).at[n+2, 2].set(0.)
+            net = faces[3:n+3]-faces[2:n+2]
+            return (net, (faces[2],faces[n+2])) if return_boundary_flux else net
+        f_pos, f_neg, right_basis = euler_split_flux_stencils(u, boundary, return_basis=True)
 
         f_half_pos = reconstruct(f_pos)
         f_half_neg = reconstruct(f_neg)
@@ -213,9 +248,36 @@ def get_euler_flux_jax(reconstruct, boundary='transmissive'):
             left_edge = flux_cons[0:1, :] - flux_jax(u[0:1, :])
             interior = flux_cons[1:, :] - flux_cons[:-1, :]
             net_flux = jnp.concatenate([left_edge, interior], axis=0)
+        if return_boundary_flux:
+            left = flux_cons[-1] if boundary == 'periodic' else flux_jax(u[0:1, :])[0]
+            return net_flux, (left, flux_cons[-1])
         return net_flux
 
     return full_flux
+
+
+def get_euler_state_flux_jax(reconstruct, boundary='periodic', return_boundary_flux=False):
+    """Experimental finite-volume state reconstruction + Rusanov flux.
+
+    The historical split-flux solver treats F(cell-average U) as a cell-average
+    flux. These differ at O(dx^2) for general nonlinear smooth Euler data.
+    Reconstructing characteristic states at faces before evaluating F supplies a
+    distinct finite-volume variant. No positivity guarantee or default change.
+    """
+    if boundary != 'periodic':
+        raise ValueError('Experimental state-flux variant currently supports periodic boundaries only')
+
+    def flux(u):
+        left, right = roe_eigenbasis_jax(u, boundary)
+        plus = project_to_characteristic_jax(euler_stencils_jax(u,boundary=boundary),left)
+        minus = project_to_characteristic_jax(jnp.flip(euler_stencils_jax(u,offset=1,boundary=boundary),axis=2),left)
+        ul = project_to_conservative_jax(reconstruct(plus),right)
+        ur = project_to_conservative_jax(reconstruct(minus),right)
+        bound = jnp.maximum(jnp.max(jnp.abs(spds_jax(ul)),axis=1),jnp.max(jnp.abs(spds_jax(ur)),axis=1))
+        faces = .5*(flux_jax(ul)+flux_jax(ur)-bound[:,None]*(ur-ul))
+        net = faces-jnp.roll(faces,1,axis=0)
+        return (net,(faces[-1],faces[-1])) if return_boundary_flux else net
+    return flux
 
 
 def positivity_penalty_jax(u):
@@ -243,15 +305,57 @@ def positivity_penalty_jax(u):
     itself safe to call on a state that is already violating -- exactly
     the state it exists to detect -- without its own division blowing up
     the gradient the same way the unguarded rollout did.
+
+    Also guards non-finite rows (not just negative/zero density), needed
+    once `numerics_jax.rollout_with_positivity_penalty` started calling
+    this on PRE-`state_guard` substages: those can already contain literal
+    NaN/Inf (the state having blown up past floating-point range before
+    `euler_positivity_repair` gets a chance to run), not just a negative
+    density this function's original division guard alone handles. Without
+    this, one non-finite substage in one rollout out of a whole training
+    batch poisoned `l_positivity`, and through it the batch-mean total
+    loss, to NaN outright -- the same "guard the input, not just the
+    untaken branch" lesson as `teno5_jax_toy.py`'s `toy_keep_weight`
+    docstring: `jax.grad` computes both `jnp.where` branches' gradients
+    unconditionally, so a NaN produced downstream of the untaken branch
+    still poisons the backward pass even though its forward value is
+    discarded. Substituting a whole finite, clearly-violating row
+    (density -1, pressure +1 after the formula below) for any non-finite
+    row, before any arithmetic reads it, keeps every downstream value AND
+    gradient finite while still counting that row as a real violation.
+
+    Also caps each cell's contribution at `POSITIVITY_VIOLATION_CAP`: a
+    genuinely astronomic (but finite) pre-repair excursion -- Results.md's
+    own traced failure reached a max state value of 5.7e144 before finally
+    going non-finite -- produces a violation depth of the same astronomic
+    order, and an uncapped per-cell sum at that scale overflows the
+    batch-mean total loss to `inf` on its own even though this function's
+    own output was itself still finite. The cap turns "how severely did
+    this blow up" into a saturating (bounded, still gradient-informative
+    below the cap) rather than unbounded signal -- same scale-mismatch
+    reasoning as `losses_jax.l_tv`/`l_reg`'s `normalize` options, applied
+    here as a hard cap instead of a division since there's no natural
+    per-example denominator to normalize a positivity violation by.
     """
-    density = u[:, 0]
+    finite_row = jnp.all(jnp.isfinite(u), axis=-1)
+    safe_u = jnp.where(finite_row[:, None], u, jnp.array([-1.0, 0.0, 1.0], dtype=u.dtype))
+    density = safe_u[:, 0]
     safe_density = jnp.where(density > 0.0, density, 1.0)
-    velocity = u[:, 1] / safe_density
-    pressure = (GAMMA - 1) * (u[:, 2] - 0.5 * density * velocity ** 2)
-    return jnp.sum(jnp.maximum(-density, 0.0)) + jnp.sum(jnp.maximum(-pressure, 0.0))
+    velocity = safe_u[:, 1] / safe_density
+    pressure = (GAMMA - 1) * (safe_u[:, 2] - 0.5 * density * velocity ** 2)
+    density_violation = jnp.minimum(jnp.maximum(-density, 0.0), POSITIVITY_VIOLATION_CAP)
+    pressure_violation = jnp.minimum(jnp.maximum(-pressure, 0.0), POSITIVITY_VIOLATION_CAP)
+    return jnp.sum(density_violation) + jnp.sum(pressure_violation)
 
 
-def euler_positivity_repair(u, eps=5.0e-2, max_velocity=50.0):
+POSITIVITY_VIOLATION_CAP = 1.0e3
+# Shared with `euler_positivity_repair`'s `max_scale`: the same "far beyond
+# the problem's O(1)-O(10) scale, but not astronomic" bound, used two
+# places for two different reasons -- see each function's docstring.
+
+
+def euler_positivity_repair(u, eps=5.0e-2, max_velocity=50.0, max_scale=POSITIVITY_VIOLATION_CAP,
+                            return_diagnostics=False):
     """Repair non-positive density/pressure the way the professor
     describes doing it in practice: an ISOLATED violating cell (both
     immediate neighbors still valid) is repaired by averaging its
@@ -268,6 +372,14 @@ def euler_positivity_repair(u, eps=5.0e-2, max_velocity=50.0):
     physically meaningful, which is exactly why `positivity_penalty_jax`
     needs to be watching separately rather than trusting this function
     alone to signal correctness.
+
+    P0 correction: apply the last-resort path only to rows still invalid
+    after neighbor averaging. Admissible rows (including positive values
+    below eps) are returned unchanged. Neighbor averaging and the existing
+    fallback are NOT globally conservative; evaluation must report their
+    conservative-state changes. Neighbor selection remains periodic, as in
+    the historical training implementation; this is not a boundary-aware
+    positivity-preserving numerical scheme.
 
     `eps` defaults to `5e-2`, not a generic near-zero value like `1e-8`,
     and the last-resort path also caps velocity -- both for the same
@@ -289,29 +401,66 @@ def euler_positivity_repair(u, eps=5.0e-2, max_velocity=50.0):
     instrument than what was actually asked for, and the one this project
     measured (Results.md Phase 10/11) to only delay, not prevent, a
     training-time blowup on its own.
-    """
-    density = u[:, 0]
-    safe_density = jnp.where(density > 0.0, density, 1.0)
-    velocity = u[:, 1] / safe_density
-    pressure = (GAMMA - 1) * (u[:, 2] - 0.5 * density * velocity ** 2)
-    violates = (density <= 0.0) | (pressure <= 0.0)
 
-    neighbor_average = 0.5 * (jnp.roll(u, 1, axis=0) + jnp.roll(u, -1, axis=0))
+    Two more failure modes now feed `violates`, found while wiring
+    `positivity_penalty_jax` into a real pre-repair training signal
+    (`numerics_jax.rollout_with_positivity_penalty`) and discovering this
+    function did not actually catch either one, contrary to its own "keep
+    jax.lax.scan tracing finite" claim: (1) a row that's already NaN/Inf --
+    `NaN <= 0.0` is `False`, so a fully non-finite row was never flagged as
+    violating, and the last-resort floor below (`jnp.maximum(NaN, eps)` is
+    still `NaN`) does not fix it either; (2) a row that's technically
+    positive but has blown up to an astronomic magnitude (Results.md's own
+    traced failure reached a max state value of 5.7e144 before finally
+    going non-finite) -- `density <= 0.0` is `False` for a huge positive
+    density, so this was never repaired either, right up until it
+    overflowed. Both now count as violations via `~finite_row` and
+    `max_scale`, reusing the same neighbor-average/last-resort mechanism
+    already built for negativity rather than adding a new repair path.
+    """
+    finite_row = jnp.all(jnp.isfinite(u), axis=-1)
+    safe_u = jnp.where(finite_row[:, None], u, jnp.array([-1.0, 0.0, 1.0], dtype=u.dtype))
+
+    density = safe_u[:, 0]
+    safe_density = jnp.where(density > 0.0, density, 1.0)
+    velocity = safe_u[:, 1] / safe_density
+    pressure = (GAMMA - 1) * (safe_u[:, 2] - 0.5 * density * velocity ** 2)
+    out_of_scale = (jnp.abs(density) > max_scale) | (jnp.abs(pressure) > max_scale)
+    violates = (~finite_row) | (density <= 0.0) | (pressure <= 0.0) | out_of_scale
+
+    neighbor_average = 0.5 * (jnp.roll(safe_u, 1, axis=0) + jnp.roll(safe_u, -1, axis=0))
     left_violates = jnp.roll(violates, 1)
     right_violates = jnp.roll(violates, -1)
     isolated = violates & (~left_violates) & (~right_violates)
 
-    repaired = jnp.where(isolated[:, None], neighbor_average, u)
+    repaired = jnp.where(isolated[:, None], neighbor_average, safe_u)
 
-    # Last-resort floor for anything still invalid (a genuine cluster, or
+    rho_r = repaired[:, 0]
+    rho_denominator = jnp.where(rho_r > 0.0, rho_r, 1.0)
+    p_r = (GAMMA - 1) * (
+        repaired[:, 2] - 0.5 * repaired[:, 1] ** 2 / rho_denominator
+    )
+    needs_fallback = (
+        (rho_r <= 0.0) | (p_r <= 0.0) | (~jnp.all(jnp.isfinite(repaired), axis=-1))
+        | (jnp.abs(rho_r) > max_scale) | (jnp.abs(p_r) > max_scale)
+    )
+
+    # Last-resort floor/cap for anything still invalid (a genuine cluster, or
     # an isolated repair whose neighbor-average was itself invalid) -- see
     # docstring: this is a numerical-finiteness safety net, not claimed to
-    # be a correct repair.
-    safe_density_r = jnp.maximum(repaired[:, 0], eps)
+    # be a correct repair. Now clips density/pressure from ABOVE too (not
+    # just floors them from below), for failure mode (2) above.
+    safe_density_r = jnp.clip(repaired[:, 0], eps, max_scale)
     velocity_r = jnp.clip(repaired[:, 1] / safe_density_r, -max_velocity, max_velocity)
-    pressure_r = jnp.maximum(
-        (GAMMA - 1) * (repaired[:, 2] - 0.5 * safe_density_r * velocity_r ** 2), eps
+    pressure_r = jnp.clip(
+        (GAMMA - 1) * (repaired[:, 2] - 0.5 * safe_density_r * velocity_r ** 2), eps, max_scale
     )
     momentum_r = safe_density_r * velocity_r
     energy_r = pressure_r / (GAMMA - 1) + 0.5 * safe_density_r * velocity_r ** 2
-    return jnp.stack([safe_density_r, momentum_r, energy_r], axis=-1)
+    fallback = jnp.stack([safe_density_r, momentum_r, energy_r], axis=-1)
+    result = jnp.where(needs_fallback[:, None], fallback, repaired)
+    if return_diagnostics:
+        return result, dict(violation_mask=violates, isolated_mask=isolated,
+                            fallback_mask=needs_fallback,
+                            changed_mask=jnp.any(result != u, axis=-1))
+    return result

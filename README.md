@@ -1,578 +1,718 @@
-# Neural-Shock-Capturing
+# Neural shock capturing with NN-TENO5
 
-![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
-![Python 3.7 | 3.11](https://img.shields.io/badge/python-3.7%20%7C%203.11-blue.svg)
+**A reproducible research investigation of neural corrections to high-order PDE solvers.**
 
-Shock-capturing PDE solvers (WENO/TENO) augmented with neural networks, plus a
-from-scratch differentiable (JAX) rewrite built to test training them with an
-**unrolled physics loss** instead of imitation.
+Can a small neural network sharpen discontinuities without damaging smooth-flow
+accuracy, conservation, or stability? This internship project implements classical
+and neural WENO/TENO solvers, a differentiable JAX training pipeline, and numerical
+experiments that test that question for scalar conservation laws and 1D Euler flow.
 
-## Table of contents
+<p align="center">
+  <img src="Documentation/figures/t38_schlieren.jpg" alt="Real schlieren photograph showing shock waves around a supersonic T-38 jet" width="700">
+</p>
 
-- [Overview](#overview)
-- [Key results](#key-results)
-- [Methodology: the Unrolled Physics Loss](#methodology-the-unrolled-physics-loss)
-- [Repository structure](#repository-structure)
-- [Getting started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-  - [Shared configuration](#shared-configuration)
-  - [Training WENO5-NN](#training-weno5-nn)
-  - [Running the comparisons](#running-the-comparisons)
-  - [Canonical evaluation](#canonical-evaluation)
-  - [Training-data format](#training-data-format)
-  - [WENO3-NN and WENO7-NN status](#weno3-nn-and-weno7-nn-status)
-  - [TENO and NN-TENO status](#teno-and-nn-teno-status)
-  - [Unrolled Physics Loss: running the JAX scripts](#unrolled-physics-loss-running-the-jax-scripts)
-- [Testing](#testing)
-- [Documentation](#documentation)
-- [Attribution](#attribution)
-- [License](#license)
+*Real shock waves around a T-38 jet, photographed by Leonard Weinstein / NASA
+(1993, public domain; [image source](https://commons.wikimedia.org/wiki/File:Schlieren_photograph_of_T-38_shock_waves.jpg)).
+This photograph motivates the problem; the experiments below solve 1D mathematical
+PDEs and do not simulate this aircraft or use the photograph as training data.*
 
-## Overview
+The results are mixed. Modest **soft** neural corrections help on the short-horizon
+validation corpus. Larger corrections can fail, hard decisions perform differently,
+and long-time benefits depend on the problem. A broader smooth Euler test also
+exposes a second-order finite-volume consistency limitation in the historical solver.
 
-This repository is built on top of the code accompanying Ben Stevens and Tim
-Colonius, [*"Enhancement of shock-capturing methods via machine
-learning"*](https://doi.org/10.1007/s00162-020-00531-1), and now spans two
-bodies of work:
+[Method and input vectors](#method-from-cell-averages-to-the-next-time-step) ·
+[Training equations](#how-the-two-networks-are-trained) ·
+[Measured results](#measured-validation-results) · [Reproduction](#reproduce-on-cpu)
 
-1. **The original WENO5-NN reproduction and TENO5/NN-TENO5 extension** —
-   classical and neural-network-augmented WENO/TENO schemes trained by
-   *imitation* (the network learns to reproduce a classical scheme's own
-   decision), evaluated on scalar and Euler problems. Ships with the paper's
-   original five-point training data and reproduces its three WENO5/WENO5-NN
-   test cases (linear advection Sec. 4.1, Burgers' equation Sec. 4.2, and the
-   Shu–Osher problem Sec. 4.3) at the paper's own configurations, plus a
-   TENO5/NN-TENO5 extension the paper doesn't cover. Classical ENO3, WENO3,
-   WENO5, and WENO7 reconstruction modules are also present, but the included
-   dataset is specifically five-point.
-2. **A from-scratch differentiable (JAX) implementation** testing an
-   **Unrolled Physics Loss** proposal: train NN-TENO5 by running it through
-   several actual simulation steps and judging the *outcome* against the real
-   solution, instead of imitating a classical scheme one stencil at a time.
-   This needed new infrastructure the original codebase couldn't provide
-   (nothing here was previously differentiable end-to-end) and lives in
-   `src/differentiable/`.
+## The problem: resolve shocks without losing smooth-flow accuracy
 
-## Key results
+Shocks are abrupt changes in a flow. A numerical solver must resolve them while
+controlling artificial oscillations and excessive smearing. We study conservation
+laws and their finite-volume update:
 
-Stated as plainly as the underlying numbers allow — negative and partial
-results are reported here just as visibly as the positive one.
+$$
+\frac{\partial U}{\partial t}+\frac{\partial F(U)}{\partial x}=0,
+\qquad
+\frac{d\bar U_i}{dt}
+=-\frac{\hat F_{i+1/2}-\hat F_{i-1/2}}{\Delta x}.
+$$
 
-| Strand | Result |
+Here $\bar U_i$ is a cell average and $\hat F_{i+1/2}$ is the numerical flux between
+cells. The scalar problems use $U=u$, with $F(u)=au$ for linear advection or
+$F(u)=u^2/2$ for inviscid Burgers. For compressible Euler flow,
+
+$$
+U=\begin{pmatrix}\rho\\\rho v\\E\end{pmatrix},\qquad
+F(U)=\begin{pmatrix}\rho v\\\rho v^2+p\\v(E+p)\end{pmatrix},\qquad
+p=(\gamma-1)\left(E-\frac{\rho v^2}{2}\right),\quad\gamma=1.4.
+$$
+
+Density $\rho$, velocity $v$, pressure $p$, and total energy density $E$ describe
+the flow. The research question is whether learned reconstruction can improve
+discontinuity resolution while retaining accuracy and physical consistency.
+
+## Method, from cell averages to the next time step
+
+The following describes the **V2 deterministic-gate baseline** implemented in
+[the JAX solver](src/differentiable/). Scalar and Euler reconstruction use the
+same candidate formulas and MLP architecture, but different input quantities and
+independently trained parameters.
+
+```text
+Current cell averages
+  |
+  +-- Scalar: five state values, forward and mirrored
+  `-- Euler: Roe projection -> LF splitting -> five values per field/sign
+                              |
+                +-------------+------------------+
+                |                                |
+         Classical TENO5                 Normalize each stencil
+         candidates P_k                 Scalar NN or Euler NN
+         smoothness beta_k                       |
+         acceptance chi_k               3 candidate discard scores
+                |                                |
+           R_TENO, gate g                 keep weights -> R_NN
+                +----------------+---------------+
+                                 |
+                   R_hybrid = R_TENO + g*lambda*(R_NN - R_TENO)
+                                 |
+                   Conservative numerical interface flux
+                                 |
+                   Flux difference -> three SSPRK3 stages
+                                 |
+                          Next cell averages
+```
+
+### 1. Normalize the five-value input vector
+
+Write a raw reconstruction stencil as a row vector
+$\mathbf z=(z_0,z_1,z_2,z_3,z_4)$. Only the neural branch normalizes it:
+
+$$
+\mathbf X=\nu(\mathbf z)
+=\frac{\mathbf z-z_{\min}\mathbf 1}{r_{\mathrm{safe}}},\qquad
+z_{\min}=\min_j z_j,\quad r=\max_j z_j-z_{\min},\quad
+r_{\mathrm{safe}}=\begin{cases}r,&r>0,\\1,&r=0.\end{cases}
+$$
+
+A constant stencil therefore gives $\mathbf X=\mathbf 0$. The safe denominator
+also prevents an inactive division by zero from poisoning automatic differentiation.
+Classical smoothness indicators and candidate values are computed on **raw**
+$\mathbf z$; the MLP receives $\mathbf X\in\mathbb R^5$.
+
+### 2. First network: scalar-state inputs
+
+For the interface $x_{i+1/2}$, the scalar model receives these two normalized
+stencils of cell averages:
+
+$$
+\begin{aligned}
+\mathbf X_{\mathrm s,i+1/2}^{L}
+&=\nu\!\left(\bar u_{i-2},\bar u_{i-1},\bar u_i,\bar u_{i+1},\bar u_{i+2}\right),\\
+\mathbf X_{\mathrm s,i+1/2}^{R}
+&=\nu\!\left(\bar u_{i+3},\bar u_{i+2},\bar u_{i+1},\bar u_i,\bar u_{i-1}\right).
+\end{aligned}
+$$
+
+The right stencil is centered on cell $i+1$ and reversed for reconstruction from
+the other side. **One scalar network** serves both directions and both advection
+and Burgers. The physical speed, timestep and PDE flux are handled by the solver;
+each network call has exactly five inputs. V2 scalar training uses periodic boundaries.
+
+### 3. Second network: Euler characteristic split-flux inputs
+
+The Euler network also has five inputs per call. To construct them, start from
+$\bar U_j=(\rho_j,m_j,E_j)^T$, with $m_j=\rho_jv_j$ and
+$H_j=(E_j+p_j)/\rho_j$. At interface $i+1/2$, form the Roe averages
+
+$$
+\widetilde v=
+\frac{\sqrt{\rho_i}v_i+\sqrt{\rho_{i+1}}v_{i+1}}
+{\sqrt{\rho_i}+\sqrt{\rho_{i+1}}},\qquad
+\widetilde H=
+\frac{\sqrt{\rho_i}H_i+\sqrt{\rho_{i+1}}H_{i+1}}
+{\sqrt{\rho_i}+\sqrt{\rho_{i+1}}},\qquad
+\widetilde a=\sqrt{(\gamma-1)(\widetilde H-\widetilde v^2/2)}.
+$$
+
+Use one frozen eigenbasis across the stencil:
+
+$$
+R_{i+1/2}=\begin{pmatrix}
+1&1&1\\
+\widetilde v-\widetilde a&\widetilde v&\widetilde v+\widetilde a\\
+\widetilde H-\widetilde v\widetilde a&\widetilde v^2/2&\widetilde H+\widetilde v\widetilde a
+\end{pmatrix},\qquad L_{i+1/2}=R_{i+1/2}^{-1}.
+$$
+
+For each cell in the stencil, project the state and flux, then apply
+Lax–Friedrichs splitting:
+
+$$
+\mathbf w_j=L_{i+1/2}\bar U_j,\qquad
+\boldsymbol\varphi_j=L_{i+1/2}F(\bar U_j),\qquad
+\boldsymbol\varphi_j^{\pm}
+=\tfrac12(\boldsymbol\varphi_j\pm\alpha_{i+1/2}\mathbf w_j),
+$$
+
+$$
+\alpha_{i+1/2}=\max_{j\in\{i,i+1\}}(|v_j|+a_j),\qquad
+a_j=\sqrt{\gamma p_j/\rho_j}.
+$$
+
+The **actual Euler input vectors** for characteristic field $c\in\{1,2,3\}$ are
+
+$$
+\begin{aligned}
+\mathbf X_{\mathrm e,c,i+1/2}^{+}
+&=\nu\!\left(\varphi^+_{i-2,c},\varphi^+_{i-1,c},\varphi^+_{i,c},
+\varphi^+_{i+1,c},\varphi^+_{i+2,c}\right),\\
+\mathbf X_{\mathrm e,c,i+1/2}^{-}
+&=\nu\!\left(\varphi^-_{i+3,c},\varphi^-_{i+2,c},\varphi^-_{i+1,c},
+\varphi^-_{i,c},\varphi^-_{i-1,c}\right).
+\end{aligned}
+$$
+
+**One Euler network** is reused for all three fields and both flux signs. The
+batched arrays have shape `(interfaces, 3 fields, 5 values)` for each sign.
+The physical components $\rho,m,E$ enter through projection and splitting;
+the five neural inputs are neighboring values of a single characteristic split flux.
+See [the exact extraction routine](src/differentiable/euler_jax.py).
+
+### 4. Two MLPs, with independent parameters
+
+<p align="center">
+  <img src="docs/readme/classic_neural_network.png" alt="Conventional feed-forward neural-network illustration with input, hidden and output layers" width="380">
+</p>
+
+*Conventional feed-forward network illustration by Cburnett, drawn in Inkscape
+(2006). [Source](https://commons.wikimedia.org/wiki/File:Artificial_neural_network.svg),
+[CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/); rendered on white
+for readability in light and dark themes.
+This generic illustration shows layer connectivity; our exact architecture is below.
+[Image credits](docs/readme/IMAGE_CREDITS.md).*
+
+```text
+Scalar: X_s [5] -> [64 ReLU] -> [32 ReLU] -> [16 ReLU] -> [8 ReLU] -> [3 sigmoid]
+Euler:  X_e [5] -> [64 ReLU] -> [32 ReLU] -> [16 ReLU] -> [8 ReLU] -> [3 sigmoid]
+        separate scalar parameters theta_s and Euler parameters theta_e
+```
+
+For either parameter set $\theta\in\{\theta_{\mathrm s},\theta_{\mathrm e}\}$,
+
+$$
+\mathbf h_0=\mathbf X,\qquad
+\mathbf h_\ell=\operatorname{ReLU}(\mathbf h_{\ell-1}W_\ell+\mathbf b_\ell),
+\quad\ell=1,\ldots,4,\qquad
+\mathcal N_\theta(\mathbf X)=\sigma(\mathbf h_4W_5+\mathbf b_5).
+$$
+
+Here $\operatorname{ReLU}(z)=\max(0,z)$ and $\sigma(z)=(1+e^{-z})^{-1}$ act
+componentwise. In the implementation's row-vector convention,
+
+$$
+W_1\in\mathbb R^{5\times64},\quad W_2\in\mathbb R^{64\times32},\quad
+W_3\in\mathbb R^{32\times16},\quad W_4\in\mathbb R^{16\times8},\quad
+W_5\in\mathbb R^{8\times3}.
+$$
+
+Including biases gives **3,155 trainable parameters per model**. Their outputs are
+
+$$
+\mathbf q_{\mathrm s}^{L/R}=\mathcal N_{\theta_{\mathrm s}}(\mathbf X_{\mathrm s}^{L/R}),
+\qquad
+\mathbf q_{\mathrm e,c}^{\pm}=\mathcal N_{\theta_{\mathrm e}}(\mathbf X_{\mathrm e,c}^{\pm}),
+\qquad\mathbf q=(q_0,q_1,q_2)\in[0,1]^3.
+$$
+
+Each $q_k$ is a **candidate-discard score** for one of the three TENO substencils.
+These are independent sigmoid outputs; they need not sum to one. The V2 backbones
+have no learned correction-strength head. Parameter shapes and activations are
+implemented in [the MLP](src/differentiable/teno5_jax_toy.py) and checked by
+[the checkpoint loader](src/differentiable/model_io.py).
+
+### 5. Classical TENO5 candidates and deterministic smoothness detection
+
+For any raw five-value stencil $\mathbf z$, both classical and neural branches
+combine the same three candidate values:
+
+$$
+\begin{aligned}
+P_0(\mathbf z)&=\tfrac13z_0-\tfrac76z_1+\tfrac{11}{6}z_2,\\
+P_1(\mathbf z)&=-\tfrac16z_1+\tfrac56z_2+\tfrac13z_3,\\
+P_2(\mathbf z)&=\tfrac13z_2+\tfrac56z_3-\tfrac16z_4,
+\qquad \mathbf d=(0.1,0.6,0.3).
+\end{aligned}
+$$
+
+The Jiang–Shu smoothness indicators are
+
+$$
+\begin{aligned}
+\beta_0&=\tfrac{13}{12}(z_0-2z_1+z_2)^2+\tfrac14(z_0-4z_1+3z_2)^2,\\
+\beta_1&=\tfrac{13}{12}(z_1-2z_2+z_3)^2+\tfrac14(z_1-z_3)^2,\\
+\beta_2&=\tfrac{13}{12}(z_2-2z_3+z_4)^2+\tfrac14(3z_2-4z_3+z_4)^2.
+\end{aligned}
+$$
+
+TENO5 computes
+
+$$
+\tau_5=|\beta_0-\beta_2|,\quad
+\eta_k=\left(1+\frac{\tau_5}{\beta_k+\varepsilon}\right)^6,\quad
+\chi_k=\frac{\eta_k}{\sum_{j=0}^2\eta_j},\quad
+\delta_k=\mathbf1\{\chi_k\ge C_T\},\qquad
+\varepsilon=10^{-40},\quad C_T=10^{-5}.
+$$
+
+The code evaluates the normalized selection values in log space for numerical
+robustness. Accepted candidates receive renormalized optimal weights:
+
+$$
+\mathcal R_{\mathrm{TENO}}(\mathbf z)
+=\frac{\sum_{k=0}^2 d_k\delta_kP_k(\mathbf z)}{\sum_{k=0}^2 d_k\delta_k}.
+$$
+
+### 6. Neural candidate weights and the deterministic correction gate
+
+Convert the model's output into either soft weights or a hard mask:
+
+$$
+\kappa_k^{\mathrm{soft}}=1-q_k,\qquad
+\kappa_k^{\mathrm{hard}}=\mathbf1\{q_k<0.5\},\qquad
+D=\sum_{k=0}^2d_k\kappa_k.
+$$
+
+The neural reconstruction and hybrid are
+
+$$
+\mathcal R_{\mathrm{NN}}(\mathbf z)
+=\begin{cases}
+\displaystyle\frac{\sum_{k=0}^2d_k\kappa_kP_k(\mathbf z)}{D},&D>0,\\
+z_2,&D=0,
+\end{cases}
+\qquad
+g=\mathbf1\{\min_k\chi_k<C_T\}=1-\prod_{k=0}^2\delta_k,
+$$
+
+$$
+\boxed{\mathcal R_{\mathrm{hybrid}}
+=\mathcal R_{\mathrm{TENO}}
++g\lambda(\mathcal R_{\mathrm{NN}}-\mathcal R_{\mathrm{TENO}})},\qquad
+0\le\lambda\le1.
+$$
+
+Thus $g=0$ returns classical TENO5 whenever all candidates are accepted. The
+network supplies $\mathbf q$, TENO supplies $g$, and fixed $\lambda$ controls
+correction amplitude. For Euler, this decision is applied separately to each
+field and split-flux sign. Setting $\lambda=0$ reproduces TENO5, which regression
+tests check. **The gate alone proves neither fifth-order accuracy nor stability.**
+Historical learned-blend methods and optional learned-strength variants remain
+separately named in [the reconstruction API](src/differentiable/reconstruction.py).
+
+### 7. Assemble one numerical flux per interface
+
+For scalar equations, reconstruct $u^L=\mathcal R_{\mathrm{hybrid}}(\mathbf z^L)$
+and $u^R=\mathcal R_{\mathrm{hybrid}}(\mathbf z^R)$, then evaluate
+
+$$
+\hat f_{i+1/2}=\tfrac12\left[f(u^L)+f(u^R)-\alpha(u^R-u^L)\right].
+$$
+
+The implemented dissipation is $\alpha=|a|$ for advection and
+$\alpha=\max(\max_i|\bar u_i|,0.01)$ for Burgers, recomputed at each RK stage.
+For the historical Euler split-flux solver,
+
+$$
+\widehat\varphi_c^{\pm}
+=\mathcal R_{\mathrm{hybrid}}(\mathbf z_{f,c}^{\pm}),\qquad
+\hat F_{i+1/2}=R_{i+1/2}
+\left(\widehat{\boldsymbol\varphi}^{+}+\widehat{\boldsymbol\varphi}^{-}\right).
+$$
+
+V2 Euler training uses transmissive boundaries: stencil indices are clamped at
+the domain edges, the left boundary flux is $F(\bar U_0)$, and the right boundary
+uses the reconstructed flux. With a shared interface flux, the semidiscrete
+conservation budget telescopes:
+
+$$
+\frac{d}{dt}\left(\Delta x\sum_i\bar U_i\right)
+=-\left(\hat F_{\mathrm{right}}-\hat F_{\mathrm{left}}\right).
+$$
+
+It vanishes for periodic boundaries. Positivity repairs can add a separate
+conservation defect. Also, historical Euler evaluates $F(\bar U_j)$ before
+reconstruction; $F(\bar U_j)\ne\overline{F(U)}_j$ in general. The measured smooth
+consistency limitation and optional state-flux variant are reported below.
+
+### 8. Advance with SSPRK3
+
+Let $\mathcal L_\theta(U)_i=-(\hat F_{i+1/2}-\hat F_{i-1/2})/\Delta x$.
+One full timestep consists of three stages:
+
+$$
+\begin{aligned}
+U^{(1)}&=U^n+\Delta t\,\mathcal L_\theta(U^n),\\
+U^{(2)}&=\tfrac34U^n+\tfrac14\left[U^{(1)}+\Delta t\,\mathcal L_\theta(U^{(1)})\right],\\
+U^{n+1}&=\tfrac13U^n+\tfrac23\left[U^{(2)}+\Delta t\,\mathcal L_\theta(U^{(2)})\right].
+\end{aligned}
+$$
+
+Stencils, projections, gate decisions and neural outputs are recomputed at every
+stage. Training uses each trajectory's recorded $\Delta t_b$ and physical speed;
+the effective CFL $\Delta t_b\max\alpha/\Delta x$ can evolve as the state changes.
+
+## How the two networks are trained
+
+### Exact-reference trajectories and separate data splits
+
+The [V2 corpus](data/nnteno_v2/README.md) contains **6,144 independent mathematical
+PDE trajectories** on $N\in\{64,128,256\}$ cells over $[0,1]$, so $\Delta x=1/N$.
+It contains **no experimental flow measurements**. Targets are analytic solution
+cell averages, using closed forms or quadrature split at known wave boundaries:
+
+$$
+\bar U_{b,i}^{\star}(T_b)
+=\frac1{\Delta x}\int_{x_{i-1/2}}^{x_{i+1/2}}U_b^{\mathrm{exact}}(x,T_b)\,dx,
+\qquad T_b=K\Delta t_b,\qquad K=15.
+$$
+
+Each trajectory stores four reference times and a separate short-horizon target.
+The loss uses the initial state and that matched target: **15 full SSPRK3 steps,
+or 45 internal stages**. These references are not point samples.
+
+| Model | Training trajectories | Validation trajectories | Historical test trajectories |
+|---|---:|---:|---:|
+| Scalar | 2,867 | 615 | 614 |
+| Euler | 1,434 | 307 | 307 |
+
+Immutable trajectory IDs and file hashes guard split integrity. The training
+routine opens train/validation files; testing is a separate command. The original
+test split has since been examined and is excluded from further model selection.
+
+### Stage A: supervised warm-up from deterministic TENO decisions
+
+For each training stencil, TENO supplies the keep labels
+$y_k=\delta_k=\mathbf1\{\chi_k\ge C_T\}$. The model predicts
+$k_k=1-q_k$. With $\widetilde k_k=\operatorname{clip}(k_k,10^{-7},1-10^{-7})$,
+warm-up minimizes weighted binary cross-entropy:
+
+$$
+\mathcal L_{\mathrm{warm}}
+=-\frac1{3B}\sum_{b=1}^{B}\sum_{k=0}^2
+w_{b,k}\left[y_{b,k}\log\widetilde k_{b,k}
++(1-y_{b,k})\log(1-\widetilde k_{b,k})\right],\qquad
+w_{b,k}=\begin{cases}2,&y_{b,k}=0,\\1,&y_{b,k}=1.\end{cases}
+$$
+
+The pool samples up to 12 initial trajectories per family and resolution, caps
+the raw pool at 15,000 stencils, and balances stencils with a rejected candidate
+against all-accepted stencils when both are available. Warm-up runs 150 Adam
+updates with batches of 256 stencils and global gradient clipping at 1.
+
+**Euler warm-up input differs from solver input in the saved V2 runs.** The
+historical warm-up used normalized forward characteristic **state** stencils,
+
+$$
+\mathbf X_{\mathrm e,c}^{\mathrm{warm}}
+=\nu\!\left((L_{i+1/2}\bar U_{i-2})_c,\ldots,
+(L_{i+1/2}\bar U_{i+2})_c\right).
+$$
+
+Physics training and inference use the split-flux vectors from step 3. An explicit
+`--pretraining-inputs split-flux` ablation now extracts the actual solver inputs;
+the preserved checkpoints were not retrained with that option. See the
+[input-distribution diagnostic](docs/research_release/results/input-mismatch-r2/input_mismatch.json).
+
+### Stage B: differentiate through the numerical trajectory
+
+After warm-up, use the **soft candidate policy** and the deterministic gate inside
+the solver. For each initial condition, integrate
+
+$$
+U_\theta^{K}=\Phi_{\theta,\Delta t}^{K}(U^0),\qquad
+\nabla_\theta\mathcal L
+=\frac{\partial\mathcal L}{\partial U_\theta^K}
+\frac{\partial\Phi_{\theta,\Delta t}^{K}}{\partial\theta}
++\text{gradients of trajectory penalties}.
+$$
+
+JAX differentiates through candidate weighting, numerical fluxes and the 15-step
+SSPRK3 rollout, implemented with `lax.scan` and batched with `vmap`. The hard TENO
+comparisons contribute zero derivatives; AD follows the selected branches. Thus
+the computational graph is piecewise differentiable. The V2 objective uses the
+terminal reference error plus the following penalties. At a fixed stencil,
+
+$$
+\left.\frac{\partial\mathcal R_{\mathrm{hybrid}}}{\partial\theta}\right|_{\mathbf z}
+=g\lambda\frac{\partial\mathcal R_{\mathrm{NN}}}{\partial\theta}.
+$$
+
+An inactive gate therefore removes the direct local neural gradient; gate
+decisions can still change as states evolve through the rollout. The earlier four-term
+unrolled-loss proposal remains documented in
+[the historical guide](Documentation/UNROLLED_PHYSICS_LOSS_GUIDE.md).
+
+**Scalar loss.** For a batch of $B$ trajectories with $N$ cells, define a separate
+reference scale per trajectory and periodic total variation:
+
+$$
+s_b=\max\!\left(\frac1N\sum_i(u_{b,i}^{\star})^2,0.05\right),\qquad
+\operatorname{TV}(u)=\sum_i|u_i-u_{i-1}|,\qquad [z]_+=\max(z,0).
+$$
+
+$$
+\boxed{\mathcal L_{\mathrm s}
+=\frac1{BN}\sum_{b,i}\frac{(u_{\theta,b,i}^{K}-u_{b,i}^{\star})^2}{s_b}
++\frac{0.05}{BN}\sum_b
+\left[\operatorname{TV}(u_{\theta,b}^{K})-\operatorname{TV}(u_b^0)\right]_+}.
+$$
+
+The TV term penalizes excess final variation above the initial profile; it does
+not enforce a TVD theorem or penalize every intermediate stage.
+
+**Euler loss.** Normalize each conserved component across the batch and cells:
+
+$$
+s_c=\max\!\left(\frac1{BN}\sum_{b,i}(U_{b,i,c}^{\star})^2,0.05\right),
+\qquad c\in\{\rho,m,E\}.
+$$
+
+Let $V_b^{n,r}$ be the tentative state **before repair** at RK stage $r$ of step
+$n$. The implemented objective is
+
+$$
+\boxed{\mathcal L_{\mathrm e}
+=\frac1{3BN}\sum_{b,i,c}\frac{(U_{\theta,b,i,c}^{K}-U_{b,i,c}^{\star})^2}{s_c}
++\frac{0.1}{BK}\sum_{b=1}^{B}\sum_{n=0}^{K-1}\sum_{r=1}^3
+\mathcal P(V_b^{n,r})}.
+$$
+
+The positivity term sums capped violation depths over cells:
+
+$$
+\mathcal P(V)=\sum_i\left[\min([-\rho_i]_+,10^3)
++\min([-p_i^{\mathrm{safe}}]_+,10^3)\right],\qquad
+p_i^{\mathrm{safe}}=(\gamma-1)
+\left[E_i-\tfrac12\rho_i(m_i/\rho_{i,\mathrm{safe}})^2\right],
+$$
+
+where $\rho_{i,\mathrm{safe}}=\rho_i$ for positive density and 1 otherwise.
+Nonfinite rows are replaced by $(-1,0,1)$ before this penalty is evaluated.
+The penalty is divided by $K$, **not** by the number of stages or cells, matching
+the actual implementation.
+
+During Euler training, every tentative stage is then passed through the
+historical repair $U^{n,r}=\mathcal G(V^{n,r})$: isolated invalid cells are
+replaced by neighbor averages; remaining invalid/out-of-scale cells use density
+and pressure floors/caps (0.05 to 1,000) and a velocity cap of 50. Neighbor
+selection is periodic even though the solver uses transmissive boundaries.
+**This repair is not conservative or a proved positivity-preserving scheme.**
+Checkpoint selection and standard evaluation run without it; dedicated release
+diagnostics measure every stage and account for any repair-induced conservation loss.
+
+### Sampling, optimization and checkpoint selection
+
+Each physics model is trained separately. A minibatch has one resolution and
+one family; resolutions are sampled uniformly and families use these probabilities:
+
+| Scalar family | Probability | Euler family | Probability |
+|---|---:|---|---:|
+| Constant | .04 | Constant | .08 |
+| Square wave | .22 | Contact | .18 |
+| Fourier | .18 | Random Riemann | .38 |
+| Gaussian | .12 | Sod-like | .19 |
+| Smooth Burgers | .22 | Two rarefactions | .17 |
+| Burgers top-hat | .22 | — | — |
+
+The physics loss gradient is clipped before the Adam update:
+
+$$
+g_t=\nabla_\theta\mathcal L(\theta_t),\qquad
+\widetilde g_t=\frac{g_t}{\max(1,\|g_t\|_2)},\qquad
+\theta_{t+1}=\operatorname{AdamUpdate}(\theta_t,\widetilde g_t;\eta=2\times10^{-4}).
+$$
+
+Initialization uses He-scaled weights $W_{ab}\sim\mathcal N(0,2/n_{\mathrm{in}})$
+and zero biases. Warm-up and physics training use separate optimizer states.
+The same initialization seed, 2026, was used for both saved models; each model
+then receives its own physics-specific updates. This is one run per physics,
+not evidence of robustness across training seeds.
+
+| Saved V2 setting | Scalar | Euler |
+|---|---:|---:|
+| Architecture / parameters | 5–64–32–16–8–3 / 3,155 | 5–64–32–16–8–3 / 3,155 |
+| Fixed correction strength **during training** | .75 | .25 |
+| Warm-up updates / batch size | 150 / 256 | 150 / 256 |
+| Physics-update budget / trajectory batch size | 300 / 8 | 300 / 8 |
+| Learning rate | .0002, constant | .0002, constant |
+| Saved best physics-update index (zero-based) | 280 | 299 |
+| Fixed checkpoint-selection cases | 36 | 30 |
+
+The original selection reused **two validation trajectories per family and
+resolution**, checking every 20 updates and at the final update. With group
+MAE $E_{\theta,g}$, its score was
+
+$$
+S_{\mathrm{old}}(\theta)=\frac1G\sum_{g=1}^{G}
+\frac{E_{\theta,g}+10^{-8}}{E_{\mathrm{TENO},g}+10^{-8}},\qquad
+G=18\text{ (scalar) or }15\text{ (Euler)}.
+$$
+
+Only finite, physically admissible **unguarded** validation predictions can save
+a best checkpoint. Improvement must exceed $10^{-5}$; eight unsuccessful checks
+trigger early stopping. The newer release instead evaluates **all 615 scalar +
+307 Euler validation trajectories**, reports per-trajectory distributions and
+bootstrap intervals, and excludes constant/near-zero-error baselines from ratios.
+These are different evaluation protocols. The later choice $\lambda=.25$ for
+both models changes inference strength only; **it does not retrain either model**.
+
+The executable training equations are in
+[Train_Gated_NNTENO5_Dataset_V2.py](scripts/unrolled_physics_loss/Train_Gated_NNTENO5_Dataset_V2.py).
+Exact run settings, model identity and selection histories are preserved with the
+[scalar checkpoint](models/v2/scalar_gated_dataset_v2_seed2026.json) and
+[Euler checkpoint](models/v2/euler_gated_dataset_v2_seed2026.json).
+
+## Measured validation results
+
+Selected inference policy: **deterministic gate + soft candidates, λ=0.25** for
+both existing checkpoints. No network weights were changed for this study.
+
+| Full validation, 15 steps | Macro L1 / TENO5 | 95% bootstrap interval | Invalid trajectories |
+|---|---:|---:|---:|
+| Scalar, λ=.25 soft | **0.9770** | 0.9742–0.9788 | 0 / 615 |
+| Euler, λ=.25 soft | **0.9479** | 0.9436–0.9523 | 0 / 307 |
+| Scalar, original λ=.75 soft | 1.0464 | See full report | 0 / 615 |
+| Euler, λ=1 soft | 1.1643† | See full report | 1 / 307 |
+
+Macro averages give each nonconstant family×resolution equal weight. Constants
+and nearly zero baseline errors are excluded from ratios; absolute errors remain
+reported. Intervals use paired, stratified bootstrap resampling across trajectories.
+†The failed setting's statistic conditions on valid trajectories and cannot select
+an accepted method. These are **validation-selected**, short-horizon findings.
+They are not universal performance or independent-test claims.
+
+![Strength study](docs/portfolio/figures/correction_strength.png)
+
+[Full numerical report](docs/research_release/RESULTS.md) ·
+[Per-case validation data](docs/research_release/results/full-validation/per_case.json) ·
+[Uncertainty and groups](docs/research_release/results/full-validation/summary.json) ·
+[Independent benchmark](configs/v2/independent.json)
+
+## Accuracy, conservation and limitations
+
+- Zero correction strength reproduces TENO5; regression tests check interface
+  reconstruction, full rollouts, and parity with the original V2 evaluator.
+- Regular smooth advection and Euler entropy-wave **spatial** errors approach fifth
+  order. Critical-point results differ; spatial and SSPRK3 time errors are reported
+  separately. Neural-only reconstruction approaches third order on these tests.
+- General nonlinear smooth Euler cell averages expose approximately **second-order**
+  behavior in the historical split-flux solver. An optional finite-volume state-flux
+  variant measures approximately fifth-order spatial consistency on that test;
+  its shock behavior, training, and positivity remain unvalidated.
+- Stage positivity, effective CFL, physical boundary exchange, conservation budgets,
+  extrema, oscillations and total variation are measured. The strong-correction
+  repair study shows explicit mass/energy changes; repaired results are not
+  promoted to successful unguarded trajectories.
+- Long-time comparisons are problem-dependent. Numerical Burgers, Shu–Osher and
+  blast-wave references carry grid/timestep uncertainty; failed references remain
+  failures. The frozen P0 Shu–Osher caveats remain in force.
+- The selected V2 method fails the closed-wall interacting-blast stress test at
+  both 128 and 256 cells; TENO5 stays admissible. Full-time blast accuracy is
+  unassessed. Fine temporal controls through 640 and the original finest blast
+  reference were stopped for CPU cost; completed time controls reach 160 cells.
+- One training seed per original V2 network; no multi-seed training robustness or
+  experimental validation. Input-distribution diagnostics do not prove a causal
+  benefit from changing warm-up. No universal speedup or positivity theorem.
+
+![General smooth Euler consistency](docs/portfolio/figures/nonlinear_euler_consistency.png)
+
+## Computational cost
+
+Isolated AMD Ryzen 5 4600H CPU, float64, median of nine warmed trajectory runs;
+compilation is measured separately. These examples show **added cost**, not a speedup:
+
+| Matched 512-cell IVP | TENO5 time | Gated-soft time | Gated / TENO5 L1 |
+|---|---:|---:|---:|
+| Advection, T=.5 | .1115 s | 1.2134 s | 1.079 |
+| Sod, T=.17 | .9607 s | 2.5280 s | .954 |
+
+[Full timing and equal-budget comparisons](docs/research_release/results/performance/performance.json)
+include four grids, hard/neural-only policies, compilation and memory estimates.
+The measured grid ladder does not establish a cheaper neural route to the same
+accuracy. GPU timing and general speedups are not demonstrated.
+
+## Reproduce on CPU
+
+Use Python 3.11 in a separate environment from the original TensorFlow/Keras work:
+
+```bash
+python3.11 -m venv .venv
+. .venv/bin/activate
+python -m pip install -r requirements-v2.txt
+export JAX_PLATFORMS=cpu
+export MPLCONFIGDIR=/tmp/nn-teno5-matplotlib
+python -m pytest src/differentiable/tests -q
+python -m src.differentiable.research sweep --config configs/v2/smoke.json --output /tmp/v2-smoke-new
+python -m src.differentiable.research sweep --config configs/v2/full.json --output /tmp/v2-full-new
+```
+
+To train fresh scalar and Euler backbones with the documented historical budgets,
+use distinct run names. These commands retain the original training strengths:
+
+```bash
+python scripts/unrolled_physics_loss/Train_Gated_NNTENO5_Dataset_V2.py \
+  --physics scalar --data-root data/nnteno_v2 --seed 2026 --strength .75 \
+  --run-name scalar_reproduction_seed2026
+python scripts/unrolled_physics_loss/Train_Gated_NNTENO5_Dataset_V2.py \
+  --physics euler --data-root data/nnteno_v2 --seed 2026 --strength .25 \
+  --run-name euler_reproduction_seed2026
+```
+
+The script refuses an existing checkpoint name. The Euler split-flux warm-up
+ablation requires another fresh name and `--pretraining-inputs split-flux`.
+Fresh training runs have not been executed for this documentation update.
+
+Every output directory must be new. Full studies are explicit local commands, not
+CI workloads. See [the reproduction guide](docs/research_release/REPRODUCE.md) for
+convergence, input-distribution, repair, long-time, timing, figure and artifact checks.
+The evaluation environment and checkpoint/data hashes are recorded with results.
+The validated execution path is Linux CPU/float64. For a separate optional GPU
+environment, follow the [official JAX installation guide](https://docs.jax.dev/en/latest/installation.html)
+for compatible drivers and CUDA wheels; GPU execution has not been verified here.
+
+## Navigate the project
+
+| Path | Purpose |
 |---|---|
-| WENO5-NN vs. WENO5 (paper reproduction) | Reproduces the paper's claims: clearest win on step advection (45% lower error); Sod and Shu–Osher near parity; Burgers genuinely mixed (3/4 grid resolutions favor the network). |
-| NN-TENO5 (imitation-trained) vs. TENO5 | By construction cannot exceed its own teacher's quality — confirmed directly: wins on roughly a quarter to a third of benchmarks, ties on about half, loses the rest. |
-| NN-TENO5 (Unrolled Physics Loss) — scalar advection | **Genuine win** on held-out tests (narrowly, and only within roughly the training distribution's shape/time-horizon). Loses to TENO5 on canonical, non-held-out-similar benchmarks (full-scale step profile, out-of-distribution Burgers) — the win is real but narrow, not a general-purpose improvement. |
-| NN-TENO5 (Unrolled Physics Loss) — Euler (systems) | Hit a real, diagnosed numerical-stability obstacle (Roe-eigenbasis conditioning under an evolving network reconstruction) — improved by two independent fixes but **not fully resolved**. |
-
-Full numbered experiment history: [`Documentation/Results.md`](Documentation/Results.md).
-Earlier consolidated write-up of strand 1: [`Documentation/Report_Results.md`](Documentation/Report_Results.md).
-
-## Methodology: the Unrolled Physics Loss
-
-The Unrolled Physics Loss proposal was put forward by **Radouan BOUKHARFANE**
-(internship supervisor) and implemented, tested, and critically evaluated by
-**Yasser BAOUZIL** (this repository). It proposes changing *how* NN-TENO5 is
-trained: instead of imitating TENO5's own candidate-selection decision one
-stencil at a time — the original training method, which by construction can
-never exceed its own teacher's quality — train the network by unrolling it
-through K actual simulation steps and judging the resulting trajectory
-against the real solution. The full plan is
-[`references/Unrolled_Physics_Loss_Proposal.pdf`](references/Unrolled_Physics_Loss_Proposal.pdf)
-(French).
-
-**The loss function actually implemented** (`src/differentiable/losses_jax.py`):
-
-```text
-L_total = λ1·L_MSE + λ2·L_TV + λ3·L_BVD + λ4·L_Reg
-
-L_MSE = (1/N) Σ (u_i^(n+K) − u_i,exact^(n+K))²
-L_TV  = max(0, TV(u^(n+K)) − TV(u^n)),  TV(v) = Σ |v_(i+1) − v_i|
-L_BVD = mean(max(0, BV_network − BV_TENO5)),
-        BV(Φ)_(i+1/2) = |Φ_i(x_(i+1/2)) − Φ_(i+1)(x_(i+1/2))|
-L_Reg = ‖c_NN − c_base‖²
-```
-
-- `L_MSE`, `L_TV`, `L_Reg` — direct from the proposal's own equations.
-- `L_BVD`'s formula (Boundary Variation Diminishing — compare each cell's own
-  reconstruction against its *neighbor's* own reconstruction at their shared
-  interface) was missing from the proposal itself; Prof. Boukharfane pointed
-  to the source directly — Sun, Inaba & Xiao, *"Boundary Variation Diminishing
-  (BVD) reconstruction,"* J. Comput. Phys. 322 (2016) — and the implementation
-  was corrected to match it exactly.
-- The scheme's own reconstruction weights (`c̃_WENO/TENO` in the proposal) are
-  TENO5's classical optimal linear weights `[1/10, 3/5, 3/10]`, from Shu's
-  foundational WENO paper — confirmed by Prof. Boukharfane to be exactly what
-  was meant.
-- `L_Reg`'s anchor mechanism reuses `Train_NNTENO5.py`'s own `--anchor-weight`
-  technique, reframed as one term instead of the whole objective.
-
-**The path taken, briefly** (full account with numbers in
-[`Documentation/Results.md`](Documentation/Results.md)):
-
-1. Training against the proposal's equations literally (raw, unnormalized
-   `L_TV`/`L_Reg`) let `L_TV` dominate the gradient ~4x over `L_MSE` — fixed
-   by normalizing both.
-2. Training a randomly-initialized network directly against the unrolled loss
-   failed outright (lost every held-out test). Fixed by imitation-pretraining
-   first, then fine-tuning with the unrolled loss — the same
-   warm-start-then-anchor pattern already validated for imitation training.
-3. That fix produced a genuine, positive result for scalar advection (2 of 3
-   held-out cases beat TENO5), but it did not generalize to full-scale
-   benchmark problems and did not transfer to Euler at all — a real numerical
-   instability, traced to Roe-eigenbasis conditioning under an evolving
-   network.
-4. Applying Prof. Boukharfane's own clarifications (the correct `L_BVD`
-   definition; repairing isolated positivity violations by
-   neighbor-averaging rather than a blind clamp) measurably improved Euler
-   training stability — but did not fully resolve it.
-
-Every claim above is backed by an actual run, not asserted — see
-[`Documentation/Results.md`](Documentation/Results.md) for the numbers and
-[`Documentation/Literature_Report_Mapping.md`](Documentation/Literature_Report_Mapping.md)
-for the literature each design choice is grounded in.
-
-## Repository structure
-
-```text
-data/                   Training stencils and target fluxes (WENO5-NN, TENO5-NN, oracle)
-Documentation/          Experiment history, literature mapping, and the Unrolled Physics Loss plan (see below)
-models/                 Trained checkpoints, training histories, metadata (Keras .h5 and JAX .pkl)
-notes/                  Background notes on cell averages and flux, read before src/core/
-plots/                  Generated figures for the Unrolled Physics Loss results, plus the script that builds them
-references/             Reference/plan PDFs (WENO-NN paper, TENO_ML paper, Unrolled_Physics_Loss_Proposal.pdf)
-scripts/legacy_imitation_training/   Original WENO/TENO/imitation-training pipeline
-                        (Train_*, GenerateTrainingData_*, *_vs_* scripts)
-scripts/unrolled_physics_loss/       Unrolled Physics Loss/JAX work (DiffSpike_*,
-                        Train_*_UnrolledJAX*, ValidationMatrix_ProjPDF.py,
-                        EulerInstability_TraceCapture.py, PDEDataset_NonIdentifiability_Audit.py)
-src/core/               Simulation, time stepping, flux splitting, equations (NumPy)
-src/data/               Feature-vector construction for the Unrolled Physics Loss proposal (framework-free, runs anywhere)
-src/differentiable/     JAX ports of the above, for the Unrolled Physics Loss work -- see
-                        "Unrolled Physics Loss" above
-src/initial_conditions/ Initial conditions for scalar and Euler problems
-src/networks/           WENO-NN model definitions and data loading (Keras)
-src/schemes/            ENO, WENO, and TENO reconstruction schemes (NumPy)
-src/viz/                Plotting, metrics, and analysis helpers
-tests/                  Numerical, data-pipeline, and JAX regression tests
-```
-
-Scripts are grouped by which line of work they belong to, not left flat at
-the repo root. Each script still runs standalone: it resolves its own
-imports and its `data/`, `models/`, and `plots/` I/O relative to the repo
-root regardless of the working directory it's launched from.
-
-## Getting started
-
-### Prerequisites
-
-This project spans two incompatible dependency stacks that must live in
-**separate environments** — the original model relies on a legacy Keras/TF
-pin that cannot coexist with a modern JAX install:
-
-| Environment | Needed for | Python |
-|---|---|---|
-| `weno-nn` | Training/running the original WENO5-NN and NN-TENO5 (Keras) pipeline | 3.7 |
-| `teno-jax` | The differentiable JAX Unrolled Physics Loss work | 3.11 |
-| *(any modern Python)* | Numerical-only work — regenerating datasets, running the deterministic solver, non-neural tests | any |
-
-### Installation
-
-**`weno-nn`** (legacy Keras stack — Python 3.7, TensorFlow 1.15.0, Keras 2.2.4;
-declared in `.python-version` as `3.7.12`; using modern `tensorflow.keras`
-changes training behavior and produces different numerical results):
-
-```bash
-conda create -n weno-nn python=3.7
-conda activate weno-nn
-pip install -r requirements.txt
-```
-
-If the TensorFlow 1.15 wheel is unavailable for your platform, install the
-pinned packages through Conda instead. CUDA is optional; TensorFlow falls
-back to the CPU.
-
-**`teno-jax`** (differentiable JAX work):
-
-```bash
-conda create -n teno-jax python=3.11
-conda activate teno-jax
-pip install -r requirements-jax.txt
-```
-
-**Numerical-only** (regenerating datasets, running the deterministic solver —
-no Keras, no JAX):
-
-```bash
-pip install -r requirements-numerical.txt
-```
-
-## Usage
-
-### Shared configuration
-
-Training and inference use [`src/config.py`](src/config.py):
-
-```python
-WENO_ORDER = 5
-USE_SCALING = True
-MODEL_PATH = 'trained_weno5.h5'
-INPUT_DATA_PATH = 'data/2ndNewAvgs.csv'
-OUTPUT_DATA_PATH = 'data/2ndNewFlux.csv'
-RANDOM_SEED = 42
-BOUNDARY_CONDITION = 'periodic'
-MAX_CFL = 1.0
-```
-
-Keep `USE_SCALING` unchanged between training and inference. When enabled,
-each stencil and its target are normalized using the stencil's local minimum
-and range. The prediction is converted back to physical units during
-simulation.
-
-### Training WENO5-NN
-
-```bash
-conda activate weno-nn
-python scripts/legacy_imitation_training/Train_WENO5NN_Scalar.py --seed 42
-```
-
-The dataset is divided into contiguous training, validation, and untouched
-test sets. Each attempt creates and trains a freshly initialized model. Early
-stopping monitors validation loss.
-
-After every attempt, the model is tested on periodic step advection using:
-
-- `max_tv`: maximum total variation; required to be below `2.016` by default.
-- `shock_width`: maximum number of cells whose error exceeds the tolerance;
-  required to be at most `20` by default.
-
-Training makes at most 10 attempts by default (`--max-attempts`). It ranks
-candidates lexicographically by total-variation-limit violation,
-shock-width-limit violation, and validation loss. Every improvement is
-checkpointed to `<model-path>.best.h5`; if no candidate passes, the script
-prints the best candidate and exits unsuccessfully. A successful model is
-saved to `MODEL_PATH`, normally `trained_weno5.h5` — the one canonical
-trained-model filename used by training, evaluation, and the basic
-comparison. The included `models/SeemsGood3.h5` is retained only as an
-upstream reference artifact; new training does not overwrite or select it
-automatically.
-
-Training options can be inspected with:
-
-```bash
-python scripts/legacy_imitation_training/Train_WENO5NN_Scalar.py --help
-```
-
-### Running the comparisons
-
-After training:
-
-```bash
-python scripts/legacy_imitation_training/WENO5_vs_WENO5NN_StepAdvection.py
-```
-
-This compares the scaled or unscaled WENO-NN model — according to
-`USE_SCALING` — against classical WENO5. It matches the paper's Sec. 4.1 /
-Fig. 3 advection configuration: a unit step on a periodic domain of length
-`L=2`, 100 cells, `CFL=2/3`, run for 50 periods (`T=100`). At `T=100` this is
-roughly 7500 timesteps; because `NNMethod` calls Keras `model.predict()` once
-per Runge-Kutta stage rather than batching across time, the run takes a few
-minutes.
-
-To run the original supplied model instead:
-
-```bash
-python scripts/legacy_imitation_training/WENO5_vs_WENO5NN_StepAdvection.py --model-path models/SeemsGood3.h5
-```
-
-The scalar solver currently supports periodic boundary conditions. CFL
-validation rejects configurations exceeding the configured limit.
-
-**Burgers' equation:**
-
-```bash
-python scripts/legacy_imitation_training/WENO5_vs_WENO5NN_Burgers.py --model-path models/SeemsGood3.h5
-```
-
-Matches the paper's Sec. 4.2 / Fig. 10 configuration: a Gaussian initial
-condition `exp(-k(x-L/2)^2)` with `k=20` on a periodic domain of length
-`L=2`, run to `T=4`, comparing WENO5-JS and WENO-NN L2 error against a fine
-WENO5-JS reference at several coarser grid spacings. The paper's reference
-resolution is `dx=3.125e-4` (6400 cells); because the scalar `Simulation`
-class steps on a fixed uniform time grid rather than adaptive CFL stepping,
-a 6400-cell run takes on the order of 10+ minutes, so the default reference
-here is reduced to 1600 cells for tractable runtime. Pass
-`--reference-cells 6400` for the paper's exact reference. Consistent with the
-paper (which reports the two schemes performing similarly for true shocks),
-WENO-NN and WENO5-JS come out close to each other here rather than one
-clearly beating the other.
-
-**Shu–Osher (Euler):**
-
-```bash
-python scripts/legacy_imitation_training/WENO5_vs_WENO5NN_ShuOsher.py --model-path models/SeemsGood3.h5
-```
-
-Matches the paper's Sec. 4.3 / Figs. 11-12 configuration: 300 cells, `T=2`,
-compared against a fine WENO5-JS reference (the paper uses 12,800 cells; the
-default here is 3200 for tractable runtime — pass a larger `--reference-cells`
-for closer fidelity). Reproducing this configuration with `SeemsGood3.h5`
-recovers the paper's claimed result: roughly a 15% reduction in density L1
-error and visibly less-diffused oscillations in the post-shock turbulent
-region, versus classical WENO5-JS. Earlier default settings (120 cells,
-`T=1.8`, WENO7 reference) evaluated the model in a resolution regime the
-paper never demonstrates and did not show this improvement — the paper
-itself notes the benefit is resolution-sensitive, present around 250-300
-cells and degrading toward excess anti-diffusion by 800 cells. The
-`shuOsher()` initial condition (`src/initial_conditions/InitialConditions.py`)
-was also corrected to match the paper's Eq. 26 exactly
-(`rho0r = 1 + eps*sin(5*x)`); it previously included an extra `(x-5)` phase
-shift not present in the paper.
-
-The Euler solver uses transmissive boundaries by default. It constructs the
-full WENO3, WENO5, or WENO7 stencil at every interface by
-constant-extrapolating the first and last conservative states into ghost
-cells. Periodic Euler boundaries are also available by passing
-`boundary='periodic'` to `FiniteVolumeMethodEuler`.
-
-Characteristic Euler reconstruction uses one Roe-averaged eigenbasis at each
-interface. The same left eigenvector matrix projects both positive and
-negative Lax–Friedrichs flux stencils, and the matching right matrix
-transforms their combined reconstruction back to conservative variables.
-
-Euler benchmarks use adaptive time steps computed from the current maximum
-`|velocity| + sound_speed`, never just the initial state. Every accepted step
-therefore satisfies the requested CFL, with the final step shortened to land
-exactly on the requested final time. Density and pressure are validated
-after every SSPRK stage. Flux splitting uses a local interface spectral
-radius, the maximum of the adjacent cell wave speeds.
-
-### Canonical evaluation
-
-Evaluate the canonical trained model without plots:
-
-```bash
-conda activate weno-nn
-python scripts/legacy_imitation_training/Evaluate_WENO5NN_StepAdvection.py --model-path trained_weno5.h5
-```
-
-The command prints a JSON result containing the numerical parameters, total
-variation, shock width, solution range, and acceptance status.
-
-The canonical benchmark uses 100 periodic cells, 451 time levels, final time
-`6`, SSPRK3, Lax–Friedrichs splitting with unit wave speed, and the step
-initial condition. A successfully trained model must produce:
-
-```text
-max_tv < 2.016
-shock_width <= 20
-accepted = true
-```
-
-Because optimization is stochastic, the exact accepted values vary. As a
-verified reference, the included upstream `models/SeemsGood3.h5` evaluated on
-July 19, 2026 with this environment produced:
-
-```text
-max_tv       = 2.0049578981686045
-shock_width  = 22
-solution_min = -0.001185931837874278
-solution_max = 1.0011859063902506
-accepted     = false
-```
-
-That reference model is not expected to satisfy the stricter current
-`shock_width <= 20` training condition.
-
-### Training-data format
-
-Both files are headerless, comma-separated, decimal floating-point matrices:
-
-- `data/2ndNewAvgs.csv`: shape `(5, 75241)`. Rows are the five ordered
-  stencil positions `[u_(i-2), u_(i-1), u_i, u_(i+1), u_(i+2)]`; each column
-  is one training sample.
-- `data/2ndNewFlux.csv`: shape `(75241, 1)` when loaded by the project CSV
-  reader. Row `j` is the scalar target interface value for column `j` of the
-  input file.
-
-The input values currently range from `0` to `1`; target values range
-approximately from `-0.5` to `1.5`. Input and target files must contain the
-same number of samples. With `USE_SCALING=True`, each input column and its
-target are transformed using that stencil's local minimum and range before
-splitting.
-
-### WENO3-NN and WENO7-NN status
-
-`NNMethod3`/`NNEuler3` (order 3) and `NNMethod7`/`NNEuler7` (order 7)
-reconstruction wrappers exist in `src/schemes/`, and
-`WENO31stOrder`/`WENO71stOrder` model builders exist in
-`src/networks/WenoNetworks.py`, but **no trained model or matching stencil
-dataset ships with this repo for either order**. The original paper only
-ever trained a single WENO5 network (its 5-point, 75,241-sample
-generic-waveform dataset is `data/2ndNewAvgs.csv`/`data/2ndNewFlux.csv`);
-there is no order-3 or order-7 equivalent. A faithful WENO3-NN or WENO7-NN
-reproduction would require generating an analogous stencil dataset (same
-generic-waveform methodology, windowed to 3 or 7 cells instead of 5) and
-training a new model from scratch — this has not been done.
-`WENO5_vs_WENO5NN_StepAdvection.py`, `WENO5_vs_WENO5NN_Burgers.py`, and
-`WENO5_vs_WENO5NN_ShuOsher.py` are WENO5/WENO5-NN only.
-
-### TENO and NN-TENO status
-
-The repository includes deterministic TENO3, TENO5, and TENO7 scalar and
-Euler reconstructions. It also includes NENO-style classifier architectures
-and scalar/Euler NN-TENO wrappers for all three orders. If every candidate
-is rejected, the wrappers use the center/upwind value as a first-order
-fallback.
-
-Each nonconstant NN-TENO input stencil is normalized independently as
-`(X - min(X)) / (max(X) - min(X))`; constant stencils map to zero. This
-preserves the deterministic selector's translation and positive-scale
-invariance while keeping classifier inputs in the training range.
-
-Each sigmoid output classifies one candidate stencil: `0` means smooth/keep
-and `1` means troubled/discard. The network predicts candidate selection,
-not the final flux, candidate polynomial, or reconstruction weights.
-
-Train the NN-TENO5 classifier on the first CUDA GPU with:
-
-```bash
-conda activate weno-nn
-nvidia-smi
-python scripts/legacy_imitation_training/Train_NNTENO5.py --device gpu --gpu-index 0
-```
-
-The `gpu` mode fails immediately if TensorFlow cannot access the requested
-GPU, rather than silently training on the CPU. TensorFlow uses incremental
-GPU-memory allocation, which is suitable for a display-attached GPU. Use
-`--device cpu` for an intentional CPU run or `--device auto` to allow
-fallback.
-
-The training script generates three deterministic TENO5 troubled/keep labels
-from every original five-point stencil, creates disjoint stratified
-train/validation/test splits, checkpoints the best validation model,
-calibrates one decision threshold per candidate, and writes model, history,
-split, and metadata artifacts under `models/`.
-
-Dedicated NN-TENO3/7 training datasets and extensive trained-model PDE
-benchmarks are not implemented yet.
-
-### Unrolled Physics Loss: running the JAX scripts
-
-See [Methodology](#methodology-the-unrolled-physics-loss) above for what
-this trains and why. `src/differentiable/` is a from-scratch JAX rewrite,
-built because nothing in the original codebase (pure NumPy + standalone
-Keras) is differentiable end-to-end — `model.predict()` fully detaches from
-any gradient graph.
-
-**What's in `src/differentiable/`:**
-
-| Module | What it ports |
-|---|---|
-| `teno5_jax.py` | TENO5 candidate/smoothness/selection math (`src/schemes/teno5.py`), plus a soft (continuous keep-weight) reconstruction path a network can be trained through |
-| `numerics_jax.py` | The scalar finite-volume solver (`src/core/SimulationClasses.py`, `TimeSteppingMethods.py`, `FluxSplittingMethods.py`) — `jax.lax.scan`-based rollout, and the true BVD boundary-variation construction |
-| `euler_jax.py` | The full characteristic-wise Euler solver (`src/core/eulerEquations.py`) — Roe eigenbasis, flux splitting, and a positivity-repair mechanism |
-| `projection_jax.py` | Converts a network's raw troubled-probability output into a reconstruction weight (soft for training, hard-thresholded for inference) |
-| `losses_jax.py` | The four Unrolled Physics Loss terms (`L_MSE`, `L_TV`, `L_BVD`, `L_Reg`) plus a positivity penalty |
-| `teno5_jax_toy.py` | A JAX MLP matching NN-TENO5's architecture, used for training (not a port of the trained Keras checkpoint) |
-
-Every port is regression-tested against the real NumPy/Keras-free solver to
-float64 precision — see [Testing](#testing) below.
-
-**Key scripts** (run inside `teno-jax`, from the repo root):
-
-```bash
-cd scripts/unrolled_physics_loss    # or reference the full relative path from the repo root instead
-python DiffSpike_TENO5_Advection.py                       # Phase 0/1 feasibility spike (scalar)
-python DiffSpike_TENO5euler_Sod.py                        # Phase 0/1 feasibility spike (Euler)
-python Train_NNTENO5_UnrolledJAX.py                       # Phase 6 scalar training (the positive result)
-python Train_NNTENO5euler_UnrolledJAX.py                  # Phase 6 Euler training (the unresolved instability)
-python Train_NNTENO5euler_UnrolledJAX_Curriculum.py       # Phase 11/12: curriculum-on-K attempt at fixing it
-python ValidationMatrix_ProjPDF.py                        # Phase 7: canonical-benchmark validation matrix
-python PDEDataset_NonIdentifiability_Audit.py             # Phase 3: measures the 60%-real-PDE-data risk directly
-python EulerInstability_TraceCapture.py                   # regenerates the Phase 10 instability trace/plot data
-cd ../..
-python plots/generate_proj_plots.py                       # regenerates plots/*.png from the CSVs these scripts write
-```
-
-Every script writes/reads `models/`, `data/`, and `plots/` by a path
-relative to the repo root; each script starts with a small `sys.path`
-bootstrap so its own imports resolve correctly regardless of the working
-directory. Run it either from the repo root with the full
-`scripts/unrolled_physics_loss/...` path, or `cd` into that directory first
-— either works.
-
-Trained checkpoints and training histories land in `models/`
-(`nn_teno5_unrolled_jax_*`, `nn_teno5euler_unrolled_jax_*`); generated
-figures land in `plots/`. Every script's own docstring explains what it does
-and why, in more detail than fits here — read the script before running it,
-not just this table.
-
-## Testing
-
-Run the regression suite with:
-
-```bash
-python -m unittest discover -s tests -v
-```
-
-The tests cover constant-state reconstruction, finite periodic advection,
-CFL rejection, boundary validation, scaled-data handling, and dataset
-separation. They verify the Roe matrices are mutual inverses and establish
-smooth periodic-advection convergence for WENO3, WENO5, and WENO7. The Euler
-end-to-end matrix runs all three schemes on constant stationary and
-uniformly moving states as well as the physically timed Sod and Shu–Osher
-regressions described above.
-
-Numerical tests depend only on `requirements-numerical.txt`; they do not
-import TensorFlow, so they can run under any modern Python without the
-legacy stack. The neural smoke test (`tests/test_networks_smoke.py`) needs
-the `weno-nn` environment.
-
-The JAX differentiable-implementation tests (`tests/test_teno5_jax_*.py`,
-`tests/test_losses_jax.py`, `tests/test_projection_jax.py`) need the
-`teno-jax` environment instead, since they import `jax`:
-
-```bash
-conda activate teno-jax
-python -m pytest tests/test_teno5_jax_regression.py tests/test_teno5_jax_euler_regression.py tests/test_projection_jax.py tests/test_losses_jax.py -q
-```
-
-They regression-test every JAX port against the original NumPy/Keras-free
-solver (float64-exact, not approximate) and check the Unrolled Physics Loss
-terms are finite with finite gradients. `tests/test_feature_vector.py` (the
-feature-vector module for the Unrolled Physics Loss proposal) is plain NumPy
-and runs fine in `base` or `weno-nn` alongside the rest of the suite.
-
-## Documentation
-
-All longer-form write-ups live in [`Documentation/`](Documentation/):
-
-| Document | Read it for |
-|---|---|
-| [`Documentation/Results.md`](Documentation/Results.md) | The full numbered experiment history, chronological |
-| [`Documentation/Report_Results.md`](Documentation/Report_Results.md) | The earlier consolidated write-up of the original WENO5-NN/TENO5 comparison work |
-| [`Documentation/UNROLLED_PHYSICS_LOSS_GUIDE.md`](Documentation/UNROLLED_PHYSICS_LOSS_GUIDE.md) | The phase-by-phase plan for the Unrolled Physics Loss proposal, with status notes on every phase (what was built, the exit criterion, whether it was met) |
-| [`Documentation/Literature_Report_Mapping.md`](Documentation/Literature_Report_Mapping.md) | What the published literature says about each design choice made along the way |
-| [`TENO_NN_Course.html`](TENO_NN_Course.html) | The concepts explained from scratch (open directly in a browser) |
-
-Neither `Results.md` nor `UNROLLED_PHYSICS_LOSS_GUIDE.md` hides negative
-results — the Euler instability is documented as thoroughly as the scalar
-success.
-
-## Attribution
-
-The numerical method and original WENO-NN implementation are derived from
-the work of Ben Stevens and Tim Colonius. See the linked paper and retain
-the relevant attribution when redistributing derived code.
-
-The Unrolled Physics Loss research direction and its design clarifications
-are Radouan BOUKHARFANE's, as internship supervisor; the differentiable JAX
-implementation, experiments, and literature review testing that direction
-are Yasser BAOUZIL's own contribution.
-
-## License
-
-Distributed under the MIT License. See [`LICENSE`](LICENSE) for details.
+| `src/differentiable/` | JAX solvers, strict checkpoint loading, explicit inference policies, evaluation and studies |
+| `configs/v2/` | Smoke/full validation, frozen selected policy, prospective benchmark definitions |
+| `docs/research_release/` | Audit, baseline provenance, milestone record, numerical results and reproduction |
+| `docs/portfolio/` | Reproducible figures, LinkedIn drafts, carousel, video storyboard and CV material |
+| `data/nnteno_v2/` | Canonical exact-reference corpus, generator, loader and QA |
+| `models/v2/` | Preserved independent scalar/Euler checkpoints and historical reports |
+| `src/core/`, `src/schemes/` | Original NumPy numerical solver and WENO/TENO schemes |
+| `Documentation/` | Historical phases, proposal implementation guide and frozen P0 validation |
+
+The duplicate `data/data/` corpus is preserved for compatibility. Its eight files
+match the canonical copy by hash. New work should use `data/nnteno_v2/data/`;
+see the [migration recommendation](docs/research_release/REPRODUCE.md).
+The [previous README](README_P0_ARCHIVE.md) retains legacy usage and
+historical results. No P0 results or historical checkpoints were overwritten.
+
+## Credits
+
+**Yasser BAOUZIL:** solver extensions, differentiable JAX implementation, training
+integration, experiments and research software in this repository. The internship
+supervisor **Radouan BOUKHARFANE** proposed the unrolled physics-loss research
+direction and supplied numerical-method clarifications. See the
+[contribution statement](docs/portfolio/CONTRIBUTIONS.md).
+
+The original WENO-NN foundation and accompanying code are by **Ben Stevens and
+Tim Colonius**, [*Enhancement of shock-capturing methods via machine learning*](https://authors.library.caltech.edu/records/1xdr6-8n320).
+TENO foundations are by **Lin Fu, Xiangyu Hu and Nikolaus Adams**,
+[*A family of high-order targeted ENO schemes*](https://portal.fis.tum.de/en/publications/a-family-of-high-order-targeted-eno-schemes-for-compressible-flui/).
+These foundational algorithms and the supervisor's proposal are not claimed as
+student inventions. Code is distributed under the [MIT license](LICENSE);
+third-party illustrations retain their [credited licenses](docs/readme/IMAGE_CREDITS.md).

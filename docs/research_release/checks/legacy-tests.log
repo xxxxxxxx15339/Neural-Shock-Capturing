@@ -1,0 +1,12 @@
+..                                                                       [100%]
+=============================== warnings summary ===============================
+../../miniconda3/envs/weno-nn/lib/python3.7/site-packages/tensorflow_core/python/pywrap_tensorflow_internal.py:15
+  /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/tensorflow_core/python/pywrap_tensorflow_internal.py:15: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+    import imp
+
+../../miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/callbacks.py:20
+  /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/callbacks.py:20: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated since Python 3.3,and in 3.9 it will stop working
+    from collections import Iterable
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2 passed, 2 warnings in 4.13s

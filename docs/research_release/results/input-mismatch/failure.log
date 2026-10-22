@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/bazouil/Documents/Shocks-and-WENO/src/differentiable/v2_studies.py", line 157, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/bazouil/Documents/Shocks-and-WENO/src/differentiable/v2_studies.py", line 153, in main
+    (convergence if args.action=='convergence' else input_mismatch)(config,out)
+  File "/home/bazouil/Documents/Shocks-and-WENO/src/differentiable/v2_studies.py", line 133, in input_mismatch
+    teacher_bce=float(np.mean(-labels*np.log(clipped)-(~labels)*np.log(1-clipped))),
+                              ^^^^^^^
+TypeError: The numpy boolean negative, the `-` operator, is not supported, use the `~` operator or the logical_not function instead.

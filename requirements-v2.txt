@@ -1,0 +1,3 @@
+# CPU/float64 research release; keep separate from legacy TensorFlow/Keras.
+-r requirements-jax.txt
+h5py==3.16.0

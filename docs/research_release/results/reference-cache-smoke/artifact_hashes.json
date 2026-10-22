@@ -1,0 +1,13 @@
+{
+  "check.json": "f5a220fd9c95b016032f6eb506ee244b4080ab713a3a018ff62a8094480d8b68",
+  "provenance.json": "b541eac8bf8ced01e0f4334485328c3a5b0a9dc0623bd538e3d5fd8a3680e6fc",
+  "reference-cache/reference-cache-regression/N128-dt1.json": "fb05ca4d7b3b081d0ee4d9ddd90f9e2b8be0c7b9f47fcb4b95099fc797593301",
+  "reference-cache/reference-cache-regression/N128-dt1.npz": "b373874c8a2602b5d5942ac1080537a7242f9ca41874de0282c8325e85b1e02c",
+  "reference-cache/reference-cache-regression/N128-dt2.json": "10ef7a26d7c1372ab1e726f879901093bc1d8a0358f4e58ef41f75fd62f34760",
+  "reference-cache/reference-cache-regression/N128-dt2.npz": "2eb094a3db415f78b0d2b6290846c8c79c1cd6441c688e190ccbf195b3afdbbf",
+  "reference-cache/reference-cache-regression/N32-dt1.json": "5a8a36dcdc6b9af76806c4f962cd9fd433ed069ce06db567493a2b4afc178104",
+  "reference-cache/reference-cache-regression/N32-dt1.npz": "1ad533d00fc4c7b56bf7dd91b538ae0824998b3183fd7c90eb347924a7d17b75",
+  "reference-cache/reference-cache-regression/N64-dt1.json": "e2be220164b7644579007d55e57f854c9f6a0c2652e8c709ff1d74af5d82412d",
+  "reference-cache/reference-cache-regression/N64-dt1.npz": "ab285a6e186acb551732bac33dee3956ba65e990f4a80c73e101123af1bdacc4",
+  "reference-cache/reference-cache-regression/configuration.json": "48f8942b63b596e794d93eae5926486525a74fad4d121ecd7d4b7c60a8bb25bd"
+}

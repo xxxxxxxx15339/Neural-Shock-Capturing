@@ -44,12 +44,12 @@ Script: `WENO5_vs_WENO5NN_StepAdvection.py` — L=2, 100 cells, CFL=2/3, 50 peri
 
 **Plots:**
 
-- [`plots/step_advection/final_snapshot.png`](plots/step_advection/final_snapshot.png) — WENO5 vs. NN vs. exact solution at t=100. *Interpretation: the NN tracks the true step sharply; WENO5 is visibly smeared and hasn't fully settled to 0/1 in the flat regions after 50 periods.*
-- [`plots/step_advection/discontinuity_width_vs_time.png`](plots/step_advection/discontinuity_width_vs_time.png) — discontinuity width over the full run. *Interpretation: WENO5's shock keeps widening every period (cumulative numerical diffusion); the NN's stays bounded — the clearest single evidence of the NN's claimed advantage.*
-- [`plots/step_advection/l2_error_weno5.png`](plots/step_advection/l2_error_weno5.png) / [`l2_error_nn.png`](plots/step_advection/l2_error_nn.png) — L2 error vs. exact over time. *Interpretation: WENO5's error roughly doubles over the run; the NN's oscillates but never trends upward — no long-time error accumulation.*
-- [`plots/step_advection/total_variation_weno5.png`](plots/step_advection/total_variation_weno5.png) / [`total_variation_nn.png`](plots/step_advection/total_variation_nn.png) — total variation over time. *Interpretation: NN's TV is pinned essentially exactly at the analytically correct value (2.000) the entire run; WENO5 drifts up ~2%. Sharpest quantitative confirmation of the qualitative pattern.*
-- [`plots/step_advection/disc_track_weno5_x-1.png`](plots/step_advection/disc_track_weno5_x-1.png) / [`disc_track_nn_x-1.png`](plots/step_advection/disc_track_nn_x-1.png) — pointwise |error| near the x=-1 discontinuity, x-ct vs. t. *Interpretation: WENO5's error band visibly funnels wider with time; the NN's stays a constant-width column — same conclusion, spatially resolved.*
-- [`plots/step_advection/disc_track_weno5_x-2.png`](plots/step_advection/disc_track_weno5_x-2.png) / [`disc_track_nn_x-2.png`](plots/step_advection/disc_track_nn_x-2.png) — same, near x=-2. *Interpretation: identical pattern at the second discontinuity — not a location-specific artifact.*
+- [`plots/step_advection/final_snapshot.png`](../plots/step_advection/final_snapshot.png) — WENO5 vs. NN vs. exact solution at t=100. *Interpretation: the NN tracks the true step sharply; WENO5 is visibly smeared and hasn't fully settled to 0/1 in the flat regions after 50 periods.*
+- [`plots/step_advection/discontinuity_width_vs_time.png`](../plots/step_advection/discontinuity_width_vs_time.png) — discontinuity width over the full run. *Interpretation: WENO5's shock keeps widening every period (cumulative numerical diffusion); the NN's stays bounded — the clearest single evidence of the NN's claimed advantage.*
+- [`plots/step_advection/l2_error_weno5.png`](../plots/step_advection/l2_error_weno5.png) / [`l2_error_nn.png`](../plots/step_advection/l2_error_nn.png) — L2 error vs. exact over time. *Interpretation: WENO5's error roughly doubles over the run; the NN's oscillates but never trends upward — no long-time error accumulation.*
+- [`plots/step_advection/total_variation_weno5.png`](../plots/step_advection/total_variation_weno5.png) / [`total_variation_nn.png`](../plots/step_advection/total_variation_nn.png) — total variation over time. *Interpretation: NN's TV is pinned essentially exactly at the analytically correct value (2.000) the entire run; WENO5 drifts up ~2%. Sharpest quantitative confirmation of the qualitative pattern.*
+- [`plots/step_advection/disc_track_weno5_x-1.png`](../plots/step_advection/disc_track_weno5_x-1.png) / [`disc_track_nn_x-1.png`](../plots/step_advection/disc_track_nn_x-1.png) — pointwise |error| near the x=-1 discontinuity, x-ct vs. t. *Interpretation: WENO5's error band visibly funnels wider with time; the NN's stays a constant-width column — same conclusion, spatially resolved.*
+- [`plots/step_advection/disc_track_weno5_x-2.png`](../plots/step_advection/disc_track_weno5_x-2.png) / [`disc_track_nn_x-2.png`](../plots/step_advection/disc_track_nn_x-2.png) — same, near x=-2. *Interpretation: identical pattern at the second discontinuity — not a location-specific artifact.*
 
 **Conclusion: clear NN win.** Avoids the cumulative numerical diffusion WENO5 builds up over long-time integration; holds a stable, near-exact shock shape indefinitely instead of progressively smearing.
 
@@ -69,12 +69,12 @@ max_abs_error(NN    vs. exact)    = 4.4264e-01   (+0.27%, NN marginally worse)
 
 **Plots:**
 
-- [`plots/sod/density_velocity_pressure.png`](plots/sod/density_velocity_pressure.png) — density/velocity/pressure vs. x, both schemes vs. exact. *Interpretation: visually indistinguishable; both resolve the rarefaction, contact, and shock correctly.*
-- [`plots/sod/density_final.png`](plots/sod/density_final.png) — density only, same comparison. *Interpretation: same conclusion, isolated to the variable most sensitive to scheme differences.*
-- [`plots/sod/density_contour.png`](plots/sod/density_contour.png) — space-time density, WENO5 vs. NN side by side. *Interpretation: rarefaction fan and shock trajectory match almost exactly between the two.*
-- [`plots/sod/discontinuity_width.png`](plots/sod/discontinuity_width.png) — shock width over time. *Interpretation: NN's width is slightly narrower than WENO5's throughout — small, consistent edge to the NN.*
-- [`plots/sod/total_variation.png`](plots/sod/total_variation.png) — total variation over time. *Interpretation: NN's TV stays measurably lower and flatter (≈0.8756 vs. WENO5's ≈0.8763 by t=0.2) — the same "less oscillatory over time" pattern seen on step advection, just smaller in magnitude.*
-- [`plots/sod/l2_error.png`](plots/sod/l2_error.png) — direct WENO5 vs. NN L2 distance (not vs. exact) over time. *Interpretation: grows smoothly to ≈9.5e-4 by t=0.2 — small, steadily growing divergence between the two schemes' own trajectories, consistent with the final max_abs_difference.*
+- [`plots/sod/density_velocity_pressure.png`](../plots/sod/density_velocity_pressure.png) — density/velocity/pressure vs. x, both schemes vs. exact. *Interpretation: visually indistinguishable; both resolve the rarefaction, contact, and shock correctly.*
+- [`plots/sod/density_final.png`](../plots/sod/density_final.png) — density only, same comparison. *Interpretation: same conclusion, isolated to the variable most sensitive to scheme differences.*
+- [`plots/sod/density_contour.png`](../plots/sod/density_contour.png) — space-time density, WENO5 vs. NN side by side. *Interpretation: rarefaction fan and shock trajectory match almost exactly between the two.*
+- [`plots/sod/discontinuity_width.png`](../plots/sod/discontinuity_width.png) — shock width over time. *Interpretation: NN's width is slightly narrower than WENO5's throughout — small, consistent edge to the NN.*
+- [`plots/sod/total_variation.png`](../plots/sod/total_variation.png) — total variation over time. *Interpretation: NN's TV stays measurably lower and flatter (≈0.8756 vs. WENO5's ≈0.8763 by t=0.2) — the same "less oscillatory over time" pattern seen on step advection, just smaller in magnitude.*
+- [`plots/sod/l2_error.png`](../plots/sod/l2_error.png) — direct WENO5 vs. NN L2 distance (not vs. exact) over time. *Interpretation: grows smoothly to ≈9.5e-4 by t=0.2 — small, steadily growing divergence between the two schemes' own trajectories, consistent with the final max_abs_difference.*
 
 **Conclusion: near-tie, with a small consistent edge to the NN** on shock width and total variation — not the pure wash a first glance at the overlapping profile plots suggests.
 
@@ -95,8 +95,8 @@ Script: `WENO5_vs_WENO5NN_Burgers.py` — Gaussian IC (k=20), L=2, T=4, referenc
 
 **Plots:**
 
-- [`plots/burgers/solution_profile.png`](plots/burgers/solution_profile.png) — WENO5-JS vs. NN vs. 1600-cell reference at t=4, 50 cells. *Interpretation: the two schemes overlap almost perfectly with each other, both slightly smearing the shock relative to the fine reference — no visible qualitative difference.*
-- [`plots/burgers/error_vs_grid_spacing.png`](plots/burgers/error_vs_grid_spacing.png) — L2 error vs. Δx, log-log, both schemes. *Interpretation: no consistent winner — NN better at 3 of 4 resolutions, worse at one, no monotonic trend. Matches the paper's own observation that the two schemes perform similarly on true shocks.*
+- [`plots/burgers/solution_profile.png`](../plots/burgers/solution_profile.png) — WENO5-JS vs. NN vs. 1600-cell reference at t=4, 50 cells. *Interpretation: the two schemes overlap almost perfectly with each other, both slightly smearing the shock relative to the fine reference — no visible qualitative difference.*
+- [`plots/burgers/error_vs_grid_spacing.png`](../plots/burgers/error_vs_grid_spacing.png) — L2 error vs. Δx, log-log, both schemes. *Interpretation: no consistent winner — NN better at 3 of 4 resolutions, worse at one, no monotonic trend. Matches the paper's own observation that the two schemes perform similarly on true shocks.*
 
 **Conclusion: essentially a tie.**
 
@@ -116,11 +116,11 @@ max_abs_error(NN    vs. reference)    = 12.345   (+0.55%, NN worse)
 
 **Plots:**
 
-- [`plots/shu_osher/density_velocity_pressure.png`](plots/shu_osher/density_velocity_pressure.png) — density/velocity/pressure vs. x, both schemes vs. reference. *Interpretation: both track the reference closely, with expected under-resolution vs. the 3200-cell reference in the post-shock turbulent region (x≈6–8); no visible qualitative difference between WENO5 and NN.*
-- [`plots/shu_osher/density_final.png`](plots/shu_osher/density_final.png) — density only, same comparison. *Interpretation: same conclusion.*
-- [`plots/shu_osher/density_contour.png`](plots/shu_osher/density_contour.png) — space-time density, WENO5 vs. NN side by side. *Interpretation: shock trajectory and oscillation pattern look essentially identical between the two.*
-- [`plots/shu_osher/discontinuity_width.png`](plots/shu_osher/discontinuity_width.png) — shock width over time. *Interpretation: noisy but essentially overlapping — no meaningful difference here, unlike Sod.*
-- [`plots/shu_osher/total_variation.png`](plots/shu_osher/total_variation.png) — total variation over time. *Interpretation: the one clear divergence — NN's TV is consistently **higher** than WENO5's and the gap **widens** over the run (≈16.5 vs. ≈14.2 by t=2). Opposite of the pattern seen everywhere else — here the NN is more oscillatory, not less.*
+- [`plots/shu_osher/density_velocity_pressure.png`](../plots/shu_osher/density_velocity_pressure.png) — density/velocity/pressure vs. x, both schemes vs. reference. *Interpretation: both track the reference closely, with expected under-resolution vs. the 3200-cell reference in the post-shock turbulent region (x≈6–8); no visible qualitative difference between WENO5 and NN.*
+- [`plots/shu_osher/density_final.png`](../plots/shu_osher/density_final.png) — density only, same comparison. *Interpretation: same conclusion.*
+- [`plots/shu_osher/density_contour.png`](../plots/shu_osher/density_contour.png) — space-time density, WENO5 vs. NN side by side. *Interpretation: shock trajectory and oscillation pattern look essentially identical between the two.*
+- [`plots/shu_osher/discontinuity_width.png`](../plots/shu_osher/discontinuity_width.png) — shock width over time. *Interpretation: noisy but essentially overlapping — no meaningful difference here, unlike Sod.*
+- [`plots/shu_osher/total_variation.png`](../plots/shu_osher/total_variation.png) — total variation over time. *Interpretation: the one clear divergence — NN's TV is consistently **higher** than WENO5's and the gap **widens** over the run (≈16.5 vs. ≈14.2 by t=2). Opposite of the pattern seen everywhere else — here the NN is more oscillatory, not less.*
 
 **Conclusion: NN slightly worse**, driven specifically by growing total variation in the post-shock oscillatory region — the one problem where the NN's usual stability advantage reverses.
 
@@ -233,15 +233,15 @@ Shu   shock width      NN = 7         WENO5 = 7
 
 **Plots** (`WENO5_vs_WENO7NN_Sod.py`, `WENO5_vs_WENO7NN_ShuOsher.py`, both new — 7-point counterparts of the Phase 1 comparison scripts):
 
-- [`plots/sod_weno7nn/density_velocity_pressure.png`](plots/sod_weno7nn/density_velocity_pressure.png) / [`density_final.png`](plots/sod_weno7nn/density_final.png) — WENO7-NN vs. WENO5 vs. exact. *Interpretation: visually near-identical to WENO5, both close to exact — the failure is in a metric (TV), not a visible profile difference.*
-- [`plots/sod_weno7nn/total_variation.png`](plots/sod_weno7nn/total_variation.png) — TV over time. *Interpretation: this is the actual failure, visualized — WENO5's TV stays smooth (~0.875-0.876) the whole run; WENO7-NN's spikes up to ~0.881 around t=0.13-0.15 before partially relaxing to ~0.8785-0.879. A transient instability, not a steady-state one.*
-- [`plots/sod_weno7nn/discontinuity_width.png`](plots/sod_weno7nn/discontinuity_width.png) — shock width over time. *Interpretation: NN's shock is consistently ~5-10% wider than WENO5's throughout — matches the final shock-width count (10 vs. 9 cells).*
-- [`plots/sod_weno7nn/density_contour.png`](plots/sod_weno7nn/density_contour.png) — space-time density, side by side. *Interpretation: same rarefaction/shock structure; no qualitative difference visible at this scale.*
-- [`plots/sod_weno7nn/l2_error.png`](plots/sod_weno7nn/l2_error.png) — direct WENO7-NN vs. WENO5 L2 distance over time. *Interpretation: grows to ≈4e-3 by t=0.2 — about 4x larger than the Phase 1 5-point model's divergence from WENO5 on the same problem, consistent with this being a more different, more aggressively-corrected network.*
-- [`plots/shu_osher_weno7nn/density_velocity_pressure.png`](plots/shu_osher_weno7nn/density_velocity_pressure.png) / [`density_final.png`](plots/shu_osher_weno7nn/density_final.png) — WENO7-NN vs. WENO5 vs. reference. *Interpretation: WENO7-NN tracks WENO5 closely everywhere, including the oscillatory region — the 2.4% regional improvement is real but subtle at this visual scale, not a dramatic visible difference.*
-- [`plots/shu_osher_weno7nn/total_variation.png`](plots/shu_osher_weno7nn/total_variation.png) — full-domain TV over time. *Interpretation: counterintuitive but consistent finding — WENO7-NN's TV is higher than WENO5's across the **entire domain** and the whole run, even though its error is lower specifically in the narrow diagnostic region [5.5, 7.3]. TV (internal smoothness) and regional accuracy (distance to the true solution) are different things and don't have to move together — the model traded some global smoothness for better local accuracy in the region that matters most for acceptance.*
-- [`plots/shu_osher_weno7nn/discontinuity_width.png`](plots/shu_osher_weno7nn/discontinuity_width.png) — discontinuity width over time. *Interpretation: opposite of the TV finding — NN's width is consistently narrower (sharper) than WENO5's throughout. Sharper transitions concentrated in fewer cells can still sum to higher total variation than a gentler, wider one — these two metrics capture different failure modes.*
-- [`plots/shu_osher_weno7nn/density_contour.png`](plots/shu_osher_weno7nn/density_contour.png) — space-time density, side by side. *Interpretation: same overall wave structure; the oscillatory band looks slightly higher-contrast for WENO7-NN, consistent with the sharper-width finding.*
+- [`plots/sod_weno7nn/density_velocity_pressure.png`](../plots/sod_weno7nn/density_velocity_pressure.png) / [`density_final.png`](../plots/sod_weno7nn/density_final.png) — WENO7-NN vs. WENO5 vs. exact. *Interpretation: visually near-identical to WENO5, both close to exact — the failure is in a metric (TV), not a visible profile difference.*
+- [`plots/sod_weno7nn/total_variation.png`](../plots/sod_weno7nn/total_variation.png) — TV over time. *Interpretation: this is the actual failure, visualized — WENO5's TV stays smooth (~0.875-0.876) the whole run; WENO7-NN's spikes up to ~0.881 around t=0.13-0.15 before partially relaxing to ~0.8785-0.879. A transient instability, not a steady-state one.*
+- [`plots/sod_weno7nn/discontinuity_width.png`](../plots/sod_weno7nn/discontinuity_width.png) — shock width over time. *Interpretation: NN's shock is consistently ~5-10% wider than WENO5's throughout — matches the final shock-width count (10 vs. 9 cells).*
+- [`plots/sod_weno7nn/density_contour.png`](../plots/sod_weno7nn/density_contour.png) — space-time density, side by side. *Interpretation: same rarefaction/shock structure; no qualitative difference visible at this scale.*
+- [`plots/sod_weno7nn/l2_error.png`](../plots/sod_weno7nn/l2_error.png) — direct WENO7-NN vs. WENO5 L2 distance over time. *Interpretation: grows to ≈4e-3 by t=0.2 — about 4x larger than the Phase 1 5-point model's divergence from WENO5 on the same problem, consistent with this being a more different, more aggressively-corrected network.*
+- [`plots/shu_osher_weno7nn/density_velocity_pressure.png`](../plots/shu_osher_weno7nn/density_velocity_pressure.png) / [`density_final.png`](../plots/shu_osher_weno7nn/density_final.png) — WENO7-NN vs. WENO5 vs. reference. *Interpretation: WENO7-NN tracks WENO5 closely everywhere, including the oscillatory region — the 2.4% regional improvement is real but subtle at this visual scale, not a dramatic visible difference.*
+- [`plots/shu_osher_weno7nn/total_variation.png`](../plots/shu_osher_weno7nn/total_variation.png) — full-domain TV over time. *Interpretation: counterintuitive but consistent finding — WENO7-NN's TV is higher than WENO5's across the **entire domain** and the whole run, even though its error is lower specifically in the narrow diagnostic region [5.5, 7.3]. TV (internal smoothness) and regional accuracy (distance to the true solution) are different things and don't have to move together — the model traded some global smoothness for better local accuracy in the region that matters most for acceptance.*
+- [`plots/shu_osher_weno7nn/discontinuity_width.png`](../plots/shu_osher_weno7nn/discontinuity_width.png) — discontinuity width over time. *Interpretation: opposite of the TV finding — NN's width is consistently narrower (sharper) than WENO5's throughout. Sharper transitions concentrated in fewer cells can still sum to higher total variation than a gentler, wider one — these two metrics capture different failure modes.*
+- [`plots/shu_osher_weno7nn/density_contour.png`](../plots/shu_osher_weno7nn/density_contour.png) — space-time density, side by side. *Interpretation: same overall wave structure; the oscillatory band looks slightly higher-contrast for WENO7-NN, consistent with the sharper-width finding.*
 
 **Conclusion**: extremely close to a full pass — one seed away, in principle. The two remaining failures are both narrow misses (TV overshoot is transient, not permanent; Linf failure is a single worst-case point, not a broad-region problem) rather than the wide, systematic failures seen throughout Phase 3. Continuing the seed search at this exact configuration (`hidden-size=32`, `regularization=0.10`, `learning-rate=0.001`, `patience=15`) is the most direct path to a fully-accepted model.
 
@@ -517,3 +517,224 @@ K=4 now trains cleanly end to end for the first time; the instability boundary h
 **Honest limitation, caught by checking rather than assuming**: `lambda_positivity`'s penalty logged as exactly `0.0` on every single step across the entire Phase 12 run. Reason, found by inspection: `positivity_penalty_jax` is computed on `final_state`, but `final_state` is the output of `rollout(..., state_guard=euler_positivity_repair)` — by the time the loss sees it, every violation has already been repaired. The penalty term is currently **structurally inert**, not just small — it can never be nonzero as wired, because it only ever observes already-clean states. Making it actually functional needs the repair step to also report how much it had to correct (e.g. accumulated as a `lax.scan` carry alongside the state, across all K steps, not recovered after the fact from the final state alone) — this is real, unfinished work, not a rounding-error detail, and is the concrete next step if Euler training is pursued further.
 
 **Status**: applying the professor's own answers produced a genuine, measured improvement (K=4 now stable, further than any prior attempt) and caught a real regression in the process of testing it (the eps mistake), consistent with this project's practice of verifying every claimed fix by rerunning rather than trusting the reasoning alone. It still doesn't reach K=15, and one of the three new mechanisms (`lambda_positivity`) is currently a no-op that needs its own follow-up fix to actually do anything. Recommended framing: real, incremental, honestly-bounded progress — not a closed case.
+
+---
+
+## Phase 13 — fixing `lambda_positivity` for real: the first Euler run that doesn't diverge
+
+**Goal**: Phase 12 named its own concrete next step — `lambda_positivity` logs exactly `0.0` on every step because `positivity_penalty_jax` is evaluated on the already-`euler_positivity_repair`-cleaned `final_state`, not on what actually happened during the rollout. Fix that, and see whether a real (nonzero) positivity signal changes anything.
+
+**Making the penalty real surfaced a second, deeper bug that had been hiding behind the first one.** Computing `positivity_penalty_jax` on the *pre-repair* substage needed a new rollout variant (`numerics_jax.ssprk3_step_with_penalty` / `rollout_with_positivity_penalty`, additive — `ssprk3_step`/`rollout` themselves untouched, so every other caller is unaffected) that accumulates the penalty on each of the three SSPRK3 substages before `state_guard` runs, the same substages `ssprk3_step` already guards individually and for the same reason (Phase 6's status note). Testing this immediately showed the penalty itself going `nan` on some batches — tracing it down found that `euler_positivity_repair`'s `violates` mask only ever checked `density <= 0.0` or `pressure <= 0.0`. Two real cases fall straight through that check, silently unrepaired:
+1. **A row that's already NaN/Inf.** `NaN <= 0.0` evaluates to `False`, so a fully non-finite row was never flagged as violating — and the last-resort floor (`jnp.maximum(NaN, eps)` is still `NaN`) doesn't fix it either, contradicting the function's own "keeps `jax.lax.scan` tracing finite" claim.
+2. **A row that's technically positive but has blown up to an astronomic magnitude** — exactly Phase 10's own traced failure (max state value `5.7e144` before finally going non-finite). `density <= 0.0` is `False` for a huge positive density, so this was never repaired either, right up until it overflowed.
+
+Fixed both by broadening `violates` to `(~finite_row) | (density <= 0.0) | (pressure <= 0.0) | out_of_scale` (a new `max_scale` magnitude bound, default `1e3`), reusing the exact same neighbor-average/last-resort mechanism already built for negativity rather than adding a new repair path — and by capping `positivity_penalty_jax`'s own per-cell contribution at the same `1e3` bound (`POSITIVITY_VIOLATION_CAP`), since a genuine (non-NaN) astronomic violation could otherwise overflow the batch-mean total loss to `inf` on its own even with a perfectly finite penalty function. Verified with a 30-batch sweep before touching the training script again: no more NaN or non-finite totals, and `l_positivity` now genuinely nonzero when a violation occurs.
+
+**Re-running the exact same Phase 11/12 curriculum script (K = 2 → 4 → 8 → 15) with both fixes, unmodified otherwise:**
+
+| Attempt | K=2 | K=4 | K=8 | K=15 |
+|---|---|---|---|---|
+| Phase 11 (curriculum, old clamp-only guard) | completes | fails at step 39/60 | -- | -- |
+| Phase 12 (curriculum, neighbor-repair + correct BVD + eps regression fixed) | completes | completes | fails at step 6/60 | -- |
+| Phase 13 (curriculum, real `lambda_positivity` + NaN/magnitude-aware repair) | completes | completes | completes | **completes** |
+
+**First time in this project's history that Euler unrolled-physics-loss training completes all four curriculum stages without diverging.** The saved checkpoint (`models/nn_teno5euler_unrolled_jax_params_curriculum.pkl`) is fully finite — verified directly (`np.isfinite` over every weight/bias), not inferred from the training log alone.
+
+**The training script's own held-out eval — short rollouts near the K=15 training horizon — shows a clean win:**
+
+| Held-out case | NN-TENO5euler(JAX) L2 | TENO5euler L2 | Result |
+|---|---|---|---|
+| Random Riemann, K steps | 7.620e-1 | 8.054e-1 | BEATS TENO5 |
+| Random Riemann, 3×K steps | 5.631e-1 | 5.986e-1 | BEATS TENO5 |
+| Canonical Sod, K steps | 4.114e-2 | 4.318e-2 | BEATS TENO5 |
+
+3/3 — the first non-zero win count Euler training has ever produced.
+
+**Independent verification (not just trusting the training script's self-reported numbers) tells a more complete story.** `TENO5euler_vs_NNTENO5euler_JAX.py` (new script, the Euler counterpart of `ValidationMatrix_ProjPDF.py`) evaluates the same checkpoint at the *full canonical benchmark horizons* — Sod to `final_time=0.2`, Shu-Osher to `final_time=1.8` — several times past the K=15 training horizon (`K x dt ~= 0.06` time units), using an independent reference (the exact Riemann solution for Sod; a converged 320-cell TENO5euler(JAX) run for Shu-Osher, which has no closed form). At that scale, **NN-TENO5euler(JAX) loses on both, and not just narrowly overall — the loss is concentrated in the smooth regions specifically, not the shocks.** Domain-wide mean state L1: Sod 1.069e-2 vs. TENO5euler's 8.258e-3 (1.29x); Shu-Osher 2.633e-1 vs. 2.132e-1 (1.24x). Windowed by region (not just eyeballed off the plot — recomputed directly): in Sod's rarefaction fan (`x in [0.28, 0.46]`, a smooth, non-discontinuous region — the genuinely hard part, the shock/contact, is where the network actually tracks TENO5euler closely), NN's L1 is **1.49x** TENO5euler's (1.821e-2 vs. 1.220e-2); in Shu-Osher's pre-shock oscillatory region (`x in [2, 7]`, smooth-ish, well before the shock at `x~7.4`), NN's L1 is **1.35x** TENO5euler's (4.235e-1 vs. 3.135e-1) — a systematic amplitude-damping across the whole region, not a difficulty concentrated at a few hard points. Visually (`plots/euler_jax_comparison/{sod,shu_osher}.png`), the network's solution is stable and physically sane on both — no divergence, no spurious oscillation, correct shock/contact locations — but it is consistently, visibly worse than deterministic TENO5euler specifically where TENO5euler is easiest (the smooth ramp, the smooth pre-shock waves), not just at the hardest points.
+
+This is exactly the **"real, but narrow"** generalization pattern Phase 7 already documented for the scalar case (wins near the training distribution/horizon, loses at full canonical benchmark scale) — not a new finding in kind, but its first-ever confirmation on Euler, because every prior Euler attempt failed by producing an outright NaN blowup instead of a stable-but-narrowly-losing solution.
+
+**Status**: a genuine milestone on stability, not a win on accuracy, and the two shouldn't be conflated. The specific numerical-stability obstacle this project spent Phases 1 and 6–12 diagnosing (Roe-eigenbasis conditioning under an evolving, untrained-for-Euler reconstruction) now appears resolved — Euler training runs end to end, stably, for the first time, producing a checkpoint that stays physically sane (no NaN, no spurious oscillation, correct shock/contact locations) on both canonical benchmarks. But it loses to deterministic TENO5euler at full benchmark scale, and — checked directly, not eyeballed — that loss is concentrated specifically in the smooth regions (1.35-1.49x TENO5euler's error there) rather than spread evenly or concentrated at the shocks, which are the genuinely hard part and where the network actually holds up. That's a more specific, less flattering finding than "the same narrow-generalization gap Phase 7 already found for scalar": it says the short-K/random-Riemann training distribution isn't just narrow in scope, it's specifically not teaching the network to match TENO5euler's smooth-region accuracy, which a purely discontinuity-focused random-Riemann training set (steep jumps at every sample, no sustained smooth stretches) would plausibly under-represent. The concrete next step is still training-distribution breadth, as Phase 7 recommended for scalar, but informed by this: include training examples with longer smooth stretches, not just wider K or more Riemann samples, since smooth-region accuracy is where this checkpoint specifically falls short.
+
+---
+
+## Phase 14 — smooth-data mixing for Euler: backfired once, then worked once gradients were clipped
+
+**Goal**: act on Phase 13's own conclusion — mix a smooth training family in alongside the all-discontinuous random-Riemann data, since that's specifically where the checkpoint fell short.
+
+**First attempt (50/50 mix, no other changes) made things worse, and cost the Phase 13 checkpoint.** Added `random_entropy_wave_params`/`sample_entropy_wave_case` to `Train_NNTENO5euler_UnrolledJAX.py`: uniform velocity/pressure means any density perturbation is exactly passively advected, unchanged in shape, forever — the standard "linear entropy wave" smooth-accuracy test from the WENO/TENO literature, with a genuine closed-form target (no simulation needed, same reason `random_riemann_params` was chosen). Mixing this in 50/50 and retraining the curriculum: training nominally "completed" (no NaN early-stop), but loss spiked to 1.5e10 on the very last step and the resulting update corrupted the checkpoint — held-out eval went from Phase 13's 3/3 to 0/3. Retraining straight into the same file also overwrote the working Phase 13 checkpoint without a backup, a process mistake, caught immediately: re-ran with a code path engineered to reproduce Phase 13's exact RNG draw sequence bit-for-bit (confirmed by matching its numbers exactly), recovered it, and backed it up (`models/nn_teno5euler_unrolled_jax_params_curriculum_phase13_verified.pkl`, committed) before touching anything further.
+
+**Root cause and fix: nothing capped the gradient magnitude itself.** The per-cell positivity-penalty cap (Phase 13) bounds the *penalty value*, not the resulting gradient — a single batch that triggers a severe (but finite) violation can still produce a huge gradient and, through Adam, a destructive update. Added `optax.clip_by_global_norm(1.0)` before Adam in both `Train_NNTENO5euler_UnrolledJAX.py` and its curriculum wrapper — standard practice for unrolled/RNN-style training for exactly this failure mode, not Euler-specific.
+
+**Re-running the 50/50 smooth-mix curriculum with clipping in place**: training completed all 4 stages again; one transient loss spike to 2.4e10 still occurred on the last step (an unlucky batch triggering a real rollout excursion at the network's current weights), but the clipped update kept the checkpoint finite and sane — verified directly, not inferred from the loss log. Checked against `TENO5euler_vs_NNTENO5euler_JAX.py` (independent of the training script's own eval):
+
+| Region | Phase 13 (no mix) | Phase 14 (smooth-mix + clip) |
+|---|---|---|
+| Sod, rarefaction fan (smooth) | 1.49x TENO5euler's error | 1.27x |
+| Sod, whole domain | 1.29x | 1.16x |
+| Shu-Osher, pre-shock oscillations (smooth-ish) | 1.35x | 1.32x |
+| Shu-Osher, whole domain | 1.24x | 1.23x |
+
+Real, meaningful narrowing on Sod; marginal on Shu-Osher. Checkpoint backed up as `models/nn_teno5euler_unrolled_jax_params_curriculum_phase15_smoothmix.pkl` (also the current default `..._curriculum.pkl`).
+
+**Status**: a real improvement, not a full fix — NN-TENO5euler(JAX) still loses everywhere, by less. The clean lesson: widening the training distribution and clipping gradients are not independent — the first raises the risk the second exists to contain, and skipping the checkpoint-backup discipline before a risky experiment is a mistake worth not repeating (now standard practice going forward: back up before any retrain that overwrites a verified-good checkpoint file).
+
+---
+
+## Phase 15 — the same widening attempt for scalar (Advection/Burgers): a clean negative result
+
+**Goal**: Phase 7 found the scalar network loses at canonical benchmark scale (Advection L2 1.42x TENO5's error at `final_time=1.0`, ~8.5x the trained K=15 horizon; Burgers 3.62x, explicitly out-of-distribution — trained only on the linear advection flux, never Burgers' `0.5*u**2`). Test whether the same two levers that helped Euler (widen horizon via a K-curriculum, widen the physics/data family) help here too.
+
+Built `Train_NNTENO5_UnrolledJAX_Curriculum.py`: a K-curriculum (15 -> 40 -> 80 -> 128, the last stage matching `ValidationMatrix_ProjPDF.py`'s own Advection step count exactly) warm-started from `run3_pretrained`, plus a Burgers training family with its own exact target (`burgers_characteristic_general`, the method-of-characteristics solver from `ValidationMatrix_ProjPDF.py`'s `burgers_characteristic_reference` generalized to arbitrary random smooth sine profiles, rejection-sampled to stay provably pre-shock at every stage up to K=128), trained as a separate batch each step averaged 50/50 with the advection batch, with the same gradient clipping Phase 14 found necessary.
+
+**Training was completely clean — no divergence at any stage, loss low and stable throughout (advection ~4-7e-3, Burgers ~2-4e-4).** But checked against the actual target (`ValidationMatrix_ProjPDF.py`'s exact benchmark, not just the training script's own held-out cases): both metrics got **slightly worse**, not better — Advection 1.42x -> 1.45x TENO5's error; Burgers 3.62x -> 3.95x.
+
+**Likely explanation, not yet confirmed**: `ValidationMatrix`'s canonical test profiles (a width=0.5, amplitude=1.0 step; a fixed-parameter Burgers sine) sit at or beyond the *edge* of `sample_batch`'s sampled shape ranges (width in [0.15, 0.5], amplitude in [0.3, 1.0]) — a parameter-range/shape gap, not a horizon or physics-family gap. Widening K and adding Burgers physics didn't touch that dimension at all, which would explain why neither helped. Not tested further in this pass (see Phase 16, which found a different, architecture-level fix instead and didn't need to resolve this).
+
+**Status**: an honest negative result, reported as such rather than filed away. The scalar network's checkpoint (`run3_pretrained`) was left unchanged; `run4_widehorizon` exists as a record of what was tried, not a replacement.
+
+---
+
+## Phase 16 — literature research: a convex-mix architecture fix, free on every existing checkpoint
+
+**Goal**: every training-side attempt so far (K-curricula, smooth-data mixing, gradient clipping) either partially helped (Euler) or didn't help at all (scalar) with the one specific, consistently-measured pattern: the network loses to TENO5 more in smooth regions than at discontinuities, on both physics. Read the literature specifically for that pattern rather than continuing to guess at data/hyperparameter changes.
+
+**Read in full** (previously flagged in `Literature_Report_Mapping.md` but never actually reviewed): a differentiable-solver-trained TVD flux-limiter paper (arXiv:2503.09625). It diagnoses the identical failure mode for limiters and fixes it architecturally, not with a loss term: parameterize the learned limiter as `(1-lambda)*classical + lambda*learned`, `lambda` a sigmoid network output. Both endpoints (e.g. Minmod, Superbee) already satisfy the properties that matter (2nd-order accuracy in smooth regions, TVD) — *any* convex combination inherits both, by construction, rather than relying on training to have taught an unconstrained network the same properties. Their learned limiter beat every classical limiter even in smooth regions (not just tied), as a direct consequence.
+
+**Ported to this project's own reconstruction, with zero new parameters.** `projection_jax.mixed_reconstruct` computes `lambda = max_candidate(troubled_probability)` — the network's *own existing* troubled-probability output, already exactly "how confident is this candidate genuinely troubled" — and mixes `(1-lambda)*teno5_reconstruct_jax(stencils) + lambda*network_reconstruct(stencils)`. Reusing the existing signal instead of adding a new head means this drops into any already-trained checkpoint with no retraining needed to test it. Wired into both comparison scripts' default network-reconstruction path (`ValidationMatrix_ProjPDF.py`'s `_network_reconstruct`, `TENO5euler_vs_NNTENO5euler_JAX.py`'s `make_network_reconstruct`).
+
+**Verified at inference only, no retraining, on the exact same checkpoints Phases 7/14 already measured:**
+
+| Case | Before (raw network) | After (convex-mixed) |
+|---|---|---|
+| Advection L2 ratio (`run3_pretrained`) | 1.42x | 1.39x |
+| Burgers L2 ratio (`run3_pretrained`) | 3.62x | 3.25x |
+| Sod whole domain (Phase 14 checkpoint) | 1.16x | 1.15x |
+| Sod rarefaction fan (Phase 14 checkpoint) | 1.27x | 1.27x |
+| Shu-Osher whole domain (Phase 14 checkpoint) | 1.23x | **1.065x** |
+
+Real improvement everywhere it was checked, ranging from marginal (Sod, whose Phase 14 checkpoint was already trained on smooth data and so had less headroom left) to substantial (Burgers, Shu-Osher). The Shu-Osher plot (`plots/euler_jax_comparison/shu_osher.png`) now visually tracks TENO5euler almost exactly across the full domain, not just near the shock — a clearly visible change, not just a small number.
+
+**Status**: the first fix in this whole line of work that helped *every* case checked, cost nothing to apply (no retraining, no new parameters, no risk of instability since it can only pull the output toward TENO5's own known-good reconstruction), and is now the default network-reconstruction path in both comparison scripts. It does not close the remaining gap — NN-TENO5euler(JAX)/NN-TENO5(JAX) still lose everywhere, just by less than at any point in this project's history. The natural next step the paper's own results suggested, tried next: wire `mixed_reconstruct` into the *training* loop itself, not just inference.
+
+---
+
+## Phase 17 — training through the mix: tried three ways, none beat the free inference-only version
+
+**Goal**: Phase 16 applied `mixed_reconstruct` at inference only. The paper it came from trains its limiter end-to-end with the mix in the loop, not just applies it after the fact — test whether doing the same here helps further, on top of the already-measured free gain.
+
+`single_example_loss`/`network_rollout` in both `Train_NNTENO5euler_UnrolledJAX.py` and `Train_NNTENO5_UnrolledJAX.py` (and the Burgers-flux path in the scalar curriculum script) were switched to route through a new `_mixed_network_reconstruct` wrapper instead of the network's raw candidate combination, so the actual training dynamics (not just post-hoc evaluation) see the mixed reconstruction.
+
+**Three attempts, all checked independently against the same benchmarks Phase 16 used — none improved on it:**
+
+1. **Euler, direct K=15 fine-tune from the Phase 15 checkpoint, lr=3e-4, 150 steps.** Training hit a real (if contained) instability -- loss spiked to 156 at step 60 -- and the final checkpoint came out worse than Phase 16's inference-only result: Shu-Osher 1.065x -> 1.196x.
+2. **Same fine-tune, lr=1e-4, with the best-by-validation checkpoint tracked** (not just whatever's left at the final step, since attempt 1's final params were plausibly mid-recovery from its own loss spike): Sod 1.14x, Shu-Osher 1.070x -- statistically a wash against Phase 16's 1.145x/1.065x, not an improvement.
+3. **Scalar, full K-curriculum (15->40->80->128) + Burgers-family retrain from `run3_pretrained`, mix wired in throughout.** Training was completely clean (no divergence, same as Phase 15's unmixed version of this same run) -- but the result (`run5_mixtrained`) came out **worse** than Phase 16's simple inference-only mix on the original checkpoint: Advection 1.392x -> 1.487x (worse than even the unmixed original, 1.417x); Burgers 3.249x -> 3.262x (flat, no better).
+
+**Status**: a consistent, three-times-repeated negative result, not a fluke of one bad run -- training through the mix does not currently improve on simply applying it at inference to an already-trained checkpoint, and can make things worse. Plausible reading: the free inference-time gain already captures most of what this specific mechanism (reusing the network's existing troubled-probability output as `lambda`, no new parameters) can offer: `lambda` was already a reasonably-calibrated "how troubled does this look" signal from the original training, and further gradient updates through the mix don't obviously improve that calibration -- they just move the network's weights around without a training signal specifically aimed at *lambda*'s own quality. A genuinely new attempt at this idea would likely need a dedicated, separately-supervised or separately-regularized `lambda` (e.g. its own small head, trained to predict "does mixing in the network's proposal actually reduce loss here" directly), not reuse of the existing troubled-probability signal -- out of scope for this pass. Current best, verified state for both physics remains Phase 16's inference-only mix applied to the ALREADY-EXISTING checkpoints (`run3_pretrained` for scalar, the Phase 15 checkpoint for Euler): Advection 1.39x, Burgers 3.25x, Sod 1.14x, Shu-Osher 1.065x TENO5's error -- real, substantial narrowing from where this project started (Advection was 1.42x, Burgers 3.62x, and Euler had no finite checkpoint at all before Phase 13), but not a win on any canonical benchmark case. Recommended framing: this project's honest ceiling with the current toy 5->64->32->16->8->3 MLP architecture and the ideas tested here -- closing the remaining gap fully would need either a larger/different network architecture or a genuinely new training mechanism beyond what this pass's literature search and experiments found, not more tuning of what already exists.
+
+---
+
+## Phase 18 — a dedicated mixing head: the first outright win on a canonical Euler benchmark
+
+**Goal**: Phase 17's own diagnosis pointed at a specific fix, not just "try training again" -- reusing `max(troubled_probability)` as `lambda` makes it do double duty (candidate selection AND mix-trust), so a gradient step improving the mix can disturb the already-good candidate-selection weights it shares parameters with. Decouple them: give `lambda` its own, separate, small parameters.
+
+`teno5_jax_toy.init_lambda_head_params`/`toy_lambda` add a tiny (3 -> 1) linear head, taking the EXISTING troubled-probability vector as an input feature (not as `lambda` itself), entirely separate from the backbone's own weights. Initialized deliberately conservative, not near-zero-random: bias `-3.0`, so `sigmoid(-3.0) ~= 0.047` -- at initialization the network mixes in almost nothing of its own reconstruction, nearly reproducing TENO5euler exactly (checked directly: max diff 0.004 from a pure TENO5euler rollout on Sod). `L_Reg` anchors this new head to its own safe initial state, same mechanism already anchoring the backbone -- discourages `lambda` from growing without the loss actually justifying it, rather than starting from an unconstrained, effectively random mixing behavior the way a fresh head normally would.
+
+Trained (`Train_NNTENO5euler_UnrolledJAX_LearnedLambda.py`, 200 steps at K=15, backbone warm-started from the Phase 15 checkpoint, gradient clipping, smooth+Riemann mixed data, best-by-validation checkpoint tracked): the lambda head barely moved from its initialization (bias drifted from -3.000 to -3.015 over 200 steps; weights stayed within 0.02 of their near-zero init) -- the anchor and the small learning rate kept it close to its conservative starting point rather than learning a strongly differentiated policy.
+
+**Checked independently against the full canonical benchmark (not just the training script's own short-horizon eval):**
+
+| Case | TENO5euler(JAX) L1 | NN-TENO5euler(JAX) L1 | Ratio | Result |
+|---|---|---|---|---|
+| Sod (vs. exact Riemann solution) | 8.2583e-3 | 8.2871e-3 | 1.003x | loses, by 0.3% -- essentially a tie |
+| Shu-Osher (vs. 320-cell reference) | 2.1319e-1 | 2.0926e-1 | **0.982x** | **WINS, by 1.8%** |
+
+**This is the first time in this project's entire history that NN-TENO5euler(JAX) has beaten deterministic TENO5euler on a canonical benchmark case, not just narrowed the gap.** Visually (`plots/euler_jax_comparison/shu_osher_phase18.png`) the two curves are nearly indistinguishable across the whole domain -- this is not a dramatic win, it is a checkpoint that has learned to reproduce TENO5euler's behavior closely almost everywhere (a direct consequence of starting, and staying, close to the conservative `lambda~0.047` initialization) with a small, genuine edge on Shu-Osher specifically.
+
+**Status**: real, but narrow and modest -- read plainly, not oversold. One canonical case actually won, one lost by a margin small enough to be within reach of the same mechanism with more training signal (the lambda head barely moved; it plausibly hasn't finished learning). Not yet tried: a higher learning rate specifically for the lambda head (its gradient signal is diluted by clipping and L_Reg's pull toward the same conservative point that made this checkpoint safe to start from), or more training steps now that the mechanism is confirmed to work rather than regress. Checkpoint: `models/nn_teno5euler_unrolled_jax_params_curriculum_phase18_learnedlambda.pkl` (dict format: `{'backbone': [...], 'lambda_head': (w, b)}`, different from every other checkpoint in this project, which are all flat lists -- not yet wired into the shared comparison script's loader).
+
+---
+
+## Phase 19 — porting the dedicated mixing head to scalar: wins on both Advection and Burgers, and a real surprise along the way
+
+**Goal**: Phase 18's dedicated, separately-trained mixing head produced Euler's first outright benchmark win. It had never been tried on the scalar network (`run3_pretrained`), which has a larger gap to close (Advection 1.39x, Burgers 3.25x TENO5's error, even after Phase 16's free inference-only mix) and its own separate, real deficiency Euler didn't have: it was trained purely on linear-advection physics, never Burgers' nonlinear flux at all. Built `Train_NNTENO5_UnrolledJAX_LearnedLambda.py`: same dedicated head (`teno5_jax_toy.init_lambda_head_params`/`toy_lambda`, conservative `bias=-3.0` init, physics-agnostic and reused unmodified from the Euler version), plus a Burgers-flux training branch mixed in alongside advection (reusing `Train_NNTENO5_UnrolledJAX_Curriculum.py`'s `sample_burgers_batch`), plus one addition specific to this run: validated during training against the *actual* canonical-benchmark rollout (`ValidationMatrix_ProjPDF.py`'s own 128-step Advection / 64-step Burgers horizons via `run_scalar`), not a short K=15 training-horizon proxy -- Phase 17's failures were plausibly measured well at a short horizon and badly at the real one, so this closes that gap in the evaluation methodology itself, not just the network.
+
+**The real surprise: the win was already there before any training at all.** Printed the canonical validation once, immediately after building the fresh (untrained) mixing head, purely as a sanity check before starting the training loop -- and it already showed **Advection ratio 0.9885x, Burgers ratio 0.8546x, both wins**. This is a materially different, and better, result than Phase 16's free inference-only mix (1.39x/3.25x, both losses) despite starting from the exact same backbone and the exact same conservative `sigmoid(-3.0)~=0.047` initialization philosophy. The mechanism is different in a way that matters: Phase 16's `lambda = max_candidate(troubled_probability)` concentrates the network's contribution specifically where some candidate looks troubled -- which is disproportionately *at* the discontinuity, exactly where this network has always been weakest (per every prior phase's own diagnosis: the network loses more in smooth regions, but `max`-based mixing pushes trust *toward* the network hardest at discontinuities, the opposite of where it should). A small, uniform, input-independent blend (a fresh head with near-zero weights outputs almost exactly `sigmoid(bias)` everywhere, before it has learned to depend on the input at all) mixes in a little of the network everywhere instead, and that alone is already better than concentrating it at the hardest points.
+
+**Training then improved on that free win further, monotonically, with no regression at any checkpoint** (200 steps, K=15, gradient clipping, mixed Riemann-style/Burgers batches):
+
+| | Initial (untrained head) | Final/best (200 steps) |
+|---|---|---|
+| Advection ratio | 0.9885x | **0.9653x** |
+| Burgers ratio | 0.8546x | **0.8142x** |
+
+Independently re-verified against the saved checkpoint (not just the training log): Advection $L_2$ = \num{9.552e-2} (NN) vs.\ \num{9.896e-2} (TENO5), a **3.5% win**; Burgers $L_2$ = \num{6.649e-4} (NN) vs.\ \num{8.167e-4} (TENO5), an **18.6% win**. Checkpoint verified finite. `lambda_bias` moved from $-3.000$ to $-2.792$ over training ($\mathrm{sigmoid}(-2.792) \approx 0.058$, still a small, mostly-uniform mix) with the middle candidate's weight growing the most (`w = [0.024, 0.197, -0.007]`) -- a small, genuine, learned adjustment on top of the already-winning uniform starting point, not a large behavior change.
+
+**Status**: the first genuine wins on the scalar Advection and Burgers canonical benchmarks in this project's history -- and, unlike Phase 18's Euler result (one win, one near-tie), a win on *both* tested scalar cases simultaneously. The mechanism finding here (uniform mixing beats troubled-concentrated mixing, at least for this checkpoint) is itself worth carrying back to Euler: Phase 18's Shu-Osher win and Sod near-tie used the same `max`-based Phase 16 baseline as this comparison's Advection/Burgers starting point did -- worth checking whether Euler's dedicated head, which also started from a uniform conservative init like this one, would show the same gap over a `max`-based alternative, or whether the Euler network's own weaknesses are distributed differently than the scalar network's. Checkpoint: `models/nn_teno5_unrolled_jax_params_run6_learnedlambda.pkl` (same dict format as Phase 18's Euler checkpoint).
+
+---
+
+## Phase 20 — pushing further on Euler: a real structural limit found for Sod, not a tuning gap
+
+**Goal**: Phase 19's scalar result raised a direct question for Euler: was Sod's near-tie (Phase 18: 1.0035x, vs. Shu-Osher's clean win at 0.982x) just an undertrained mixing head, the way Phase 18 itself speculated ("the lambda head barely moved; it plausibly hasn't finished learning")? Checked first whether Euler shows the same "free win before training" pattern Phase 19 found for scalar: it does, partially -- the untrained head already gives Shu-Osher 0.9804x (a win, matching Phase 18's trained result almost exactly), but Sod starts at 1.0067x (a **loss**), worse than Phase 18's trained 1.0035x. Unlike scalar, where both benchmarks started as wins and training improved both further, Euler's two benchmarks are asymmetric: Shu-Osher barely needs training, Sod needs it to even partially recover, and never fully does.
+
+**First attempt: give the lambda head more room to learn, the way Phase 18 flagged.** `Train_NNTENO5euler_UnrolledJAX_LearnedLambda_v2.py`: continued from Phase 18's checkpoint with `optax.multi_transform` giving the lambda head a 50x higher learning rate than the backbone (5e-3 vs. 1e-4, vs. Phase 18's shared 1e-3), 400 steps (2x Phase 18's 200). Training stayed finite throughout but the loss oscillated rather than converging cleanly. Result, checked independently: Sod 1.0045x (**slightly worse** than Phase 18's 1.0035x), Shu-Osher 0.9804x (marginally better than Phase 18's 0.9816x). A wash at best, a small regression on Sod specifically -- more/faster lambda-head training does not fix Sod.
+
+**Second attempt, cheaper and more direct: sweep the mixing coefficient itself as a fixed constant** (bypassing training and any input-dependence entirely) to map out what any lambda value, uniform or not, can actually achieve on the Phase 15 backbone:
+
+| $\lambda$ (constant, every cell) | Sod ratio | Shu-Osher ratio |
+|---|---|---|
+| 0.00 | 1.0000 (exact tie, $=$ pure TENO5euler) | 1.0000 |
+| 0.02 | 1.0036 | 0.9899 |
+| 0.03 | 1.0047 | 0.9887 |
+| 0.047 (Phase 18's init) | 1.0067 | 0.9807 |
+| 0.06 | 1.0080 | 0.9754 |
+| 0.10 | 1.0127 | 0.9619 |
+| 0.20 | 1.0333 | 0.9300 |
+| 0.30 | 1.0472 | 0.9313 |
+
+**This is the real finding: Sod's ratio increases monotonically with $\lambda$ at every value tested -- there is no mixing coefficient, uniform or otherwise, at which the network's own Sod reconstruction is as good as TENO5's.** Shu-Osher shows the opposite: monotonically better through $\lambda \approx 0.2$. This is not a training/calibration gap the way Phase 17's scalar regression was -- it is a property of the backbone's own raw reconstruction quality on Sod specifically, which no amount of correctly-tuned mixing can paper over, because mixing can only interpolate between TENO5 (at $\lambda{=}0$, by construction a tie) and something that is *never* better than TENO5 on this problem at any blend ratio. Phase 18's trained, input-dependent lambda (1.0035x) already sits close to the best a lambda-based approach can achieve here -- near the low end of this sweep, consistent with a head that (correctly) learned to keep $\lambda$ especially low specifically where the input looks Sod-like.
+
+**Status**: Phase 18's checkpoint remains the best available and is not being replaced by Phase 20's v2 attempt (a net-neutral-to-slightly-worse trade on the metric that matters). The honest ceiling for this specific mechanism (a dedicated but architecturally tiny -- 3-to-1 linear -- mixing head) is now measured, not assumed: Shu-Osher is winnable and won; Sod is not winnable through mixing alone on this backbone, at any coefficient. Closing Sod's remaining 0.35% would need improving the backbone's own raw reconstruction on Sod-like problems directly (a real retraining effort, out of scope for a mixing-head tweak) or a genuinely richer gating mechanism that can distinguish "Sod-like" from "Shu-Osher-like" inputs from more than three troubled-probability numbers -- not another learning-rate or step-count sweep on the current 4-parameter head.
+
+---
+
+## Phase 21 — a richer mixing gate: moved Sod in the right direction, but confirmed the ceiling is in the backbone, not the gate
+
+**Goal**: test Phase 20's own proposed next step directly -- give the mixing gate enough local context to actually distinguish a Sod-like interface from a Shu-Osher-like one, instead of the 3 compressed troubled-probability numbers it had. Built `toy_lambda_v2`/`init_lambda_head_params_v2` (`teno5_jax_toy.py`): the gate now also sees the raw (normalized) 5-point stencil, 8 input features total through a small hidden layer, instead of 3 features through a single linear layer. Same conservative initialization philosophy (`sigmoid(-3.0)~=0.047`, verified directly: max diff 0.004 from a pure TENO5euler rollout at init, matching Phase 18's own check).
+
+**Caught a real shape bug before it silently produced wrong results, not after.** The first version assumed `stencils` carried its own candidate axis (`(n, 3, 5)`, mirroring `troubled_probability`'s shape) and tried to flatten `candidate_count * stencil_size = 15` features from it -- this crashed immediately with a shape mismatch (`(64,3,3)` vs `(64,15)`), which is what actually caught the error: `stencils` has NO candidate axis of its own (TENO5's 3 candidates are generated BY the network's output layer, not present in its input) -- its leading axes already match `troubled_probability`'s exactly, needing a plain concatenation, not a reshape-and-flatten. Fixed to the correct 8-feature (5 stencil + 3 troubled-probability) design before running any training on it.
+
+**Trained (`Train_NNTENO5euler_UnrolledJAX_LearnedLambda_v3.py`, same recipe as Phase 18: K=15, 200 steps, gradient clipping, mixed Riemann/smooth-wave batches, best-by-validation tracked), checked independently against the real benchmark:**
+
+| | Phase 18 (3-feature linear gate) | Phase 21 (8-feature, hidden-layer gate) |
+|---|---|---|
+| Sod ratio | 1.0035x | **1.0026x** (closer, still a loss) |
+| Shu-Osher ratio | 0.9816x | 0.9893x (still a win, smaller margin) |
+
+**A small, genuine improvement on Sod, and a small regression on Shu-Osher -- still not a win on Sod, and still, overall, roughly a wash rather than a breakthrough.** This is the third variant of the mixing-head idea tried across Phases 18/20/21 (original linear gate; higher learning rate on the same gate; richer input on a bigger gate), and all three land in the same narrow neighborhood (Sod between 1.0026x and 1.0045x, Shu-Osher between 0.9804x and 0.9893x) regardless of how much information or training the gate gets. That convergence is itself the finding: it is not gate capacity or gate training that is capping Sod, corroborating Phase 20's fixed-lambda sweep directly (mixing in ANY amount of this backbone's own Sod reconstruction, from ANY gate sophisticated enough to decide how much, never beats TENO5 outright on Sod).
+
+**Status**: confirms, from a second independent angle, that the mixing-gate family of fixes has a real ceiling here, and it sits in the backbone's own reconstruction quality, not in how the mixing coefficient is computed. Not adopting Phase 21's checkpoint as the new default -- it is a lateral move from Phase 18 (marginally better Sod, marginally worse Shu-Osher), not a strict improvement. Recommended framing going forward: further gate engineering on this backbone is very unlikely to yield more; the concrete next step, if this is pursued further, is retraining the backbone itself with more/harder Sod-like Riemann examples (or a genuinely larger backbone -- the current one is a 5-layer toy MLP, explicitly built in this project only to test feasibility), not another mixing-head variant.
+
+
+---
+
+## P0 release validation — 2026-10-14
+
+The historical Phase 18–21 records above are preserved. The frozen defaults remain
+Phase 19/run6 for scalar problems and Phase 18 for Euler; Phase 20 and Phase 21
+remain optional experimental alternatives. Current loaders support all three JAX
+parameter formats with exact shape and finiteness checks. The unified evaluation
+CLI and clean-environment locks are documented in README.
+
+See [P0_Validation.md](P0_Validation.md) for independently reproduced metrics,
+matched ablations, prospective held-out configurations, repair regression evidence,
+spatial/temporal and independent-scheme reference checks, and unresolved issues.
+Canonical scalar cases were used for checkpoint selection and are validation cases.
+The previously reported Shu–Osher advantage must remain conditional on reference
+quality; a lower measured error is not a certified win when reference uncertainty
+is comparable to the margin. Smooth studies measure about third-order spatial
+convergence for the tested neural reconstructions/blends. The finite gate variants
+and constant-coefficient sweep in Phases 20–21 do not establish an impossibility
+result for every spatially varying gate.

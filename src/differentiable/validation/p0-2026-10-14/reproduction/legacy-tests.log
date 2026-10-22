@@ -1,0 +1,40 @@
+Using TensorFlow backend.
+test_teno_classifiers_build_and_predict_probabilities (test_networks_smoke.NeuralPipelineSmokeTests) ... WARNING:tensorflow:From /tmp/p0-release-gv0z2q/env-legacy/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:517: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /tmp/p0-release-gv0z2q/env-legacy/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:4138: The name tf.random_uniform is deprecated. Please use tf.random.uniform instead.
+
+WARNING:tensorflow:From /tmp/p0-release-gv0z2q/env-legacy/lib/python3.7/site-packages/keras/optimizers.py:790: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+WARNING:tensorflow:From /tmp/p0-release-gv0z2q/env-legacy/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:3376: The name tf.log is deprecated. Please use tf.math.log instead.
+
+WARNING:tensorflow:From /tmp/p0-release-gv0z2q/env-legacy/lib/python3.7/site-packages/tensorflow_core/python/ops/nn_impl.py:183: where (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+WARNING:tensorflow:From /tmp/p0-release-gv0z2q/env-legacy/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:2741: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+WARNING:tensorflow:From /tmp/p0-release-gv0z2q/env-legacy/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:174: The name tf.get_default_session is deprecated. Please use tf.compat.v1.get_default_session instead.
+
+WARNING:tensorflow:From /tmp/p0-release-gv0z2q/env-legacy/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:181: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+2026-10-14 21:33:44.889106: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2026-10-14 21:33:44.904472: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2994130000 Hz
+2026-10-14 21:33:44.905771: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x565290207970 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2026-10-14 21:33:44.905845: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2026-10-14 21:33:44.913879: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2026-10-14 21:33:44.995126: E tensorflow/stream_executor/cuda/cuda_driver.cc:318] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2026-10-14 21:33:44.995223: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] no NVIDIA GPU device is present: /dev/nvidia0 does not exist
+WARNING:tensorflow:From /tmp/p0-release-gv0z2q/env-legacy/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:190: The name tf.global_variables is deprecated. Please use tf.compat.v1.global_variables instead.
+
+WARNING:tensorflow:From /tmp/p0-release-gv0z2q/env-legacy/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:199: The name tf.is_variable_initialized is deprecated. Please use tf.compat.v1.is_variable_initialized instead.
+
+WARNING:tensorflow:From /tmp/p0-release-gv0z2q/env-legacy/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:206: The name tf.variables_initializer is deprecated. Please use tf.compat.v1.variables_initializer instead.
+
+ok
+test_weno5_model_builds_and_predicts (test_networks_smoke.NeuralPipelineSmokeTests) ... WARNING:tensorflow:From /tmp/p0-release-gv0z2q/env-legacy/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:74: The name tf.get_default_graph is deprecated. Please use tf.compat.v1.get_default_graph instead.
+
+ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 3.102s
+
+OK

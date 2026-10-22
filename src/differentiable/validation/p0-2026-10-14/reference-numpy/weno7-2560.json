@@ -1,0 +1,31 @@
+{
+  "scheme": "NumPy WENO7",
+  "case": {
+    "id": "canonical-shu-osher",
+    "problem": "shu_osher",
+    "cells": 2560,
+    "length": 10.0,
+    "final_time": 1.8,
+    "cfl": 0.4,
+    "boundary": "transmissive",
+    "sampling": "point-i-dx",
+    "initial": {
+      "amplitude": 0.2,
+      "frequency": 5.0,
+      "phase": 0.0,
+      "discontinuity": 1.0
+    },
+    "wave_speed_safety": 1.3,
+    "reference_cells": 5120
+  },
+  "cfl": 0.35,
+  "timestep_policy": "adaptive CFL, final step shortened to exact T",
+  "steps": 6332,
+  "minimum_dt": 0.00019064010045588553,
+  "maximum_dt": 0.000299426728637395,
+  "minimum_density": 0.7999937704155273,
+  "minimum_pressure": 0.9999896711315077,
+  "validated_stage_states": 37993,
+  "repair_count": 0,
+  "wall_seconds": 825.6787670040012
+}

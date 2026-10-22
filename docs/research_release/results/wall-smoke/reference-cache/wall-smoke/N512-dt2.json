@@ -1,0 +1,45 @@
+{
+  "finite": true,
+  "raw_stages_admissible": true,
+  "invalid_stage_rows": 0,
+  "nonfinite_stage_rows": 0,
+  "repaired_stage_rows": 0,
+  "isolated_repair_events": 0,
+  "fallback_repair_events": 0,
+  "repair_policy": "none",
+  "maximum_absolute_stage_state": 2500.0,
+  "max_courant": 0.05414082814407338,
+  "initial_integral": [
+    1.0,
+    0.0,
+    275.0199999999954
+  ],
+  "final_integral": [
+    0.9999999999999971,
+    0.8999999999999901,
+    275.01999999999316
+  ],
+  "integrated_boundary_exchange": [
+    0.0,
+    0.8999999999999921,
+    0.0
+  ],
+  "integrated_repair_exchange": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "conservation_residual": [
+    -2.886579864025407e-15,
+    -1.9984014443252818e-15,
+    -2.2168933355715126e-12
+  ],
+  "physical_balance_error": [
+    -2.886579864025407e-15,
+    -1.9984014443252818e-15,
+    -2.2168933355715126e-12
+  ],
+  "minimum_density": 0.5525436553481378,
+  "minimum_pressure": 0.009999999999999995,
+  "valid_for_accuracy_claim": true
+}

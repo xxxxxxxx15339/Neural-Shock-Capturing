@@ -1,0 +1,74 @@
+[
+  {
+    "name": "numerical-tests",
+    "command": [
+      "/tmp/p0-release-gv0z2q/env-numerical/bin/python",
+      "-B",
+      "-c",
+      "\nimport unittest,sys\nloader=unittest.TestLoader()\nsuite=unittest.TestSuite(loader.discover('tests',pattern=p) for p in ['test_core.py','test_teno.py','test_feature_vector.py'])\nresult=unittest.TextTestRunner(verbosity=2).run(suite)\nsys.exit(not result.wasSuccessful())\n"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "jax-tests",
+    "command": [
+      "/tmp/p0-release-gv0z2q/env-jax/bin/python",
+      "-B",
+      "-m",
+      "pytest",
+      "-p",
+      "no:cacheprovider",
+      "tests/test_teno5_jax_regression.py",
+      "tests/test_teno5_jax_euler_regression.py",
+      "tests/test_projection_jax.py",
+      "tests/test_losses_jax.py",
+      "src/differentiable/tests",
+      "-q"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "legacy-tests",
+    "command": [
+      "/tmp/p0-release-gv0z2q/env-legacy/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_networks_smoke.py",
+      "-v"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "benchmarks",
+    "command": [
+      "/tmp/p0-release-gv0z2q/env-jax/bin/python",
+      "-B",
+      "-m",
+      "src.differentiable.evaluate",
+      "benchmark",
+      "--suite",
+      "all",
+      "--output",
+      "/home/bazouil/Documents/Shocks-and-WENO/src/differentiable/validation/p0-2026-10-14/reproduction/benchmarks"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "smooth",
+    "command": [
+      "/tmp/p0-release-gv0z2q/env-jax/bin/python",
+      "-B",
+      "-m",
+      "src.differentiable.evaluate",
+      "smooth",
+      "--output",
+      "/home/bazouil/Documents/Shocks-and-WENO/src/differentiable/validation/p0-2026-10-14/reproduction/smooth"
+    ],
+    "exit_code": 0
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "kind": "analytic",
+  "definition": "exact Riemann solution",
+  "sampling": "point-i-dx",
+  "trustworthy_for_defined_samples": true,
+  "sample_array_sha256": "320ddab7046e5b771cc90d7e509a6cbc1c9bcc3e4898d1b18c223ab7de8303b4"
+}

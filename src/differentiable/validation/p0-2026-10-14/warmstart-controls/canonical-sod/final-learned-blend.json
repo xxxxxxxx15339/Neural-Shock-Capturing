@@ -1,0 +1,74 @@
+{
+  "case": "canonical-sod",
+  "method": "final-learned-blend",
+  "time_grid": {
+    "dx": 0.008333333333333333,
+    "dt": 0.002150537634408602,
+    "steps": 93,
+    "initial_speed_bound": 1.5381807436059003,
+    "temporal_refinement": 1,
+    "wall_seconds_including_compilation": 5.862502914000288
+  },
+  "primary_error": 0.00828709346003937,
+  "l1": 0.00828709346003937,
+  "l2": 0.0320573393072331,
+  "linf": 0.4610828333064092,
+  "component_l1": [
+    0.005507869340329103,
+    0.005949739079715507,
+    0.013403671960073494
+  ],
+  "component_l2": [
+    0.016319340408245217,
+    0.0215095253372646,
+    0.048518434216105986
+  ],
+  "component_linf": [
+    0.10956234249266644,
+    0.1830726332942264,
+    0.4610828333064092
+  ],
+  "finite": true,
+  "raw_stages_admissible": true,
+  "invalid_stage_rows": 0,
+  "nonfinite_stage_rows": 0,
+  "repaired_stage_rows": 0,
+  "isolated_repair_events": 0,
+  "fallback_repair_events": 0,
+  "repair_policy": "none",
+  "maximum_absolute_stage_state": 2.5000000000000004,
+  "max_courant": 0.5735465506626969,
+  "initial_integral": [
+    0.5625,
+    0.0,
+    1.3750000000000002
+  ],
+  "final_integral": [
+    0.5624999999999987,
+    0.1799999999999996,
+    1.3749999999999971
+  ],
+  "integrated_boundary_exchange": [
+    3.481882245688215e-20,
+    0.17999999999999977,
+    1.4585603620249928e-18
+  ],
+  "integrated_repair_exchange": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "conservation_residual": [
+    -1.3323024483726448e-15,
+    -1.6653345369377348e-16,
+    -3.1100830293124632e-15
+  ],
+  "physical_balance_error": [
+    -1.3323024483726448e-15,
+    -1.6653345369377348e-16,
+    -3.1100830293124632e-15
+  ],
+  "minimum_density": 0.12487181076766983,
+  "minimum_pressure": 0.1,
+  "valid_for_accuracy_claim": true
+}

@@ -47,14 +47,15 @@ import optax
 from src.analysis.euler_regression import exact_riemann_solution, exact_sod_solution
 from src.initial_conditions.InitialConditions import sod
 from src.differentiable.euler_jax import (
+    GAMMA,
     euler_boundary_variation_jax,
     euler_positivity_repair,
     get_euler_flux_jax,
     positivity_penalty_jax,
 )
 from src.differentiable.losses_jax import unrolled_physics_loss
-from src.differentiable.numerics_jax import rollout
-from src.differentiable.projection_jax import project_keep_weight
+from src.differentiable.numerics_jax import rollout, rollout_with_positivity_penalty
+from src.differentiable.projection_jax import mixed_reconstruct, project_keep_weight
 from src.differentiable.teno5_jax import teno5_reconstruct_jax, teno5_soft_reconstruct_jax
 from src.differentiable.teno5_jax_toy import toy_keep_weight
 
@@ -86,6 +87,25 @@ def _network_reconstruct(params, stencils, mode='soft'):
     troubled = 1.0 - toy_keep_weight(params, stencils)
     keep_weight = project_keep_weight(troubled, mode=mode)
     return teno5_soft_reconstruct_jax(stencils, keep_weight)
+
+
+def _mixed_network_reconstruct(params, stencils, mode='soft'):
+    """Results.md Phase 16/17: train THROUGH the convex mix, not just apply
+    it at inference -- the paper this idea came from (arXiv:2503.09625)
+    trains its limiter end-to-end with the mix in the loop, and Phase 16's
+    inference-only application already measured a real, free improvement
+    on every existing checkpoint without this. This is the natural next
+    step it flagged: let the network's own gradient account for the mix
+    (e.g. learn to push troubled_probability higher specifically where
+    deviating from TENO5 actually reduces loss, instead of learning that
+    only indirectly through the pre-mix candidate-selection signal alone).
+    """
+    troubled = 1.0 - toy_keep_weight(params, stencils)
+
+    def network_reconstruct(s):
+        return teno5_soft_reconstruct_jax(s, project_keep_weight(troubled, mode=mode))
+
+    return mixed_reconstruct(troubled, stencils, network_reconstruct, teno5_reconstruct_jax, mode=mode)
 
 
 def random_riemann_params(rng):
@@ -137,10 +157,81 @@ def sample_riemann_case(rng, steps_k):
     return u0, exact
 
 
-def sample_batch(rng, batch_size, steps_k):
+def random_entropy_wave_params(rng):
+    """A smooth family with an EXACT closed-form Euler solution at every
+    time, added per Results.md Phase 13/14's diagnosis: random Riemann
+    problems are steep two-state jumps *by construction* -- every training
+    example is dominated by a discontinuity, so the unrolled loss never
+    rewards the network for behaving well on a sustained smooth stretch,
+    which lines up exactly with where the Phase 13 checkpoint measurably
+    fell short (1.3-1.5x TENO5euler's error specifically in smooth regions,
+    not at the shocks).
+
+    Uniform velocity `velocity` and pressure `pressure` (no pressure
+    gradient anywhere) mean there is nothing to accelerate any fluid
+    parcel -- any density perturbation is exactly passively advected at
+    speed `velocity`, unchanged in shape, forever. This is the standard
+    "linear entropy wave" smooth-accuracy test from the WENO/TENO
+    literature (e.g. Shu's own papers), not an invented family -- it has
+    an exact solution with zero simulation/characteristic-tracing needed,
+    the same reason `random_riemann_params` was chosen for the
+    discontinuous side (closed-form target, no rollout needed to know it).
+
+    Ranges overlap `random_riemann_params`' scale (same O(1)-O(10)
+    density/velocity/pressure magnitudes) so the network sees a consistent
+    state scale across both training families, not two different regimes.
+    """
+    rho0 = rng.uniform(0.5, 3.0)
+    amplitude = rng.uniform(0.1, 0.9) * rho0
+    wavenumber = rng.integers(1, 4)
+    phase = rng.uniform(0.0, 2.0 * np.pi)
+    velocity = rng.uniform(-1.5, 1.5)
+    pressure = rng.uniform(0.5, 8.0)
+    return rho0, amplitude, wavenumber, phase, velocity, pressure
+
+
+def entropy_wave_state_at(params, time):
+    rho0, amplitude, wavenumber, phase, velocity, pressure = params
+    x = np.asarray(X)
+    density = rho0 + amplitude * np.sin(
+        2.0 * np.pi * wavenumber * (x - velocity * time) + phase
+    )
+    momentum = density * velocity
+    energy = pressure / (GAMMA - 1.0) + 0.5 * density * velocity ** 2
+    return jnp.asarray(np.stack([density, momentum, energy], axis=-1))
+
+
+def sample_entropy_wave_case(rng, steps_k):
+    params = random_entropy_wave_params(rng)
+    u0 = entropy_wave_state_at(params, 0.0)
+    exact = entropy_wave_state_at(params, steps_k * DT)
+    return u0, exact
+
+
+def sample_training_case(rng, steps_k, smooth_fraction=0.5):
+    """Mix smooth entropy-wave examples in with the discontinuous Riemann
+    ones -- see `random_entropy_wave_params`'s docstring for why. Default
+    50/50: the shock-handling side already worked (Phase 13's checkpoint
+    tracked shock/contact locations well), so this doesn't need to be
+    weighted toward Riemann problems the way it currently implicitly is
+    at 0% smooth; an even split gives the loss equal opportunity to
+    reward both regimes without a hyperparameter search to justify the
+    exact ratio yet.
+    """
+    # `smooth_fraction <= 0.0` skips the draw entirely (not just always takes
+    # its False branch) so the RNG stream, and therefore the exact sequence
+    # of Riemann problems sampled, is bit-identical to code that never had
+    # this mixing decision at all -- needed to reproduce Results.md Phase
+    # 13's run exactly for comparison, not just "a similar pure-Riemann run."
+    if smooth_fraction > 0.0 and rng.uniform() < smooth_fraction:
+        return sample_entropy_wave_case(rng, steps_k)
+    return sample_riemann_case(rng, steps_k)
+
+
+def sample_batch(rng, batch_size, steps_k, smooth_fraction=0.5):
     u0_list, exact_list = [], []
     for _ in range(batch_size):
-        u0, exact = sample_riemann_case(rng, steps_k)
+        u0, exact = sample_training_case(rng, steps_k, smooth_fraction=smooth_fraction)
         u0_list.append(u0)
         exact_list.append(exact)
     return jnp.stack(u0_list), jnp.stack(exact_list)
@@ -148,10 +239,13 @@ def sample_batch(rng, batch_size, steps_k):
 
 def single_example_loss(params, u0, exact_final, anchor_params, steps_k):
     def network_reconstruct(stencils):
-        return _network_reconstruct(params, stencils, mode='soft')
+        return _mixed_network_reconstruct(params, stencils, mode='soft')
 
     flux_fn = get_euler_flux_jax(network_reconstruct, boundary='transmissive')
-    final_state = rollout(u0, flux_fn, DT, DX, steps_k, state_guard=euler_positivity_repair)
+    final_state, positivity_penalty = rollout_with_positivity_penalty(
+        u0, flux_fn, DT, DX, steps_k,
+        state_guard=euler_positivity_repair, penalty_fn=positivity_penalty_jax,
+    )
     network_bv = euler_boundary_variation_jax(final_state, network_reconstruct, boundary='transmissive')
     deterministic_bv = euler_boundary_variation_jax(
         final_state, teno5_reconstruct_jax, boundary='transmissive'
@@ -159,7 +253,7 @@ def single_example_loss(params, u0, exact_final, anchor_params, steps_k):
     total, breakdown = unrolled_physics_loss(
         final_state, exact_final, u0, network_bv, deterministic_bv,
         params=params, anchor_params=anchor_params,
-        positivity_penalty=positivity_penalty_jax(final_state),
+        positivity_penalty=positivity_penalty,
         **LAMBDAS,
     )
     return total, breakdown
@@ -180,7 +274,7 @@ def deterministic_rollout(u0, steps):
 
 def network_rollout(params, u0, steps):
     def reconstruct(stencils):
-        return _network_reconstruct(params, stencils, mode='hard')
+        return _mixed_network_reconstruct(params, stencils, mode='hard')
 
     flux_fn = get_euler_flux_jax(reconstruct, boundary='transmissive')
     return rollout(u0, flux_fn, DT, DX, steps, state_guard=euler_positivity_repair)
@@ -209,7 +303,16 @@ def main():
     anchor_params = params
     print('Loaded pretrained scalar-run weights as Euler warm start/anchor.')
 
-    optimizer = optax.adam(1.0e-3)
+    # clip_by_global_norm before adam: found necessary empirically, not
+    # preemptively -- Results.md Phase 14 hit a case where an otherwise
+    # fine run's loss spiked to ~1e10 on a single late step (the positivity
+    # penalty is capped per-cell, but nothing capped the resulting gradient
+    # magnitude itself), and the resulting single Adam update was large
+    # enough to wreck an already-good checkpoint. This clips the gradient's
+    # global norm before Adam ever sees it, so one pathological step can no
+    # longer overwhelm many good ones -- standard practice for unrolled/RNN-
+    # style training exactly for this reason, not specific to Euler.
+    optimizer = optax.chain(optax.clip_by_global_norm(1.0), optax.adam(1.0e-3))
     opt_state = optimizer.init(params)
 
     @jax.jit

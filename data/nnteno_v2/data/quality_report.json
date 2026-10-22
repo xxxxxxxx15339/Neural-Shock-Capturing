@@ -1,0 +1,129 @@
+{
+  "seed": 20261015,
+  "generation": "exact analytic reference with Gauss-Legendre cell-average integration",
+  "physical_measurements_included": false,
+  "counts": {
+    "scalar_train": 2867,
+    "scalar_validation": 615,
+    "scalar_test": 614,
+    "euler_train": 1434,
+    "euler_validation": 307,
+    "euler_test": 307
+  },
+  "max_conservation_residual": {
+    "scalar_train": 4.440892098500626e-16,
+    "scalar_validation": 3.3306690738754696e-16,
+    "scalar_test": 3.3306690738754696e-16,
+    "euler_train": 3.9968028886505635e-14,
+    "euler_validation": 2.7533531010703882e-14,
+    "euler_test": 2.3092638912203256e-14
+  },
+  "qa_failures": [],
+  "split_disjoint": true,
+  "family_counts": {
+    "scalar_train": {
+      "burgers_smooth": 660,
+      "constant": 143,
+      "fourier": 631,
+      "burgers_top_hat": 487,
+      "square": 631,
+      "gaussian": 315
+    },
+    "scalar_validation": {
+      "constant": 31,
+      "square": 135,
+      "fourier": 135,
+      "gaussian": 68,
+      "burgers_smooth": 141,
+      "burgers_top_hat": 105
+    },
+    "scalar_test": {
+      "square": 135,
+      "burgers_smooth": 141,
+      "burgers_top_hat": 104,
+      "gaussian": 68,
+      "fourier": 135,
+      "constant": 31
+    },
+    "euler_train": {
+      "random_riemann": 932,
+      "contact": 143,
+      "sod_like": 215,
+      "two_rarefactions": 72,
+      "constant": 72
+    },
+    "euler_validation": {
+      "random_riemann": 200,
+      "sod_like": 46,
+      "contact": 31,
+      "two_rarefactions": 15,
+      "constant": 15
+    },
+    "euler_test": {
+      "sod_like": 46,
+      "two_rarefactions": 15,
+      "random_riemann": 200,
+      "contact": 31,
+      "constant": 15
+    }
+  },
+  "grid_counts": {
+    "scalar_train": {
+      "64": 956,
+      "128": 956,
+      "256": 955
+    },
+    "scalar_validation": {
+      "64": 205,
+      "128": 205,
+      "256": 205
+    },
+    "scalar_test": {
+      "64": 205,
+      "128": 205,
+      "256": 204
+    },
+    "euler_train": {
+      "64": 478,
+      "128": 478,
+      "256": 478
+    },
+    "euler_validation": {
+      "64": 103,
+      "128": 102,
+      "256": 102
+    },
+    "euler_test": {
+      "64": 103,
+      "128": 102,
+      "256": 102
+    }
+  },
+  "manifest_sha256": "8830e42b3945b9c1aa890f417798763bf8b5150a9d5bb106ab7f5bd0c9915577",
+  "files": {
+    "euler_test.h5": {
+      "bytes": 491641,
+      "sha256": "9f9818f7195c7228bab0fd88b20ba35ab5b295b3be21f238b7e474722638272a"
+    },
+    "euler_train.h5": {
+      "bytes": 2202455,
+      "sha256": "bb13247ec698dd7ad53ab55b973dff0974a5a5369994818065fe0337223b8eb0"
+    },
+    "euler_validation.h5": {
+      "bytes": 489128,
+      "sha256": "d038ff235177bb87c61f6e8e53c71b6604ef5ab3f1d5af862836317e18cd1a38"
+    },
+    "scalar_test.h5": {
+      "bytes": 1705902,
+      "sha256": "661971119a5f8a1b89a39098b8845a42354224bf11f52d39c30f81453c4c0195"
+    },
+    "scalar_train.h5": {
+      "bytes": 7866105,
+      "sha256": "9a66128ae41af7dce6ea886286a57c78d6370a5ae0947c4721cc44282bb838d8"
+    },
+    "scalar_validation.h5": {
+      "bytes": 1716510,
+      "sha256": "891323c4df64d225e86eb1339b5e029719b62231903c980566dcbb37f66ea6c7"
+    }
+  }
+}

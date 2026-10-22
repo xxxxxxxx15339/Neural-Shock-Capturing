@@ -1,0 +1,71 @@
+{
+  "case": "independent-burgers-shock",
+  "kind": "burgers-shock",
+  "physics": "scalar",
+  "cells": 192,
+  "method": "v2-neural-only",
+  "policy": "neural-soft",
+  "strength": 1.0,
+  "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+  "time": 1.2,
+  "sampling": "finite-volume cell averages",
+  "diagnostics": {
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "minimum_state": 0.18651788656839183,
+    "maximum_absolute_stage_state": 0.696772114841578,
+    "max_courant": 0.17317831203829512,
+    "initial_integral": [
+      0.45
+    ],
+    "final_integral": [
+      0.44999999999997536
+    ],
+    "integrated_boundary_exchange": [
+      0.0
+    ],
+    "integrated_repair_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -2.4646951146678475e-14
+    ],
+    "physical_balance_error": [
+      -2.4646951146678475e-14
+    ],
+    "valid_for_accuracy_claim": true
+  },
+  "total_variation": [
+    1.0227014645389725
+  ],
+  "minimum": [
+    0.19950269129381104
+  ],
+  "maximum": [
+    0.6805649311562348
+  ],
+  "reference_status": "numerical cell-average projection",
+  "primary_error": 0.003770948870433463,
+  "l1": 0.0007044573681369966,
+  "l2": 0.003770948870433463,
+  "linf": 0.03193234930341843,
+  "component_l1": [
+    0.0007044573681369966
+  ],
+  "component_l2": [
+    0.003770948870433463
+  ],
+  "component_linf": [
+    0.03193234930341843
+  ],
+  "overshoot": 0.011830694223549543,
+  "undershoot": 0.03193234930341843,
+  "relative_l1": 1.7148509091661746,
+  "ranking_resolved": true
+}

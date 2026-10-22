@@ -1,0 +1,11 @@
+{
+  "benchmark.json": "0e50eb80dc6b28ff798bde1bd6ac190bef1eb6dbf9341e8d0e5cb67dcc03aa6c",
+  "configuration.json": "67c6899919520f456eb1d7409b41b240878d12f9b3cc78152c3c285d64ca9952",
+  "independent-advection-square-96/gated-soft.json": "dbe29cbcd4a593ca427bbaaf80878e88f80b6219ead5aa45880b1d537f09a2ca",
+  "independent-advection-square-96/gated-soft.npz": "df7834ff7e9f6d17623ae7f8dd57b8b15def235b556188f86c73413d10b03a0a",
+  "independent-advection-square-96/reference.json": "f0808808c5148f7f22c79ae24385a098e3167c5f719a3ed855f362e7cf31386c",
+  "independent-advection-square-96/reference.npz": "8d4f41aeaed7c33ca171c260cc441655907d3cb43259e2824de5c3d5483c1cda",
+  "independent-advection-square-96/teno5.json": "e4dc59349daba0f747898d0c90099e3cfa88951a749483c28dfd4c8ccbd2765f",
+  "independent-advection-square-96/teno5.npz": "df7834ff7e9f6d17623ae7f8dd57b8b15def235b556188f86c73413d10b03a0a",
+  "provenance.json": "badf1625b2c5aafe6652e6740752ddf78bacd8623bd4c880f89af2bc53711572"
+}

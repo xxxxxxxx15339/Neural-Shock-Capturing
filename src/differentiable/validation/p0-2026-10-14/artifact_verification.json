@@ -1,0 +1,400 @@
+{
+  "verified_cases": 12,
+  "verified_method_runs": 48,
+  "artifact_hashes_verified": 173,
+  "frozen_checkpoint_hashes_verified": true,
+  "metric_tolerance": {
+    "rtol": 1e-12,
+    "atol": 1e-14
+  },
+  "independent_state_tolerance": {
+    "rtol": 1e-10,
+    "atol": 1e-10
+  },
+  "records": [
+    {
+      "case": "canonical-advection",
+      "method": "teno5",
+      "primary_error": 0.0989598540663411,
+      "maximum_conservation_residual": 3.219646771412954e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "canonical-advection",
+      "method": "neural-only",
+      "primary_error": 475.293919623664,
+      "maximum_conservation_residual": 1.9539925233402755e-14,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "canonical-advection",
+      "method": "fixed-blend",
+      "primary_error": 0.09740642919361694,
+      "maximum_conservation_residual": 3.497202527569243e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "canonical-advection",
+      "method": "learned-blend",
+      "primary_error": 0.09552129155505769,
+      "maximum_conservation_residual": 3.2751579226442118e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "canonical-burgers",
+      "method": "teno5",
+      "primary_error": 0.0008166969886357376,
+      "maximum_conservation_residual": 1.7208456881689926e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "canonical-burgers",
+      "method": "neural-only",
+      "primary_error": 0.0035133153157181117,
+      "maximum_conservation_residual": 1.7208456881689926e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "canonical-burgers",
+      "method": "fixed-blend",
+      "primary_error": 0.0007124306730570677,
+      "maximum_conservation_residual": 1.7763568394002505e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "canonical-burgers",
+      "method": "learned-blend",
+      "primary_error": 0.0006649269097158028,
+      "maximum_conservation_residual": 1.7208456881689926e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "canonical-sod",
+      "method": "teno5",
+      "primary_error": 0.008258322670756879,
+      "maximum_conservation_residual": 3.108278419485698e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "canonical-sod",
+      "method": "neural-only",
+      "primary_error": 0.010277185156668783,
+      "maximum_conservation_residual": 2.823894526823524e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "canonical-sod",
+      "method": "fixed-blend",
+      "primary_error": 0.008285390628823785,
+      "maximum_conservation_residual": 2.4420262207142507e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "canonical-sod",
+      "method": "learned-blend",
+      "primary_error": 0.00828709346003937,
+      "maximum_conservation_residual": 3.1100830293124632e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "canonical-shu-osher",
+      "method": "teno5",
+      "primary_error": 0.21318921258480591,
+      "maximum_conservation_residual": 3.126388037344441e-12,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "canonical-shu-osher",
+      "method": "neural-only",
+      "primary_error": 0.25610584241531853,
+      "maximum_conservation_residual": 2.1884716261411086e-12,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "canonical-shu-osher",
+      "method": "fixed-blend",
+      "primary_error": 0.2092369370676388,
+      "maximum_conservation_residual": 1.8474111129762605e-12,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "canonical-shu-osher",
+      "method": "learned-blend",
+      "primary_error": 0.20926393545378147,
+      "maximum_conservation_residual": 2.0463630789890885e-12,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-advection-square-96",
+      "method": "teno5",
+      "primary_error": 0.07046077063562127,
+      "maximum_conservation_residual": 9.43689570931383e-16,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-advection-square-96",
+      "method": "neural-only",
+      "primary_error": 5.416668340944906,
+      "maximum_conservation_residual": 1.3877787807814457e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-advection-square-96",
+      "method": "fixed-blend",
+      "primary_error": 0.06857290911365452,
+      "maximum_conservation_residual": 1.0547118733938987e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-advection-square-96",
+      "method": "learned-blend",
+      "primary_error": 0.06784524421100287,
+      "maximum_conservation_residual": 9.992007221626409e-16,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-advection-fourier-192",
+      "method": "teno5",
+      "primary_error": 8.765499738145625e-06,
+      "maximum_conservation_residual": 8.826273045769994e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-advection-fourier-192",
+      "method": "neural-only",
+      "primary_error": 0.3309244395228399,
+      "maximum_conservation_residual": 8.826273045769994e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-advection-fourier-192",
+      "method": "fixed-blend",
+      "primary_error": 1.167309506208178e-06,
+      "maximum_conservation_residual": 8.826273045769994e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-advection-fourier-192",
+      "method": "learned-blend",
+      "primary_error": 5.500985947564656e-06,
+      "maximum_conservation_residual": 8.881784197001252e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-burgers-fourier-96",
+      "method": "teno5",
+      "primary_error": 9.107900482452773e-06,
+      "maximum_conservation_residual": 1.0547118733938987e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-burgers-fourier-96",
+      "method": "neural-only",
+      "primary_error": 2.3934465201515115e-05,
+      "maximum_conservation_residual": 1.1102230246251565e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-burgers-fourier-96",
+      "method": "fixed-blend",
+      "primary_error": 8.405015851307797e-06,
+      "maximum_conservation_residual": 1.1102230246251565e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-burgers-fourier-96",
+      "method": "learned-blend",
+      "primary_error": 8.131991314512681e-06,
+      "maximum_conservation_residual": 1.0547118733938987e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-burgers-fourier-192",
+      "method": "teno5",
+      "primary_error": 6.7961633335967924e-06,
+      "maximum_conservation_residual": 4.3298697960381105e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-burgers-fourier-192",
+      "method": "neural-only",
+      "primary_error": 1.580064825607564e-05,
+      "maximum_conservation_residual": 4.440892098500626e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-burgers-fourier-192",
+      "method": "fixed-blend",
+      "primary_error": 5.96330261638905e-06,
+      "maximum_conservation_residual": 4.440892098500626e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-burgers-fourier-192",
+      "method": "learned-blend",
+      "primary_error": 5.594932675168462e-06,
+      "maximum_conservation_residual": 4.440892098500626e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-sod-96",
+      "method": "teno5",
+      "primary_error": 0.007483511253624074,
+      "maximum_conservation_residual": 1.110044642757176e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-sod-96",
+      "method": "neural-only",
+      "primary_error": 0.007076955430152255,
+      "maximum_conservation_residual": 8.889992385543075e-16,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-sod-96",
+      "method": "fixed-blend",
+      "primary_error": 0.007372556835601812,
+      "maximum_conservation_residual": 1.110044642757176e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-sod-96",
+      "method": "learned-blend",
+      "primary_error": 0.007373698081982599,
+      "maximum_conservation_residual": 1.1110438434793388e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-sod-192",
+      "method": "teno5",
+      "primary_error": 0.003726941783841533,
+      "maximum_conservation_residual": 3.774505576079227e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-sod-192",
+      "method": "neural-only",
+      "primary_error": 0.004812722418644901,
+      "maximum_conservation_residual": 3.331530444194847e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-sod-192",
+      "method": "fixed-blend",
+      "primary_error": 0.003693689009989763,
+      "maximum_conservation_residual": 3.330416366229164e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-sod-192",
+      "method": "learned-blend",
+      "primary_error": 0.0036918794439425636,
+      "maximum_conservation_residual": 1.5554750611853107e-15,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-shu-osher-160",
+      "method": "teno5",
+      "primary_error": 0.14205841206287442,
+      "maximum_conservation_residual": 1.5347723092418164e-12,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-shu-osher-160",
+      "method": "neural-only",
+      "primary_error": 0.203990115350686,
+      "maximum_conservation_residual": 1.2221335055073723e-12,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-shu-osher-160",
+      "method": "fixed-blend",
+      "primary_error": 0.13766100640173998,
+      "maximum_conservation_residual": 1.5631940186722204e-12,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-shu-osher-160",
+      "method": "learned-blend",
+      "primary_error": 0.13762726068311693,
+      "maximum_conservation_residual": 2.8421709430404007e-13,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-shu-osher-240",
+      "method": "teno5",
+      "primary_error": 0.15560971719289973,
+      "maximum_conservation_residual": 3.609557097661309e-12,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-shu-osher-240",
+      "method": "neural-only",
+      "primary_error": 0.28310064340696167,
+      "maximum_conservation_residual": 4.064304448547773e-12,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-shu-osher-240",
+      "method": "fixed-blend",
+      "primary_error": 0.14377286178949464,
+      "maximum_conservation_residual": 3.609557097661309e-12,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    },
+    {
+      "case": "heldout-shu-osher-240",
+      "method": "learned-blend",
+      "primary_error": 0.14421285651560128,
+      "maximum_conservation_residual": 3.666400516522117e-12,
+      "repaired_stage_rows": 0,
+      "valid_for_accuracy_claim": true
+    }
+  ]
+}

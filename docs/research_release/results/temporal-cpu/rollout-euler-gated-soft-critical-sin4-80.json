@@ -1,0 +1,70 @@
+{
+  "cells": 80,
+  "steps": 2476,
+  "dt": 2.0193861066235866e-05,
+  "primary_error": 5.8418576534107385e-06,
+  "l1": 5.8418576534107385e-06,
+  "l2": 1.1285776573082103e-05,
+  "linf": 6.216195895636378e-05,
+  "component_l1": [
+    9.010577376084016e-06,
+    6.3074041706537295e-06,
+    2.20759141349447e-06
+  ],
+  "component_l2": [
+    1.570083407786472e-05,
+    1.0990583855602091e-05,
+    3.8467043485205865e-06
+  ],
+  "component_linf": [
+    6.216195895636378e-05,
+    4.351337124786081e-05,
+    1.52296801601004e-05
+  ],
+  "temporal_cauchy_l1": 2.026644257043427e-09,
+  "diagnostics": {
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "maximum_absolute_stage_state": 2.867373856523286,
+    "max_courant": 0.003042405236650502,
+    "initial_integral": [
+      1.1874999999999998,
+      0.8312499999999998,
+      2.7909375000000014
+    ],
+    "final_integral": [
+      1.1874999999998792,
+      0.8312499999999151,
+      2.7909374999997616
+    ],
+    "integrated_boundary_exchange": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "integrated_repair_exchange": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conservation_residual": [
+      -1.20570220474292e-13,
+      -8.471001677889944e-14,
+      -2.398081733190338e-13
+    ],
+    "physical_balance_error": [
+      -1.20570220474292e-13,
+      -8.471001677889944e-14,
+      -2.398081733190338e-13
+    ],
+    "minimum_density": 0.9999444167471035,
+    "minimum_pressure": 0.9999999999998973,
+    "valid_for_accuracy_claim": true
+  }
+}

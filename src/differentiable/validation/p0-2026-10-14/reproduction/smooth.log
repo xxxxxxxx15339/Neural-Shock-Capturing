@@ -1,0 +1,8 @@
+Smooth advection/teno5: spatial order=4.9952; rollout order=4.9819
+Smooth advection/neural-only: spatial order=2.9943; rollout order=2.9740
+Smooth advection/fixed-blend: spatial order=2.9551; rollout order=2.8135
+Smooth advection/learned-blend: spatial order=2.9683; rollout order=2.8685
+Smooth euler/teno5: spatial order=4.9957; rollout order=4.9758
+Smooth euler/neural-only: spatial order=3.0064; rollout order=2.3334
+Smooth euler/fixed-blend: spatial order=2.9730; rollout order=2.8149
+Smooth euler/learned-blend: spatial order=2.9734; rollout order=2.8165

@@ -1,0 +1,60 @@
+{
+  "case": "heldout-burgers-fourier-192",
+  "method": "teno5",
+  "time_grid": {
+    "dx": 0.005208333333333333,
+    "dt": 0.0025974025974025974,
+    "steps": 154,
+    "initial_speed_bound": 1.0,
+    "temporal_refinement": 1,
+    "wall_seconds_including_compilation": 1.136819456000012
+  },
+  "metric_definition": "root mean square error",
+  "primary_error": 6.7961633335967924e-06,
+  "l1": 4.1344247600170565e-06,
+  "l2": 6.7961633335967924e-06,
+  "linf": 2.4445920370763652e-05,
+  "component_l1": [
+    4.1344247600170565e-06
+  ],
+  "component_l2": [
+    6.7961633335967924e-06
+  ],
+  "component_linf": [
+    2.4445920370763652e-05
+  ],
+  "finite": true,
+  "raw_stages_admissible": true,
+  "invalid_stage_rows": 0,
+  "nonfinite_stage_rows": 0,
+  "repaired_stage_rows": 0,
+  "isolated_repair_events": 0,
+  "fallback_repair_events": 0,
+  "repair_policy": "none",
+  "minimum_state": 0.3419047266751767,
+  "maximum_absolute_stage_state": 0.7165895639040214,
+  "max_courant": 0.3573641461547328,
+  "initial_integral": [
+    0.5
+  ],
+  "final_integral": [
+    0.49999999999999567
+  ],
+  "integrated_boundary_exchange": [
+    0.0
+  ],
+  "integrated_repair_exchange": [
+    0.0
+  ],
+  "conservation_residual": [
+    -4.3298697960381105e-15
+  ],
+  "physical_balance_error": [
+    -4.3298697960381105e-15
+  ],
+  "valid_for_accuracy_claim": true,
+  "total_variation": 0.7492925032040763,
+  "final_minimum": 0.3419073281175019,
+  "final_maximum": 0.71655357971954,
+  "initial_range_violation": 2.929388246142306e-06
+}

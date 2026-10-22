@@ -1,0 +1,500 @@
+[
+  {
+    "case_id": "euler-validation-000088-1023461505243801251",
+    "physics": "euler",
+    "family": "random_riemann",
+    "cells": 128,
+    "system": "euler",
+    "mode": "soft",
+    "strength": 0.75,
+    "dt": 0.0017428079661349484,
+    "steps": 15,
+    "final_time": 0.026142119492024225,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.0189596509464275,
+    "l1": 0.0189596509464275,
+    "l2": 0.09119854975074351,
+    "linf": 0.9752457312743243,
+    "component_l1": [
+      0.028809208784355708,
+      0.010242553708067936,
+      0.017827190346858854
+    ],
+    "component_l2": [
+      0.1311581388580089,
+      0.05089543743512238,
+      0.07182425418692012
+    ],
+    "component_linf": [
+      0.9752457312743243,
+      0.4328589999641317,
+      0.4135644322459946
+    ],
+    "valid": false,
+    "nonfinite": false,
+    "invalid_stage_rows": 8,
+    "total_variation": [
+      8.725508272394562,
+      3.271709160459661,
+      7.401466319621015
+    ],
+    "state_min": [
+      1.1024199202495193,
+      -0.18135801738183147,
+      0.7157052344209448
+    ],
+    "state_max": [
+      5.0104792367645965,
+      1.4700238672494645,
+      6.02288474010855
+    ],
+    "overshoot": [
+      0.0,
+      0.07252749568245931,
+      0.03975127290682412
+    ],
+    "undershoot": [
+      0.6455338927594432,
+      0.074028375859524,
+      0.3859553224477529
+    ],
+    "initial_integral": [
+      2.152421541361763,
+      1.002058786065881,
+      3.204142522887494
+    ],
+    "final_integral": [
+      2.1764229839446894,
+      0.9725922901137916,
+      3.1927208338533712
+    ],
+    "boundary_exchange": [
+      0.024001442582923704,
+      -0.029466495952090714,
+      -0.011421689034120941
+    ],
+    "conservation_residual": [
+      2.7651492207070305e-15,
+      1.3253287356462806e-15,
+      -1.609823385706477e-15
+    ],
+    "maximum_effective_cfl": 0.2936713681282476,
+    "minimum_density": 1.0906219696055617,
+    "minimum_pressure": -0.05709108649226587
+  },
+  {
+    "case_id": "euler-validation-000088-1023461505243801251",
+    "physics": "euler",
+    "family": "random_riemann",
+    "cells": 128,
+    "system": "euler",
+    "mode": "soft",
+    "strength": 1.0,
+    "dt": 0.0017428079661349484,
+    "steps": 15,
+    "final_time": 0.026142119492024225,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": null,
+    "l1": null,
+    "l2": null,
+    "linf": null,
+    "component_l1": [
+      null,
+      null,
+      null
+    ],
+    "component_l2": [
+      null,
+      null,
+      null
+    ],
+    "component_linf": [
+      null,
+      null,
+      null
+    ],
+    "valid": false,
+    "nonfinite": true,
+    "invalid_stage_rows": 22,
+    "total_variation": [
+      null,
+      null,
+      null
+    ],
+    "state_min": [
+      null,
+      null,
+      null
+    ],
+    "state_max": [
+      null,
+      null,
+      null
+    ],
+    "overshoot": [
+      null,
+      null,
+      null
+    ],
+    "undershoot": [
+      null,
+      null,
+      null
+    ],
+    "initial_integral": [
+      2.152421541361763,
+      1.002058786065881,
+      3.204142522887494
+    ],
+    "final_integral": [
+      null,
+      null,
+      null
+    ],
+    "boundary_exchange": [
+      0.024001442582923704,
+      -0.029466495952090718,
+      -0.011421689034120948
+    ],
+    "conservation_residual": [
+      null,
+      null,
+      null
+    ],
+    "maximum_effective_cfl": 0.5588714142787116,
+    "minimum_density": null,
+    "minimum_pressure": null
+  },
+  {
+    "case_id": "euler-validation-000088-1023461505243801251",
+    "physics": "euler",
+    "family": "random_riemann",
+    "cells": 128,
+    "system": "euler",
+    "mode": "hard",
+    "strength": 0.5,
+    "dt": 0.0017428079661349484,
+    "steps": 15,
+    "final_time": 0.026142119492024225,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.0284158568636796,
+    "l1": 0.0284158568636796,
+    "l2": 0.14646427647115726,
+    "linf": 1.58054111328397,
+    "component_l1": [
+      0.04127733821538432,
+      0.02486957692999537,
+      0.019100655445659122
+    ],
+    "component_l2": [
+      0.20406030678486256,
+      0.12952441453102895,
+      0.07705952298010106
+    ],
+    "component_linf": [
+      1.58054111328397,
+      1.0153544563961792,
+      0.42673279857305735
+    ],
+    "valid": false,
+    "nonfinite": false,
+    "invalid_stage_rows": 2,
+    "total_variation": [
+      8.524952437520541,
+      5.490787658117499,
+      6.710215193791611
+    ],
+    "state_min": [
+      0.7254414671866596,
+      -0.2639320339004583,
+      0.6749277582956403
+    ],
+    "state_max": [
+      4.947447379454393,
+      2.0227623004399335,
+      5.983867901856439
+    ],
+    "overshoot": [
+      0.0,
+      0.6252659288729283,
+      0.0007344346547135672
+    ],
+    "undershoot": [
+      1.0225123458223029,
+      0.15660239237815082,
+      0.42673279857305735
+    ],
+    "initial_integral": [
+      2.152421541361763,
+      1.002058786065881,
+      3.204142522887494
+    ],
+    "final_integral": [
+      2.1764229839446894,
+      0.9725922901137917,
+      3.1927208338533712
+    ],
+    "boundary_exchange": [
+      0.024001442582923704,
+      -0.029466495952090718,
+      -0.011421689034120958
+    ],
+    "conservation_residual": [
+      2.7651492207070305e-15,
+      1.4398204850607499e-15,
+      -1.592476150946709e-15
+    ],
+    "maximum_effective_cfl": 0.3118694561492106,
+    "minimum_density": 0.7187302566499478,
+    "minimum_pressure": -0.008727649382841427
+  },
+  {
+    "case_id": "euler-validation-000088-1023461505243801251",
+    "physics": "euler",
+    "family": "random_riemann",
+    "cells": 128,
+    "system": "euler",
+    "mode": "hard",
+    "strength": 0.75,
+    "dt": 0.0017428079661349484,
+    "steps": 15,
+    "final_time": 0.026142119492024225,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.038853051135485574,
+    "l1": 0.038853051135485574,
+    "l2": 0.19848340719922727,
+    "linf": 1.5836456608566998,
+    "component_l1": [
+      0.053339153411695164,
+      0.037888080654537665,
+      0.02533191934022389
+    ],
+    "component_l2": [
+      0.2582154404395024,
+      0.19878389737383872,
+      0.1095296182032229
+    ],
+    "component_linf": [
+      1.5836456608566998,
+      1.5159885353014595,
+      0.6891255455504186
+    ],
+    "valid": false,
+    "nonfinite": false,
+    "invalid_stage_rows": 11,
+    "total_variation": [
+      9.472711587060761,
+      7.713933208768354,
+      7.654635189847212
+    ],
+    "state_min": [
+      0.28907768645948934,
+      -0.3159101651208119,
+      0.41253501131827913
+    ],
+    "state_max": [
+      5.032893770069793,
+      2.523396379345214,
+      5.985073391232004
+    ],
+    "overshoot": [
+      0.0,
+      1.1259000077782086,
+      0.0019399240302782061
+    ],
+    "undershoot": [
+      1.4588761265494732,
+      0.20858052359850443,
+      0.6891255455504186
+    ],
+    "initial_integral": [
+      2.152421541361763,
+      1.002058786065881,
+      3.204142522887494
+    ],
+    "final_integral": [
+      2.17642298394469,
+      0.9725922901137911,
+      3.19272083385337
+    ],
+    "boundary_exchange": [
+      0.024001442582923704,
+      -0.029466495952090718,
+      -0.011421689034120958
+    ],
+    "conservation_residual": [
+      3.209238430557093e-15,
+      8.847089727481716e-16,
+      -2.9247437804968968e-15
+    ],
+    "maximum_effective_cfl": 0.48710769487378164,
+    "minimum_density": 0.24522869538824904,
+    "minimum_pressure": -0.15250618236623634
+  },
+  {
+    "case_id": "euler-validation-000088-1023461505243801251",
+    "physics": "euler",
+    "family": "random_riemann",
+    "cells": 128,
+    "system": "euler",
+    "mode": "hard",
+    "strength": 1.0,
+    "dt": 0.0017428079661349484,
+    "steps": 15,
+    "final_time": 0.026142119492024225,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": null,
+    "l1": null,
+    "l2": null,
+    "linf": null,
+    "component_l1": [
+      null,
+      null,
+      null
+    ],
+    "component_l2": [
+      null,
+      null,
+      null
+    ],
+    "component_linf": [
+      null,
+      null,
+      null
+    ],
+    "valid": false,
+    "nonfinite": true,
+    "invalid_stage_rows": 21,
+    "total_variation": [
+      null,
+      null,
+      null
+    ],
+    "state_min": [
+      null,
+      null,
+      null
+    ],
+    "state_max": [
+      null,
+      null,
+      null
+    ],
+    "overshoot": [
+      null,
+      null,
+      null
+    ],
+    "undershoot": [
+      null,
+      null,
+      null
+    ],
+    "initial_integral": [
+      2.152421541361763,
+      1.002058786065881,
+      3.204142522887494
+    ],
+    "final_integral": [
+      null,
+      null,
+      null
+    ],
+    "boundary_exchange": [
+      0.024001442582923704,
+      -0.029466495952090707,
+      -0.011421689034120976
+    ],
+    "conservation_residual": [
+      null,
+      null,
+      null
+    ],
+    "maximum_effective_cfl": 2.4528382906995394,
+    "minimum_density": null,
+    "minimum_pressure": null
+  },
+  {
+    "case_id": "euler-validation-000242-5114025453019182078",
+    "physics": "euler",
+    "family": "random_riemann",
+    "cells": 256,
+    "system": "euler",
+    "mode": "hard",
+    "strength": 1.0,
+    "dt": 0.00047105887835411595,
+    "steps": 15,
+    "final_time": 0.007065883175311739,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": null,
+    "l1": null,
+    "l2": null,
+    "linf": null,
+    "component_l1": [
+      null,
+      null,
+      null
+    ],
+    "component_l2": [
+      null,
+      null,
+      null
+    ],
+    "component_linf": [
+      null,
+      null,
+      null
+    ],
+    "valid": false,
+    "nonfinite": true,
+    "invalid_stage_rows": 76,
+    "total_variation": [
+      null,
+      null,
+      null
+    ],
+    "state_min": [
+      null,
+      null,
+      null
+    ],
+    "state_max": [
+      null,
+      null,
+      null
+    ],
+    "overshoot": [
+      null,
+      null,
+      null
+    ],
+    "undershoot": [
+      null,
+      null,
+      null
+    ],
+    "initial_integral": [
+      1.5008310452021087,
+      0.05030773704738273,
+      2.2466837011717358
+    ],
+    "final_integral": [
+      null,
+      null,
+      null
+    ],
+    "boundary_exchange": [
+      0.006039802401298617,
+      -0.004751967609481503,
+      0.022209808758248496
+    ],
+    "conservation_residual": [
+      null,
+      null,
+      null
+    ],
+    "maximum_effective_cfl": 0.9328780224292458,
+    "minimum_density": -0.036483092924618085,
+    "minimum_pressure": 0.5201446657501613
+  }
+]

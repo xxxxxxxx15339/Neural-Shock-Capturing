@@ -1,0 +1,6 @@
+{
+  "completed": false,
+  "exit_code": 130,
+  "reason": "Stopped fine-grid neural Euler temporal controls for CPU resource cost; selected spatial ladder through 640 complete separately; selected matched-time controls through 160 run in temporal-cpu. No numerical success/failure inferred from interruption.",
+  "progress_log": "progress.log"
+}

@@ -14,7 +14,7 @@ from src.core.SimulationClasses import Simulation, eulerSimulation
 from src.core.TimeSteppingMethods import SSPRK3
 from src.initial_conditions.InitialConditions import shuOsher, sod, step1
 from src.schemes import (
-    WENO3, WENO3euler, WENO5, WENO5euler, WENO7, WENO7euler,
+    WENO3, WENO3euler, WENO5, WENO5euler, WENO7, WENO7euler, TENO5
 )
 
 
@@ -70,6 +70,7 @@ class SpatialConvergenceTests(unittest.TestCase):
         (WENO3, (320, 640, 1280), 3.0),
         (WENO5, (80, 160, 320), 4.8),
         (WENO7, (160, 320, 640), 6.8),
+        (TENO5, (80, 160, 320), 4.8),
     )
 
     def test_smooth_periodic_advection_orders(self):

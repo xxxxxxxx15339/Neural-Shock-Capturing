@@ -1,0 +1,66 @@
+[
+  {
+    "slide": 1,
+    "change": "Removed Scientific Internship Soutenance; rebuilt the cover with a left-aligned title, author block, original shock photograph and conservation law."
+  },
+  {
+    "slide": 2,
+    "change": "Made the research question explicit, identifying the learned decisions, preserved solver and four-test evaluation without adding another equation."
+  },
+  {
+    "slide": 3,
+    "change": "Preserved the exact six-block workflow and its order; kept this slide as an overview and moved detailed flux-splitting / RK3 equations after the reconstruction slides and before rollout training."
+  },
+  {
+    "slide": 4,
+    "change": "Simplified the Euler slide to density, momentum, energy and positive density/pressure; removed flux matrices, the pressure closure and characteristic-speed algebra."
+  },
+  {
+    "slide": 5,
+    "change": "Preserved the five-point stencil and ENO/WENO/TENO comparison; kept only the weighted-candidate formula and replaced sensor/normalization algebra with plain-language explanations."
+  },
+  {
+    "slide": 6,
+    "change": "Replaced the classifier-only diagram with both reconstruction branches, the actual 3-to-1 sigmoid head receiving classifier probabilities, the convex blend and the unchanged conservative time update."
+  },
+  {
+    "slide": 7,
+    "change": "Placed numerical details directly after final reconstruction and before rollout training. Ordered the formulas as splitting \u2192 reconstructed interface flux \u2192 flux-balance operator \u2192 RK3 stages \u2192 K-step rollout, matching the unchanged overview."
+  },
+  {
+    "slide": 8,
+    "change": "Restored the essential four-term physics loss with plain-language meanings, a K-step solver workflow and an explicit note that Euler additionally penalizes pre-repair positivity violations. No term derivations were added."
+  },
+  {
+    "slide": 9,
+    "change": "Made the real Euler failure trace prominent and separated diagnosis from the four concrete repairs: pre-repair penalties, substage guards, normalized losses / clipped gradients, and the K=2-to-15 curriculum."
+  },
+  {
+    "slide": 10,
+    "change": "Linked the research stages and explained separate decision / mixing parameters, conservative initialization and the contribution of training. Distinguished finite final runs from formal positivity / TVD guarantees and retained Sod's limitation."
+  },
+  {
+    "slide": 11,
+    "change": "Replaced historical / explanatory figures with final saved-checkpoint TENO5 and NN-TENO5 solution overlays and non-overlapping local-error panels; stated grid, time, reference and metric, with favorable results green and Sod red."
+  },
+  {
+    "slide": 12,
+    "change": "Replaced historical / explanatory figures with final saved-checkpoint TENO5 and NN-TENO5 solution overlays and non-overlapping local-error panels; stated grid, time, reference and metric, with favorable results green and Sod red."
+  },
+  {
+    "slide": 13,
+    "change": "Preserved the requested six-column results table and green/red values, recomputed ratios from unrounded final checkpoint errors, and added fixed-grid / convergence / runtime validation limits."
+  },
+  {
+    "slide": 14,
+    "change": "Made the differentiable solver / physics loss, Euler diagnosis and dedicated mixing head the specific contributions; retained the 3-of-4 outcome and limitations, and removed the isolated Discussion label."
+  },
+  {
+    "slide": 15,
+    "change": "Added the three requested literature references, checked against primary sources, with clickable DOI / arXiv links. Kept this slide before the final Thank you."
+  },
+  {
+    "slide": 16,
+    "change": "Added a final Thank you slide with centered Arial typography and the presentation's neutral styling."
+  }
+]

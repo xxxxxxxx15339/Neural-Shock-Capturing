@@ -1,0 +1,19 @@
+{
+  "benchmark.json": "9161329f455eb29b67ab18d05450d3f407716f0a7e8f9ad9d5d13a966714fafd",
+  "configuration.json": "3cdbc9bd62f7f81165126ecdba05aa4ad0eb65bd95b3f78e731c9fad24029891",
+  "independent-advection-square-96/p0-historical-learned.json": "e0a337651238dc3246901a2dc4dff76502d56efc8f4d648efdde859c77b43d2c",
+  "independent-advection-square-96/p0-historical-learned.npz": "96b6ae8145b4b6e1074fdf44c693b1e8cf017a4338fd33c0256d088d6eed7cee",
+  "independent-advection-square-96/reference.json": "f0808808c5148f7f22c79ae24385a098e3167c5f719a3ed855f362e7cf31386c",
+  "independent-advection-square-96/reference.npz": "8d4f41aeaed7c33ca171c260cc441655907d3cb43259e2824de5c3d5483c1cda",
+  "independent-advection-square-96/teno5.json": "e4dc59349daba0f747898d0c90099e3cfa88951a749483c28dfd4c8ccbd2765f",
+  "independent-advection-square-96/teno5.npz": "df7834ff7e9f6d17623ae7f8dd57b8b15def235b556188f86c73413d10b03a0a",
+  "independent-advection-square-96/v2-hard.json": "2adb3769059609c61a01fbe3ba5fb2f43a9e30db35d24eaa9b850fc84b4f7a0b",
+  "independent-advection-square-96/v2-hard.npz": "bcfecf71133abd9f004336ccedbac0fb12449935cf6980cb50d802f113730573",
+  "independent-advection-square-96/v2-neural-only.json": "e5e217607498bce0d713c08f92473beff79d08aaf2803f72ce092b0aa5a189e4",
+  "independent-advection-square-96/v2-neural-only.npz": "1f54b0d5033dfe2586581cab34c3296b3d7ef955c05994134bdae5473af527d2",
+  "independent-advection-square-96/v2-selected-soft.json": "e4bc6d3a6271cbdc81257c4e412ca46541104a7326cabb08c16b4d5292aa5f48",
+  "independent-advection-square-96/v2-selected-soft.npz": "3d9e07b22c06714c97fece15e1416620f209b24bff2bdaad1e601966b44b2c00",
+  "independent-advection-square-96/v2-trained-soft.json": "a3fe59644c6e9b9e57e7f95397ed6e661867ee281534090d473cdc4fd4801ebd",
+  "independent-advection-square-96/v2-trained-soft.npz": "44b85e8914a40cec314ad74144ec263ec5ac2bab6aeedac63bfca6bb7f98439d",
+  "provenance.json": "a0e6fa261d9de471786ff4959815fd3622bdcf1bdca4241df25012f02c9368fa"
+}

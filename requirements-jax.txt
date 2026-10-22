@@ -1,13 +1,3 @@
-# Isolated environment for src/differentiable/ (Unrolled Physics Loss proposal, Phase 0/1 spike).
-# Deliberately NOT merged into requirements.txt: that file pins Keras 2.2.4 /
-# TensorFlow 1.15 / NumPy 1.18.5, which cannot coexist with a modern JAX
-# install in one environment. See src/differentiable/__init__.py.
-#
-# Setup used during this spike:
-#   conda create -n teno-jax python=3.11
-#   conda run -n teno-jax pip install -r requirements-jax.txt
-jax
-numpy
-matplotlib
-pytest
-optax
+# Isolated CPU/float64 JAX environment for final-model P0 evaluation and tests.
+# Validated with Python 3.11.15; do not combine with the legacy Keras stack.
+-r requirements/locks/jax-python311.txt

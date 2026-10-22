@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/bazouil/Documents/Shocks-and-WENO/src/differentiable/v2_evaluate.py", line 218, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/bazouil/Documents/Shocks-and-WENO/src/differentiable/v2_evaluate.py", line 212, in main
+    report=sweep(config,output)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/bazouil/Documents/Shocks-and-WENO/src/differentiable/v2_evaluate.py", line 189, in sweep
+    final,history=jax.tree.map(np.asarray,predict(bucket['initial'][padded],bucket['dt'][padded],bucket['speed'][padded],jnp.asarray(strength)))
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bazouil/Documents/Shocks-and-WENO/src/differentiable/v2_evaluate.py", line 78, in predict
+    return jax.vmap(single)(initial,dt,speed)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bazouil/Documents/Shocks-and-WENO/src/differentiable/v2_evaluate.py", line 74, in single
+    return diagnostic_rollout(u,rec,t,1/n,15,system,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bazouil/Documents/Shocks-and-WENO/src/differentiable/diagnostics.py", line 49, in diagnostic_rollout
+    if steps < 1 or dt <= 0 or dx <= 0:
+                    ^^^^^^^
+jax.errors.TracerBoolConversionError: Attempted boolean conversion of traced array with shape bool[].
+This BatchTracer with object id 140141289346368 was created on line:
+  /home/bazouil/Documents/Shocks-and-WENO/src/differentiable/diagnostics.py:49:20 (diagnostic_rollout)
+See https://docs.jax.dev/en/latest/errors.html#jax.errors.TracerBoolConversionError
+--------------------
+For simplicity, JAX has removed its internal frames from the traceback of the following exception. Set JAX_TRACEBACK_FILTERING=off to include these.

@@ -25,7 +25,7 @@
         "l2_error": 0.0008411549357484284,
         "linf_error": 0.008110692941914022,
         "overshoot": 0.0,
-        "runtime_seconds": 8.399984972995298,
+        "runtime_seconds": 5.181494886997825,
         "total_variation": 0.9999999077275854,
         "undershoot": 0.0
       },
@@ -41,7 +41,7 @@
         "l2_error": 0.0008411549357484284,
         "linf_error": 0.008110692941914022,
         "overshoot": 0.0,
-        "runtime_seconds": 1.576189842999156,
+        "runtime_seconds": 0.5293620420015941,
         "total_variation": 0.9999999077275854,
         "undershoot": 0.0
       },
@@ -61,7 +61,7 @@
             "l2_error": 0.02261983588984078,
             "linf_error": 0.08358259557262204,
             "overshoot": 0.0,
-            "runtime_seconds": 8.100838395999745,
+            "runtime_seconds": 5.5445641330006765,
             "total_variation": 0.941190589616006,
             "undershoot": 0.0
           },
@@ -86,7 +86,7 @@
             "l2_error": 0.0008411549357484284,
             "linf_error": 0.008110692941914022,
             "overshoot": 0.0,
-            "runtime_seconds": 8.077907261998917,
+            "runtime_seconds": 5.8057620440013125,
             "total_variation": 0.9999999077275854,
             "undershoot": 0.0
           },
@@ -129,7 +129,7 @@
         "l2_error": 2.7601536488624158e-05,
         "linf_error": 4.834476658321929e-05,
         "overshoot": 0.0,
-        "runtime_seconds": 13.21124498899735,
+        "runtime_seconds": 9.419229349998204,
         "total_variation": 4.768981988311705,
         "undershoot": 0.0
       },
@@ -145,7 +145,7 @@
         "l2_error": 2.7601536488624158e-05,
         "linf_error": 4.834476658321929e-05,
         "overshoot": 0.0,
-        "runtime_seconds": 2.6223617709983955,
+        "runtime_seconds": 0.8650263579984312,
         "total_variation": 4.768981988311705,
         "undershoot": 0.0
       },
@@ -165,7 +165,7 @@
             "l2_error": 0.139412457641981,
             "linf_error": 0.28715580050033407,
             "overshoot": 0.0,
-            "runtime_seconds": 13.583735494998109,
+            "runtime_seconds": 8.714050217000477,
             "total_variation": 3.2341575724434293,
             "undershoot": 0.0
           },
@@ -190,7 +190,7 @@
             "l2_error": 2.7601536488624158e-05,
             "linf_error": 4.834476658321929e-05,
             "overshoot": 0.0,
-            "runtime_seconds": 13.96958231699682,
+            "runtime_seconds": 8.597590068002319,
             "total_variation": 4.768981988311705,
             "undershoot": 0.0
           },
@@ -233,7 +233,7 @@
         "l2_error": 3.6961687740195075e-07,
         "linf_error": 5.22691537718778e-07,
         "overshoot": 0.0,
-        "runtime_seconds": 12.981320651000715,
+        "runtime_seconds": 9.291507539997838,
         "total_variation": 3.999997909233851,
         "undershoot": 0.0
       },
@@ -249,7 +249,7 @@
         "l2_error": 3.6961687740195075e-07,
         "linf_error": 5.22691537718778e-07,
         "overshoot": 0.0,
-        "runtime_seconds": 2.531640345005144,
+        "runtime_seconds": 0.8646642540006724,
         "total_variation": 3.999997909233851,
         "undershoot": 0.0
       },
@@ -269,7 +269,7 @@
             "l2_error": 0.06645404302462599,
             "linf_error": 0.09397554381492723,
             "overshoot": 0.0,
-            "runtime_seconds": 13.069423535998794,
+            "runtime_seconds": 9.632943093001813,
             "total_variation": 3.624097824740291,
             "undershoot": 0.0
           },
@@ -294,7 +294,7 @@
             "l2_error": 3.6961687740195075e-07,
             "linf_error": 5.22691537718778e-07,
             "overshoot": 0.0,
-            "runtime_seconds": 13.129100746999029,
+            "runtime_seconds": 8.852010896000138,
             "total_variation": 3.999997909233851,
             "undershoot": 0.0
           },
@@ -325,21 +325,21 @@
     "step_advection": {
       "beats_teacher": {
         "metric": "l1_error",
-        "nn_teno5_error": 0.013397546871967321,
+        "nn_teno5_error": 0.013401821720794316,
         "passed": false,
         "teno5_error": 0.013317246006997033
       },
       "cells": 200,
       "final_time": 1.0,
       "nn_teno5": {
-        "conservation_error": 1.1934897514720433e-14,
-        "l1_error": 0.013397546871967321,
-        "l2_error": 0.06218120312423085,
-        "linf_error": 0.3914142529433089,
+        "conservation_error": 1.1657341758564144e-14,
+        "l1_error": 0.013401821720794316,
+        "l2_error": 0.06220011188698883,
+        "linf_error": 0.39074163597030415,
         "overshoot": 0.0,
-        "runtime_seconds": 12.977786493000167,
-        "total_variation": 1.9999999999999676,
-        "undershoot": 3.5285228684484575e-27
+        "runtime_seconds": 9.473968628000875,
+        "total_variation": 1.9999999999999687,
+        "undershoot": 3.55521172797955e-27
       },
       "teacher_fidelity": {
         "factor": 1.02,
@@ -353,16 +353,16 @@
         "l2_error": 0.062143494085918335,
         "linf_error": 0.39241215396156115,
         "overshoot": 0.0,
-        "runtime_seconds": 2.5252507369950763,
+        "runtime_seconds": 0.867121772000246,
         "total_variation": 1.9999999999999711,
         "undershoot": 5.642456283618845e-20
       },
       "teno5_vs_nn_teno5": {
         "differing_cells": 200,
         "exactly_equal": false,
-        "l1_difference": 0.00016048456529470484,
-        "l2_difference": 0.0005483292084632752,
-        "linf_difference": 0.003306358231541892
+        "l1_difference": 0.00014045793002450348,
+        "l2_difference": 0.00048010168641480957,
+        "linf_difference": 0.002564130963095157
       },
       "threshold_wiring_test": {
         "all_discard": {
@@ -373,7 +373,7 @@
             "l2_error": 0.18173715920790803,
             "linf_error": 0.49059810133910586,
             "overshoot": 0.0,
-            "runtime_seconds": 13.209892674000002,
+            "runtime_seconds": 9.677799954002694,
             "total_variation": 1.9984024916665075,
             "undershoot": 0.0
           },
@@ -386,21 +386,21 @@
         "all_discard_vs_all_keep": {
           "differing_cells": 200,
           "exactly_equal": false,
-          "l1_difference": 0.10368873901942317,
-          "l2_difference": 0.16660918169210748,
-          "linf_difference": 0.46743612130160006
+          "l1_difference": 0.10369578407857827,
+          "l2_difference": 0.16662656576335422,
+          "linf_difference": 0.46746891842858407
         },
         "all_keep": {
           "expected_behavior": "linear_fifth_order",
           "metrics": {
-            "conservation_error": 1.3933298959045715e-14,
-            "l1_error": 0.016332015973637076,
-            "l2_error": 0.06175454629659911,
-            "linf_error": 0.39840664636774525,
-            "overshoot": 0.07574439493690943,
-            "runtime_seconds": 13.268169012997532,
-            "total_variation": 2.7161039732422236,
-            "undershoot": 0.07509732545939501
+            "conservation_error": 1.3711254354120683e-14,
+            "l1_error": 0.016335823385649432,
+            "l2_error": 0.061755131192591003,
+            "linf_error": 0.39833047418539524,
+            "overshoot": 0.07574369460540198,
+            "runtime_seconds": 10.235482172000047,
+            "total_variation": 2.716949543427529,
+            "undershoot": 0.07543150890020811
           },
           "thresholds": [
             1.0,
@@ -411,16 +411,16 @@
         "calibrated_vs_all_discard": {
           "differing_cells": 200,
           "exactly_equal": false,
-          "l1_difference": 0.09939486336881939,
-          "l2_difference": 0.15595553444778434,
-          "linf_difference": 0.39103768208743134
+          "l1_difference": 0.0993905885199924,
+          "l2_difference": 0.1559508698051083,
+          "linf_difference": 0.39096005722838884
         },
         "calibrated_vs_all_keep": {
           "differing_cells": 200,
           "exactly_equal": false,
-          "l1_difference": 0.0063025767522649654,
-          "l2_difference": 0.016807199521771163,
-          "linf_difference": 0.08041753468677659
+          "l1_difference": 0.006314620835387074,
+          "l2_difference": 0.016854916509935727,
+          "linf_difference": 0.08056719790008493
         },
         "passed": true
       },

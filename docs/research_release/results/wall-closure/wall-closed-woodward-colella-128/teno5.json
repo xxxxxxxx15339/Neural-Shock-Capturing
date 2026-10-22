@@ -1,0 +1,73 @@
+{
+  "case": "wall-closed-woodward-colella",
+  "kind": "blast",
+  "physics": "euler",
+  "cells": 128,
+  "method": "teno5",
+  "policy": "teno5",
+  "strength": 0.0,
+  "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+  "time": 0.038,
+  "sampling": "finite-volume cell averages",
+  "diagnostics": {
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "maximum_absolute_stage_state": 2500.0,
+    "max_courant": 0.10758896811146075,
+    "initial_integral": [
+      1.0,
+      0.0,
+      275.0200000000012
+    ],
+    "final_integral": [
+      0.9999999999999187,
+      6.821367731559722,
+      275.01999999997236
+    ],
+    "integrated_boundary_exchange": [
+      0.0,
+      6.821367731560216,
+      0.0
+    ],
+    "integrated_repair_exchange": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conservation_residual": [
+      -8.126832540256146e-14,
+      -4.947153797729698e-13,
+      -2.8819613362429664e-11
+    ],
+    "physical_balance_error": [
+      -8.126832540256146e-14,
+      -4.947153797729698e-13,
+      -2.8819613362429664e-11
+    ],
+    "minimum_density": 0.1527611973308655,
+    "minimum_pressure": 0.009999999999999995,
+    "valid_for_accuracy_claim": true
+  },
+  "total_variation": [
+    11.742317059910636,
+    124.57688431999014,
+    1894.838477927199
+  ],
+  "minimum": [
+    0.1527612487975678,
+    0.00047223836393259217,
+    46.375503738002735
+  ],
+  "maximum": [
+    5.272740866871018,
+    49.95489503812776,
+    1019.6581478818632
+  ],
+  "reference_status": "stability-only; no accuracy reference"
+}

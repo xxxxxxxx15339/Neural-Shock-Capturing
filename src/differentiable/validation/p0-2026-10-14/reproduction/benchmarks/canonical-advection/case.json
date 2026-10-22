@@ -1,0 +1,19 @@
+{
+  "id": "canonical-advection",
+  "problem": "advection",
+  "cells": 64,
+  "length": 1.0,
+  "final_time": 1.0,
+  "cfl": 0.5,
+  "boundary": "periodic",
+  "sampling": "point-i-dx",
+  "initial": {
+    "type": "square",
+    "left": 0.25,
+    "right": 0.75,
+    "amplitude": 1.0,
+    "offset": 0.0
+  },
+  "alpha": 1.0,
+  "wave_speed": 1.0
+}

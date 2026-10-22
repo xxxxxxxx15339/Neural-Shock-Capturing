@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "trajectories": 6144,
+  "exact_reference_snapshots": 24576,
+  "total_snapshot_cell_locations": 3668480,
+  "counts": {
+    "scalar_train": 2867,
+    "scalar_validation": 615,
+    "scalar_test": 614,
+    "euler_train": 1434,
+    "euler_validation": 307,
+    "euler_test": 307
+  },
+  "max_scalar_conservation_residual": 4.440892098500626e-16,
+  "max_euler_conservation_residual": 3.9968028886505635e-14,
+  "max_estimated_short_horizon_CFL": 0.3500000000000001,
+  "dataset_source": "analytic mathematical exact solutions",
+  "physical_observations_included": false
+}

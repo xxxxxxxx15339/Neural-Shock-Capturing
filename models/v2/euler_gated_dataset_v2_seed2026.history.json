@@ -1,0 +1,338 @@
+[
+  {
+    "step": 0,
+    "grid": 256,
+    "family": "two_rarefactions",
+    "train_loss": 0.0002428652694634805,
+    "state_loss": 0.0002428652694634805,
+    "tv_penalty": 0.0,
+    "positivity_penalty": 0.0,
+    "validation": {
+      "valid": true,
+      "relative_score": 0.9631972140952599,
+      "family_ratios": {
+        "constant": 0.99999999996386,
+        "contact": 0.9673994797608856,
+        "random_riemann": 0.9254868754538027,
+        "sod_like": 0.952811532039845,
+        "two_rarefactions": 0.970288183257907
+      },
+      "failures": []
+    }
+  },
+  {
+    "step": 20,
+    "grid": 128,
+    "family": "sod_like",
+    "train_loss": 0.0022665925225203625,
+    "state_loss": 0.0022665925225203625,
+    "tv_penalty": 0.0,
+    "positivity_penalty": 0.0,
+    "validation": {
+      "valid": true,
+      "relative_score": 0.9616636089993917,
+      "family_ratios": {
+        "constant": 0.9999999999662693,
+        "contact": 0.9656306407453804,
+        "random_riemann": 0.9234573223828463,
+        "sod_like": 0.951105752049037,
+        "two_rarefactions": 0.9681243298534259
+      },
+      "failures": []
+    }
+  },
+  {
+    "step": 40,
+    "grid": 256,
+    "family": "random_riemann",
+    "train_loss": 0.00022438349676064698,
+    "state_loss": 0.00022438349676064698,
+    "tv_penalty": 0.0,
+    "positivity_penalty": 0.0,
+    "validation": {
+      "valid": true,
+      "relative_score": 0.9610447093676159,
+      "family_ratios": {
+        "constant": 1.0000000000578242,
+        "contact": 0.9620283508796715,
+        "random_riemann": 0.9233655170836453,
+        "sod_like": 0.9517656904097977,
+        "two_rarefactions": 0.9680639884071397
+      },
+      "failures": []
+    }
+  },
+  {
+    "step": 60,
+    "grid": 128,
+    "family": "random_riemann",
+    "train_loss": 0.00025829336023723895,
+    "state_loss": 0.00025829336023723895,
+    "tv_penalty": 0.0,
+    "positivity_penalty": 0.0,
+    "validation": {
+      "valid": true,
+      "relative_score": 0.9598376729684538,
+      "family_ratios": {
+        "constant": 0.99999999996386,
+        "contact": 0.9611437086727594,
+        "random_riemann": 0.9215104722376682,
+        "sod_like": 0.9495555417891616,
+        "two_rarefactions": 0.9669786421788192
+      },
+      "failures": []
+    }
+  },
+  {
+    "step": 80,
+    "grid": 128,
+    "family": "two_rarefactions",
+    "train_loss": 0.00041810468133361033,
+    "state_loss": 0.00041810468133361033,
+    "tv_penalty": 0.0,
+    "positivity_penalty": 0.0,
+    "validation": {
+      "valid": true,
+      "relative_score": 0.9593659487324452,
+      "family_ratios": {
+        "constant": 1.0000000000385494,
+        "contact": 0.9597362846548618,
+        "random_riemann": 0.9206669253543254,
+        "sod_like": 0.9491310832371168,
+        "two_rarefactions": 0.9672954503773722
+      },
+      "failures": []
+    }
+  },
+  {
+    "step": 100,
+    "grid": 128,
+    "family": "sod_like",
+    "train_loss": 0.0017508877853759201,
+    "state_loss": 0.0017508877853759201,
+    "tv_penalty": 0.0,
+    "positivity_penalty": 0.0,
+    "validation": {
+      "valid": true,
+      "relative_score": 0.9593996450469446,
+      "family_ratios": {
+        "constant": 1.0000000000120466,
+        "contact": 0.9611058314466744,
+        "random_riemann": 0.9201965700105732,
+        "sod_like": 0.9483049875820697,
+        "two_rarefactions": 0.9673908361833593
+      },
+      "failures": []
+    }
+  },
+  {
+    "step": 120,
+    "grid": 128,
+    "family": "random_riemann",
+    "train_loss": 0.0010974513935594508,
+    "state_loss": 0.0010974513935594508,
+    "tv_penalty": 0.0,
+    "positivity_penalty": 0.0,
+    "validation": {
+      "valid": true,
+      "relative_score": 0.9588121467239964,
+      "family_ratios": {
+        "constant": 1.0000000000505962,
+        "contact": 0.9603307196437104,
+        "random_riemann": 0.9190024941740269,
+        "sod_like": 0.9480458952310112,
+        "two_rarefactions": 0.9666816245206369
+      },
+      "failures": []
+    }
+  },
+  {
+    "step": 140,
+    "grid": 128,
+    "family": "random_riemann",
+    "train_loss": 0.0011223889541514414,
+    "state_loss": 0.0011223889541514414,
+    "tv_penalty": 0.0,
+    "positivity_penalty": 0.0,
+    "validation": {
+      "valid": true,
+      "relative_score": 0.9581637571070382,
+      "family_ratios": {
+        "constant": 1.0,
+        "contact": 0.9596302162789968,
+        "random_riemann": 0.9179181164768632,
+        "sod_like": 0.9471659908447293,
+        "two_rarefactions": 0.9661044619346009
+      },
+      "failures": []
+    }
+  },
+  {
+    "step": 160,
+    "grid": 256,
+    "family": "random_riemann",
+    "train_loss": 0.0004146435994957986,
+    "state_loss": 0.0004146435994957986,
+    "tv_penalty": 0.0,
+    "positivity_penalty": 0.0,
+    "validation": {
+      "valid": true,
+      "relative_score": 0.9578856892988286,
+      "family_ratios": {
+        "constant": 1.0000000001686538,
+        "contact": 0.9585975563979064,
+        "random_riemann": 0.918292276871297,
+        "sod_like": 0.9467261990739679,
+        "two_rarefactions": 0.9658124139823178
+      },
+      "failures": []
+    }
+  },
+  {
+    "step": 180,
+    "grid": 64,
+    "family": "two_rarefactions",
+    "train_loss": 0.000825085274905075,
+    "state_loss": 0.000825085274905075,
+    "tv_penalty": 0.0,
+    "positivity_penalty": 0.0,
+    "validation": {
+      "valid": true,
+      "relative_score": 0.957551143676911,
+      "family_ratios": {
+        "constant": 1.0,
+        "contact": 0.9583509052289513,
+        "random_riemann": 0.9166052536613365,
+        "sod_like": 0.9475016917417004,
+        "two_rarefactions": 0.9652978677525668
+      },
+      "failures": []
+    }
+  },
+  {
+    "step": 200,
+    "grid": 128,
+    "family": "contact",
+    "train_loss": 0.00011883714721626204,
+    "state_loss": 0.00011883714721626204,
+    "tv_penalty": 0.0,
+    "positivity_penalty": 0.0,
+    "validation": {
+      "valid": true,
+      "relative_score": 0.9576300282979614,
+      "family_ratios": {
+        "constant": 1.0,
+        "contact": 0.9578093004181724,
+        "random_riemann": 0.9178524331887604,
+        "sod_like": 0.9475234349999081,
+        "two_rarefactions": 0.9649649728829667
+      },
+      "failures": []
+    }
+  },
+  {
+    "step": 220,
+    "grid": 256,
+    "family": "constant",
+    "train_loss": 2.685934348064153e-31,
+    "state_loss": 2.685934348064153e-31,
+    "tv_penalty": 0.0,
+    "positivity_penalty": 0.0,
+    "validation": {
+      "valid": true,
+      "relative_score": 0.9571011244020562,
+      "family_ratios": {
+        "constant": 1.00000000003614,
+        "contact": 0.9564800441549499,
+        "random_riemann": 0.9168108293261094,
+        "sod_like": 0.9473266406123471,
+        "two_rarefactions": 0.9648881078807353
+      },
+      "failures": []
+    }
+  },
+  {
+    "step": 240,
+    "grid": 256,
+    "family": "contact",
+    "train_loss": 4.8789255355652845e-05,
+    "state_loss": 4.8789255355652845e-05,
+    "tv_penalty": 0.0,
+    "positivity_penalty": 0.0,
+    "validation": {
+      "valid": true,
+      "relative_score": 0.9572004185537586,
+      "family_ratios": {
+        "constant": 1.0000000000096374,
+        "contact": 0.9581538309410602,
+        "random_riemann": 0.9163048836184472,
+        "sod_like": 0.9468692742591486,
+        "two_rarefactions": 0.9646741039404997
+      },
+      "failures": []
+    }
+  },
+  {
+    "step": 260,
+    "grid": 128,
+    "family": "sod_like",
+    "train_loss": 0.0012620233256634321,
+    "state_loss": 0.0012620233256634321,
+    "tv_penalty": 0.0,
+    "positivity_penalty": 0.0,
+    "validation": {
+      "valid": true,
+      "relative_score": 0.9568648221360601,
+      "family_ratios": {
+        "constant": 1.0000000000096374,
+        "contact": 0.9578675997458214,
+        "random_riemann": 0.9159176591956594,
+        "sod_like": 0.9464863251294383,
+        "two_rarefactions": 0.964052526599744
+      },
+      "failures": []
+    }
+  },
+  {
+    "step": 280,
+    "grid": 256,
+    "family": "random_riemann",
+    "train_loss": 0.0002659574562597953,
+    "state_loss": 0.0002659574562597953,
+    "tv_penalty": 0.0,
+    "positivity_penalty": 0.0,
+    "validation": {
+      "valid": true,
+      "relative_score": 0.9566657198887196,
+      "family_ratios": {
+        "constant": 1.0000000000409586,
+        "contact": 0.9576908576095661,
+        "random_riemann": 0.914624604918551,
+        "sod_like": 0.9475183341550255,
+        "two_rarefactions": 0.963494802719497
+      },
+      "failures": []
+    }
+  },
+  {
+    "step": 299,
+    "grid": 64,
+    "family": "sod_like",
+    "train_loss": 0.002025541153537387,
+    "state_loss": 0.002025541153537387,
+    "tv_penalty": 0.0,
+    "positivity_penalty": 0.0,
+    "validation": {
+      "valid": true,
+      "relative_score": 0.9561784830378498,
+      "family_ratios": {
+        "constant": 1.0000000000096374,
+        "contact": 0.9574231630756745,
+        "random_riemann": 0.9138409412543815,
+        "sod_like": 0.9465004532203515,
+        "two_rarefactions": 0.9631278576292038
+      },
+      "failures": []
+    }
+  }
+]

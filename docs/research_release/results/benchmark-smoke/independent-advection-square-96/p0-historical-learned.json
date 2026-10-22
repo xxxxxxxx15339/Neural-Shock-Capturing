@@ -1,0 +1,71 @@
+{
+  "case": "independent-advection-square",
+  "kind": "advection",
+  "physics": "scalar",
+  "cells": 96,
+  "method": "p0-historical-learned",
+  "policy": "learned-blend",
+  "strength": 0.04742587317756678,
+  "checkpoint_sha256": "3d942ba76d1eb5ede3119bca360392bdbe4ce6a13ab56ab8f124323d4095674b",
+  "time": 1.5,
+  "sampling": "finite-volume cell averages",
+  "diagnostics": {
+    "finite": true,
+    "raw_stages_admissible": true,
+    "invalid_stage_rows": 0,
+    "nonfinite_stage_rows": 0,
+    "repaired_stage_rows": 0,
+    "isolated_repair_events": 0,
+    "fallback_repair_events": 0,
+    "repair_policy": "none",
+    "minimum_state": -0.10613220832425763,
+    "maximum_absolute_stage_state": 1.100762931955988,
+    "max_courant": 0.1664623955431755,
+    "initial_integral": [
+      0.36800000000000016
+    ],
+    "final_integral": [
+      0.3679999999999821
+    ],
+    "integrated_boundary_exchange": [
+      0.0
+    ],
+    "integrated_repair_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -1.8041124150158794e-14
+    ],
+    "physical_balance_error": [
+      -1.8041124150158794e-14
+    ],
+    "valid_for_accuracy_claim": true
+  },
+  "total_variation": [
+    2.400000001340784
+  ],
+  "minimum": [
+    -0.09999999999999319
+  ],
+  "maximum": [
+    1.1000000006703987
+  ],
+  "reference_status": "analytic cell averages",
+  "primary_error": 0.07433937142291114,
+  "l1": 0.022731560603764675,
+  "l2": 0.07433937142291114,
+  "linf": 0.3764640135206362,
+  "component_l1": [
+    0.022731560603764675
+  ],
+  "component_l2": [
+    0.07433937142291114
+  ],
+  "component_linf": [
+    0.3764640135206362
+  ],
+  "overshoot": 6.703901878069018e-10,
+  "undershoot": 0.0,
+  "relative_l1": 0.9323446520073295,
+  "ranking_resolved": true
+}

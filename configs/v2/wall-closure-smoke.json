@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "role": "Explicit wall correctness correction; original fine reference unfinished; resource-limited ladder declared before evaluating any blast neural solver; fixed selected models/strength",
+  "cases": [
+    {
+      "id": "wall-smoke",
+      "kind": "blast",
+      "system": "euler",
+      "boundary": "reflective-wall",
+      "time": 0.001,
+      "grids": [
+        128
+      ],
+      "reference_grids": [
+        128,
+        256,
+        512
+      ],
+      "cfl": 0.15,
+      "speed_safety": 2.0
+    }
+  ]
+}
