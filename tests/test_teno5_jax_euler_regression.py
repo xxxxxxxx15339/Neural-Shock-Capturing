@@ -23,7 +23,7 @@ from src.schemes import TENO5euler
 from src.schemes.teno5 import teno5_reconstruct
 
 from src.differentiable.euler_jax import get_euler_flux_jax
-from src.differentiable.numerics_jax import rollout
+from src.differentiable.numerics_jax import rollout, ssprk3_step
 from src.differentiable.teno5_jax import teno5_reconstruct_jax
 
 
@@ -49,15 +49,41 @@ class Euler5JaxRegressionTests(unittest.TestCase):
             getEulerFlux(TENO5euler()), sod(), 3,
             max_wave_speed=max_wave_speed, max_cfl=cfl,
         )
-        numpy_final = numpy_sim.runEuler()[:, -1, :]
+        numpy_history = numpy_sim.runEuler()
+        numpy_final = numpy_history[:, -1, :]
         actual_dt = numpy_sim.last_times[1] - numpy_sim.last_times[0]
 
         jax_flux_fn = get_euler_flux_jax(teno5_reconstruct_jax, boundary='transmissive')
+        compiled_flux = jax.jit(jax_flux_fn)
+        compiled_step = jax.jit(
+            lambda state: ssprk3_step(state, jax_flux_fn, actual_dt, dx)
+        )
+        # Compare both implementations on identical states, including developed
+        # shock profiles, before testing accumulated error across the rollout.
+        for step in (0, step_count // 2, step_count - 1):
+            with self.subTest(step=step):
+                state = numpy_history[:, step, :]
+                np.testing.assert_allclose(
+                    np.asarray(compiled_flux(jnp.asarray(state))),
+                    numpy_sim.flux(state), rtol=1e-12, atol=1e-12,
+                )
+                np.testing.assert_allclose(
+                    np.asarray(compiled_step(jnp.asarray(state))),
+                    numpy_sim.RK.stepItEuler(
+                        state, numpy_sim.flux, actual_dt, dx, 3,
+                    ),
+                    rtol=1e-12, atol=1e-12,
+                )
         jax_final = np.asarray(
             rollout(jnp.asarray(initial), jax_flux_fn, actual_dt, dx, step_count)
         )
 
-        np.testing.assert_allclose(jax_final, numpy_final, atol=1e-9)
+        self.assertEqual(jax_final.dtype, np.dtype(np.float64))
+        # Hard stencil selection amplifies CPU roundoff over the 80-step
+        # rollout: GitHub runners reached 4.9e-8 in near-zero momentum. Keep
+        # the strict kernel/one-step checks above, but give the full trajectory
+        # an absolute tolerance consistent with its existing relative one.
+        np.testing.assert_allclose(jax_final, numpy_final, rtol=1e-7, atol=1e-7)
 
     def test_single_call_reconstruction_matches(self):
         rng = np.random.default_rng(0)
