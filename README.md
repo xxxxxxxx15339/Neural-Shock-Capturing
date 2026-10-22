@@ -12,7 +12,6 @@ experiments that test that question for scalar conservation laws and 1D Euler fl
 </p>
 
 *Real shock waves around a T-38 jet, photographed by Leonard Weinstein / NASA
-(1993, public domain; [image source](https://commons.wikimedia.org/wiki/File:Schlieren_photograph_of_T-38_shock_waves.jpg)).
 This photograph motivates the problem; the experiments below solve 1D mathematical
 PDEs and do not simulate this aircraft or use the photograph as training data.*
 
