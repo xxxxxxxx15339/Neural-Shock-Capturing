@@ -1,0 +1,1 @@
+NEW MATCHED EVALUATION. Left: sine initial condition, T=.9 exceeds shock time2/pi. Right: top-hat, T=.2 before wave interaction. N=128. Exact entropy references. V2 uses scalar run6 linear head. NENO6 uses author reconstruction in common scalar numerical flux.

@@ -1,0 +1,51 @@
+{
+  "case": "sod",
+  "physics": "euler",
+  "method": "teno5",
+  "cells": 128,
+  "requested_time": 0.2,
+  "actual_time": 0.2,
+  "dt": 0.0012658227848101266,
+  "dx": 0.0078125,
+  "planned_steps": 158,
+  "accepted_steps": 158,
+  "success": true,
+  "status": "NEW MATCHED EVALUATION",
+  "raw_min_density": 0.125,
+  "raw_min_pressure": 0.10000000000000003,
+  "failure": null,
+  "conservation_residual": [
+    -1.992537969183855e-15,
+    -3.885780586188048e-16,
+    -4.826112494375157e-15
+  ],
+  "boundary_exchange": [
+    8.783410004945857e-21,
+    -0.17999999999999974,
+    3.218966613144819e-19
+  ],
+  "repair_count": 0,
+  "retry_count": 0,
+  "maximum_step_start_cfl": 0.3553908793245572,
+  "compile_step_seconds": 0.8895523339997453,
+  "compile_rollout_seconds": 0.6936174919974292,
+  "first_step_seconds": 0.0009282189967052545,
+  "warm_step_repeats_seconds": [
+    0.0005248730012681335,
+    0.0004919769999105483,
+    0.0005137679981999099,
+    0.0005220100028964225,
+    0.0005179590007173829,
+    0.0004567070027405862,
+    0.0004308639981900342
+  ],
+  "rollout_repeats_seconds": [
+    0.05854760100191925,
+    0.05646431099739857,
+    0.05444108600204345
+  ],
+  "instrumented_rollout_seconds": 0.22200328100007027,
+  "reference": "exact_riemann",
+  "manifest_sha256": "97132adef47fc895eb9f29d52c9bd4bb82c0b48d844a46c6509c27594e9f9378",
+  "audit_note": "Initial Sod timing repeated after archival jobs; identical final numerical state."
+}

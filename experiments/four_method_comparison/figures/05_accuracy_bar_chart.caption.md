@@ -1,0 +1,1 @@
+NEW MATCHED EVALUATION. N=128. Euler component mean L1 and scalar L1 are normalized separately to each case's TENO5. This chart does not combine different norms into one improvement. See master_results.csv for full values; unavailable endpoint errors produce no bars.

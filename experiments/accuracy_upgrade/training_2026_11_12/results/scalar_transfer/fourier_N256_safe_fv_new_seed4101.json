@@ -1,0 +1,33 @@
+{
+  "case": "fourier",
+  "system": "advection",
+  "cells": 256,
+  "variant": "safe_fv_new_seed4101",
+  "zero_shot_euler_to_scalar": true,
+  "solver": "unchanged scalar state LF + SSPRK3",
+  "dt": 0.0008130081300813008,
+  "time": 0.2,
+  "steps": 246,
+  "primary_error": 2.6939103733758616e-08,
+  "l1": 2.4246261480823875e-08,
+  "l2": 2.6939103733758616e-08,
+  "linf": 3.842759305205945e-08,
+  "component_l1": [
+    2.4246261480823875e-08
+  ],
+  "component_l2": [
+    2.6939103733758616e-08
+  ],
+  "component_linf": [
+    3.842759305205945e-08
+  ],
+  "valid": true,
+  "l1_ratio_to_classical": 1.0,
+  "tv": 1.3206914562042753,
+  "overshoot": 0.0,
+  "undershoot": 0.0,
+  "conservation_residual": -4.427014310692812e-15,
+  "wall_seconds_including_compilation": 2.0649921449985413,
+  "classical_source": "experiments/accuracy_upgrade/results/scalar/fourier_256_teno5.json",
+  "classical_source_sha256": "1d4962c75bfdf019620f2a3dcc5949a962b213059faebb9e77956efc7d6845ee"
+}

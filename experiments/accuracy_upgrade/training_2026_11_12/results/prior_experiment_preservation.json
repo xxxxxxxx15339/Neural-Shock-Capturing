@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "exported_euler_profiles_recomputed": 54,
+  "new_artifact_hashes_checked": 698,
+  "frozen_pilot_checkpoints_checked": 6,
+  "original_files_preserved": 592,
+  "tracked_release_protected": 491,
+  "baseline_missing_ignored_checkpoints": 7
+}

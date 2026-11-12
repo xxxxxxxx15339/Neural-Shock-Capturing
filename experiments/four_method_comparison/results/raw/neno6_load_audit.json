@@ -1,0 +1,22 @@
+{
+  "source": "experiments/four_method_comparison/vendor/NNENO",
+  "torch_version": "2.12.1+cu130",
+  "weights_only": true,
+  "checkpoint_sha256": "1a4a121c4b3b37fcf16eb60846b657d0c48229d848ceb0ce133ab0edee827f40",
+  "architecture": [
+    6,
+    64,
+    32,
+    16,
+    8,
+    4
+  ],
+  "parameters": 3228,
+  "normalization": "stencil / max(1, max(abs(stencil)))",
+  "troubled_threshold": 0.5,
+  "all_discard_fixture_count": 0,
+  "smoke_finite": true,
+  "smoke_steps": 8,
+  "smoke_time": 0.05,
+  "smoke_l1": 3.839996948771314e-07
+}

@@ -1,0 +1,25 @@
+physics,cells,method,count,failures,metric_cases,mean_error,median_error,maximum_error,median_paired_ratio,maximum_paired_ratio,interpretation
+euler,64,teno5,5,1,2,0.020200119554346082,0.020200119554346082,0.04040022579950426,1.0,1.0,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+euler,64,neno6,5,2,3,0.27644409467096714,0.03824437427796259,0.7910878941921607,1.0572304067045064,1.1678231765859068,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+euler,64,nn_teno5,5,3,2,0.02018605453688943,0.02018605453688943,0.04037209575762323,0.9999136214933937,1.0005235272605593,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+euler,64,learned_head,5,3,2,0.019965045544826518,0.019965045544826518,0.03993007766472881,0.9985293532268009,1.0086959714805024,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+euler,128,teno5,8,1,5,0.0565427837009793,0.01957587556877074,0.2304674210799341,1.0,1.0,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+euler,128,neno6,8,2,6,0.11132649166454604,0.022440479410728062,0.4072068762935183,0.9633022926795,1.331564765464964,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+euler,128,nn_teno5,8,3,5,0.05597769686085845,0.019531481097490522,0.22807659377658732,0.9935548292942928,1.0020161231035303,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+euler,128,learned_head,8,3,5,0.05571226101620078,0.01938525749396223,0.22704205154300205,0.990262602858357,1.0066062923655528,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+euler,256,teno5,3,0,3,0.03909723035006389,0.015467524255899172,0.09849339786283591,1.0,1.0,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+euler,256,neno6,3,0,3,0.038336521547382894,0.016104203973674458,0.09533776259126915,1.041162354572191,1.0711034450669332,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+euler,256,nn_teno5,3,0,3,0.03872168599169785,0.01536614865556969,0.09748404813575817,0.9934459064907677,0.995224001418813,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+euler,256,learned_head,3,0,3,0.033918241510418584,0.01527314523225585,0.0831604452362215,0.9874330875175976,0.9971073139937171,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+scalar,64,teno5,1,0,1,7.73696519571973e-07,7.73696519571973e-07,7.73696519571973e-07,1.0,1.0,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+scalar,64,neno6,1,0,1,2.1603626125107304e-05,2.1603626125107304e-05,2.1603626125107304e-05,27.922609936333867,27.922609936333867,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+scalar,64,nn_teno5,1,0,1,7.73696519571973e-07,7.73696519571973e-07,7.73696519571973e-07,1.0,1.0,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+scalar,64,learned_head,1,0,1,9.67534202466272e-06,9.67534202466272e-06,9.67534202466272e-06,12.505345157834423,12.505345157834423,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+scalar,128,teno5,5,0,5,0.0053337228275437566,0.001818695613257875,0.018658978804043436,1.0,1.0,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+scalar,128,neno6,5,0,5,0.0040773154213099416,0.0014781092511291936,0.013029910382292972,0.9140606622855277,140.48048776684843,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+scalar,128,nn_teno5,5,0,5,0.005350812687480457,0.0016827966277477464,0.01885420037468119,1.0,1.0104626074496343,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+scalar,128,learned_head,5,0,5,0.005067510425072185,0.0018256572283487228,0.01761539580771744,0.9532297336606765,53.138118691763175,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+scalar,256,teno5,5,0,5,0.0030569488783240444,0.0010670242055084394,0.010448145389858008,1.0,1.0,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+scalar,256,neno6,5,0,5,0.00229846037061535,0.0010180310960532406,0.006780685182819155,0.9792035214386895,515.1985072187367,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+scalar,256,nn_teno5,5,0,5,0.0030665034128881516,0.0010134707548103276,0.010547734737569398,1.0,1.0095317727687882,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI
+scalar,256,learned_head,5,0,5,0.00287168875399526,0.0010884849085344183,0.009603188623778148,0.9729650963547231,215.8535631869039,Descriptive within physics/grid; not pooled as a headline; no independent-trajectory CI

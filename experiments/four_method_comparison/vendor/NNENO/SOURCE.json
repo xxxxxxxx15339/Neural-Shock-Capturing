@@ -1,0 +1,20 @@
+{
+  "repository": "https://github.com/Lilian6/NNENO",
+  "commit": "b91427693fcba1496570477e25fcc55debf8e5cb",
+  "paper": "https://arxiv.org/pdf/2207.08500",
+  "paper_link_location": "Appendix D, page 37",
+  "retrieved_utc": "2026-11-12",
+  "files": {
+    "README.md": "8c3f59d5089a205d04da4972afa7da8632d895cda02c413fda2fac6b6d2e30f7",
+    "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "globalfunction.py": "4970260d31d5fe6c3f2e53315cec5d4a2b8f2397aa61b4dc079443fac680fe1b",
+    "mytrainmodel1": "1a4a121c4b3b37fcf16eb60846b657d0c48229d848ceb0ce133ab0edee827f40",
+    "test_teno_interg_adv_function.py": "a441acae69552ae914ad66692dbb77ffd9fb9354687b93248ec51613587c85c0"
+  },
+  "text_copy_note": "Source/license text copied with LF newlines; mytrainmodel1 is byte-exact decoded author blob.",
+  "upstream_git_blobs": {
+    "globalfunction.py": "99594c18f88d964fc4d6d517367b3cc4a01414be",
+    "test_teno_interg_adv_function.py": "69233fa2ffc2f587c8698a8f384beab439f3707d",
+    "mytrainmodel1": "b057a266c730b951fdd979734328349fff80b980"
+  }
+}

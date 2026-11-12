@@ -1,0 +1,24 @@
+Loaded NN-TENO5euler(JAX) checkpoint from models/nn_teno5euler_unrolled_jax_params_curriculum_phase18_learnedlambda.pkl
+
+==============================================================================
+Sod -- reference: exact Riemann solution
+==============================================================================
+  TENO5euler(JAX)   : mean state L1 vs exact Riemann solution = 8.2583e-03
+  NN-TENO5euler(JAX): mean state L1 vs exact Riemann solution = 8.2871e-03
+  beats_teacher: loss
+
+==============================================================================
+Shu-Osher -- reference: TENO5euler(JAX) at 320 cells
+==============================================================================
+Building high-resolution reference...
+  TENO5euler(JAX)   : mean state L1 vs TENO5euler(JAX) at 320 cells = 2.1319e-01
+  NN-TENO5euler(JAX): mean state L1 vs TENO5euler(JAX) at 320 cells = 2.0926e-01
+  beats_teacher: WIN
+
+==============================================================================
+Summary
+==============================================================================
+sod         : NN-TENO5euler(JAX) loses to TENO5euler(JAX) vs exact Riemann solution
+shu_osher   : NN-TENO5euler(JAX) BEATS TENO5euler(JAX) vs TENO5euler(JAX) at 320 cells
+
+Wrote metrics to /home/bazouil/Documents/Neural-Shock-Capturing/experiments/four_method_comparison/results/raw/reproduced_phase18_euler.json

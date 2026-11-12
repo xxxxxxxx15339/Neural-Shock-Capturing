@@ -1,0 +1,1 @@
+NEW MATCHED EVALUATION. Density error relative to exact Riemann Sod/Lax and finest numerical Shu reference. N=128. Full precision errors are in raw/evaluated_rows.json; reference sensitivity affects small Shu rankings.

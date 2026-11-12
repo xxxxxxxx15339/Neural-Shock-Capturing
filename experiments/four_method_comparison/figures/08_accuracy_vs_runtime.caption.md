@@ -1,0 +1,1 @@
+NEW MATCHED EVALUATION. Same CPU/JAX environment. Median of three warmed device-loop full simulations, compilation excluded; no failed run is credited as a complete fast run. Lines only connect measured128/256 grids, with no interpolation-based equal-budget accuracy claim. Exact references for Sod/Burgers; numerical Shu reference sensitivity is reported separately.

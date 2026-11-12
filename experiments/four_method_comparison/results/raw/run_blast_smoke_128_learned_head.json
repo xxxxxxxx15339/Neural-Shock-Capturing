@@ -1,0 +1,65 @@
+{
+  "case": "blast_smoke",
+  "physics": "euler",
+  "method": "learned_head",
+  "cells": 128,
+  "requested_time": 0.001,
+  "actual_time": 8e-05,
+  "dt": 4e-05,
+  "dx": 0.0078125,
+  "planned_steps": 25,
+  "accepted_steps": 2,
+  "success": false,
+  "status": "NEW MATCHED EVALUATION",
+  "raw_min_density": 0.8718951963377142,
+  "raw_min_pressure": -0.0033714838086982626,
+  "failure": {
+    "step": 3,
+    "stage": 1,
+    "step_start_time": 8e-05,
+    "stage_min_density": [
+      0.899290320160232,
+      0.899290320160232,
+      0.899290320160232
+    ],
+    "stage_min_pressure": [
+      -0.0033714838086982626,
+      -0.0033714838086982626,
+      -0.0033714838086982626
+    ],
+    "nonfinite_values": 0
+  },
+  "conservation_residual": [
+    -2.688821387764051e-17,
+    -2.7755575615628914e-17,
+    -8.326672684688674e-16
+  ],
+  "boundary_exchange": [
+    0.0,
+    -0.07200000000000001,
+    0.0
+  ],
+  "repair_count": 0,
+  "retry_count": 0,
+  "maximum_step_start_cfl": 0.2057009134366734,
+  "compile_step_seconds": 1.144762334999541,
+  "compile_rollout_seconds": 1.0585555390025547,
+  "first_step_seconds": 0.02080622499852325,
+  "warm_step_repeats_seconds": [
+    0.0015362070007540751,
+    0.0016861600015545264,
+    0.0018168379974667914,
+    0.00163901599808014,
+    0.0013880690021323971,
+    0.001372632999846246,
+    0.0013571280032920185
+  ],
+  "rollout_repeats_seconds": [
+    0.003026596001291182,
+    0.003200995000952389,
+    0.0029662519991688896
+  ],
+  "instrumented_rollout_seconds": 0.006513880001875805,
+  "reference": "none_stability_only",
+  "manifest_sha256": "97132adef47fc895eb9f29d52c9bd4bb82c0b48d844a46c6509c27594e9f9378"
+}

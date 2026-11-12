@@ -1,0 +1,1 @@
+NEW MATCHED EVALUATION. shu_osher, N=128, T=1.8. Reference: TENO5 N=2048, dt/2. Four real checkpoints; no repairs. NENO6 is the verified author reconstruction ported to the common Euler solver. V2 uses phase21 rich head. All four complete.

@@ -1,0 +1,97 @@
+{
+  "compared_values": 160,
+  "max_abs_difference": 0.0008455701853051778,
+  "mismatches": 19,
+  "warning": "Scalar archived burgers_smooth_to_shock at t=.6 is pre-shock (shock time2/pi); name is not post-shock evidence. Archived fidelity-factor pass is not a strict improvement."
+}
+{
+  "stencil_count": 8448,
+  "maximum_probability_difference": 1.7881393432617188e-07,
+  "mask_mismatch_count": 0,
+  "mismatch_sources": [],
+  "probability_tolerance": 1e-06,
+  "thresholds": [
+    0.6599999999999997,
+    0.4999999999999998,
+    0.6899999999999997
+  ]
+}
+Measured 122 rollouts; 21 failures; no failed endpoint errors.
+Saved eleven measured figures as PNG and PDF, with evidence captions.
+{
+  "improvements": {
+    "nn_teno5": {
+      "best": [
+        7.472332616819221,
+        "burgers_post",
+        128
+      ],
+      "worst": [
+        -1.0462607449634342,
+        "advection_square",
+        128
+      ]
+    },
+    "learned_head": {
+      "best": [
+        20.437176124659608,
+        "burgers_pre",
+        128
+      ],
+      "worst": [
+        -21485.35631869039,
+        "advection_smooth",
+        256
+      ]
+    },
+    "neno6": {
+      "best": [
+        35.10154262017495,
+        "advection_square",
+        256
+      ],
+      "worst": [
+        -51419.85072187367,
+        "advection_smooth",
+        256
+      ]
+    }
+  },
+  "best_v2_vs_original": [
+    20.437176124659608,
+    "burgers_pre",
+    128
+  ],
+  "worst_v2_vs_original": [
+    -21485.35631869039,
+    "advection_smooth",
+    256
+  ],
+  "total_rollouts": 122,
+  "main_rollouts": 108,
+  "total_failures": 21,
+  "main_failures": 18,
+  "supplemental_wall_runs": 8,
+  "supplemental_wall_failures": 6
+}
+{
+  "passed": true,
+  "protected_files_verified": 3261,
+  "checkpoint_identities_verified": 4,
+  "expected_rollouts": 122,
+  "measured_rollouts": 122,
+  "failures_preserved": 21,
+  "failed_endpoint_errors_absent": true,
+  "percentage_checks": true,
+  "exact_export_weights": true,
+  "maximum_relative_boundary_budget_residual": 2.7852720130283615e-13,
+  "required_figures_verified": 9,
+  "maximum_initial_scale_boundary_budget_residual": 1.4551915228366852e-10,
+  "finite_explosive_runs": 1,
+  "supplementary_wall_runs_verified": 8,
+  "supplementary_wall_failures_preserved": 6,
+  "actual_input_mask_parity_stencils": 8448,
+  "supplementary_dt_half_controls_verified": 4,
+  "qualification": "Tests and reference limitations are reported separately; integrity PASS is not an accuracy superiority claim.",
+  "fresh_sod_reproductions_verified": 10
+}

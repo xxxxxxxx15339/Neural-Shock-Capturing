@@ -1,0 +1,25 @@
+case,method,cells,teno_cells,method_seconds,teno_seconds,cost_ratio,error_ratio,within_25percent_budget,interpretation
+sod,neno6,128,256,0.12649277899981826,0.221921704000124,0.5699883189421958,1.8349710662233114,False,Nearest measured classical cost among128/256; exact measured grids only
+sod,neno6,256,256,0.5341921299987007,0.221921704000124,2.407119810139896,1.0711034450669332,False,Nearest measured classical cost among128/256; exact measured grids only
+sod,nn_teno5,128,128,0.09038580899868975,0.05646431099739857,1.6007599739037641,0.9935548292942928,False,Nearest measured classical cost among128/256; exact measured grids only
+sod,nn_teno5,256,256,0.3647947980025492,0.221921704000124,1.6437995537486743,0.995224001418813,False,Nearest measured classical cost among128/256; exact measured grids only
+sod,learned_head,128,256,0.1542487059996347,0.221921704000124,0.6950591276982466,1.9068488460539315,False,Nearest measured classical cost among128/256; exact measured grids only
+sod,learned_head,256,256,0.8247142120017088,0.221921704000124,3.7162395436601727,0.9971073139937171,False,Nearest measured classical cost among128/256; exact measured grids only
+lax,neno6,128,256,0.2110968769993633,0.3698377039982006,0.5707824667881628,1.7045412529175092,False,Nearest measured classical cost among128/256; exact measured grids only
+lax,neno6,256,256,1.0209186490028515,0.3698377039982006,2.7604504299210624,1.041162354572191,False,Nearest measured classical cost among128/256; exact measured grids only
+lax,nn_teno5,128,128,0.15286398999887751,0.09471680099886726,1.6139057525887688,0.9867309541220832,False,Nearest measured classical cost among128/256; exact measured grids only
+lax,nn_teno5,256,256,0.7437808760005282,0.3698377039982006,2.0111007286702898,0.9934459064907677,False,Nearest measured classical cost among128/256; exact measured grids only
+lax,learned_head,128,256,0.2508784499987087,0.3698377039982006,0.6783474137075254,1.6668935190992444,False,Nearest measured classical cost among128/256; exact measured grids only
+lax,learned_head,256,256,1.0710123290009506,0.3698377039982006,2.8958981667433275,0.9874330875175976,False,Nearest measured classical cost among128/256; exact measured grids only
+shu_osher,neno6,128,128,0.4337919569989026,0.20229457599998568,2.1443578249914785,0.9101470382744354,False,Nearest measured classical cost among128/256; exact measured grids only
+shu_osher,neno6,256,256,2.384558001998812,1.0226944179994462,2.331642727319651,0.9679609462152847,False,Nearest measured classical cost among128/256; exact measured grids only
+shu_osher,nn_teno5,128,128,0.3224945289985044,0.20229457599998568,1.5941827772907131,0.9896261810361581,False,Nearest measured classical cost among128/256; exact measured grids only
+shu_osher,nn_teno5,256,256,1.231239076001657,1.0226944179994462,1.2039168830217706,0.989752107765808,True,Nearest measured classical cost among128/256; exact measured grids only
+shu_osher,learned_head,128,256,0.5210415849978745,1.0226944179994462,0.509479249937743,2.3051499539003197,False,Nearest measured classical cost among128/256; exact measured grids only
+shu_osher,learned_head,256,256,2.9001235120013007,1.0226944179994462,2.8357674208043555,0.8443250719406856,False,Nearest measured classical cost among128/256; exact measured grids only
+burgers_post,neno6,128,256,0.11352215099759633,0.07044948399925488,1.6113979060343013,1.3852630929069423,False,Nearest measured classical cost among128/256; exact measured grids only
+burgers_post,neno6,256,256,0.40670450100151356,0.07044948399925488,5.772994746218654,0.9540843504746422,False,Nearest measured classical cost among128/256; exact measured grids only
+burgers_post,nn_teno5,128,256,0.07127810699967085,0.07044948399925488,1.0117619456293638,1.5770932084393436,True,Nearest measured classical cost among128/256; exact measured grids only
+burgers_post,nn_teno5,256,256,0.24509506299727946,0.07044948399925488,3.479018568821196,0.9498104631350949,False,Nearest measured classical cost among128/256; exact measured grids only
+burgers_post,learned_head,128,256,0.11813384499691892,0.07044948399925488,1.6768589106794365,1.7109801435842713,False,Nearest measured classical cost among128/256; exact measured grids only
+burgers_post,learned_head,256,256,0.43637211399982334,0.07044948399925488,6.194113700029921,1.020112667468263,False,Nearest measured classical cost among128/256; exact measured grids only

@@ -1,0 +1,190 @@
+{
+  "seed": 2026111203,
+  "cases": [
+    {
+      "id": "fresh_0_random_riemann",
+      "family": "random_riemann",
+      "kind": "riemann",
+      "system": "euler",
+      "left": [
+        2.257349875280449,
+        -0.6630608197440468,
+        1.2153754352960653
+      ],
+      "right": [
+        2.3707394819255305,
+        0.4690473255818026,
+        1.9622472224900676
+      ],
+      "jump": 0.4661410106877476,
+      "time": 0.1,
+      "boundary": "transmissive",
+      "grids": [
+        128,
+        256
+      ]
+    },
+    {
+      "id": "fresh_1_sod_like",
+      "family": "sod_like",
+      "kind": "riemann",
+      "system": "euler",
+      "left": [
+        1.251476803590675,
+        -0.027492771788452247,
+        0.8009740673931108
+      ],
+      "right": [
+        0.16532293900714404,
+        -0.1221486660737666,
+        0.2180437966603985
+      ],
+      "jump": 0.5626443582939151,
+      "time": 0.09103461944556072,
+      "boundary": "transmissive",
+      "grids": [
+        128,
+        256
+      ]
+    },
+    {
+      "id": "fresh_2_contact",
+      "family": "contact",
+      "kind": "riemann",
+      "system": "euler",
+      "left": [
+        1.1464455444246664,
+        -0.3523802090203565,
+        1.8840828220908201
+      ],
+      "right": [
+        1.650602261465901,
+        -0.3523802090203565,
+        1.8840828220908201
+      ],
+      "jump": 0.536684228075204,
+      "time": 0.1,
+      "boundary": "transmissive",
+      "grids": [
+        128,
+        256
+      ]
+    },
+    {
+      "id": "fresh_3_two_rarefactions",
+      "family": "two_rarefactions",
+      "kind": "riemann",
+      "system": "euler",
+      "left": [
+        0.9992655405168289,
+        -0.6794358458192977,
+        0.938575934614104
+      ],
+      "right": [
+        1.761411422370076,
+        0.6728475183513069,
+        1.0272248759432012
+      ],
+      "jump": 0.6133148293885248,
+      "time": 0.1,
+      "boundary": "transmissive",
+      "grids": [
+        128,
+        256
+      ]
+    },
+    {
+      "id": "fresh_4_random_riemann",
+      "family": "random_riemann",
+      "kind": "riemann",
+      "system": "euler",
+      "left": [
+        2.619307769652121,
+        0.35231615808049255,
+        1.7243893209316654
+      ],
+      "right": [
+        1.5372790321063212,
+        -0.43787658135700236,
+        0.5338749951473611
+      ],
+      "jump": 0.5438762260230049,
+      "time": 0.1,
+      "boundary": "transmissive",
+      "grids": [
+        128,
+        256
+      ]
+    },
+    {
+      "id": "fresh_5_sod_like",
+      "family": "sod_like",
+      "kind": "riemann",
+      "system": "euler",
+      "left": [
+        0.9911611924714668,
+        -0.17476502715833273,
+        1.156516796582754
+      ],
+      "right": [
+        0.10031804886500076,
+        0.15107571104650125,
+        0.18755177773640405
+      ],
+      "jump": 0.47049326201961383,
+      "time": 0.1,
+      "boundary": "transmissive",
+      "grids": [
+        128,
+        256
+      ]
+    },
+    {
+      "id": "fresh_6_contact",
+      "family": "contact",
+      "kind": "riemann",
+      "system": "euler",
+      "left": [
+        2.0558390454784035,
+        -0.3174443643814133,
+        1.4487441341909437
+      ],
+      "right": [
+        0.7672736161179206,
+        -0.3174443643814133,
+        1.4487441341909437
+      ],
+      "jump": 0.4210226932839217,
+      "time": 0.1,
+      "boundary": "transmissive",
+      "grids": [
+        128,
+        256
+      ]
+    },
+    {
+      "id": "fresh_7_two_rarefactions",
+      "family": "two_rarefactions",
+      "kind": "riemann",
+      "system": "euler",
+      "left": [
+        1.6910529431330197,
+        -0.34833177774867996,
+        0.8846988111052742
+      ],
+      "right": [
+        1.591315404610373,
+        0.6738279235522882,
+        1.2664807742893107
+      ],
+      "jump": 0.5677429014023179,
+      "time": 0.0857471292533672,
+      "boundary": "transmissive",
+      "grids": [
+        128,
+        256
+      ]
+    }
+  ],
+  "purpose": "confirmation after validation-only checkpoint selection; never use for tuning"
+}

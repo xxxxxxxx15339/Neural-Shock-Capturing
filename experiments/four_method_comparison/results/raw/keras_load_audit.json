@@ -1,0 +1,44 @@
+[
+  {
+    "path": "models/SeemsGood3.h5",
+    "loaded": true,
+    "input_shape": [
+      null,
+      5
+    ],
+    "output_shape": [
+      null,
+      1
+    ],
+    "parameters": 181,
+    "sha256": "1eff1ede893f18936cc1f0ed6ab37615b5b814e1105947939bbecb4b5029e27e"
+  },
+  {
+    "path": "models/nn_teno5.h5",
+    "loaded": true,
+    "input_shape": [
+      null,
+      5
+    ],
+    "output_shape": [
+      null,
+      3
+    ],
+    "parameters": 3155,
+    "sha256": "33054a97615e80b4490ad2a3230d1a5b393dff63b71323088e4d313f7ab34e67"
+  },
+  {
+    "path": "models/nn_teno5_oracle.h5",
+    "loaded": true,
+    "input_shape": [
+      null,
+      5
+    ],
+    "output_shape": [
+      null,
+      3
+    ],
+    "parameters": 3155,
+    "sha256": "824094c849a30a17ce3d73b4439b0fd20f06c2046adfcbaf7ab1ecb66d669ed1"
+  }
+]

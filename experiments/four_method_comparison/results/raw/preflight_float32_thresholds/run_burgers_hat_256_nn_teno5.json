@@ -1,0 +1,42 @@
+{
+  "case": "burgers_hat",
+  "physics": "scalar",
+  "method": "nn_teno5",
+  "cells": 256,
+  "requested_time": 0.2,
+  "actual_time": 0.2,
+  "dt": 0.000749063670411985,
+  "dx": 0.00390625,
+  "planned_steps": 267,
+  "accepted_steps": 267,
+  "success": true,
+  "status": "NEW MATCHED EVALUATION",
+  "raw_min_density": null,
+  "raw_min_pressure": null,
+  "failure": null,
+  "conservation_residual": -2.706168622523819e-15,
+  "boundary_exchange": 0.0,
+  "repair_count": 0,
+  "retry_count": 0,
+  "maximum_step_start_cfl": 0.0,
+  "compile_step_seconds": 0.00015400500342366286,
+  "compile_rollout_seconds": 0.310189789001015,
+  "first_step_seconds": 0.0009144610012299381,
+  "warm_step_repeats_seconds": [
+    0.0006577860003744718,
+    0.0005688749988621566,
+    0.00035641100112115964,
+    0.00032672800080035813,
+    0.0003281939971202519,
+    0.0003504739979689475,
+    0.0002948789988295175
+  ],
+  "rollout_repeats_seconds": [
+    0.053740834999189246,
+    0.0529970730021887,
+    0.05394987699764897
+  ],
+  "instrumented_rollout_seconds": 0.0861570679990109,
+  "reference": "exact_entropy_top_hat",
+  "manifest_sha256": "97132adef47fc895eb9f29d52c9bd4bb82c0b48d844a46c6509c27594e9f9378"
+}

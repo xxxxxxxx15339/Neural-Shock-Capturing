@@ -1,0 +1,8 @@
+WALL GEOMETRY 0.001 teno5 True
+WALL GEOMETRY 0.001 neno6 True
+WALL GEOMETRY 0.001 nn_teno5 True
+WALL GEOMETRY 0.001 learned_head True
+WALL GEOMETRY 0.038 teno5 True
+WALL GEOMETRY 0.038 neno6 True
+WALL GEOMETRY 0.038 nn_teno5 True
+WALL GEOMETRY 0.038 learned_head True

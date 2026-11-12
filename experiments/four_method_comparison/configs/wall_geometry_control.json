@@ -1,0 +1,35 @@
+{
+  "purpose": "Check physical wall alignment independently of historical x=i*dx grid; all methods, no result-based parameter selection",
+  "sampling": "point-cell-centers",
+  "physical_wall_locations": [
+    0.0,
+    1.0
+  ],
+  "grids": [
+    128
+  ],
+  "times": [
+    0.001,
+    0.038
+  ],
+  "methods": [
+    "teno5",
+    "neno6",
+    "nn_teno5",
+    "learned_head"
+  ],
+  "boundary": "reflective-wall",
+  "pressure_regions": [
+    1000.0,
+    0.01,
+    100.0
+  ],
+  "density": 1.0,
+  "velocity": 0.0,
+  "pressure_jumps": [
+    0.1,
+    0.9
+  ],
+  "repair_policy": "none",
+  "reference": "none; stability only"
+}

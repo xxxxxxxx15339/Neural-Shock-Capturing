@@ -1,0 +1,12 @@
+{
+  "stencil_count": 8448,
+  "maximum_probability_difference": 1.7881393432617188e-07,
+  "mask_mismatch_count": 0,
+  "mismatch_sources": [],
+  "probability_tolerance": 1e-06,
+  "thresholds": [
+    0.6599999999999997,
+    0.4999999999999998,
+    0.6899999999999997
+  ]
+}

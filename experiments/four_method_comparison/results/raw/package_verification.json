@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "protected_files_verified": 3261,
+  "checkpoint_identities_verified": 4,
+  "expected_rollouts": 122,
+  "measured_rollouts": 122,
+  "failures_preserved": 21,
+  "failed_endpoint_errors_absent": true,
+  "percentage_checks": true,
+  "exact_export_weights": true,
+  "maximum_relative_boundary_budget_residual": 2.7852720130283615e-13,
+  "required_figures_verified": 9,
+  "maximum_initial_scale_boundary_budget_residual": 1.4551915228366852e-10,
+  "finite_explosive_runs": 1,
+  "supplementary_wall_runs_verified": 8,
+  "supplementary_wall_failures_preserved": 6,
+  "actual_input_mask_parity_stencils": 8448,
+  "supplementary_dt_half_controls_verified": 4,
+  "new_test_source_sha256": "d65f91a656b44b92d71d351ecc7163a0e1df3654a3150cf5469e248831064f95",
+  "qualification": "Tests and reference limitations are reported separately; integrity PASS is not an accuracy superiority claim.",
+  "fresh_sod_reproductions_verified": 10
+}

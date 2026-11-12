@@ -1,0 +1,14 @@
+usage: full_training.py [-h] [--run-dir RUN_DIR] {prepare,smoke,train}
+
+Train the original NN-TENO5 backbone through the full conservative FV solver.
+New checkpoints only. Original data/test files and earlier experiments are
+read only. A fixed-time training rollout never substitutes a repaired average
+or a shorter physical horizon after a failed step. Inference uses bounded
+retries.
+
+positional arguments:
+  {prepare,smoke,train}
+
+options:
+  -h, --help            show this help message and exit
+  --run-dir RUN_DIR

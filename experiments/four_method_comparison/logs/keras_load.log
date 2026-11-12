@@ -1,0 +1,68 @@
+Using TensorFlow backend.
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:517: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:4138: The name tf.random_uniform is deprecated. Please use tf.random.uniform instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:174: The name tf.get_default_session is deprecated. Please use tf.compat.v1.get_default_session instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:181: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:186: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+2026-11-12 20:16:11.529208: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2026-11-12 20:16:11.536229: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2994465000 Hz
+2026-11-12 20:16:11.536905: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5630c5e4b6c0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2026-11-12 20:16:11.536939: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2026-11-12 20:16:11.540238: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2026-11-12 20:16:11.579109: E tensorflow/stream_executor/cuda/cuda_driver.cc:318] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2026-11-12 20:16:11.579152: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] no NVIDIA GPU device is present: /dev/nvidia0 does not exist
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:190: The name tf.global_variables is deprecated. Please use tf.compat.v1.global_variables instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:199: The name tf.is_variable_initialized is deprecated. Please use tf.compat.v1.is_variable_initialized instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:206: The name tf.variables_initializer is deprecated. Please use tf.compat.v1.variables_initializer instead.
+
+[
+  {
+    "path": "models/SeemsGood3.h5",
+    "loaded": true,
+    "input_shape": [
+      null,
+      5
+    ],
+    "output_shape": [
+      null,
+      1
+    ],
+    "parameters": 181,
+    "sha256": "1eff1ede893f18936cc1f0ed6ab37615b5b814e1105947939bbecb4b5029e27e"
+  },
+  {
+    "path": "models/nn_teno5.h5",
+    "loaded": true,
+    "input_shape": [
+      null,
+      5
+    ],
+    "output_shape": [
+      null,
+      3
+    ],
+    "parameters": 3155,
+    "sha256": "33054a97615e80b4490ad2a3230d1a5b393dff63b71323088e4d313f7ab34e67"
+  },
+  {
+    "path": "models/nn_teno5_oracle.h5",
+    "loaded": true,
+    "input_shape": [
+      null,
+      5
+    ],
+    "output_shape": [
+      null,
+      3
+    ],
+    "parameters": 3155,
+    "sha256": "824094c849a30a17ce3d73b4439b0fd20f06c2046adfcbaf7ab1ecb66d669ed1"
+  }
+]

@@ -1,0 +1,66 @@
+{
+  "case": "sod",
+  "physics": "euler",
+  "method": "head_backbone_only",
+  "cells": 128,
+  "requested_time": 0.2,
+  "actual_time": 0.13164556962025317,
+  "dt": 0.0012658227848101266,
+  "dx": 0.0078125,
+  "planned_steps": 158,
+  "accepted_steps": 104,
+  "success": false,
+  "status": "NEW MATCHED EVALUATION",
+  "raw_min_density": -0.01982582591453712,
+  "raw_min_pressure": 0.02856303166083365,
+  "failure": {
+    "step": 105,
+    "stage": 1,
+    "step_start_time": 0.13164556962025317,
+    "stage_min_density": [
+      -0.01982582591453712,
+      -0.01982582591453712,
+      -0.01982582591453712
+    ],
+    "stage_min_pressure": [
+      0.02856303166083365,
+      0.02856303166083365,
+      0.02856303166083365
+    ],
+    "nonfinite_values": 0
+  },
+  "conservation_residual": [
+    -1.1346687185705884e-15,
+    -5.134781488891349e-16,
+    -2.7924927384677024e-15
+  ],
+  "boundary_exchange": [
+    -1.5956528175651642e-19,
+    -0.1184810126582281,
+    -1.3226656210199578e-18
+  ],
+  "repair_count": 0,
+  "retry_count": 0,
+  "maximum_step_start_cfl": 0.5105642364060634,
+  "compile_step_seconds": 1.05590707599913,
+  "compile_rollout_seconds": 0.8663839330001792,
+  "first_step_seconds": 0.021741358999861404,
+  "warm_step_repeats_seconds": [
+    0.0016222529993683565,
+    0.001379617999191396,
+    0.0012010979990009218,
+    0.0011924370010092389,
+    0.001270033997570863,
+    0.0013798969994240906,
+    0.001242725000338396
+  ],
+  "rollout_repeats_seconds": [
+    0.10997647900148877,
+    0.1050852020016464,
+    0.10631486599959317
+  ],
+  "instrumented_rollout_seconds": 0.28281744199921377,
+  "reference": "exact_riemann",
+  "manifest_sha256": "97132adef47fc895eb9f29d52c9bd4bb82c0b48d844a46c6509c27594e9f9378",
+  "audit_note": "Initial Sod timing repeated after archival jobs; identical final numerical state."
+}

@@ -1,0 +1,174 @@
+{
+  "case": "near_vacuum",
+  "definition": {
+    "id": "near_vacuum",
+    "kind": "riemann",
+    "system": "euler",
+    "left": [
+      1e-05,
+      -0.01,
+      1e-08
+    ],
+    "right": [
+      1e-05,
+      0.01,
+      1e-08
+    ],
+    "jump": 0.5,
+    "time": 0.1,
+    "boundary": "transmissive"
+  },
+  "cells": 64,
+  "variant": "safe_fv_new_seed4102",
+  "proposed_dt": 0.05,
+  "dx": 0.015625,
+  "reference": {
+    "kind": "analytic Riemann cell averages",
+    "uncertainty_proxy": 0.0
+  },
+  "raw_invalid_count_scope": "accepted attempts; retries reported separately",
+  "success": true,
+  "final_time": 0.1,
+  "steps": 2,
+  "retries": 0,
+  "limited_fe_stages": 0,
+  "limited_face_stages": 0,
+  "raw_invalid_fe_rows": 0,
+  "minimum_density": 9.02434476329854e-06,
+  "minimum_pressure": 8.730700067983156e-09,
+  "limiter_frequency": 0.0,
+  "face_limiter_frequency": 0.0,
+  "conservation_residual": [
+    -1.555099551599692e-22,
+    1.2407709188295417e-25,
+    -2.5849394142282115e-25
+  ],
+  "boundary_exchange": [
+    1.9999999999999997e-08,
+    3.308722450212111e-25,
+    7.100000000000001e-11
+  ],
+  "compile_s": 0.0004400830002850853,
+  "first_execution_s": 0.002785703996778466,
+  "warm_step_median_s": 0.0033006590019795112,
+  "warm_step_repeats_s": [
+    0.0025927269998646807,
+    0.0033006590019795112,
+    0.003468702001555357
+  ],
+  "simulation_s": 0.006690438000077847,
+  "host_instrumentation_included": true,
+  "first_failed_step": null,
+  "primary_error": 4.404237874948772e-10,
+  "l1": 4.404237874948772e-10,
+  "l2": 2.636026907077725e-09,
+  "linf": 1.91616588884878e-08,
+  "component_l1": [
+    1.2352312806041103e-09,
+    8.160573698820348e-11,
+    4.434344892317704e-12
+  ],
+  "component_l2": [
+    4.5571604484769e-09,
+    2.7917703739807087e-10,
+    1.619855366175779e-11
+  ],
+  "component_linf": [
+    1.91616588884878e-08,
+    1.1558401193496182e-09,
+    6.771945132715678e-11
+  ],
+  "density_tv": 1.4019403064844253e-06,
+  "pressure_tv": 1.8079827528763376e-09,
+  "pressure_l1": 1.7718606397608971e-12,
+  "density_overshoot": 1.91616588884878e-08,
+  "density_undershoot": 1.7018813721876588e-08,
+  "error_over_time": [
+    {
+      "time": 0.0,
+      "primary_error": 0.0,
+      "l1": 0.0,
+      "l2": 0.0,
+      "linf": 0.0,
+      "component_l1": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "component_l2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "component_linf": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "time": 0.05,
+      "primary_error": 3.194989406245748e-10,
+      "l1": 3.194989406245748e-10,
+      "l2": 1.9161157423377607e-09,
+      "linf": 1.4469038707448854e-08,
+      "component_l1": [
+        9.085736245341321e-10,
+        4.6698346954885065e-11,
+        3.2248503847071864e-12
+      ],
+      "component_l2": [
+        3.3144563203158373e-09,
+        1.6952734361497733e-10,
+        1.1764122959845325e-11
+      ],
+      "component_linf": [
+        1.4469038707448854e-08,
+        8.605453874640258e-10,
+        5.1347630521429246e-11
+      ]
+    },
+    {
+      "time": 0.1,
+      "primary_error": 4.404237874948772e-10,
+      "l1": 4.404237874948772e-10,
+      "l2": 2.636026907077725e-09,
+      "linf": 1.91616588884878e-08,
+      "component_l1": [
+        1.2352312806041103e-09,
+        8.160573698820348e-11,
+        4.434344892317704e-12
+      ],
+      "component_l2": [
+        4.5571604484769e-09,
+        2.7917703739807087e-10,
+        1.619855366175779e-11
+      ],
+      "component_linf": [
+        1.91616588884878e-08,
+        1.1558401193496182e-09,
+        6.771945132715678e-11
+      ]
+    }
+  ],
+  "exact_contact_position": 0.5,
+  "shock_metrics": [],
+  "history": [
+    {
+      "time": 0.05,
+      "min_density": 9.336133915963036e-06,
+      "min_pressure": 9.140456201915804e-09,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.1,
+      "min_density": 9.02434476329854e-06,
+      "min_pressure": 8.730700067983156e-09,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "git_commit": "ffec5617a471ef68f91d21e353936936fd068532",
+  "branch": "research/accuracy-upgrade-training-2026-11-12",
+  "python": "3.11.15 (main, Jun 11 2026, 15:20:16) [GCC 14.3.0]",
+  "platform": "Linux-7.0.11-arch1-1-x86_64-with-glibc2.43",
+  "devices": [
+    "cpu:0"
+  ],
+  "jax": "0.10.2",
+  "numpy": "2.4.6",
+  "optax": "0.2.8",
+  "config_sha256": "4c84b41713c844435d3298e8060c483c1444b69cc463d8de0df10656e7569b9a",
+  "holdout_sha256": "36dce0bb5341dcd65ce22c2bd56d4bca6c600c27ddcf73c7b8e2e4adb0bdb633",
+  "earlier_holdout": "already examined; not used as new confirmation",
+  "originals": "no old checkpoint, dataset or benchmark output is an output target"
+}

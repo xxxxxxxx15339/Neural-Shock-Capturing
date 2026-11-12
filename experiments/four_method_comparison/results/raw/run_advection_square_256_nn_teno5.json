@@ -1,0 +1,43 @@
+{
+  "case": "advection_square",
+  "physics": "scalar",
+  "method": "nn_teno5",
+  "cells": 256,
+  "requested_time": 1.0,
+  "actual_time": 1.0,
+  "dt": 0.0007507507507507507,
+  "dx": 0.00390625,
+  "planned_steps": 1332,
+  "accepted_steps": 1332,
+  "success": true,
+  "status": "NEW MATCHED EVALUATION",
+  "raw_min_density": null,
+  "raw_min_pressure": null,
+  "failure": null,
+  "conservation_residual": -2.7850551725938644e-14,
+  "boundary_exchange": 0.0,
+  "repair_count": 0,
+  "retry_count": 0,
+  "maximum_step_start_cfl": 0.0,
+  "compile_step_seconds": 0.39133118899917463,
+  "compile_rollout_seconds": 0.2999433360018884,
+  "first_step_seconds": 0.016275549998681527,
+  "warm_step_repeats_seconds": [
+    0.0005553959999815561,
+    0.00034754100124700926,
+    0.0002804910000122618,
+    0.0002886629990825895,
+    0.0002702940000745002,
+    0.00026519499806454405,
+    0.00025905000074999407
+  ],
+  "rollout_repeats_seconds": [
+    0.2617811519994575,
+    0.26420178699845565,
+    0.2618034330007504
+  ],
+  "instrumented_rollout_seconds": 0.4329521589970682,
+  "reference": "exact_periodic_transport",
+  "manifest_sha256": "97132adef47fc895eb9f29d52c9bd4bb82c0b48d844a46c6509c27594e9f9378",
+  "audit_note": "Exact float64 metadata thresholds against float32 classifier outputs; first-pass artifact preserved."
+}

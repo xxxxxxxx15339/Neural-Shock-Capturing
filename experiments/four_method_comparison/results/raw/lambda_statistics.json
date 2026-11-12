@@ -1,0 +1,98 @@
+[
+  {
+    "case": "shu_osher",
+    "cells": 128,
+    "method": "learned_head",
+    "mean": 0.0473639843331897,
+    "minimum": 0.04734963266712767,
+    "maximum": 0.04737201182290476,
+    "std": 4.879263584792618e-06,
+    "percentiles": [
+      0.04734963266712767,
+      0.047355733879849204,
+      0.04736008460086202,
+      0.04736418629877181,
+      0.047368121001626,
+      0.04737115504510311,
+      0.04737201182290476
+    ],
+    "mean_smooth": 0.047364031646171874,
+    "mean_shock": 0.047364874400325205,
+    "correlation_density_gradient": 0.019711250435448094,
+    "interpretation": "descriptive only; gradient masks are median and top-decile density gradient",
+    "correlation_unmixed_characteristic_correction": -0.027488996281474276,
+    "correlation_local_error_reduction": 0.08493795361764768
+  },
+  {
+    "case": "shu_osher",
+    "cells": 256,
+    "method": "learned_head",
+    "mean": 0.04736384722945044,
+    "minimum": 0.04734963266712767,
+    "maximum": 0.04737201182290476,
+    "std": 4.572310918582769e-06,
+    "percentiles": [
+      0.04734963266712767,
+      0.047355931588540665,
+      0.047360556594097936,
+      0.047363974302238473,
+      0.04736753883326517,
+      0.04737096263488726,
+      0.04737201182290476
+    ],
+    "mean_smooth": 0.047363885168554526,
+    "mean_shock": 0.04736367222594232,
+    "correlation_density_gradient": 0.01716640230043409,
+    "interpretation": "descriptive only; gradient masks are median and top-decile density gradient",
+    "correlation_unmixed_characteristic_correction": -0.016109662418466186,
+    "correlation_local_error_reduction": -0.005859363893038046
+  },
+  {
+    "case": "sod",
+    "cells": 128,
+    "method": "learned_head",
+    "mean": 0.04736459888737309,
+    "minimum": 0.04734963266712767,
+    "maximum": 0.04737201182290476,
+    "std": 5.0945959044448895e-06,
+    "percentiles": [
+      0.04734963266712767,
+      0.04735571507523885,
+      0.047360707684002835,
+      0.04736545190476943,
+      0.04736874416525561,
+      0.04737201182290476,
+      0.04737201182290476
+    ],
+    "mean_smooth": 0.047365773792779634,
+    "mean_shock": 0.0473637764535108,
+    "correlation_density_gradient": -0.22238859011498,
+    "interpretation": "descriptive only; gradient masks are median and top-decile density gradient",
+    "correlation_unmixed_characteristic_correction": -0.0837763291075834,
+    "correlation_local_error_reduction": 0.06830311598895993
+  },
+  {
+    "case": "sod",
+    "cells": 256,
+    "method": "learned_head",
+    "mean": 0.04736580454767563,
+    "minimum": 0.04734963266712767,
+    "maximum": 0.04737201182290476,
+    "std": 5.085934976792504e-06,
+    "percentiles": [
+      0.04734963266712767,
+      0.04735693630499029,
+      0.04736168404790958,
+      0.0473658170558372,
+      0.04737115504510311,
+      0.04737201182290476,
+      0.04737201182290476
+    ],
+    "mean_smooth": 0.0473680137383279,
+    "mean_shock": 0.047363162637072145,
+    "correlation_density_gradient": -0.31089540083537465,
+    "interpretation": "descriptive only; gradient masks are median and top-decile density gradient",
+    "correlation_unmixed_characteristic_correction": -0.07191073987605165,
+    "correlation_local_error_reduction": -0.06246844248495212
+  }
+]

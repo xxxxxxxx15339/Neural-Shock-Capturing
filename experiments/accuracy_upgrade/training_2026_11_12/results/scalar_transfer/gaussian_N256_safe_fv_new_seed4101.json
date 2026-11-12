@@ -1,0 +1,33 @@
+{
+  "case": "gaussian",
+  "system": "advection",
+  "cells": 256,
+  "variant": "safe_fv_new_seed4101",
+  "zero_shot_euler_to_scalar": true,
+  "solver": "unchanged scalar state LF + SSPRK3",
+  "dt": 0.0008130081300813008,
+  "time": 0.2,
+  "steps": 246,
+  "primary_error": 1.7115441446482309e-07,
+  "l1": 9.007433488900053e-08,
+  "l2": 1.7115441446482309e-07,
+  "linf": 5.835523735342463e-07,
+  "component_l1": [
+    9.007433488900053e-08
+  ],
+  "component_l2": [
+    1.7115441446482309e-07
+  ],
+  "component_linf": [
+    5.835523735342463e-07
+  ],
+  "valid": true,
+  "l1_ratio_to_classical": 1.0,
+  "tv": 1.9992512810011622,
+  "overshoot": 0.0,
+  "undershoot": 0.0,
+  "conservation_residual": -4.135580766728708e-15,
+  "wall_seconds_including_compilation": 1.9108641150014591,
+  "classical_source": "experiments/accuracy_upgrade/results/scalar/gaussian_256_teno5.json",
+  "classical_source_sha256": "feb3881f326419e5103393cdc975d70ec1cd15a4584e15b5ea5ac94dc7f449c1"
+}

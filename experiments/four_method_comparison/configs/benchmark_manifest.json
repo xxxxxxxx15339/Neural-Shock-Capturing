@@ -1,0 +1,326 @@
+{
+  "schema_version": 1,
+  "frozen_utc": "2026-11-12T20:22:02.973649+00:00",
+  "declaration": "Frozen after architecture audit, before any matched numerical evaluation; no retraining/tuning.",
+  "methods": [
+    "teno5",
+    "neno6",
+    "nn_teno5",
+    "learned_head"
+  ],
+  "models": {
+    "nn_teno5": {
+      "path": "models/nn_teno5.h5",
+      "sha256": "33054a97615e80b4490ad2a3230d1a5b393dff63b71323088e4d313f7ab34e67"
+    },
+    "neno6": {
+      "path": "experiments/four_method_comparison/vendor/NNENO/mytrainmodel1",
+      "sha256": "1a4a121c4b3b37fcf16eb60846b657d0c48229d848ceb0ce133ab0edee827f40"
+    },
+    "learned_euler": {
+      "path": "models/nn_teno5euler_unrolled_jax_params_curriculum_phase21_richgate.pkl",
+      "sha256": "2c4685062b3287fc40e37fef385ea22ab64cc631db35a319eac47f13ab6c69a3"
+    },
+    "learned_scalar": {
+      "path": "models/nn_teno5_unrolled_jax_params_run6_learnedlambda.pkl",
+      "sha256": "3d942ba76d1eb5ede3119bca360392bdbe4ce6a13ab56ab8f124323d4095674b"
+    }
+  },
+  "sampling": "point-i-dx",
+  "precision": "float64 states and JAX heads; original Keras classifier float32 verified adapter",
+  "euler_flux": "historical characteristic split-flux; adjacent-state LF alpha; Roe basis",
+  "scalar_flux": "historical state reconstruction + LF numerical flux, alpha=1",
+  "time_integrator": "SSPRK3",
+  "cfl": 0.25,
+  "initial_wave_speed_safety": 1.3,
+  "timestep": "fixed dt=T/ceil(T*initial_speed*safety/(CFL*dx)); matched all methods",
+  "smooth_timestep": "dt<=.15*dx**(5/3), then exact integer endpoint",
+  "repair_policy": "none; stop at first invalid actual SSPRK3 stage; no retry or fallback",
+  "fixed_lambda": 0.04742587317756678,
+  "ablation": {
+    "cases": [
+      "sod",
+      "lax",
+      "shu_osher",
+      "burgers_pre",
+      "burgers_post",
+      "burgers_hat",
+      "advection_square"
+    ],
+    "grids": [
+      128
+    ],
+    "methods": [
+      "head_backbone_only",
+      "head_fixed_blend",
+      "learned_head"
+    ]
+  },
+  "shu_reference": {
+    "grids": [
+      512,
+      1024,
+      2048
+    ],
+    "finest_dt_refinements": [
+      1,
+      2
+    ],
+    "warning_fraction": 0.1,
+    "description": "Resolution and dt sensitivity measured; no exact reference claimed"
+  },
+  "runtime": {
+    "full_rollout_repeats": 3,
+    "warm_step_repeats": 7,
+    "synchronized": true,
+    "summary": "median, IQR; compilation separate; instrumented trajectory separate"
+  },
+  "metrics": {
+    "l1": "mean absolute point error",
+    "euler_mean": "mean of rho,momentum,energy L1",
+    "total_variation": "sum abs adjacent differences, periodic closing difference included only for periodic BC",
+    "failed_error": null,
+    "improvement_percent": "100*(1-E_method/E_baseline)",
+    "conservation": "dx*sum(final-initial)+SSPRK3-weighted time integral of right-minus-left boundary flux"
+  },
+  "cases": [
+    {
+      "id": "sod",
+      "physics": "euler",
+      "equation": "euler",
+      "time": 0.2,
+      "length": 1.0,
+      "boundary": "transmissive",
+      "grids": [
+        128,
+        256
+      ],
+      "left": [
+        1.0,
+        0.0,
+        1.0
+      ],
+      "right": [
+        0.125,
+        0.0,
+        0.1
+      ],
+      "jump": 0.5,
+      "reference": "exact_riemann"
+    },
+    {
+      "id": "lax",
+      "physics": "euler",
+      "equation": "euler",
+      "time": 0.1,
+      "length": 1.0,
+      "boundary": "transmissive",
+      "grids": [
+        128,
+        256
+      ],
+      "left": [
+        0.445,
+        0.698,
+        3.528
+      ],
+      "right": [
+        0.5,
+        0.0,
+        0.571
+      ],
+      "jump": 0.5,
+      "reference": "exact_riemann"
+    },
+    {
+      "id": "shu_osher",
+      "physics": "euler",
+      "equation": "euler",
+      "time": 1.8,
+      "length": 10.0,
+      "boundary": "transmissive",
+      "grids": [
+        128,
+        256
+      ],
+      "reference": "teno5_resolution_ladder",
+      "oscillatory_region": [
+        5.5,
+        7.2
+      ]
+    },
+    {
+      "id": "burgers_pre",
+      "physics": "scalar",
+      "equation": "burgers",
+      "time": 0.5,
+      "length": 1.0,
+      "boundary": "periodic",
+      "grids": [
+        128,
+        256
+      ],
+      "reference": "exact_entropy_sine"
+    },
+    {
+      "id": "burgers_post",
+      "physics": "scalar",
+      "equation": "burgers",
+      "time": 0.9,
+      "length": 1.0,
+      "boundary": "periodic",
+      "grids": [
+        128,
+        256
+      ],
+      "reference": "exact_entropy_sine",
+      "shock_formation_time": 0.6366197723675814
+    },
+    {
+      "id": "burgers_hat",
+      "physics": "scalar",
+      "equation": "burgers",
+      "time": 0.2,
+      "length": 1.0,
+      "boundary": "periodic",
+      "grids": [
+        128,
+        256
+      ],
+      "reference": "exact_entropy_top_hat"
+    },
+    {
+      "id": "advection_square",
+      "physics": "scalar",
+      "equation": "advection",
+      "time": 1.0,
+      "length": 1.0,
+      "boundary": "periodic",
+      "grids": [
+        128,
+        256
+      ],
+      "reference": "exact_periodic_transport"
+    },
+    {
+      "id": "advection_smooth",
+      "physics": "scalar",
+      "equation": "advection",
+      "time": 0.2,
+      "length": 1.0,
+      "boundary": "periodic",
+      "grids": [
+        64,
+        128,
+        256
+      ],
+      "reference": "exact_periodic_transport",
+      "smooth": true
+    },
+    {
+      "id": "two_rarefactions",
+      "physics": "euler",
+      "equation": "euler",
+      "time": 0.08,
+      "length": 1.0,
+      "boundary": "transmissive",
+      "grids": [
+        64,
+        128
+      ],
+      "left": [
+        1.0,
+        -2.0,
+        0.4
+      ],
+      "right": [
+        1.0,
+        2.0,
+        0.4
+      ],
+      "jump": 0.5,
+      "reference": "exact_riemann",
+      "robustness": true
+    },
+    {
+      "id": "strong_contrast",
+      "physics": "euler",
+      "equation": "euler",
+      "time": 0.012,
+      "length": 1.0,
+      "boundary": "transmissive",
+      "grids": [
+        64,
+        128
+      ],
+      "left": [
+        10.0,
+        0.0,
+        100.0
+      ],
+      "right": [
+        0.01,
+        0.0,
+        0.01
+      ],
+      "jump": 0.5,
+      "reference": "exact_riemann",
+      "robustness": true
+    },
+    {
+      "id": "near_vacuum",
+      "physics": "euler",
+      "equation": "euler",
+      "time": 0.1,
+      "length": 1.0,
+      "boundary": "transmissive",
+      "grids": [
+        64,
+        128
+      ],
+      "left": [
+        1e-05,
+        -0.01,
+        1e-08
+      ],
+      "right": [
+        1e-05,
+        0.01,
+        1e-08
+      ],
+      "jump": 0.5,
+      "reference": "exact_riemann",
+      "robustness": true
+    },
+    {
+      "id": "blast_smoke",
+      "physics": "euler",
+      "equation": "euler",
+      "time": 0.001,
+      "length": 1.0,
+      "boundary": "reflective-wall",
+      "grids": [
+        64,
+        128
+      ],
+      "reference": "none_stability_only",
+      "robustness": true
+    },
+    {
+      "id": "blast_full",
+      "physics": "euler",
+      "equation": "euler",
+      "time": 0.038,
+      "length": 1.0,
+      "boundary": "reflective-wall",
+      "grids": [
+        64,
+        128
+      ],
+      "reference": "none_stability_only",
+      "robustness": true
+    }
+  ],
+  "selection": "Euler phase21 rich head: richest trained finite validated architecture, selected before final matched tests; scalar run6 saved learned head",
+  "role": "historically exposed benchmarks; replication and frozen comparative evaluation, not untouched holdout"
+}

@@ -1,0 +1,50 @@
+{
+  "case": "two_rarefactions",
+  "physics": "euler",
+  "method": "neno6",
+  "cells": 64,
+  "requested_time": 0.08,
+  "actual_time": 0.08,
+  "dt": 0.001081081081081081,
+  "dx": 0.015625,
+  "planned_steps": 74,
+  "accepted_steps": 74,
+  "success": true,
+  "status": "NEW MATCHED EVALUATION",
+  "raw_min_density": 0.0324955062014913,
+  "raw_min_pressure": 0.012467276020600035,
+  "failure": null,
+  "conservation_residual": [
+    -2.6645352591003757e-15,
+    1.4395391787705026e-16,
+    -6.661338147750939e-15
+  ],
+  "boundary_exchange": [
+    0.3199999999506281,
+    1.997356082330117e-10,
+    1.0879999997582406
+  ],
+  "repair_count": 0,
+  "retry_count": 0,
+  "maximum_step_start_cfl": 0.19026624751826327,
+  "compile_step_seconds": 1.2467552880007133,
+  "compile_rollout_seconds": 0.8976055629973416,
+  "first_step_seconds": 0.02259966500059818,
+  "warm_step_repeats_seconds": [
+    0.0008592140002292581,
+    0.0006744090023858007,
+    0.0007515850011259317,
+    0.0006666549998044502,
+    0.0007321689990931191,
+    0.0007098890018824022,
+    0.0007095399996615015
+  ],
+  "rollout_repeats_seconds": [
+    0.03833637199932127,
+    0.03892438399998355,
+    0.04203032300210907
+  ],
+  "instrumented_rollout_seconds": 0.15517811400059145,
+  "reference": "exact_riemann",
+  "manifest_sha256": "97132adef47fc895eb9f29d52c9bd4bb82c0b48d844a46c6509c27594e9f9378"
+}

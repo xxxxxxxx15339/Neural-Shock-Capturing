@@ -1,0 +1,1 @@
+NEW MATCHED EVALUATION. Smooth point-sampled advection64/128/256 with dt proportional to dx^(5/3). SSPRK3 remains third order in time. Sod128/256 is a shock-resolution comparison, not evidence of fifth-order convergence. Exact references; no fitted theoretical order is assumed.

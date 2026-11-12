@@ -1,0 +1,1 @@
+NEW MATCHED EVALUATION. lax, N=128, T=0.1. Reference: exact Riemann. Four real checkpoints; no repairs. NENO6 is the verified author reconstruction ported to the common Euler solver. V2 uses phase21 rich head. All four complete.

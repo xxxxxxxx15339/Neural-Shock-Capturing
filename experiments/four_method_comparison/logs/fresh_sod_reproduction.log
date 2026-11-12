@@ -1,0 +1,10 @@
+RUN sod 128 teno5 True None
+RUN sod 128 neno6 True None
+RUN sod 128 nn_teno5 True None
+RUN sod 128 learned_head True None
+RUN sod 128 head_backbone_only False {'step': 105, 'stage': 1, 'step_start_time': 0.13164556962025317, 'stage_min_density': array([-0.01982583, -0.01982583, -0.01982583]), 'stage_min_pressure': array([0.02856303, 0.02856303, 0.02856303]), 'nonfinite_values': 0}
+RUN sod 128 head_fixed_blend True None
+RUN sod 256 teno5 True None
+RUN sod 256 neno6 True None
+RUN sod 256 nn_teno5 True None
+RUN sod 256 learned_head True None

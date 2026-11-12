@@ -1,0 +1,38 @@
+{
+  "case": "shu_osher",
+  "physics": "euler",
+  "method": "teno5",
+  "cells": 1024,
+  "requested_time": 1.8,
+  "actual_time": 1.8,
+  "dt": 0.00041124057573680605,
+  "dx": 0.009765625,
+  "planned_steps": 4377,
+  "accepted_steps": 4377,
+  "success": true,
+  "status": "NEW MATCHED EVALUATION; NUMERICAL REFERENCE",
+  "raw_min_density": 0.7999981456935223,
+  "raw_min_pressure": 1.0000000000000002,
+  "failure": null,
+  "conservation_residual": [
+    -3.574029960873304e-12,
+    -8.810729923425242e-12,
+    -3.0894398150849156e-11
+  ],
+  "boundary_exchange": [
+    -18.255334018980466,
+    -64.79994935415502,
+    -234.2762380302721
+  ],
+  "repair_count": 0,
+  "retry_count": 0,
+  "maximum_step_start_cfl": 0.2046279727037688,
+  "compile_step_seconds": 1.036113440997724,
+  "compile_rollout_seconds": null,
+  "first_step_seconds": 0.027214640998863615,
+  "warm_step_repeats_seconds": [],
+  "rollout_repeats_seconds": [],
+  "instrumented_rollout_seconds": 23.899051399999735,
+  "reference": "teno5_resolution_ladder",
+  "manifest_sha256": "97132adef47fc895eb9f29d52c9bd4bb82c0b48d844a46c6509c27594e9f9378"
+}

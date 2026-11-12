@@ -1,0 +1,53 @@
+Using TensorFlow backend.
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:517: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:4138: The name tf.random_uniform is deprecated. Please use tf.random.uniform instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:174: The name tf.get_default_session is deprecated. Please use tf.compat.v1.get_default_session instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:181: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:186: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+2026-11-12 20:26:06.626761: E tensorflow/stream_executor/cuda/cuda_driver.cc:318] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:190: The name tf.global_variables is deprecated. Please use tf.compat.v1.global_variables instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:199: The name tf.is_variable_initialized is deprecated. Please use tf.compat.v1.is_variable_initialized instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:206: The name tf.variables_initializer is deprecated. Please use tf.compat.v1.variables_initializer instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/optimizers.py:790: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:3376: The name tf.log is deprecated. Please use tf.math.log instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/tensorflow_core/python/ops/nn_impl.py:183: where (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:986: The name tf.assign_add is deprecated. Please use tf.compat.v1.assign_add instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:973: The name tf.assign is deprecated. Please use tf.compat.v1.assign instead.
+
+Running smooth_sine_advection...
+  TENO5 L1=3.32780195e-07, NN-TENO5 L1=3.32780195e-07, fidelity=True
+  Direct difference: L1=0.00000000e+00, Linf=0.00000000e+00, exactly_equal=True
+  Threshold wiring: discard-vs-keep Linf=9.39750211e-02, exactly_equal=False, passed=True
+  vs. real solution: TENO5=3.32780195e-07, NN-TENO5=3.32780195e-07, NN beats TENO5=True
+Running step_advection...
+  TENO5 L1=1.33172460e-02, NN-TENO5 L1=1.33975469e-02, fidelity=True
+  Direct difference: L1=1.60484565e-04, Linf=3.30635823e-03, exactly_equal=False
+  Threshold wiring: discard-vs-keep Linf=4.67436121e-01, exactly_equal=False, passed=True
+  vs. real solution: TENO5=1.33172460e-02, NN-TENO5=1.33975469e-02, NN beats TENO5=False
+Running multifrequency_advection...
+  TENO5 L1=2.43366555e-05, NN-TENO5 L1=2.43366555e-05, fidelity=True
+  Direct difference: L1=0.00000000e+00, Linf=0.00000000e+00, exactly_equal=True
+  Threshold wiring: discard-vs-keep Linf=2.87107883e-01, exactly_equal=False, passed=True
+  vs. real solution: TENO5=2.43366555e-05, NN-TENO5=2.43366555e-05, NN beats TENO5=True
+Running burgers_smooth_to_shock...
+  TENO5 L1=1.32827465e-04, NN-TENO5 L1=1.32827465e-04, fidelity=True
+  Direct difference: L1=0.00000000e+00, Linf=0.00000000e+00, exactly_equal=True
+  Threshold wiring: discard-vs-keep Linf=8.65763448e-02, exactly_equal=False, passed=True
+  vs. real solution: TENO5=1.32827465e-04, NN-TENO5=1.32827465e-04, NN beats TENO5=True
+
+Beats-real-solution tally: 3/4 benchmarks
+
+Comparison written to /home/bazouil/Documents/Neural-Shock-Capturing/experiments/four_method_comparison/results/raw/reproduced_original_scalar.json

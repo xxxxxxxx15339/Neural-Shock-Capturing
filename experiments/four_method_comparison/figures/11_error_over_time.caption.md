@@ -1,0 +1,1 @@
+NEW MATCHED EVALUATION. All snapshots are compared at their saved physical times to exact solutions. SodT=.2 and sine BurgersT=.9,N=128. This follows each declared trajectory, not a claim of arbitrarily long-time stability. Shu has only final-time reference convergence data, so no invented Shu time-error curve is shown.

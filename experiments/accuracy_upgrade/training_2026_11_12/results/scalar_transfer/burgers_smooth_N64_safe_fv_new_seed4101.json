@@ -1,0 +1,33 @@
+{
+  "case": "burgers_smooth",
+  "system": "burgers",
+  "cells": 64,
+  "variant": "safe_fv_new_seed4101",
+  "zero_shot_euler_to_scalar": true,
+  "solver": "unchanged scalar state LF + SSPRK3",
+  "dt": 0.0032258064516129032,
+  "time": 0.2,
+  "steps": 62,
+  "primary_error": 1.7260266400304807e-07,
+  "l1": 9.469175496837345e-08,
+  "l2": 1.7260266400304807e-07,
+  "linf": 5.126170363745075e-07,
+  "component_l1": [
+    9.469175496837345e-08
+  ],
+  "component_l2": [
+    1.7260266400304807e-07
+  ],
+  "component_linf": [
+    5.126170363745075e-07
+  ],
+  "valid": true,
+  "l1_ratio_to_classical": 0.9999999993862905,
+  "tv": 0.799409818433908,
+  "overshoot": 2.3075986343989996e-08,
+  "undershoot": 6.583804545989835e-08,
+  "conservation_residual": -1.7034984534092246e-15,
+  "wall_seconds_including_compilation": 1.7535742709987971,
+  "classical_source": "experiments/accuracy_upgrade/results/scalar/burgers_smooth_64_teno5.json",
+  "classical_source_sha256": "79ba6bf6d04ac13d05687318219bab55a1bb28948700a2e78cde9472fca0db2e"
+}

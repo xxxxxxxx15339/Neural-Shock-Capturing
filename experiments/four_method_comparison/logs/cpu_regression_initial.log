@@ -1,0 +1,27 @@
+.................................................. [ 33%]
+F........................................................ [ 72%]
+.........................................                                [100%]
+=================================== FAILURES ===================================
+________ ComparisonTests.test_entropy_reference_before_and_after_shock _________
+
+self = <test_four_method_comparison.ComparisonTests testMethod=test_entropy_reference_before_and_after_shock>
+
+    def test_entropy_reference_before_and_after_shock(self):
+        from experiments.four_method_comparison.scripts.run_matched_benchmarks import sine_entropy
+        x=(np.arange(4096)+.5)/4096
+        for t in (.2,.5,.9):
+            u=sine_entropy(x,t)
+            np.testing.assert_allclose(u,.5+.25*np.sin(2*np.pi*(x-t*u)),atol=8e-15)
+>           self.assertAlmostEqual(float(np.mean(u)),.5,places=13)
+E           AssertionError: 0.4999759799063096 != 0.5 within 13 places (2.4020093690402256e-05 difference)
+
+tests/test_four_method_comparison.py:18: AssertionError
+=============================== warnings summary ===============================
+tests/test_accuracy_upgrade_training.py::test_failed_batched_rollout_rejects_optimizer_update
+  /home/bazouil/miniconda3/envs/teno-jax/lib/python3.11/site-packages/optax/_src/linear_algebra.py:44: DeprecationWarning: optax.global_norm is deprecated in favor of optax.tree.norm
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_four_method_comparison.py::ComparisonTests::test_entropy_reference_before_and_after_shock
+1 failed, 147 passed, 1 warning, 37 subtests passed in 217.35s (0:03:37)

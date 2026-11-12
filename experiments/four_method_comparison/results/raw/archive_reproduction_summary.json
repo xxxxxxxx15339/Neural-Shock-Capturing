@@ -1,0 +1,6 @@
+{
+  "compared_values": 160,
+  "max_abs_difference": 0.0008455701853051778,
+  "mismatches": 19,
+  "warning": "Scalar archived burgers_smooth_to_shock at t=.6 is pre-shock (shock time2/pi); name is not post-shock evidence. Archived fidelity-factor pass is not a strict improvement."
+}

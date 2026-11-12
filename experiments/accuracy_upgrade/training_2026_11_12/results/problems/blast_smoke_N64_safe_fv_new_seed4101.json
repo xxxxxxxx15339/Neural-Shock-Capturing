@@ -1,0 +1,172 @@
+{
+  "case": "blast_smoke",
+  "definition": {
+    "id": "blast_smoke",
+    "kind": "blast",
+    "system": "euler",
+    "time": 0.001,
+    "boundary": "reflective-wall"
+  },
+  "cells": 64,
+  "variant": "safe_fv_new_seed4101",
+  "proposed_dt": 6.666666666666667e-05,
+  "dx": 0.015625,
+  "reference": {
+    "kind": "stability-only; no trustworthy blast accuracy reference"
+  },
+  "raw_invalid_count_scope": "accepted attempts; retries reported separately",
+  "success": true,
+  "final_time": 0.001,
+  "steps": 15,
+  "retries": 0,
+  "limited_fe_stages": 0,
+  "limited_face_stages": 45,
+  "raw_invalid_fe_rows": 0,
+  "minimum_density": 0.8623656308583202,
+  "minimum_pressure": 0.009997814672396672,
+  "limiter_frequency": 0.0,
+  "face_limiter_frequency": 1.0,
+  "conservation_residual": [
+    -3.2786273695961654e-16,
+    -3.3306690738754696e-16,
+    -1.433297924791077e-13
+  ],
+  "boundary_exchange": [
+    0.0,
+    -0.8962067556621971,
+    0.0
+  ],
+  "compile_s": 7.761993015999906,
+  "first_execution_s": 0.05076874400037923,
+  "warm_step_median_s": 0.0029467630010913126,
+  "warm_step_repeats_s": [
+    0.0029467630010913126,
+    0.0031294030013668817,
+    0.0025772910012165084
+  ],
+  "simulation_s": 0.04686952699921676,
+  "host_instrumentation_included": true,
+  "first_failed_step": null,
+  "history": [
+    {
+      "time": 6.666666666666667e-05,
+      "min_density": 0.9954406197601346,
+      "min_pressure": 0.009997814672396672,
+      "theta_min": 1.0,
+      "face_theta_min": 0.0009943502799530234,
+      "retries": 0
+    },
+    {
+      "time": 0.00013333333333333334,
+      "min_density": 0.9870554488569814,
+      "min_pressure": 0.009997814672396672,
+      "theta_min": 1.0,
+      "face_theta_min": 0.009307644163506315,
+      "retries": 0
+    },
+    {
+      "time": 0.0002,
+      "min_density": 0.9775377631687774,
+      "min_pressure": 0.009997814672396672,
+      "theta_min": 1.0,
+      "face_theta_min": 0.00880488488840628,
+      "retries": 0
+    },
+    {
+      "time": 0.0002666666666666667,
+      "min_density": 0.967246868540967,
+      "min_pressure": 0.009997814672396672,
+      "theta_min": 1.0,
+      "face_theta_min": 0.012678088539911214,
+      "retries": 0
+    },
+    {
+      "time": 0.0003333333333333334,
+      "min_density": 0.9563345282466001,
+      "min_pressure": 0.009997814672396672,
+      "theta_min": 1.0,
+      "face_theta_min": 0.030599081477371868,
+      "retries": 0
+    },
+    {
+      "time": 0.0004000000000000001,
+      "min_density": 0.9457806646941546,
+      "min_pressure": 0.009997814672396672,
+      "theta_min": 1.0,
+      "face_theta_min": 0.024606078731535065,
+      "retries": 0
+    },
+    {
+      "time": 0.00046666666666666677,
+      "min_density": 0.9357700094496786,
+      "min_pressure": 0.009997814672396672,
+      "theta_min": 1.0,
+      "face_theta_min": 0.018619073455695627,
+      "retries": 0
+    },
+    {
+      "time": 0.0005333333333333335,
+      "min_density": 0.9259443567867028,
+      "min_pressure": 0.009997814672396672,
+      "theta_min": 1.0,
+      "face_theta_min": 0.01878277163080821,
+      "retries": 0
+    },
+    {
+      "time": 0.0006000000000000002,
+      "min_density": 0.9162987263346107,
+      "min_pressure": 0.009997814672396672,
+      "theta_min": 1.0,
+      "face_theta_min": 0.02199977494963705,
+      "retries": 0
+    },
+    {
+      "time": 0.0006666666666666669,
+      "min_density": 0.9066414538585457,
+      "min_pressure": 0.009997814672396672,
+      "theta_min": 1.0,
+      "face_theta_min": 0.034433079721760844,
+      "retries": 0
+    },
+    {
+      "time": 0.0007333333333333336,
+      "min_density": 0.8972183327439484,
+      "min_pressure": 0.009997814672396672,
+      "theta_min": 1.0,
+      "face_theta_min": 0.05109535059489827,
+      "retries": 0
+    },
+    {
+      "time": 0.0008000000000000003,
+      "min_density": 0.8888008974562439,
+      "min_pressure": 0.009997814672396672,
+      "theta_min": 1.0,
+      "face_theta_min": 0.035517205310584214,
+      "retries": 0
+    },
+    {
+      "time": 0.000866666666666667,
+      "min_density": 0.8804862009081831,
+      "min_pressure": 0.009997814672396672,
+      "theta_min": 1.0,
+      "face_theta_min": 0.02728833658784389,
+      "retries": 0
+    },
+    {
+      "time": 0.0009333333333333336,
+      "min_density": 0.871241185501251,
+      "min_pressure": 0.009997814672396672,
+      "theta_min": 1.0,
+      "face_theta_min": 0.02456611883671842,
+      "retries": 0
+    },
+    {
+      "time": 0.001,
+      "min_density": 0.8623656308583202,
+      "min_pressure": 0.009997814672396672,
+      "theta_min": 1.0,
+      "face_theta_min": 0.026414089207806447,
+      "retries": 0
+    }
+  ]
+}

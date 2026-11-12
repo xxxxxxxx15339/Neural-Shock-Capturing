@@ -1,0 +1,236 @@
+[
+  {
+    "seed": 4102,
+    "step": 300,
+    "case_id": "euler-validation-000249-9148285969347245035",
+    "family": "sod_like",
+    "cells": 64,
+    "mapped_failure_reproduced": true,
+    "mapped_diagnostics": {
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "face_limited": 15,
+      "flux_limited": 30,
+      "max_cfl": 14.238960560250124,
+      "min_density": 3.0235872787857053e-05,
+      "min_pressure": 4.3331265997537104e-08,
+      "raw_invalid_rows": 15,
+      "valid": false
+    },
+    "bounded_retry_inference": {
+      "success": true,
+      "final_time": 0.02172919269137796,
+      "steps": 17,
+      "retries": 3,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 3,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.021105982732866166,
+      "minimum_pressure": 0.14964802525089196,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.058823529411764705,
+      "conservation_residual": [
+        -2.7972416050126014e-16,
+        2.7755575615628914e-17,
+        -1.4016565685892601e-15
+      ],
+      "boundary_exchange": [
+        0.003376928090755638,
+        -0.03295821543890786,
+        0.02238449202234573
+      ],
+      "compile_s": 7.801139594997949,
+      "first_execution_s": 0.10282086100050947,
+      "warm_step_median_s": 0.006205585999850882,
+      "warm_step_repeats_s": [
+        0.006515829998534173,
+        0.006172968998725992,
+        0.006205585999850882
+      ],
+      "simulation_s": 0.06592958000328508,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "selection_use": false,
+    "retry_solution_error": {
+      "primary_error": 0.008381474800781595,
+      "l1": 0.008381474800781595,
+      "l2": 0.03827631332741969,
+      "linf": 0.32079850071984684,
+      "component_l1": [
+        0.003546954258986881,
+        0.004084800514605351,
+        0.01751266962875255
+      ],
+      "component_l2": [
+        0.012357099801759754,
+        0.013967285966998243,
+        0.06361953703872625
+      ],
+      "component_linf": [
+        0.06575152613220164,
+        0.08429845671329474,
+        0.32079850071984684
+      ]
+    }
+  },
+  {
+    "seed": 4102,
+    "step": 300,
+    "case_id": "euler-validation-000037-2046751549353970294",
+    "family": "random_riemann",
+    "cells": 128,
+    "mapped_failure_reproduced": true,
+    "mapped_diagnostics": {
+      "boundary_exchange": [
+        0.003251961128563322,
+        0.008140314669011795,
+        -0.02284769943456795
+      ],
+      "face_limited": 0,
+      "flux_limited": 4,
+      "max_cfl": 0.9567499479203221,
+      "min_density": 0.008964506164420847,
+      "min_pressure": 0.2017603330800862,
+      "raw_invalid_rows": 4,
+      "valid": false
+    },
+    "bounded_retry_inference": {
+      "success": true,
+      "final_time": 0.006900042302393324,
+      "steps": 17,
+      "retries": 3,
+      "limited_fe_stages": 3,
+      "limited_face_stages": 2,
+      "raw_invalid_fe_rows": 4,
+      "minimum_density": 0.00011257971325942524,
+      "minimum_pressure": 1.8743550600497369e-10,
+      "limiter_frequency": 0.058823529411764705,
+      "face_limiter_frequency": 0.0392156862745098,
+      "conservation_residual": [
+        -2.445960101127298e-16,
+        1.196959198423997e-16,
+        -7.840950111415168e-16
+      ],
+      "boundary_exchange": [
+        0.004434492448040893,
+        0.011100429094106991,
+        -0.031155953774410848
+      ],
+      "compile_s": 7.775048069001059,
+      "first_execution_s": 0.05729414300003555,
+      "warm_step_median_s": 0.0047284679967560805,
+      "warm_step_repeats_s": [
+        0.0047284679967560805,
+        0.004963840001437347,
+        0.004002793997642584
+      ],
+      "simulation_s": 0.1493862210008956,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "selection_use": false,
+    "retry_solution_error": {
+      "primary_error": 0.018412554242589068,
+      "l1": 0.018412554242589068,
+      "l2": 0.10702004470542203,
+      "linf": 0.9399523553029518,
+      "component_l1": [
+        0.013408911400346769,
+        0.017701180381464045,
+        0.024127570945956394
+      ],
+      "component_l2": [
+        0.08707066173387337,
+        0.11185057805485724,
+        0.11944880895292041
+      ],
+      "component_linf": [
+        0.7336747910885143,
+        0.882105812095169,
+        0.9399523553029518
+      ]
+    }
+  },
+  {
+    "seed": 4102,
+    "step": 300,
+    "case_id": "euler-validation-000100-2974132583243714859",
+    "family": "sod_like",
+    "cells": 128,
+    "mapped_failure_reproduced": true,
+    "mapped_diagnostics": {
+      "boundary_exchange": [
+        0.0002108613227534612,
+        -0.0011373433815715683,
+        0.0009230050162071695
+      ],
+      "face_limited": 31,
+      "flux_limited": 14,
+      "max_cfl": 1.4496402261415897,
+      "min_density": 0.006447367233225291,
+      "min_pressure": 0.17698316542453338,
+      "raw_invalid_rows": 0,
+      "valid": false
+    },
+    "bounded_retry_inference": {
+      "success": true,
+      "final_time": 0.011936982608656856,
+      "steps": 16,
+      "retries": 1,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 5,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.015040715736864385,
+      "minimum_pressure": 0.20000979911786687,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.10416666666666667,
+      "conservation_residual": [
+        -1.448494102440634e-16,
+        2.0816681711721685e-17,
+        -5.915407053080912e-16
+      ],
+      "boundary_exchange": [
+        0.003162919841301918,
+        -0.017060150723573524,
+        0.013845075243107538
+      ],
+      "compile_s": 0.0005131399993842933,
+      "first_execution_s": 0.004159732998232357,
+      "warm_step_median_s": 0.004679716999817174,
+      "warm_step_repeats_s": [
+        0.005395611999119865,
+        0.004679716999817174,
+        0.004012292996776523
+      ],
+      "simulation_s": 0.07531709199975012,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "selection_use": false,
+    "retry_solution_error": {
+      "primary_error": 0.006570810086488302,
+      "l1": 0.006570810086488302,
+      "l2": 0.03587155168221231,
+      "linf": 0.40756673198079807,
+      "component_l1": [
+        0.003533357973537027,
+        0.003250403594263086,
+        0.012928668691664785
+      ],
+      "component_l2": [
+        0.016796249449501647,
+        0.01459457378219846,
+        0.058010249791006475
+      ],
+      "component_linf": [
+        0.13303157725724757,
+        0.12191509664293838,
+        0.40756673198079807
+      ]
+    }
+  }
+]

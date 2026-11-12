@@ -1,0 +1,33 @@
+{
+  "case": "burgers_hat",
+  "system": "burgers",
+  "cells": 64,
+  "variant": "safe_fv_new_seed4102",
+  "zero_shot_euler_to_scalar": true,
+  "solver": "unchanged scalar state LF + SSPRK3",
+  "dt": 0.0032258064516129032,
+  "time": 0.2,
+  "steps": 62,
+  "primary_error": 0.017293673709239354,
+  "l1": 0.006835905153686846,
+  "l2": 0.017293673709239354,
+  "linf": 0.08527290029150777,
+  "component_l1": [
+    0.006835905153686846
+  ],
+  "component_l2": [
+    0.017293673709239354
+  ],
+  "component_linf": [
+    0.08527290029150777
+  ],
+  "valid": true,
+  "l1_ratio_to_classical": 0.9305005711268368,
+  "tv": 1.6406631826213127,
+  "overshoot": 0.0007467651525822072,
+  "undershoot": 0.0040393484964675735,
+  "conservation_residual": -1.4502288259166107e-15,
+  "wall_seconds_including_compilation": 1.9412523440005316,
+  "classical_source": "experiments/accuracy_upgrade/results/scalar/burgers_hat_64_teno5.json",
+  "classical_source_sha256": "df0a3680507b2f55e61a1dd05f44c977edf488efd06eb1c8cac1a682ad24157f"
+}

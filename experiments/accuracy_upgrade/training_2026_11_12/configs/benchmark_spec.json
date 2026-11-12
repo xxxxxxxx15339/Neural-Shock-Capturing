@@ -1,0 +1,167 @@
+{
+  "cases": [
+    {
+      "id": "sod",
+      "kind": "riemann",
+      "system": "euler",
+      "left": [
+        1.0,
+        0.0,
+        1.0
+      ],
+      "right": [
+        0.125,
+        0.0,
+        0.1
+      ],
+      "jump": 0.5,
+      "time": 0.15,
+      "boundary": "transmissive"
+    },
+    {
+      "id": "lax",
+      "kind": "riemann",
+      "system": "euler",
+      "left": [
+        0.445,
+        0.698,
+        3.528
+      ],
+      "right": [
+        0.5,
+        0.0,
+        0.571
+      ],
+      "jump": 0.5,
+      "time": 0.1,
+      "boundary": "transmissive"
+    },
+    {
+      "id": "two_rarefactions",
+      "kind": "riemann",
+      "system": "euler",
+      "left": [
+        1.0,
+        -2.0,
+        0.4
+      ],
+      "right": [
+        1.0,
+        2.0,
+        0.4
+      ],
+      "jump": 0.5,
+      "time": 0.08,
+      "boundary": "transmissive"
+    },
+    {
+      "id": "contrast",
+      "kind": "riemann",
+      "system": "euler",
+      "left": [
+        10.0,
+        0.0,
+        100.0
+      ],
+      "right": [
+        0.01,
+        0.0,
+        0.01
+      ],
+      "jump": 0.5,
+      "time": 0.012,
+      "boundary": "transmissive"
+    },
+    {
+      "id": "near_vacuum",
+      "kind": "riemann",
+      "system": "euler",
+      "left": [
+        1e-05,
+        -0.01,
+        1e-08
+      ],
+      "right": [
+        1e-05,
+        0.01,
+        1e-08
+      ],
+      "jump": 0.5,
+      "time": 0.1,
+      "boundary": "transmissive"
+    },
+    {
+      "id": "shu_osher",
+      "kind": "shu-osher",
+      "system": "euler",
+      "time": 0.15,
+      "length": 10.0,
+      "boundary": "transmissive"
+    },
+    {
+      "id": "blast_smoke",
+      "kind": "blast",
+      "system": "euler",
+      "time": 0.001,
+      "boundary": "reflective-wall"
+    },
+    {
+      "id": "blast_full",
+      "kind": "blast",
+      "system": "euler",
+      "time": 0.038,
+      "boundary": "reflective-wall"
+    },
+    {
+      "id": "shu_osher_full",
+      "kind": "shu-osher",
+      "system": "euler",
+      "time": 1.8,
+      "length": 10.0,
+      "boundary": "transmissive"
+    },
+    {
+      "kind": "riemann",
+      "system": "euler",
+      "left": [
+        1.0,
+        0.0,
+        1.0
+      ],
+      "right": [
+        0.125,
+        0.0,
+        0.1
+      ],
+      "jump": 0.5,
+      "boundary": "transmissive",
+      "id": "sod_long",
+      "time": 0.2
+    }
+  ],
+  "grids": [
+    64,
+    128,
+    256
+  ],
+  "generalization": {
+    "cases": [
+      "sod",
+      "lax"
+    ],
+    "cells": 512
+  },
+  "methods": [
+    "historical_teno",
+    "historical_p0_learned",
+    "historical_v2_soft25",
+    "fv_teno",
+    "fv_v2_soft25",
+    "safe_fv_teno",
+    "safe_fv_v2_soft25",
+    "safe_fv_new_seed4101",
+    "safe_fv_new_seed4102"
+  ],
+  "inference": "matched proposed dt from initial speed, .25 CFL with 1.5 margin; bounded retries advance accepted dt only",
+  "reference_note": "Full-time Shu reuses existing cell-average reference ladder with its uncertainty; no unsupported ranking"
+}

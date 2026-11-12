@@ -1,0 +1,606 @@
+[
+  {
+    "seed": 4101,
+    "best_checkpoint": "experiments/accuracy_upgrade/training_2026_11_12/checkpoints/fv_conservative_seed4101_step0200.pkl",
+    "best_sha256": "186350338c6fd57ce3bb15ca30a1f828b1aeac687ea0028005cf0696dd251073",
+    "best_step": 200,
+    "best_validation_ratio": 0.9436458983652044,
+    "warmup_validation": {
+      "failures": 0,
+      "macro_l1_ratio": 0.9635170058434209,
+      "group_l1_ratios": {
+        "random_riemann_N64": 0.9424191600077391,
+        "contact_N64": 0.9535872417339845,
+        "sod_like_N64": 0.9795613203035962,
+        "two_rarefactions_N64": 0.9758276774254075,
+        "random_riemann_N128": 0.936946987167845,
+        "sod_like_N128": 0.9624468472620756,
+        "contact_N128": 0.9688730212958097,
+        "two_rarefactions_N128": 0.9918880687567491,
+        "random_riemann_N256": 0.9379609876456791,
+        "sod_like_N256": 0.9552037684178041,
+        "contact_N256": 0.9673231352930198,
+        "two_rarefactions_N256": 0.9901658548113434
+      },
+      "mean_l1": 0.006562877851580074,
+      "normalized_mse": 0.0014848880133554738,
+      "flux_limited": 0,
+      "face_limited": 0,
+      "max_conservation_residual": [
+        9.298117831235686e-16,
+        7.008282842946301e-16,
+        3.316791286067655e-15
+      ]
+    },
+    "validation_records": [
+      {
+        "step": 50,
+        "failures": 0,
+        "macro_l1_ratio": 0.954943930705475,
+        "group_l1_ratios": {
+          "random_riemann_N64": 0.9369998521388042,
+          "contact_N64": 0.9462334775089298,
+          "sod_like_N64": 0.9736265148355083,
+          "two_rarefactions_N64": 0.9579757056206396,
+          "random_riemann_N128": 0.9299236666155097,
+          "sod_like_N128": 0.9537889436263001,
+          "contact_N128": 0.9657781533018621,
+          "two_rarefactions_N128": 0.974661919604675,
+          "random_riemann_N256": 0.9314909028834522,
+          "sod_like_N256": 0.9517464382136789,
+          "contact_N256": 0.9651931825969924,
+          "two_rarefactions_N256": 0.9719084115193469
+        },
+        "mean_l1": 0.006526676938307999,
+        "normalized_mse": 0.001527958249983429,
+        "flux_limited": 0,
+        "face_limited": 0,
+        "max_conservation_residual": [
+          1.0269562977782698e-15,
+          7.494005416219807e-16,
+          3.58046925441613e-15
+        ]
+      },
+      {
+        "step": 100,
+        "failures": 0,
+        "macro_l1_ratio": 0.9493414213405003,
+        "group_l1_ratios": {
+          "random_riemann_N64": 0.9332136711721303,
+          "contact_N64": 0.9480690922303247,
+          "sod_like_N64": 0.9729880513565121,
+          "two_rarefactions_N64": 0.9403422987646141,
+          "random_riemann_N128": 0.9250141286751904,
+          "sod_like_N128": 0.9526725006981739,
+          "contact_N128": 0.9619306596024472,
+          "two_rarefactions_N128": 0.9665343708802109,
+          "random_riemann_N256": 0.9257262613818349,
+          "sod_like_N256": 0.9476096092746611,
+          "contact_N256": 0.961662406109268,
+          "two_rarefactions_N256": 0.956334005940637
+        },
+        "mean_l1": 0.006497612712461242,
+        "normalized_mse": 0.0015214989562369334,
+        "flux_limited": 0,
+        "face_limited": 0,
+        "max_conservation_residual": [
+          1.0547118733938987e-15,
+          6.800116025829084e-16,
+          3.427813588530171e-15
+        ]
+      },
+      {
+        "step": 150,
+        "failures": 0,
+        "macro_l1_ratio": 0.9452758485972335,
+        "group_l1_ratios": {
+          "random_riemann_N64": 0.9288380668350374,
+          "contact_N64": 0.9516188097958895,
+          "sod_like_N64": 0.9698294964885996,
+          "two_rarefactions_N64": 0.9319581200113118,
+          "random_riemann_N128": 0.922080955106572,
+          "sod_like_N128": 0.9468052030064877,
+          "contact_N128": 0.9660265397805337,
+          "two_rarefactions_N128": 0.9590061534945238,
+          "random_riemann_N256": 0.9198090022876623,
+          "sod_like_N256": 0.9449317276063842,
+          "contact_N256": 0.9609112254008778,
+          "two_rarefactions_N256": 0.9414948833529226
+        },
+        "mean_l1": 0.006467664933713398,
+        "normalized_mse": 0.0014992643781163298,
+        "flux_limited": 0,
+        "face_limited": 0,
+        "max_conservation_residual": [
+          1.0824674490095276e-15,
+          6.869504964868156e-16,
+          3.427813588530171e-15
+        ]
+      },
+      {
+        "step": 200,
+        "failures": 0,
+        "macro_l1_ratio": 0.9436458983652044,
+        "group_l1_ratios": {
+          "random_riemann_N64": 0.9280914970477943,
+          "contact_N64": 0.955670645272782,
+          "sod_like_N64": 0.9677914176699615,
+          "two_rarefactions_N64": 0.9268679998041212,
+          "random_riemann_N128": 0.9175954560331212,
+          "sod_like_N128": 0.9435958638111932,
+          "contact_N128": 0.9801607186086265,
+          "two_rarefactions_N128": 0.9518043643031516,
+          "random_riemann_N256": 0.9164429815758687,
+          "sod_like_N256": 0.9389974947843204,
+          "contact_N256": 0.9649725796911586,
+          "two_rarefactions_N256": 0.9317597617803525
+        },
+        "mean_l1": 0.006457303969015281,
+        "normalized_mse": 0.0014844619827257379,
+        "flux_limited": 0,
+        "face_limited": 0,
+        "max_conservation_residual": [
+          1.0495077029659683e-15,
+          6.869504964868156e-16,
+          3.760880495917718e-15
+        ]
+      },
+      {
+        "step": 250,
+        "failures": 0,
+        "macro_l1_ratio": 0.945118672648623,
+        "group_l1_ratios": {
+          "random_riemann_N64": 0.9283554630699538,
+          "contact_N64": 0.9602510171415396,
+          "sod_like_N64": 0.9696166484301675,
+          "two_rarefactions_N64": 0.9258721260481158,
+          "random_riemann_N128": 0.9183877234647216,
+          "sod_like_N128": 0.9442891019995409,
+          "contact_N128": 0.9850933562841317,
+          "two_rarefactions_N128": 0.9500933478834733,
+          "random_riemann_N256": 0.9160966669217157,
+          "sod_like_N256": 0.9380604750144509,
+          "contact_N256": 0.9740337132092537,
+          "two_rarefactions_N256": 0.9312744323164128
+        },
+        "mean_l1": 0.006463187007442169,
+        "normalized_mse": 0.0014936406158979757,
+        "flux_limited": 0,
+        "face_limited": 0,
+        "max_conservation_residual": [
+          1.0911410663894117e-15,
+          7.632783294297951e-16,
+          3.191891195797325e-15
+        ]
+      },
+      {
+        "step": 300,
+        "failures": 0,
+        "macro_l1_ratio": 0.9451082081168689,
+        "group_l1_ratios": {
+          "random_riemann_N64": 0.9293952548416353,
+          "contact_N64": 0.9612686700550221,
+          "sod_like_N64": 0.9705877235707262,
+          "two_rarefactions_N64": 0.9248211538823924,
+          "random_riemann_N128": 0.918491913506921,
+          "sod_like_N128": 0.9440296051401665,
+          "contact_N128": 0.9875342721954377,
+          "two_rarefactions_N128": 0.9483278737565989,
+          "random_riemann_N256": 0.9135245913911475,
+          "sod_like_N256": 0.9364133259073073,
+          "contact_N256": 0.9766543462484385,
+          "two_rarefactions_N256": 0.9302497669066341
+        },
+        "mean_l1": 0.0064613289504724,
+        "normalized_mse": 0.0014842911022001299,
+        "flux_limited": 0,
+        "face_limited": 0,
+        "max_conservation_residual": [
+          1.0564465968698755e-15,
+          7.771561172376096e-16,
+          3.885780586188048e-15
+        ]
+      }
+    ],
+    "nonfinite_gradient_updates": 0,
+    "invalid_rollout_updates": 0,
+    "compile_and_first_update_s": {
+      "128": 19.743303528997785,
+      "256": 17.12415605299975,
+      "64": 17.479060966998077
+    },
+    "warmed_update_median_s": 1.6842224249994615,
+    "wall_seconds": 733.6455435499993,
+    "peak_rss_kib": 2857848,
+    "architecture": [
+      5,
+      64,
+      32,
+      16,
+      8,
+      3
+    ],
+    "config": {
+      "schema": 1,
+      "physics": "euler",
+      "formulation": "fv_state_flux",
+      "safeguard": "face-state scaling and global conservative flux correction at each SSPRK3 FE-like stage",
+      "architecture": [
+        5,
+        64,
+        32,
+        16,
+        8,
+        3
+      ],
+      "seeds": [
+        4101,
+        4102
+      ],
+      "train_grids": [
+        64,
+        128,
+        256
+      ],
+      "validation_grids": [
+        64,
+        128,
+        256
+      ],
+      "warmup_steps": 150,
+      "warmup_batch_size": 256,
+      "warmup_cases_per_family_per_grid": 12,
+      "warmup_max_stencils": 15000,
+      "physics_updates": 300,
+      "physics_batch_size": 8,
+      "rollout_steps": 15,
+      "learning_rate": 0.0002,
+      "gradient_clip_norm": 1.0,
+      "strength": 0.25,
+      "validation_every": 50,
+      "validation_batch_size": 8,
+      "selection": "minimum zero-failure validation macro family-by-grid L1 ratio to safeguarded classical FV TENO5; include warmup checkpoint",
+      "objective": "mean per-trajectory component-normalized solution MSE after actual conservative SSPRK3 rollout; no TV or BVD term",
+      "invalid_policy": "reject failed fixed-time rollouts or nonfinite gradient updates, record and stop after three consecutive rejections; no repaired averages",
+      "limiter_gradient_policy": "frozen limiter coefficients and discrete decisions; differentiate accepted flux arithmetic and neural weights",
+      "inference_retry_policy": "at most eight whole-step halvings; advance accepted time only",
+      "safeguard_parameters": {
+        "density_floor": 1e-12,
+        "pressure_floor": 1e-12,
+        "bisections": 40,
+        "max_retries": 8,
+        "low_speed_margin": 1.05,
+        "max_low_cfl": 0.9
+      },
+      "benchmark_grids": [
+        64,
+        128,
+        256
+      ],
+      "benchmark_cases": [
+        "sod",
+        "lax",
+        "two_rarefactions",
+        "contrast",
+        "near_vacuum",
+        "shu_osher_short",
+        "blast_smoke",
+        "blast_full"
+      ],
+      "generalization_grid": 512,
+      "holdout_seed": 2026111203,
+      "holdout_cases": 8,
+      "holdout_grids": [
+        128,
+        256
+      ],
+      "bootstrap_seed": 2026111204,
+      "bootstrap_samples": 2000,
+      "policy_frozen_before_training": true,
+      "budget_note": "same architecture, teacher steps, physics update count, batch size and grid set as saved V2; solver, stage safeguard, normalization and sampling differ, so this is not a causal input-only ablation"
+    },
+    "holdout_sha256": "36dce0bb5341dcd65ce22c2bd56d4bca6c600c27ddcf73c7b8e2e4adb0bdb633"
+  },
+  {
+    "seed": 4102,
+    "best_checkpoint": "experiments/accuracy_upgrade/training_2026_11_12/checkpoints/fv_conservative_seed4102_step0200.pkl",
+    "best_sha256": "a58b1cf4d1f26798db6c822477558af20caf349a17b14c313a4b8730c8bcdc4b",
+    "best_step": 200,
+    "best_validation_ratio": 0.9491406288507536,
+    "warmup_validation": {
+      "failures": 0,
+      "macro_l1_ratio": 0.9599842138796806,
+      "group_l1_ratios": {
+        "random_riemann_N64": 0.9437543794660581,
+        "contact_N64": 0.9526146737604864,
+        "sod_like_N64": 0.9759997092133504,
+        "two_rarefactions_N64": 0.962232073787097,
+        "random_riemann_N128": 0.9389990607676092,
+        "sod_like_N128": 0.9614970575945333,
+        "contact_N128": 0.9661187394352557,
+        "two_rarefactions_N128": 0.9821289596931951,
+        "random_riemann_N256": 0.9372663188742507,
+        "sod_like_N256": 0.9547386779621295,
+        "contact_N256": 0.9686533320912956,
+        "two_rarefactions_N256": 0.9758075839109066
+      },
+      "mean_l1": 0.006563987615253692,
+      "normalized_mse": 0.0014880657257335356,
+      "flux_limited": 0,
+      "face_limited": 0,
+      "max_conservation_residual": [
+        1.0269562977782698e-15,
+        7.216449660063518e-16,
+        3.760880495917718e-15
+      ]
+    },
+    "validation_records": [
+      {
+        "step": 50,
+        "failures": 0,
+        "macro_l1_ratio": 0.9541661324245475,
+        "group_l1_ratios": {
+          "random_riemann_N64": 0.937143880480423,
+          "contact_N64": 0.9485573530351546,
+          "sod_like_N64": 0.9707966983194208,
+          "two_rarefactions_N64": 0.9528278292354571,
+          "random_riemann_N128": 0.9314750281951478,
+          "sod_like_N128": 0.9552581599161686,
+          "contact_N128": 0.9643403467499982,
+          "two_rarefactions_N128": 0.9744709400404786,
+          "random_riemann_N256": 0.9312073479215667,
+          "sod_like_N256": 0.9494967944964072,
+          "contact_N256": 0.9637292553788812,
+          "two_rarefactions_N256": 0.9706899553254658
+        },
+        "mean_l1": 0.00652234573980045,
+        "normalized_mse": 0.0014774595762600334,
+        "flux_limited": 0,
+        "face_limited": 0,
+        "max_conservation_residual": [
+          1.0685896612017132e-15,
+          7.077671781985373e-16,
+          3.70536934468646e-15
+        ]
+      },
+      {
+        "step": 100,
+        "failures": 0,
+        "macro_l1_ratio": 0.9517161484399875,
+        "group_l1_ratios": {
+          "random_riemann_N64": 0.9307701329557453,
+          "contact_N64": 0.9460115023498211,
+          "sod_like_N64": 0.9720973539918926,
+          "two_rarefactions_N64": 0.9460873139986047,
+          "random_riemann_N128": 0.9277379704694203,
+          "sod_like_N128": 0.9553085214508586,
+          "contact_N128": 0.9644525843746132,
+          "two_rarefactions_N128": 0.9713980016834972,
+          "random_riemann_N256": 0.9295070104605793,
+          "sod_like_N256": 0.9496553273154653,
+          "contact_N256": 0.9629792543822895,
+          "two_rarefactions_N256": 0.9645888078470634
+        },
+        "mean_l1": 0.006494072192980131,
+        "normalized_mse": 0.0014670540345272424,
+        "flux_limited": 0,
+        "face_limited": 0,
+        "max_conservation_residual": [
+          1.0685896612017132e-15,
+          6.938893903907228e-16,
+          3.8441472227646045e-15
+        ]
+      },
+      {
+        "step": 150,
+        "failures": 0,
+        "macro_l1_ratio": 0.9510585156066934,
+        "group_l1_ratios": {
+          "random_riemann_N64": 0.9345451174182232,
+          "contact_N64": 0.9451649064852091,
+          "sod_like_N64": 0.9776615630900606,
+          "two_rarefactions_N64": 0.9363925405190927,
+          "random_riemann_N128": 0.9290256139118572,
+          "sod_like_N128": 0.9553896600790104,
+          "contact_N128": 0.9672221387721383,
+          "two_rarefactions_N128": 0.9681324989002151,
+          "random_riemann_N256": 0.9280241742144303,
+          "sod_like_N256": 0.9519118137607702,
+          "contact_N256": 0.9645648146945155,
+          "two_rarefactions_N256": 0.9546673454347984
+        },
+        "mean_l1": 0.006517284208985995,
+        "normalized_mse": 0.001513057814088474,
+        "flux_limited": 0,
+        "face_limited": 0,
+        "max_conservation_residual": [
+          1.0685896612017132e-15,
+          6.522560269672795e-16,
+          3.885780586188048e-15
+        ]
+      },
+      {
+        "step": 200,
+        "failures": 0,
+        "macro_l1_ratio": 0.9491406288507536,
+        "group_l1_ratios": {
+          "random_riemann_N64": 0.9317148870949333,
+          "contact_N64": 0.9433214153548469,
+          "sod_like_N64": 0.9781759962704439,
+          "two_rarefactions_N64": 0.9277555587621897,
+          "random_riemann_N128": 0.9233520338763357,
+          "sod_like_N128": 0.9581747883433351,
+          "contact_N128": 0.9724745797666734,
+          "two_rarefactions_N128": 0.9655570080611243,
+          "random_riemann_N256": 0.9250667383296821,
+          "sod_like_N256": 0.9513098988570637,
+          "contact_N256": 0.9689927394294922,
+          "two_rarefactions_N256": 0.943791902062921
+        },
+        "mean_l1": 0.00650203791199985,
+        "normalized_mse": 0.0014972026745124882,
+        "flux_limited": 0,
+        "face_limited": 0,
+        "max_conservation_residual": [
+          1.1102230246251565e-15,
+          7.216449660063518e-16,
+          4.191091917959966e-15
+        ]
+      },
+      {
+        "step": 250,
+        "failures": 0,
+        "macro_l1_ratio": 0.9550078055185556,
+        "group_l1_ratios": {
+          "random_riemann_N64": 0.9379138658738195,
+          "contact_N64": 0.928678981210369,
+          "sod_like_N64": 0.9825144245699151,
+          "two_rarefactions_N64": 0.9317047933920283,
+          "random_riemann_N128": 0.9309950461192784,
+          "sod_like_N128": 0.968246297000244,
+          "contact_N128": 0.9746579458391653,
+          "two_rarefactions_N128": 0.9784380256860307,
+          "random_riemann_N256": 0.9311533616447683,
+          "sod_like_N256": 0.9562383382726366,
+          "contact_N256": 0.9879048392618214,
+          "two_rarefactions_N256": 0.9516477473525902
+        },
+        "mean_l1": 0.006551729100500592,
+        "normalized_mse": 0.0014833403637186013,
+        "flux_limited": 0,
+        "face_limited": 3,
+        "max_conservation_residual": [
+          1.1934897514720433e-15,
+          7.632783294297951e-16,
+          3.969047313034935e-15
+        ]
+      },
+      {
+        "step": 300,
+        "failures": 3,
+        "macro_l1_ratio": 1.022299986709606,
+        "group_l1_ratios": {
+          "random_riemann_N64": 0.9542228928985222,
+          "contact_N64": 0.93573139490574,
+          "sod_like_N64": 1.408960483555463,
+          "two_rarefactions_N64": 0.9346736576889676,
+          "random_riemann_N128": 0.9646049092503003,
+          "sod_like_N128": 1.246303975788185,
+          "contact_N128": 0.9870812614644917,
+          "two_rarefactions_N128": 0.975455193750034,
+          "random_riemann_N256": 0.943670287410409,
+          "sod_like_N256": 0.965705572385005,
+          "contact_N256": 1.0012144400258092,
+          "two_rarefactions_N256": 0.9499757713923485
+        },
+        "mean_l1": 0.00661969380117246,
+        "normalized_mse": 0.0014554275414722883,
+        "flux_limited": 49,
+        "face_limited": 61,
+        "max_conservation_residual": [
+          1.2698175844150228e-15,
+          7.840950111415168e-16,
+          4.1494585545365226e-15
+        ]
+      }
+    ],
+    "nonfinite_gradient_updates": 0,
+    "invalid_rollout_updates": 2,
+    "compile_and_first_update_s": {
+      "256": 3.0386171320024005,
+      "128": 1.6850479960012308,
+      "64": 0.9861156650003977
+    },
+    "warmed_update_median_s": 1.6761925520004297,
+    "wall_seconds": 696.1741286720026,
+    "peak_rss_kib": 2860268,
+    "architecture": [
+      5,
+      64,
+      32,
+      16,
+      8,
+      3
+    ],
+    "config": {
+      "schema": 1,
+      "physics": "euler",
+      "formulation": "fv_state_flux",
+      "safeguard": "face-state scaling and global conservative flux correction at each SSPRK3 FE-like stage",
+      "architecture": [
+        5,
+        64,
+        32,
+        16,
+        8,
+        3
+      ],
+      "seeds": [
+        4101,
+        4102
+      ],
+      "train_grids": [
+        64,
+        128,
+        256
+      ],
+      "validation_grids": [
+        64,
+        128,
+        256
+      ],
+      "warmup_steps": 150,
+      "warmup_batch_size": 256,
+      "warmup_cases_per_family_per_grid": 12,
+      "warmup_max_stencils": 15000,
+      "physics_updates": 300,
+      "physics_batch_size": 8,
+      "rollout_steps": 15,
+      "learning_rate": 0.0002,
+      "gradient_clip_norm": 1.0,
+      "strength": 0.25,
+      "validation_every": 50,
+      "validation_batch_size": 8,
+      "selection": "minimum zero-failure validation macro family-by-grid L1 ratio to safeguarded classical FV TENO5; include warmup checkpoint",
+      "objective": "mean per-trajectory component-normalized solution MSE after actual conservative SSPRK3 rollout; no TV or BVD term",
+      "invalid_policy": "reject failed fixed-time rollouts or nonfinite gradient updates, record and stop after three consecutive rejections; no repaired averages",
+      "limiter_gradient_policy": "frozen limiter coefficients and discrete decisions; differentiate accepted flux arithmetic and neural weights",
+      "inference_retry_policy": "at most eight whole-step halvings; advance accepted time only",
+      "safeguard_parameters": {
+        "density_floor": 1e-12,
+        "pressure_floor": 1e-12,
+        "bisections": 40,
+        "max_retries": 8,
+        "low_speed_margin": 1.05,
+        "max_low_cfl": 0.9
+      },
+      "benchmark_grids": [
+        64,
+        128,
+        256
+      ],
+      "benchmark_cases": [
+        "sod",
+        "lax",
+        "two_rarefactions",
+        "contrast",
+        "near_vacuum",
+        "shu_osher_short",
+        "blast_smoke",
+        "blast_full"
+      ],
+      "generalization_grid": 512,
+      "holdout_seed": 2026111203,
+      "holdout_cases": 8,
+      "holdout_grids": [
+        128,
+        256
+      ],
+      "bootstrap_seed": 2026111204,
+      "bootstrap_samples": 2000,
+      "policy_frozen_before_training": true,
+      "budget_note": "same architecture, teacher steps, physics update count, batch size and grid set as saved V2; solver, stage safeguard, normalization and sampling differ, so this is not a causal input-only ablation"
+    },
+    "holdout_sha256": "36dce0bb5341dcd65ce22c2bd56d4bca6c600c27ddcf73c7b8e2e4adb0bdb633"
+  }
+]

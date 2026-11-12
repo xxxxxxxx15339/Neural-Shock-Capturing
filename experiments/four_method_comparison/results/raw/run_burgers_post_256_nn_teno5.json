@@ -1,0 +1,43 @@
+{
+  "case": "burgers_post",
+  "physics": "scalar",
+  "method": "nn_teno5",
+  "cells": 256,
+  "requested_time": 0.9,
+  "actual_time": 0.9,
+  "dt": 0.0007506255212677231,
+  "dx": 0.00390625,
+  "planned_steps": 1199,
+  "accepted_steps": 1199,
+  "success": true,
+  "status": "NEW MATCHED EVALUATION",
+  "raw_min_density": null,
+  "raw_min_pressure": null,
+  "failure": null,
+  "conservation_residual": -2.353672812205332e-14,
+  "boundary_exchange": 0.0,
+  "repair_count": 0,
+  "retry_count": 0,
+  "maximum_step_start_cfl": 0.0,
+  "compile_step_seconds": 0.0001625260010769125,
+  "compile_rollout_seconds": 0.28879192100066575,
+  "first_step_seconds": 0.0009130640028160997,
+  "warm_step_repeats_seconds": [
+    0.000469836999400286,
+    0.00030325999978231266,
+    0.00032337499942514114,
+    0.00030305100153782405,
+    0.00031771800058777444,
+    0.00028691699844785035,
+    0.0002831450001394842
+  ],
+  "rollout_repeats_seconds": [
+    0.2460033069983183,
+    0.24358700300217606,
+    0.24509506299727946
+  ],
+  "instrumented_rollout_seconds": 0.4056873010013078,
+  "reference": "exact_entropy_sine",
+  "manifest_sha256": "97132adef47fc895eb9f29d52c9bd4bb82c0b48d844a46c6509c27594e9f9378",
+  "audit_note": "Exact float64 metadata thresholds against float32 classifier outputs; first-pass artifact preserved."
+}

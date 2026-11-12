@@ -1,0 +1,160 @@
+{
+  "case": "blast_smoke",
+  "definition": {
+    "id": "blast_smoke",
+    "kind": "blast",
+    "system": "euler",
+    "time": 0.001,
+    "boundary": "reflective-wall"
+  },
+  "cells": 128,
+  "variant": "fv_teno",
+  "proposed_dt": 3.4482758620689657e-05,
+  "dx": 0.0078125,
+  "reference": {
+    "kind": "stability-only; no trustworthy blast accuracy reference"
+  },
+  "raw_invalid_count_scope": "accepted attempts; retries reported separately",
+  "success": false,
+  "final_time": 0.00010344827586206896,
+  "steps": 4,
+  "retries": 0,
+  "limited_fe_stages": 0,
+  "limited_face_stages": 0,
+  "raw_invalid_fe_rows": 6,
+  "minimum_density": 0.9436730452056676,
+  "minimum_pressure": 0.009999999999999995,
+  "limiter_frequency": 0.0,
+  "face_limiter_frequency": 0.0,
+  "conservation_residual": [
+    -1.8214596497756474e-17,
+    0.0,
+    -1.2698175844150228e-15
+  ],
+  "boundary_exchange": [
+    0.0,
+    -0.09310344827586203,
+    0.0
+  ],
+  "compile_s": 2.61498938600198,
+  "first_execution_s": 0.003203018000931479,
+  "warm_step_median_s": 0.002188891998230247,
+  "warm_step_repeats_s": [
+    0.002188891998230247,
+    0.001560161999805132,
+    0.0023278799999388866
+  ],
+  "simulation_s": 0.010159142002521548,
+  "host_instrumentation_included": true,
+  "first_failed_step": 4,
+  "first_invalid_stage": 1,
+  "history": [
+    {
+      "time": 3.4482758620689657e-05,
+      "min_density": 0.9944876788842453,
+      "min_pressure": 0.009999999999999995,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 6.896551724137931e-05,
+      "min_density": 0.9769514844126944,
+      "min_pressure": 0.009999999999999995,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.00010344827586206896,
+      "min_density": 0.9436730452056676,
+      "min_pressure": 0.009999999999999995,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.00010344827586206896,
+      "success": false,
+      "diagnostics": {
+        "accepted_dt": 0.0,
+        "exchange": [
+          0.0,
+          -0.03103448275862068,
+          0.0
+        ],
+        "retries": 0,
+        "stages": {
+          "cfl": [
+            0.1767773764569443,
+            0.1767773764569443,
+            0.1767773764569443
+          ],
+          "exchange": [
+            [
+              0.0,
+              -0.031034482758620682,
+              0.0
+            ],
+            [
+              0.0,
+              -0.031034482758620682,
+              0.0
+            ],
+            [
+              0.0,
+              -0.031034482758620682,
+              0.0
+            ]
+          ],
+          "face_theta": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "low_ok": [
+            false,
+            false,
+            false
+          ],
+          "min_density": [
+            null,
+            null,
+            null
+          ],
+          "min_pressure": [
+            null,
+            null,
+            null
+          ],
+          "ok": [
+            false,
+            false,
+            false
+          ],
+          "raw_faces_finite": [
+            true,
+            true,
+            true
+          ],
+          "raw_faces_valid": [
+            true,
+            true,
+            true
+          ],
+          "raw_invalid": [
+            2,
+            2,
+            2
+          ],
+          "theta": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "success": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "case": "square",
+  "system": "advection",
+  "cells": 256,
+  "variant": "safe_fv_new_seed4102",
+  "zero_shot_euler_to_scalar": true,
+  "solver": "unchanged scalar state LF + SSPRK3",
+  "dt": 0.0008130081300813008,
+  "time": 0.2,
+  "steps": 246,
+  "primary_error": 0.04767756081790796,
+  "l1": 0.008863247257839078,
+  "l2": 0.04767756081790796,
+  "linf": 0.42132892173666325,
+  "component_l1": [
+    0.008863247257839078
+  ],
+  "component_l2": [
+    0.04767756081790796
+  ],
+  "component_linf": [
+    0.42132892173666325
+  ],
+  "valid": true,
+  "l1_ratio_to_classical": 1.0292137413546345,
+  "tv": 2.4203268798025075,
+  "overshoot": 9.298855019324037e-10,
+  "undershoot": 1.3629618546867617e-05,
+  "conservation_residual": -4.524158825347513e-15,
+  "wall_seconds_including_compilation": 1.8525279799978307,
+  "classical_source": "experiments/accuracy_upgrade/results/scalar/square_256_teno5.json",
+  "classical_source_sha256": "1ff32acba040017d5bf7816c673ae404cbc14332f6475dcd5bb05597a7247031"
+}

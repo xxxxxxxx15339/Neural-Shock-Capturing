@@ -1,0 +1,250 @@
+{
+  "reason": "Preserve original float64 metadata threshold comparisons; no test-based selection",
+  "cases": [
+    {
+      "case": "sod",
+      "cells": 128,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_sod_128_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_sod_128_nn_teno5.json"
+    },
+    {
+      "case": "sod",
+      "cells": 256,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_sod_256_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_sod_256_nn_teno5.json"
+    },
+    {
+      "case": "lax",
+      "cells": 128,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_lax_128_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_lax_128_nn_teno5.json"
+    },
+    {
+      "case": "lax",
+      "cells": 256,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_lax_256_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_lax_256_nn_teno5.json"
+    },
+    {
+      "case": "shu_osher",
+      "cells": 128,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_shu_osher_128_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_shu_osher_128_nn_teno5.json"
+    },
+    {
+      "case": "shu_osher",
+      "cells": 256,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_shu_osher_256_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_shu_osher_256_nn_teno5.json"
+    },
+    {
+      "case": "burgers_pre",
+      "cells": 128,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_burgers_pre_128_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_burgers_pre_128_nn_teno5.json"
+    },
+    {
+      "case": "burgers_pre",
+      "cells": 256,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_burgers_pre_256_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_burgers_pre_256_nn_teno5.json"
+    },
+    {
+      "case": "burgers_post",
+      "cells": 128,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_burgers_post_128_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_burgers_post_128_nn_teno5.json"
+    },
+    {
+      "case": "burgers_post",
+      "cells": 256,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_burgers_post_256_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_burgers_post_256_nn_teno5.json"
+    },
+    {
+      "case": "burgers_hat",
+      "cells": 128,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_burgers_hat_128_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_burgers_hat_128_nn_teno5.json"
+    },
+    {
+      "case": "burgers_hat",
+      "cells": 256,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_burgers_hat_256_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_burgers_hat_256_nn_teno5.json"
+    },
+    {
+      "case": "advection_square",
+      "cells": 128,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_advection_square_128_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_advection_square_128_nn_teno5.json"
+    },
+    {
+      "case": "advection_square",
+      "cells": 256,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_advection_square_256_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_advection_square_256_nn_teno5.json"
+    },
+    {
+      "case": "advection_smooth",
+      "cells": 64,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_advection_smooth_64_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_advection_smooth_64_nn_teno5.json"
+    },
+    {
+      "case": "advection_smooth",
+      "cells": 128,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_advection_smooth_128_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_advection_smooth_128_nn_teno5.json"
+    },
+    {
+      "case": "advection_smooth",
+      "cells": 256,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_advection_smooth_256_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_advection_smooth_256_nn_teno5.json"
+    },
+    {
+      "case": "two_rarefactions",
+      "cells": 64,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_two_rarefactions_64_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_two_rarefactions_64_nn_teno5.json"
+    },
+    {
+      "case": "two_rarefactions",
+      "cells": 128,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_two_rarefactions_128_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_two_rarefactions_128_nn_teno5.json"
+    },
+    {
+      "case": "strong_contrast",
+      "cells": 64,
+      "old_success": false,
+      "new_success": false,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_strong_contrast_64_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_strong_contrast_64_nn_teno5.json"
+    },
+    {
+      "case": "strong_contrast",
+      "cells": 128,
+      "old_success": false,
+      "new_success": false,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_strong_contrast_128_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_strong_contrast_128_nn_teno5.json"
+    },
+    {
+      "case": "near_vacuum",
+      "cells": 64,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_near_vacuum_64_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_near_vacuum_64_nn_teno5.json"
+    },
+    {
+      "case": "near_vacuum",
+      "cells": 128,
+      "old_success": true,
+      "new_success": true,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_near_vacuum_128_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_near_vacuum_128_nn_teno5.json"
+    },
+    {
+      "case": "blast_smoke",
+      "cells": 64,
+      "old_success": false,
+      "new_success": false,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_blast_smoke_64_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_blast_smoke_64_nn_teno5.json"
+    },
+    {
+      "case": "blast_smoke",
+      "cells": 128,
+      "old_success": false,
+      "new_success": false,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_blast_smoke_128_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_blast_smoke_128_nn_teno5.json"
+    },
+    {
+      "case": "blast_full",
+      "cells": 64,
+      "old_success": false,
+      "new_success": false,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_blast_full_64_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_blast_full_64_nn_teno5.json"
+    },
+    {
+      "case": "blast_full",
+      "cells": 128,
+      "old_success": false,
+      "new_success": false,
+      "maximum_final_state_difference": 0.0,
+      "old_source": "experiments/four_method_comparison/results/raw/preflight_float32_thresholds/run_blast_full_128_nn_teno5.json",
+      "final_source": "experiments/four_method_comparison/results/raw/run_blast_full_128_nn_teno5.json"
+    }
+  ],
+  "any_success_changed": false,
+  "maximum_final_state_difference": 0.0
+}

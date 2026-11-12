@@ -1,0 +1,39 @@
+{
+  "case": "blast_wall_aligned_0.001",
+  "physics": "euler",
+  "method": "teno5",
+  "cells": 128,
+  "requested_time": 0.001,
+  "actual_time": 0.001,
+  "dt": 4e-05,
+  "dx": 0.0078125,
+  "planned_steps": 25,
+  "accepted_steps": 25,
+  "success": true,
+  "status": "NEW MATCHED EVALUATION",
+  "raw_min_density": 0.5837541541723211,
+  "raw_min_pressure": 0.009999999999999998,
+  "failure": null,
+  "conservation_residual": [
+    -3.200564813177209e-16,
+    -6.661338147750939e-16,
+    -2.788880237858393e-13
+  ],
+  "boundary_exchange": [
+    0.0,
+    -0.8999999919335075,
+    0.0
+  ],
+  "repair_count": 0,
+  "retry_count": 0,
+  "maximum_step_start_cfl": 0.269506836651229,
+  "compile_step_seconds": 1.724663574997976,
+  "compile_rollout_seconds": null,
+  "first_step_seconds": 0.0016459469989058562,
+  "warm_step_repeats_seconds": [],
+  "rollout_repeats_seconds": [],
+  "instrumented_rollout_seconds": 0.054806192998512415,
+  "reference": "none_stability_only",
+  "manifest_sha256": "97132adef47fc895eb9f29d52c9bd4bb82c0b48d844a46c6509c27594e9f9378",
+  "supplemental_protocol": "configs/wall_geometry_control.json"
+}

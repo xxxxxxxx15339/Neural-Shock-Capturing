@@ -1,0 +1,7 @@
+{
+  "repeated_current_cpu_rollouts_equal": true,
+  "maximum_repeat_difference": 0.0,
+  "fixture_saturated_one_count": 1135,
+  "fixture_saturated_zero_count": 1549,
+  "diagnosis": "Discrepancy isolated to archived neural discontinuous trajectory and threshold controls. Classical, all smooth cases, and phase18 Euler reproduce. Archive lacks immutable checkpoint/environment identity; root cause not established. Threshold=1 all-keep control still discards exactly saturated sigmoid outputs under >= semantics. CPU repeat is deterministic."
+}

@@ -1,0 +1,42 @@
+{
+  "case": "advection_smooth",
+  "physics": "scalar",
+  "method": "teno5",
+  "cells": 256,
+  "requested_time": 0.2,
+  "actual_time": 0.2,
+  "dt": 1.4532771399505886e-05,
+  "dx": 0.00390625,
+  "planned_steps": 13762,
+  "accepted_steps": 13762,
+  "success": true,
+  "status": "NEW MATCHED EVALUATION",
+  "raw_min_density": null,
+  "raw_min_pressure": null,
+  "failure": null,
+  "conservation_residual": -2.762789996779702e-13,
+  "boundary_exchange": 0.0,
+  "repair_count": 0,
+  "retry_count": 0,
+  "maximum_step_start_cfl": 0.0,
+  "compile_step_seconds": 0.0001584050005476456,
+  "compile_rollout_seconds": 0.3940138059988385,
+  "first_step_seconds": 0.00047242100117728114,
+  "warm_step_repeats_seconds": [
+    0.00028035200011800043,
+    0.000290129999484634,
+    0.00032861300132935867,
+    0.0002591190022940282,
+    0.00020247599968570285,
+    0.00018962499962071888,
+    0.00012955900092492811
+  ],
+  "rollout_repeats_seconds": [
+    1.075132672998734,
+    1.0933777390018804,
+    1.0861446109993267
+  ],
+  "instrumented_rollout_seconds": 2.435914171997865,
+  "reference": "exact_periodic_transport",
+  "manifest_sha256": "97132adef47fc895eb9f29d52c9bd4bb82c0b48d844a46c6509c27594e9f9378"
+}

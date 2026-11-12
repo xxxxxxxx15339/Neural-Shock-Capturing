@@ -1,0 +1,18 @@
+{
+  "selection": "validation only; no benchmark/holdout tuning",
+  "candidates": [
+    {
+      "seed": 4101,
+      "checkpoint": "experiments/accuracy_upgrade/training_2026_11_12/checkpoints/fv_conservative_seed4101_step0200.pkl",
+      "sha256": "186350338c6fd57ce3bb15ca30a1f828b1aeac687ea0028005cf0696dd251073",
+      "step": 200
+    },
+    {
+      "seed": 4102,
+      "checkpoint": "experiments/accuracy_upgrade/training_2026_11_12/checkpoints/fv_conservative_seed4102_step0200.pkl",
+      "sha256": "a58b1cf4d1f26798db6c822477558af20caf349a17b14c313a4b8730c8bcdc4b",
+      "step": 200
+    }
+  ],
+  "holdout_sha256": "36dce0bb5341dcd65ce22c2bd56d4bca6c600c27ddcf73c7b8e2e4adb0bdb633"
+}

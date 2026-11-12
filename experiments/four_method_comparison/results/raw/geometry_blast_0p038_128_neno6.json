@@ -1,0 +1,54 @@
+{
+  "case": "blast_wall_aligned_0.038",
+  "physics": "euler",
+  "method": "neno6",
+  "cells": 128,
+  "requested_time": 0.038,
+  "actual_time": 0.0,
+  "dt": 4.0126715945089755e-05,
+  "dx": 0.0078125,
+  "planned_steps": 947,
+  "accepted_steps": 0,
+  "success": false,
+  "status": "NEW MATCHED EVALUATION",
+  "raw_min_density": 0.9299874006497848,
+  "raw_min_pressure": -0.0033484473056493882,
+  "failure": {
+    "step": 1,
+    "stage": 3,
+    "step_start_time": 0.0,
+    "stage_min_density": [
+      0.9999999999999997,
+      0.9946774170674029,
+      0.9299874006497848
+    ],
+    "stage_min_pressure": [
+      0.009999999999999995,
+      0.007981006903538704,
+      -0.0033484473056493882
+    ],
+    "nonfinite_values": 0
+  },
+  "conservation_residual": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "boundary_exchange": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "repair_count": 0,
+  "retry_count": 0,
+  "maximum_step_start_cfl": 0.1921797415973437,
+  "compile_step_seconds": 0.00014408300194190815,
+  "compile_rollout_seconds": null,
+  "first_step_seconds": 0.0021864580012334045,
+  "warm_step_repeats_seconds": [],
+  "rollout_repeats_seconds": [],
+  "instrumented_rollout_seconds": 0.0025599710024835076,
+  "reference": "none_stability_only",
+  "manifest_sha256": "97132adef47fc895eb9f29d52c9bd4bb82c0b48d844a46c6509c27594e9f9378",
+  "supplemental_protocol": "configs/wall_geometry_control.json"
+}

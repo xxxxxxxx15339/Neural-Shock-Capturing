@@ -1,0 +1,33 @@
+{
+  "case": "sine",
+  "system": "advection",
+  "cells": 128,
+  "variant": "safe_fv_new_seed4102",
+  "zero_shot_euler_to_scalar": true,
+  "solver": "unchanged scalar state LF + SSPRK3",
+  "dt": 0.0016260162601626016,
+  "time": 0.2,
+  "steps": 123,
+  "primary_error": 4.447193428736747e-09,
+  "l1": 4.004156413449193e-09,
+  "l2": 4.447193428736747e-09,
+  "linf": 6.288416676270003e-09,
+  "component_l1": [
+    4.004156413449193e-09
+  ],
+  "component_l2": [
+    4.447193428736747e-09
+  ],
+  "component_linf": [
+    6.288416676270003e-09
+  ],
+  "valid": true,
+  "l1_ratio_to_classical": 1.0,
+  "tv": 0.7998390656083002,
+  "overshoot": 0.0,
+  "undershoot": 0.0,
+  "conservation_residual": -2.084920777689625e-15,
+  "wall_seconds_including_compilation": 1.7008523580007022,
+  "classical_source": "experiments/accuracy_upgrade/results/scalar/sine_128_teno5.json",
+  "classical_source_sha256": "f1becc1874decf4e80b5467a54722da3897b58e15e5096d97e3c0fb02ba87c0c"
+}

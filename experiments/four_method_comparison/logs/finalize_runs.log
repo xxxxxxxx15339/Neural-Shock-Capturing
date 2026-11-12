@@ -1,0 +1,35 @@
+THRESHOLD AUDIT sod 128 True 0.0
+THRESHOLD AUDIT sod 256 True 0.0
+THRESHOLD AUDIT lax 128 True 0.0
+THRESHOLD AUDIT lax 256 True 0.0
+THRESHOLD AUDIT shu_osher 128 True 0.0
+THRESHOLD AUDIT shu_osher 256 True 0.0
+THRESHOLD AUDIT burgers_pre 128 True 0.0
+THRESHOLD AUDIT burgers_pre 256 True 0.0
+THRESHOLD AUDIT burgers_post 128 True 0.0
+THRESHOLD AUDIT burgers_post 256 True 0.0
+THRESHOLD AUDIT burgers_hat 128 True 0.0
+THRESHOLD AUDIT burgers_hat 256 True 0.0
+THRESHOLD AUDIT advection_square 128 True 0.0
+THRESHOLD AUDIT advection_square 256 True 0.0
+THRESHOLD AUDIT advection_smooth 64 True 0.0
+THRESHOLD AUDIT advection_smooth 128 True 0.0
+THRESHOLD AUDIT advection_smooth 256 True 0.0
+THRESHOLD AUDIT two_rarefactions 64 True 0.0
+THRESHOLD AUDIT two_rarefactions 128 True 0.0
+THRESHOLD AUDIT strong_contrast 64 False 0.0
+THRESHOLD AUDIT strong_contrast 128 False 0.0
+THRESHOLD AUDIT near_vacuum 64 True 0.0
+THRESHOLD AUDIT near_vacuum 128 True 0.0
+THRESHOLD AUDIT blast_smoke 64 False 0.0
+THRESHOLD AUDIT blast_smoke 128 False 0.0
+THRESHOLD AUDIT blast_full 64 False 0.0
+THRESHOLD AUDIT blast_full 128 False 0.0
+SOD ISOLATED TIMING 128 teno5
+SOD ISOLATED TIMING 128 neno6
+SOD ISOLATED TIMING 128 learned_head
+SOD ISOLATED TIMING 128 head_backbone_only
+SOD ISOLATED TIMING 128 head_fixed_blend
+SOD ISOLATED TIMING 256 teno5
+SOD ISOLATED TIMING 256 neno6
+SOD ISOLATED TIMING 256 learned_head

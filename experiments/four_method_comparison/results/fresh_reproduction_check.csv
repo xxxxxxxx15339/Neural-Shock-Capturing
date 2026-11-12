@@ -1,0 +1,11 @@
+status,case,cells,method,maximum_final_state_difference,success_status_matches,first_invalid_stage_matches,source_file,original_file
+REPRODUCED,sod,128,head_backbone_only,0.0,True,True,experiments/four_method_comparison/results/fresh_reproduction_sod/run_sod_128_head_backbone_only.json,experiments/four_method_comparison/results/raw/run_sod_128_head_backbone_only.json
+REPRODUCED,sod,128,head_fixed_blend,0.0,True,True,experiments/four_method_comparison/results/fresh_reproduction_sod/run_sod_128_head_fixed_blend.json,experiments/four_method_comparison/results/raw/run_sod_128_head_fixed_blend.json
+REPRODUCED,sod,128,learned_head,0.0,True,True,experiments/four_method_comparison/results/fresh_reproduction_sod/run_sod_128_learned_head.json,experiments/four_method_comparison/results/raw/run_sod_128_learned_head.json
+REPRODUCED,sod,128,neno6,0.0,True,True,experiments/four_method_comparison/results/fresh_reproduction_sod/run_sod_128_neno6.json,experiments/four_method_comparison/results/raw/run_sod_128_neno6.json
+REPRODUCED,sod,128,nn_teno5,0.0,True,True,experiments/four_method_comparison/results/fresh_reproduction_sod/run_sod_128_nn_teno5.json,experiments/four_method_comparison/results/raw/run_sod_128_nn_teno5.json
+REPRODUCED,sod,128,teno5,0.0,True,True,experiments/four_method_comparison/results/fresh_reproduction_sod/run_sod_128_teno5.json,experiments/four_method_comparison/results/raw/run_sod_128_teno5.json
+REPRODUCED,sod,256,learned_head,0.0,True,True,experiments/four_method_comparison/results/fresh_reproduction_sod/run_sod_256_learned_head.json,experiments/four_method_comparison/results/raw/run_sod_256_learned_head.json
+REPRODUCED,sod,256,neno6,0.0,True,True,experiments/four_method_comparison/results/fresh_reproduction_sod/run_sod_256_neno6.json,experiments/four_method_comparison/results/raw/run_sod_256_neno6.json
+REPRODUCED,sod,256,nn_teno5,0.0,True,True,experiments/four_method_comparison/results/fresh_reproduction_sod/run_sod_256_nn_teno5.json,experiments/four_method_comparison/results/raw/run_sod_256_nn_teno5.json
+REPRODUCED,sod,256,teno5,0.0,True,True,experiments/four_method_comparison/results/fresh_reproduction_sod/run_sod_256_teno5.json,experiments/four_method_comparison/results/raw/run_sod_256_teno5.json

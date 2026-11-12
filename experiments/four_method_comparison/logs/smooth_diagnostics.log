@@ -1,0 +1,260 @@
+[
+  {
+    "case": "advection_smooth",
+    "cells": 64,
+    "method": "teno5",
+    "stage": "initial",
+    "any_candidate_discard_fraction": 0.0,
+    "discarded_candidate_fraction": 0.0,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score"
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 64,
+    "method": "teno5",
+    "stage": "final",
+    "any_candidate_discard_fraction": 0.0,
+    "discarded_candidate_fraction": 0.0,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score"
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 64,
+    "method": "neno6",
+    "stage": "initial",
+    "any_candidate_discard_fraction": 0.375,
+    "discarded_candidate_fraction": 0.1171875,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score"
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 64,
+    "method": "neno6",
+    "stage": "final",
+    "any_candidate_discard_fraction": 0.375,
+    "discarded_candidate_fraction": 0.1171875,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score"
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 64,
+    "method": "nn_teno5",
+    "stage": "initial",
+    "any_candidate_discard_fraction": 0.0,
+    "discarded_candidate_fraction": 0.0,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score"
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 64,
+    "method": "nn_teno5",
+    "stage": "final",
+    "any_candidate_discard_fraction": 0.0,
+    "discarded_candidate_fraction": 0.0,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score"
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 64,
+    "method": "learned_head",
+    "stage": "initial",
+    "any_candidate_discard_fraction": 1.0,
+    "discarded_candidate_fraction": 0.3333333432674408,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score",
+    "mean_lambda": 0.06943743783031181,
+    "minimum_lambda": 0.0694283393195992,
+    "maximum_lambda": 0.06944997726078908
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 64,
+    "method": "learned_head",
+    "stage": "final",
+    "any_candidate_discard_fraction": 1.0,
+    "discarded_candidate_fraction": 0.3333333432674408,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score",
+    "mean_lambda": 0.0694371505527889,
+    "minimum_lambda": 0.06942661218922719,
+    "maximum_lambda": 0.06945027792906701
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 128,
+    "method": "teno5",
+    "stage": "initial",
+    "any_candidate_discard_fraction": 0.0,
+    "discarded_candidate_fraction": 0.0,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score"
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 128,
+    "method": "teno5",
+    "stage": "final",
+    "any_candidate_discard_fraction": 0.0,
+    "discarded_candidate_fraction": 0.0,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score"
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 128,
+    "method": "neno6",
+    "stage": "initial",
+    "any_candidate_discard_fraction": 0.4609375,
+    "discarded_candidate_fraction": 0.142578125,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score"
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 128,
+    "method": "neno6",
+    "stage": "final",
+    "any_candidate_discard_fraction": 0.46875,
+    "discarded_candidate_fraction": 0.140625,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score"
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 128,
+    "method": "nn_teno5",
+    "stage": "initial",
+    "any_candidate_discard_fraction": 0.0,
+    "discarded_candidate_fraction": 0.0,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score"
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 128,
+    "method": "nn_teno5",
+    "stage": "final",
+    "any_candidate_discard_fraction": 0.0,
+    "discarded_candidate_fraction": 0.0,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score"
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 128,
+    "method": "learned_head",
+    "stage": "initial",
+    "any_candidate_discard_fraction": 1.0,
+    "discarded_candidate_fraction": 0.3333333432674408,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score",
+    "mean_lambda": 0.06943626120005411,
+    "minimum_lambda": 0.06942779135296955,
+    "maximum_lambda": 0.06944942710781465
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 128,
+    "method": "learned_head",
+    "stage": "final",
+    "any_candidate_discard_fraction": 1.0,
+    "discarded_candidate_fraction": 0.3333333432674408,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score",
+    "mean_lambda": 0.06943591735377491,
+    "minimum_lambda": 0.06941889821803197,
+    "maximum_lambda": 0.06944996012026967
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 256,
+    "method": "teno5",
+    "stage": "initial",
+    "any_candidate_discard_fraction": 0.0,
+    "discarded_candidate_fraction": 0.0,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score"
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 256,
+    "method": "teno5",
+    "stage": "final",
+    "any_candidate_discard_fraction": 0.0,
+    "discarded_candidate_fraction": 0.0,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score"
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 256,
+    "method": "neno6",
+    "stage": "initial",
+    "any_candidate_discard_fraction": 0.5859375,
+    "discarded_candidate_fraction": 0.1640625,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score"
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 256,
+    "method": "neno6",
+    "stage": "final",
+    "any_candidate_discard_fraction": 0.58203125,
+    "discarded_candidate_fraction": 0.162109375,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score"
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 256,
+    "method": "nn_teno5",
+    "stage": "initial",
+    "any_candidate_discard_fraction": 0.0,
+    "discarded_candidate_fraction": 0.0,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score"
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 256,
+    "method": "nn_teno5",
+    "stage": "final",
+    "any_candidate_discard_fraction": 0.0,
+    "discarded_candidate_fraction": 0.0,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score"
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 256,
+    "method": "learned_head",
+    "stage": "initial",
+    "any_candidate_discard_fraction": 1.0,
+    "discarded_candidate_fraction": 0.3333333432674408,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score",
+    "mean_lambda": 0.06943572626560506,
+    "minimum_lambda": 0.0694276103067535,
+    "maximum_lambda": 0.06944978433668866
+  },
+  {
+    "case": "advection_smooth",
+    "cells": 256,
+    "method": "learned_head",
+    "stage": "final",
+    "any_candidate_discard_fraction": 1.0,
+    "discarded_candidate_fraction": 0.3333333432674408,
+    "all_discard_fraction": 0.0,
+    "interpretation": "Every exact stencil is smooth; rejection fraction is descriptive, not a TENO teacher classification score",
+    "mean_lambda": 0.06943538329919494,
+    "minimum_lambda": 0.06939808964996469,
+    "maximum_lambda": 0.06944969604946295
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "case": "advection_smooth",
+  "cells": 256,
+  "dt_refinements": [
+    1,
+    2
+  ],
+  "methods": [
+    "teno5",
+    "neno6",
+    "nn_teno5",
+    "learned_head"
+  ],
+  "purpose": "Measure temporal sensitivity separately from observed full-solution grid convergence; no fifth-order temporal claim"
+}

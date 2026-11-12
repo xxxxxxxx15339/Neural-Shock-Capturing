@@ -1,0 +1,116 @@
+REFERENCE 512 1 True
+REFERENCE 1024 1 True
+REFERENCE 2048 1 True
+REFERENCE 2048 2 True
+RUN lax 128 teno5 True None
+RUN lax 128 neno6 True None
+RUN lax 128 nn_teno5 True None
+RUN lax 128 learned_head True None
+RUN lax 128 head_backbone_only False {'step': 40, 'stage': 1, 'step_start_time': 0.014498141263940523, 'stage_min_density': array([-0.03670401, -0.03670401, -0.03670401]), 'stage_min_pressure': array([0.56935886, 0.56935886, 0.56935886]), 'nonfinite_values': 0}
+RUN lax 128 head_fixed_blend True None
+RUN lax 256 teno5 True None
+RUN lax 256 neno6 True None
+RUN lax 256 nn_teno5 True None
+RUN lax 256 learned_head True None
+RUN shu_osher 128 teno5 True None
+RUN shu_osher 128 neno6 True None
+RUN shu_osher 128 nn_teno5 True None
+RUN shu_osher 128 learned_head True None
+RUN shu_osher 128 head_backbone_only False {'step': 86, 'stage': 1, 'step_start_time': 0.2791970802919708, 'stage_min_density': array([0.77145375, 0.77145375, 0.77145375]), 'stage_min_pressure': array([-0.42698786, -0.42698786, -0.42698786]), 'nonfinite_values': 0}
+RUN shu_osher 128 head_fixed_blend True None
+RUN shu_osher 256 teno5 True None
+RUN shu_osher 256 neno6 True None
+RUN shu_osher 256 nn_teno5 True None
+RUN shu_osher 256 learned_head True None
+RUN burgers_pre 128 teno5 True None
+RUN burgers_pre 128 neno6 True None
+RUN burgers_pre 128 nn_teno5 True None
+RUN burgers_pre 128 learned_head True None
+RUN burgers_pre 128 head_backbone_only True None
+RUN burgers_pre 128 head_fixed_blend True None
+RUN burgers_pre 256 teno5 True None
+RUN burgers_pre 256 neno6 True None
+RUN burgers_pre 256 nn_teno5 True None
+RUN burgers_pre 256 learned_head True None
+RUN burgers_post 128 teno5 True None
+RUN burgers_post 128 neno6 True None
+RUN burgers_post 128 nn_teno5 True None
+RUN burgers_post 128 learned_head True None
+RUN burgers_post 128 head_backbone_only True None
+RUN burgers_post 128 head_fixed_blend True None
+RUN burgers_post 256 teno5 True None
+RUN burgers_post 256 neno6 True None
+RUN burgers_post 256 nn_teno5 True None
+RUN burgers_post 256 learned_head True None
+RUN burgers_hat 128 teno5 True None
+RUN burgers_hat 128 neno6 True None
+RUN burgers_hat 128 nn_teno5 True None
+RUN burgers_hat 128 learned_head True None
+RUN burgers_hat 128 head_backbone_only True None
+RUN burgers_hat 128 head_fixed_blend True None
+RUN burgers_hat 256 teno5 True None
+RUN burgers_hat 256 neno6 True None
+RUN burgers_hat 256 nn_teno5 True None
+RUN burgers_hat 256 learned_head True None
+RUN advection_square 128 teno5 True None
+RUN advection_square 128 neno6 True None
+RUN advection_square 128 nn_teno5 True None
+RUN advection_square 128 learned_head True None
+RUN advection_square 128 head_backbone_only True None
+RUN advection_square 128 head_fixed_blend True None
+RUN advection_square 256 teno5 True None
+RUN advection_square 256 neno6 True None
+RUN advection_square 256 nn_teno5 True None
+RUN advection_square 256 learned_head True None
+RUN advection_smooth 64 teno5 True None
+RUN advection_smooth 64 neno6 True None
+RUN advection_smooth 64 nn_teno5 True None
+RUN advection_smooth 64 learned_head True None
+RUN advection_smooth 128 teno5 True None
+RUN advection_smooth 128 neno6 True None
+RUN advection_smooth 128 nn_teno5 True None
+RUN advection_smooth 128 learned_head True None
+RUN advection_smooth 256 teno5 True None
+RUN advection_smooth 256 neno6 True None
+RUN advection_smooth 256 nn_teno5 True None
+RUN advection_smooth 256 learned_head True None
+RUN two_rarefactions 64 teno5 True None
+RUN two_rarefactions 64 neno6 True None
+RUN two_rarefactions 64 nn_teno5 True None
+RUN two_rarefactions 64 learned_head True None
+RUN two_rarefactions 128 teno5 True None
+RUN two_rarefactions 128 neno6 True None
+RUN two_rarefactions 128 nn_teno5 True None
+RUN two_rarefactions 128 learned_head True None
+RUN strong_contrast 64 teno5 False {'step': 9, 'stage': 1, 'step_start_time': 0.0064, 'stage_min_density': array([0.01, 0.01, 0.01]), 'stage_min_pressure': array([-0.03464694, -0.03464694, -0.03464694]), 'nonfinite_values': 0}
+RUN strong_contrast 64 neno6 True None
+RUN strong_contrast 64 nn_teno5 False {'step': 7, 'stage': 1, 'step_start_time': 0.0048000000000000004, 'stage_min_density': array([0.00940206, 0.00940206, 0.00940206]), 'stage_min_pressure': array([-0.03080745, -0.03080745, -0.03080745]), 'nonfinite_values': 0}
+RUN strong_contrast 64 learned_head False {'step': 1, 'stage': 1, 'step_start_time': 0.0, 'stage_min_density': array([-0.00101764, -0.00101764, -0.00101764]), 'stage_min_pressure': array([0.01, 0.01, 0.01]), 'nonfinite_values': 0}
+RUN strong_contrast 128 teno5 False {'step': 9, 'stage': 1, 'step_start_time': 0.0032, 'stage_min_density': array([0.01, 0.01, 0.01]), 'stage_min_pressure': array([-0.03464694, -0.03464694, -0.03464694]), 'nonfinite_values': 0}
+RUN strong_contrast 128 neno6 True None
+RUN strong_contrast 128 nn_teno5 False {'step': 7, 'stage': 1, 'step_start_time': 0.0024000000000000002, 'stage_min_density': array([0.00940206, 0.00940206, 0.00940206]), 'stage_min_pressure': array([-0.03080745, -0.03080745, -0.03080745]), 'nonfinite_values': 0}
+RUN strong_contrast 128 learned_head False {'step': 1, 'stage': 1, 'step_start_time': 0.0, 'stage_min_density': array([-0.00101764, -0.00101764, -0.00101764]), 'stage_min_pressure': array([0.01, 0.01, 0.01]), 'nonfinite_values': 0}
+RUN near_vacuum 64 teno5 True None
+RUN near_vacuum 64 neno6 True None
+RUN near_vacuum 64 nn_teno5 True None
+RUN near_vacuum 64 learned_head True None
+RUN near_vacuum 128 teno5 True None
+RUN near_vacuum 128 neno6 True None
+RUN near_vacuum 128 nn_teno5 True None
+RUN near_vacuum 128 learned_head True None
+RUN blast_smoke 64 teno5 True None
+RUN blast_smoke 64 neno6 False {'step': 1, 'stage': 3, 'step_start_time': 0.0, 'stage_min_density': array([1.        , 0.99512682, 0.93151556]), 'stage_min_pressure': array([ 0.01      ,  0.00808813, -0.00174914]), 'nonfinite_values': 0}
+RUN blast_smoke 64 nn_teno5 False {'step': 5, 'stage': 3, 'step_start_time': 0.0003076923076923077, 'stage_min_density': array([0.88058115, 0.88870934, 0.87789643]), 'stage_min_pressure': array([ 0.00402521,  0.0037704 , -0.00047711]), 'nonfinite_values': 0}
+RUN blast_smoke 64 learned_head False {'step': 3, 'stage': 1, 'step_start_time': 0.00015384615384615385, 'stage_min_density': array([0.90296298, 0.90296298, 0.90296298]), 'stage_min_pressure': array([-0.00272182, -0.00272182, -0.00272182]), 'nonfinite_values': 0}
+RUN blast_smoke 128 teno5 True None
+RUN blast_smoke 128 neno6 False {'step': 1, 'stage': 3, 'step_start_time': 0.0, 'stage_min_density': array([1.        , 0.9947123 , 0.93009905]), 'stage_min_pressure': array([ 0.01      ,  0.00798912, -0.00322196]), 'nonfinite_values': 0}
+RUN blast_smoke 128 nn_teno5 False {'step': 5, 'stage': 3, 'step_start_time': 0.00016, 'stage_min_density': array([0.87081545, 0.87767545, 0.86753089]), 'stage_min_pressure': array([ 0.00349769,  0.00287504, -0.00241272]), 'nonfinite_values': 0}
+RUN blast_smoke 128 learned_head False {'step': 3, 'stage': 1, 'step_start_time': 8e-05, 'stage_min_density': array([0.89929032, 0.89929032, 0.89929032]), 'stage_min_pressure': array([-0.00337148, -0.00337148, -0.00337148]), 'nonfinite_values': 0}
+RUN blast_full 64 teno5 True None
+RUN blast_full 64 neno6 False {'step': 1, 'stage': 3, 'step_start_time': 0.0, 'stage_min_density': array([1.        , 0.99468908, 0.93002461]), 'stage_min_pressure': array([ 0.01      ,  0.00798372, -0.00330611]), 'nonfinite_values': 0}
+RUN blast_full 64 nn_teno5 False {'step': 5, 'stage': 3, 'step_start_time': 0.00032067510548523207, 'stage_min_density': array([0.87050384, 0.87739566, 0.86722117]), 'stage_min_pressure': array([ 0.00336605,  0.00273998, -0.00264283]), 'nonfinite_values': 0}
+RUN blast_full 64 learned_head False {'step': 3, 'stage': 1, 'step_start_time': 0.00016033755274261603, 'stage_min_density': array([0.89908819, 0.89908819, 0.89908819]), 'stage_min_pressure': array([-0.00340337, -0.00340337, -0.00340337]), 'nonfinite_values': 0}
+RUN blast_full 128 teno5 True None
+RUN blast_full 128 neno6 False {'step': 1, 'stage': 3, 'step_start_time': 0.0, 'stage_min_density': array([1.        , 0.99467742, 0.9299874 ]), 'stage_min_pressure': array([ 0.01      ,  0.00798101, -0.00334845]), 'nonfinite_values': 0}
+RUN blast_full 128 nn_teno5 False {'step': 5, 'stage': 3, 'step_start_time': 0.00016050686378035902, 'stage_min_density': array([0.87034759, 0.87725537, 0.86706588]), 'stage_min_pressure': array([ 0.00329928,  0.0026715 , -0.00275946]), 'nonfinite_values': 0}
+RUN blast_full 128 learned_head False {'step': 3, 'stage': 1, 'step_start_time': 8.025343189017951e-05, 'stage_min_density': array([0.8989868, 0.8989868, 0.8989868]), 'stage_min_pressure': array([-0.00341922, -0.00341922, -0.00341922]), 'nonfinite_values': 0}

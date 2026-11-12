@@ -1,0 +1,1 @@
+NEW MATCHED EVALUATION. Phase21 Euler rich head, eight inputs: three probabilities plus five normalized split-flux stencil values. Final-interface coefficients at SodT=.2 and Shu–OsherT=1.8,N=128. Shading shows fields/directions, not confidence bounds. Histogram observations are spatially correlated; no independence claim.
