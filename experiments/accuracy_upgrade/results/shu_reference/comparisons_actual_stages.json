@@ -1,0 +1,464 @@
+[
+  {
+    "cells": 64,
+    "variant": "historical_teno",
+    "uncertainty_proxy": 0.00659792935685889,
+    "density_uncertainty_proxy": 0.0024319319026864517,
+    "space_cauchy_coarse": 0.0060617812330764085,
+    "space_cauchy_fine": 0.0032876981404210952,
+    "time_cauchy": 1.126653800834993e-05,
+    "density_oscillation_range": 0.3721456005146986,
+    "reference_density_oscillation_range": 0.3752966651734678,
+    "ranking_resolved": false,
+    "reference": "FV TENO5 256/512/1024 plus finest dt/2; empirical Cauchy proxy, not error bound",
+    "primary_error": 0.0864746706846855,
+    "l1": 0.0864746706846855,
+    "l2": 0.4950418521834406,
+    "linf": 5.578301237155623,
+    "component_l1": [
+      0.02113130630518214,
+      0.05491572625621297,
+      0.18337697949266135
+    ],
+    "component_l2": [
+      0.08445635695135069,
+      0.24499948564664553,
+      0.8173381687178322
+    ],
+    "component_linf": [
+      0.5827964865394109,
+      1.656162389015193,
+      5.578301237155623
+    ],
+    "corrected_ranking_resolved": false
+  },
+  {
+    "cells": 64,
+    "variant": "historical_p0_learned",
+    "uncertainty_proxy": 0.00659792935685889,
+    "density_uncertainty_proxy": 0.0024319319026864517,
+    "space_cauchy_coarse": 0.0060617812330764085,
+    "space_cauchy_fine": 0.0032876981404210952,
+    "time_cauchy": 1.126653800834993e-05,
+    "density_oscillation_range": 0.37262978919694445,
+    "reference_density_oscillation_range": 0.3752966651734678,
+    "ranking_resolved": false,
+    "reference": "FV TENO5 256/512/1024 plus finest dt/2; empirical Cauchy proxy, not error bound",
+    "primary_error": 0.08452946206228022,
+    "l1": 0.08452946206228022,
+    "l2": 0.4844829773081525,
+    "linf": 5.463729344743946,
+    "component_l1": [
+      0.02036860361117728,
+      0.05363649517404894,
+      0.17958328740161442
+    ],
+    "component_l2": [
+      0.08197535957589101,
+      0.23933814333147455,
+      0.8001053427350434
+    ],
+    "component_linf": [
+      0.5663262668049822,
+      1.617692224720679,
+      5.463729344743946
+    ],
+    "corrected_ranking_resolved": false
+  },
+  {
+    "cells": 64,
+    "variant": "historical_v2_soft25",
+    "uncertainty_proxy": 0.00659792935685889,
+    "density_uncertainty_proxy": 0.0024319319026864517,
+    "space_cauchy_coarse": 0.0060617812330764085,
+    "space_cauchy_fine": 0.0032876981404210952,
+    "time_cauchy": 1.126653800834993e-05,
+    "density_oscillation_range": 0.37213555035045176,
+    "reference_density_oscillation_range": 0.3752966651734678,
+    "ranking_resolved": false,
+    "reference": "FV TENO5 256/512/1024 plus finest dt/2; empirical Cauchy proxy, not error bound",
+    "primary_error": 0.07382590991927195,
+    "l1": 0.07382590991927195,
+    "l2": 0.43527117639175084,
+    "linf": 4.889066630169571,
+    "component_l1": [
+      0.01805878597130746,
+      0.046817160825257526,
+      0.15660178296125082
+    ],
+    "component_l2": [
+      0.07442930583531375,
+      0.21506393826248135,
+      0.7187424934455182
+    ],
+    "component_linf": [
+      0.5226510110554263,
+      1.4642464989882646,
+      4.889066630169571
+    ],
+    "corrected_ranking_resolved": false
+  },
+  {
+    "cells": 64,
+    "variant": "fv_teno",
+    "uncertainty_proxy": 0.00659792935685889,
+    "density_uncertainty_proxy": 0.0024319319026864517,
+    "space_cauchy_coarse": 0.0060617812330764085,
+    "space_cauchy_fine": 0.0032876981404210952,
+    "time_cauchy": 1.126653800834993e-05,
+    "density_oscillation_range": 0.3721745934096462,
+    "reference_density_oscillation_range": 0.3752966651734678,
+    "ranking_resolved": false,
+    "reference": "FV TENO5 256/512/1024 plus finest dt/2; empirical Cauchy proxy, not error bound",
+    "primary_error": 0.08059623911785098,
+    "l1": 0.08059623911785098,
+    "l2": 0.4674867798127785,
+    "linf": 5.290818180623125,
+    "component_l1": [
+      0.020696948355959466,
+      0.05175546123240032,
+      0.16933630776519315
+    ],
+    "component_l2": [
+      0.08580066493492203,
+      0.23621301920652268,
+      0.7697228873778067
+    ],
+    "component_linf": [
+      0.5968114661805957,
+      1.6071608998757387,
+      5.290818180623125
+    ],
+    "corrected_ranking_resolved": false
+  },
+  {
+    "cells": 64,
+    "variant": "fv_v2_soft25",
+    "uncertainty_proxy": 0.00659792935685889,
+    "density_uncertainty_proxy": 0.0024319319026864517,
+    "space_cauchy_coarse": 0.0060617812330764085,
+    "space_cauchy_fine": 0.0032876981404210952,
+    "time_cauchy": 1.126653800834993e-05,
+    "density_oscillation_range": 0.3721645963016005,
+    "reference_density_oscillation_range": 0.3752966651734678,
+    "ranking_resolved": false,
+    "reference": "FV TENO5 256/512/1024 plus finest dt/2; empirical Cauchy proxy, not error bound",
+    "primary_error": 0.06926644074520445,
+    "l1": 0.06926644074520445,
+    "l2": 0.4076583589533358,
+    "linf": 4.567211952948037,
+    "component_l1": [
+      0.01829268304350254,
+      0.0445933565899585,
+      0.1449132826021524
+    ],
+    "component_l2": [
+      0.07674774342905202,
+      0.2070572865372545,
+      0.6706661441014882
+    ],
+    "component_linf": [
+      0.5384273422015071,
+      1.4074672865061797,
+      4.567211952948037
+    ],
+    "corrected_ranking_resolved": false
+  },
+  {
+    "cells": 64,
+    "variant": "safe_fv_teno",
+    "uncertainty_proxy": 0.00659792935685889,
+    "density_uncertainty_proxy": 0.0024319319026864517,
+    "space_cauchy_coarse": 0.0060617812330764085,
+    "space_cauchy_fine": 0.0032876981404210952,
+    "time_cauchy": 1.126653800834993e-05,
+    "density_oscillation_range": 0.3721745934096462,
+    "reference_density_oscillation_range": 0.3752966651734678,
+    "ranking_resolved": false,
+    "reference": "FV TENO5 256/512/1024 plus finest dt/2; empirical Cauchy proxy, not error bound",
+    "primary_error": 0.08059623911785134,
+    "l1": 0.08059623911785134,
+    "l2": 0.4674867798127784,
+    "linf": 5.290818180623129,
+    "component_l1": [
+      0.02069694835595952,
+      0.05175546123240037,
+      0.16933630776519412
+    ],
+    "component_l2": [
+      0.08580066493492228,
+      0.23621301920652274,
+      0.7697228873778066
+    ],
+    "component_linf": [
+      0.5968114661805966,
+      1.6071608998757396,
+      5.290818180623129
+    ],
+    "corrected_ranking_resolved": false
+  },
+  {
+    "cells": 64,
+    "variant": "safe_fv_v2_soft25",
+    "uncertainty_proxy": 0.00659792935685889,
+    "density_uncertainty_proxy": 0.0024319319026864517,
+    "space_cauchy_coarse": 0.0060617812330764085,
+    "space_cauchy_fine": 0.0032876981404210952,
+    "time_cauchy": 1.126653800834993e-05,
+    "density_oscillation_range": 0.3721645963016005,
+    "reference_density_oscillation_range": 0.3752966651734678,
+    "ranking_resolved": false,
+    "reference": "FV TENO5 256/512/1024 plus finest dt/2; empirical Cauchy proxy, not error bound",
+    "primary_error": 0.06926644074520535,
+    "l1": 0.06926644074520535,
+    "l2": 0.4076583589533366,
+    "linf": 4.567211952948043,
+    "component_l1": [
+      0.018292683043502938,
+      0.044593356589959124,
+      0.1449132826021539
+    ],
+    "component_l2": [
+      0.07674774342905236,
+      0.2070572865372549,
+      0.6706661441014894
+    ],
+    "component_linf": [
+      0.5384273422015082,
+      1.4074672865061812,
+      4.567211952948043
+    ],
+    "corrected_ranking_resolved": false
+  },
+  {
+    "cells": 128,
+    "variant": "historical_teno",
+    "uncertainty_proxy": 0.008827776005862539,
+    "density_uncertainty_proxy": 0.0032123483920219326,
+    "space_cauchy_coarse": 0.008755932489419303,
+    "space_cauchy_fine": 0.00433600261508689,
+    "time_cauchy": 7.788538784437954e-05,
+    "density_oscillation_range": 0.3978658000417392,
+    "reference_density_oscillation_range": 0.3962032960326479,
+    "ranking_resolved": false,
+    "reference": "FV TENO5 256/512/1024 plus finest dt/2; empirical Cauchy proxy, not error bound",
+    "primary_error": 0.03165997124917974,
+    "l1": 0.03165997124917974,
+    "l2": 0.22248395798461693,
+    "linf": 3.3818587603817614,
+    "component_l1": [
+      0.007861262207877237,
+      0.017743439192307135,
+      0.06937521234735484
+    ],
+    "component_l2": [
+      0.04089088011560467,
+      0.10659644736299663,
+      0.3680522626128815
+    ],
+    "component_linf": [
+      0.39819377295162184,
+      1.060777796899525,
+      3.3818587603817614
+    ],
+    "corrected_ranking_resolved": false
+  },
+  {
+    "cells": 128,
+    "variant": "historical_p0_learned",
+    "uncertainty_proxy": 0.008827776005862539,
+    "density_uncertainty_proxy": 0.0032123483920219326,
+    "space_cauchy_coarse": 0.008755932489419303,
+    "space_cauchy_fine": 0.00433600261508689,
+    "time_cauchy": 7.788538784437954e-05,
+    "density_oscillation_range": 0.3978915369918897,
+    "reference_density_oscillation_range": 0.3962032960326479,
+    "ranking_resolved": false,
+    "reference": "FV TENO5 256/512/1024 plus finest dt/2; empirical Cauchy proxy, not error bound",
+    "primary_error": 0.031165115626616124,
+    "l1": 0.031165115626616124,
+    "l2": 0.21756130848085117,
+    "linf": 3.324346834159938,
+    "component_l1": [
+      0.007837818135270938,
+      0.017461432714116647,
+      0.06819609603046076
+    ],
+    "component_l2": [
+      0.0406734540246829,
+      0.1048197488677648,
+      0.3596627020260802
+    ],
+    "component_linf": [
+      0.39613563485588177,
+      1.0435396108063226,
+      3.324346834159938
+    ],
+    "corrected_ranking_resolved": false
+  },
+  {
+    "cells": 128,
+    "variant": "historical_v2_soft25",
+    "uncertainty_proxy": 0.008827776005862539,
+    "density_uncertainty_proxy": 0.0032123483920219326,
+    "space_cauchy_coarse": 0.008755932489419303,
+    "space_cauchy_fine": 0.00433600261508689,
+    "time_cauchy": 7.788538784437954e-05,
+    "density_oscillation_range": 0.3977250114877777,
+    "reference_density_oscillation_range": 0.3962032960326479,
+    "ranking_resolved": false,
+    "reference": "FV TENO5 256/512/1024 plus finest dt/2; empirical Cauchy proxy, not error bound",
+    "primary_error": 0.025178246464356586,
+    "l1": 0.025178246464356586,
+    "l2": 0.17316572259230498,
+    "linf": 2.775288602279211,
+    "component_l1": [
+      0.006809154059718524,
+      0.014548835512035731,
+      0.0541767498213155
+    ],
+    "component_l2": [
+      0.03705793233704841,
+      0.08917861208777786,
+      0.2839594816866408
+    ],
+    "component_linf": [
+      0.3596461142125651,
+      0.8972096707112542,
+      2.775288602279211
+    ],
+    "corrected_ranking_resolved": false
+  },
+  {
+    "cells": 128,
+    "variant": "fv_teno",
+    "uncertainty_proxy": 0.008827776005862539,
+    "density_uncertainty_proxy": 0.0032123483920219326,
+    "space_cauchy_coarse": 0.008755932489419303,
+    "space_cauchy_fine": 0.00433600261508689,
+    "time_cauchy": 7.788538784437954e-05,
+    "density_oscillation_range": 0.397862593468578,
+    "reference_density_oscillation_range": 0.3962032960326479,
+    "ranking_resolved": false,
+    "reference": "FV TENO5 256/512/1024 plus finest dt/2; empirical Cauchy proxy, not error bound",
+    "primary_error": 0.03317639177895887,
+    "l1": 0.03317639177895887,
+    "l2": 0.2267428664706286,
+    "linf": 3.2698513462050443,
+    "component_l1": [
+      0.008627065898678354,
+      0.018709277061169774,
+      0.07219283237702845
+    ],
+    "component_l2": [
+      0.04369891209754537,
+      0.10811432541505088,
+      0.37501823983306654
+    ],
+    "component_linf": [
+      0.42311679147503223,
+      1.0442967860768206,
+      3.2698513462050443
+    ],
+    "corrected_ranking_resolved": false
+  },
+  {
+    "cells": 128,
+    "variant": "fv_v2_soft25",
+    "uncertainty_proxy": 0.008827776005862539,
+    "density_uncertainty_proxy": 0.0032123483920219326,
+    "space_cauchy_coarse": 0.008755932489419303,
+    "space_cauchy_fine": 0.00433600261508689,
+    "time_cauchy": 7.788538784437954e-05,
+    "density_oscillation_range": 0.39771453635447307,
+    "reference_density_oscillation_range": 0.3962032960326479,
+    "ranking_resolved": false,
+    "reference": "FV TENO5 256/512/1024 plus finest dt/2; empirical Cauchy proxy, not error bound",
+    "primary_error": 0.025083516908973775,
+    "l1": 0.025083516908973775,
+    "l2": 0.16976700528838212,
+    "linf": 2.63976892358125,
+    "component_l1": [
+      0.007250288882106303,
+      0.013870187702407234,
+      0.054130074142407794
+    ],
+    "component_l2": [
+      0.03808747307248798,
+      0.08616133098001888,
+      0.2785463654267649
+    ],
+    "component_linf": [
+      0.37213029133953257,
+      0.8630295608711942,
+      2.63976892358125
+    ],
+    "corrected_ranking_resolved": false
+  },
+  {
+    "cells": 128,
+    "variant": "safe_fv_teno",
+    "uncertainty_proxy": 0.008827776005862539,
+    "density_uncertainty_proxy": 0.0032123483920219326,
+    "space_cauchy_coarse": 0.008755932489419303,
+    "space_cauchy_fine": 0.00433600261508689,
+    "time_cauchy": 7.788538784437954e-05,
+    "density_oscillation_range": 0.397862593468578,
+    "reference_density_oscillation_range": 0.3962032960326479,
+    "ranking_resolved": false,
+    "reference": "FV TENO5 256/512/1024 plus finest dt/2; empirical Cauchy proxy, not error bound",
+    "primary_error": 0.033176391778959244,
+    "l1": 0.033176391778959244,
+    "l2": 0.2267428664706292,
+    "linf": 3.269851346205056,
+    "component_l1": [
+      0.008627065898678272,
+      0.018709277061170024,
+      0.07219283237702939
+    ],
+    "component_l2": [
+      0.04369891209754524,
+      0.10811432541505112,
+      0.37501823983306753
+    ],
+    "component_linf": [
+      0.42311679147503134,
+      1.0442967860768237,
+      3.269851346205056
+    ],
+    "corrected_ranking_resolved": false
+  },
+  {
+    "cells": 128,
+    "variant": "safe_fv_v2_soft25",
+    "uncertainty_proxy": 0.008827776005862539,
+    "density_uncertainty_proxy": 0.0032123483920219326,
+    "space_cauchy_coarse": 0.008755932489419303,
+    "space_cauchy_fine": 0.00433600261508689,
+    "time_cauchy": 7.788538784437954e-05,
+    "density_oscillation_range": 0.3977145363544734,
+    "reference_density_oscillation_range": 0.3962032960326479,
+    "ranking_resolved": false,
+    "reference": "FV TENO5 256/512/1024 plus finest dt/2; empirical Cauchy proxy, not error bound",
+    "primary_error": 0.025083516908973588,
+    "l1": 0.025083516908973588,
+    "l2": 0.16976700528838135,
+    "linf": 2.6397689235812365,
+    "component_l1": [
+      0.007250288882105976,
+      0.013870187702407055,
+      0.05413007414240774
+    ],
+    "component_l2": [
+      0.038087473072487485,
+      0.08616133098001838,
+      0.27854636542676375
+    ],
+    "component_linf": [
+      0.372130291339529,
+      0.8630295608711895,
+      2.6397689235812365
+    ],
+    "corrected_ranking_resolved": false
+  }
+]

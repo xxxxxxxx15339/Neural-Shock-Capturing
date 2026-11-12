@@ -1,0 +1,1162 @@
+{
+  "protocol": "CPU float64; no concurrent experiment jobs; one first execution plus nine synchronized repeats",
+  "rows": [
+    {
+      "variant": "historical_teno",
+      "cells": 64,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.002173913043478261,
+      "steps": 69,
+      "lower_s": 0.5241996740005561,
+      "compile_s": 1.4134510239982774,
+      "first_s": 0.03661767799894733,
+      "warm_repeats_s": [
+        0.03617899100026989,
+        0.035522463000233984,
+        0.03552735100129212,
+        0.03705657499995141,
+        0.03646269599994412,
+        0.03589088700027787,
+        0.038791417000538786,
+        0.03804241500074568,
+        0.03907707700091123
+      ],
+      "warm_median_s": 0.03646269599994412,
+      "warm_per_step_s": 0.0005284448695644074,
+      "executable_temporary_bytes": 57696,
+      "process_peak_rss_kib": 399280,
+      "primary_error": 0.00898541256112985,
+      "l1": 0.00898541256112985,
+      "l2": 0.02046835426962369,
+      "linf": 0.13036713809128386,
+      "component_l1": [
+        0.006838350011505984,
+        0.005766498082689329,
+        0.014351389589194241
+      ],
+      "component_l2": [
+        0.01375004652195694,
+        0.012867731015736895,
+        0.030036948890843247
+      ],
+      "component_linf": [
+        0.06213557831812999,
+        0.057479804682871394,
+        0.13036713809128386
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "historical_p0_learned",
+      "cells": 64,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.002173913043478261,
+      "steps": 69,
+      "lower_s": 0.5672424660006072,
+      "compile_s": 1.914019587000439,
+      "first_s": 0.13738247100081935,
+      "warm_repeats_s": [
+        0.0922343889997137,
+        0.0916478429990093,
+        0.09247800299999653,
+        0.09253171300042595,
+        0.0906503390015132,
+        0.09245453600124165,
+        0.09095904800051358,
+        0.09025362799911818,
+        0.09787907000099949
+      ],
+      "warm_median_s": 0.0922343889997137,
+      "warm_per_step_s": 0.0013367302753581696,
+      "executable_temporary_bytes": 356448,
+      "process_peak_rss_kib": 435552,
+      "primary_error": 0.008845784701725659,
+      "l1": 0.008845784701725659,
+      "l2": 0.020142578738578134,
+      "linf": 0.12821791415286432,
+      "component_l1": [
+        0.006745440712491084,
+        0.005672942882732837,
+        0.014118970509953064
+      ],
+      "component_l2": [
+        0.013580860167568652,
+        0.012675344730328879,
+        0.02953076883177495
+      ],
+      "component_linf": [
+        0.062138821141193346,
+        0.05748441368831936,
+        0.12821791415286432
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "historical_v2_soft25",
+      "cells": 64,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.002173913043478261,
+      "steps": 69,
+      "lower_s": 0.683911319998515,
+      "compile_s": 1.9191688780010736,
+      "first_s": 0.13805122299891082,
+      "warm_repeats_s": [
+        0.09430413200061594,
+        0.09614569500081416,
+        0.09139752600094653,
+        0.0893699000007473,
+        0.09297710500140965,
+        0.08967511500122782,
+        0.09044751400142559,
+        0.09097581100104435,
+        0.09184585000002699
+      ],
+      "warm_median_s": 0.09139752600094653,
+      "warm_per_step_s": 0.0013246018261006743,
+      "executable_temporary_bytes": 356448,
+      "process_peak_rss_kib": 446688,
+      "primary_error": 0.008163964939895808,
+      "l1": 0.008163964939895808,
+      "l2": 0.01902584991436539,
+      "linf": 0.12323279433846368,
+      "component_l1": [
+        0.0062839236195190405,
+        0.005238876275137581,
+        0.012969094925030797
+      ],
+      "component_l2": [
+        0.012980861890946445,
+        0.01211446841321994,
+        0.027761227900169383
+      ],
+      "component_linf": [
+        0.059502198077816815,
+        0.05494653984843234,
+        0.12323279433846368
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "fv_teno",
+      "cells": 64,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.002173913043478261,
+      "steps": 69,
+      "lower_s": 0.48293070799991256,
+      "compile_s": 1.2656948620006006,
+      "first_s": 0.036266785999032436,
+      "warm_repeats_s": [
+        0.035405614999035606,
+        0.034776604999933625,
+        0.03536971599896788,
+        0.03566075299931981,
+        0.035150196999893524,
+        0.036007037000672426,
+        0.03516116299942951,
+        0.035121630999128683,
+        0.03485762300078932
+      ],
+      "warm_median_s": 0.03516116299942951,
+      "warm_per_step_s": 0.0005095820724555001,
+      "executable_temporary_bytes": 55904,
+      "process_peak_rss_kib": 449120,
+      "primary_error": 0.008446681899064655,
+      "l1": 0.008446681899064655,
+      "l2": 0.01931954458361516,
+      "linf": 0.12369273459016306,
+      "component_l1": [
+        0.006466396143294471,
+        0.00548227176835072,
+        0.013391377785548777
+      ],
+      "component_l2": [
+        0.013148586198281907,
+        0.01245539546855669,
+        0.02813738106972804
+      ],
+      "component_linf": [
+        0.059125740116761805,
+        0.05461888898749612,
+        0.12369273459016306
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "fv_v2_soft25",
+      "cells": 64,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.002173913043478261,
+      "steps": 69,
+      "lower_s": 0.6244252870001219,
+      "compile_s": 1.7406140430011874,
+      "first_s": 0.1310550729995157,
+      "warm_repeats_s": [
+        0.09058964600080799,
+        0.08854239399988728,
+        0.0895262099984393,
+        0.09092175200021302,
+        0.0899456890001602,
+        0.09105808700041962,
+        0.09157688500090444,
+        0.09232260299904738,
+        0.0904774089995044
+      ],
+      "warm_median_s": 0.09058964600080799,
+      "warm_per_step_s": 0.0013128934203015651,
+      "executable_temporary_bytes": 357600,
+      "process_peak_rss_kib": 451936,
+      "primary_error": 0.007843830589606136,
+      "l1": 0.007843830589606136,
+      "l2": 0.01822777952624754,
+      "linf": 0.11605906411425071,
+      "component_l1": [
+        0.0060876807429549075,
+        0.005129703450944199,
+        0.012314107574919297
+      ],
+      "component_l2": [
+        0.012590565430133163,
+        0.011817261298413676,
+        0.026430774429195548
+      ],
+      "component_linf": [
+        0.057433831670190894,
+        0.053117517841896555,
+        0.11605906411425071
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "safe_fv_teno",
+      "cells": 64,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.002173913043478261,
+      "steps": 69,
+      "lower_s": 0.8821403949987143,
+      "compile_s": 2.0440905380000913,
+      "first_s": 0.043312036999850534,
+      "warm_repeats_s": [
+        0.038932642000872875,
+        0.039242328000909765,
+        0.04224329199860222,
+        0.04270809999979974,
+        0.03927829600070254,
+        0.038417127001594054,
+        0.03839058599987766,
+        0.03849940200052515,
+        0.03858957000011287
+      ],
+      "warm_median_s": 0.038932642000872875,
+      "warm_per_step_s": 0.0005642411884184475,
+      "executable_temporary_bytes": 57192,
+      "process_peak_rss_kib": 467936,
+      "primary_error": 0.00844668189906455,
+      "l1": 0.00844668189906455,
+      "l2": 0.019319544583614925,
+      "linf": 0.12369273459015595,
+      "component_l1": [
+        0.006466396143294449,
+        0.005482271768350635,
+        0.013391377785548563
+      ],
+      "component_l2": [
+        0.013148586198281907,
+        0.012455395468556597,
+        0.028137381069727598
+      ],
+      "component_linf": [
+        0.05912574011676236,
+        0.054618888987496284,
+        0.12369273459015595
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "safe_fv_v2_soft25",
+      "cells": 64,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.002173913043478261,
+      "steps": 69,
+      "lower_s": 0.9697469629991247,
+      "compile_s": 2.6122102680001262,
+      "first_s": 0.1509283380000852,
+      "warm_repeats_s": [
+        0.09998534199985443,
+        0.09842231400034507,
+        0.09725306499967701,
+        0.09536191299957864,
+        0.09337416699963796,
+        0.09153442099886888,
+        0.09461528599968005,
+        0.0980982410001161,
+        0.09527467800035083
+      ],
+      "warm_median_s": 0.09536191299957864,
+      "warm_per_step_s": 0.0013820567101388208,
+      "executable_temporary_bytes": 361568,
+      "process_peak_rss_kib": 483604,
+      "primary_error": 0.007843830589606126,
+      "l1": 0.007843830589606126,
+      "l2": 0.01822777952624759,
+      "linf": 0.1160590641142516,
+      "component_l1": [
+        0.0060876807429549006,
+        0.005129703450944201,
+        0.012314107574919284
+      ],
+      "component_l2": [
+        0.012590565430133092,
+        0.011817261298413626,
+        0.026430774429195704
+      ],
+      "component_linf": [
+        0.05743383167019095,
+        0.053117517841896056,
+        0.1160590641142516
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "historical_teno",
+      "cells": 128,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.001094890510948905,
+      "steps": 137,
+      "lower_s": 0.47339869099960197,
+      "compile_s": 1.4023713900005532,
+      "first_s": 0.1427840300002572,
+      "warm_repeats_s": [
+        0.13847475799957465,
+        0.13905348099979165,
+        0.14139072299985855,
+        0.13857847500003118,
+        0.13962996899863356,
+        0.13805681399935565,
+        0.14176634199975524,
+        0.1384672149997641,
+        0.13751622600102564
+      ],
+      "warm_median_s": 0.13857847500003118,
+      "warm_per_step_s": 0.0010115217153286948,
+      "executable_temporary_bytes": 114784,
+      "process_peak_rss_kib": 491796,
+      "primary_error": 0.004210634230480899,
+      "l1": 0.004210634230480899,
+      "l2": 0.011313436356911195,
+      "linf": 0.09297031666627742,
+      "component_l1": [
+        0.0033539059754593304,
+        0.002680916578751568,
+        0.0065970801372318
+      ],
+      "component_l2": [
+        0.008453869572659181,
+        0.007753069320695282,
+        0.015887212844379002
+      ],
+      "component_linf": [
+        0.052585132103353915,
+        0.04877659967709125,
+        0.09297031666627742
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "historical_p0_learned",
+      "cells": 128,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.001094890510948905,
+      "steps": 137,
+      "lower_s": 0.6491723849994742,
+      "compile_s": 1.88735084200016,
+      "first_s": 0.40032013400013966,
+      "warm_repeats_s": [
+        0.35395167599926936,
+        0.35409345900006883,
+        0.35138946900042356,
+        0.3448958409990155,
+        0.3443713860015123,
+        0.34504754199952004,
+        0.3438605510000343,
+        0.3496100669999578,
+        0.34452406499985955
+      ],
+      "warm_median_s": 0.34504754199952004,
+      "warm_per_step_s": 0.0025185951970767887,
+      "executable_temporary_bytes": 712288,
+      "process_peak_rss_kib": 497812,
+      "primary_error": 0.004144747861418553,
+      "l1": 0.004144747861418553,
+      "l2": 0.01112267280887632,
+      "linf": 0.09135076927565322,
+      "component_l1": [
+        0.0033027613454597103,
+        0.002635839386845989,
+        0.006495642851949958
+      ],
+      "component_l2": [
+        0.008321725654060603,
+        0.007612828348468078,
+        0.015618427510964747
+      ],
+      "component_linf": [
+        0.05249098506542821,
+        0.04871993223572918,
+        0.09135076927565322
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "historical_v2_soft25",
+      "cells": 128,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.001094890510948905,
+      "steps": 137,
+      "lower_s": 0.5742131540009723,
+      "compile_s": 2.008389543998419,
+      "first_s": 0.39789740800006257,
+      "warm_repeats_s": [
+        0.35233103199971083,
+        0.34778156699940155,
+        0.3444501730009506,
+        0.3481534130005457,
+        0.3633324289985467,
+        0.3486208070007706,
+        0.35249677100000554,
+        0.3508435069998086,
+        0.3498517300013191
+      ],
+      "warm_median_s": 0.3498517300013191,
+      "warm_per_step_s": 0.002553662262783351,
+      "executable_temporary_bytes": 712288,
+      "process_peak_rss_kib": 499348,
+      "primary_error": 0.0038720685132801903,
+      "l1": 0.0038720685132801903,
+      "l2": 0.010360979653370631,
+      "linf": 0.0860827489057403,
+      "component_l1": [
+        0.003122129224094065,
+        0.0024674842834070164,
+        0.006026592032339493
+      ],
+      "component_l2": [
+        0.007906912706434212,
+        0.007197719155700403,
+        0.01441260797153566
+      ],
+      "component_linf": [
+        0.04993351879216257,
+        0.04643273822240762,
+        0.0860827489057403
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "fv_teno",
+      "cells": 128,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.001094890510948905,
+      "steps": 137,
+      "lower_s": 0.4807771790001425,
+      "compile_s": 1.2505699699995603,
+      "first_s": 0.1307936539997172,
+      "warm_repeats_s": [
+        0.12963662699985434,
+        0.12963446199864848,
+        0.13174170999991475,
+        0.13055227499899047,
+        0.1354249060004804,
+        0.1377976990006573,
+        0.13011826799993287,
+        0.12964891999945394,
+        0.1283925059997273
+      ],
+      "warm_median_s": 0.13011826799993287,
+      "warm_per_step_s": 0.0009497683795615538,
+      "executable_temporary_bytes": 109408,
+      "process_peak_rss_kib": 499860,
+      "primary_error": 0.00391321935421035,
+      "l1": 0.00391321935421035,
+      "l2": 0.010556586474563028,
+      "linf": 0.08776718418100593,
+      "component_l1": [
+        0.0031638538828285497,
+        0.0025510957845982776,
+        0.00602470839520422
+      ],
+      "component_l2": [
+        0.008084029956766135,
+        0.007487610381797668,
+        0.014591391448840123
+      ],
+      "component_linf": [
+        0.050348449538512696,
+        0.04667463336594868,
+        0.08776718418100593
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "fv_v2_soft25",
+      "cells": 128,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.001094890510948905,
+      "steps": 137,
+      "lower_s": 0.7188826219990005,
+      "compile_s": 1.763482145001035,
+      "first_s": 0.38529017599830695,
+      "warm_repeats_s": [
+        0.35244837299978826,
+        0.3471965629996703,
+        0.3425623090006411,
+        0.3355493250001018,
+        0.3280310930003907,
+        0.33225662400036526,
+        0.3280415699991863,
+        0.3294243309992453,
+        0.33357289400009904
+      ],
+      "warm_median_s": 0.33357289400009904,
+      "warm_per_step_s": 0.0024348386423364895,
+      "executable_temporary_bytes": 708320,
+      "process_peak_rss_kib": 499988,
+      "primary_error": 0.0036236978366649916,
+      "l1": 0.0036236978366649916,
+      "l2": 0.009777018342316,
+      "linf": 0.07986687225038569,
+      "component_l1": [
+        0.002954895655970345,
+        0.0023421364728644935,
+        0.005574061381160139
+      ],
+      "component_l2": [
+        0.007622162059496395,
+        0.0069737022345677125,
+        0.013417912866027618
+      ],
+      "component_linf": [
+        0.04851808791995654,
+        0.04494886768360301,
+        0.07986687225038569
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "safe_fv_teno",
+      "cells": 128,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.001094890510948905,
+      "steps": 137,
+      "lower_s": 0.7507624070003658,
+      "compile_s": 1.9863379809994512,
+      "first_s": 0.14504864199989242,
+      "warm_repeats_s": [
+        0.1422810929998377,
+        0.14568205199975637,
+        0.15510561399969447,
+        0.14715498199984722,
+        0.14340836799965473,
+        0.1407057739997981,
+        0.14496182699986093,
+        0.14536098200005654,
+        0.14461170100003073
+      ],
+      "warm_median_s": 0.14496182699986093,
+      "warm_per_step_s": 0.0010581155255464303,
+      "executable_temporary_bytes": 109416,
+      "process_peak_rss_kib": 505860,
+      "primary_error": 0.003913219354210412,
+      "l1": 0.003913219354210412,
+      "l2": 0.010556586474562814,
+      "linf": 0.08776718418100282,
+      "component_l1": [
+        0.003163853882828517,
+        0.002551095784598331,
+        0.006024708395204387
+      ],
+      "component_l2": [
+        0.008084029956766044,
+        0.007487610381797646,
+        0.014591391448839724
+      ],
+      "component_linf": [
+        0.050348449538513085,
+        0.046674633365949236,
+        0.08776718418100282
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "safe_fv_v2_soft25",
+      "cells": 128,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.001094890510948905,
+      "steps": 137,
+      "lower_s": 1.123454575001233,
+      "compile_s": 2.611337510999874,
+      "first_s": 0.3880298629992467,
+      "warm_repeats_s": [
+        0.3418223919998127,
+        0.33663721199991414,
+        0.34434947000045213,
+        0.35363131899975997,
+        0.3719857679989218,
+        0.36672082699988096,
+        0.3563511659995129,
+        0.3599033350001264,
+        0.347281499998644
+      ],
+      "warm_median_s": 0.35363131899975997,
+      "warm_per_step_s": 0.002581250503647883,
+      "executable_temporary_bytes": 713312,
+      "process_peak_rss_kib": 514804,
+      "primary_error": 0.003623697836665059,
+      "l1": 0.003623697836665059,
+      "l2": 0.009777018342316047,
+      "linf": 0.07986687225038391,
+      "component_l1": [
+        0.0029548956559703114,
+        0.0023421364728644927,
+        0.00557406138116037
+      ],
+      "component_l2": [
+        0.0076221620594964555,
+        0.00697370223456782,
+        0.013417912866027627
+      ],
+      "component_linf": [
+        0.04851808791995693,
+        0.04494886768360379,
+        0.07986687225038391
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "historical_teno",
+      "cells": 256,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.0005494505494505495,
+      "steps": 273,
+      "lower_s": 0.4686821890009014,
+      "compile_s": 1.4800683699995716,
+      "first_s": 0.5554708220006432,
+      "warm_repeats_s": [
+        0.5346691970007669,
+        0.5263778690004983,
+        0.543379239999922,
+        0.5347501479991479,
+        0.5380668050001987,
+        0.5281145989993092,
+        0.5349034549999487,
+        0.541219541000828,
+        0.5399532800001907
+      ],
+      "warm_median_s": 0.5349034549999487,
+      "warm_per_step_s": 0.001959353315018127,
+      "executable_temporary_bytes": 228960,
+      "process_peak_rss_kib": 521716,
+      "primary_error": 0.0022292623397649203,
+      "l1": 0.0022292623397649203,
+      "l2": 0.007214204921768314,
+      "linf": 0.06838017855023565,
+      "component_l1": [
+        0.0017508564817267135,
+        0.0014141145736333211,
+        0.0035228159639347258
+      ],
+      "component_l2": [
+        0.005395247578167188,
+        0.005182107063885696,
+        0.010008562729408529
+      ],
+      "component_linf": [
+        0.0502211775043051,
+        0.04654194220740221,
+        0.06838017855023565
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "historical_p0_learned",
+      "cells": 256,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.0005494505494505495,
+      "steps": 273,
+      "lower_s": 0.5699278689990024,
+      "compile_s": 1.944331444999989,
+      "first_s": 1.4881179920012073,
+      "warm_repeats_s": [
+        1.4123545059992466,
+        1.4318708749997313,
+        1.4334051989990257,
+        1.5153860899990832,
+        1.5215768099988054,
+        1.5079810810002527,
+        1.4842990439992718,
+        1.4601199299995642,
+        1.4787713570003689
+      ],
+      "warm_median_s": 1.4787713570003689,
+      "warm_per_step_s": 0.005416744897437249,
+      "executable_temporary_bytes": 1423968,
+      "process_peak_rss_kib": 528532,
+      "primary_error": 0.0021838633242663567,
+      "l1": 0.0021838633242663567,
+      "l2": 0.0070624789237370405,
+      "linf": 0.06653462787548214,
+      "component_l1": [
+        0.0017148904227039627,
+        0.0013810388465158275,
+        0.003455660703579281
+      ],
+      "component_l2": [
+        0.0052725656657723685,
+        0.005049979266317898,
+        0.00981496746579261
+      ],
+      "component_linf": [
+        0.04888198396066079,
+        0.04529432534550931,
+        0.06653462787548214
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "historical_v2_soft25",
+      "cells": 256,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.0005494505494505495,
+      "steps": 273,
+      "lower_s": 0.6071015210000041,
+      "compile_s": 2.035298167998917,
+      "first_s": 1.4933490990006248,
+      "warm_repeats_s": [
+        1.4544532639993122,
+        1.4351566980003554,
+        1.4222626159989886,
+        1.4511117519996333,
+        1.4453204019991972,
+        1.4219493769996916,
+        1.4554413579990069,
+        1.4463950239987753,
+        1.4610335229990596
+      ],
+      "warm_median_s": 1.4463950239987753,
+      "warm_per_step_s": 0.005298150271057785,
+      "executable_temporary_bytes": 1423968,
+      "process_peak_rss_kib": 529684,
+      "primary_error": 0.002040240330396905,
+      "l1": 0.002040240330396905,
+      "l2": 0.006490911375501025,
+      "linf": 0.06049184765385257,
+      "component_l1": [
+        0.0016354947987346174,
+        0.001302091650928608,
+        0.0031831345415274893
+      ],
+      "component_l2": [
+        0.005069466640108956,
+        0.004785339139472969,
+        0.008820251059855178
+      ],
+      "component_linf": [
+        0.04829150097372009,
+        0.04478162434512334,
+        0.06049184765385257
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "fv_teno",
+      "cells": 256,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.0005494505494505495,
+      "steps": 273,
+      "lower_s": 0.5877053719996184,
+      "compile_s": 1.2830322270001489,
+      "first_s": 0.5204119400004856,
+      "warm_repeats_s": [
+        0.5003408759985177,
+        0.5010463649996382,
+        0.49503486700086796,
+        0.49505882400080736,
+        0.5016782410002634,
+        0.5009712859991851,
+        0.5080987440014724,
+        0.4921650699998281,
+        0.4948414030004642
+      ],
+      "warm_median_s": 0.5003408759985177,
+      "warm_per_step_s": 0.001832750461533032,
+      "executable_temporary_bytes": 216416,
+      "process_peak_rss_kib": 530836,
+      "primary_error": 0.0020714842030739662,
+      "l1": 0.0020714842030739662,
+      "l2": 0.00677914866858136,
+      "linf": 0.06830097973111493,
+      "component_l1": [
+        0.0016419783738210144,
+        0.0013348896120382622,
+        0.0032375846233626236
+      ],
+      "component_l2": [
+        0.005232279281655247,
+        0.00502476943576896,
+        0.009232849811857041
+      ],
+      "component_linf": [
+        0.049483779572654374,
+        0.046000104666068686,
+        0.06830097973111493
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "fv_v2_soft25",
+      "cells": 256,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.0005494505494505495,
+      "steps": 273,
+      "lower_s": 0.6006259330006287,
+      "compile_s": 1.7381968850004341,
+      "first_s": 1.472757053999885,
+      "warm_repeats_s": [
+        1.3971706859992992,
+        1.4184102340004756,
+        1.408644720000666,
+        1.3777352069992048,
+        1.4192795140006638,
+        1.389624809000452,
+        1.389084852000451,
+        1.3873186529999657,
+        1.3876892440002848
+      ],
+      "warm_median_s": 1.389624809000452,
+      "warm_per_step_s": 0.005090200765569421,
+      "executable_temporary_bytes": 1409760,
+      "process_peak_rss_kib": 530836,
+      "primary_error": 0.001875431311129297,
+      "l1": 0.001875431311129297,
+      "l2": 0.006071752573196401,
+      "linf": 0.059175769173193504,
+      "component_l1": [
+        0.0015104575786138736,
+        0.0012099415466916871,
+        0.0029058948080823302
+      ],
+      "component_l2": [
+        0.004873772126431774,
+        0.004587893653773948,
+        0.008111480445123982
+      ],
+      "component_linf": [
+        0.04728728190176812,
+        0.04384691482331887,
+        0.059175769173193504
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "safe_fv_teno",
+      "cells": 256,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.0005494505494505495,
+      "steps": 273,
+      "lower_s": 0.7108495230004337,
+      "compile_s": 2.047433732001082,
+      "first_s": 0.5524484680008754,
+      "warm_repeats_s": [
+        0.5379919130009512,
+        0.5382569000012154,
+        0.5321881290001329,
+        0.550165634998848,
+        0.546214099998906,
+        0.5490033000005496,
+        0.5474702360006631,
+        0.5417309180011216,
+        0.5371896939996077
+      ],
+      "warm_median_s": 0.5417309180011216,
+      "warm_per_step_s": 0.0019843623370004453,
+      "executable_temporary_bytes": 213864,
+      "process_peak_rss_kib": 536212,
+      "primary_error": 0.002071484203214536,
+      "l1": 0.002071484203214536,
+      "l2": 0.0067795188211809245,
+      "linf": 0.06830097973111232,
+      "component_l1": [
+        0.0016419783739247784,
+        0.0013348896121389974,
+        0.0032375846235798314
+      ],
+      "component_l2": [
+        0.005232378017998531,
+        0.005024910183505413,
+        0.009233532599428485
+      ],
+      "component_linf": [
+        0.04948377957265376,
+        0.046000104666067854,
+        0.06830097973111232
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    },
+    {
+      "variant": "safe_fv_v2_soft25",
+      "cells": 256,
+      "case": "Sod",
+      "time": 0.15,
+      "dt": 0.0005494505494505495,
+      "steps": 273,
+      "lower_s": 1.1274679870002728,
+      "compile_s": 2.5632567920001748,
+      "first_s": 1.4196571949996724,
+      "warm_repeats_s": [
+        1.4224090299994714,
+        1.4183422559999599,
+        1.4615318689993728,
+        1.4243215630012855,
+        1.3996331479993387,
+        1.445876178000617,
+        1.4132648570011952,
+        1.390628094000931,
+        1.4318511940000462
+      ],
+      "warm_median_s": 1.4224090299994714,
+      "warm_per_step_s": 0.005210289487177551,
+      "executable_temporary_bytes": 1416800,
+      "process_peak_rss_kib": 545556,
+      "primary_error": 0.0018754313111293923,
+      "l1": 0.0018754313111293923,
+      "l2": 0.006071752573196425,
+      "linf": 0.05917576917319417,
+      "component_l1": [
+        0.0015104575786139053,
+        0.0012099415466917654,
+        0.0029058948080825063
+      ],
+      "component_l2": [
+        0.00487377212643175,
+        0.004587893653773989,
+        0.008111480445124029
+      ],
+      "component_linf": [
+        0.0472872819017679,
+        0.04384691482331893,
+        0.05917576917319417
+      ],
+      "diagnostic_overhead": false,
+      "retry_policy": "single attempt, no retries needed on this case"
+    }
+  ],
+  "equal_budget": [
+    {
+      "baseline_cells": 64,
+      "budget_s": 0.03646269599994412,
+      "variant": "historical_teno",
+      "best_measured_grid": 64,
+      "error_ratio": 1.0,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 64,
+      "budget_s": 0.03646269599994412,
+      "variant": "historical_p0_learned",
+      "best_measured_grid": null,
+      "error_ratio": null,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 64,
+      "budget_s": 0.03646269599994412,
+      "variant": "historical_v2_soft25",
+      "best_measured_grid": null,
+      "error_ratio": null,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 64,
+      "budget_s": 0.03646269599994412,
+      "variant": "fv_teno",
+      "best_measured_grid": 64,
+      "error_ratio": 0.9400438590437461,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 64,
+      "budget_s": 0.03646269599994412,
+      "variant": "fv_v2_soft25",
+      "best_measured_grid": null,
+      "error_ratio": null,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 64,
+      "budget_s": 0.03646269599994412,
+      "variant": "safe_fv_teno",
+      "best_measured_grid": null,
+      "error_ratio": null,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 64,
+      "budget_s": 0.03646269599994412,
+      "variant": "safe_fv_v2_soft25",
+      "best_measured_grid": null,
+      "error_ratio": null,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 128,
+      "budget_s": 0.13857847500003118,
+      "variant": "historical_teno",
+      "best_measured_grid": 128,
+      "error_ratio": 1.0,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 128,
+      "budget_s": 0.13857847500003118,
+      "variant": "historical_p0_learned",
+      "best_measured_grid": 64,
+      "error_ratio": 2.1008200231905154,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 128,
+      "budget_s": 0.13857847500003118,
+      "variant": "historical_v2_soft25",
+      "best_measured_grid": 64,
+      "error_ratio": 1.9388919799294457,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 128,
+      "budget_s": 0.13857847500003118,
+      "variant": "fv_teno",
+      "best_measured_grid": 128,
+      "error_ratio": 0.9293657772224541,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 128,
+      "budget_s": 0.13857847500003118,
+      "variant": "fv_v2_soft25",
+      "best_measured_grid": 64,
+      "error_ratio": 1.8628620203636848,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 128,
+      "budget_s": 0.13857847500003118,
+      "variant": "safe_fv_teno",
+      "best_measured_grid": 64,
+      "error_ratio": 2.006035536860168,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 128,
+      "budget_s": 0.13857847500003118,
+      "variant": "safe_fv_v2_soft25",
+      "best_measured_grid": 64,
+      "error_ratio": 1.8628620203636823,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 256,
+      "budget_s": 0.5349034549999487,
+      "variant": "historical_teno",
+      "best_measured_grid": 256,
+      "error_ratio": 1.0,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 256,
+      "budget_s": 0.5349034549999487,
+      "variant": "historical_p0_learned",
+      "best_measured_grid": 128,
+      "error_ratio": 1.8592463468680962,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 256,
+      "budget_s": 0.5349034549999487,
+      "variant": "historical_v2_soft25",
+      "best_measured_grid": 128,
+      "error_ratio": 1.7369281507211516,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 256,
+      "budget_s": 0.5349034549999487,
+      "variant": "fv_teno",
+      "best_measured_grid": 256,
+      "error_ratio": 0.9292240604093316,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 256,
+      "budget_s": 0.5349034549999487,
+      "variant": "fv_v2_soft25",
+      "best_measured_grid": 128,
+      "error_ratio": 1.6255143111811223,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 256,
+      "budget_s": 0.5349034549999487,
+      "variant": "safe_fv_teno",
+      "best_measured_grid": 128,
+      "error_ratio": 1.7553875487902728,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    },
+    {
+      "baseline_cells": 256,
+      "budget_s": 0.5349034549999487,
+      "variant": "safe_fv_v2_soft25",
+      "best_measured_grid": 128,
+      "error_ratio": 1.6255143111811525,
+      "note": "discrete measured grids only; absence means no measured affordable grid"
+    }
+  ]
+}

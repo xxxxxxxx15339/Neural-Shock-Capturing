@@ -1,0 +1,54 @@
+{
+  "Sebastian_Research_Interview.pdf": {
+    "bytes": 3446115,
+    "sha256": "e17c8c1b573958902e2ac73643dcb12f6ad778f516d902813f6bb306caf0662e"
+  },
+  "Sebastian_Research_Interview_Main_Only.pdf": {
+    "bytes": 3091794,
+    "sha256": "f0ffaf6923439c5df5c744aa3fa182b599870ca3416fcff1f6bbd972bdffe3ab"
+  },
+  "Sebastian_Research_Interview.pptx": {
+    "bytes": 13710792,
+    "sha256": "090c25d19f2d79c05f4620e1b406876572c08c001a2ee0d51182e583b6dbbf8d"
+  },
+  "Sebastian_Research_Interview.tex": {
+    "bytes": 67967,
+    "sha256": "3118c27b8c1429c3428b806e87e11a9a6bc2918616602cdb5b2c1a4d9bca97ab"
+  },
+  "Speaker_Notes.md": {
+    "bytes": 39766,
+    "sha256": "77ca5fbf08f91bed6c99a8de7b1d77ca82a5a78a6ec04926a2cfe874531d5ed7"
+  },
+  "Sources_and_Evidence.md": {
+    "bytes": 24748,
+    "sha256": "8d97e6924e76fd5d1b7d5c36a3e248db36b6bba512e58456ab16ccc62d9fe090"
+  },
+  "Presentation_Validation.md": {
+    "bytes": 11043,
+    "sha256": "da8f4f99cbc883af54e5c75a50bf4da693357e39063c8f4dee86a848a2bb9a9c"
+  },
+  "README.md": {
+    "bytes": 5132,
+    "sha256": "7676dd64c4ea7a4638f44e91a4e3ae33da576507ab13cc247473fb49b717df89"
+  },
+  "build_presentation.py": {
+    "bytes": 36617,
+    "sha256": "3ea77b21b6a2ae431e73eea10690560a5c53677c12b4edb8b1b8e20dab7205ee"
+  },
+  "write_notes.py": {
+    "bytes": 38911,
+    "sha256": "9d54dc80da4530fdb1bd87c999022e2c1dc4c5f93a73df4b764f9df27b08fabb"
+  },
+  "finalize_presentation.py": {
+    "bytes": 3454,
+    "sha256": "2c9536ed3b6fd08e0da5cc529e53c52d8f4386cbca9b1fcac86e4a09eac2d4c8"
+  },
+  "validate_presentation.py": {
+    "bytes": 14312,
+    "sha256": "d94117d48d7e96a7dac778a172e7007dd55343e3ab1e5f50744679bcce8d354b"
+  },
+  "validation/checks.json": {
+    "bytes": 13983,
+    "sha256": "dfb44ba1bef336cc64a1981788490d6f12db81fe4a5b97080784c4b796ce58ec"
+  }
+}

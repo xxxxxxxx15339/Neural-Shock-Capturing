@@ -1,0 +1,150 @@
+[
+  {
+    "cells": 256,
+    "refinement": 1,
+    "dt": 0.0014150943396226414,
+    "success": true,
+    "final_time": 0.15,
+    "steps": 106,
+    "retries": 0,
+    "limited_fe_stages": 0,
+    "limited_face_stages": 0,
+    "raw_invalid_fe_rows": 0,
+    "minimum_density": 0.8003218250961701,
+    "minimum_pressure": 0.9999999999999998,
+    "limiter_frequency": 0.0,
+    "face_limiter_frequency": 0.0,
+    "conservation_residual": [
+      -4.551914400963142e-14,
+      -2.6645352591003757e-14,
+      -1.8118839761882555e-13
+    ],
+    "boundary_exchange": [
+      -1.5212778349150489,
+      -5.400000279512742,
+      -19.52306124841761
+    ],
+    "compile_s": 2.687485745998856,
+    "first_execution_s": 0.004147784000451793,
+    "warm_step_median_s": 0.0032061570000223583,
+    "warm_step_repeats_s": [
+      0.0037005770009272965,
+      0.0032061570000223583,
+      0.0025122630013356684
+    ],
+    "simulation_s": 0.3499104200000147,
+    "host_instrumentation_included": true,
+    "first_failed_step": null
+  },
+  {
+    "cells": 512,
+    "refinement": 1,
+    "dt": 0.0007109004739336493,
+    "success": true,
+    "final_time": 0.14999999999999972,
+    "steps": 211,
+    "retries": 0,
+    "limited_fe_stages": 0,
+    "limited_face_stages": 0,
+    "raw_invalid_fe_rows": 0,
+    "minimum_density": 0.8000848583107533,
+    "minimum_pressure": 0.9999999999999998,
+    "limiter_frequency": 0.0,
+    "face_limiter_frequency": 0.0,
+    "conservation_residual": [
+      -1.2168044349891716e-13,
+      -4.440892098500626e-14,
+      -2.6290081223123707e-13
+    ],
+    "boundary_exchange": [
+      -1.521277834915054,
+      -5.400000279512744,
+      -19.523061248417626
+    ],
+    "compile_s": 2.6131889070002217,
+    "first_execution_s": 0.05719334700006584,
+    "warm_step_median_s": 0.0054498019999300595,
+    "warm_step_repeats_s": [
+      0.005321221000485821,
+      0.006195728999955463,
+      0.0054498019999300595
+    ],
+    "simulation_s": 1.312152601998605,
+    "host_instrumentation_included": true,
+    "first_failed_step": null
+  },
+  {
+    "cells": 1024,
+    "refinement": 1,
+    "dt": 0.0003562945368171021,
+    "success": true,
+    "final_time": 0.1499999999999991,
+    "steps": 421,
+    "retries": 0,
+    "limited_fe_stages": 0,
+    "limited_face_stages": 0,
+    "raw_invalid_fe_rows": 0,
+    "minimum_density": 0.8000198901752733,
+    "minimum_pressure": 0.9999999999999998,
+    "limiter_frequency": 0.0,
+    "face_limiter_frequency": 0.0,
+    "conservation_residual": [
+      -2.2315482794965646e-13,
+      -1.2168044349891716e-13,
+      -3.659295089164516e-13
+    ],
+    "boundary_exchange": [
+      -1.5212778349150369,
+      -5.400000279512803,
+      -19.52306124841765
+    ],
+    "compile_s": 2.8309828959991137,
+    "first_execution_s": 0.056211630999314366,
+    "warm_step_median_s": 0.008321061000970076,
+    "warm_step_repeats_s": [
+      0.008076819000052637,
+      0.008321061000970076,
+      0.009567622999384184
+    ],
+    "simulation_s": 4.160747945999901,
+    "host_instrumentation_included": true,
+    "first_failed_step": null
+  },
+  {
+    "cells": 1024,
+    "refinement": 2,
+    "dt": 0.00017814726840855106,
+    "success": true,
+    "final_time": 0.15,
+    "steps": 842,
+    "retries": 0,
+    "limited_fe_stages": 0,
+    "limited_face_stages": 0,
+    "raw_invalid_fe_rows": 0,
+    "minimum_density": 0.8000198901752733,
+    "minimum_pressure": 0.9999999999999998,
+    "limiter_frequency": 0.0,
+    "face_limiter_frequency": 0.0,
+    "conservation_residual": [
+      -4.718447854656915e-13,
+      -1.0302869668521453e-13,
+      -6.359357485052897e-13
+    ],
+    "boundary_exchange": [
+      -1.5212778349150593,
+      -5.400000279512702,
+      -19.52306124841759
+    ],
+    "compile_s": 0.0005287140011205338,
+    "first_execution_s": 0.015419654000652372,
+    "warm_step_median_s": 0.008093721000477672,
+    "warm_step_repeats_s": [
+      0.008652397000332712,
+      0.008093721000477672,
+      0.007946072000777349
+    ],
+    "simulation_s": 7.746748311999909,
+    "host_instrumentation_included": true,
+    "first_failed_step": null
+  }
+]

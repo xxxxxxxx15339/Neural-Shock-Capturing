@@ -1,0 +1,195 @@
+{
+  "baseline_git_commit": "f9d4c2ae7e6009430248f71774996d952e08abbd",
+  "dtype": "float64",
+  "gamma": 1.4,
+  "integrator": "SSPRK3",
+  "config": "configs/protocol.json",
+  "holdout": "configs/final_holdout.json",
+  "definitions": "reports/AUDIT_AND_METHOD.md",
+  "figures": [
+    {
+      "name": "smooth_spatial_convergence",
+      "outputs": [
+        "plots/smooth_spatial_convergence.png",
+        "plots/smooth_spatial_convergence.pdf"
+      ],
+      "sources": [
+        "results/spatial.json"
+      ]
+    },
+    {
+      "name": "smooth_time_dependent",
+      "outputs": [
+        "plots/smooth_time_dependent.png",
+        "plots/smooth_time_dependent.pdf"
+      ],
+      "sources": [
+        "results/temporal.json"
+      ]
+    },
+    {
+      "name": "euler_sod_profiles",
+      "outputs": [
+        "plots/euler_sod_profiles.png",
+        "plots/euler_sod_profiles.pdf"
+      ],
+      "sources": [
+        "results/euler_actual_stages/sod_128_fv_teno.json",
+        "results/euler_actual_stages/sod_128_fv_teno.npz",
+        "results/euler_actual_stages/sod_128_fv_v2_soft25.json",
+        "results/euler_actual_stages/sod_128_fv_v2_soft25.npz",
+        "results/euler_actual_stages/sod_128_historical_p0_learned.json",
+        "results/euler_actual_stages/sod_128_historical_p0_learned.npz",
+        "results/euler_actual_stages/sod_128_historical_teno.json",
+        "results/euler_actual_stages/sod_128_historical_teno.npz",
+        "results/euler_actual_stages/sod_128_historical_v2_soft25.json",
+        "results/euler_actual_stages/sod_128_historical_v2_soft25.npz",
+        "results/euler_actual_stages/sod_128_safe_fv_teno.json",
+        "results/euler_actual_stages/sod_128_safe_fv_teno.npz",
+        "results/euler_actual_stages/sod_128_safe_fv_v2_soft25.json",
+        "results/euler_actual_stages/sod_128_safe_fv_v2_soft25.npz"
+      ]
+    },
+    {
+      "name": "euler_two_rarefactions_profiles",
+      "outputs": [
+        "plots/euler_two_rarefactions_profiles.png",
+        "plots/euler_two_rarefactions_profiles.pdf"
+      ],
+      "sources": [
+        "results/euler_actual_stages/two_rarefactions_128_fv_teno.json",
+        "results/euler_actual_stages/two_rarefactions_128_fv_teno.npz",
+        "results/euler_actual_stages/two_rarefactions_128_fv_v2_soft25.json",
+        "results/euler_actual_stages/two_rarefactions_128_fv_v2_soft25.npz",
+        "results/euler_actual_stages/two_rarefactions_128_historical_p0_learned.json",
+        "results/euler_actual_stages/two_rarefactions_128_historical_p0_learned.npz",
+        "results/euler_actual_stages/two_rarefactions_128_historical_teno.json",
+        "results/euler_actual_stages/two_rarefactions_128_historical_teno.npz",
+        "results/euler_actual_stages/two_rarefactions_128_historical_v2_soft25.json",
+        "results/euler_actual_stages/two_rarefactions_128_historical_v2_soft25.npz",
+        "results/euler_actual_stages/two_rarefactions_128_safe_fv_teno.json",
+        "results/euler_actual_stages/two_rarefactions_128_safe_fv_teno.npz",
+        "results/euler_actual_stages/two_rarefactions_128_safe_fv_v2_soft25.json",
+        "results/euler_actual_stages/two_rarefactions_128_safe_fv_v2_soft25.npz"
+      ]
+    },
+    {
+      "name": "euler_blast_full_profiles",
+      "outputs": [
+        "plots/euler_blast_full_profiles.png",
+        "plots/euler_blast_full_profiles.pdf"
+      ],
+      "sources": [
+        "results/euler_actual_stages/blast_full_128_fv_teno.json",
+        "results/euler_actual_stages/blast_full_128_fv_teno.npz",
+        "results/euler_actual_stages/blast_full_128_fv_v2_soft25.json",
+        "results/euler_actual_stages/blast_full_128_fv_v2_soft25.npz",
+        "results/euler_actual_stages/blast_full_128_historical_p0_learned.json",
+        "results/euler_actual_stages/blast_full_128_historical_p0_learned.npz",
+        "results/euler_actual_stages/blast_full_128_historical_teno.json",
+        "results/euler_actual_stages/blast_full_128_historical_teno.npz",
+        "results/euler_actual_stages/blast_full_128_historical_v2_soft25.json",
+        "results/euler_actual_stages/blast_full_128_historical_v2_soft25.npz",
+        "results/euler_actual_stages/blast_full_128_safe_fv_teno.json",
+        "results/euler_actual_stages/blast_full_128_safe_fv_teno.npz",
+        "results/euler_actual_stages/blast_full_128_safe_fv_v2_soft25.json",
+        "results/euler_actual_stages/blast_full_128_safe_fv_v2_soft25.npz"
+      ]
+    },
+    {
+      "name": "euler_error_over_time",
+      "outputs": [
+        "plots/euler_error_over_time.png",
+        "plots/euler_error_over_time.pdf"
+      ],
+      "sources": [
+        "results/euler_actual_stages/summary.json"
+      ]
+    },
+    {
+      "name": "shu_osher_short_time",
+      "outputs": [
+        "plots/shu_osher_short_time.png",
+        "plots/shu_osher_short_time.pdf"
+      ],
+      "sources": [
+        "results/euler_actual_stages/shu_osher_128_fv_teno.npz",
+        "results/euler_actual_stages/shu_osher_128_fv_v2_soft25.npz",
+        "results/euler_actual_stages/shu_osher_128_historical_p0_learned.npz",
+        "results/euler_actual_stages/shu_osher_128_historical_teno.npz",
+        "results/euler_actual_stages/shu_osher_128_historical_v2_soft25.npz",
+        "results/euler_actual_stages/shu_osher_128_safe_fv_teno.npz",
+        "results/euler_actual_stages/shu_osher_128_safe_fv_v2_soft25.npz",
+        "results/shu_reference/comparisons_actual_stages.json",
+        "results/shu_reference/reference_N128.npz"
+      ]
+    },
+    {
+      "name": "scalar_profiles",
+      "outputs": [
+        "plots/scalar_profiles.png",
+        "plots/scalar_profiles.pdf"
+      ],
+      "sources": [
+        "results/scalar/burgers_hat_128_p0_learned.npz",
+        "results/scalar/burgers_hat_128_teno5.npz",
+        "results/scalar/burgers_hat_128_v2_soft25.npz",
+        "results/scalar/square_128_p0_learned.npz",
+        "results/scalar/square_128_teno5.npz",
+        "results/scalar/square_128_v2_soft25.npz",
+        "results/scalar/summary.json"
+      ]
+    },
+    {
+      "name": "paired_training",
+      "outputs": [
+        "plots/paired_training.png",
+        "plots/paired_training.pdf"
+      ],
+      "sources": [
+        "checkpoints/paired_pilot/summary.json"
+      ]
+    },
+    {
+      "name": "mixing_gate_behavior",
+      "outputs": [
+        "plots/mixing_gate_behavior.png",
+        "plots/mixing_gate_behavior.pdf"
+      ],
+      "sources": [
+        "../../models/v2/euler_gated_dataset_v2_seed2026.pkl",
+        "results/euler_actual_stages/sod_128_fv_v2_soft25.npz"
+      ]
+    },
+    {
+      "name": "accuracy_vs_computational_cost",
+      "outputs": [
+        "plots/accuracy_vs_computational_cost.png",
+        "plots/accuracy_vs_computational_cost.pdf"
+      ],
+      "sources": [
+        "results/performance.json"
+      ]
+    },
+    {
+      "name": "pilot_long_rollout_errors",
+      "outputs": [
+        "plots/pilot_long_rollout_errors.png",
+        "plots/pilot_long_rollout_errors.pdf"
+      ],
+      "sources": [
+        "results/long_rollout/summary.json"
+      ]
+    },
+    {
+      "name": "frozen_holdout_comparison",
+      "outputs": [
+        "plots/frozen_holdout_comparison.png",
+        "plots/frozen_holdout_comparison.pdf"
+      ],
+      "sources": [
+        "results/final_holdout/statistics.json"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "purpose": "staged CPU pilot; no universal superiority claim",
+  "spatial_grids": [
+    40,
+    80,
+    160,
+    320
+  ],
+  "temporal_grids": [
+    40,
+    80,
+    160
+  ],
+  "shock_grids": [
+    64,
+    128
+  ],
+  "euler_variants": [
+    "historical_teno",
+    "historical_p0_learned",
+    "historical_v2_soft25",
+    "fv_teno",
+    "fv_v2_soft25",
+    "safe_fv_teno",
+    "safe_fv_v2_soft25"
+  ],
+  "training_seeds": [
+    3101,
+    3102
+  ],
+  "training_grid": 64,
+  "validation_grids": [
+    64,
+    128
+  ],
+  "warmup_steps": 150,
+  "physics_updates": 60,
+  "warmup_batch": 256,
+  "physics_batch": 4,
+  "learning_rate": 0.0002,
+  "strength": 0.25,
+  "horizon": 15,
+  "training_variants": [
+    "A_historical_state_warmup",
+    "B_historical_matched_split",
+    "C_fv_matched_state"
+  ],
+  "training_budget_note": "paired pilot models have identical budgets; saved V2 used 300 physics updates on three grids, so its scores are contextual comparisons only",
+  "validation_rule": "use all nonconstant validation trajectories at each declared grid, component-normalized solution MSE and paired L1; never use test or final holdout for selection",
+  "phase4_gate": "defer head expansion if matched-input pilot does not establish a repeatable numerical gain or conservative safeguard remains costly",
+  "holdout_seed": 2026111201,
+  "holdout_random_riemann_cases": 6,
+  "holdout_grids": [
+    64,
+    128
+  ],
+  "holdout_time": 0.08,
+  "holdout_rule": "specifications generated and hashed before model training; use once after freezing candidates; no hyperparameter changes afterwards",
+  "bootstrap_seed": 2026111202,
+  "bootstrap_samples": 2000,
+  "safeguard": {
+    "density_floor": 1e-12,
+    "pressure_floor": 1e-12,
+    "bisections": 40,
+    "max_retries": 8,
+    "low_speed_margin": 1.05,
+    "max_low_cfl": 0.9
+  },
+  "limitations": [
+    "pilot grid range and optimization budget",
+    "no full 256/512 shock sweep initially",
+    "Shu-Osher short-time run is stability-only until a converged matched-time reference exists",
+    "blast accuracy unassessed without reference"
+  ],
+  "declared_before_shock_training_holdout_evaluation": true
+}

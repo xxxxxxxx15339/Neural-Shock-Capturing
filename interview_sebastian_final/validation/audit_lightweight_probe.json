@@ -1,0 +1,125 @@
+{
+  "date": "2026-10-29",
+  "numpy": "2.4.6",
+  "jax": "0.10.2",
+  "algebra": {
+    "flux_error": 2.842170943040401e-14,
+    "speed_error": 3.552713678800501e-15,
+    "LR_error": 8.901942133799104e-16
+  },
+  "nonlinear_orders": {
+    "split": {
+      "l1": [
+        0.0004083605882204318,
+        8.875857004523684e-05,
+        2.1253485774974656e-05
+      ],
+      "last_order": 2.062186948580679
+    },
+    "state": {
+      "l1": [
+        5.554045200502807e-05,
+        1.7441255949120678e-06,
+        5.4555268969025406e-08
+      ],
+      "last_order": 4.998641583129989
+    }
+  },
+  "wall_fluxes": {
+    "reflective": {
+      "left": [
+        -0.006148568356868722,
+        6.278492065461906,
+        -0.045399242606995384
+      ],
+      "right": [
+        -0.0014476683978049687,
+        1.0120478771145922,
+        -0.005040348037186795
+      ]
+    },
+    "reflective-wall": {
+      "left": [
+        0.0,
+        6.278492065461906,
+        0.0
+      ],
+      "right": [
+        0.0,
+        1.0120478771145922,
+        0.0
+      ]
+    }
+  },
+  "penalty_controls": {
+    "zero_pressure": {
+      "penalty": 0.0,
+      "repair": [
+        [
+          1.0,
+          0.0,
+          0.12500000000000003
+        ]
+      ]
+    },
+    "out_of_scale": {
+      "penalty": 0.0,
+      "repair": [
+        [
+          1000.0,
+          0.0,
+          2.5
+        ]
+      ]
+    },
+    "low_positive": {
+      "penalty": 0.0,
+      "repair": [
+        [
+          0.01,
+          0.0,
+          0.025
+        ]
+      ]
+    }
+  },
+  "first_invalid": {
+    "case_id": "euler-validation-000088-1023461505243801251",
+    "dt": 0.0017428079661349484,
+    "dx": 0.0078125,
+    "runs": [
+      {
+        "mode": "soft",
+        "strength": 0.25,
+        "valid_steps": 15
+      },
+      {
+        "mode": "soft",
+        "strength": 0.75,
+        "valid_steps": 12,
+        "first_invalid_step": 13,
+        "first_invalid_stage": 1,
+        "min_density": 1.2130378506790835,
+        "min_pressure": -0.0038048537160435105
+      },
+      {
+        "mode": "soft",
+        "strength": 1.0,
+        "valid_steps": 10,
+        "first_invalid_step": 11,
+        "first_invalid_stage": 1,
+        "min_density": 0.9593113989807542,
+        "min_pressure": -0.030434661836996214
+      },
+      {
+        "mode": "hard",
+        "strength": 0.5,
+        "valid_steps": 14,
+        "first_invalid_step": 15,
+        "first_invalid_stage": 1,
+        "min_density": 0.7187302566499489,
+        "min_pressure": -0.00872764938284143
+      }
+    ]
+  }
+}

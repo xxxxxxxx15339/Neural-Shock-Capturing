@@ -1,0 +1,34 @@
+{
+  "Sebastian_Research_Interview_Main_Only_REVISED.pdf": {
+    "bytes": 3102067,
+    "sha256": "39acd78ca87ab105f6746f56c716fd0133f68766f4f06a42dc8e2669d62cfdf0"
+  },
+  "Sebastian_Research_Interview_REVISED.pdf": {
+    "bytes": 3457870,
+    "sha256": "744c5988304dcce58c8dd4f33d0c9af39b01719213680b611fd78eb72f33b954"
+  },
+  "Sebastian_Research_Interview_REVISED.pptx": {
+    "bytes": 13768768,
+    "sha256": "a3e6f144431b07d2e321c6daa59a74065fa05723953ac3c686f913657201a9fa"
+  },
+  "Sebastian_Research_Interview_REVISED.tex": {
+    "bytes": 71681,
+    "sha256": "60a1bcc362c452384bd916f923a6dc5f313829dce288df0af21508e8ff206a95"
+  },
+  "Speaker_Notes_REVISED.md": {
+    "bytes": 47372,
+    "sha256": "695e8d9ce880cf155984968db4b4970056b782223721254b4f6a74c45ff38c6e"
+  },
+  "Scientific_Changes.md": {
+    "bytes": 12333,
+    "sha256": "973bf07e949dc43aa5f256c22b20b183b613f2bf3471491645c98863d106ed19"
+  },
+  "Final_Validation.md": {
+    "bytes": 9626,
+    "sha256": "188d25157691a2365c669c413153ca6fbd863961de44d90ed3cb822c00df7b32"
+  },
+  "README_REVISED.md": {
+    "bytes": 1333,
+    "sha256": "b082dbe4f71c00184969eceef601cf3fcfb872ffbad3d007c6cf5b264da3f7ee"
+  }
+}

@@ -1,0 +1,255 @@
+{
+  "case": "two_rarefactions",
+  "definition": {
+    "id": "two_rarefactions",
+    "kind": "riemann",
+    "system": "euler",
+    "left": [
+      1.0,
+      -2.0,
+      0.4
+    ],
+    "right": [
+      1.0,
+      2.0,
+      0.4
+    ],
+    "jump": 0.5,
+    "time": 0.08,
+    "boundary": "transmissive"
+  },
+  "cells": 128,
+  "variant": "historical_v2_soft25",
+  "dt": 0.00047337278106508875,
+  "dx": 0.0078125,
+  "success": false,
+  "final_time": 0.006627218934911244,
+  "steps": 15,
+  "retries": 0,
+  "limited_fe_stages": 0,
+  "limited_face_stages": 0,
+  "raw_invalid_fe_rows": 2,
+  "minimum_density": 0.07611806710796039,
+  "minimum_pressure": 0.004081219971254578,
+  "limiter_frequency": 0.0,
+  "face_limiter_frequency": 0.0,
+  "conservation_residual": [
+    -1.8388068845354155e-16,
+    -1.214306433183765e-17,
+    -4.85722573273506e-16
+  ],
+  "boundary_exchange": [
+    0.026508875739644975,
+    0.0,
+    0.09013017751479287
+  ],
+  "compile_s": 0.0006652560005022679,
+  "first_execution_s": 0.008302057000037166,
+  "warm_step_median_s": 0.005203671000344912,
+  "warm_step_repeats_s": [
+    0.008031974000914488,
+    0.00460043499879248,
+    0.005203671000344912
+  ],
+  "simulation_s": 0.13547997500063502,
+  "host_instrumentation_included": true,
+  "first_failed_step": 15,
+  "reference": "failed trajectory; no error score",
+  "history": [
+    {
+      "time": 0.00047337278106508875,
+      "min_density": 0.7388895088527457,
+      "min_pressure": 0.27805567597559816,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.0009467455621301775,
+      "min_density": 0.6361479054937381,
+      "min_pressure": 0.22867340817695994,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.0014201183431952662,
+      "min_density": 0.5426484991734223,
+      "min_pressure": 0.18380563014709025,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.001893491124260355,
+      "min_density": 0.46510631228160043,
+      "min_pressure": 0.15051074595943273,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.002366863905325444,
+      "min_density": 0.39348670921701895,
+      "min_pressure": 0.12036351030162426,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.0028402366863905324,
+      "min_density": 0.3310746185085567,
+      "min_pressure": 0.09541851617318017,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.003313609467455621,
+      "min_density": 0.275734280238929,
+      "min_pressure": 0.07440819805173154,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.0037869822485207096,
+      "min_density": 0.22839938604158186,
+      "min_pressure": 0.057687402478083204,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.004260355029585799,
+      "min_density": 0.19593810335891856,
+      "min_pressure": 0.043771065447516404,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.004733727810650888,
+      "min_density": 0.15785321337524727,
+      "min_pressure": 0.031531375813064436,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.005207100591715977,
+      "min_density": 0.13384780848266326,
+      "min_pressure": 0.022371904437817898,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.005680473372781066,
+      "min_density": 0.1116217607000036,
+      "min_pressure": 0.01521806825614875,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.006153846153846155,
+      "min_density": 0.09248527650260956,
+      "min_pressure": 0.01018218474717649,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.006627218934911244,
+      "min_density": 0.07611806710796039,
+      "min_pressure": 0.004081219971254578,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.006627218934911244,
+      "success": false,
+      "diagnostics": {
+        "accepted_dt": 0.0,
+        "exchange": [
+          0.001893491124260355,
+          0.0,
+          0.006437869822485206
+        ],
+        "retries": 0,
+        "stages": {
+          "cfl": [
+            0.16666989391452364,
+            0.16668280693515614,
+            0.16667312294612813
+          ],
+          "exchange": [
+            [
+              0.001893491124260355,
+              0.0,
+              0.006437869822485206
+            ],
+            [
+              0.001893491124260355,
+              0.0,
+              0.006437869822485206
+            ],
+            [
+              0.001893491124260355,
+              0.0,
+              0.006437869822485206
+            ]
+          ],
+          "face_theta": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "low_ok": [
+            true,
+            false,
+            true
+          ],
+          "min_density": [
+            0.0773555688863656,
+            0.06198848326460722,
+            0.07350890834307833
+          ],
+          "min_pressure": [
+            0.004421665555156028,
+            -0.001745856482183011,
+            0.0029116742983567195
+          ],
+          "ok": [
+            true,
+            false,
+            true
+          ],
+          "raw_faces_finite": [
+            true,
+            true,
+            true
+          ],
+          "raw_faces_valid": [
+            true,
+            true,
+            true
+          ],
+          "raw_invalid": [
+            0,
+            2,
+            0
+          ],
+          "theta": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "success": false
+      }
+    }
+  ]
+}

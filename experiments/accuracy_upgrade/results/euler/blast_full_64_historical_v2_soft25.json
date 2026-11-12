@@ -1,0 +1,132 @@
+{
+  "case": "blast_full",
+  "definition": {
+    "id": "blast_full",
+    "kind": "blast",
+    "system": "euler",
+    "time": 0.038,
+    "boundary": "reflective-wall"
+  },
+  "cells": 64,
+  "variant": "historical_v2_soft25",
+  "dt": 6.95970695970696e-05,
+  "dx": 0.015625,
+  "success": false,
+  "final_time": 0.0,
+  "steps": 1,
+  "retries": 0,
+  "limited_fe_stages": 0,
+  "limited_face_stages": 0,
+  "raw_invalid_fe_rows": 2,
+  "minimum_density": 1.0,
+  "minimum_pressure": 0.009999999999999997,
+  "limiter_frequency": 0.0,
+  "face_limiter_frequency": 0.0,
+  "conservation_residual": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "boundary_exchange": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "compile_s": 0.0005225670010986505,
+  "first_execution_s": 0.0023803259991836967,
+  "warm_step_median_s": 0.0020080630001757527,
+  "warm_step_repeats_s": [
+    0.002302451999639743,
+    0.0020080630001757527,
+    0.0019075580003118375
+  ],
+  "simulation_s": 0.0022747940001863753,
+  "host_instrumentation_included": true,
+  "first_failed_step": 1,
+  "reference": "none; stability-only",
+  "history": [
+    {
+      "time": 0.0,
+      "success": false,
+      "diagnostics": {
+        "accepted_dt": 0.0,
+        "exchange": [
+          0.0,
+          -0.06263736263736264,
+          0.0
+        ],
+        "retries": 0,
+        "stages": {
+          "cfl": [
+            0.16666136931564512,
+            0.168671570332418,
+            0.16716809398431717
+          ],
+          "exchange": [
+            [
+              0.0,
+              -0.06263736263736264,
+              0.0
+            ],
+            [
+              0.0,
+              -0.06263736263736264,
+              0.0
+            ],
+            [
+              0.0,
+              -0.06263736263736264,
+              0.0
+            ]
+          ],
+          "face_theta": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "low_ok": [
+            true,
+            false,
+            false
+          ],
+          "min_density": [
+            0.9727678577657028,
+            -0.04790964792307053,
+            0.7653949825005363
+          ],
+          "min_pressure": [
+            0.005757894479509743,
+            -0.36486660185405634,
+            -0.09869298332643003
+          ],
+          "ok": [
+            true,
+            false,
+            false
+          ],
+          "raw_faces_finite": [
+            true,
+            true,
+            true
+          ],
+          "raw_faces_valid": [
+            true,
+            true,
+            true
+          ],
+          "raw_invalid": [
+            0,
+            1,
+            1
+          ],
+          "theta": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "success": false
+      }
+    }
+  ]
+}

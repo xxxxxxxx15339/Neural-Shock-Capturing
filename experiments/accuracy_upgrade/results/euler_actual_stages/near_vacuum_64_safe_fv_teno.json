@@ -1,0 +1,167 @@
+{
+  "case": "near_vacuum",
+  "definition": {
+    "id": "near_vacuum",
+    "kind": "riemann",
+    "system": "euler",
+    "left": [
+      1e-05,
+      -0.01,
+      1e-08
+    ],
+    "right": [
+      1e-05,
+      0.01,
+      1e-08
+    ],
+    "jump": 0.5,
+    "time": 0.1,
+    "boundary": "transmissive"
+  },
+  "cells": 64,
+  "variant": "safe_fv_teno",
+  "dt": 0.05,
+  "dx": 0.015625,
+  "success": true,
+  "final_time": 0.1,
+  "steps": 2,
+  "retries": 0,
+  "limited_fe_stages": 0,
+  "limited_face_stages": 0,
+  "raw_invalid_fe_rows": 0,
+  "minimum_density": 9.072254561342561e-06,
+  "minimum_pressure": 8.806319408863524e-09,
+  "limiter_frequency": 0.0,
+  "face_limiter_frequency": 0.0,
+  "conservation_residual": [
+    -1.2904017555827232e-22,
+    3.308722450212111e-25,
+    -5.169878828456423e-26
+  ],
+  "boundary_exchange": [
+    1.9999999999999997e-08,
+    3.308722450212111e-25,
+    7.100000000000001e-11
+  ],
+  "compile_s": 0.0005150249999132939,
+  "first_execution_s": 0.0021622120002575684,
+  "warm_step_median_s": 0.0017034810007316992,
+  "warm_step_repeats_s": [
+    0.0021226110002317,
+    0.0016621329996269196,
+    0.0017034810007316992
+  ],
+  "simulation_s": 0.003532190999976592,
+  "host_instrumentation_included": true,
+  "first_failed_step": null,
+  "primary_error": 3.6615420804320124e-10,
+  "l1": 3.6615420804320124e-10,
+  "l2": 2.3418661547755646e-09,
+  "linf": 1.6635537494736306e-08,
+  "component_l1": [
+    1.0397204533690164e-09,
+    5.5077687653009044e-11,
+    3.664483107578147e-12
+  ],
+  "component_l2": [
+    4.050276636067113e-09,
+    2.1924269326416474e-10,
+    1.4250383469050334e-11
+  ],
+  "component_linf": [
+    1.6635537494736306e-08,
+    1.0274927847648268e-09,
+    5.863176183481214e-11
+  ],
+  "reference": "analytic Euler Riemann cell averages",
+  "error_over_time": [
+    {
+      "time": 0.0,
+      "primary_error": 0.0,
+      "l1": 0.0,
+      "l2": 0.0,
+      "linf": 0.0,
+      "component_l1": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "component_l2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "component_linf": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "time": 0.05,
+      "primary_error": 1.8463615630146877e-10,
+      "l1": 1.8463615630146877e-10,
+      "l2": 1.1765429604428614e-09,
+      "linf": 8.1874960800418e-09,
+      "component_l1": [
+        5.117181849764655e-10,
+        4.0301645090640945e-11,
+        1.888638837299857e-12
+      ],
+      "component_l2": [
+        2.030332672154355e-09,
+        1.7450822339201934e-10,
+        7.492239590051093e-12
+      ],
+      "component_linf": [
+        8.1874960800418e-09,
+        9.163306996711834e-10,
+        3.0218237453581087e-11
+      ]
+    },
+    {
+      "time": 0.1,
+      "primary_error": 3.6615420804320124e-10,
+      "l1": 3.6615420804320124e-10,
+      "l2": 2.3418661547755646e-09,
+      "linf": 1.6635537494736306e-08,
+      "component_l1": [
+        1.0397204533690164e-09,
+        5.5077687653009044e-11,
+        3.664483107578147e-12
+      ],
+      "component_l2": [
+        4.050276636067113e-09,
+        2.1924269326416474e-10,
+        1.4250383469050334e-11
+      ],
+      "component_linf": [
+        1.6635537494736306e-08,
+        1.0274927847648268e-09,
+        5.863176183481214e-11
+      ]
+    }
+  ],
+  "density_tv": 1.246728965973862e-06,
+  "pressure_tv": 1.5927102339208373e-09,
+  "density_overshoot": 0.0,
+  "density_undershoot": 0.0,
+  "history": [
+    {
+      "time": 0.05,
+      "min_density": 9.376184857213522e-06,
+      "min_pressure": 9.206214629911758e-09,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.1,
+      "min_density": 9.072254561342561e-06,
+      "min_pressure": 8.806319408863524e-09,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    }
+  ]
+}

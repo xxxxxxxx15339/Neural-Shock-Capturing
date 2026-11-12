@@ -1,0 +1,565 @@
+{
+  "checks_run": 71,
+  "passed": 71,
+  "failed": [],
+  "checks": [
+    {
+      "check": "Original input unchanged: V4.pdf",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Original input unchanged: Scientific_Internship_WENO_NN_UM6P_Professional_LaTeX.pptx",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Original input unchanged: plots/04_euler_instability.png",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Original input unchanged: docs/portfolio/figures/nonlinear_euler_consistency.png",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Original input unchanged: docs/portfolio/figures/euler_sod.png",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Original input unchanged: docs/portfolio/figures/final_benchmark.png",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Original input unchanged: EULER_STABILITY_RESEARCH_AUDIT.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Portable editable V4 template is an exact copy",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "PDF page count: Sebastian_Research_Interview.pdf",
+      "passed": true,
+      "details": 12
+    },
+    {
+      "check": "PDF page count: Sebastian_Research_Interview_Main_Only.pdf",
+      "passed": true,
+      "details": 9
+    },
+    {
+      "check": "PDF page count: validation/Native_PowerPoint_Render.pdf",
+      "passed": true,
+      "details": 12
+    },
+    {
+      "check": "Final PDF landing identical to original V4 first page",
+      "passed": true,
+      "details": {
+        "same_dimensions": true,
+        "width": 1800,
+        "height": 1013,
+        "changed_pixels": 0,
+        "mean_absolute_channel_error": 0.0,
+        "max_channel_error": 0
+      }
+    },
+    {
+      "check": "Native PPTX via LibreOffice landing identical to original V4 first page",
+      "passed": true,
+      "details": {
+        "same_dimensions": true,
+        "width": 1800,
+        "height": 1013,
+        "changed_pixels": 0,
+        "mean_absolute_channel_error": 0.0,
+        "max_channel_error": 0
+      }
+    },
+    {
+      "check": "PPTX contains exactly 12 slide XML parts",
+      "passed": true,
+      "details": 12
+    },
+    {
+      "check": "Original editable first-slide XML unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "All original first-slide image/equation assets byte-identical",
+      "passed": true,
+      "details": [
+        "ppt/media/refined_001.png",
+        "ppt/media/refined_002.png",
+        "ppt/media/refined_003.png",
+        "ppt/media/refined_004.svg"
+      ]
+    },
+    {
+      "check": "All OOXML parses and package relationships resolve",
+      "passed": true,
+      "details": {
+        "xml_parts": 82,
+        "missing": [],
+        "dangling": []
+      }
+    },
+    {
+      "check": "Slide 1: main visible / backup hidden",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 1: complete embedded script and Q&A",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 2: main visible / backup hidden",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 2: complete embedded script and Q&A",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 3: main visible / backup hidden",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 3: complete embedded script and Q&A",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 4: main visible / backup hidden",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 4: complete embedded script and Q&A",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 5: main visible / backup hidden",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 5: complete embedded script and Q&A",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 6: main visible / backup hidden",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 6: complete embedded script and Q&A",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 7: main visible / backup hidden",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 7: complete embedded script and Q&A",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 8: main visible / backup hidden",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 8: complete embedded script and Q&A",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 9: main visible / backup hidden",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 9: complete embedded script and Q&A",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 10: main visible / backup hidden",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 10: complete embedded script and Q&A",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 11: main visible / backup hidden",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 11: complete embedded script and Q&A",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 12: main visible / backup hidden",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Slide 12: complete embedded script and Q&A",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Each slide contains native editable text",
+      "passed": true,
+      "details": [
+        {
+          "slide": 1,
+          "native_text_shapes": 8,
+          "native_shapes": 10,
+          "pictures": 3,
+          "hidden": false
+        },
+        {
+          "slide": 2,
+          "native_text_shapes": 16,
+          "native_shapes": 24,
+          "pictures": 3,
+          "hidden": false
+        },
+        {
+          "slide": 3,
+          "native_text_shapes": 19,
+          "native_shapes": 28,
+          "pictures": 4,
+          "hidden": false
+        },
+        {
+          "slide": 4,
+          "native_text_shapes": 15,
+          "native_shapes": 21,
+          "pictures": 3,
+          "hidden": false
+        },
+        {
+          "slide": 5,
+          "native_text_shapes": 14,
+          "native_shapes": 17,
+          "pictures": 4,
+          "hidden": false
+        },
+        {
+          "slide": 6,
+          "native_text_shapes": 22,
+          "native_shapes": 33,
+          "pictures": 3,
+          "hidden": false
+        },
+        {
+          "slide": 7,
+          "native_text_shapes": 10,
+          "native_shapes": 12,
+          "pictures": 3,
+          "hidden": false
+        },
+        {
+          "slide": 8,
+          "native_text_shapes": 9,
+          "native_shapes": 12,
+          "pictures": 3,
+          "hidden": false
+        },
+        {
+          "slide": 9,
+          "native_text_shapes": 17,
+          "native_shapes": 23,
+          "pictures": 3,
+          "hidden": false
+        },
+        {
+          "slide": 10,
+          "native_text_shapes": 8,
+          "native_shapes": 10,
+          "pictures": 8,
+          "hidden": true
+        },
+        {
+          "slide": 11,
+          "native_text_shapes": 10,
+          "native_shapes": 13,
+          "pictures": 3,
+          "hidden": true
+        },
+        {
+          "slide": 12,
+          "native_text_shapes": 12,
+          "native_shapes": 14,
+          "pictures": 4,
+          "hidden": true
+        }
+      ]
+    },
+    {
+      "check": "Main-slide estimated speaking time is 12\u201315 minutes",
+      "passed": true,
+      "details": {
+        "seconds": 795,
+        "minutes": 13.25,
+        "spoken_script_words": 1586,
+        "words_per_minute": 119.69811320754717,
+        "timing_is_estimate": true
+      }
+    },
+    {
+      "check": "Every main slide has a script, terms, preparation and 1\u20132 Q&A",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Equations readable in source inventory",
+      "passed": true,
+      "details": {
+        "main_minimum_pt": 21.0,
+        "backup_minimum_pt": 19.84,
+        "equation_instances": 25
+      }
+    },
+    {
+      "check": "TeX: no overfull boxes or missing glyphs",
+      "passed": true,
+      "details": {
+        "underfull_warnings": 11,
+        "retained_warning_types": [
+          "underfull fixed footer boxes",
+          "font path portability",
+          "original PDF version/tag handling"
+        ]
+      }
+    },
+    {
+      "check": "Declared slide objects inside canvas; image assets present",
+      "passed": true,
+      "details": {
+        "outside": [],
+        "missing": []
+      }
+    },
+    {
+      "check": "All 12 PDF slides and all 12 native-PPTX slides rendered",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "V2 validation: 307, no failures, macro L1 0.94794",
+      "passed": true,
+      "details": {
+        "trajectories": 307,
+        "failures": 0,
+        "macro_relative_l1": 0.9479383302719695
+      }
+    },
+    {
+      "check": "Independent Sod: L1 improvement, higher TV, density undershoot",
+      "passed": true,
+      "details": {
+        "l1_ratio": 0.9572500681506942,
+        "reduction_percent": 4.274993184930576,
+        "teno5_density_TV": 0.8774663254486642,
+        "selected_density_TV": 0.8797561899875133,
+        "selected_density_undershoot": 0.0003506854567733031
+      }
+    },
+    {
+      "check": "Independent contact regression",
+      "passed": true,
+      "details": 1.0687408292618075
+    },
+    {
+      "check": "Closed-wall blast: selected fails N128/N256, TENO5 finite",
+      "passed": true,
+      "details": [
+        {
+          "N": 128,
+          "teno5_finite": true,
+          "selected_finite": false
+        },
+        {
+          "N": 256,
+          "teno5_finite": true,
+          "selected_finite": false
+        }
+      ]
+    },
+    {
+      "check": "One repaired stage; RK-weighted mass/energy sources",
+      "passed": true,
+      "details": [
+        0.0016111493654163188,
+        -5.706669322759772e-05,
+        0.0008888429518660344
+      ]
+    },
+    {
+      "check": "Nonlinear Euler consistency orders 2.01 and 5.00",
+      "passed": true,
+      "details": {
+        "historical-split-flux": 2.0119685376282312,
+        "experimental-fv-state-flux": 4.999925297394422
+      }
+    },
+    {
+      "check": "Raw-stage V2 pressure failure: step 13 stage 1 versus 15 valid weak steps",
+      "passed": true,
+      "details": {
+        "weak": {
+          "mode": "soft",
+          "strength": 0.25,
+          "valid_steps": 15
+        },
+        "strong": {
+          "mode": "soft",
+          "strength": 0.75,
+          "valid_steps": 12,
+          "first_invalid_step": 13,
+          "first_invalid_stage": 1,
+          "min_density": 1.2130378506790835,
+          "min_pressure": -0.0038048537160435105
+        }
+      }
+    },
+    {
+      "check": "Oracle density failure supported by audit log",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "WENO7: 10/100000 then 0; epsilon squared not underflow",
+      "passed": true,
+      "details": [
+        {
+          "eps": "1e-6",
+          "nonfinite_rows": 10,
+          "max_absolute_coefficient": 2.0833332538604736
+        },
+        {
+          "eps": "1e-4",
+          "nonfinite_rows": 0,
+          "max_absolute_coefficient": 2.0833332538604736
+        }
+      ]
+    },
+    {
+      "check": "LF sweep archived nonfinite indices 11/none/3/3/3",
+      "passed": true,
+      "details": {
+        "1.0": {
+          "first_nonfinite": 11,
+          "last_density": "nan"
+        },
+        "1.5": {
+          "first_nonfinite": null,
+          "last_density": "6.210266065421662e+18"
+        },
+        "2.0": {
+          "first_nonfinite": 3,
+          "last_density": "nan"
+        },
+        "3.0": {
+          "first_nonfinite": 3,
+          "last_density": "nan"
+        },
+        "5.0": {
+          "first_nonfinite": 3,
+          "last_density": "nan"
+        }
+      }
+    },
+    {
+      "check": "Experimental asset byte copy: full_validation_summary.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Experimental asset byte copy: repair_budget.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Experimental asset byte copy: euler_instability_trace.csv",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Experimental asset byte copy: independent_benchmark.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Experimental asset byte copy: wall_benchmark.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Experimental asset byte copy: nonlinear_euler.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Experimental asset byte copy: 04_euler_instability_original.png",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Experimental asset byte copy: nonlinear_euler_consistency_original.png",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Experimental asset byte copy: euler_sod_original.png",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Experimental asset byte copy: final_benchmark_original.png",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Experimental asset byte copy: sod192_selected.npz",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Experimental asset byte copy: sod192_teno5.npz",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Experimental asset byte copy: sod192_reference.npz",
+      "passed": true,
+      "details": null
+    }
+  ]
+}
