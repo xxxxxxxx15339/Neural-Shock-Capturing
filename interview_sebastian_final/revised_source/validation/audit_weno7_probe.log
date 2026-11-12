@@ -1,0 +1,70 @@
+Using TensorFlow backend.
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:517: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:174: The name tf.get_default_session is deprecated. Please use tf.compat.v1.get_default_session instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:181: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:186: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+WARNING:tensorflow:From /home/bazouil/miniconda3/envs/weno-nn/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:190: The name tf.global_variables is deprecated. Please use tf.compat.v1.global_variables instead.
+
+{
+  "rows": 100000,
+  "float32_tiny": 1.1754943508222875e-38,
+  "square_1e_6_float32": 9.999999949504854e-13,
+  "runs": [
+    {
+      "eps": "1e-6",
+      "nonfinite_rows": 10,
+      "max_absolute_coefficient": 2.0833332538604736
+    },
+    {
+      "eps": "1e-4",
+      "nonfinite_rows": 0,
+      "max_absolute_coefficient": 2.0833332538604736
+    }
+  ],
+  "bad_row_details": {
+    "indices": [
+      9950,
+      40602,
+      62521,
+      63600,
+      65779,
+      67706,
+      76530,
+      98058,
+      99108,
+      99967
+    ],
+    "first_stencil": [
+      0.9763963581657342,
+      0.9763963581657342,
+      0.9763963581657342,
+      0.9763963581657342,
+      0.9763963581657342,
+      1.0,
+      0.0
+    ],
+    "first_betas": [
+      2.384185791015625e-07,
+      -9.5367431640625e-07,
+      0.0006191730499267578,
+      2.561969757080078
+    ],
+    "first_alphas": [
+      "18629323000.0",
+      "159760570000000.0",
+      "1337145.6",
+      "0.017411798"
+    ],
+    "first_total": "159779200000000.0",
+    "first_weights": [
+      "0.00011659417",
+      "0.9998835",
+      "8.368709e-09",
+      "1.0897413e-16"
+    ]
+  }
+}

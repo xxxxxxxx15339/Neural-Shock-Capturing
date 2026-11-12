@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "files_checked": 592,
+  "failures": [],
+  "release": {
+    "passed": false,
+    "protected_files_checked": 498,
+    "artifact_hashes_checked": 0,
+    "profiles_independently_recomputed": 0,
+    "failures": [
+      "protected:models/trained_euler_weno5_exact.h5.best.h5",
+      "protected:models/trained_euler_weno7nn.h5.best.h5",
+      "protected:models/trained_euler_weno7nn_anchored.h5.best.h5",
+      "protected:models/trained_euler_weno7nn_anchored2.h5.best.h5",
+      "protected:models/trained_euler_weno7nn_anchored3.h5.best.h5",
+      "protected:models/trained_euler_weno7nn_finetuned.h5.best.h5",
+      "protected:models/trained_euler_weno7nn_protected.h5.best.h5"
+    ]
+  },
+  "existing_tracked_diff": []
+}

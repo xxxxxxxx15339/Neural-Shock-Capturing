@@ -1,0 +1,127 @@
+[
+  {
+    "latex": "\\partial_t U+\\partial_xF(U)=0",
+    "fontsize": 32,
+    "color": "242424"
+  },
+  {
+    "latex": "U=(\\rho,m,E)^{\\mathsf T},\\quad F(U)=\\begin{pmatrix}m\\\\m^2/\\rho+p\\\\m(E+p)/\\rho\\end{pmatrix}",
+    "fontsize": 25,
+    "color": "242424"
+  },
+  {
+    "latex": "\\bar U_i^{n+1}=\\bar U_i^n-\\frac{\\Delta t}{\\Delta x}\\left(\\widehat F_{i+1/2}-\\widehat F_{i-1/2}\\right)",
+    "fontsize": 24,
+    "color": "242424"
+  },
+  {
+    "latex": "\\mathcal R_{V2}=\\mathcal R_T+G\\lambda\\left(\\mathcal R_{NN}-\\mathcal R_T\\right)",
+    "fontsize": 29,
+    "color": "242424"
+  },
+  {
+    "latex": "p=(\\gamma-1)\\left(E-\\frac{m^2}{2\\rho}\\right)",
+    "fontsize": 32,
+    "color": "242424"
+  },
+  {
+    "latex": "\\rho>0,\\qquad p>0",
+    "fontsize": 29,
+    "color": "242424"
+  },
+  {
+    "latex": "F^\\pm(U)=\\frac12\\left(F(U)\\pm\\alpha U\\right)",
+    "fontsize": 25,
+    "color": "242424"
+  },
+  {
+    "latex": "\\mathrm{CFL}\\sim\\frac{\\alpha\\Delta t}{\\Delta x}",
+    "fontsize": 26,
+    "color": "242424"
+  },
+  {
+    "latex": "\\bar U_i^{n+1}=\\bar U_i^n-\\frac{\\Delta t}{\\Delta x}\\left(\\widehat F_{i+1/2}-\\widehat F_{i-1/2}\\right)",
+    "fontsize": 25,
+    "color": "242424"
+  },
+  {
+    "latex": "\\Delta M_{\\rm repair}=\\Delta x\\sum_i(\\rho_i^{after}-\\rho_i^{before})",
+    "fontsize": 21,
+    "color": "242424"
+  },
+  {
+    "latex": "\\overline{F(U)}\\ne F(\\bar U)",
+    "fontsize": 30,
+    "color": "242424"
+  },
+  {
+    "latex": "\\widehat F^{limited}=\\widehat F^{LO}+\\theta\\left(\\widehat F^{NN}-\\widehat F^{LO}\\right)",
+    "fontsize": 27,
+    "color": "242424"
+  },
+  {
+    "latex": "\\mathscr R=\\partial_t\\widehat U+\\partial_xF(\\widehat U)",
+    "fontsize": 27,
+    "color": "242424"
+  },
+  {
+    "latex": "\\lambda_j=v-c,\\ v,\\ v+c,\\qquad c=\\sqrt{\\gamma p/\\rho}",
+    "fontsize": 24,
+    "color": "242424"
+  },
+  {
+    "latex": "g^\\pm_{i+1/2,k}=\\tfrac12 L_{i+1/2}\\left(F(U_k)\\pm a_{i+1/2}U_k\\right)",
+    "fontsize": 24,
+    "color": "242424"
+  },
+  {
+    "latex": "\\widehat F_{i+1/2}=R_{i+1/2}\\left[\\mathcal R(g^+)+\\mathcal R(g^-)\\right]",
+    "fontsize": 24,
+    "color": "242424"
+  },
+  {
+    "latex": "U^{(1)}=U^n-\\Delta tD(U^n)",
+    "fontsize": 25,
+    "color": "242424"
+  },
+  {
+    "latex": "U^{(2)}=\\tfrac34U^n+\\tfrac14\\left[U^{(1)}-\\Delta tD(U^{(1)})\\right]",
+    "fontsize": 24,
+    "color": "242424"
+  },
+  {
+    "latex": "U^{n+1}=\\tfrac13U^n+\\tfrac23\\left[U^{(2)}-\\Delta tD(U^{(2)})\\right]",
+    "fontsize": 24,
+    "color": "242424"
+  },
+  {
+    "latex": "\\rho>0,\\qquad E-\\frac{m^2}{2\\rho}>0",
+    "fontsize": 25,
+    "color": "242424"
+  },
+  {
+    "latex": "\\alpha_k=\\frac{d_k}{(\\epsilon+\\beta_k)^2},\\qquad\\omega_k=\\frac{\\alpha_k}{\\sum_j\\alpha_j}",
+    "fontsize": 31,
+    "color": "242424"
+  },
+  {
+    "latex": "(10^{-6})^2=10^{-12}\\gg 10^{-38}",
+    "fontsize": 27,
+    "color": "242424"
+  },
+  {
+    "latex": "U_h|_{I_i}=\\sum_{\\ell=0}^{q}U_{i,\\ell}\\varphi_\\ell(x)",
+    "fontsize": 27,
+    "color": "242424"
+  },
+  {
+    "latex": "\\widehat U=K_h*U_h,\\qquad\\int K=1,\\quad\\int x^rK(x)\\,dx=0",
+    "fontsize": 24,
+    "color": "242424"
+  },
+  {
+    "latex": "\\mathscr R=\\partial_t\\widehat U+\\partial_xF(\\widehat U)",
+    "fontsize": 28,
+    "color": "242424"
+  }
+]

@@ -1,0 +1,1454 @@
+[
+  {
+    "variant": "historical_teno",
+    "cells": 40,
+    "dt": 0.000425531914893617,
+    "refinement": 1,
+    "primary_error": 9.926444563546078e-09,
+    "l1": 9.926444563546078e-09,
+    "l2": 1.3937335660809214e-08,
+    "linf": 3.275832793914191e-08,
+    "component_l1": [
+      2.012117149841064e-08,
+      8.048468569388233e-09,
+      1.6096936228393587e-09
+    ],
+    "component_l2": [
+      2.2352012497441487e-08,
+      8.940805015847551e-09,
+      1.788160772695592e-09
+    ],
+    "component_linf": [
+      3.275832793914191e-08,
+      1.3103331586439282e-08,
+      2.6206623537916585e-09
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.01999999999999999,
+      "steps": 47,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9001396608102107,
+      "minimum_pressure": 0.9999999999999973,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -2.0344836926255993e-15,
+        -7.924216838262055e-16,
+        -4.773959005888173e-15
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 2.6135910270004388,
+      "first_execution_s": 0.002274304000820848,
+      "warm_step_median_s": 0.0007553539999207715,
+      "warm_step_repeats_s": [
+        0.0008885449988156324,
+        0.0007553539999207715,
+        0.0007426419997500489
+      ],
+      "simulation_s": 0.057686274998559384,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": null,
+    "temporal_cauchy_l1": 7.025074966193757e-14
+  },
+  {
+    "variant": "historical_teno",
+    "cells": 40,
+    "dt": 0.0002127659574468085,
+    "refinement": 2,
+    "primary_error": 9.92637473375598e-09,
+    "l1": 9.92637473375598e-09,
+    "l2": 1.3937237282719307e-08,
+    "linf": 3.275810267489021e-08,
+    "component_l1": [
+      2.0121029797870448e-08,
+      8.048411827277225e-09,
+      1.6096825761202637e-09
+    ],
+    "component_l2": [
+      2.2351854747869616e-08,
+      8.940741834231153e-09,
+      1.788148206450127e-09
+    ],
+    "component_linf": [
+      3.275810267489021e-08,
+      1.3103241547351985e-08,
+      2.6206388170635364e-09
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.019999999999999997,
+      "steps": 94,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9001412134767031,
+      "minimum_pressure": 0.9999999999999948,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -4.124478536482456e-15,
+        -1.4821477378745841e-15,
+        -9.470202400052587e-15
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 0.0005043379987910157,
+      "first_execution_s": 0.0013064169997960562,
+      "warm_step_median_s": 0.0009166919990093447,
+      "warm_step_repeats_s": [
+        0.0009853470000962261,
+        0.0008971359984570881,
+        0.0009166919990093447
+      ],
+      "simulation_s": 0.11376021899923217,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": null
+  },
+  {
+    "variant": "historical_teno",
+    "cells": 80,
+    "dt": 0.0001342281879194631,
+    "refinement": 1,
+    "primary_error": 3.1137256222465067e-10,
+    "l1": 3.1137256222465067e-10,
+    "l2": 4.373087880096647e-10,
+    "linf": 1.0290087670838943e-09,
+    "component_l1": [
+      6.311604433539841e-10,
+      2.52463994848684e-10,
+      5.049324847128389e-11
+    ],
+    "component_l2": [
+      7.0133430401091e-10,
+      2.8053366450228243e-10,
+      5.6106909644882484e-11
+    ],
+    "component_linf": [
+      1.0290087670838943e-09,
+      4.1160413966068177e-10,
+      8.23074941536106e-11
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.02,
+      "steps": 149,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9000256904754623,
+      "minimum_pressure": 0.9999999999999925,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -6.467049118441537e-15,
+        -2.4660828934486292e-15,
+        -1.4649392809928942e-14
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 2.6265192339997157,
+      "first_execution_s": 0.0020049179984198418,
+      "warm_step_median_s": 0.0013716499997826759,
+      "warm_step_repeats_s": [
+        0.0012321029989834642,
+        0.0013716499997826759,
+        0.0013990290008223383
+      ],
+      "simulation_s": 0.23581159799869056,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": 4.99456334172207,
+    "temporal_cauchy_l1": 7.582823258189819e-15
+  },
+  {
+    "variant": "historical_teno",
+    "cells": 80,
+    "dt": 6.711409395973155e-05,
+    "refinement": 2,
+    "primary_error": 3.113709186319813e-10,
+    "l1": 3.113709186319813e-10,
+    "l2": 4.373061816939435e-10,
+    "linf": 1.0289969987198333e-09,
+    "component_l1": [
+      6.311570252548471e-10,
+      2.5246255988542463e-10,
+      5.0493170755672166e-11
+    ],
+    "component_l2": [
+      7.013301522553995e-10,
+      2.8053198755640873e-10,
+      5.610624865625854e-11
+    ],
+    "component_linf": [
+      1.0289969987198333e-09,
+      4.1159914365707095e-10,
+      8.22932832988954e-11
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.02,
+      "steps": 298,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9000256981233156,
+      "minimum_pressure": 0.9999999999999862,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -1.3010426069826053e-14,
+        -4.8946957598161595e-15,
+        -2.8138602559124594e-14
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 0.0005611899996438297,
+      "first_execution_s": 0.0014950629993109033,
+      "warm_step_median_s": 0.001078866998796002,
+      "warm_step_repeats_s": [
+        0.0011590469985094387,
+        0.001078866998796002,
+        0.001072860999556724
+      ],
+      "simulation_s": 0.4703153150003345,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": 4.9945608080703146
+  },
+  {
+    "variant": "historical_teno",
+    "cells": 160,
+    "dt": 4.2372881355932206e-05,
+    "refinement": 1,
+    "primary_error": 9.736800254955824e-12,
+    "l1": 9.736800254955824e-12,
+    "l2": 1.367705162184479e-11,
+    "linf": 3.2186142640000526e-11,
+    "component_l1": [
+      1.973609886629646e-11,
+      7.894304654421091e-12,
+      1.5799972441499222e-12
+    ],
+    "component_l2": [
+      2.193453207813225e-11,
+      8.773857943809783e-12,
+      1.7552613751390127e-12
+    ],
+    "component_linf": [
+      3.2186142640000526e-11,
+      1.2875756016939022e-11,
+      2.538413923502958e-12
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.019999999999999834,
+      "steps": 472,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9000064243580842,
+      "minimum_pressure": 0.9999999999999747,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -2.0073526174613222e-14,
+        -7.851705396966224e-15,
+        -4.718725410413072e-14
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 2.5278803059991333,
+      "first_execution_s": 0.002590623000287451,
+      "warm_step_median_s": 0.0018501459999242797,
+      "warm_step_repeats_s": [
+        0.0018501459999242797,
+        0.002230373000202235,
+        0.0017585819987289142
+      ],
+      "simulation_s": 1.3793760469998233,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": 4.999050265087672,
+    "temporal_cauchy_l1": 1.932354739183258e-14
+  },
+  {
+    "variant": "historical_teno",
+    "cells": 160,
+    "dt": 2.1186440677966103e-05,
+    "refinement": 2,
+    "primary_error": 9.739019197578061e-12,
+    "l1": 9.739019197578061e-12,
+    "l2": 1.367887402000798e-11,
+    "linf": 3.216915622772376e-11,
+    "component_l1": [
+      1.9740543227841912e-11,
+      7.895195955343048e-12,
+      1.581318409549226e-12
+    ],
+    "component_l2": [
+      2.1937502956616826e-11,
+      8.774744636357048e-12,
+      1.7563040627690316e-12
+    ],
+    "component_linf": [
+      3.216915622772376e-11,
+      1.2870426946420821e-11,
+      2.509992214072554e-12
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.01999999999999976,
+      "steps": 944,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9000064251377623,
+      "minimum_pressure": 0.9999999999999627,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -4.1443237730476315e-14,
+        -1.5766554728458006e-14,
+        -7.583100813945976e-14
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 0.0006162260015116772,
+      "first_execution_s": 0.00210723800046253,
+      "warm_step_median_s": 0.0018206019994977396,
+      "warm_step_repeats_s": [
+        0.001833382999393507,
+        0.0017802330003178213,
+        0.0018206019994977396
+      ],
+      "simulation_s": 2.2894775370004936,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": 4.998713907988676
+  },
+  {
+    "variant": "fv_teno",
+    "cells": 40,
+    "dt": 0.000425531914893617,
+    "refinement": 1,
+    "primary_error": 9.897264602783581e-09,
+    "l1": 9.897264602783581e-09,
+    "l2": 1.3902577777711989e-08,
+    "linf": 3.275183235729173e-08,
+    "component_l1": [
+      2.0062022809685943e-08,
+      8.02480905753855e-09,
+      1.6049619411262483e-09
+    ],
+    "component_l2": [
+      2.2296269526730045e-08,
+      8.918507750366163e-09,
+      1.7837015709085095e-09
+    ],
+    "component_linf": [
+      3.275183235729173e-08,
+      1.3100732887405542e-08,
+      2.620142325326924e-09
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.01999999999999999,
+      "steps": 47,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9001396608036185,
+      "minimum_pressure": 0.9999999999999971,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -2.3370194668359546e-15,
+        -7.632783294297951e-16,
+        -4.685141163918161e-15
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 2.10730623299969,
+      "first_execution_s": 0.0018489590001991019,
+      "warm_step_median_s": 0.0010926959985226858,
+      "warm_step_repeats_s": [
+        0.0010899030003201915,
+        0.0010926959985226858,
+        0.0010937450006167637
+      ],
+      "simulation_s": 0.0659091300003638,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": null,
+    "temporal_cauchy_l1": 7.042375941660831e-14
+  },
+  {
+    "variant": "fv_teno",
+    "cells": 40,
+    "dt": 0.0002127659574468085,
+    "refinement": 2,
+    "primary_error": 9.897194672148223e-09,
+    "l1": 9.897194672148223e-09,
+    "l2": 1.390247922291602e-08,
+    "linf": 3.275160687099543e-08,
+    "component_l1": [
+      2.0061880931510067e-08,
+      8.024752323754215e-09,
+      1.6049507611803905e-09
+    ],
+    "component_l2": [
+      2.229611145841337e-08,
+      8.91844461179121e-09,
+      1.7836886419034903e-09
+    ],
+    "component_linf": [
+      3.275160687099543e-08,
+      1.310064356996321e-08,
+      2.6201210090448512e-09
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.019999999999999997,
+      "steps": 94,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9001412134701589,
+      "minimum_pressure": 0.9999999999999942,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -4.110600748674642e-15,
+        -1.6139867220488215e-15,
+        -9.092726571680033e-15
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 0.0005377220004447736,
+      "first_execution_s": 0.0011187480013177264,
+      "warm_step_median_s": 0.0009808079994400032,
+      "warm_step_repeats_s": [
+        0.0009808079994400032,
+        0.0007764469992252998,
+        0.0029228669991425704
+      ],
+      "simulation_s": 0.11012098500032153,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": null
+  },
+  {
+    "variant": "fv_teno",
+    "cells": 80,
+    "dt": 0.0001342281879194631,
+    "refinement": 1,
+    "primary_error": 3.1091389902463775e-10,
+    "l1": 3.1091389902463775e-10,
+    "l2": 4.367619995845971e-10,
+    "linf": 1.0289553653564099e-09,
+    "component_l1": [
+      6.302307523076145e-10,
+      2.5209230328226975e-10,
+      5.041864148402908e-11
+    ],
+    "component_l2": [
+      7.004573800054285e-10,
+      2.8018303109008773e-10,
+      5.6036244775221034e-11
+    ],
+    "component_linf": [
+      1.0289553653564099e-09,
+      4.115827123563065e-10,
+      8.23048296183515e-11
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.02,
+      "steps": 149,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.900025690475425,
+      "minimum_pressure": 0.999999999999992,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -6.540601393822954e-15,
+        -2.525757381022231e-15,
+        -1.4827028493868967e-14
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 2.0563413560012123,
+      "first_execution_s": 0.001842323999881046,
+      "warm_step_median_s": 0.001312353000685107,
+      "warm_step_repeats_s": [
+        0.0014280830000643618,
+        0.001312353000685107,
+        0.0012204400009068195
+      ],
+      "simulation_s": 0.22978157499892404,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": 4.992442832360056,
+    "temporal_cauchy_l1": 7.544428045254866e-15
+  },
+  {
+    "variant": "fv_teno",
+    "cells": 80,
+    "dt": 6.711409395973155e-05,
+    "refinement": 2,
+    "primary_error": 3.1091234517499623e-10,
+    "l1": 3.1091234517499623e-10,
+    "l2": 4.367594834029681e-10,
+    "linf": 1.0289430418808365e-09,
+    "component_l1": [
+      6.302273036773443e-10,
+      2.5209073509224746e-10,
+      5.041899675539696e-11
+    ],
+    "component_l2": [
+      7.004533326878271e-10,
+      2.8018132861350326e-10,
+      5.603651354403793e-11
+    ],
+    "component_linf": [
+      1.0289430418808365e-09,
+      4.1157749430809076e-10,
+      8.22879542283772e-11
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.02,
+      "steps": 298,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9000256981232784,
+      "minimum_pressure": 0.9999999999999861,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -1.2898015988582757e-14,
+        -4.973799150320702e-15,
+        -2.8449465006019636e-14
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 0.0004398720011522528,
+      "first_execution_s": 0.0014469409998127958,
+      "warm_step_median_s": 0.0010550509996392066,
+      "warm_step_repeats_s": [
+        0.0010742579997895518,
+        0.000991144999716198,
+        0.0010550509996392066
+      ],
+      "simulation_s": 0.44613042200035125,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": 4.992439848894762
+  },
+  {
+    "variant": "fv_teno",
+    "cells": 160,
+    "dt": 4.2372881355932206e-05,
+    "refinement": 1,
+    "primary_error": 9.729708705386031e-12,
+    "l1": 9.729708705386031e-12,
+    "l2": 1.3668478663422765e-11,
+    "linf": 3.2184810372370976e-11,
+    "component_l1": [
+      1.9721604210820588e-11,
+      7.888421166279969e-12,
+      1.5791007390575373e-12
+    ],
+    "component_l2": [
+      2.1920770428694943e-11,
+      8.768312116263798e-12,
+      1.7545521826280955e-12
+    ],
+    "component_linf": [
+      3.2184810372370976e-11,
+      1.2875867039241484e-11,
+      2.538413923502958e-12
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.019999999999999834,
+      "steps": 472,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9000064243580842,
+      "minimum_pressure": 0.9999999999999746,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -2.010058786083846e-14,
+        -7.899583764903184e-15,
+        -4.7423176496863565e-14
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 2.6150812770010816,
+      "first_execution_s": 0.003181078000125126,
+      "warm_step_median_s": 0.0023789290007698582,
+      "warm_step_repeats_s": [
+        0.0024450010005239164,
+        0.0023180949992820388,
+        0.0023789290007698582
+      ],
+      "simulation_s": 1.0457530180010508,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": 4.99797468853724,
+    "temporal_cauchy_l1": 1.9296370057375612e-14
+  },
+  {
+    "variant": "fv_teno",
+    "cells": 160,
+    "dt": 2.1186440677966103e-05,
+    "refinement": 2,
+    "primary_error": 9.732016118905543e-12,
+    "l1": 9.732016118905543e-12,
+    "l2": 1.3670433746967051e-11,
+    "linf": 3.2168490093908986e-11,
+    "component_l1": [
+      1.9726176248013872e-11,
+      7.889350284173701e-12,
+      1.5805218245290576e-12
+    ],
+    "component_l2": [
+      2.1923996369099198e-11,
+      8.769231268644662e-12,
+      1.7553468760893783e-12
+    ],
+    "component_linf": [
+      3.2168490093908986e-11,
+      1.2869760812606046e-11,
+      2.511324481702104e-12
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.01999999999999976,
+      "steps": 944,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9000064251377616,
+      "minimum_pressure": 0.9999999999999621,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -4.164515954308002e-14,
+        -1.5710002743141162e-14,
+        -7.592815265411447e-14
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 0.0004525840013229754,
+      "first_execution_s": 0.0020120430017414037,
+      "warm_step_median_s": 0.0016549350002605934,
+      "warm_step_repeats_s": [
+        0.0016549350002605934,
+        0.0015929140008665854,
+        0.0017251959998247912
+      ],
+      "simulation_s": 1.9567411829993944,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": 4.997625381875602
+  },
+  {
+    "variant": "fv_v2_soft25",
+    "cells": 40,
+    "dt": 0.000425531914893617,
+    "refinement": 1,
+    "primary_error": 9.897264591218757e-09,
+    "l1": 9.897264591218757e-09,
+    "l2": 1.3902577781655645e-08,
+    "linf": 3.2751832024224825e-08,
+    "component_l1": [
+      2.0062022809685943e-08,
+      8.024809078355232e-09,
+      1.6049618856150971e-09
+    ],
+    "component_l2": [
+      2.2296269534206947e-08,
+      8.918507771898561e-09,
+      1.7837014619985484e-09
+    ],
+    "component_linf": [
+      3.2751832024224825e-08,
+      1.3100732554338634e-08,
+      2.620141881237714e-09
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.01999999999999999,
+      "steps": 47,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9001396608036182,
+      "minimum_pressure": 0.9999999999999971,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -2.3869795029440866e-15,
+        -7.757683384568282e-16,
+        -4.5186077102243874e-15
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 3.5492027920008695,
+      "first_execution_s": 0.05185116900065623,
+      "warm_step_median_s": 0.00205862800066825,
+      "warm_step_repeats_s": [
+        0.00205862800066825,
+        0.002265643001010176,
+        0.0019862709996232297
+      ],
+      "simulation_s": 0.09724191199893539,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": null,
+    "temporal_cauchy_l1": 7.04492020275893e-14
+  },
+  {
+    "variant": "fv_v2_soft25",
+    "cells": 40,
+    "dt": 0.0002127659574468085,
+    "refinement": 2,
+    "primary_error": 9.897194624963745e-09,
+    "l1": 9.897194624963745e-09,
+    "l2": 1.3902479205271738e-08,
+    "linf": 3.275160687099543e-08,
+    "component_l1": [
+      2.0061880920407837e-08,
+      8.02475229322308e-09,
+      1.6049506612603182e-09
+    ],
+    "component_l2": [
+      2.2296111442503126e-08,
+      8.91844458662238e-09,
+      1.7836885540549016e-09
+    ],
+    "component_linf": [
+      3.275160687099543e-08,
+      1.3100643458940908e-08,
+      2.6201210090448512e-09
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.019999999999999997,
+      "steps": 94,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9001412134701589,
+      "minimum_pressure": 0.9999999999999942,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -4.099498518428391e-15,
+        -1.6056600493641327e-15,
+        -9.103828801926284e-15
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 0.0005059439990873216,
+      "first_execution_s": 0.002150262000213843,
+      "warm_step_median_s": 0.0014401659991563065,
+      "warm_step_repeats_s": [
+        0.001952186999915284,
+        0.0014401659991563065,
+        0.0013165439995646011
+      ],
+      "simulation_s": 0.18814925600054266,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": null
+  },
+  {
+    "variant": "fv_v2_soft25",
+    "cells": 80,
+    "dt": 0.0001342281879194631,
+    "refinement": 1,
+    "primary_error": 3.1091386433016823e-10,
+    "l1": 3.1091386433016823e-10,
+    "l2": 4.367620141692886e-10,
+    "linf": 1.0289553653564099e-09,
+    "component_l1": [
+      6.302307564709508e-10,
+      2.5209227275113653e-10,
+      5.0418563768417356e-11
+    ],
+    "component_l2": [
+      7.004574010507078e-10,
+      2.801830373629796e-10,
+      5.6036291374292577e-11
+    ],
+    "component_linf": [
+      1.0289553653564099e-09,
+      4.115827123563065e-10,
+      8.23048296183515e-11
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.02,
+      "steps": 149,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.900025690475425,
+      "minimum_pressure": 0.9999999999999911,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -6.553091402849987e-15,
+        -2.5077162568720726e-15,
+        -1.4960255256823984e-14
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 2.95281703100045,
+      "first_execution_s": 0.05219752300035907,
+      "warm_step_median_s": 0.002923705998910009,
+      "warm_step_repeats_s": [
+        0.003550199999153847,
+        0.002673597999091726,
+        0.002923705998910009
+      ],
+      "simulation_s": 0.4039172499997221,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": 4.99244299166272,
+    "temporal_cauchy_l1": 7.501869495977569e-15
+  },
+  {
+    "variant": "fv_v2_soft25",
+    "cells": 80,
+    "dt": 6.711409395973155e-05,
+    "refinement": 2,
+    "primary_error": 3.109124548095199e-10,
+    "l1": 3.109124548095199e-10,
+    "l2": 4.3675952680269803e-10,
+    "linf": 1.0289437080146513e-09,
+    "component_l1": [
+      6.302273716785045e-10,
+      2.520907628478231e-10,
+      5.041922990223213e-11
+    ],
+    "component_l2": [
+      7.004533879640943e-10,
+      2.801813380918588e-10,
+      5.6036789999318186e-11
+    ],
+    "component_linf": [
+      1.0289437080146513e-09,
+      4.1157782737499815e-10,
+      8.22906187636363e-11
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.02,
+      "steps": 298,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.900025698123279,
+      "minimum_pressure": 0.999999999999985,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -1.2957690476156359e-14,
+        -4.959921362512887e-15,
+        -2.8405056085034633e-14
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 0.00046669299990753643,
+      "first_execution_s": 0.0024309620002895826,
+      "warm_step_median_s": 0.0022078829988458892,
+      "warm_step_repeats_s": [
+        0.0021277039995766245,
+        0.0022233180006878683,
+        0.0022078829988458892
+      ],
+      "simulation_s": 0.8196666390012979,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": 4.992439333290894
+  },
+  {
+    "variant": "fv_v2_soft25",
+    "cells": 160,
+    "dt": 4.2372881355932206e-05,
+    "refinement": 1,
+    "primary_error": 9.729758087180981e-12,
+    "l1": 9.729758087180981e-12,
+    "l2": 1.3668532898410636e-11,
+    "linf": 3.218547650618575e-11,
+    "component_l1": [
+      1.9721670130312675e-11,
+      7.888453432136621e-12,
+      1.5791506990936455e-12
+    ],
+    "component_l2": [
+      2.1920859952076754e-11,
+      8.768350813155083e-12,
+      1.7545078408721459e-12
+    ],
+    "component_linf": [
+      3.218547650618575e-11,
+      1.287658868420749e-11,
+      2.5410784587620583e-12
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.019999999999999834,
+      "steps": 472,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9000064243580842,
+      "minimum_pressure": 0.9999999999999746,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -2.0174834025610267e-14,
+        -7.926992395823618e-15,
+        -4.76896300227736e-14
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 3.0168482100016263,
+      "first_execution_s": 0.0479630019999604,
+      "warm_step_median_s": 0.0038540180012205383,
+      "warm_step_repeats_s": [
+        0.0045708880006714026,
+        0.003704274000483565,
+        0.0038540180012205383
+      ],
+      "simulation_s": 2.3371630330002517,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": 4.997967205367632,
+    "temporal_cauchy_l1": 1.9142442260940603e-14
+  },
+  {
+    "variant": "fv_v2_soft25",
+    "cells": 160,
+    "dt": 2.1186440677966103e-05,
+    "refinement": 2,
+    "primary_error": 9.731801938380376e-12,
+    "l1": 9.731801938380376e-12,
+    "l2": 1.367030978538296e-11,
+    "linf": 3.2169822361538536e-11,
+    "component_l1": [
+      1.9726076327941656e-11,
+      7.889384978643221e-12,
+      1.5799445085562525e-12
+    ],
+    "component_l2": [
+      2.1923804777910645e-11,
+      8.769238957465083e-12,
+      1.7548051321871943e-12
+    ],
+    "component_linf": [
+      3.2169822361538536e-11,
+      1.2870093879513433e-11,
+      2.509992214072554e-12
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.01999999999999976,
+      "steps": 944,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9000064251377616,
+      "minimum_pressure": 0.9999999999999627,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -4.1528586125494375e-14,
+        -1.5796738916940002e-14,
+        -7.587819261800633e-14
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 0.0004474160014069639,
+      "first_execution_s": 0.004233755000313977,
+      "warm_step_median_s": 0.0038073629984864965,
+      "warm_step_repeats_s": [
+        0.0037382179998530773,
+        0.004002714000307606,
+        0.0038073629984864965
+      ],
+      "simulation_s": 4.954482819999612,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": 4.9976576415334515
+  },
+  {
+    "variant": "safe_fv_teno",
+    "cells": 40,
+    "dt": 0.000425531914893617,
+    "refinement": 1,
+    "primary_error": 9.897264602783581e-09,
+    "l1": 9.897264602783581e-09,
+    "l2": 1.3902577777711989e-08,
+    "linf": 3.275183235729173e-08,
+    "component_l1": [
+      2.0062022809685943e-08,
+      8.02480905753855e-09,
+      1.6049619411262483e-09
+    ],
+    "component_l2": [
+      2.2296269526730045e-08,
+      8.918507750366163e-09,
+      1.7837015709085095e-09
+    ],
+    "component_linf": [
+      3.275183235729173e-08,
+      1.3100732887405542e-08,
+      2.620142325326924e-09
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.01999999999999999,
+      "steps": 47,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9001396608036185,
+      "minimum_pressure": 0.9999999999999971,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -2.3370194668359546e-15,
+        -7.632783294297951e-16,
+        -4.685141163918161e-15
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 6.029961112999445,
+      "first_execution_s": 0.003105578000031528,
+      "warm_step_median_s": 0.002066729999569361,
+      "warm_step_repeats_s": [
+        0.0021057730009488296,
+        0.002066729999569361,
+        0.001957286000106251
+      ],
+      "simulation_s": 0.09849184500126285,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": null,
+    "temporal_cauchy_l1": 7.042375941660831e-14
+  },
+  {
+    "variant": "safe_fv_teno",
+    "cells": 40,
+    "dt": 0.0002127659574468085,
+    "refinement": 2,
+    "primary_error": 9.897194672148223e-09,
+    "l1": 9.897194672148223e-09,
+    "l2": 1.390247922291602e-08,
+    "linf": 3.275160687099543e-08,
+    "component_l1": [
+      2.0061880931510067e-08,
+      8.024752323754215e-09,
+      1.6049507611803905e-09
+    ],
+    "component_l2": [
+      2.229611145841337e-08,
+      8.91844461179121e-09,
+      1.7836886419034903e-09
+    ],
+    "component_linf": [
+      3.275160687099543e-08,
+      1.310064356996321e-08,
+      2.6201210090448512e-09
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.019999999999999997,
+      "steps": 94,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9001412134701589,
+      "minimum_pressure": 0.9999999999999942,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -4.110600748674642e-15,
+        -1.6139867220488215e-15,
+        -9.092726571680033e-15
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 0.00045754299935651943,
+      "first_execution_s": 0.0019885060009983135,
+      "warm_step_median_s": 0.001605136998477974,
+      "warm_step_repeats_s": [
+        0.0017886839996208437,
+        0.0014835399997537024,
+        0.001605136998477974
+      ],
+      "simulation_s": 0.170619345999512,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": null
+  },
+  {
+    "variant": "safe_fv_teno",
+    "cells": 80,
+    "dt": 0.0001342281879194631,
+    "refinement": 1,
+    "primary_error": 3.1091389902463775e-10,
+    "l1": 3.1091389902463775e-10,
+    "l2": 4.367619995845971e-10,
+    "linf": 1.0289553653564099e-09,
+    "component_l1": [
+      6.302307523076145e-10,
+      2.5209230328226975e-10,
+      5.041864148402908e-11
+    ],
+    "component_l2": [
+      7.004573800054285e-10,
+      2.8018303109008773e-10,
+      5.6036244775221034e-11
+    ],
+    "component_linf": [
+      1.0289553653564099e-09,
+      4.115827123563065e-10,
+      8.23048296183515e-11
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.02,
+      "steps": 149,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.900025690475425,
+      "minimum_pressure": 0.999999999999992,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -6.540601393822954e-15,
+        -2.525757381022231e-15,
+        -1.4827028493868967e-14
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 5.97151582799961,
+      "first_execution_s": 0.0024482839999109274,
+      "warm_step_median_s": 0.0016974689988273894,
+      "warm_step_repeats_s": [
+        0.0016825229995447444,
+        0.0018639749996509636,
+        0.0016974689988273894
+      ],
+      "simulation_s": 0.3186125850006647,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": 4.992442832360056,
+    "temporal_cauchy_l1": 7.544428045254866e-15
+  },
+  {
+    "variant": "safe_fv_teno",
+    "cells": 80,
+    "dt": 6.711409395973155e-05,
+    "refinement": 2,
+    "primary_error": 3.1091234517499623e-10,
+    "l1": 3.1091234517499623e-10,
+    "l2": 4.367594834029681e-10,
+    "linf": 1.0289430418808365e-09,
+    "component_l1": [
+      6.302273036773443e-10,
+      2.5209073509224746e-10,
+      5.041899675539696e-11
+    ],
+    "component_l2": [
+      7.004533326878271e-10,
+      2.8018132861350326e-10,
+      5.603651354403793e-11
+    ],
+    "component_linf": [
+      1.0289430418808365e-09,
+      4.1157749430809076e-10,
+      8.22879542283772e-11
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.02,
+      "steps": 298,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9000256981232784,
+      "minimum_pressure": 0.9999999999999861,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -1.2898015988582757e-14,
+        -4.973799150320702e-15,
+        -2.8449465006019636e-14
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 0.0004282789996068459,
+      "first_execution_s": 0.0018625090015120804,
+      "warm_step_median_s": 0.001602692000233219,
+      "warm_step_repeats_s": [
+        0.0019386379990464775,
+        0.0015893519994278904,
+        0.001602692000233219
+      ],
+      "simulation_s": 0.6729873429994768,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": 4.992439848894762
+  },
+  {
+    "variant": "safe_fv_teno",
+    "cells": 160,
+    "dt": 4.2372881355932206e-05,
+    "refinement": 1,
+    "primary_error": 9.729708705386031e-12,
+    "l1": 9.729708705386031e-12,
+    "l2": 1.3668478663422765e-11,
+    "linf": 3.2184810372370976e-11,
+    "component_l1": [
+      1.9721604210820588e-11,
+      7.888421166279969e-12,
+      1.5791007390575373e-12
+    ],
+    "component_l2": [
+      2.1920770428694943e-11,
+      8.768312116263798e-12,
+      1.7545521826280955e-12
+    ],
+    "component_linf": [
+      3.2184810372370976e-11,
+      1.2875867039241484e-11,
+      2.538413923502958e-12
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.019999999999999834,
+      "steps": 472,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9000064243580842,
+      "minimum_pressure": 0.9999999999999746,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -2.010058786083846e-14,
+        -7.899583764903184e-15,
+        -4.7423176496863565e-14
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 6.328746737000984,
+      "first_execution_s": 0.003459962999841082,
+      "warm_step_median_s": 0.002417413999864948,
+      "warm_step_repeats_s": [
+        0.0024761510012467625,
+        0.0022768889994040364,
+        0.002417413999864948
+      ],
+      "simulation_s": 1.3372394839989283,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": 4.99797468853724,
+    "temporal_cauchy_l1": 1.9296370057375612e-14
+  },
+  {
+    "variant": "safe_fv_teno",
+    "cells": 160,
+    "dt": 2.1186440677966103e-05,
+    "refinement": 2,
+    "primary_error": 9.732016118905543e-12,
+    "l1": 9.732016118905543e-12,
+    "l2": 1.3670433746967051e-11,
+    "linf": 3.2168490093908986e-11,
+    "component_l1": [
+      1.9726176248013872e-11,
+      7.889350284173701e-12,
+      1.5805218245290576e-12
+    ],
+    "component_l2": [
+      2.1923996369099198e-11,
+      8.769231268644662e-12,
+      1.7553468760893783e-12
+    ],
+    "component_linf": [
+      3.2168490093908986e-11,
+      1.2869760812606046e-11,
+      2.511324481702104e-12
+    ],
+    "diagnostics": {
+      "success": true,
+      "final_time": 0.01999999999999976,
+      "steps": 944,
+      "retries": 0,
+      "limited_fe_stages": 0,
+      "limited_face_stages": 0,
+      "raw_invalid_fe_rows": 0,
+      "minimum_density": 0.9000064251377616,
+      "minimum_pressure": 0.9999999999999621,
+      "limiter_frequency": 0.0,
+      "face_limiter_frequency": 0.0,
+      "conservation_residual": [
+        -4.164515954308002e-14,
+        -1.5710002743141162e-14,
+        -7.592815265411447e-14
+      ],
+      "boundary_exchange": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "compile_s": 0.0005740409997088136,
+      "first_execution_s": 0.0030731709994142875,
+      "warm_step_median_s": 0.0024480749998474494,
+      "warm_step_repeats_s": [
+        0.0026564170002529863,
+        0.002369222000197624,
+        0.0024480749998474494
+      ],
+      "simulation_s": 2.6937905980012147,
+      "host_instrumentation_included": true,
+      "first_failed_step": null
+    },
+    "order": 4.997625381875602
+  }
+]

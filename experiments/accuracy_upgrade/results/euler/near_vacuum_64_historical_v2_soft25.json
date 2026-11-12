@@ -1,0 +1,167 @@
+{
+  "case": "near_vacuum",
+  "definition": {
+    "id": "near_vacuum",
+    "kind": "riemann",
+    "system": "euler",
+    "left": [
+      1e-05,
+      -0.01,
+      1e-08
+    ],
+    "right": [
+      1e-05,
+      0.01,
+      1e-08
+    ],
+    "jump": 0.5,
+    "time": 0.1,
+    "boundary": "transmissive"
+  },
+  "cells": 64,
+  "variant": "historical_v2_soft25",
+  "dt": 0.05,
+  "dx": 0.015625,
+  "success": true,
+  "final_time": 0.1,
+  "steps": 2,
+  "retries": 0,
+  "limited_fe_stages": 0,
+  "limited_face_stages": 0,
+  "raw_invalid_fe_rows": 0,
+  "minimum_density": 9.026405872607068e-06,
+  "minimum_pressure": 8.733498328811858e-09,
+  "limiter_frequency": 0.0,
+  "face_limiter_frequency": 0.0,
+  "conservation_residual": [
+    -1.522012327097571e-22,
+    -9.926167350636332e-25,
+    -4.1359030627651384e-25
+  ],
+  "boundary_exchange": [
+    2e-08,
+    -1.6543612251060554e-25,
+    7.100000000000001e-11
+  ],
+  "compile_s": 0.0004630610001186142,
+  "first_execution_s": 0.002283243999045226,
+  "warm_step_median_s": 0.002151171000150498,
+  "warm_step_repeats_s": [
+    0.002009179999731714,
+    0.002151171000150498,
+    0.0022204549986781785
+  ],
+  "simulation_s": 0.0050329709993093275,
+  "host_instrumentation_included": true,
+  "first_failed_step": null,
+  "primary_error": 2.7177052903695235e-10,
+  "l1": 2.7177052903695235e-10,
+  "l2": 1.7521511119054996e-09,
+  "linf": 1.6309503914763835e-08,
+  "component_l1": [
+    7.451149044653952e-10,
+    6.780920428614982e-11,
+    2.38747835931199e-12
+  ],
+  "component_l2": [
+    3.0140607370180427e-09,
+    3.541819101412981e-10,
+    9.67496511363876e-12
+  ],
+  "component_linf": [
+    1.6309503914763835e-08,
+    2.1115887955590598e-09,
+    5.3488568232986316e-11
+  ],
+  "reference": "analytic Euler Riemann cell averages",
+  "error_over_time": [
+    {
+      "time": 0.0,
+      "primary_error": 0.0,
+      "l1": 0.0,
+      "l2": 0.0,
+      "linf": 0.0,
+      "component_l1": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "component_l2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "component_linf": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "time": 0.05,
+      "primary_error": 2.870928714884498e-10,
+      "l1": 2.870928714884498e-10,
+      "l2": 1.8082130687258124e-09,
+      "linf": 1.5453703655112628e-08,
+      "component_l1": [
+        8.146073072133193e-10,
+        4.390335881396e-11,
+        2.7679484380701593e-12
+      ],
+      "component_l2": [
+        3.1262259075617156e-09,
+        1.8842016192601356e-10,
+        1.0626532932291937e-11
+      ],
+      "component_linf": [
+        1.5453703655112628e-08,
+        1.0996582707772097e-09,
+        5.242005839388984e-11
+      ]
+    },
+    {
+      "time": 0.1,
+      "primary_error": 2.7177052903695235e-10,
+      "l1": 2.7177052903695235e-10,
+      "l2": 1.7521511119054996e-09,
+      "linf": 1.6309503914763835e-08,
+      "component_l1": [
+        7.451149044653952e-10,
+        6.780920428614982e-11,
+        2.38747835931199e-12
+      ],
+      "component_l2": [
+        3.0140607370180427e-09,
+        3.541819101412981e-10,
+        9.67496511363876e-12
+      ],
+      "component_linf": [
+        1.6309503914763835e-08,
+        2.1115887955590598e-09,
+        5.3488568232986316e-11
+      ]
+    }
+  ],
+  "density_tv": 1.3646520158077754e-06,
+  "pressure_tv": 1.7681005263103888e-09,
+  "density_overshoot": 1.5234709907665148e-08,
+  "density_undershoot": 1.6309503914758753e-08,
+  "history": [
+    {
+      "time": 0.05,
+      "min_density": 9.329937179944953e-06,
+      "min_pressure": 9.129527178542033e-09,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.1,
+      "min_density": 9.026405872607068e-06,
+      "min_pressure": 8.733498328811858e-09,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    }
+  ]
+}

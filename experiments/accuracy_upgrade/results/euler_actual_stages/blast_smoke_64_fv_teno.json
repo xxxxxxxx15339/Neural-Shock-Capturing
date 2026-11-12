@@ -1,0 +1,180 @@
+{
+  "case": "blast_smoke",
+  "definition": {
+    "id": "blast_smoke",
+    "kind": "blast",
+    "system": "euler",
+    "time": 0.001,
+    "boundary": "reflective-wall"
+  },
+  "cells": 64,
+  "variant": "fv_teno",
+  "dt": 6.666666666666667e-05,
+  "dx": 0.015625,
+  "success": false,
+  "final_time": 0.0004000000000000001,
+  "steps": 7,
+  "retries": 0,
+  "limited_fe_stages": 0,
+  "limited_face_stages": 0,
+  "raw_invalid_fe_rows": 6,
+  "minimum_density": 0.8726076879833262,
+  "minimum_pressure": 0.009999999999999995,
+  "limiter_frequency": 0.0,
+  "face_limiter_frequency": 0.0,
+  "conservation_residual": [
+    -9.194034422677078e-17,
+    0.0,
+    -3.733124920302089e-14
+  ],
+  "boundary_exchange": [
+    0.0,
+    -0.35999996988350574,
+    0.0
+  ],
+  "compile_s": 2.909346345999438,
+  "first_execution_s": 0.0024853070008248324,
+  "warm_step_median_s": 0.0014781659992877394,
+  "warm_step_repeats_s": [
+    0.0015318749992729863,
+    0.0014781659992877394,
+    0.0014042709990462754
+  ],
+  "simulation_s": 0.01355157599937229,
+  "host_instrumentation_included": true,
+  "first_failed_step": 7,
+  "reference": "none; stability-only",
+  "history": [
+    {
+      "time": 6.666666666666667e-05,
+      "min_density": 0.9961782845184233,
+      "min_pressure": 0.009999999999999995,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.00013333333333333334,
+      "min_density": 0.9855288233837128,
+      "min_pressure": 0.009999999999999995,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.0002,
+      "min_density": 0.9687098770079564,
+      "min_pressure": 0.009999999999999995,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.0002666666666666667,
+      "min_density": 0.9448558153596355,
+      "min_pressure": 0.009999999999999995,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.0003333333333333334,
+      "min_density": 0.9087459069968752,
+      "min_pressure": 0.009999999999999995,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.0004000000000000001,
+      "min_density": 0.8726076879833262,
+      "min_pressure": 0.009999999999999995,
+      "theta_min": 1.0,
+      "face_theta_min": 1.0,
+      "retries": 0
+    },
+    {
+      "time": 0.0004000000000000001,
+      "success": false,
+      "diagnostics": {
+        "accepted_dt": 0.0,
+        "exchange": [
+          0.0,
+          -0.05999996317227957,
+          0.0
+        ],
+        "retries": 0,
+        "stages": {
+          "cfl": [
+            0.17780344741363577,
+            0.17780344741363577,
+            0.17780344741363577
+          ],
+          "exchange": [
+            [
+              0.0,
+              -0.05999996317227957,
+              0.0
+            ],
+            [
+              0.0,
+              -0.05999996317227957,
+              0.0
+            ],
+            [
+              0.0,
+              -0.05999996317227957,
+              0.0
+            ]
+          ],
+          "face_theta": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "low_ok": [
+            false,
+            false,
+            false
+          ],
+          "min_density": [
+            null,
+            null,
+            null
+          ],
+          "min_pressure": [
+            null,
+            null,
+            null
+          ],
+          "ok": [
+            false,
+            false,
+            false
+          ],
+          "raw_faces_finite": [
+            true,
+            true,
+            true
+          ],
+          "raw_faces_valid": [
+            true,
+            true,
+            true
+          ],
+          "raw_invalid": [
+            2,
+            2,
+            2
+          ],
+          "theta": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "success": false
+      }
+    }
+  ]
+}

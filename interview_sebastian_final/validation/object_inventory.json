@@ -1,0 +1,86 @@
+[
+  {
+    "slide": 1,
+    "native_text_shapes": 8,
+    "native_shapes": 10,
+    "pictures": 3,
+    "hidden": false
+  },
+  {
+    "slide": 2,
+    "native_text_shapes": 16,
+    "native_shapes": 24,
+    "pictures": 3,
+    "hidden": false
+  },
+  {
+    "slide": 3,
+    "native_text_shapes": 19,
+    "native_shapes": 28,
+    "pictures": 4,
+    "hidden": false
+  },
+  {
+    "slide": 4,
+    "native_text_shapes": 15,
+    "native_shapes": 21,
+    "pictures": 3,
+    "hidden": false
+  },
+  {
+    "slide": 5,
+    "native_text_shapes": 14,
+    "native_shapes": 17,
+    "pictures": 4,
+    "hidden": false
+  },
+  {
+    "slide": 6,
+    "native_text_shapes": 22,
+    "native_shapes": 33,
+    "pictures": 3,
+    "hidden": false
+  },
+  {
+    "slide": 7,
+    "native_text_shapes": 10,
+    "native_shapes": 12,
+    "pictures": 3,
+    "hidden": false
+  },
+  {
+    "slide": 8,
+    "native_text_shapes": 9,
+    "native_shapes": 12,
+    "pictures": 3,
+    "hidden": false
+  },
+  {
+    "slide": 9,
+    "native_text_shapes": 17,
+    "native_shapes": 23,
+    "pictures": 3,
+    "hidden": false
+  },
+  {
+    "slide": 10,
+    "native_text_shapes": 8,
+    "native_shapes": 10,
+    "pictures": 8,
+    "hidden": true
+  },
+  {
+    "slide": 11,
+    "native_text_shapes": 10,
+    "native_shapes": 13,
+    "pictures": 3,
+    "hidden": true
+  },
+  {
+    "slide": 12,
+    "native_text_shapes": 12,
+    "native_shapes": 14,
+    "pictures": 4,
+    "hidden": true
+  }
+]

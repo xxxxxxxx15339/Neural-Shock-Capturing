@@ -1,0 +1,3054 @@
+[
+  {
+    "case_id": "scalar-validation-000000-2230928489001829990",
+    "physics": "scalar",
+    "family": "constant",
+    "cells": 64,
+    "system": "advection",
+    "mode": "soft",
+    "strength": 0,
+    "dt": 0.004557291666666667,
+    "steps": 15,
+    "final_time": 0.068359375,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 0.0,
+    "l1": 0.0,
+    "l2": 0.0,
+    "linf": 0.0,
+    "component_l1": [
+      0.0
+    ],
+    "component_l2": [
+      0.0
+    ],
+    "component_linf": [
+      0.0
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.0
+    ],
+    "state_min": [
+      0.3492444513909774
+    ],
+    "state_max": [
+      0.3492444513909774
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      0.0
+    ],
+    "initial_integral": [
+      0.3492444513909774
+    ],
+    "final_integral": [
+      0.3492444513909774
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      0.0
+    ],
+    "maximum_effective_cfl": 0.2916666666666667,
+    "minimum_stage_state": 0.3492444513909774
+  },
+  {
+    "case_id": "scalar-validation-000003-1810171693282524608",
+    "physics": "scalar",
+    "family": "fourier",
+    "cells": 64,
+    "system": "advection",
+    "mode": "soft",
+    "strength": 0,
+    "dt": 0.004502716411010075,
+    "steps": 15,
+    "final_time": 0.06754074616515113,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 0.0003657566474564303,
+    "l1": 0.0003297641823498872,
+    "l2": 0.0003657566474564303,
+    "linf": 0.0005236933891128448,
+    "component_l1": [
+      0.0003297641823498872
+    ],
+    "component_l2": [
+      0.0003657566474564303
+    ],
+    "component_linf": [
+      0.0005236933891128448
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      3.720530821236929
+    ],
+    "state_min": [
+      -0.01058417192101031
+    ],
+    "state_max": [
+      0.9242877225003973
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      0.0
+    ],
+    "initial_integral": [
+      0.4664739249807768
+    ],
+    "final_integral": [
+      0.46647392498077633
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -4.440892098500626e-16
+    ],
+    "maximum_effective_cfl": 0.2916666666666667,
+    "minimum_stage_state": -0.018352030683522952
+  },
+  {
+    "case_id": "scalar-validation-000006-7319783221121533170",
+    "physics": "scalar",
+    "family": "square",
+    "cells": 64,
+    "system": "advection",
+    "mode": "soft",
+    "strength": 0,
+    "dt": 0.003893964697349453,
+    "steps": 15,
+    "final_time": 0.058409470460241794,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 0.0504487213384613,
+    "l1": 0.015787053766928023,
+    "l2": 0.0504487213384613,
+    "linf": 0.24568964081378752,
+    "component_l1": [
+      0.015787053766928023
+    ],
+    "component_l2": [
+      0.0504487213384613
+    ],
+    "component_linf": [
+      0.24568964081378752
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      2.6833536281408703
+    ],
+    "state_min": [
+      -0.12363475394885844
+    ],
+    "state_max": [
+      1.2180420601215767
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      1.3877787807814457e-17
+    ],
+    "initial_integral": [
+      0.6488793247622555
+    ],
+    "final_integral": [
+      0.6488793247622552
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -3.3306690738754696e-16
+    ],
+    "maximum_effective_cfl": 0.2916666666666667,
+    "minimum_stage_state": -0.12363475394885845
+  },
+  {
+    "case_id": "scalar-validation-000036-6178426902412593947",
+    "physics": "scalar",
+    "family": "gaussian",
+    "cells": 64,
+    "system": "advection",
+    "mode": "soft",
+    "strength": 0,
+    "dt": 0.004137188514347178,
+    "steps": 15,
+    "final_time": 0.06205782771520767,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 4.0139250993168764e-05,
+    "l1": 1.980377503001292e-05,
+    "l2": 4.0139250993168764e-05,
+    "linf": 0.00014815206755414145,
+    "component_l1": [
+      1.980377503001292e-05
+    ],
+    "component_l2": [
+      4.0139250993168764e-05
+    ],
+    "component_linf": [
+      0.00014815206755414145
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.6367944658338444
+    ],
+    "state_min": [
+      0.15955884291466482
+    ],
+    "state_max": [
+      0.477956075831587
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      1.4988010832439613e-15
+    ],
+    "initial_integral": [
+      0.2058039515984467
+    ],
+    "final_integral": [
+      0.2058039515984465
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -1.942890293094024e-16
+    ],
+    "maximum_effective_cfl": 0.2916666666666667,
+    "minimum_stage_state": 0.15955884291466454
+  },
+  {
+    "case_id": "scalar-validation-000000-2230928489001829990",
+    "physics": "scalar",
+    "family": "constant",
+    "cells": 64,
+    "system": "advection",
+    "mode": "soft",
+    "strength": 0.25,
+    "dt": 0.004557291666666667,
+    "steps": 15,
+    "final_time": 0.068359375,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 0.0,
+    "l1": 0.0,
+    "l2": 0.0,
+    "linf": 0.0,
+    "component_l1": [
+      0.0
+    ],
+    "component_l2": [
+      0.0
+    ],
+    "component_linf": [
+      0.0
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.0
+    ],
+    "state_min": [
+      0.3492444513909774
+    ],
+    "state_max": [
+      0.3492444513909774
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      0.0
+    ],
+    "initial_integral": [
+      0.3492444513909774
+    ],
+    "final_integral": [
+      0.3492444513909774
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      0.0
+    ],
+    "maximum_effective_cfl": 0.2916666666666667,
+    "minimum_stage_state": 0.3492444513909774
+  },
+  {
+    "case_id": "scalar-validation-000003-1810171693282524608",
+    "physics": "scalar",
+    "family": "fourier",
+    "cells": 64,
+    "system": "advection",
+    "mode": "soft",
+    "strength": 0.25,
+    "dt": 0.004502716411010075,
+    "steps": 15,
+    "final_time": 0.06754074616515113,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 0.0003657566474564303,
+    "l1": 0.0003297641823498872,
+    "l2": 0.0003657566474564303,
+    "linf": 0.0005236933891128448,
+    "component_l1": [
+      0.0003297641823498872
+    ],
+    "component_l2": [
+      0.0003657566474564303
+    ],
+    "component_linf": [
+      0.0005236933891128448
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      3.720530821236929
+    ],
+    "state_min": [
+      -0.01058417192101031
+    ],
+    "state_max": [
+      0.9242877225003973
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      0.0
+    ],
+    "initial_integral": [
+      0.4664739249807768
+    ],
+    "final_integral": [
+      0.46647392498077633
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -4.440892098500626e-16
+    ],
+    "maximum_effective_cfl": 0.2916666666666667,
+    "minimum_stage_state": -0.018352030683522952
+  },
+  {
+    "case_id": "scalar-validation-000006-7319783221121533170",
+    "physics": "scalar",
+    "family": "square",
+    "cells": 64,
+    "system": "advection",
+    "mode": "soft",
+    "strength": 0.25,
+    "dt": 0.003893964697349453,
+    "steps": 15,
+    "final_time": 0.058409470460241794,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 0.04753721866140282,
+    "l1": 0.014924321067693381,
+    "l2": 0.04753721866140282,
+    "linf": 0.2287612968750743,
+    "component_l1": [
+      0.014924321067693381
+    ],
+    "component_l2": [
+      0.04753721866140282
+    ],
+    "component_linf": [
+      0.2287612968750743
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      2.7703920925894447
+    ],
+    "state_min": [
+      -0.14161781250141023
+    ],
+    "state_max": [
+      1.2355429351195004
+    ],
+    "overshoot": [
+      0.017500874997923743
+    ],
+    "undershoot": [
+      0.017983058552551806
+    ],
+    "initial_integral": [
+      0.6488793247622555
+    ],
+    "final_integral": [
+      0.6488793247622548
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -6.661338147750939e-16
+    ],
+    "maximum_effective_cfl": 0.2916666666666667,
+    "minimum_stage_state": -0.16049785241426506
+  },
+  {
+    "case_id": "scalar-validation-000036-6178426902412593947",
+    "physics": "scalar",
+    "family": "gaussian",
+    "cells": 64,
+    "system": "advection",
+    "mode": "soft",
+    "strength": 0.25,
+    "dt": 0.004137188514347178,
+    "steps": 15,
+    "final_time": 0.06205782771520767,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 4.013861275882984e-05,
+    "l1": 1.97872858347819e-05,
+    "l2": 4.013861275882984e-05,
+    "linf": 0.00014815207672630448,
+    "component_l1": [
+      1.97872858347819e-05
+    ],
+    "component_l2": [
+      4.013861275882984e-05
+    ],
+    "component_linf": [
+      0.00014815207672630448
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.6367944658155055
+    ],
+    "state_min": [
+      0.1595588429146621
+    ],
+    "state_max": [
+      0.47795607582241484
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      4.218847493575595e-15
+    ],
+    "initial_integral": [
+      0.2058039515984467
+    ],
+    "final_integral": [
+      0.20580395159844653
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -1.6653345369377348e-16
+    ],
+    "maximum_effective_cfl": 0.2916666666666667,
+    "minimum_stage_state": 0.15955884291465838
+  },
+  {
+    "case_id": "scalar-validation-000000-2230928489001829990",
+    "physics": "scalar",
+    "family": "constant",
+    "cells": 64,
+    "system": "advection",
+    "mode": "hard",
+    "strength": 0,
+    "dt": 0.004557291666666667,
+    "steps": 15,
+    "final_time": 0.068359375,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 0.0,
+    "l1": 0.0,
+    "l2": 0.0,
+    "linf": 0.0,
+    "component_l1": [
+      0.0
+    ],
+    "component_l2": [
+      0.0
+    ],
+    "component_linf": [
+      0.0
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.0
+    ],
+    "state_min": [
+      0.3492444513909774
+    ],
+    "state_max": [
+      0.3492444513909774
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      0.0
+    ],
+    "initial_integral": [
+      0.3492444513909774
+    ],
+    "final_integral": [
+      0.3492444513909774
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      0.0
+    ],
+    "maximum_effective_cfl": 0.2916666666666667,
+    "minimum_stage_state": 0.3492444513909774
+  },
+  {
+    "case_id": "scalar-validation-000003-1810171693282524608",
+    "physics": "scalar",
+    "family": "fourier",
+    "cells": 64,
+    "system": "advection",
+    "mode": "hard",
+    "strength": 0,
+    "dt": 0.004502716411010075,
+    "steps": 15,
+    "final_time": 0.06754074616515113,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 0.0003657566474564303,
+    "l1": 0.0003297641823498872,
+    "l2": 0.0003657566474564303,
+    "linf": 0.0005236933891128448,
+    "component_l1": [
+      0.0003297641823498872
+    ],
+    "component_l2": [
+      0.0003657566474564303
+    ],
+    "component_linf": [
+      0.0005236933891128448
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      3.720530821236929
+    ],
+    "state_min": [
+      -0.01058417192101031
+    ],
+    "state_max": [
+      0.9242877225003973
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      0.0
+    ],
+    "initial_integral": [
+      0.4664739249807768
+    ],
+    "final_integral": [
+      0.46647392498077633
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -4.440892098500626e-16
+    ],
+    "maximum_effective_cfl": 0.2916666666666667,
+    "minimum_stage_state": -0.018352030683522952
+  },
+  {
+    "case_id": "scalar-validation-000006-7319783221121533170",
+    "physics": "scalar",
+    "family": "square",
+    "cells": 64,
+    "system": "advection",
+    "mode": "hard",
+    "strength": 0,
+    "dt": 0.003893964697349453,
+    "steps": 15,
+    "final_time": 0.058409470460241794,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 0.0504487213384613,
+    "l1": 0.015787053766928023,
+    "l2": 0.0504487213384613,
+    "linf": 0.24568964081378752,
+    "component_l1": [
+      0.015787053766928023
+    ],
+    "component_l2": [
+      0.0504487213384613
+    ],
+    "component_linf": [
+      0.24568964081378752
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      2.6833536281408703
+    ],
+    "state_min": [
+      -0.12363475394885844
+    ],
+    "state_max": [
+      1.2180420601215767
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      1.3877787807814457e-17
+    ],
+    "initial_integral": [
+      0.6488793247622555
+    ],
+    "final_integral": [
+      0.6488793247622552
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -3.3306690738754696e-16
+    ],
+    "maximum_effective_cfl": 0.2916666666666667,
+    "minimum_stage_state": -0.12363475394885845
+  },
+  {
+    "case_id": "scalar-validation-000036-6178426902412593947",
+    "physics": "scalar",
+    "family": "gaussian",
+    "cells": 64,
+    "system": "advection",
+    "mode": "hard",
+    "strength": 0,
+    "dt": 0.004137188514347178,
+    "steps": 15,
+    "final_time": 0.06205782771520767,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 4.0139250993168764e-05,
+    "l1": 1.980377503001292e-05,
+    "l2": 4.0139250993168764e-05,
+    "linf": 0.00014815206755414145,
+    "component_l1": [
+      1.980377503001292e-05
+    ],
+    "component_l2": [
+      4.0139250993168764e-05
+    ],
+    "component_linf": [
+      0.00014815206755414145
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.6367944658338444
+    ],
+    "state_min": [
+      0.15955884291466482
+    ],
+    "state_max": [
+      0.477956075831587
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      1.4988010832439613e-15
+    ],
+    "initial_integral": [
+      0.2058039515984467
+    ],
+    "final_integral": [
+      0.2058039515984465
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -1.942890293094024e-16
+    ],
+    "maximum_effective_cfl": 0.2916666666666667,
+    "minimum_stage_state": 0.15955884291466454
+  },
+  {
+    "case_id": "scalar-validation-000000-2230928489001829990",
+    "physics": "scalar",
+    "family": "constant",
+    "cells": 64,
+    "system": "advection",
+    "mode": "hard",
+    "strength": 0.25,
+    "dt": 0.004557291666666667,
+    "steps": 15,
+    "final_time": 0.068359375,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 0.0,
+    "l1": 0.0,
+    "l2": 0.0,
+    "linf": 0.0,
+    "component_l1": [
+      0.0
+    ],
+    "component_l2": [
+      0.0
+    ],
+    "component_linf": [
+      0.0
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.0
+    ],
+    "state_min": [
+      0.3492444513909774
+    ],
+    "state_max": [
+      0.3492444513909774
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      0.0
+    ],
+    "initial_integral": [
+      0.3492444513909774
+    ],
+    "final_integral": [
+      0.3492444513909774
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      0.0
+    ],
+    "maximum_effective_cfl": 0.2916666666666667,
+    "minimum_stage_state": 0.3492444513909774
+  },
+  {
+    "case_id": "scalar-validation-000003-1810171693282524608",
+    "physics": "scalar",
+    "family": "fourier",
+    "cells": 64,
+    "system": "advection",
+    "mode": "hard",
+    "strength": 0.25,
+    "dt": 0.004502716411010075,
+    "steps": 15,
+    "final_time": 0.06754074616515113,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 0.0003657566474564303,
+    "l1": 0.0003297641823498872,
+    "l2": 0.0003657566474564303,
+    "linf": 0.0005236933891128448,
+    "component_l1": [
+      0.0003297641823498872
+    ],
+    "component_l2": [
+      0.0003657566474564303
+    ],
+    "component_linf": [
+      0.0005236933891128448
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      3.720530821236929
+    ],
+    "state_min": [
+      -0.01058417192101031
+    ],
+    "state_max": [
+      0.9242877225003973
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      0.0
+    ],
+    "initial_integral": [
+      0.4664739249807768
+    ],
+    "final_integral": [
+      0.46647392498077633
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -4.440892098500626e-16
+    ],
+    "maximum_effective_cfl": 0.2916666666666667,
+    "minimum_stage_state": -0.018352030683522952
+  },
+  {
+    "case_id": "scalar-validation-000006-7319783221121533170",
+    "physics": "scalar",
+    "family": "square",
+    "cells": 64,
+    "system": "advection",
+    "mode": "hard",
+    "strength": 0.25,
+    "dt": 0.003893964697349453,
+    "steps": 15,
+    "final_time": 0.058409470460241794,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 0.04768663658033931,
+    "l1": 0.015942932516241952,
+    "l2": 0.04768663658033931,
+    "linf": 0.21740240349240736,
+    "component_l1": [
+      0.015942932516241952
+    ],
+    "component_l2": [
+      0.04768663658033931
+    ],
+    "component_linf": [
+      0.21740240349240736
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      2.8396123565013216
+    ],
+    "state_min": [
+      -0.1799642282431515
+    ],
+    "state_max": [
+      1.2182482427091095
+    ],
+    "overshoot": [
+      0.0002061825875327994
+    ],
+    "undershoot": [
+      0.05632947429429308
+    ],
+    "initial_integral": [
+      0.6488793247622555
+    ],
+    "final_integral": [
+      0.6488793247622548
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -6.661338147750939e-16
+    ],
+    "maximum_effective_cfl": 0.2916666666666667,
+    "minimum_stage_state": -0.22037537951913372
+  },
+  {
+    "case_id": "scalar-validation-000036-6178426902412593947",
+    "physics": "scalar",
+    "family": "gaussian",
+    "cells": 64,
+    "system": "advection",
+    "mode": "hard",
+    "strength": 0.25,
+    "dt": 0.004137188514347178,
+    "steps": 15,
+    "final_time": 0.06205782771520767,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 4.0159131529780604e-05,
+    "l1": 2.0076041722426243e-05,
+    "l2": 4.0159131529780604e-05,
+    "linf": 0.00014815215282615313,
+    "component_l1": [
+      2.0076041722426243e-05
+    ],
+    "component_l2": [
+      4.0159131529780604e-05
+    ],
+    "component_linf": [
+      0.00014815215282615313
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.636795394104213
+    ],
+    "state_min": [
+      0.15955861555921225
+    ],
+    "state_max": [
+      0.477956075746315
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      2.2735545407437385e-07
+    ],
+    "initial_integral": [
+      0.2058039515984467
+    ],
+    "final_integral": [
+      0.2058039515984465
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -1.942890293094024e-16
+    ],
+    "maximum_effective_cfl": 0.2916666666666667,
+    "minimum_stage_state": 0.1595585627658331
+  },
+  {
+    "case_id": "scalar-validation-000009-6523082916528094027",
+    "physics": "scalar",
+    "family": "burgers_smooth",
+    "cells": 64,
+    "system": "burgers",
+    "mode": "soft",
+    "strength": 0,
+    "dt": 0.005112156385832719,
+    "steps": 15,
+    "final_time": 0.07668234578749078,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 2.3761309861190427e-08,
+    "l1": 1.818788746520139e-08,
+    "l2": 2.3761309861190427e-08,
+    "linf": 5.615315146201283e-08,
+    "component_l1": [
+      1.818788746520139e-08
+    ],
+    "component_l2": [
+      2.3761309861190427e-08
+    ],
+    "component_linf": [
+      5.615315146201283e-08
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.5352501545974706
+    ],
+    "state_min": [
+      0.449564445048647
+    ],
+    "state_max": [
+      0.7171895223473823
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      0.0
+    ],
+    "initial_integral": [
+      0.5834315534491684
+    ],
+    "final_integral": [
+      0.5834315534491679
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -5.551115123125783e-16
+    ],
+    "maximum_effective_cfl": 0.23469866309137732,
+    "minimum_stage_state": 0.4495427366566439
+  },
+  {
+    "case_id": "scalar-validation-000024-475374283455688214",
+    "physics": "scalar",
+    "family": "burgers_top_hat",
+    "cells": 64,
+    "system": "burgers",
+    "mode": "soft",
+    "strength": 0,
+    "dt": 0.004935555227700599,
+    "steps": 15,
+    "final_time": 0.07403332841550898,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 0.02739860272544226,
+    "l1": 0.008327072380925865,
+    "l2": 0.02739860272544226,
+    "linf": 0.1348109594972149,
+    "component_l1": [
+      0.008327072380925865
+    ],
+    "component_l2": [
+      0.02739860272544226
+    ],
+    "component_linf": [
+      0.1348109594972149
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      1.5203157027893717
+    ],
+    "state_min": [
+      0.16320711413742708
+    ],
+    "state_max": [
+      0.9233594715117472
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      0.0012252586902638807
+    ],
+    "initial_integral": [
+      0.5161691528206382
+    ],
+    "final_integral": [
+      0.516169152820638
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -2.220446049250313e-16
+    ],
+    "maximum_effective_cfl": 0.29166666666666674,
+    "minimum_stage_state": 0.16319996340735932
+  },
+  {
+    "case_id": "scalar-validation-000009-6523082916528094027",
+    "physics": "scalar",
+    "family": "burgers_smooth",
+    "cells": 64,
+    "system": "burgers",
+    "mode": "soft",
+    "strength": 0.25,
+    "dt": 0.005112156385832719,
+    "steps": 15,
+    "final_time": 0.07668234578749078,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 2.3761309861190427e-08,
+    "l1": 1.818788746520139e-08,
+    "l2": 2.3761309861190427e-08,
+    "linf": 5.615315146201283e-08,
+    "component_l1": [
+      1.818788746520139e-08
+    ],
+    "component_l2": [
+      2.3761309861190427e-08
+    ],
+    "component_linf": [
+      5.615315146201283e-08
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.5352501545974706
+    ],
+    "state_min": [
+      0.449564445048647
+    ],
+    "state_max": [
+      0.7171895223473823
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      0.0
+    ],
+    "initial_integral": [
+      0.5834315534491684
+    ],
+    "final_integral": [
+      0.5834315534491679
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -5.551115123125783e-16
+    ],
+    "maximum_effective_cfl": 0.23469866309137732,
+    "minimum_stage_state": 0.4495427366566439
+  },
+  {
+    "case_id": "scalar-validation-000024-475374283455688214",
+    "physics": "scalar",
+    "family": "burgers_top_hat",
+    "cells": 64,
+    "system": "burgers",
+    "mode": "soft",
+    "strength": 0.25,
+    "dt": 0.004935555227700599,
+    "steps": 15,
+    "final_time": 0.07403332841550898,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 0.025903874447566044,
+    "l1": 0.007998625223618392,
+    "l2": 0.025903874447566044,
+    "linf": 0.12459690280149271,
+    "component_l1": [
+      0.007998625223618392
+    ],
+    "component_l2": [
+      0.025903874447566044
+    ],
+    "component_linf": [
+      0.12459690280149271
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      1.5478219016790036
+    ],
+    "state_min": [
+      0.15819485233885922
+    ],
+    "state_max": [
+      0.925223099638124
+    ],
+    "overshoot": [
+      0.0018636281263766374
+    ],
+    "undershoot": [
+      0.006237520488831749
+    ],
+    "initial_integral": [
+      0.5161691528206382
+    ],
+    "final_integral": [
+      0.5161691528206378
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -4.440892098500626e-16
+    ],
+    "maximum_effective_cfl": 0.29618424040931546,
+    "minimum_stage_state": 0.15538288167655925
+  },
+  {
+    "case_id": "scalar-validation-000009-6523082916528094027",
+    "physics": "scalar",
+    "family": "burgers_smooth",
+    "cells": 64,
+    "system": "burgers",
+    "mode": "hard",
+    "strength": 0,
+    "dt": 0.005112156385832719,
+    "steps": 15,
+    "final_time": 0.07668234578749078,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 2.3761309861190427e-08,
+    "l1": 1.818788746520139e-08,
+    "l2": 2.3761309861190427e-08,
+    "linf": 5.615315146201283e-08,
+    "component_l1": [
+      1.818788746520139e-08
+    ],
+    "component_l2": [
+      2.3761309861190427e-08
+    ],
+    "component_linf": [
+      5.615315146201283e-08
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.5352501545974706
+    ],
+    "state_min": [
+      0.449564445048647
+    ],
+    "state_max": [
+      0.7171895223473823
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      0.0
+    ],
+    "initial_integral": [
+      0.5834315534491684
+    ],
+    "final_integral": [
+      0.5834315534491679
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -5.551115123125783e-16
+    ],
+    "maximum_effective_cfl": 0.23469866309137732,
+    "minimum_stage_state": 0.4495427366566439
+  },
+  {
+    "case_id": "scalar-validation-000024-475374283455688214",
+    "physics": "scalar",
+    "family": "burgers_top_hat",
+    "cells": 64,
+    "system": "burgers",
+    "mode": "hard",
+    "strength": 0,
+    "dt": 0.004935555227700599,
+    "steps": 15,
+    "final_time": 0.07403332841550898,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 0.02739860272544226,
+    "l1": 0.008327072380925865,
+    "l2": 0.02739860272544226,
+    "linf": 0.1348109594972149,
+    "component_l1": [
+      0.008327072380925865
+    ],
+    "component_l2": [
+      0.02739860272544226
+    ],
+    "component_linf": [
+      0.1348109594972149
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      1.5203157027893717
+    ],
+    "state_min": [
+      0.16320711413742708
+    ],
+    "state_max": [
+      0.9233594715117472
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      0.0012252586902638807
+    ],
+    "initial_integral": [
+      0.5161691528206382
+    ],
+    "final_integral": [
+      0.516169152820638
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -2.220446049250313e-16
+    ],
+    "maximum_effective_cfl": 0.29166666666666674,
+    "minimum_stage_state": 0.16319996340735932
+  },
+  {
+    "case_id": "scalar-validation-000009-6523082916528094027",
+    "physics": "scalar",
+    "family": "burgers_smooth",
+    "cells": 64,
+    "system": "burgers",
+    "mode": "hard",
+    "strength": 0.25,
+    "dt": 0.005112156385832719,
+    "steps": 15,
+    "final_time": 0.07668234578749078,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 2.3761309861190427e-08,
+    "l1": 1.818788746520139e-08,
+    "l2": 2.3761309861190427e-08,
+    "linf": 5.615315146201283e-08,
+    "component_l1": [
+      1.818788746520139e-08
+    ],
+    "component_l2": [
+      2.3761309861190427e-08
+    ],
+    "component_linf": [
+      5.615315146201283e-08
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.5352501545974706
+    ],
+    "state_min": [
+      0.449564445048647
+    ],
+    "state_max": [
+      0.7171895223473823
+    ],
+    "overshoot": [
+      0.0
+    ],
+    "undershoot": [
+      0.0
+    ],
+    "initial_integral": [
+      0.5834315534491684
+    ],
+    "final_integral": [
+      0.5834315534491679
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -5.551115123125783e-16
+    ],
+    "maximum_effective_cfl": 0.23469866309137732,
+    "minimum_stage_state": 0.4495427366566439
+  },
+  {
+    "case_id": "scalar-validation-000024-475374283455688214",
+    "physics": "scalar",
+    "family": "burgers_top_hat",
+    "cells": 64,
+    "system": "burgers",
+    "mode": "hard",
+    "strength": 0.25,
+    "dt": 0.004935555227700599,
+    "steps": 15,
+    "final_time": 0.07403332841550898,
+    "checkpoint_sha256": "4b825c64f79a8e7784b281e1c3128b60f931c68cb9186fc741f4a149c37ee913",
+    "primary_error": 0.02497361209822187,
+    "l1": 0.008359624808676547,
+    "l2": 0.02497361209822187,
+    "linf": 0.12598204762135673,
+    "component_l1": [
+      0.008359624808676547
+    ],
+    "component_l2": [
+      0.02497361209822187
+    ],
+    "component_linf": [
+      0.12598204762135673
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      1.6085955965324197
+    ],
+    "state_min": [
+      0.1412054602459511
+    ],
+    "state_max": [
+      0.9234268747512657
+    ],
+    "overshoot": [
+      6.740323951837102e-05
+    ],
+    "undershoot": [
+      0.023226912581739867
+    ],
+    "initial_integral": [
+      0.5161691528206382
+    ],
+    "final_integral": [
+      0.5161691528206379
+    ],
+    "boundary_exchange": [
+      0.0
+    ],
+    "conservation_residual": [
+      -3.3306690738754696e-16
+    ],
+    "maximum_effective_cfl": 0.29885398251573075,
+    "minimum_stage_state": 0.13825582732891664
+  },
+  {
+    "case_id": "euler-validation-000000-5409067900101197278",
+    "physics": "euler",
+    "family": "random_riemann",
+    "cells": 64,
+    "system": "euler",
+    "mode": "soft",
+    "strength": 0,
+    "dt": 0.0013772298206973478,
+    "steps": 15,
+    "final_time": 0.020658447310460216,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.015267456609959531,
+    "l1": 0.015267456609959531,
+    "l2": 0.07055369941228623,
+    "linf": 0.5752848998621949,
+    "component_l1": [
+      0.018374361256290564,
+      0.012401299108559841,
+      0.015026709465028182
+    ],
+    "component_l2": [
+      0.09066721462240199,
+      0.057062344739875315,
+      0.05879471496385224
+    ],
+    "component_linf": [
+      0.5752848998621949,
+      0.38100611397329875,
+      0.3662044211703268
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      2.152029296249091,
+      1.2353845829006387,
+      2.0866726403282643
+    ],
+    "state_min": [
+      0.4283024226881782,
+      0.2614817170306936,
+      4.462373095182807
+    ],
+    "state_max": [
+      2.462954475353905,
+      1.1010516031499855,
+      5.767143681592614
+    ],
+    "overshoot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "undershoot": [
+      5.551115123125783e-17,
+      0.0,
+      0.0
+    ],
+    "initial_integral": [
+      1.5016201150487132,
+      0.5869758928946145,
+      4.692532390561634
+    ],
+    "final_integral": [
+      1.4924528218510313,
+      0.5914071725859776,
+      4.762943263984212
+    ],
+    "boundary_exchange": [
+      -0.009167293197681232,
+      0.004431279691363306,
+      0.07041087342258132
+    ],
+    "conservation_residual": [
+      -6.036837696399289e-16,
+      -1.6219664500383146e-16,
+      -2.7478019859472624e-15
+    ],
+    "maximum_effective_cfl": 0.29166666666666674,
+    "minimum_density": 0.4283024226881782,
+    "minimum_pressure": 1.73276507660908
+  },
+  {
+    "case_id": "euler-validation-000009-6448502967187158713",
+    "physics": "euler",
+    "family": "contact",
+    "cells": 64,
+    "system": "euler",
+    "mode": "soft",
+    "strength": 0,
+    "dt": 0.0027425701125608497,
+    "steps": 15,
+    "final_time": 0.041138551688412746,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.0013113674678717584,
+    "l1": 0.0013113674678717584,
+    "l2": 0.007181314451006069,
+    "linf": 0.06932561554111238,
+    "component_l1": [
+      0.002572417894977242,
+      0.0011185138330647541,
+      0.00024317067557327876
+    ],
+    "component_l2": [
+      0.011364148485131174,
+      0.0049412489729754264,
+      0.001074253009139792
+    ],
+    "component_linf": [
+      0.06932561554111238,
+      0.030143492672733863,
+      0.006553350759445742
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.5128233952759862,
+      0.22298090160830875,
+      0.048477197939941874
+    ],
+    "state_min": [
+      1.53483436082259,
+      -0.8903427122204217,
+      4.270572240576972
+    ],
+    "state_max": [
+      2.0476577560985763,
+      -0.6673618106121132,
+      4.319049438516914
+    ],
+    "overshoot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "undershoot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_integral": [
+      1.8373315494625932,
+      -0.7988907082370497,
+      4.2991673012256495
+    ],
+    "final_integral": [
+      1.828158438116252,
+      -0.7949021448107256,
+      4.298300166967427
+    ],
+    "boundary_exchange": [
+      -0.009173111346342277,
+      0.003988563426323419,
+      -0.0008671342582224162
+    ],
+    "conservation_residual": [
+      9.211381657436846e-16,
+      6.132247487578013e-16,
+      -2.964208739575369e-16
+    ],
+    "maximum_effective_cfl": 0.29166666666666663,
+    "minimum_density": 1.53483436082259,
+    "minimum_pressure": 1.650193736524722
+  },
+  {
+    "case_id": "euler-validation-000030-5845877934494643265",
+    "physics": "euler",
+    "family": "sod_like",
+    "cells": 64,
+    "system": "euler",
+    "mode": "soft",
+    "strength": 0,
+    "dt": 0.002578975776869721,
+    "steps": 15,
+    "final_time": 0.03868463665304582,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.007786292830286624,
+    "l1": 0.007786292830286624,
+    "l2": 0.02559803355556639,
+    "linf": 0.15471520210120726,
+    "component_l1": [
+      0.008036935753322172,
+      0.005560269188645602,
+      0.00976167354889209
+    ],
+    "component_l2": [
+      0.026028721423339275,
+      0.016751218075240527,
+      0.031743980843581085
+    ],
+    "component_linf": [
+      0.11247126380210337,
+      0.07065411184279496,
+      0.15471520210120726
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      1.3876836793609657,
+      0.7878962723244687,
+      1.6155453293531217
+    ],
+    "state_min": [
+      0.18677737424492188,
+      0.0003770374788090808,
+      0.37903545687290546
+    ],
+    "state_max": [
+      1.5744610536058874,
+      0.4327047112491048,
+      1.994580786226027
+    ],
+    "overshoot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "undershoot": [
+      0.0,
+      0.0,
+      5.551115123125783e-17
+    ],
+    "initial_integral": [
+      0.954928827868478,
+      0.042866976708488116,
+      1.2733195877555445
+    ],
+    "final_integral": [
+      0.9578982248030381,
+      0.06798261997228183,
+      1.2785690112178567
+    ],
+    "boundary_exchange": [
+      0.0029693969345595235,
+      0.025115643263793848,
+      0.005249423462309439
+    ],
+    "conservation_residual": [
+      5.854691731421724e-16,
+      -1.3183898417423734e-16,
+      2.725250580759564e-15
+    ],
+    "maximum_effective_cfl": 0.27324118366760425,
+    "minimum_density": 0.18677737424492188,
+    "minimum_pressure": 0.15161403052809042
+  },
+  {
+    "case_id": "euler-validation-000033-8066571132189457352",
+    "physics": "euler",
+    "family": "constant",
+    "cells": 64,
+    "system": "euler",
+    "mode": "soft",
+    "strength": 0,
+    "dt": 0.0038039001201243985,
+    "steps": 15,
+    "final_time": 0.05705850180186598,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 2.168404344971009e-18,
+    "l1": 2.168404344971009e-18,
+    "l2": 7.757919228897728e-18,
+    "linf": 2.7755575615628914e-17,
+    "component_l1": [
+      0.0,
+      6.5052130349130266e-18,
+      0.0
+    ],
+    "component_l2": [
+      0.0,
+      1.3437110265466432e-17,
+      0.0
+    ],
+    "component_linf": [
+      0.0,
+      2.7755575615628914e-17,
+      0.0
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.0,
+      8.326672684688674e-16,
+      0.0
+    ],
+    "state_min": [
+      1.7870168618417224,
+      -0.1348657585877977,
+      4.026526651026479
+    ],
+    "state_max": [
+      1.7870168618417224,
+      -0.13486575858779767,
+      4.026526651026479
+    ],
+    "overshoot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "undershoot": [
+      0.0,
+      2.7755575615628914e-17,
+      0.0
+    ],
+    "initial_integral": [
+      1.7870168618417213,
+      -0.1348657585877976,
+      4.026526651026474
+    ],
+    "final_integral": [
+      1.7870168618417213,
+      -0.1348657585877976,
+      4.026526651026474
+    ],
+    "boundary_exchange": [
+      -1.1191420366351739e-17,
+      -1.2669532490209514e-17,
+      -4.789787144215322e-17
+    ],
+    "conservation_residual": [
+      1.1191420366351739e-17,
+      1.2669532490209514e-17,
+      4.789787144215322e-17
+    ],
+    "maximum_effective_cfl": 0.2916666666666666,
+    "minimum_density": 1.7870168618417224,
+    "minimum_pressure": 1.6085750027480537
+  },
+  {
+    "case_id": "euler-validation-000036-4645527865081157717",
+    "physics": "euler",
+    "family": "two_rarefactions",
+    "cells": 64,
+    "system": "euler",
+    "mode": "soft",
+    "strength": 0,
+    "dt": 0.0023398340796705673,
+    "steps": 15,
+    "final_time": 0.03509751119505851,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.010634234307763174,
+    "l1": 0.010634234307763174,
+    "l2": 0.03620833791826376,
+    "linf": 0.29035523609914593,
+    "component_l1": [
+      0.006584077046091392,
+      0.0070189845151558015,
+      0.018299641362042332
+    ],
+    "component_l2": [
+      0.018166402792143373,
+      0.021036963957573443,
+      0.056218850588133626
+    ],
+    "component_linf": [
+      0.06364743727426325,
+      0.10233733094941777,
+      0.29035523609914593
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      1.020259140719898,
+      1.06337360579275,
+      2.5096731342619094
+    ],
+    "state_min": [
+      0.4813301914175555,
+      -0.5076802318112656,
+      1.1711504900831338
+    ],
+    "state_max": [
+      1.1375727669122395,
+      0.5556933739814847,
+      2.8919526443114947
+    ],
+    "overshoot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "undershoot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_integral": [
+      0.9876028756510599,
+      0.00997184876990953,
+      2.4382869630754462
+    ],
+    "final_integral": [
+      0.9502811086172183,
+      0.023994186676475765,
+      2.3081175687949402
+    ],
+    "boundary_exchange": [
+      -0.037321767033840776,
+      0.014022337906565922,
+      -0.13016939428050572
+    ],
+    "conservation_residual": [
+      -8.257283745649602e-16,
+      3.122502256758253e-16,
+      -2.7755575615628914e-16
+    ],
+    "maximum_effective_cfl": 0.29167032394757614,
+    "minimum_density": 0.4801109564414076,
+    "minimum_pressure": 0.4645064508583049
+  },
+  {
+    "case_id": "euler-validation-000000-5409067900101197278",
+    "physics": "euler",
+    "family": "random_riemann",
+    "cells": 64,
+    "system": "euler",
+    "mode": "soft",
+    "strength": 0.25,
+    "dt": 0.0013772298206973478,
+    "steps": 15,
+    "final_time": 0.020658447310460216,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.014993268391221512,
+    "l1": 0.014993268391221512,
+    "l2": 0.06880284433595056,
+    "linf": 0.5616704630189302,
+    "component_l1": [
+      0.018315044032077787,
+      0.011950109486354915,
+      0.014714651655231836
+    ],
+    "component_l2": [
+      0.08840450005077131,
+      0.05595527709232162,
+      0.05705388244848732
+    ],
+    "component_linf": [
+      0.5616704630189302,
+      0.36889799831076053,
+      0.35216793321286755
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      2.204651190463139,
+      1.2839440674163443,
+      2.1739881141799993
+    ],
+    "state_min": [
+      0.4281799804243941,
+      0.2540674256000837,
+      4.457865624271086
+    ],
+    "state_max": [
+      2.4844711644501154,
+      1.1131597188125237,
+      5.799273991855522
+    ],
+    "overshoot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "undershoot": [
+      0.00012244226378416156,
+      0.0,
+      0.004507470911720546
+    ],
+    "initial_integral": [
+      1.5016201150487132,
+      0.5869758928946145,
+      4.692532390561634
+    ],
+    "final_integral": [
+      1.4924528218510313,
+      0.5914071725859777,
+      4.76294326398421
+    ],
+    "boundary_exchange": [
+      -0.009167293197681234,
+      0.004431279691363312,
+      0.07041087342258132
+    ],
+    "conservation_residual": [
+      -6.019490461639521e-16,
+      -5.724587470723463e-17,
+      -4.524158825347513e-15
+    ],
+    "maximum_effective_cfl": 0.29537944233719593,
+    "minimum_density": 0.41690732322146357,
+    "minimum_pressure": 1.7283351262006905
+  },
+  {
+    "case_id": "euler-validation-000009-6448502967187158713",
+    "physics": "euler",
+    "family": "contact",
+    "cells": 64,
+    "system": "euler",
+    "mode": "soft",
+    "strength": 0.25,
+    "dt": 0.0027425701125608497,
+    "steps": 15,
+    "final_time": 0.041138551688412746,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.0012479074635422642,
+    "l1": 0.0012479074635422642,
+    "l2": 0.006736885837868481,
+    "linf": 0.06444623149743278,
+    "component_l1": [
+      0.0024479328404429235,
+      0.0010643864473945733,
+      0.000231403102789296
+    ],
+    "component_l2": [
+      0.010660857634243992,
+      0.004635450857155667,
+      0.001007770921735272
+    ],
+    "component_linf": [
+      0.06444623149743278,
+      0.028021886163796417,
+      0.006092102563108881
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.522475720169199,
+      0.22717783202749875,
+      0.049389632256991334
+    ],
+    "state_min": [
+      1.5348126301069427,
+      -0.8920665063949249,
+      4.2705701863723196
+    ],
+    "state_max": [
+      2.051622230073476,
+      -0.667352361872816,
+      4.319424200260193
+    ],
+    "overshoot": [
+      0.003964473974899629,
+      9.448739297202025e-06,
+      0.00037476174327899514
+    ],
+    "undershoot": [
+      2.173071564737228e-05,
+      0.0017237941745030794,
+      2.0542046526017543e-06
+    ],
+    "initial_integral": [
+      1.8373315494625932,
+      -0.7988907082370497,
+      4.2991673012256495
+    ],
+    "final_integral": [
+      1.8281584381162523,
+      -0.7949021448107252,
+      4.298300166967427
+    ],
+    "boundary_exchange": [
+      -0.009173111346342272,
+      0.003988563426323419,
+      -0.0008671342582223975
+    ],
+    "conservation_residual": [
+      1.3600232051658168e-15,
+      1.057313958607864e-15,
+      -3.150691513242876e-16
+    ],
+    "maximum_effective_cfl": 0.2917595216332256,
+    "minimum_density": 1.533511612003771,
+    "minimum_pressure": 1.6501937365247215
+  },
+  {
+    "case_id": "euler-validation-000030-5845877934494643265",
+    "physics": "euler",
+    "family": "sod_like",
+    "cells": 64,
+    "system": "euler",
+    "mode": "soft",
+    "strength": 0.25,
+    "dt": 0.002578975776869721,
+    "steps": 15,
+    "final_time": 0.03868463665304582,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.007664145935888517,
+    "l1": 0.007664145935888517,
+    "l2": 0.025217255745869024,
+    "linf": 0.15684168473497206,
+    "component_l1": [
+      0.007972926463488097,
+      0.005396692277242642,
+      0.00962281906693481
+    ],
+    "component_l2": [
+      0.025820691896548297,
+      0.01629297552526404,
+      0.031233968376982845
+    ],
+    "component_linf": [
+      0.11205557875641081,
+      0.0686548091507278,
+      0.15684168473497206
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      1.3957383442614362,
+      0.8024029726278412,
+      1.6382159660405315
+    ],
+    "state_min": [
+      0.1857659587752088,
+      -0.0014535133529063593,
+      0.37405449624269677
+    ],
+    "state_max": [
+      1.5765307521310334,
+      0.43518925623587795,
+      1.9988289643563024
+    ],
+    "overshoot": [
+      0.0020696985251458244,
+      0.0,
+      0.004248178130275226
+    ],
+    "undershoot": [
+      0.0010114154697130895,
+      0.0018305508317154402,
+      0.004980960630208753
+    ],
+    "initial_integral": [
+      0.954928827868478,
+      0.042866976708488116,
+      1.2733195877555445
+    ],
+    "final_integral": [
+      0.9578982248030383,
+      0.06798261997228183,
+      1.2785690112178563
+    ],
+    "boundary_exchange": [
+      0.0029693969345595235,
+      0.025115643263793848,
+      0.005249423462309439
+    ],
+    "conservation_residual": [
+      8.075137780672037e-16,
+      -1.3183898417423734e-16,
+      2.2811613709095013e-15
+    ],
+    "maximum_effective_cfl": 0.2758785339015736,
+    "minimum_density": 0.1836890417330888,
+    "minimum_pressure": 0.14799164265937811
+  },
+  {
+    "case_id": "euler-validation-000033-8066571132189457352",
+    "physics": "euler",
+    "family": "constant",
+    "cells": 64,
+    "system": "euler",
+    "mode": "soft",
+    "strength": 0.25,
+    "dt": 0.0038039001201243985,
+    "steps": 15,
+    "final_time": 0.05705850180186598,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 2.168404344971009e-18,
+    "l1": 2.168404344971009e-18,
+    "l2": 7.757919228897728e-18,
+    "linf": 2.7755575615628914e-17,
+    "component_l1": [
+      0.0,
+      6.5052130349130266e-18,
+      0.0
+    ],
+    "component_l2": [
+      0.0,
+      1.3437110265466432e-17,
+      0.0
+    ],
+    "component_linf": [
+      0.0,
+      2.7755575615628914e-17,
+      0.0
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.0,
+      8.326672684688674e-16,
+      0.0
+    ],
+    "state_min": [
+      1.7870168618417224,
+      -0.1348657585877977,
+      4.026526651026479
+    ],
+    "state_max": [
+      1.7870168618417224,
+      -0.13486575858779767,
+      4.026526651026479
+    ],
+    "overshoot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "undershoot": [
+      0.0,
+      2.7755575615628914e-17,
+      0.0
+    ],
+    "initial_integral": [
+      1.7870168618417213,
+      -0.1348657585877976,
+      4.026526651026474
+    ],
+    "final_integral": [
+      1.7870168618417213,
+      -0.1348657585877976,
+      4.026526651026474
+    ],
+    "boundary_exchange": [
+      -1.1191420366351739e-17,
+      -1.2669532490209514e-17,
+      -4.789787144215322e-17
+    ],
+    "conservation_residual": [
+      1.1191420366351739e-17,
+      1.2669532490209514e-17,
+      4.789787144215322e-17
+    ],
+    "maximum_effective_cfl": 0.2916666666666666,
+    "minimum_density": 1.7870168618417224,
+    "minimum_pressure": 1.6085750027480537
+  },
+  {
+    "case_id": "euler-validation-000036-4645527865081157717",
+    "physics": "euler",
+    "family": "two_rarefactions",
+    "cells": 64,
+    "system": "euler",
+    "mode": "soft",
+    "strength": 0.25,
+    "dt": 0.0023398340796705673,
+    "steps": 15,
+    "final_time": 0.03509751119505851,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.010132234216171113,
+    "l1": 0.010132234216171113,
+    "l2": 0.03570912701676955,
+    "linf": 0.29232536574877743,
+    "component_l1": [
+      0.006203276621111481,
+      0.006825542111808243,
+      0.017367883915593615
+    ],
+    "component_l2": [
+      0.01752465018976732,
+      0.02082474525494932,
+      0.05553955237208972
+    ],
+    "component_linf": [
+      0.06360430882758505,
+      0.10287556053109531,
+      0.29232536574877743
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      1.0405082655343674,
+      1.0744849589291454,
+      2.5561039008733033
+    ],
+    "state_min": [
+      0.47426274089459153,
+      -0.5103153609523342,
+      1.1620574427671295
+    ],
+    "state_max": [
+      1.1386926896315022,
+      0.5574953539469557,
+      2.8994707568698357
+    ],
+    "overshoot": [
+      0.0011199227192626449,
+      0.0018019799654710456,
+      0.007518112558341006
+    ],
+    "undershoot": [
+      0.0,
+      0.0026351291410685596,
+      0.0
+    ],
+    "initial_integral": [
+      0.9876028756510599,
+      0.00997184876990953,
+      2.4382869630754462
+    ],
+    "final_integral": [
+      0.950281108617218,
+      0.02399418667647568,
+      2.308117568794939
+    ],
+    "boundary_exchange": [
+      -0.037321767033840776,
+      0.014022337906565922,
+      -0.13016939428050572
+    ],
+    "conservation_residual": [
+      -1.0477729794899915e-15,
+      2.2898349882893854e-16,
+      -1.609823385706477e-15
+    ],
+    "maximum_effective_cfl": 0.29268138813664435,
+    "minimum_density": 0.4727984873690813,
+    "minimum_pressure": 0.46031626840528544
+  },
+  {
+    "case_id": "euler-validation-000000-5409067900101197278",
+    "physics": "euler",
+    "family": "random_riemann",
+    "cells": 64,
+    "system": "euler",
+    "mode": "hard",
+    "strength": 0,
+    "dt": 0.0013772298206973478,
+    "steps": 15,
+    "final_time": 0.020658447310460216,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.015267456609959531,
+    "l1": 0.015267456609959531,
+    "l2": 0.07055369941228623,
+    "linf": 0.5752848998621949,
+    "component_l1": [
+      0.018374361256290564,
+      0.012401299108559841,
+      0.015026709465028182
+    ],
+    "component_l2": [
+      0.09066721462240199,
+      0.057062344739875315,
+      0.05879471496385224
+    ],
+    "component_linf": [
+      0.5752848998621949,
+      0.38100611397329875,
+      0.3662044211703268
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      2.152029296249091,
+      1.2353845829006387,
+      2.0866726403282643
+    ],
+    "state_min": [
+      0.4283024226881782,
+      0.2614817170306936,
+      4.462373095182807
+    ],
+    "state_max": [
+      2.462954475353905,
+      1.1010516031499855,
+      5.767143681592614
+    ],
+    "overshoot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "undershoot": [
+      5.551115123125783e-17,
+      0.0,
+      0.0
+    ],
+    "initial_integral": [
+      1.5016201150487132,
+      0.5869758928946145,
+      4.692532390561634
+    ],
+    "final_integral": [
+      1.4924528218510313,
+      0.5914071725859776,
+      4.762943263984212
+    ],
+    "boundary_exchange": [
+      -0.009167293197681232,
+      0.004431279691363306,
+      0.07041087342258132
+    ],
+    "conservation_residual": [
+      -6.036837696399289e-16,
+      -1.6219664500383146e-16,
+      -2.7478019859472624e-15
+    ],
+    "maximum_effective_cfl": 0.29166666666666674,
+    "minimum_density": 0.4283024226881782,
+    "minimum_pressure": 1.73276507660908
+  },
+  {
+    "case_id": "euler-validation-000009-6448502967187158713",
+    "physics": "euler",
+    "family": "contact",
+    "cells": 64,
+    "system": "euler",
+    "mode": "hard",
+    "strength": 0,
+    "dt": 0.0027425701125608497,
+    "steps": 15,
+    "final_time": 0.041138551688412746,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.0013113674678717584,
+    "l1": 0.0013113674678717584,
+    "l2": 0.007181314451006069,
+    "linf": 0.06932561554111238,
+    "component_l1": [
+      0.002572417894977242,
+      0.0011185138330647541,
+      0.00024317067557327876
+    ],
+    "component_l2": [
+      0.011364148485131174,
+      0.0049412489729754264,
+      0.001074253009139792
+    ],
+    "component_linf": [
+      0.06932561554111238,
+      0.030143492672733863,
+      0.006553350759445742
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.5128233952759862,
+      0.22298090160830875,
+      0.048477197939941874
+    ],
+    "state_min": [
+      1.53483436082259,
+      -0.8903427122204217,
+      4.270572240576972
+    ],
+    "state_max": [
+      2.0476577560985763,
+      -0.6673618106121132,
+      4.319049438516914
+    ],
+    "overshoot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "undershoot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_integral": [
+      1.8373315494625932,
+      -0.7988907082370497,
+      4.2991673012256495
+    ],
+    "final_integral": [
+      1.828158438116252,
+      -0.7949021448107256,
+      4.298300166967427
+    ],
+    "boundary_exchange": [
+      -0.009173111346342277,
+      0.003988563426323419,
+      -0.0008671342582224162
+    ],
+    "conservation_residual": [
+      9.211381657436846e-16,
+      6.132247487578013e-16,
+      -2.964208739575369e-16
+    ],
+    "maximum_effective_cfl": 0.29166666666666663,
+    "minimum_density": 1.53483436082259,
+    "minimum_pressure": 1.650193736524722
+  },
+  {
+    "case_id": "euler-validation-000030-5845877934494643265",
+    "physics": "euler",
+    "family": "sod_like",
+    "cells": 64,
+    "system": "euler",
+    "mode": "hard",
+    "strength": 0,
+    "dt": 0.002578975776869721,
+    "steps": 15,
+    "final_time": 0.03868463665304582,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.007786292830286624,
+    "l1": 0.007786292830286624,
+    "l2": 0.02559803355556639,
+    "linf": 0.15471520210120726,
+    "component_l1": [
+      0.008036935753322172,
+      0.005560269188645602,
+      0.00976167354889209
+    ],
+    "component_l2": [
+      0.026028721423339275,
+      0.016751218075240527,
+      0.031743980843581085
+    ],
+    "component_linf": [
+      0.11247126380210337,
+      0.07065411184279496,
+      0.15471520210120726
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      1.3876836793609657,
+      0.7878962723244687,
+      1.6155453293531217
+    ],
+    "state_min": [
+      0.18677737424492188,
+      0.0003770374788090808,
+      0.37903545687290546
+    ],
+    "state_max": [
+      1.5744610536058874,
+      0.4327047112491048,
+      1.994580786226027
+    ],
+    "overshoot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "undershoot": [
+      0.0,
+      0.0,
+      5.551115123125783e-17
+    ],
+    "initial_integral": [
+      0.954928827868478,
+      0.042866976708488116,
+      1.2733195877555445
+    ],
+    "final_integral": [
+      0.9578982248030381,
+      0.06798261997228183,
+      1.2785690112178567
+    ],
+    "boundary_exchange": [
+      0.0029693969345595235,
+      0.025115643263793848,
+      0.005249423462309439
+    ],
+    "conservation_residual": [
+      5.854691731421724e-16,
+      -1.3183898417423734e-16,
+      2.725250580759564e-15
+    ],
+    "maximum_effective_cfl": 0.27324118366760425,
+    "minimum_density": 0.18677737424492188,
+    "minimum_pressure": 0.15161403052809042
+  },
+  {
+    "case_id": "euler-validation-000033-8066571132189457352",
+    "physics": "euler",
+    "family": "constant",
+    "cells": 64,
+    "system": "euler",
+    "mode": "hard",
+    "strength": 0,
+    "dt": 0.0038039001201243985,
+    "steps": 15,
+    "final_time": 0.05705850180186598,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 2.168404344971009e-18,
+    "l1": 2.168404344971009e-18,
+    "l2": 7.757919228897728e-18,
+    "linf": 2.7755575615628914e-17,
+    "component_l1": [
+      0.0,
+      6.5052130349130266e-18,
+      0.0
+    ],
+    "component_l2": [
+      0.0,
+      1.3437110265466432e-17,
+      0.0
+    ],
+    "component_linf": [
+      0.0,
+      2.7755575615628914e-17,
+      0.0
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.0,
+      8.326672684688674e-16,
+      0.0
+    ],
+    "state_min": [
+      1.7870168618417224,
+      -0.1348657585877977,
+      4.026526651026479
+    ],
+    "state_max": [
+      1.7870168618417224,
+      -0.13486575858779767,
+      4.026526651026479
+    ],
+    "overshoot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "undershoot": [
+      0.0,
+      2.7755575615628914e-17,
+      0.0
+    ],
+    "initial_integral": [
+      1.7870168618417213,
+      -0.1348657585877976,
+      4.026526651026474
+    ],
+    "final_integral": [
+      1.7870168618417213,
+      -0.1348657585877976,
+      4.026526651026474
+    ],
+    "boundary_exchange": [
+      -1.1191420366351739e-17,
+      -1.2669532490209514e-17,
+      -4.789787144215322e-17
+    ],
+    "conservation_residual": [
+      1.1191420366351739e-17,
+      1.2669532490209514e-17,
+      4.789787144215322e-17
+    ],
+    "maximum_effective_cfl": 0.2916666666666666,
+    "minimum_density": 1.7870168618417224,
+    "minimum_pressure": 1.6085750027480537
+  },
+  {
+    "case_id": "euler-validation-000036-4645527865081157717",
+    "physics": "euler",
+    "family": "two_rarefactions",
+    "cells": 64,
+    "system": "euler",
+    "mode": "hard",
+    "strength": 0,
+    "dt": 0.0023398340796705673,
+    "steps": 15,
+    "final_time": 0.03509751119505851,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.010634234307763174,
+    "l1": 0.010634234307763174,
+    "l2": 0.03620833791826376,
+    "linf": 0.29035523609914593,
+    "component_l1": [
+      0.006584077046091392,
+      0.0070189845151558015,
+      0.018299641362042332
+    ],
+    "component_l2": [
+      0.018166402792143373,
+      0.021036963957573443,
+      0.056218850588133626
+    ],
+    "component_linf": [
+      0.06364743727426325,
+      0.10233733094941777,
+      0.29035523609914593
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      1.020259140719898,
+      1.06337360579275,
+      2.5096731342619094
+    ],
+    "state_min": [
+      0.4813301914175555,
+      -0.5076802318112656,
+      1.1711504900831338
+    ],
+    "state_max": [
+      1.1375727669122395,
+      0.5556933739814847,
+      2.8919526443114947
+    ],
+    "overshoot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "undershoot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_integral": [
+      0.9876028756510599,
+      0.00997184876990953,
+      2.4382869630754462
+    ],
+    "final_integral": [
+      0.9502811086172183,
+      0.023994186676475765,
+      2.3081175687949402
+    ],
+    "boundary_exchange": [
+      -0.037321767033840776,
+      0.014022337906565922,
+      -0.13016939428050572
+    ],
+    "conservation_residual": [
+      -8.257283745649602e-16,
+      3.122502256758253e-16,
+      -2.7755575615628914e-16
+    ],
+    "maximum_effective_cfl": 0.29167032394757614,
+    "minimum_density": 0.4801109564414076,
+    "minimum_pressure": 0.4645064508583049
+  },
+  {
+    "case_id": "euler-validation-000000-5409067900101197278",
+    "physics": "euler",
+    "family": "random_riemann",
+    "cells": 64,
+    "system": "euler",
+    "mode": "hard",
+    "strength": 0.25,
+    "dt": 0.0013772298206973478,
+    "steps": 15,
+    "final_time": 0.020658447310460216,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.015494840716385627,
+    "l1": 0.015494840716385627,
+    "l2": 0.0702864170852777,
+    "linf": 0.5783291457364994,
+    "component_l1": [
+      0.018758025980834384,
+      0.012641461701633643,
+      0.015085034466688851
+    ],
+    "component_l2": [
+      0.09148405587053988,
+      0.05713991292323978,
+      0.05644678159698179
+    ],
+    "component_linf": [
+      0.5783291457364994,
+      0.37528664148841284,
+      0.34215210109365657
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      2.160760199268322,
+      1.3007331735456429,
+      2.228405343880624
+    ],
+    "state_min": [
+      0.42827491359959735,
+      0.256162821059964,
+      4.449942416613131
+    ],
+    "state_max": [
+      2.451423290412425,
+      1.1067710756348714,
+      5.80357194908053
+    ],
+    "overshoot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "undershoot": [
+      2.750908858090151e-05,
+      0.0,
+      0.012430678569676168
+    ],
+    "initial_integral": [
+      1.5016201150487132,
+      0.5869758928946145,
+      4.692532390561634
+    ],
+    "final_integral": [
+      1.4924528218510313,
+      0.5914071725859776,
+      4.76294326398421
+    ],
+    "boundary_exchange": [
+      -0.00916729319768121,
+      0.00443127969136327,
+      0.07041087342258168
+    ],
+    "conservation_residual": [
+      -6.262351748276274e-16,
+      -1.2663481374630692e-16,
+      -4.884981308350689e-15
+    ],
+    "maximum_effective_cfl": 0.3061186677960078,
+    "minimum_density": 0.3852542399473068,
+    "minimum_pressure": 1.723103439481143
+  },
+  {
+    "case_id": "euler-validation-000009-6448502967187158713",
+    "physics": "euler",
+    "family": "contact",
+    "cells": 64,
+    "system": "euler",
+    "mode": "hard",
+    "strength": 0.25,
+    "dt": 0.0027425701125608497,
+    "steps": 15,
+    "final_time": 0.041138551688412746,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.0012336973535356603,
+    "l1": 0.0012336973535356603,
+    "l2": 0.0064027221312841056,
+    "linf": 0.0622004387941546,
+    "component_l1": [
+      0.0024200578609531002,
+      0.0010522661188053402,
+      0.0002287680808485404
+    ],
+    "component_l2": [
+      0.010132056673657394,
+      0.004405522745355055,
+      0.0009577833644722403
+    ],
+    "component_linf": [
+      0.0622004387941546,
+      0.027045392332946783,
+      0.005879807768425671
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.5469845724502731,
+      0.2378345337875195,
+      0.051706454177066874
+    ],
+    "state_min": [
+      1.5331954515281727,
+      -0.8951106380319414,
+      4.2704173144737485
+    ],
+    "state_max": [
+      2.058623286713312,
+      -0.6666491959469284,
+      4.320086010176911
+    ],
+    "overshoot": [
+      0.010965530614735819,
+      0.0007126146651847964,
+      0.00103657165999671
+    ],
+    "undershoot": [
+      0.0016389092944173456,
+      0.0047679258115195244,
+      0.00015492610322365152
+    ],
+    "initial_integral": [
+      1.8373315494625932,
+      -0.7988907082370497,
+      4.2991673012256495
+    ],
+    "final_integral": [
+      1.8281584381162532,
+      -0.7949021448107249,
+      4.298300166967426
+    ],
+    "boundary_exchange": [
+      -0.009173111346342274,
+      0.003988563426323423,
+      -0.000867134258222421
+    ],
+    "conservation_residual": [
+      2.2499363483419188e-15,
+      1.3860440573054689e-15,
+      -1.179828804098726e-15
+    ],
+    "maximum_effective_cfl": 0.29226202038465315,
+    "minimum_density": 1.5263829338555492,
+    "minimum_pressure": 1.6501937365247212
+  },
+  {
+    "case_id": "euler-validation-000030-5845877934494643265",
+    "physics": "euler",
+    "family": "sod_like",
+    "cells": 64,
+    "system": "euler",
+    "mode": "hard",
+    "strength": 0.25,
+    "dt": 0.002578975776869721,
+    "steps": 15,
+    "final_time": 0.03868463665304582,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.008026526060560842,
+    "l1": 0.008026526060560842,
+    "l2": 0.025024572995122472,
+    "linf": 0.15785605325377028,
+    "component_l1": [
+      0.00827237036448504,
+      0.005689283184627542,
+      0.01011792463256994
+    ],
+    "component_l2": [
+      0.025755564069850297,
+      0.01646090655902926,
+      0.030730721362561313
+    ],
+    "component_linf": [
+      0.11529610178788408,
+      0.07213902295516733,
+      0.15785605325377028
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      1.4218300620428785,
+      0.8298904372877248,
+      1.7068699282199984
+    ],
+    "state_min": [
+      0.18602192031723647,
+      -0.0028543996792856434,
+      0.3704519828656709
+    ],
+    "state_max": [
+      1.5786721887998505,
+      0.43402607796884984,
+      2.007447126000414
+    ],
+    "overshoot": [
+      0.004211135193962878,
+      0.0,
+      0.012866339774386892
+    ],
+    "undershoot": [
+      0.0007554539276854177,
+      0.003231437158094724,
+      0.008583474007234637
+    ],
+    "initial_integral": [
+      0.954928827868478,
+      0.042866976708488116,
+      1.2733195877555445
+    ],
+    "final_integral": [
+      0.9578982248030381,
+      0.0679826199722817,
+      1.2785690112178572
+    ],
+    "boundary_exchange": [
+      0.0029693969345593743,
+      0.02511564326379369,
+      0.005249423462309013
+    ],
+    "conservation_residual": [
+      7.346553920761778e-16,
+      -1.1102230246251565e-16,
+      3.595214403961933e-15
+    ],
+    "maximum_effective_cfl": 0.2788443047625126,
+    "minimum_density": 0.1768279088164854,
+    "minimum_pressure": 0.14367639250346348
+  },
+  {
+    "case_id": "euler-validation-000033-8066571132189457352",
+    "physics": "euler",
+    "family": "constant",
+    "cells": 64,
+    "system": "euler",
+    "mode": "hard",
+    "strength": 0.25,
+    "dt": 0.0038039001201243985,
+    "steps": 15,
+    "final_time": 0.05705850180186598,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.0,
+    "l1": 0.0,
+    "l2": 0.0,
+    "linf": 0.0,
+    "component_l1": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "component_l2": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "component_linf": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "state_min": [
+      1.7870168618417224,
+      -0.13486575858779767,
+      4.026526651026479
+    ],
+    "state_max": [
+      1.7870168618417224,
+      -0.13486575858779767,
+      4.026526651026479
+    ],
+    "overshoot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "undershoot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_integral": [
+      1.7870168618417213,
+      -0.1348657585877976,
+      4.026526651026474
+    ],
+    "final_integral": [
+      1.7870168618417213,
+      -0.1348657585877976,
+      4.026526651026474
+    ],
+    "boundary_exchange": [
+      1.5836915612761893e-18,
+      0.0,
+      -6.334766245104757e-18
+    ],
+    "conservation_residual": [
+      -1.5836915612761893e-18,
+      0.0,
+      6.334766245104757e-18
+    ],
+    "maximum_effective_cfl": 0.2916666666666665,
+    "minimum_density": 1.7870168618417224,
+    "minimum_pressure": 1.6085750027480537
+  },
+  {
+    "case_id": "euler-validation-000036-4645527865081157717",
+    "physics": "euler",
+    "family": "two_rarefactions",
+    "cells": 64,
+    "system": "euler",
+    "mode": "hard",
+    "strength": 0.25,
+    "dt": 0.0023398340796705673,
+    "steps": 15,
+    "final_time": 0.03509751119505851,
+    "checkpoint_sha256": "dbae82f977bc5b07b0fb7671971696e69f44541dad450474fc575813f22bb7b5",
+    "primary_error": 0.010481823057452787,
+    "l1": 0.010481823057452787,
+    "l2": 0.03554556047920715,
+    "linf": 0.3011160194011282,
+    "component_l1": [
+      0.006470727027789484,
+      0.006894703141713187,
+      0.01808003900285569
+    ],
+    "component_l2": [
+      0.01774771869249966,
+      0.020558116170807668,
+      0.05525253795132304
+    ],
+    "component_linf": [
+      0.06380601218257898,
+      0.10601220477602397,
+      0.3011160194011282
+    ],
+    "valid": true,
+    "nonfinite": false,
+    "invalid_stage_rows": 0,
+    "total_variation": [
+      1.030227880049761,
+      1.089508104234766,
+      2.5834623576088225
+    ],
+    "state_min": [
+      0.482562929772634,
+      -0.5165257004425943,
+      1.1715463962674504
+    ],
+    "state_max": [
+      1.1375888516690273,
+      0.5557168256687951,
+      2.9172951115330497
+    ],
+    "overshoot": [
+      1.6084756787826393e-05,
+      2.345168731043845e-05,
+      0.025342467221554976
+    ],
+    "undershoot": [
+      0.0,
+      0.008845468631328623,
+      0.0
+    ],
+    "initial_integral": [
+      0.9876028756510599,
+      0.00997184876990953,
+      2.4382869630754462
+    ],
+    "final_integral": [
+      0.9502811086172173,
+      0.023994186676475595,
+      2.3081175687949376
+    ],
+    "boundary_exchange": [
+      -0.03732176703384072,
+      0.014022337906565782,
+      -0.13016939428050536
+    ],
+    "conservation_residual": [
+      -1.880440247958859e-15,
+      2.8275992658421956e-16,
+      -3.3029134982598407e-15
+    ],
+    "maximum_effective_cfl": 0.2942869098670101,
+    "minimum_density": 0.4810405211353399,
+    "minimum_pressure": 0.46451739432027656
+  }
+]

@@ -1,0 +1,12 @@
+scalar N=64 advection soft lambda=0: 4 cases in 2.71s
+scalar N=64 advection soft lambda=0.25: 4 cases in 0.02s
+scalar N=64 advection hard lambda=0: 4 cases in 2.43s
+scalar N=64 advection hard lambda=0.25: 4 cases in 0.02s
+scalar N=64 burgers soft lambda=0: 2 cases in 2.51s
+scalar N=64 burgers soft lambda=0.25: 2 cases in 0.02s
+scalar N=64 burgers hard lambda=0: 2 cases in 2.53s
+scalar N=64 burgers hard lambda=0.25: 2 cases in 0.02s
+euler N=64 euler soft lambda=0: 5 cases in 5.27s
+euler N=64 euler soft lambda=0.25: 5 cases in 0.16s
+euler N=64 euler hard lambda=0: 5 cases in 4.76s
+euler N=64 euler hard lambda=0.25: 5 cases in 0.16s

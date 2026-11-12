@@ -1,0 +1,489 @@
+{
+  "passed": true,
+  "rows": [
+    {
+      "key": [
+        "scalar-validation-000000-2230928489001829990",
+        "scalar",
+        64,
+        "soft",
+        0
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000003-1810171693282524608",
+        "scalar",
+        64,
+        "soft",
+        0
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000006-7319783221121533170",
+        "scalar",
+        64,
+        "soft",
+        0
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000036-6178426902412593947",
+        "scalar",
+        64,
+        "soft",
+        0
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000000-2230928489001829990",
+        "scalar",
+        64,
+        "soft",
+        0.25
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000003-1810171693282524608",
+        "scalar",
+        64,
+        "soft",
+        0.25
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000006-7319783221121533170",
+        "scalar",
+        64,
+        "soft",
+        0.25
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000036-6178426902412593947",
+        "scalar",
+        64,
+        "soft",
+        0.25
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000000-2230928489001829990",
+        "scalar",
+        64,
+        "hard",
+        0
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000003-1810171693282524608",
+        "scalar",
+        64,
+        "hard",
+        0
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000006-7319783221121533170",
+        "scalar",
+        64,
+        "hard",
+        0
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000036-6178426902412593947",
+        "scalar",
+        64,
+        "hard",
+        0
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000000-2230928489001829990",
+        "scalar",
+        64,
+        "hard",
+        0.25
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000003-1810171693282524608",
+        "scalar",
+        64,
+        "hard",
+        0.25
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000006-7319783221121533170",
+        "scalar",
+        64,
+        "hard",
+        0.25
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000036-6178426902412593947",
+        "scalar",
+        64,
+        "hard",
+        0.25
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000009-6523082916528094027",
+        "scalar",
+        64,
+        "soft",
+        0
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000024-475374283455688214",
+        "scalar",
+        64,
+        "soft",
+        0
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000009-6523082916528094027",
+        "scalar",
+        64,
+        "soft",
+        0.25
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000024-475374283455688214",
+        "scalar",
+        64,
+        "soft",
+        0.25
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000009-6523082916528094027",
+        "scalar",
+        64,
+        "hard",
+        0
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000024-475374283455688214",
+        "scalar",
+        64,
+        "hard",
+        0
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000009-6523082916528094027",
+        "scalar",
+        64,
+        "hard",
+        0.25
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "scalar-validation-000024-475374283455688214",
+        "scalar",
+        64,
+        "hard",
+        0.25
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000000-5409067900101197278",
+        "euler",
+        64,
+        "soft",
+        0
+      ],
+      "maximum_norm_difference": 5.551115123125783e-17,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000009-6448502967187158713",
+        "euler",
+        64,
+        "soft",
+        0
+      ],
+      "maximum_norm_difference": 4.440892098500626e-16,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000030-5845877934494643265",
+        "euler",
+        64,
+        "soft",
+        0
+      ],
+      "maximum_norm_difference": 2.220446049250313e-16,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000033-8066571132189457352",
+        "euler",
+        64,
+        "soft",
+        0
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000036-4645527865081157717",
+        "euler",
+        64,
+        "soft",
+        0
+      ],
+      "maximum_norm_difference": 2.6645352591003757e-15,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000000-5409067900101197278",
+        "euler",
+        64,
+        "soft",
+        0.25
+      ],
+      "maximum_norm_difference": 1.3322676295501878e-15,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000009-6448502967187158713",
+        "euler",
+        64,
+        "soft",
+        0.25
+      ],
+      "maximum_norm_difference": 2.220446049250313e-16,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000030-5845877934494643265",
+        "euler",
+        64,
+        "soft",
+        0.25
+      ],
+      "maximum_norm_difference": 3.469446951953614e-18,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000033-8066571132189457352",
+        "euler",
+        64,
+        "soft",
+        0.25
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000036-4645527865081157717",
+        "euler",
+        64,
+        "soft",
+        0.25
+      ],
+      "maximum_norm_difference": 8.881784197001252e-16,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000000-5409067900101197278",
+        "euler",
+        64,
+        "hard",
+        0
+      ],
+      "maximum_norm_difference": 5.551115123125783e-17,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000009-6448502967187158713",
+        "euler",
+        64,
+        "hard",
+        0
+      ],
+      "maximum_norm_difference": 4.440892098500626e-16,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000030-5845877934494643265",
+        "euler",
+        64,
+        "hard",
+        0
+      ],
+      "maximum_norm_difference": 2.220446049250313e-16,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000033-8066571132189457352",
+        "euler",
+        64,
+        "hard",
+        0
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000036-4645527865081157717",
+        "euler",
+        64,
+        "hard",
+        0
+      ],
+      "maximum_norm_difference": 2.6645352591003757e-15,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000000-5409067900101197278",
+        "euler",
+        64,
+        "hard",
+        0.25
+      ],
+      "maximum_norm_difference": 1.3877787807814457e-17,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000009-6448502967187158713",
+        "euler",
+        64,
+        "hard",
+        0.25
+      ],
+      "maximum_norm_difference": 3.8163916471489756e-17,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000030-5845877934494643265",
+        "euler",
+        64,
+        "hard",
+        0.25
+      ],
+      "maximum_norm_difference": 6.661338147750939e-16,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000033-8066571132189457352",
+        "euler",
+        64,
+        "hard",
+        0.25
+      ],
+      "maximum_norm_difference": 0.0,
+      "valid_equal": true
+    },
+    {
+      "key": [
+        "euler-validation-000036-4645527865081157717",
+        "euler",
+        64,
+        "hard",
+        0.25
+      ],
+      "maximum_norm_difference": 4.440892098500626e-16,
+      "valid_equal": true
+    }
+  ]
+}

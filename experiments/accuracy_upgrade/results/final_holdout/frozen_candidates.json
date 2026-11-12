@@ -1,0 +1,12 @@
+{
+  "checkpoints": {
+    "checkpoints/paired_pilot/A_seed3101_final.pkl": "f2db238055dceb6578113afbfc3cb943ebb414813196a6d9cc234436bd30e440",
+    "checkpoints/paired_pilot/B_seed3101_final.pkl": "5ba2a4ddef22e0c858309240a9bee662545db2f43b378fb02197877bac4df498",
+    "checkpoints/paired_pilot/C_seed3101_final.pkl": "4b75f69f7e5758c2cde9138fd98ad28298a32c3b47d7cbd85d1ad54810890d77",
+    "checkpoints/paired_pilot/A_seed3102_final.pkl": "5d2c0ca6148cb75bdeb7035e509dfe5e54bab4d1ad1556b2b323349eae1f4dbb",
+    "checkpoints/paired_pilot/B_seed3102_final.pkl": "982dc83718db086713d25eb8eced75d53cbd4a1e844cbfa5e82b4152534f8e08",
+    "checkpoints/paired_pilot/C_seed3102_final.pkl": "93b87b68c0e562f4d0ca6a034be0fe64a506ea575991bedf479c28c68758d90d"
+  },
+  "holdout_sha256": "14e666f6c7cc82b72faac060e3bd455d76a16eb39d08f955ad211b022368ffdd",
+  "selection": "all predeclared candidates; no selection or tuning on holdout"
+}
